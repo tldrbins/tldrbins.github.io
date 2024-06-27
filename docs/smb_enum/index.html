@@ -44,7 +44,7 @@
   
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
-  <li><a href="https://tldrbins.github.io/@ntlm/">Ntlm</a></li>
+  <li><a href="https://tldrbins.github.io/@ads/">Ads</a></li>
   
 </ul>
 
@@ -52,8 +52,11 @@
 <h3 id="smb-share-enum">SMB Share Enum</h3>
 <h4 id="login-without-password">Login without password</h4>
 <h4 id="smbmap">smbmap</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10
-</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u null
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10 --no-banner
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 --no-banner -u null
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># List known share</span>
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 --no-banner -r <span class="s1">&#39;share&#39;</span>
 </span></span></code></pre></div><h4 id="smbclient">smbclient</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>
 </span></span><span class="line"><span class="cl">
@@ -71,6 +74,18 @@
 </span></span><span class="line"><span class="cl">prompt OFF
 </span></span><span class="line"><span class="cl">mget *
 </span></span></code></pre></div><h4 id="login-with-password">Login with password</h4>
+<h4 id="smbmap-1">smbmap</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u username -p password
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># List known share</span>
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u username -p password -R <span class="s1">&#39;share&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Download file</span>
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -r <span class="s1">&#39;share&#39;</span> --download <span class="s1">&#39;PATH/TO/FILE&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># List files with regex pattern</span>
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u username -p password -r <span class="s1">&#39;share&#39;</span> --no-banner -A FILE_PATTERN
+</span></span></code></pre></div><h4 id="smbclient-1">smbclient</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span> -U domain/username%password
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">#After found an accessible share</span>
@@ -79,11 +94,25 @@
 <hr>
 <h3 id="mount-smb-share">Mount SMB Share</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs <span class="s2">&#34;//10.10.11.10/Remote Shares&#34;</span> /mnt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># With creds</span>
+</span></span><span class="line"><span class="cl">sudo mount -t cifs -o ro,username<span class="o">=</span>username,password<span class="o">=</span>password <span class="s2">&#34;//10.10.11.10/Remote Shares&#34;</span> /mnt
 </span></span></code></pre></div><h4 id="check-write-permission">Check write permission</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo find . -type d <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> directory<span class="p">;</span> <span class="k">do</span> touch <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write file&#34;</span> <span class="o">&amp;&amp;</span> rm <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> mkdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write directory&#34;</span> <span class="o">&amp;&amp;</span> rmdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> <span class="k">done</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">#Check file type you can write</span>
 </span></span><span class="line"><span class="cl">sudo touch <span class="o">{</span>/mnt/,./<span class="o">}</span>test.<span class="o">{</span>lnk,exe,dll,ini<span class="o">}</span>
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inside smbclient session</span>
+</span></span><span class="line"><span class="cl">allinfo <span class="s2">&#34;file&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Example Response</span>
+</span></span><span class="line"><span class="cl">&gt;&gt;&gt;stream: <span class="o">[</span>:Password:<span class="nv">$DATA</span><span class="o">]</span>, <span class="m">15</span> bytes
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Download specific data stream</span>
+</span></span><span class="line"><span class="cl">get <span class="s2">&#34;file:Password&#34;</span>
 </span></span></code></pre></div><br></div></div>
     
     <script src="/copy-code-button.js"></script>

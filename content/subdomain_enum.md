@@ -1,7 +1,7 @@
 ---
 title: "Subdomain Enum"
 date: 2024-6-26
-tags: ["web", "domain", "subdomain", "wfuzz", "http", "enum"]
+tags: ["web", "domain", "subdomain", "wfuzz", "http", "enum", "hosts"]
 ---
 
 ---
@@ -21,6 +21,26 @@ wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H 
 
 ```bash
 wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.example.com" -u http://example.com --hw 10
+```
+
+<br>
+
+---
+
+### gobuster
+
+```bash
+gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com
+```
+
+<br>
+
+---
+
+### Add domain/subdomain to /etc/hosts
+
+```bash
+echo "10.10.11.10 example.com" | sudo tee -a /etc/hosts
 ```
 
 <br>

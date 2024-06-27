@@ -1,7 +1,7 @@
 ---
 title: "Mysql Privilege Escalation"
 date: 2024-6-27
-tags: ["mysql", "database", "RCE", "php", "UDF", "exploit"]
+tags: ["mysql", "database", "RCE", "php", "UDF", "exploit", "pe"]
 ---
 
 ---

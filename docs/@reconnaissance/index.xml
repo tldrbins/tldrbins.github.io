@@ -33,7 +33,7 @@
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * Login with password smbclient -L \\\\10.10.11.10\\ -U domain/username%password #After found an accessible share smbclient \\\\10.10.11.10\\share\\ -U domain/username%password Mount SMB Share sudo mount -t cifs &amp;#34;//10.</description>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 --no-banner -u null # List known share smbmap -H 10.10.11.10 --no-banner -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * Login with password smbmap smbmap -H 10.10.11.10 -u username -p password # List known share smbmap -H 10.</description>
     </item>
   </channel>
 </rss>

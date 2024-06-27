@@ -1,7 +1,7 @@
 ---
 title: "SMB Enum"
 date: 2024-6-26
-tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ntlm"]
+tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads"]
 ---
 
 ---
@@ -12,8 +12,11 @@ tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ntlm"]
 #### smbmap
 
 ```bash
-smbmap -H 10.10.11.10
-smbmap -H 10.10.11.10 -u null
+smbmap -H 10.10.11.10 --no-banner
+smbmap -H 10.10.11.10 --no-banner -u null
+
+# List known share
+smbmap -H 10.10.11.10 --no-banner -r 'share'
 ```
 
 #### smbclient
@@ -38,6 +41,23 @@ mget *
 
 #### Login with password
 
+#### smbmap
+
+```bash
+smbmap -H 10.10.11.10 -u username -p password
+
+# List known share
+smbmap -H 10.10.11.10 -u username -p password -R 'share'
+
+# Download file
+smbmap -H 10.10.11.10 -r 'share' --download 'PATH/TO/FILE'
+
+# List files with regex pattern
+smbmap -H 10.10.11.10 -u username -p password -r 'share' --no-banner -A FILE_PATTERN
+```
+
+#### smbclient
+
 ```bash
 smbclient -L \\\\10.10.11.10\\ -U domain/username%password
 
@@ -53,6 +73,9 @@ smbclient  \\\\10.10.11.10\\share\\ -U domain/username%password
 
 ```bash
 sudo mount -t cifs "//10.10.11.10/Remote Shares" /mnt
+
+# With creds
+sudo mount -t cifs -o ro,username=username,password=password "//10.10.11.10/Remote Shares" /mnt
 ```
 
 #### Check write permission
@@ -62,6 +85,23 @@ sudo find . -type d | while read directory; do touch ${directory}/test 2>/dev/nu
 
 #Check file type you can write
 sudo touch {/mnt/,./}test.{lnk,exe,dll,ini}
+```
+
+<br>
+
+---
+
+### List Alternate Data Streams (ADS)
+
+```bash
+# Inside smbclient session
+allinfo "file"
+
+# Example Response
+>>>stream: [:Password:$DATA], 15 bytes
+
+# Download specific data stream
+get "file:Password"
 ```
 
 <br>
