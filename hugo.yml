@@ -1,0 +1,50 @@
+baseURL: https://tldrbins.github.io/
+languageCode: en-us
+title: TLDRBins
+theme: index
+pygmentsUseClasses: true
+enableInlineShortcodes: true
+publishDir: docs
+
+markup:
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  titleIcon: index.png
+  headers:
+    key: Title
+    value: Tags
+
+permalinks:
+  tags: "@:slug"
+
+taxonomies:
+  tag: "tags"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # for search
+
+privacy:
+  vimeo:
+    disabled: true
+  twitter:
+    disabled: true
+  instagram:
+    disabled: true
+  youtube:
+    disabled: true
+
+services:
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true

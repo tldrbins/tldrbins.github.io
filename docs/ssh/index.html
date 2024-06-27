@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>SSH | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/ssh/">
+      <span>SSH</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@ssh/">Ssh</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@private-key/">Private Key</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@public-key/">Public Key</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@id_rsa/">Id_rsa</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="generate-ssh-key">Generate SSH Key</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Set filename, leave passphase blank</span>
+</span></span><span class="line"><span class="cl">./id_rsa
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#After Creation</span>
+</span></span><span class="line"><span class="cl">chmod <span class="m">600</span> id_rsa
+</span></span></code></pre></div><h3 id="add-ssh-access-to-target">Add SSH Access to Target</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat id_rsa.pub
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Copy and Paste to Target</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;&lt;id_rsa.pub&gt;&#39;</span> &gt;&gt; /home/user/.ssh/authorized_keys
+</span></span></code></pre></div><h3 id="connect-to-ssh-with-id_rsa">Connect to SSH with id_rsa</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10 -i id_rsa
+</span></span></code></pre></div><p><small><em>Note: Always append a new line in id_rsa key</em></small></p>
+<h3 id="connect-to-ssh-with-creds">Connect to SSH with creds</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># After first connection (i.e., after &#39;yes&#39; to fingerprint prompt)</span>
+</span></span><span class="line"><span class="cl">sshpass -p <span class="s1">&#39;password&#39;</span> ssh user@10.10.11.10
+</span></span></code></pre></div><br></div></div><footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

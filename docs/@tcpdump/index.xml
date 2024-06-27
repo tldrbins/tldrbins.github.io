@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tcpdump on TLDRBins</title>
+    <link>https://tldrbins.github.io/@tcpdump/</link>
+    <description>Recent content in Tcpdump on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@tcpdump/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network Discovery</title>
+      <link>https://tldrbins.github.io/network_discovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/network_discovery/</guid>
+      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig # Windows ipconfig ip addr cat /proc/net/fib_trie Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
+    </item>
+  </channel>
+</rss>

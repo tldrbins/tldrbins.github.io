@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Network Discovery | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/network_discovery/">
+      <span>Network Discovery</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@port/">Port</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@network/">Network</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@discovery/">Discovery</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@reconnaissance/">Reconnaissance</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ping/">Ping</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@tcpdump/">Tcpdump</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="test-connectivity">Test Connectivity</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ping -c3 10.10.11.10
+</span></span></code></pre></div><h3 id="test-reverse-connectivity">Test Reverse Connectivity</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo tcpdump -ni tun0 icmp
+</span></span></code></pre></div><h3 id="use-ping-to-scan-subnet">Use ping to Scan Subnet</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 254<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="o">(</span>ping -c <span class="m">1</span> 10.100.10.<span class="si">${</span><span class="nv">i</span><span class="si">}</span> <span class="p">|</span> grep <span class="s2">&#34;bytes from&#34;</span> <span class="p">&amp;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span>
+</span></span></code></pre></div><h3 id="use-nc-to-scan-ports">Use nc to Scan Ports</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 65535<span class="k">)</span><span class="p">;</span> <span class="k">do</span> nc -zvn 127.0.0.1 <span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span> <span class="k">done</span>
+</span></span></code></pre></div><h3 id="check-arp">Check ARP</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arp -na
+</span></span><span class="line"><span class="cl">cat /proc/net/arp
+</span></span></code></pre></div><h3 id="check-ip">Check IP</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Linux</span>
+</span></span><span class="line"><span class="cl">ifconfig
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Windows</span>
+</span></span><span class="line"><span class="cl">ipconfig
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ip addr
+</span></span><span class="line"><span class="cl">cat /proc/net/fib_trie
+</span></span></code></pre></div><h3 id="check-network-connections">Check Network Connections</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># TCP</span>
+</span></span><span class="line"><span class="cl">netstat -plant
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># UDP</span>
+</span></span><span class="line"><span class="cl">netstat -plunt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Windows</span>
+</span></span><span class="line"><span class="cl">netstat -ano
+</span></span></code></pre></div><br></div></div><footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

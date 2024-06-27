@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Password Cracking | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/password_cracking/">
+      <span>Password Cracking</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@password/">Password</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@cracking/">Cracking</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@john/">John</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@hashcat/">Hashcat</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="john">john</h3>
+<p><a href="https://github.com/openwall/john">Download john</a></p>
+<h4 id="convert-file-to-john-hash-format">Convert file to john hash format</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example</span>
+</span></span><span class="line"><span class="cl">ssh2john id_rsa_encrypted &gt; <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl">keepass2john test.kdbx &gt; <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl">zip2john test.zip &gt; <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Get a full list of *2john</span>
+</span></span><span class="line"><span class="cl">find / -name *2john 2&gt;/dev/null
+</span></span></code></pre></div><h4 id="crack-with-john">Crack with john</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># General use</span>
+</span></span><span class="line"><span class="cl">john --wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Specify hash format</span>
+</span></span><span class="line"><span class="cl">john --wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt <span class="nb">hash</span> --format<span class="o">=</span>Raw-SHA512
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Show cracked hash</span>
+</span></span><span class="line"><span class="cl">john --show <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Show cracked hash with specific format</span>
+</span></span><span class="line"><span class="cl">john --show <span class="nb">hash</span> --format<span class="o">=</span>Raw-SHA512
+</span></span></code></pre></div><br>
+<hr>
+<h4 id="hashcat">hashcat</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Auto detect hash format</span>
+</span></span><span class="line"><span class="cl">hashcat <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Specify hash format</span>
+</span></span><span class="line"><span class="cl">hashcat -m <span class="m">13400</span> -a <span class="m">0</span> <span class="nb">hash</span> /usr/share/wordlists/rockyou.txt --force
+</span></span></code></pre></div><br></div></div><footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

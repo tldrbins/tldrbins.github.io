@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Compressed Files | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/zip/">
+      <span>Compressed Files</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@compress/">Compress</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@decompress/">Decompress</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@extract/">Extract</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@zip/">Zip</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@unzip/">Unzip</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@gz/">Gz</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@tar/">Tar</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="zip">zip</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a file</span>
+</span></span><span class="line"><span class="cl">zip file.zip file
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># zip a folder</span>
+</span></span><span class="line"><span class="cl">zip -r folder.zip folder/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># unzip</span>
+</span></span><span class="line"><span class="cl">unzip file.zip
+</span></span></code></pre></div><p><small><em>Note: Always put the zip file inside a new folder before unzip</em></small></p>
+<hr>
+<h3 id="targz">tar.gz</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a file</span>
+</span></span><span class="line"><span class="cl">tar -cvzf file.tar.gz file
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compress a folder</span>
+</span></span><span class="line"><span class="cl">tar -cvzf folder.tar.gz folder/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract</span>
+</span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz
+</span></span></code></pre></div><p><small><em>Note: Always put the zip file inside a new folder before Extract</em></small></p>
+<hr>
+<h3 id="gz">gz</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress file, and keep the original file</span>
+</span></span><span class="line"><span class="cl">gzip -k -r file
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compress all files individually inside a folder, and keep original files</span>
+</span></span><span class="line"><span class="cl">gzip -k -r folder/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract</span>
+</span></span><span class="line"><span class="cl">gunzip file.gz
+</span></span></code></pre></div><p><small><em>Note: Always put the zip file inside a new folder before unzip</em></small>
+<br>
+<small><em>Note: If you want to zip the entire folder, use tar instead</em></small></p>
+<hr>
+</div></div><footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

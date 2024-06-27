@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Nmap | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/nmap/">
+      <span>Nmap</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@nmap/">Nmap</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@port/">Port</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@network/">Network</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@discovery/">Discovery</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@reconnaissance/">Reconnaissance</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@scan/">Scan</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@enum/">Enum</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="nmap-port-scan">Nmap Port Scan</h3>
+<h4 id="tcp-scan">TCP Scan</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">target</span><span class="o">=</span>10.10.11.10
+</span></span><span class="line"><span class="cl">nmap -p- --min-rate <span class="m">10000</span> -oA ./nmap-alltcp <span class="nv">$target</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ports</span><span class="o">=</span><span class="k">$(</span>cat nmap-alltcp.nmap<span class="p">|</span> grep -Eo <span class="s2">&#34;^[0-9]+&#34;</span> <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;,&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;s/,$//&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">nmap -p <span class="nv">$ports</span> -sCV -oA ./nmap-tcpscripts <span class="nv">$target</span>
+</span></span></code></pre></div><h4 id="udp-scan-common-ports">UDP Scan (common ports)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">target</span><span class="o">=</span>10.10.11.10
+</span></span><span class="line"><span class="cl">nmap -sU --min-rate <span class="m">10000</span> -oA ./nmap-udp <span class="nv">$target</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ports</span><span class="o">=</span><span class="k">$(</span>cat nmap-udp.nmap<span class="p">|</span> grep -Eo <span class="s2">&#34;^[0-9]+&#34;</span> <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;,&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;s/,$//&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">nmap -p <span class="nv">$ports</span> -sU -sCV -oA ./nmap-udpscripts <span class="nv">$target</span>
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="scan-with-nmap-scripts">Scan with nmap scripts</h3>
+<h4 id="update-scripts-db">Update scripts DB</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --script-updatedb
+</span></span></code></pre></div><h4 id="search-scripts">Search scripts</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --script-help ftp*
+</span></span></code></pre></div><h4 id="scan-with-scripts">Scan with scripts</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --script<span class="o">=</span>ftp-anon -sV -sC -p <span class="m">21</span> 10.10.11.10
+</span></span></code></pre></div><br></div></div><footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>
