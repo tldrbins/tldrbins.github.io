@@ -1,7 +1,7 @@
 ---
 title: "Share Mount"
 date: 2024-6-26
-tags: ["smb", "share", "mount", "cifs", "enum"]
+tags: ["smb", "share", "mount", "cifs", "enum", "nfs"]
 ---
 
 ---

