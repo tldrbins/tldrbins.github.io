@@ -43,7 +43,11 @@
 <div class="content"><hr>
 <h3 id="wpscan">wpscan</h3>
 <p><a href="https://wpscan.com/">Download wpscan</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wpscan --url http://10.10.11.10 -e ap,t,tt,u
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># HTTP</span>
+</span></span><span class="line"><span class="cl">wpscan --url http://10.10.11.10 -e ap,t,tt,u
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># HTTPS</span>
+</span></span><span class="line"><span class="cl">wpscan --url https://10.10.11.10 -e ap,t,tt,u --disable-tls-checks
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># You will need an api token to scan vulns</span>
 </span></span><span class="line"><span class="cl">wpscan --url http://10.10.11.10 -e ap,t,tt,u --api-token API_KEY

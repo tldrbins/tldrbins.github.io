@@ -10,17 +10,25 @@
   </url><url>
     <loc>https://tldrbins.github.io/advance_curl/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@aes/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@bash/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@cbc/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@chisel/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@cifs/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@cipher/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@compress/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/compressed_files/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/connection_from_public_internet/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@container/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@cookie/</loc>
   </url><url>
@@ -56,7 +64,11 @@
   </url><url>
     <loc>https://tldrbins.github.io/@email/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@encryption/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@enum/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@escape/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@evil-winrm/</loc>
   </url><url>
@@ -70,6 +82,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@feroxbuster/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@file-system/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@file-transfer/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/file_transfer_linux_to_linux/</loc>
@@ -77,6 +91,10 @@
     <loc>https://tldrbins.github.io/file_transfer_linux_to_windows/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/file_transfer_windows_to_linux/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@find/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/find/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@flask/</loc>
   </url><url>
@@ -112,9 +130,17 @@
   </url><url>
     <loc>https://tldrbins.github.io/@linked_server/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@linux/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@listener/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/listeners/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@lxc/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/lxd/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@lxd/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@metasploit/</loc>
   </url><url>
@@ -164,9 +190,17 @@
   </url><url>
     <loc>https://tldrbins.github.io/@ntlm/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@onesixtyone/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/openvpn/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@openvpn/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@padbuster/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@padding-oracle/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/padding_oracle/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@password/</loc>
   </url><url>
@@ -188,9 +222,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@private-key/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@privescs/</loc>
+    <loc>https://tldrbins.github.io/@privesc/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@privilege-escalation/</loc>
+    <loc>https://tldrbins.github.io/@privescs/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@public-ip/</loc>
   </url><url>
@@ -236,15 +270,21 @@
   </url><url>
     <loc>https://tldrbins.github.io/smb_server/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@snmp/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/snmp/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@snmpwalk/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@socat/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@ssh/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/ssh/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/ssl/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@ssl/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/ssl/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@sslscan/</loc>
   </url><url>
@@ -264,11 +304,17 @@
   </url><url>
     <loc>https://tldrbins.github.io/@tcpdump/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@tftp/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/tftp/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@tty/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@udf/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@udp/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@unsign/</loc>
   </url><url>

@@ -1,7 +1,7 @@
 ---
 title: "MSSQL Linked Servers"
 date: 2024-6-27
-tags: ["mssql", "database", "Windows", "linked_server", "privilege escalation"]
+tags: ["mssql", "database", "Windows", "linked_server", "privesc"]
 ---
 
 ---

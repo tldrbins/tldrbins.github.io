@@ -1,7 +1,7 @@
 ---
 title: "MSSQL Privilege Escalation"
 date: 2024-6-27
-tags: ["mssql", "database", "Windows", "exploit", "rce", "privilege escalation", "pe"]
+tags: ["mssql", "database", "Windows", "exploit", "rce", "privesc", "pe"]
 ---
 
 ---

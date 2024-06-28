@@ -1,5 +1,5 @@
 ---
-title: "ssl"
+title: "SSL"
 date: 2024-6-28
 tags: ["ssl", "sslscan"]
 ---

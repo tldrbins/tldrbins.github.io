@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>SNMP | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/snmp/">
+      <span>SNMP</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@snmp/">Snmp</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@reconnaissance/">Reconnaissance</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@enum/">Enum</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@snmpwalk/">Snmpwalk</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@udp/">Udp</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@onesixtyone/">Onesixtyone</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="onesixtyone">onesixtyone</h3>
+<p><a href="https://github.com/trailofbits/onesixtyone">Download onesixtyone</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Brute force community string for snmpwalk use</span>
+</span></span><span class="line"><span class="cl">onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt
+</span></span></code></pre></div><h3 id="snmpwalk">snmpwalk</h3>
+<h4 id="installation">Installation</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install snmp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Install Add-on for better result readability</span>
+</span></span><span class="line"><span class="cl">sudo apt install snmp-mibs-downloader
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Comment out this line in /etc/snmp/snmp.conf</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># mibs :</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Uncomment this line in /etc/snmp/snmp.conf</span>
+</span></span><span class="line"><span class="cl">mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
+</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpwalk -v2c -c public 10.10.11.10 <span class="p">|</span> tee snmpwalk_result
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Query specific OID, e.g, ipAddressIfIndex.ipv6</span>
+</span></span><span class="line"><span class="cl">snmpwalk -v2c -c public 10.10.11.10 ipAddressIfIndex.ipv6
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>
