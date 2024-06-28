@@ -12,11 +12,11 @@ tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads"]
 #### smbmap
 
 ```bash
-smbmap -H 10.10.11.10 --no-banner
-smbmap -H 10.10.11.10 --no-banner -u null
+smbmap -H 10.10.11.10
+smbmap -H 10.10.11.10 -u null
 
 # List known share
-smbmap -H 10.10.11.10 --no-banner -r 'share'
+smbmap -H 10.10.11.10 -r 'share'
 ```
 
 #### smbclient
@@ -39,6 +39,11 @@ prompt OFF
 mget *
 ```
 
+```bash
+# Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED
+smbclient -N -L \\\\10.10.11.10\\ --option='client min protocol=NT1'
+```
+
 #### Login with password
 
 #### smbmap
@@ -53,7 +58,7 @@ smbmap -H 10.10.11.10 -u username -p password -R 'share'
 smbmap -H 10.10.11.10 -r 'share' --download 'PATH/TO/FILE'
 
 # List files with regex pattern
-smbmap -H 10.10.11.10 -u username -p password -r 'share' --no-banner -A FILE_PATTERN
+smbmap -H 10.10.11.10 -u username -p password -r 'share'  -A FILE_PATTERN
 ```
 
 #### smbclient

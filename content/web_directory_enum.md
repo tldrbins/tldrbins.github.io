@@ -38,7 +38,18 @@ feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/se
 [Download gobuster](https://github.com/OJ/gobuster)
 
 ```bash
-gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x php
+gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
+```
+
+<br>
+
+---
+
+#### wfuzz
+
+```bash
+# Fuzzing IDOR
+wfuzz -z range,1-99 http://example.com/users/FUZZ
 ```
 
 <br>

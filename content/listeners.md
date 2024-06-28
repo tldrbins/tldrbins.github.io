@@ -19,7 +19,7 @@ rlwrap nc -lvnp 1337
 pwncat-cs -lp 1337
 
 #After getting a connection
-(local) back
+(local) pwncat$ back
 ```
 
 <br>

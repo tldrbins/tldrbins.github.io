@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa Note: Always append a new line in id_rsa key&#xA;Connect to SSH with creds ssh user@10.10.11.10 # After first connection (i.e., after &amp;#39;yes&amp;#39; to fingerprint prompt) sshpass -p &amp;#39;password&amp;#39; ssh user@10.</description>
+      <description>Check SSH version openssh-server&#xA;Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms=+ssh-rsa Note: Always append a new line in id_rsa key</description>
     </item>
   </channel>
 </rss>

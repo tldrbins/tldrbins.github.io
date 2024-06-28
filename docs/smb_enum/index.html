@@ -52,11 +52,11 @@
 <h3 id="smb-share-enum">SMB Share Enum</h3>
 <h4 id="login-without-password">Login without password</h4>
 <h4 id="smbmap">smbmap</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10 --no-banner
-</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 --no-banner -u null
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u null
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># List known share</span>
-</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 --no-banner -r <span class="s1">&#39;share&#39;</span>
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -r <span class="s1">&#39;share&#39;</span>
 </span></span></code></pre></div><h4 id="smbclient">smbclient</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>
 </span></span><span class="line"><span class="cl">
@@ -73,6 +73,8 @@
 </span></span><span class="line"><span class="cl">recurse ON
 </span></span><span class="line"><span class="cl">prompt OFF
 </span></span><span class="line"><span class="cl">mget *
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED</span>
+</span></span><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span> --option<span class="o">=</span><span class="s1">&#39;client min protocol=NT1&#39;</span>
 </span></span></code></pre></div><h4 id="login-with-password">Login with password</h4>
 <h4 id="smbmap-1">smbmap</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u username -p password
@@ -84,7 +86,7 @@
 </span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -r <span class="s1">&#39;share&#39;</span> --download <span class="s1">&#39;PATH/TO/FILE&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># List files with regex pattern</span>
-</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u username -p password -r <span class="s1">&#39;share&#39;</span> --no-banner -A FILE_PATTERN
+</span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u username -p password -r <span class="s1">&#39;share&#39;</span>  -A FILE_PATTERN
 </span></span></code></pre></div><h4 id="smbclient-1">smbclient</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span> -U domain/username%password
 </span></span><span class="line"><span class="cl">

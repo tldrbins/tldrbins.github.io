@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Windows ACLs | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/windows_acls/">
+      <span>Windows ACLs</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@icacls/">Icacls</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@acl/">Acl</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@access-control-lists/">Access Control Lists</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="window-acls-access-control-lists">Window ACLs (Access Control Lists)</h3>
+<h4 id="check-acls">Check ACLs</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">icacls <span class="s2">&#34;C:\Users\User&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">F    <span class="o">(</span>full access<span class="o">)</span>
+</span></span><span class="line"><span class="cl">M    <span class="o">(</span>modify access<span class="o">)</span>
+</span></span><span class="line"><span class="cl">RX   <span class="o">(</span><span class="nb">read</span> and execute access<span class="o">)</span>
+</span></span><span class="line"><span class="cl">R    <span class="o">(</span>read-only access<span class="o">)</span>
+</span></span><span class="line"><span class="cl">W    <span class="o">(</span>write-only access<span class="o">)</span>
+</span></span><span class="line"><span class="cl">D    <span class="o">(</span>delete<span class="o">)</span>
+</span></span><span class="line"><span class="cl">RC   <span class="o">(</span><span class="nb">read</span> control<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WDAC <span class="o">(</span>write DAC<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WO   <span class="o">(</span>write owner<span class="o">)</span>
+</span></span><span class="line"><span class="cl">S    <span class="o">(</span>synchronize<span class="o">)</span>
+</span></span><span class="line"><span class="cl">AS   <span class="o">(</span>access system security<span class="o">)</span>
+</span></span><span class="line"><span class="cl">MA   <span class="o">(</span>maximum allowed<span class="o">)</span>
+</span></span><span class="line"><span class="cl">GR   <span class="o">(</span>generic <span class="nb">read</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">GW   <span class="o">(</span>generic write<span class="o">)</span>
+</span></span><span class="line"><span class="cl">GE   <span class="o">(</span>generic execute<span class="o">)</span>
+</span></span><span class="line"><span class="cl">GA   <span class="o">(</span>generic all<span class="o">)</span>
+</span></span><span class="line"><span class="cl">RD   <span class="o">(</span><span class="nb">read</span> data/list directory<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WD   <span class="o">(</span>write data/add file<span class="o">)</span>
+</span></span><span class="line"><span class="cl">AD   <span class="o">(</span>append data/add subdirectory<span class="o">)</span>
+</span></span><span class="line"><span class="cl">REA  <span class="o">(</span><span class="nb">read</span> extended attributes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WEA  <span class="o">(</span>write extended attributes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">X    <span class="o">(</span>execute/traverse<span class="o">)</span>
+</span></span><span class="line"><span class="cl">DC   <span class="o">(</span>delete child<span class="o">)</span>
+</span></span><span class="line"><span class="cl">RA   <span class="o">(</span><span class="nb">read</span> attributes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">WA   <span class="o">(</span>write attributes<span class="o">)</span>
+</span></span><span class="line"><span class="cl">OI   <span class="o">(</span>object inherit<span class="o">)</span>
+</span></span><span class="line"><span class="cl">CI   <span class="o">(</span>container inherit<span class="o">)</span>
+</span></span><span class="line"><span class="cl">IO   <span class="o">(</span>inherit only<span class="o">)</span>
+</span></span><span class="line"><span class="cl">NP   <span class="o">(</span><span class="k">do</span> not propagate inherit<span class="o">)</span>
+</span></span><span class="line"><span class="cl">I    <span class="o">(</span>permission inherited from parent container<span class="o">)</span>
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

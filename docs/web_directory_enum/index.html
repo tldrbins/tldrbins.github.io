@@ -62,7 +62,12 @@
 <hr>
 <h4 id="gobuster">gobuster</h4>
 <p><a href="https://github.com/OJ/gobuster">Download gobuster</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x php
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t <span class="m">40</span> -x php
+</span></span></code></pre></div><br>
+<hr>
+<h4 id="wfuzz">wfuzz</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fuzzing IDOR</span>
+</span></span><span class="line"><span class="cl">wfuzz -z range,1-99 http://example.com/users/FUZZ
 </span></span></code></pre></div><br></div></div>
     
     <script src="/copy-code-button.js"></script>

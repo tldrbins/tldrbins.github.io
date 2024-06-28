@@ -43,10 +43,22 @@ nmap --script-updatedb
 nmap --script-help ftp*
 ```
 
-#### Scan with scripts
+#### Scan with a script
 
 ```bash
 nmap --script=ftp-anon -sV -sC -p 21 10.10.11.10
+```
+
+#### Scan with all scripts
+
+```bash
+nmap --script=smb-vuln* -sV -sC -p 445 10.10.11.10
+```
+
+#### Run script with args
+
+```bash
+nmap -p 1234 10.10.11.10 --script script_name --script-args="script_args"
 ```
 
 <br>

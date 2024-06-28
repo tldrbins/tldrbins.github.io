@@ -2,7 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tldrbins.github.io/@access-control-lists/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@acl/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@ads/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/advance_curl/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@bash/</loc>
   </url><url>
@@ -20,6 +26,12 @@
   </url><url>
     <loc>https://tldrbins.github.io/@cracking/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@ctf/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@curl/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@cve/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@database/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@decompress/</loc>
@@ -36,6 +48,12 @@
   </url><url>
     <loc>https://tldrbins.github.io/@domain/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@droopescan/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@drupal/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/drupal/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@email/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@enum/</loc>
@@ -43,6 +61,8 @@
     <loc>https://tldrbins.github.io/@evil-winrm/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@excel/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@exiftool/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@exploit/</loc>
   </url><url>
@@ -78,6 +98,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@http/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@icacls/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@id_rsa/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@java/</loc>
@@ -96,9 +118,13 @@
   </url><url>
     <loc>https://tldrbins.github.io/@metasploit/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/metasploit/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/metasploit_listener/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/metasploit_shellcode/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@meterpreter/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@mongodb/</loc>
   </url><url>
@@ -138,6 +164,10 @@
   </url><url>
     <loc>https://tldrbins.github.io/@ntlm/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/openvpn/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@openvpn/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@password/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/password_cracking/</loc>
@@ -158,6 +188,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@private-key/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@privescs/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@privilege-escalation/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@public-ip/</loc>
@@ -177,6 +209,10 @@
     <loc>https://tldrbins.github.io/@scan/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@scp/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@searchsploit/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/searchsploit/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@serveo/</loc>
   </url><url>
@@ -206,6 +242,18 @@
   </url><url>
     <loc>https://tldrbins.github.io/ssh/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/ssl/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@ssl/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@sslscan/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@steg/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@steganography/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/steganography/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@subdomain/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/subdomain_enum/</loc>
@@ -230,15 +278,33 @@
   </url><url>
     <loc>https://tldrbins.github.io/upgrade_shell/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@upload/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@vpn/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@vulnerability/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@web/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/web_directory_enum/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@webdav/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/webdav/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@webhook/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@wfuzz/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@windows/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/windows_acls/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@wordpress/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/wordpress/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@wpscan/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@xll/</loc>
   </url><url>

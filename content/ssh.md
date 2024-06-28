@@ -5,6 +5,12 @@ tags: ["ssh", "private key", "public key", "id_rsa"]
 ---
 
 ---
+### Check SSH version
+
+[openssh-server](https://packages.ubuntu.com/search?keywords=openssh-server)
+
+---
+
 ### Generate SSH Key
 
 ```bash
@@ -30,6 +36,11 @@ echo '<id_rsa.pub>' >> /home/user/.ssh/authorized_keys
 
 ```bash
 ssh user@10.10.11.10 -i id_rsa
+```
+
+```bash
+# Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss
+ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms=+ssh-rsa
 ```
 
 <small>*Note: Always append a new line in id_rsa key*</small>

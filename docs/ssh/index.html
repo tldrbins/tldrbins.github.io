@@ -45,6 +45,9 @@
 </ul>
 
 <div class="content"><hr>
+<h3 id="check-ssh-version">Check SSH version</h3>
+<p><a href="https://packages.ubuntu.com/search?keywords=openssh-server">openssh-server</a></p>
+<hr>
 <h3 id="generate-ssh-key">Generate SSH Key</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
 </span></span><span class="line"><span class="cl">
@@ -60,6 +63,8 @@
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;&lt;id_rsa.pub&gt;&#39;</span> &gt;&gt; /home/user/.ssh/authorized_keys
 </span></span></code></pre></div><h3 id="connect-to-ssh-with-id_rsa">Connect to SSH with id_rsa</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10 -i id_rsa
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss</span>
+</span></span><span class="line"><span class="cl">ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms<span class="o">=</span>+ssh-rsa
 </span></span></code></pre></div><p><small><em>Note: Always append a new line in id_rsa key</em></small></p>
 <h3 id="connect-to-ssh-with-creds">Connect to SSH with creds</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10
