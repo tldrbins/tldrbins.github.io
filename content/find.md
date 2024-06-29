@@ -1,7 +1,7 @@
 ---
 title: "Find"
 date: 2024-6-29
-tags: ["find", "linux", "file system", "enum"]
+tags: ["find", "linux", "file system", "enum", "suid"]
 ---
 
 ---

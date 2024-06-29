@@ -1,7 +1,7 @@
 ---
 title: "Metasploit"
 date: 2024-6-28
-tags: ["metasploit", "exploit", "vulnerability", "CVE", "privescs", "meterpreter", "Windows"]
+tags: ["metasploit", "exploit", "vulnerability", "CVE", "privesc", "meterpreter", "Windows"]
 ---
 
 ---
@@ -60,7 +60,7 @@ background
 #### Use Exploit
 
 ```bash
-# Quick look of potential privescs (Windows)
+# Quick look of potential privesc (Windows)
 # Need to return from meterpreter
 use post/multi/recon/local_exploit_suggester
 

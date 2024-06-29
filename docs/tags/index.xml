@@ -43,6 +43,20 @@
       <description></description>
     </item>
     <item>
+      <title>Binwalk</title>
+      <link>https://tldrbins.github.io/@binwalk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@binwalk/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Burpsuite</title>
+      <link>https://tldrbins.github.io/@burpsuite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@burpsuite/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Cbc</title>
       <link>https://tldrbins.github.io/@cbc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -152,6 +166,13 @@
       <link>https://tldrbins.github.io/@discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/@discovery/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dmp</title>
+      <link>https://tldrbins.github.io/@dmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@dmp/</guid>
       <description></description>
     </item>
     <item>
@@ -281,6 +302,13 @@
       <description></description>
     </item>
     <item>
+      <title>Forensic</title>
+      <link>https://tldrbins.github.io/@forensic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@forensic/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Git</title>
       <link>https://tldrbins.github.io/@git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -400,6 +428,13 @@
       <description></description>
     </item>
     <item>
+      <title>Memory Dump</title>
+      <link>https://tldrbins.github.io/@memory-dump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@memory-dump/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Metasploit</title>
       <link>https://tldrbins.github.io/@metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -474,6 +509,20 @@
       <link>https://tldrbins.github.io/@nmap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/@nmap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nodejs</title>
+      <link>https://tldrbins.github.io/@nodejs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@nodejs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Npm</title>
+      <link>https://tldrbins.github.io/@npm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@npm/</guid>
       <description></description>
     </item>
     <item>
@@ -575,13 +624,6 @@
       <description></description>
     </item>
     <item>
-      <title>Privescs</title>
-      <link>https://tldrbins.github.io/@privescs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/@privescs/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Public Ip</title>
       <link>https://tldrbins.github.io/@public-ip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -621,6 +663,13 @@
       <link>https://tldrbins.github.io/@reconnaissance/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/@reconnaissance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reversing</title>
+      <link>https://tldrbins.github.io/@reversing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@reversing/</guid>
       <description></description>
     </item>
     <item>
@@ -729,6 +778,27 @@
       <description></description>
     </item>
     <item>
+      <title>Sql Injection</title>
+      <link>https://tldrbins.github.io/@sql-injection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@sql-injection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sqli</title>
+      <link>https://tldrbins.github.io/@sqli/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@sqli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sqlmap</title>
+      <link>https://tldrbins.github.io/@sqlmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@sqlmap/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Ssh</title>
       <link>https://tldrbins.github.io/@ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -768,6 +838,20 @@
       <link>https://tldrbins.github.io/@subdomain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/@subdomain/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sudo</title>
+      <link>https://tldrbins.github.io/@sudo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@sudo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Suid</title>
+      <link>https://tldrbins.github.io/@suid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/@suid/</guid>
       <description></description>
     </item>
     <item>
