@@ -1,7 +1,7 @@
 ---
 title: "Metasploit Listener"
 date: 2024-6-26
-tags: ["metasploit", "listener", "revshell"]
+tags: ["metasploit", "listener", "revshell", "msfconsole"]
 ---
 
 ---

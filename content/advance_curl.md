@@ -1,7 +1,7 @@
 ---
-title: "Advance curl"
+title: "Curl"
 date: 2024-6-26
-tags: ["curl", "http", "upload"]
+tags: ["curl", "http", "file transfer", "web"]
 ---
 
 ---

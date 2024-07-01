@@ -17,4 +17,10 @@ find / -name test.txt -exec cat {} \;
 find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2>/dev/null -ls
 ```
 
+### Find files owned by group
+
+```bash
+find / -group adm 2>/dev/null | grep -v -e ^/proc
+```
+
 <br>

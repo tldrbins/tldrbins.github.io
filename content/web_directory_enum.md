@@ -1,7 +1,7 @@
 ---
 title: "Web Directory Enum"
 date: 2024-6-27
-tags: ["web", "directory", "domain", "feroxbuster", "http", "enum"]
+tags: ["web", "directory", "domain", "feroxbuster", "enum", "wfuzz", "idor"]
 ---
 
 ---

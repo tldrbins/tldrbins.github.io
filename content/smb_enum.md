@@ -12,8 +12,8 @@ tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads"]
 #### smbmap
 
 ```bash
-smbmap -H 10.10.11.10
-smbmap -H 10.10.11.10 -u null
+smbmap -H 10.10.11.10 --no-banner
+smbmap -H 10.10.11.10 -u null --no-banner
 
 # List known share
 smbmap -H 10.10.11.10 -r 'share'

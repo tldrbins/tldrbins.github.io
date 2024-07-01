@@ -41,7 +41,7 @@ john --show hash --format=Raw-SHA512
 
 ---
 
-#### hashcat
+### hashcat
 
 ```bash
 # Auto detect hash format
@@ -49,6 +49,26 @@ hashcat hash
 
 # Specify hash format
 hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.txt --force
+```
+
+#### Create a wordlist
+
+```
+  ? | Charset
+ ===+=========
+  l | abcdefghijklmnopqrstuvwxyz [a-z]
+  u | ABCDEFGHIJKLMNOPQRSTUVWXYZ [A-Z]
+  d | 0123456789                 [0-9]
+  h | 0123456789abcdef           [0-9a-f]
+  H | 0123456789ABCDEF           [0-9A-F]
+  s |  !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+  a | ?l?u?d?s
+  b | 0x00 - 0xff
+```
+
+```bash
+# For example, Test with 4 digit and a symbol
+hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 ```
 
 <br>

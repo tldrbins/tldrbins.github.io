@@ -15,6 +15,13 @@
       <description>Simply Catch HTTP Request webhook.site webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net # Start a local HTTP server python3 -m http.server 3000 ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
+      <title>Curl</title>
+      <link>https://tldrbins.github.io/advance_curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_curl/</guid>
+      <description> Advance curl # PUT request with a file curl -X PUT http://example.com/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://example.com/test.txt --data-binary @test.aspx # POST request with with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; &amp;#39;http://example.com/upload&amp;#39; </description>
+    </item>
+    <item>
       <title>File Transfer (Linux To Linux)</title>
       <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

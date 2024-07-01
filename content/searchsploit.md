@@ -1,7 +1,7 @@
 ---
 title: "Searchsploit"
 date: 2024-6-28
-tags: ["searchsploit", "exploit", "vulnerability", "CVE"]
+tags: ["searchsploit", "exploit", "vuln", "CVE"]
 ---
 
 ---

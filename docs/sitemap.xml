@@ -2,21 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tldrbins.github.io/@/etc/passwd/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@access-control-lists/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@acl/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@ads/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/advance_curl/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@aes/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@apache/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/apache/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@bash/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@binwalk/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@burpsuite/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@bypass/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@c-sharp/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@c/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@cbc/</loc>
   </url><url>
@@ -25,6 +35,8 @@
     <loc>https://tldrbins.github.io/@cifs/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@cipher/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@compile/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@compress/</loc>
   </url><url>
@@ -41,6 +53,8 @@
     <loc>https://tldrbins.github.io/@ctf/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@curl/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/advance_curl/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@cve/</loc>
   </url><url>
@@ -61,6 +75,10 @@
     <loc>https://tldrbins.github.io/dns_enum/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@domain/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/dotnet/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@dotnet/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@droopescan/</loc>
   </url><url>
@@ -98,6 +116,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/file_transfer_windows_to_linux/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@file-upload/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@find/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/find/</loc>
@@ -128,6 +148,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@id_rsa/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@idor/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@java/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/java_envionment/</loc>
@@ -150,6 +172,10 @@
   </url><url>
     <loc>https://tldrbins.github.io/@lxd/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@magic-bytes/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/magic_bytes/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@memory-dump/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/memory_dump/</loc>
@@ -169,6 +195,12 @@
     <loc>https://tldrbins.github.io/mongodb_general/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@mount/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/share_mount/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@msfconsole/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@msfvenom/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@mssql/</loc>
   </url><url>
@@ -220,6 +252,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/padding_oracle/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@passwd/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@password/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/password_cracking/</loc>
@@ -235,6 +269,8 @@
     <loc>https://tldrbins.github.io/@ping/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@pivot/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@png/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@port/</loc>
   </url><url>
@@ -262,6 +298,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@scp/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@sdk/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@searchsploit/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/searchsploit/</loc>
@@ -270,9 +308,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@sh/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@share/</loc>
+    <loc>https://tldrbins.github.io/@shadow/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/share_mount/</loc>
+    <loc>https://tldrbins.github.io/@share/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@shell/</loc>
   </url><url>
@@ -354,15 +392,15 @@
   </url><url>
     <loc>https://tldrbins.github.io/upgrade_shell/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@upload/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@vpn/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@vulnerability/</loc>
+    <loc>https://tldrbins.github.io/@vuln/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@web/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/web_directory_enum/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@web-server/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@webdav/</loc>
   </url><url>
@@ -381,6 +419,8 @@
     <loc>https://tldrbins.github.io/wordpress/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@wpscan/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/passwd/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@xll/</loc>
   </url><url>

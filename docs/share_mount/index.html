@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Share Mount | TLDRBins</title>
+<title>Mount Share | TLDRBins</title>
 <meta name="robots" content='noindex, nofollow'>
 <meta name="description" content="">
 <meta name="generator" content="hugo-index">
@@ -25,7 +25,7 @@
     </a>
     <span class="hl">/</span>
     <a href="https://tldrbins.github.io/share_mount/">
-      <span>Share Mount</span>
+      <span>Mount Share</span>
     </a>
   </h1>
   <p class="desc"></p>
@@ -49,9 +49,22 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="share-mount">Share Mount</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Mount smb share locally for easy access</span>
-</span></span><span class="line"><span class="cl">sudo mount -t cifs <span class="s2">&#34;//10.10.11.10/Remote Shares&#34;</span> /mnt
+<h3 id="nfs">NFS</h3>
+<h4 id="list-share">List share</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">showmount -e 10.10.11.10
+</span></span></code></pre></div><h4 id="mount-share">Mount share</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t nfs 10.10.11.10:/share /mnt/share/
+</span></span></code></pre></div><h4 id="others">Others</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check how shares are mounted</span>
+</span></span><span class="line"><span class="cl">cat /etc/exports
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># root_squash  : running as root on local system will be treated as the default nobody user in target</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># no_all_squash: every other users permission will translate from local system to target</span>
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="smb">SMB</h3>
+<h4 id="mount-share-1">Mount share</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs <span class="s2">&#34;//10.10.11.10/Remote Shares&#34;</span> /mnt
 </span></span></code></pre></div><br></div></div>
     
     <script src="/copy-code-button.js"></script>

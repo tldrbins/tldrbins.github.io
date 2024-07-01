@@ -49,4 +49,14 @@ lxc exec testVM -- /bin/bash
 ls -la /r/root
 ```
 
+### Build image for other arch
+
+```bash
+git clone git clone https://github.com/saghul/lxd-alpine-builder
+cd lxd-alpine-builder      
+
+# For example arch i686
+sudo ./build-alpine -a i686
+```
+
 <br>

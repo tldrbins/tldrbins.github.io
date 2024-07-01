@@ -26,7 +26,14 @@
       <link>https://tldrbins.github.io/find/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
-      <description> Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls </description>
+      <description> Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc </description>
+    </item>
+    <item>
+      <title>Mount Share</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description> NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
     </item>
     <item>
       <title>Nmap</title>
@@ -36,18 +43,11 @@
       <description>Nmap Port Scan TCP Scan target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target UDP Scan (common ports) target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Scan with nmap scripts Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with a script nmap --script=ftp-anon -sV -sC -p 21 10.</description>
     </item>
     <item>
-      <title>Share Mount</title>
-      <link>https://tldrbins.github.io/share_mount/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description> Share Mount #Mount smb share locally for easy access sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
-    </item>
-    <item>
       <title>SMB Enum</title>
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
     </item>
     <item>
       <title>SNMP</title>

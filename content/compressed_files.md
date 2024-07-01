@@ -57,3 +57,12 @@ gunzip file.gz
 <small>*Note: If you want to zip the entire folder, use tar instead*</small>
 
 ---
+
+### rar
+
+```bash
+# Extract
+unrar e file.rar
+```
+
+<small>*Note: Always put the zip file inside a new folder before unzip*</small>

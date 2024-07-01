@@ -15,18 +15,18 @@
       <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share # Older Windows (e.</description>
     </item>
     <item>
-      <title>Share Mount</title>
+      <title>Mount Share</title>
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description> Share Mount #Mount smb share locally for easy access sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
+      <description> NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
     </item>
     <item>
       <title>SMB Enum</title>
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 smbmap -H 10.10.11.10 -u null # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
+      <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
     </item>
     <item>
       <title>SMB Server</title>

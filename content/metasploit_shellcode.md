@@ -1,7 +1,7 @@
 ---
 title: "Metasploit Shellcode"
 date: 2024-6-26
-tags: ["metasploit", "shellcode", "revshell"]
+tags: ["metasploit", "shellcode", "revshell", "msfconsole", "msfvenom"]
 ---
 
 ---

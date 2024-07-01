@@ -1,7 +1,7 @@
 ---
 title: "Metasploit"
 date: 2024-6-28
-tags: ["metasploit", "exploit", "vulnerability", "CVE", "privesc", "meterpreter", "Windows"]
+tags: ["metasploit", "exploit", "vuln", "CVE", "privesc", "meterpreter", "Windows", "msfconsole"]
 ---
 
 ---
