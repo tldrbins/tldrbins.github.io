@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/wordpress/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/wordpress/</guid>
-      <description> wpscan Download wpscan&#xA;# HTTP wpscan --url http://10.10.11.10 -e ap,t,tt,u # HTTPS wpscan --url https://10.10.11.10 -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://10.10.11.10 -e ap,t,tt,u --api-token API_KEY </description>
+      <description> wpscan Get Free API key&#xA;# HTTP wpscan --url http://example.com -e ap,t,tt,u # HTTPS wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://example.com -e ap,t,tt,u --api-token API_KEY # Brute force wp-admin wpscan --url http://example.com --passwords passwords.txt --usernames admin </description>
     </item>
   </channel>
 </rss>

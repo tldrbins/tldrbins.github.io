@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>NetExec (nxc) | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/nxc/">
+      <span>NetExec (nxc)</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@nxc/">Nxc</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@crackmapexec/">Crackmapexec</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@smb/">Smb</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ldap/">Ldap</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@winrm/">Winrm</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="nxc">nxc</h3>
+<p><a href="https://github.com/Pennyw0rth/NetExec">Download nxc</a></p>
+<h4 id="smb">SMB</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single user and password</span>
+</span></span><span class="line"><span class="cl">nxc smb 10.10.11.10 -u username -p password
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Single user and password (Active Directory)</span>
+</span></span><span class="line"><span class="cl">nxc smb -u username -p password -d domain -dc-ip 10.10.11.10
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Multiple users or passwords</span>
+</span></span><span class="line"><span class="cl">nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># With LM Hash:NT Hash</span>
+</span></span><span class="line"><span class="cl">nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

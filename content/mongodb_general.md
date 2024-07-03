@@ -11,6 +11,9 @@ tags: ["mongodb", "database"]
 
 ```bash
 mongo 10.10.11.10:27017
+
+# Connect local with creds and specified database
+mongo -u user -p password db_name
 ```
 
 #### Basic Commands
@@ -27,6 +30,9 @@ show collections
 
 # Show all of the collection
 db.COLLECTION_NAME.find().pretty()
+
+# Insert entry into collections
+db.COLLECTION_NAME.insert({"key": "value"})
 ```
 
 <br>

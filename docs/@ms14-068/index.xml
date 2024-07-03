@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MS14-068 on TLDRBins</title>
+    <link>https://tldrbins.github.io/@ms14-068/</link>
+    <description>Recent content in MS14-068 on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@ms14-068/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Kerbrute Download kerbrute&#xA;kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10 Generate Kerberos Ticket (From Linux) sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to `/etc/hosts` 10.10.11.10 example.com dc01.example.com dc01 # Step 2: Add domain controller as a DNS server to `/etc/resolv.conf` nameserver 10.10.11.10 # Step 3: Edit `/etc/krb5.conf` [libdefaults] default_realm = EXAMPLE.COM [realms] example.com = { kdc = dc01.example.com:88 admin_serve = dc01.example.com default_domain = example.com } [domain_realm] .</description>
+    </item>
+  </channel>
+</rss>

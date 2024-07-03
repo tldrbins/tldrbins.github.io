@@ -55,7 +55,10 @@
 </span></span></code></pre></div><h4 id="mount-share">Mount share</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t nfs 10.10.11.10:/share /mnt/share/
 </span></span></code></pre></div><h4 id="others">Others</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check how shares are mounted</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check all mounted drives</span>
+</span></span><span class="line"><span class="cl">mount
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check how shares are mounted</span>
 </span></span><span class="line"><span class="cl">cat /etc/exports
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># root_squash  : running as root on local system will be treated as the default nobody user in target</span>
@@ -64,7 +67,10 @@
 <hr>
 <h3 id="smb">SMB</h3>
 <h4 id="mount-share-1">Mount share</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs <span class="s2">&#34;//10.10.11.10/Remote Shares&#34;</span> /mnt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs //10.10.11.10/share /mnt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># With creds</span>
+</span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">user</span><span class="o">=</span>username,pass<span class="o">=</span>password //10.10.11.10/share /mnt
 </span></span></code></pre></div><br></div></div>
     
     <script src="/copy-code-button.js"></script>

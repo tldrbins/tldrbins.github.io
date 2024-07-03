@@ -25,10 +25,10 @@ which python
 ```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 
-#Ctrl-Z to send the process to background
+#Ctrl-Z to send the process to background, then
 stty raw -echo; fg
 
-#After fg, press enter again
+#After fg, press enter again, then
 export TERM=xterm-256color
 ```
 

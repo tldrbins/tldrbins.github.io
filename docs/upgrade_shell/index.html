@@ -58,10 +58,10 @@
 <h3 id="python">python</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 -c <span class="s1">&#39;import pty; pty.spawn(&#34;/bin/bash&#34;)&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#Ctrl-Z to send the process to background</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Ctrl-Z to send the process to background, then</span>
 </span></span><span class="line"><span class="cl">stty raw -echo<span class="p">;</span> <span class="nb">fg</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#After fg, press enter again</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#After fg, press enter again, then</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TERM</span><span class="o">=</span>xterm-256color
 </span></span></code></pre></div><br>
 <hr>

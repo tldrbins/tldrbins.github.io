@@ -48,11 +48,12 @@
   
   <li><a href="https://tldrbins.github.io/@idor/">Idor</a></li>
   
+  <li><a href="https://tldrbins.github.io/@gobuster/">Gobuster</a></li>
+  
 </ul>
 
 <div class="content"><hr>
-<h3 id="web-directory-enum">Web Directory Enum</h3>
-<h4 id="feroxbuster">feroxbuster</h4>
+<h3 id="feroxbuster">feroxbuster</h3>
 <p><a href="https://github.com/epi052/feroxbuster">Download feroxbuster</a></p>
 <h4 id="http">HTTP</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
@@ -60,16 +61,18 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u https://example.com/ -k --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 </span></span></code></pre></div><h4 id="specify-extension">Specify Extension</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --methods<span class="o">=</span>GET,POST --depth<span class="o">=</span><span class="m">1</span> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
+</span></span></code></pre></div><h4 id="add-trailing-slash--to-each-request">Add trailing slash <code>/</code> to each request</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ -f --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 </span></span></code></pre></div><br>
 <hr>
-<h4 id="gobuster">gobuster</h4>
+<h3 id="wfuzz">wfuzz</h3>
+<h4 id="fuzzing-number-range">Fuzzing Number Range</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wfuzz -z range,1-99 http://example.com/users/FUZZ
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="gobuster">gobuster</h3>
 <p><a href="https://github.com/OJ/gobuster">Download gobuster</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t <span class="m">40</span> -x php
-</span></span></code></pre></div><br>
-<hr>
-<h4 id="wfuzz">wfuzz</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fuzzing IDOR</span>
-</span></span><span class="line"><span class="cl">wfuzz -z range,1-99 http://example.com/users/FUZZ
 </span></span></code></pre></div><br></div></div>
     
     <script src="/copy-code-button.js"></script>

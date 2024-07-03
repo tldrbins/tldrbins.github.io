@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nxc on TLDRBins</title>
+    <link>https://tldrbins.github.io/@nxc/</link>
+    <description>Recent content in Nxc on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@nxc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NetExec (nxc)</title>
+      <link>https://tldrbins.github.io/nxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nxc/</guid>
+      <description> nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash </description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description> RPC rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U domain/username 10.10.11.10 # Commands querydispinfo enumdomusers </description>
+    </item>
+  </channel>
+</rss>

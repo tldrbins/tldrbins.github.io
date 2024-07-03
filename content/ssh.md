@@ -7,7 +7,9 @@ tags: ["ssh", "private key", "public key", "id_rsa"]
 ---
 ### Check SSH version
 
-[openssh-server](https://packages.ubuntu.com/search?keywords=openssh-server)
+[openssh-server (ubuntu)](https://packages.ubuntu.com/search?keywords=openssh-server)
+<br>
+[openssh-server (debian)](https://packages.debian.org/search?keywords=openssh-server)
 
 ---
 

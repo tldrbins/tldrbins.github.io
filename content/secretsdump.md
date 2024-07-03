@@ -1,0 +1,20 @@
+---
+title: "secretsdump"
+date: 2024-7-2
+tags: ["secretsdump", "impacket", "active directory", "ad", "domain controller", "Windows", "ntds.dit", "hive", "hashes"]
+---
+
+---
+### Impacket
+
+[Download Impacket](https://github.com/fortra/impacket)
+
+### secretsdump
+
+#### With ntds.dit and SYSTEM hive
+
+```bash
+impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL
+```
+
+<br>

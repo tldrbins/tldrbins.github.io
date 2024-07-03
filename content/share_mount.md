@@ -22,6 +22,9 @@ sudo mount -t nfs 10.10.11.10:/share /mnt/share/
 #### Others
 
 ```bash
+# Check all mounted drives
+mount
+
 # Check how shares are mounted
 cat /etc/exports
 
@@ -38,7 +41,10 @@ cat /etc/exports
 #### Mount share
 
 ```bash
-sudo mount -t cifs "//10.10.11.10/Remote Shares" /mnt
+sudo mount -t cifs //10.10.11.10/share /mnt
+
+# With creds
+sudo mount -t cifs -o user=username,pass=password //10.10.11.10/share /mnt
 ```
 
 <br>
