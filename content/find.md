@@ -31,7 +31,7 @@ find / -group adm 2>/dev/null | grep -v -e ^/proc
 
 ### Find files created between 1/1/2024 and 31/12/2024
 
-```
+```bash
 find / -type f -newermt 2024-01-01 ! -newermt 2024-12-31 -ls 2>/dev/null
 ```
 

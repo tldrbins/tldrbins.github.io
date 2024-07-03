@@ -18,7 +18,7 @@ mongo -u user -p password db_name
 
 #### Basic Commands
 
-```mongodb
+```bash
 # Show all databases
 show dbs
 

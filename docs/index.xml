@@ -68,7 +68,7 @@
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
+      <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
     </item>
     <item>
       <title>Docker</title>
@@ -426,6 +426,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
       <description> wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts </description>
+    </item>
+    <item>
+      <title>sudoers</title>
+      <link>https://tldrbins.github.io/sudoers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sudoers/</guid>
+      <description> Privesc Abuse /etc/sudoers # IF you have control over `/etc/sudoers` chmod 666 /etc/sudoers echo &amp;#39;user ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
     </item>
     <item>
       <title>TFTP</title>

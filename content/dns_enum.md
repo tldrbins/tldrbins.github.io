@@ -15,9 +15,35 @@ dig test.com axfr @10.10.11.10
 
 ```bash
 dig @10.10.11.10 test.com
+```
+
+<br>
+
+```bash
 dig @10.10.11.10 -x 10.10.11.10
+```
+
+<br>
+
+```bash
+dig @10.10.11.10 -x 10.10.11.10
+```
+
+<br>
+
+```bash
 dig @10.10.11.10 +short test.com any
+```
+
+<br>
+
+```bash
 dig @10.10.11.10 -t NS test.com
+```
+
+<br>
+
+```bash
 dig @10.10.11.10 _gc.test.com
 ```
 

