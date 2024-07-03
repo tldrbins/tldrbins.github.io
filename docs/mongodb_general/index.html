@@ -44,23 +44,18 @@
 <h3 id="general">General</h3>
 <h4 id="connect-to-mongo-database">Connect to Mongo Database</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mongo 10.10.11.10:27017
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Connect local with creds and specified database</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect local with creds and specified database</span>
 </span></span><span class="line"><span class="cl">mongo -u user -p password db_name
 </span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all databases</span>
 </span></span><span class="line"><span class="cl">show dbs
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Choose database</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Choose database</span>
 </span></span><span class="line"><span class="cl">use db_name
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Show all collections</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all collections</span>
 </span></span><span class="line"><span class="cl">show collections
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Show all of the collection</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all of the collection</span>
 </span></span><span class="line"><span class="cl">db.COLLECTION_NAME.find<span class="o">()</span>.pretty<span class="o">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Insert entry into collections</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Insert entry into collections</span>
 </span></span><span class="line"><span class="cl">db.COLLECTION_NAME.insert<span class="o">({</span><span class="s2">&#34;key&#34;</span>: <span class="s2">&#34;value&#34;</span><span class="o">})</span>
 </span></span></code></pre></div><br></div></div>
     

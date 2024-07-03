@@ -21,7 +21,9 @@ tags: ["pivot", "chisel", "ssh", "metasploit", "network", "socat"]
 ```bash
 # In target machine
 ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080
+```
 
+```bash
 # Mutiple ports fowarding, can be different targets in the same subnet
 ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000
 ```
@@ -31,12 +33,19 @@ tags: ["pivot", "chisel", "ssh", "metasploit", "network", "socat"]
 ```bash
 # In our local Linux machine
 sudo nano /etc/proxychains4.conf
+```
+
+```bash
 # Add to the end of the file
 socks5 127.0.0.1 1080
+```
 
+```bash
 # In target machine
 ./chisel client 10.10.11.10:8000 R:1080:socks
+```
 
+```bash
 # Usage, in our local machine
 proxychains4 curl http://127.0.0.1:1080
 ```
@@ -72,7 +81,9 @@ ssh -N -L 8080:127.0.0.1:8080 user@10.10.11.10
 ```bash
 # Add
 portfwd add -l 80 -r 127.0.0.1 -p 80
+```
 
+```bash
 # Delete
 portfwd delete -l 80 -r 127.0.0.1 -p 80
 ```

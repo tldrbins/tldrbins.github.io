@@ -9,6 +9,9 @@ tags: ["java", "javac", "update-alternatives"]
 
 ```bash
 sudo update-alternatives --config java
+```
+
+```bash
 sudo update-alternatives --config javac
 ```
 

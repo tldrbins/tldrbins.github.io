@@ -17,10 +17,14 @@ tags: ["ssh", "private key", "public key", "id_rsa"]
 
 ```bash
 ssh-keygen
+```
 
+```bash
 #Set filename, leave passphase blank
 ./id_rsa
+```
 
+```bash
 #After Creation
 chmod 600 id_rsa
 ```
@@ -35,7 +39,9 @@ openssl rsa -in id_rsa_encrypted -out ./id_rsa
 
 ```bash
 cat id_rsa.pub
+```
 
+```bash
 #Copy and Paste to Target
 echo '<id_rsa.pub>' >> /home/user/.ssh/authorized_keys
 ```
@@ -49,7 +55,9 @@ ssh user@10.10.11.10 -i id_rsa
 ```bash
 # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss
 ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms=+ssh-rsa
+```
 
+```bash
 # Fix: sign_and_send_pubkey: no mutual signature supported 
 ssh user@10.10.11.10 -i id_rsa -o PubkeyAcceptedKeyTypes=ssh-rsa
 ```
@@ -60,7 +68,9 @@ ssh user@10.10.11.10 -i id_rsa -o PubkeyAcceptedKeyTypes=ssh-rsa
 
 ```bash
 ssh user@10.10.11.10
+```
 
+```bash
 # After first connection (i.e., after 'yes' to fingerprint prompt)
 sshpass -p 'password' ssh user@10.10.11.10
 ```

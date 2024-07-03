@@ -59,24 +59,20 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 65535<span class="k">)</span><span class="p">;</span> <span class="k">do</span> nc -zvn 127.0.0.1 <span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="p">;</span> <span class="k">done</span>
 </span></span></code></pre></div><h3 id="check-arp">Check ARP</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arp -na
-</span></span><span class="line"><span class="cl">cat /proc/net/arp
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/net/arp
 </span></span></code></pre></div><h3 id="check-ip">Check IP</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Linux</span>
 </span></span><span class="line"><span class="cl">ifconfig
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Windows</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip addr
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/net/fib_trie
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Windows</span>
 </span></span><span class="line"><span class="cl">ipconfig
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">ip addr
-</span></span><span class="line"><span class="cl">cat /proc/net/fib_trie
 </span></span></code></pre></div><h3 id="check-network-connections">Check Network Connections</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># TCP</span>
 </span></span><span class="line"><span class="cl">netstat -plant
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># UDP</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># UDP</span>
 </span></span><span class="line"><span class="cl">netstat -plunt
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Windows</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Windows</span>
 </span></span><span class="line"><span class="cl">netstat -ano
 </span></span></code></pre></div><br></div></div>
     

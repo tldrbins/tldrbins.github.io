@@ -10,23 +10,35 @@ tags: ["git", "git-dumper"]
 ```bash
 # Show status
 git status
+```
 
+```bash
 # Reset the current branch to a previous commit
 git reset --hard
+```
 
+```bash
 # Show information about files
 git ls-files --stage
+```
 
+```bash
 # Show current branch
 git branch
+```
 
+```bash
 # Show commits
 git log 'branch_name' --oneline
+```
 
+```bash
 # Show diff, a and b are commit hash
-# a is older commit
+# a is the older commit
 git diff [a] [b]
+```
 
+```bash
 # Show commit
 git show 'commit_hash'
 ```

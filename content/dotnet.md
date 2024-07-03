@@ -18,14 +18,27 @@ dotnet --info
 
 ```bash
 mkdir new_project
-cd new_project
-dot new console
+```
 
+```bash
+cd new_project
+```
+
+```bash
+# Init a project
+dot new console
+```
+
+```bash
 # Add dependencies if needed
 dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
+```
 
+```bash
 # Add code to Program.cs
+```
 
+```bash
 # Run
 dotnet run
 ```

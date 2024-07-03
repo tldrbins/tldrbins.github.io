@@ -13,6 +13,9 @@ tags: ["apache", "web server"]
 
 ```bash
 /etc/apache2/sites-enabled/000-default.conf
+```
+
+```bash
 /etc/apache2/sites-enabled/default-ssl.conf
 ```
 

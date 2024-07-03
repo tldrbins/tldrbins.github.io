@@ -10,10 +10,14 @@ tags: ["tftp", "file transfer"]
 ```bash
 # Connect
 tftp 10.10.11.10
+```
 
+```bash
 # Download
 get file
+```
 
+```bash
 # Exit
 quit
 ```

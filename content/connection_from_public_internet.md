@@ -20,7 +20,9 @@ tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
 ```bash
 # Redirect http request to localhost:3000
 ssh -R 80:localhost:3000 serveo.net
+```
 
+```bash
 # Start a local HTTP server
 python3 -m http.server 3000
 ```

@@ -1,7 +1,3 @@
-function isComment(line) {
-    return !(/^#\s/.test(line));
-}
-
 function addCopyButtons(clipboard) {
     document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
         var button = document.createElement('button');
@@ -9,12 +5,12 @@ function addCopyButtons(clipboard) {
         button.type = 'button';
         button.innerText = 'Copy';
 
-        let showDelay = 100, hideDelay = 200;
+        let showDelay = 50, hideDelay = 50;
         let codeBlockEnterTimer, codeBlockLeaveTimer;
 
         button.addEventListener('click', function () {
             const lines = codeBlock.innerText.replace(/\r\n/, "\n").split("\n");
-            const cmds = lines.filter(isComment);
+            const cmds = lines.filter(line => !(/^#\s/.test(line)));
             result = cmds.join('\n');
 
             clipboard.writeText(result.trim().replace(/\n\n/g, '\n')).then(function () {

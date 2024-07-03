@@ -18,23 +18,39 @@ impacket-mssqlclient username:password@10.10.11.10
 ```mysql
 # Check mssql version
 SELECT @@version;
+```
 
+```mysql
 # Check users
 SELECT name FROM master..syslogins
-SELECT name FROM master..syslogins WHERE sysadmin = '1';
+```
 
+```mysql
+# Check users
+SELECT name FROM master..syslogins WHERE sysadmin = '1';
+```
+
+```mysql
 # Check privilege
 SELECT entity_name, permission_name FROM fn_my_permissions(NULL, 'SERVER');
+```
 
+```mysql
 # Show databases
 SELECT name FROM master..sysdatabases;
+```
 
+```mysql
 # Show current database
 SELECT DB_NAME();
+```
 
+```mysql
 # List tables and schema
 select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES;
+```
 
+```mysql
 # Select all from table
 select * from db_name.table_schema.table_name;
 ```

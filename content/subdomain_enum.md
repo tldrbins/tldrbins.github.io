@@ -12,7 +12,9 @@ tags: ["web", "domain", "subdomain", "wfuzz", "http", "enum", "hosts"]
 ```bash
 # HTTP
 wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.example.com" -u http://example.com
+```
 
+```bash
 # HTTPS
 wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.example.com" -u https://example.com -k
 ```

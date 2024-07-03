@@ -14,7 +14,13 @@ tags: ["password", "cracking", "john", "hashcat"]
 ```bash
 # For example
 ssh2john id_rsa_encrypted > hash
+```
+
+```bash
 keepass2john test.kdbx > hash
+```
+
+```bash
 zip2john test.zip > hash
 
 # Get a full list of *2john
@@ -26,13 +32,19 @@ find / -name *2john 2>/dev/null
 ```bash
 # General use
 john --wordlist=/usr/share/wordlists/rockyou.txt hash
+```
 
+```bash
 # Specify hash format
 john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512
+```
 
+```bash
 # Show cracked hash
 john --show hash
+```
 
+```bash
 # Show cracked hash with specific format
 john --show hash --format=Raw-SHA512
 ```
@@ -46,7 +58,9 @@ john --show hash --format=Raw-SHA512
 ```bash
 # Auto detect hash format
 hashcat hash
+```
 
+```bash
 # Specify hash format
 hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.txt --force
 ```

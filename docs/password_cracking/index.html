@@ -50,30 +50,26 @@
 <h4 id="convert-file-to-john-hash-format">Convert file to john hash format</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example</span>
 </span></span><span class="line"><span class="cl">ssh2john id_rsa_encrypted &gt; <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl">keepass2john test.kdbx &gt; <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl">zip2john test.zip &gt; <span class="nb">hash</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">keepass2john test.kdbx &gt; <span class="nb">hash</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">zip2john test.zip &gt; <span class="nb">hash</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Get a full list of *2john</span>
 </span></span><span class="line"><span class="cl">find / -name *2john 2&gt;/dev/null
 </span></span></code></pre></div><h4 id="crack-with-john">Crack with john</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># General use</span>
 </span></span><span class="line"><span class="cl">john --wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Specify hash format</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Specify hash format</span>
 </span></span><span class="line"><span class="cl">john --wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt <span class="nb">hash</span> --format<span class="o">=</span>Raw-SHA512
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Show cracked hash</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show cracked hash</span>
 </span></span><span class="line"><span class="cl">john --show <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Show cracked hash with specific format</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show cracked hash with specific format</span>
 </span></span><span class="line"><span class="cl">john --show <span class="nb">hash</span> --format<span class="o">=</span>Raw-SHA512
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="hashcat">hashcat</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Auto detect hash format</span>
 </span></span><span class="line"><span class="cl">hashcat <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Specify hash format</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Specify hash format</span>
 </span></span><span class="line"><span class="cl">hashcat -m <span class="m">13400</span> -a <span class="m">0</span> <span class="nb">hash</span> /usr/share/wordlists/rockyou.txt --force
 </span></span></code></pre></div><h4 id="create-a-wordlist">Create a wordlist</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  ? | Charset

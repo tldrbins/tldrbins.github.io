@@ -12,10 +12,14 @@ tags: ["keepass", "kpcli", "password", "kdbx"]
 ```bash
 # Open kdbx
 kpcli --kdb key.kdbx
+```
 
+```bash
 # List all passwords
 find .
+```
 
+```bash
 # Show password (e.g., #0)
 show -f 0
 ```

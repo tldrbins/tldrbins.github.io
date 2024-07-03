@@ -54,33 +54,27 @@
 <h3 id="zip">zip</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a file</span>
 </span></span><span class="line"><span class="cl">zip file.zip file
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># zip a folder</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a folder</span>
 </span></span><span class="line"><span class="cl">zip -r folder.zip folder/
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># unzip</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># unzip</span>
 </span></span><span class="line"><span class="cl">unzip file.zip
 </span></span></code></pre></div><p><small><em>Note: Always put the zip file inside a new folder before unzip</em></small></p>
 <hr>
 <h3 id="targz">tar.gz</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a file</span>
 </span></span><span class="line"><span class="cl">tar -cvzf file.tar.gz file
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Compress a folder</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a folder</span>
 </span></span><span class="line"><span class="cl">tar -cvzf folder.tar.gz folder/
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Extract</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz
 </span></span></code></pre></div><p><small><em>Note: Always put the zip file inside a new folder before Extract</em></small></p>
 <hr>
 <h3 id="gz">gz</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress file, and keep the original file</span>
 </span></span><span class="line"><span class="cl">gzip -k -r file
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Compress all files individually inside a folder, and keep original files</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress all files individually inside a folder, and keep original files</span>
 </span></span><span class="line"><span class="cl">gzip -k -r folder/
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Extract</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">gunzip file.gz
 </span></span></code></pre></div><p><small><em>Note: Always put the zip file inside a new folder before unzip</em></small>
 <br>

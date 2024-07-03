@@ -24,10 +24,14 @@ sudo mount -t nfs 10.10.11.10:/share /mnt/share/
 ```bash
 # Check all mounted drives
 mount
+```
 
+```bash
 # Check how shares are mounted
 cat /etc/exports
+```
 
+```bash
 # root_squash  : running as root on local system will be treated as the default nobody user in target
 # no_all_squash: every other users permission will translate from local system to target
 ```
@@ -42,7 +46,9 @@ cat /etc/exports
 
 ```bash
 sudo mount -t cifs //10.10.11.10/share /mnt
+```
 
+```bash
 # With creds
 sudo mount -t cifs -o user=username,pass=password //10.10.11.10/share /mnt
 ```

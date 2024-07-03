@@ -52,31 +52,26 @@
 <hr>
 <h3 id="generate-ssh-key">Generate SSH Key</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#Set filename, leave passphase blank</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Set filename, leave passphase blank</span>
 </span></span><span class="line"><span class="cl">./id_rsa
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#After Creation</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After Creation</span>
 </span></span><span class="line"><span class="cl">chmod <span class="m">600</span> id_rsa
 </span></span></code></pre></div><h3 id="generate-no-passphrase-ssh-key-from-encrypted-key">Generate no passphrase SSH key from encrypted key</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl rsa -in id_rsa_encrypted -out ./id_rsa
 </span></span></code></pre></div><h3 id="add-ssh-access-to-target">Add SSH Access to Target</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat id_rsa.pub
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#Copy and Paste to Target</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Copy and Paste to Target</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;&lt;id_rsa.pub&gt;&#39;</span> &gt;&gt; /home/user/.ssh/authorized_keys
 </span></span></code></pre></div><h3 id="connect-to-ssh-with-id_rsa">Connect to SSH with id_rsa</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10 -i id_rsa
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss</span>
 </span></span><span class="line"><span class="cl">ssh user@10.10.11.10 -i id_rsa -oHostKeyAlgorithms<span class="o">=</span>+ssh-rsa
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Fix: sign_and_send_pubkey: no mutual signature supported </span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: sign_and_send_pubkey: no mutual signature supported </span>
 </span></span><span class="line"><span class="cl">ssh user@10.10.11.10 -i id_rsa -o <span class="nv">PubkeyAcceptedKeyTypes</span><span class="o">=</span>ssh-rsa
 </span></span></code></pre></div><p><small><em>Note: Always append a new line in id_rsa key</em></small></p>
 <h3 id="connect-to-ssh-with-creds">Connect to SSH with creds</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># After first connection (i.e., after &#39;yes&#39; to fingerprint prompt)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After first connection (i.e., after &#39;yes&#39; to fingerprint prompt)</span>
 </span></span><span class="line"><span class="cl">sshpass -p <span class="s1">&#39;password&#39;</span> ssh user@10.10.11.10
 </span></span></code></pre></div><br></div></div>
     

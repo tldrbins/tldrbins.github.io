@@ -13,8 +13,13 @@ tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads"]
 
 ```bash
 smbmap -H 10.10.11.10 --no-banner
-smbmap -H 10.10.11.10 -u null --no-banner
+```
 
+```bash
+smbmap -H 10.10.11.10 -u null --no-banner
+```
+
+```bash
 # List known share
 smbmap -H 10.10.11.10 -r 'share'
 ```
@@ -23,19 +28,37 @@ smbmap -H 10.10.11.10 -r 'share'
 
 ```bash
 smbclient -N -L \\\\10.10.11.10\\
+```
 
+```bash
 #After found an accessible share
 smbclient -N \\\\10.10.11.10\\share\\
+```
 
+```bash
 #After connection
 #List all files in a share
 recurse ON
-ls
+```
 
+```bash
+ls
+```
+
+```bash
 #Download all files
 mask ""
+```
+
+```bash
 recurse ON
+```
+
+```bash
 prompt OFF
+```
+
+```bash
 mget *
 ```
 
@@ -50,13 +73,19 @@ smbclient -N -L \\\\10.10.11.10\\ --option='client min protocol=NT1'
 
 ```bash
 smbmap -H 10.10.11.10 -u username -p password
+```
 
+```bash
 # List known share
 smbmap -H 10.10.11.10 -u username -p password -R 'share'
+```
 
+```bash
 # Download file
 smbmap -H 10.10.11.10 -r 'share' --download 'PATH/TO/FILE'
+```
 
+```bash
 # List files with regex pattern
 smbmap -H 10.10.11.10 -u username -p password -r 'share'  -A FILE_PATTERN
 ```
@@ -65,7 +94,9 @@ smbmap -H 10.10.11.10 -u username -p password -r 'share'  -A FILE_PATTERN
 
 ```bash
 smbclient -L \\\\10.10.11.10\\ -U domain/username%password
+```
 
+```bash
 #After found an accessible share
 smbclient  \\\\10.10.11.10\\share\\ -U domain/username%password
 ```
@@ -78,7 +109,9 @@ smbclient  \\\\10.10.11.10\\share\\ -U domain/username%password
 
 ```bash
 sudo mount -t cifs "//10.10.11.10/Remote Shares" /mnt
+```
 
+```bash
 # With creds
 sudo mount -t cifs -o ro,username=username,password=password "//10.10.11.10/Remote Shares" /mnt
 ```
@@ -87,7 +120,9 @@ sudo mount -t cifs -o ro,username=username,password=password "//10.10.11.10/Remo
 
 ```bash
 sudo find . -type d | while read directory; do touch ${directory}/test 2>/dev/null && echo "${directory} - write file" && rm ${directory}/test; mkdir ${directory}/test 2>/dev/null && echo "${directory} - write directory" && rmdir ${directory}/test; done
+```
 
+```bash
 #Check file type you can write
 sudo touch {/mnt/,./}test.{lnk,exe,dll,ini}
 ```
@@ -101,10 +136,14 @@ sudo touch {/mnt/,./}test.{lnk,exe,dll,ini}
 ```bash
 # Inside smbclient session
 allinfo "file"
+```
 
+```bash
 # Example Response
 >>>stream: [:Password:$DATA], 15 bytes
+```
 
+```bash
 # Download specific data stream
 get "file:Password"
 ```

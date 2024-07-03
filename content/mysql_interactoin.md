@@ -12,7 +12,9 @@ tags: ["mysql", "database"]
 ```bash
 # Database unknown
 mysql -u user -h 10.10.11.10 -p
+```
 
+```bash
 # Database known
 mysql -u user -D db_name -h 10.10.11.10 -p
 ```
@@ -22,13 +24,19 @@ mysql -u user -D db_name -h 10.10.11.10 -p
 ```mysql
 # Show all databases
 show databases;
+```
 
+```mysql
 # Choose database
 use db_name;
+```
 
+```mysql
 # Show all tables
 show tables;
+```
 
+```mysql
 # Show all entries in table_name
 select * from table_name;
 ```

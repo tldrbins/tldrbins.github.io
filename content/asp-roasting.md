@@ -5,10 +5,6 @@ tags: ["asp-roasting", "asp-rep", "impacket", "active directory", "ad", "domain 
 ---
 
 ---
-### Impacket
-
-[Download Impacket](https://github.com/fortra/impacket)
-
 ### ASP-Roasting
 
 ```bash

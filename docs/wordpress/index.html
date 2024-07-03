@@ -45,14 +45,11 @@
 <p><a href="https://wpscan.com/">Get Free API key</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># HTTP</span>
 </span></span><span class="line"><span class="cl">wpscan --url http://example.com -e ap,t,tt,u
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># HTTPS</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># HTTPS</span>
 </span></span><span class="line"><span class="cl">wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># You will need an api token to scan vulns</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># You will need an api token to scan vulns</span>
 </span></span><span class="line"><span class="cl">wpscan --url http://example.com -e ap,t,tt,u --api-token API_KEY
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Brute force wp-admin</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Brute force wp-admin</span>
 </span></span><span class="line"><span class="cl">wpscan --url http://example.com --passwords passwords.txt --usernames admin
 </span></span></code></pre></div><br></div></div>
     

@@ -55,8 +55,7 @@
 <p><a href="https://github.com/xmendez/wfuzz">download wfuzz</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># HTTP</span>
 </span></span><span class="line"><span class="cl">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.example.com&#34;</span> -u http://example.com
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># HTTPS</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># HTTPS</span>
 </span></span><span class="line"><span class="cl">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.example.com&#34;</span> -u https://example.com -k
 </span></span></code></pre></div><h5 id="take-note-of-the-word-size-ctrlc-to-interrupt-the-process-then-run-again">Take note of the word size, Ctrl+C to interrupt the process, then run again</h5>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H <span class="s2">&#34;Host: FUZZ.example.com&#34;</span> -u http://example.com --hw <span class="m">10</span>

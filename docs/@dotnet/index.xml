@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/dotnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dotnet/</guid>
-      <description> dotnet Compile c# project from Linux Download dotnet&#xA;# Check if dotnet installed dotnet --info mkdir new_project cd new_project dot new console # Add dependencies if needed dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 # Add code to Program.cs # Run dotnet run </description>
+      <description> dotnet Compile c# project from Linux Download dotnet&#xA;# Check if dotnet installed dotnet --info mkdir new_project cd new_project # Init a project dot new console # Add dependencies if needed dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 # Add code to Program.cs # Run dotnet run </description>
     </item>
   </channel>
 </rss>

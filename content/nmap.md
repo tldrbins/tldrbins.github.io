@@ -11,8 +11,17 @@ tags: ["nmap", "port", "network", "discovery", "reconnaissance", "scan", "enum"]
 
 ```bash
 target=10.10.11.10
+```
+
+```bash
 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target
+```
+
+```bash
 ports=$(cat nmap-alltcp.nmap| grep -Eo "^[0-9]+" | tr '\n' ',' | sed -r 's/,$//')
+```
+
+```bash
 nmap -p $ports -sCV -oA ./nmap-tcpscripts $target
 ```
 
@@ -20,8 +29,17 @@ nmap -p $ports -sCV -oA ./nmap-tcpscripts $target
 
 ```bash
 target=10.10.11.10
+```
+
+```bash
 nmap -sU --min-rate 10000 -oA ./nmap-udp $target
+```
+
+```bash
 ports=$(cat nmap-udp.nmap| grep -Eo "^[0-9]+" | tr '\n' ',' | sed -r 's/,$//')
+```
+
+```bash
 nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target
 ```
 

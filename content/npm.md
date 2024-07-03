@@ -23,7 +23,13 @@ Create a `package.json`
 
 ```bash
 mkdir test
+```
+
+```bash
 mv package.json test/
+```
+
+```bash
 sudo npm i test/ --unsafe
 ```
 

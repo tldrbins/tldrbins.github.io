@@ -12,12 +12,19 @@ tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Wi
 ```bash
 # Connect without creds
 rpcclient -U '' -N 10.10.11.10
+```
 
+```bash
 # Connect with creds
 rpcclient -U domain/username 10.10.11.10
+```
 
+```bash
 # Commands
 querydispinfo
+```
+
+```bash
 enumdomusers
 ```
 

@@ -12,13 +12,19 @@ tags: ["wordpress", "wpscan"]
 ```bash
 # HTTP
 wpscan --url http://example.com -e ap,t,tt,u
+```
 
+```bash
 # HTTPS
 wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks
+```
 
+```bash
 # You will need an api token to scan vulns
 wpscan --url http://example.com -e ap,t,tt,u --api-token API_KEY
+```
 
+```bash
 # Brute force wp-admin
 wpscan --url http://example.com --passwords passwords.txt --usernames admin
 ```

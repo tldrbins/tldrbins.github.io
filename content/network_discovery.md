@@ -33,6 +33,9 @@ for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done
 
 ```bash
 arp -na
+```
+
+```bash
 cat /proc/net/arp
 ```
 
@@ -41,12 +44,19 @@ cat /proc/net/arp
 ```bash
 # Linux
 ifconfig
+```
 
+```bash
+ip addr
+```
+
+```bash
+cat /proc/net/fib_trie
+```
+
+```bash
 # Windows
 ipconfig
-
-ip addr
-cat /proc/net/fib_trie
 ```
 
 ### Check Network Connections
@@ -54,10 +64,14 @@ cat /proc/net/fib_trie
 ```bash
 # TCP
 netstat -plant
+```
 
+```bash
 # UDP
 netstat -plunt
+```
 
+```bash
 # Windows
 netstat -ano
 ```

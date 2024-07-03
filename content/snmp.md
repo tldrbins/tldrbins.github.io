@@ -20,10 +20,14 @@ onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt
 
 ```bash
 sudo apt install snmp
+```
 
+```bash
 # Install Add-on for better result readability
 sudo apt install snmp-mibs-downloader
+```
 
+```bash
 # Comment out this line in /etc/snmp/snmp.conf
 # mibs :
 
@@ -35,7 +39,9 @@ mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
 
 ```bash
 snmpwalk -v2c -c public 10.10.11.10 | tee snmpwalk_result
+```
 
+```bash
 # Query specific OID, e.g, ipAddressIfIndex.ipv6
 snmpwalk -v2c -c public 10.10.11.10 ipAddressIfIndex.ipv6
 ```

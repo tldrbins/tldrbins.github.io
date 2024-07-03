@@ -10,10 +10,14 @@ tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar"]
 ```bash
 # zip a file
 zip file.zip file
+```
 
+```bash
 # zip a folder
 zip -r folder.zip folder/
+```
 
+```bash
 # unzip
 unzip file.zip
 ```
@@ -27,10 +31,14 @@ unzip file.zip
 ```bash
 # Compress a file
 tar -cvzf file.tar.gz file
+```
 
+```bash
 # Compress a folder
 tar -cvzf folder.tar.gz folder/
+```
 
+```bash
 # Extract
 tar -xvzf file.tar.gz
 ```
@@ -44,10 +52,14 @@ tar -xvzf file.tar.gz
 ```bash
 # Compress file, and keep the original file
 gzip -k -r file
+```
 
+```bash
 # Compress all files individually inside a folder, and keep original files
 gzip -k -r folder/
+```
 
+```bash
 # Extract
 gunzip file.gz
 ```

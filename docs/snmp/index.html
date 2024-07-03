@@ -56,19 +56,16 @@
 </span></span></code></pre></div><h3 id="snmpwalk">snmpwalk</h3>
 <h4 id="installation">Installation</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install snmp
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Install Add-on for better result readability</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install Add-on for better result readability</span>
 </span></span><span class="line"><span class="cl">sudo apt install snmp-mibs-downloader
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Comment out this line in /etc/snmp/snmp.conf</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Comment out this line in /etc/snmp/snmp.conf</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># mibs :</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Uncomment this line in /etc/snmp/snmp.conf</span>
 </span></span><span class="line"><span class="cl">mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
 </span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpwalk -v2c -c public 10.10.11.10 <span class="p">|</span> tee snmpwalk_result
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Query specific OID, e.g, ipAddressIfIndex.ipv6</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Query specific OID, e.g, ipAddressIfIndex.ipv6</span>
 </span></span><span class="line"><span class="cl">snmpwalk -v2c -c public 10.10.11.10 ipAddressIfIndex.ipv6
 </span></span></code></pre></div><br></div></div>
     
