@@ -13,6 +13,8 @@ tags: ["icacls", "acl", "Windows", "access control lists"]
 icacls "C:\Users\User"
 ```
 
+<br>
+
 ```bash
 F    (full access)
 M    (modify access)

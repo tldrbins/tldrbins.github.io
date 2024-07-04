@@ -52,7 +52,7 @@ scp user@10.10.11.10:/tmp/remote/file /tmp/local/file
 ```
 
 ```bash
-# If you have assh key
+# If you have a ssh key
 scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file
 ```
 

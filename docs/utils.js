@@ -5,7 +5,7 @@ function addCopyButtons(clipboard) {
         button.type = 'button';
         button.innerText = 'Copy';
 
-        let showDelay = 50, hideDelay = 50;
+        let showDelay = 100, hideDelay = 100;
         let codeBlockEnterTimer, codeBlockLeaveTimer;
 
         button.addEventListener('click', function () {
@@ -28,30 +28,17 @@ function addCopyButtons(clipboard) {
             });
         });
 
-        button.addEventListener('mouseover', function () {
-            clearTimeout(codeBlockLeaveTimer);
-            codeBlockEnterTimer = setTimeout(function () {
-                button.setAttribute("style", "opacity: 0.9;");
-            }, showDelay);
-        });
-
-        button.addEventListener('mouseout', function () {
-            clearTimeout(codeBlockEnterTimer);
-            codeBlockLeaveTimer = setTimeout(function () {
-                button.setAttribute("style", "opacity: 0.0;");
-            }, hideDelay);
-        });
 
         codeBlock.parentNode.insertBefore(button, codeBlock);
 
-        codeBlock.parentNode.addEventListener('mouseover', function () {
+        codeBlock.parentNode.addEventListener('mouseenter', function () {
             clearTimeout(codeBlockLeaveTimer);
             codeBlockEnterTimer = setTimeout(function () {
                 button.setAttribute("style", "opacity: 0.9;");
             }, showDelay);
         });
 
-        codeBlock.parentNode.addEventListener('mouseout', function () {
+        codeBlock.parentNode.addEventListener('mouseleave', function () {
             clearTimeout(codeBlockEnterTimer);
             codeBlockLeaveTimer = setTimeout(function () {
                 button.setAttribute("style", "opacity: 0.0;");

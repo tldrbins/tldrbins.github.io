@@ -1,7 +1,7 @@
 ---
 title: "dotnet"
 date: 2024-6-30
-tags: ["dotnet", "sdk", "c#", "c sharp", "Windows", "compile"]
+tags: ["dotnet", "sdk", "c#", "c sharp", "Windows", "compile", ".NET"]
 ---
 
 ---
