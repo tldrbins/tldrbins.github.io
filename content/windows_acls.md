@@ -13,6 +13,12 @@ tags: ["icacls", "acl", "Windows", "access control lists"]
 icacls "C:\Users\User"
 ```
 
+#### Grant user full control
+
+```cmd
+icacls file_name /grant user:F
+```
+
 <br>
 
 ```bash

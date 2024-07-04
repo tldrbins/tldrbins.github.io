@@ -76,7 +76,19 @@
 </span></span><span class="line"><span class="cl">|T: Time-based blind   |
 </span></span><span class="line"><span class="cl">|Q: Inline queries     |
 </span></span><span class="line"><span class="cl">+----------------------+
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div><h4 id="tamperpy-template">tamper.py template</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">lib.core.enums</span> <span class="kn">import</span> <span class="n">PRIORITY</span>
+</span></span><span class="line"><span class="cl"><span class="n">__priority__</span> <span class="o">=</span> <span class="n">PRIORITY</span><span class="o">.</span><span class="n">NORMAL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dependencies</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">tamper</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">payload</span>
+</span></span></code></pre></div><p><small><em>Note: create an empty <code>__init__.py</code> in the same folder</em></small></p>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

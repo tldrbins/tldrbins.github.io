@@ -72,4 +72,19 @@ sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --ris
 +----------------------+
 ```
 
-<br>
+#### tamper.py template
+
+```python
+#!/usr/bin/env python3
+
+from lib.core.enums import PRIORITY
+__priority__ = PRIORITY.NORMAL
+
+def dependencies():
+    pass
+
+def tamper(payload, **kwargs):
+    return payload
+```
+
+<small>*Note: create an empty `__init__.py` in the same folder*</small>

@@ -59,8 +59,11 @@
 </span></span><span class="line"><span class="cl">mount
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check how shares are mounted</span>
 </span></span><span class="line"><span class="cl">cat /etc/exports
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># root_squash  : running as root on local system will be treated as the default nobody user in target</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># no_all_squash: every other users permission will translate from local system to target</span>
+</span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+----------------------------------------------------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>root_squash  : running as root on <span class="nb">local</span> system will be treated as nobody user in target <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>no_all_squash: every other users permission will translate from <span class="nb">local</span> system to target  <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------------------------------------------------------------------------------------+
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="smb">SMB</h3>

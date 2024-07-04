@@ -28,8 +28,27 @@ function addCopyButtons(clipboard) {
             });
         });
 
-
         codeBlock.parentNode.insertBefore(button, codeBlock);
+
+        codeBlock.parentNode.addEventListener('click', function () {
+            const lines = codeBlock.innerText.replace(/\r\n/, "\n").split("\n");
+            const cmds = lines.filter(line => !(/^#\s/.test(line)));
+            result = cmds.join('\n');
+
+            clipboard.writeText(result.trim().replace(/\n\n/g, '\n')).then(function () {
+                /* Chrome doesn't seem to blur automatically,
+                   leaving the button in a focused state. */
+                button.blur();
+
+                button.innerText = 'Copied';
+
+                setTimeout(function () {
+                    button.innerText = 'Copy';
+                }, 1500);
+            }, function (error) {
+                button.innerText = 'Error';
+            });
+        });
 
         codeBlock.parentNode.addEventListener('mouseenter', function () {
             clearTimeout(codeBlockLeaveTimer);

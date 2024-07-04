@@ -20,7 +20,7 @@ pwncat-cs -lp 1337
 ```
 
 ```bash
-#After getting a connection
+# After getting a connection
 (local) pwncat$ back
 ```
 

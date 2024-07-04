@@ -31,9 +31,13 @@ mount
 cat /etc/exports
 ```
 
+<br>
+
 ```bash
-# root_squash  : running as root on local system will be treated as the default nobody user in target
-# no_all_squash: every other users permission will translate from local system to target
++----------------------------------------------------------------------------------------+
+|root_squash  : running as root on local system will be treated as nobody user in target |
+|no_all_squash: every other users permission will translate from local system to target  |
++----------------------------------------------------------------------------------------+
 ```
 
 <br>
