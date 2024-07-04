@@ -5,37 +5,35 @@ tags: ["dotnet", "sdk", "c#", "c sharp", "Windows", "compile", ".NET"]
 ---
 
 ---
-### dotnet
-
-#### Compile c# project from Linux
+### Compile c# project from Linux
 
 [Download dotnet](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
 ```bash
-# Check if dotnet installed
+# Check
 dotnet --info
 ```
 
 ```bash
+# Prepare
 mkdir new_project
-```
-
-```bash
 cd new_project
 ```
 
 ```bash
-# Init a project
-dot new console
+# Init
+dotnet new console
 ```
 
 ```bash
-# Add dependencies if needed
+# Add dependencies (optional)
 dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
 ```
 
-```bash
-# Add code to Program.cs
+```
++----------------------+
+|Add Code to Program.cs|
++----------------------+
 ```
 
 ```bash

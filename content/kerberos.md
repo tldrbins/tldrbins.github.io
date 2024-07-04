@@ -45,6 +45,7 @@ nameserver 10.10.11.10
         admin_serve = dc01.example.com
         default_domain = example.com
     }
+    
 [domain_realm]
     .domain.internal = example.com
     domain.internal = example.com

@@ -46,15 +46,17 @@
 <h3 id="hydra">Hydra</h3>
 <h4 id="web-page-login-form">Web Page Login Form</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt https-post-form <span class="s2">&#34;/login.php:username=admin&amp;password=^PASS^&amp;remember=yes:Incorrect password&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">-</span><span class="n">l</span>                 <span class="p">:</span> <span class="n">username</span>
-</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">P</span>                 <span class="p">:</span> <span class="n">wordlist</span>
-</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="o">-</span><span class="n">post</span><span class="o">-</span><span class="n">form</span>    <span class="p">:</span> <span class="n">service</span>
-</span></span><span class="line"><span class="cl"><span class="o">/</span><span class="n">login</span><span class="o">.</span><span class="n">php</span>         <span class="p">:</span> <span class="n">action</span>
-</span></span><span class="line"><span class="cl"><span class="o">^</span><span class="n">PASS</span><span class="o">^</span>             <span class="p">:</span> <span class="n">payload</span> <span class="n">indicator</span>
-</span></span><span class="line"><span class="cl"><span class="n">Incorrect</span> <span class="n">password</span> <span class="p">:</span> <span class="n">login</span> <span class="n">failure</span> <span class="n">string</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">+-----------------------------------------+</span>
+</span></span><span class="line"><span class="cl"><span class="o">|-</span><span class="n">l</span>                 <span class="p">:</span> <span class="n">username</span>            <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|-</span><span class="n">P</span>                 <span class="p">:</span> <span class="n">wordlist</span>            <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">https</span><span class="o">-</span><span class="n">post</span><span class="o">-</span><span class="n">form</span>    <span class="p">:</span> <span class="n">service</span>             <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|/</span><span class="n">login</span><span class="o">.</span><span class="n">php</span>         <span class="p">:</span> <span class="n">action</span>              <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|^</span><span class="n">PASS</span><span class="o">^</span>             <span class="p">:</span> <span class="n">payload</span> <span class="n">indicator</span>   <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span><span class="n">Incorrect</span> <span class="n">password</span> <span class="p">:</span> <span class="n">login</span> <span class="n">failure</span> <span class="n">string</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">+-----------------------------------------+</span>
 </span></span></code></pre></div><br></div></div>
     
-    <script src="/utils.js"></script>
+    <script src="/js/utils.js"></script>
     <footer>
     <hr>
     <div class="footer-text">

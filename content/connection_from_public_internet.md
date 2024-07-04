@@ -7,8 +7,6 @@ tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
 ---
 ### Simply Catch HTTP Request
 
-#### webhook.site
-
 [webhook.site](https://webhook.site)
 
 ---
@@ -18,13 +16,13 @@ tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
 #### serveo.net
 
 ```bash
-# Redirect http request to localhost:3000
-ssh -R 80:localhost:3000 serveo.net
+# Start a local HTTP server
+python3 -m http.server 3000
 ```
 
 ```bash
-# Start a local HTTP server
-python3 -m http.server 3000
+# Redirect http request to localhost:3000
+ssh -R 80:localhost:3000 serveo.net
 ```
 
 #### ngrok

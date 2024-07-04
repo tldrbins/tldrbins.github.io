@@ -49,39 +49,41 @@
 <h4 id="check-acls">Check ACLs</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">icacls <span class="s2">&#34;C:\Users\User&#34;</span>
 </span></span></code></pre></div><br>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">F    <span class="o">(</span>full access<span class="o">)</span>
-</span></span><span class="line"><span class="cl">M    <span class="o">(</span>modify access<span class="o">)</span>
-</span></span><span class="line"><span class="cl">RX   <span class="o">(</span><span class="nb">read</span> and execute access<span class="o">)</span>
-</span></span><span class="line"><span class="cl">R    <span class="o">(</span>read-only access<span class="o">)</span>
-</span></span><span class="line"><span class="cl">W    <span class="o">(</span>write-only access<span class="o">)</span>
-</span></span><span class="line"><span class="cl">D    <span class="o">(</span>delete<span class="o">)</span>
-</span></span><span class="line"><span class="cl">RC   <span class="o">(</span><span class="nb">read</span> control<span class="o">)</span>
-</span></span><span class="line"><span class="cl">WDAC <span class="o">(</span>write DAC<span class="o">)</span>
-</span></span><span class="line"><span class="cl">WO   <span class="o">(</span>write owner<span class="o">)</span>
-</span></span><span class="line"><span class="cl">S    <span class="o">(</span>synchronize<span class="o">)</span>
-</span></span><span class="line"><span class="cl">AS   <span class="o">(</span>access system security<span class="o">)</span>
-</span></span><span class="line"><span class="cl">MA   <span class="o">(</span>maximum allowed<span class="o">)</span>
-</span></span><span class="line"><span class="cl">GR   <span class="o">(</span>generic <span class="nb">read</span><span class="o">)</span>
-</span></span><span class="line"><span class="cl">GW   <span class="o">(</span>generic write<span class="o">)</span>
-</span></span><span class="line"><span class="cl">GE   <span class="o">(</span>generic execute<span class="o">)</span>
-</span></span><span class="line"><span class="cl">GA   <span class="o">(</span>generic all<span class="o">)</span>
-</span></span><span class="line"><span class="cl">RD   <span class="o">(</span><span class="nb">read</span> data/list directory<span class="o">)</span>
-</span></span><span class="line"><span class="cl">WD   <span class="o">(</span>write data/add file<span class="o">)</span>
-</span></span><span class="line"><span class="cl">AD   <span class="o">(</span>append data/add subdirectory<span class="o">)</span>
-</span></span><span class="line"><span class="cl">REA  <span class="o">(</span><span class="nb">read</span> extended attributes<span class="o">)</span>
-</span></span><span class="line"><span class="cl">WEA  <span class="o">(</span>write extended attributes<span class="o">)</span>
-</span></span><span class="line"><span class="cl">X    <span class="o">(</span>execute/traverse<span class="o">)</span>
-</span></span><span class="line"><span class="cl">DC   <span class="o">(</span>delete child<span class="o">)</span>
-</span></span><span class="line"><span class="cl">RA   <span class="o">(</span><span class="nb">read</span> attributes<span class="o">)</span>
-</span></span><span class="line"><span class="cl">WA   <span class="o">(</span>write attributes<span class="o">)</span>
-</span></span><span class="line"><span class="cl">OI   <span class="o">(</span>object inherit<span class="o">)</span>
-</span></span><span class="line"><span class="cl">CI   <span class="o">(</span>container inherit<span class="o">)</span>
-</span></span><span class="line"><span class="cl">IO   <span class="o">(</span>inherit only<span class="o">)</span>
-</span></span><span class="line"><span class="cl">NP   <span class="o">(</span><span class="k">do</span> not propagate inherit<span class="o">)</span>
-</span></span><span class="line"><span class="cl">I    <span class="o">(</span>permission inherited from parent container<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+-------------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>F    <span class="o">(</span>full access<span class="o">)</span>                               <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>M    <span class="o">(</span>modify access<span class="o">)</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>RX   <span class="o">(</span><span class="nb">read</span> and execute access<span class="o">)</span>                   <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>R    <span class="o">(</span>read-only access<span class="o">)</span>                          <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>W    <span class="o">(</span>write-only access<span class="o">)</span>                         <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>D    <span class="o">(</span>delete<span class="o">)</span>                                    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>RC   <span class="o">(</span><span class="nb">read</span> control<span class="o">)</span>                              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>WDAC <span class="o">(</span>write DAC<span class="o">)</span>                                 <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>WO   <span class="o">(</span>write owner<span class="o">)</span>                               <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>S    <span class="o">(</span>synchronize<span class="o">)</span>                               <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>AS   <span class="o">(</span>access system security<span class="o">)</span>                    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>MA   <span class="o">(</span>maximum allowed<span class="o">)</span>                           <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>GR   <span class="o">(</span>generic <span class="nb">read</span><span class="o">)</span>                              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>GW   <span class="o">(</span>generic write<span class="o">)</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>GE   <span class="o">(</span>generic execute<span class="o">)</span>                           <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>GA   <span class="o">(</span>generic all<span class="o">)</span>                               <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>RD   <span class="o">(</span><span class="nb">read</span> data/list directory<span class="o">)</span>                  <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>WD   <span class="o">(</span>write data/add file<span class="o">)</span>                       <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>AD   <span class="o">(</span>append data/add subdirectory<span class="o">)</span>              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>REA  <span class="o">(</span><span class="nb">read</span> extended attributes<span class="o">)</span>                  <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>WEA  <span class="o">(</span>write extended attributes<span class="o">)</span>                 <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>X    <span class="o">(</span>execute/traverse<span class="o">)</span>                          <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>DC   <span class="o">(</span>delete child<span class="o">)</span>                              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>RA   <span class="o">(</span><span class="nb">read</span> attributes<span class="o">)</span>                           <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>WA   <span class="o">(</span>write attributes<span class="o">)</span>                          <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>OI   <span class="o">(</span>object inherit<span class="o">)</span>                            <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>CI   <span class="o">(</span>container inherit<span class="o">)</span>                         <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>IO   <span class="o">(</span>inherit only<span class="o">)</span>                              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>NP   <span class="o">(</span><span class="k">do</span> not propagate inherit<span class="o">)</span>                  <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>I    <span class="o">(</span>permission inherited from parent container<span class="o">)</span><span class="p">|</span>
+</span></span><span class="line"><span class="cl">+-------------------------------------------------+
 </span></span></code></pre></div><br></div></div>
     
-    <script src="/utils.js"></script>
+    <script src="/js/utils.js"></script>
     <footer>
     <hr>
     <div class="footer-text">

@@ -7,8 +7,6 @@ tags: ["password", "cracking", "john", "hashcat"]
 ---
 ### john
 
-[Download john](https://github.com/openwall/john)
-
 #### Convert file to john hash format
 
 ```bash
@@ -27,7 +25,7 @@ zip2john test.zip > hash
 find / -name *2john 2>/dev/null
 ```
 
-#### Crack with john
+#### Basic
 
 ```bash
 # General use
@@ -55,6 +53,8 @@ john --show hash --format=Raw-SHA512
 
 ### hashcat
 
+#### Basic
+
 ```bash
 # Auto detect hash format
 hashcat hash
@@ -65,24 +65,34 @@ hashcat hash
 hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.txt --force
 ```
 
+```bash
+# Auto skip username and colon
+hashcat hash --user
+```
+
 #### Create a wordlist
 
-```
-  ? | Charset
- ===+=========
-  l | abcdefghijklmnopqrstuvwxyz [a-z]
-  u | ABCDEFGHIJKLMNOPQRSTUVWXYZ [A-Z]
-  d | 0123456789                 [0-9]
-  h | 0123456789abcdef           [0-9a-f]
-  H | 0123456789ABCDEF           [0-9A-F]
-  s |  !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-  a | ?l?u?d?s
-  b | 0x00 - 0xff
-```
-
 ```bash
-# For example, Test with 4 digit and a symbol
+# For example, `Test` with 4 digits and a symbol
 hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 ```
+
+<br>
+
+```
++----------------------------------------+
+| ? | Charset                            |
+|===+=========                           |
+| l | abcdefghijklmnopqrstuvwxyz [a-z]   |
+| u | ABCDEFGHIJKLMNOPQRSTUVWXYZ [A-Z]   |
+| d | 0123456789                 [0-9]   |
+| h | 0123456789abcdef           [0-9a-f]|
+| H | 0123456789ABCDEF           [0-9A-F]|
+| s |  !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~  |
+| a | ?l?u?d?s                           |
+| b | 0x00 - 0xff                        |
++----------------------------------------+
+```
+
 
 <br>

@@ -20,7 +20,7 @@ find .
 ```
 
 ```bash
-# Show password (e.g., #0)
+# Show password (e.g. #0)
 show -f 0
 ```
 

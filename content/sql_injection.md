@@ -25,7 +25,7 @@ sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --ris
 ```
 
 ```bash
-# Add a string to indicate injection succeed (e.g., Invalid User vs Error Occurred)
+# Add a string to indicate injection succeed (e.g. Invalid User vs Error Occurred)
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string 'Invalid User'
 ```
 
@@ -50,7 +50,7 @@ sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --ris
 ```
 
 ```bash
-# Add payload tamper script, e.g., randomcase
+# Add payload tamper script, e.g. randomcase
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --tamper randomcase
 ```
 
@@ -62,12 +62,14 @@ sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --ris
 #### Technique
 
 ```
-B: Boolean-based blind
-E: Error-based
-U: Union query-based
-S: Stacked queries
-T: Time-based blind
-Q: Inline queries
++----------------------+
+|B: Boolean-based blind|
+|E: Error-based        |
+|U: Union query-based  |
+|S: Stacked queries    |
+|T: Time-based blind   |
+|Q: Inline queries     |
++----------------------+
 ```
 
 <br>

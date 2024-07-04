@@ -19,7 +19,7 @@
       <link>https://tldrbins.github.io/dotnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dotnet/</guid>
-      <description> dotnet Compile c# project from Linux Download dotnet&#xA;# Check if dotnet installed dotnet --info mkdir new_project cd new_project # Init a project dot new console # Add dependencies if needed dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 # Add code to Program.cs # Run dotnet run </description>
+      <description> Compile c# project from Linux Download dotnet&#xA;# Check dotnet --info # Prepare mkdir new_project cd new_project # Init dotnet new console # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Run dotnet run </description>
     </item>
     <item>
       <title>File Transfer (Linux to Windows)</title>
@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/iis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/iis/</guid>
-      <description>IIS Version Version Start Date End Date IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027 IIS 10 on Windows 10 Pro Jul 29, 2015 IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 IIS 8.5 on Windows Server 2012 R2 Nov 25, 2013 Oct 10, 2023 IIS 8.</description>
+      <description>IIS Version +-------------------------------------------------------------------------------+ |Version Start Date End Date | +-------------------------------------------------------------------------------+ |IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 | |IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 | |IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027| |IIS 10 on Windows 10 Pro Jul 29, 2015 | |IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 | |IIS 8.</description>
     </item>
     <item>
       <title>Kerberos</title>
@@ -124,7 +124,7 @@
       <link>https://tldrbins.github.io/windows_acls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_acls/</guid>
-      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; F (full access) M (modify access) RX (read and execute access) R (read-only access) W (write-only access) D (delete) RC (read control) WDAC (write DAC) WO (write owner) S (synchronize) AS (access system security) MA (maximum allowed) GR (generic read) GW (generic write) GE (generic execute) GA (generic all) RD (read data/list directory) WD (write data/add file) AD (append data/add subdirectory) REA (read extended attributes) WEA (write extended attributes) X (execute/traverse) DC (delete child) RA (read attributes) WA (write attributes) OI (object inherit) CI (container inherit) IO (inherit only) NP (do not propagate inherit) I (permission inherited from parent container) </description>
+      <description> Window ACLs (Access Control Lists) Check ACLs icacls &amp;#34;C:\Users\User&amp;#34; +-------------------------------------------------+ |F (full access) | |M (modify access) | |RX (read and execute access) | |R (read-only access) | |W (write-only access) | |D (delete) | |RC (read control) | |WDAC (write DAC) | |WO (write owner) | |S (synchronize) | |AS (access system security) | |MA (maximum allowed) | |GR (generic read) | |GW (generic write) | |GE (generic execute) | |GA (generic all) | |RD (read data/list directory) | |WD (write data/add file) | |AD (append data/add subdirectory) | |REA (read extended attributes) | |WEA (write extended attributes) | |X (execute/traverse) | |DC (delete child) | |RA (read attributes) | |WA (write attributes) | |OI (object inherit) | |CI (container inherit) | |IO (inherit only) | |NP (do not propagate inherit) | |I (permission inherited from parent container)| +-------------------------------------------------+ </description>
     </item>
   </channel>
 </rss>

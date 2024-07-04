@@ -10,7 +10,13 @@ tags: ["webdav", "http", "web"]
 [Download davtest](https://github.com/cldrn/davtest)
 
 ```bash
+# Without creds
 davtest -url http://10.10.11.10
+```
+
+```bash
+# With creds
+davtest -url http://10.10.11.10 -auth user:password
 ```
 
 ### curl
