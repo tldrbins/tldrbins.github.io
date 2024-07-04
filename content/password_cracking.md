@@ -20,7 +20,9 @@ keepass2john test.kdbx > hash
 
 ```bash
 zip2john test.zip > hash
+```
 
+```bash
 # Get a full list of *2john
 find / -name *2john 2>/dev/null
 ```
