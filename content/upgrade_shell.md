@@ -36,12 +36,12 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
 ```bash
-#Ctrl-Z to send the process to background, then
+# Ctrl-Z to send the process to background, then
 stty raw -echo; fg
 ```
 
 ```bash
-#After fg, press enter again, then
+# After fg, press enter again, then
 export TERM=xterm-256color
 ```
 

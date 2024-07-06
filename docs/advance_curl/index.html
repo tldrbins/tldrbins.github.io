@@ -58,6 +58,10 @@
 </span></span><span class="line"><span class="cl">curl -X POST -F <span class="s2">&#34;file=@shell.php;type=application/php;filename=shell.php&#34;</span> http://10.10.11.10/upload
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST request with form param `file` and treat the file as raw-text (Not attachment)</span>
 </span></span><span class="line"><span class="cl">curl -X POST -F <span class="s1">&#39;file=&lt;shell.zip&#39;</span> http://10.10.11.10/upload
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Not to handle sequences of /../ or /./ in the given URL</span>
+</span></span><span class="line"><span class="cl">curl --path-as-is http://10.10.11.10/../../../../etc/passwd
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Save the same name as the file on the server</span>
+</span></span><span class="line"><span class="cl">curl http://10.10.11.10/filt.txt -O
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

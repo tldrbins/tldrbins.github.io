@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>25 on TLDRBins</title>
+    <link>https://tldrbins.github.io/@25/</link>
+    <description>Recent content in 25 on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@25/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SMTP</title>
+      <link>https://tldrbins.github.io/smtp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smtp/</guid>
+      <description>SMTP User Enum perl smtp-user-enum.pl -M RCPT -U users.txt -t 10.10.11.10 Note: smtp-user-enum.pl</description>
+    </item>
+  </channel>
+</rss>

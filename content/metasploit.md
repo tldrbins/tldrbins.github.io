@@ -21,6 +21,11 @@ back
 ```
 
 ```bash
+# Upgrade session
+sessions -u
+```
+
+```bash
 # quit metasploit
 exit
 ```
