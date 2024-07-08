@@ -55,6 +55,8 @@ john --show hash --format=Raw-SHA512
 
 ### hashcat
 
+[Example Hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)
+
 #### Basic
 
 ```bash

@@ -42,6 +42,12 @@
   
   <li><a href="https://tldrbins.github.io/@id_rsa/">Id_rsa</a></li>
   
+  <li><a href="https://tldrbins.github.io/@ppk/">Ppk</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@pem/">Pem</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@openssh/">Openssh</a></li>
+  
 </ul>
 
 <div class="content"><hr>
@@ -50,7 +56,9 @@
 <br>
 <a href="https://packages.debian.org/search?keywords=openssh-server">openssh-server (debian)</a></p>
 <hr>
-<h3 id="generate-ssh-key">Generate SSH Key</h3>
+<h3 id="config-location">Config Location</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/ssh/sshd_config
+</span></span></code></pre></div><h3 id="generate-ssh-key">Generate SSH Key</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Set filename, leave passphase blank</span>
 </span></span><span class="line"><span class="cl">./id_rsa
@@ -73,6 +81,15 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After first connection (i.e., after &#39;yes&#39; to fingerprint prompt)</span>
 </span></span><span class="line"><span class="cl">sshpass -p <span class="s1">&#39;password&#39;</span> ssh user@10.10.11.10
+</span></span></code></pre></div><h3 id="connect-to-ssh-with-target-shell-bypass-restricted-shell">Connect to SSH with target shell (bypass restricted shell)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh user@10.10.11.10 -t bash
+</span></span></code></pre></div><h3 id="convert-ppk-to-pem-format">Convert .ppk to .pem format</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
+</span></span><span class="line"><span class="cl">sudo apt install putty-tools
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to private key in pem format</span>
+</span></span><span class="line"><span class="cl">puttygen key.ppk -O private-openssh -o key.pem
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to public key in pem format</span>
+</span></span><span class="line"><span class="cl">puttygen key.ppk -O public-openssh -o key.pem.pub
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

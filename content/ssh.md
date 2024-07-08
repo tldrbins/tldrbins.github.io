@@ -1,7 +1,7 @@
 ---
 title: "SSH"
 date: 2024-6-26
-tags: ["ssh", "private key", "public key", "id_rsa"]
+tags: ["ssh", "private key", "public key", "id_rsa", "ppk", "pem", "openssh"]
 ---
 
 ---
@@ -12,6 +12,11 @@ tags: ["ssh", "private key", "public key", "id_rsa"]
 [openssh-server (debian)](https://packages.debian.org/search?keywords=openssh-server)
 
 ---
+### Config Location
+
+```bash
+/etc/ssh/sshd_config
+```
 
 ### Generate SSH Key
 
@@ -73,6 +78,29 @@ ssh user@10.10.11.10
 ```bash
 # After first connection (i.e., after 'yes' to fingerprint prompt)
 sshpass -p 'password' ssh user@10.10.11.10
+```
+
+### Connect to SSH with target shell (bypass restricted shell)
+
+```bash
+ssh user@10.10.11.10 -t bash
+```
+
+### Convert .ppk to .pem format
+
+```bash
+# Install
+sudo apt install putty-tools
+```
+
+```bash
+# Convert to private key in pem format
+puttygen key.ppk -O private-openssh -o key.pem
+```
+
+```bash
+# Convert to public key in pem format
+puttygen key.ppk -O public-openssh -o key.pem.pub
 ```
 
 <br>

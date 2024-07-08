@@ -8,7 +8,7 @@ tags: ["wget", "file transfer", "http", "web"]
 ### Advance wget
 
 ```bash
-# Provide file with urls
+# Provide a file with urls
 wget --input-file /root/root.txt
 ```
 

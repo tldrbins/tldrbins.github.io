@@ -11,7 +11,7 @@ tags: ["sudoers", "sudo", "privesc", "/etc/sudoers"]
 
 ```bash
 # IF you have control over `/etc/sudoers`
-chmod 666 /etc/sudoers
+chmod 600 /etc/sudoers
 ```
 
 ```bash

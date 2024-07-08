@@ -1,5 +1,5 @@
 ---
-title: "SMB Server"
+title: "Host a SMB Server"
 date: 2024-6-26
 tags: ["smb", "file transfer", "ntlm", "Windows"]
 ---

@@ -53,4 +53,10 @@ select * from table_name;
 UPDATE users set user_type='Administrator' where email='test@example.com';
 ```
 
+#### Arbitrary File Read
+
+```mysql
+select load_file("/etc/passwd");
+```
+
 <br>

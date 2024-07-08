@@ -35,4 +35,10 @@ find / -group adm 2>/dev/null | grep -v -e ^/proc
 find / -type f -newermt 2024-01-01 ! -newermt 2024-12-31 -ls 2>/dev/null
 ```
 
+### Find files with capabilities
+
+```bash
+find / -exec getcap {} \; 2>/dev/null
+```
+
 <br>

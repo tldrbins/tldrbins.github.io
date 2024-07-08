@@ -19,14 +19,14 @@
       <link>https://tldrbins.github.io/port_knocking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/port_knocking/</guid>
-      <description> knockd # Find knock sequence cat /etc/knockd.conf # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa user@10.10.11.10 </description>
+      <description> knockd # Find knock sequence cat /etc/knockd.conf # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa user@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa user@10.10.11.10 </description>
     </item>
     <item>
       <title>SSH</title>
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss ssh user@10.</description>
+      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found.</description>
     </item>
   </channel>
 </rss>

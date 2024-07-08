@@ -17,4 +17,9 @@ cat /etc/knockd.conf
 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 >/dev/null; done; ssh -i id_rsa user@10.10.11.10
 ```
 
+```bash
+# UDP port knocking
+for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 >/dev/null; done; ssh -i id_rsa user@10.10.11.10
+```
+
 <br>

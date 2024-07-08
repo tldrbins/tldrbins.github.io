@@ -11,6 +11,13 @@ tags: ["listener", "revshell", "nc", "pwncat"]
 rlwrap nc -lvnp 1337
 ```
 
+### ncat 
+
+```bash
+# Default listening on both ipv4 and ipv6
+rlwrap ncat -lvnp 1337
+```
+
 ### pwncat
 
 <small>[Download pwncat](https://github.com/calebstewart/pwncat)</small>

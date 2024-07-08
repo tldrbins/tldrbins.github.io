@@ -23,7 +23,7 @@ curl http://localhost:5984/DB_name/_all_docs
 ```
 
 ```bash
-# Show Entry
+# Show a entry
 curl http://localhost:5984/DB_name/ID_hash
 ```
 
