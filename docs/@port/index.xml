@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
+      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&amp;gt;&amp;amp;1 | grep -v &amp;#34;Connection refused&amp;#34; &amp;amp;); done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
     </item>
     <item>
       <title>Nmap</title>

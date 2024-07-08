@@ -26,7 +26,7 @@ for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep "bytes from" &); done
 ### Use nc to Scan Ports
 
 ```bash
-for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done
+for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2>&1 | grep -v "Connection refused" &); done
 ```
 
 ### Check ARP

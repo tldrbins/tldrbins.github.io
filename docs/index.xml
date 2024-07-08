@@ -183,6 +183,13 @@
       <description>IIS Version +-------------------------------------------------------------------------------+ |Version Start Date End Date | +-------------------------------------------------------------------------------+ |IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 | |IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 | |IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027| |IIS 10 on Windows 10 Pro Jul 29, 2015 | |IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 | |IIS 8.</description>
     </item>
     <item>
+      <title>IRC</title>
+      <link>https://tldrbins.github.io/irc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/irc/</guid>
+      <description> Tool sudo apt install hexchat </description>
+    </item>
+    <item>
       <title>Java</title>
       <link>https://tldrbins.github.io/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -324,9 +331,9 @@
     </item>
     <item>
       <title>Mysql General</title>
-      <link>https://tldrbins.github.io/mysql_interactoin/</link>
+      <link>https://tldrbins.github.io/mysql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/mysql_interactoin/</guid>
+      <guid>https://tldrbins.github.io/mysql_general/</guid>
       <description>General Connect to mysql Database # Database unknown mysql -u user -h 10.10.11.10 -p # Database known mysql -u user -D db_name -h 10.10.11.10 -p # Execute query inline mysql -u user -D db_name -h 10.10.11.10 -pPassword -e &amp;#39;show tables;&amp;#39; Basic Commands # Show all databases show databases; # Choose database use db_name; # Show all tables show tables; # Show all entries in table_name select * from table_name; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.</description>
     </item>
     <item>
@@ -348,7 +355,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do nc -zvn 127.0.0.1 ${i}; done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
+      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&amp;gt;&amp;amp;1 | grep -v &amp;#34;Connection refused&amp;#34; &amp;amp;); done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # Windows netstat -ano </description>
     </item>
     <item>
       <title>Network Traffic Pivoting</title>
@@ -433,6 +440,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/port_knocking/</guid>
       <description> knockd # Find knock sequence cat /etc/knockd.conf # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa user@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa user@10.10.11.10 </description>
+    </item>
+    <item>
+      <title>Postgresql</title>
+      <link>https://tldrbins.github.io/postgresql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/postgresql/</guid>
+      <description> General Connect to postgresql Database psql -h 127.0.0.1 -U user -p 5432 -d database Basic Commands # Dump data from table select * from table_name; # Insert data into table (e.g) insert into table_name (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Exit \q </description>
     </item>
     <item>
       <title>Redis</title>
