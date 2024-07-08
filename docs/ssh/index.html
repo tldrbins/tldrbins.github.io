@@ -58,12 +58,16 @@
 <hr>
 <h3 id="config-location">Config Location</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/ssh/sshd_config
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Grep contents</span>
+</span></span><span class="line"><span class="cl">grep -Ev <span class="s2">&#34;^#&#34;</span> /etc/ssh/sshd_config <span class="p">|</span> grep .
 </span></span></code></pre></div><h3 id="generate-ssh-key">Generate SSH Key</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Set filename, leave passphase blank</span>
 </span></span><span class="line"><span class="cl">./id_rsa
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After Creation</span>
 </span></span><span class="line"><span class="cl">chmod <span class="m">600</span> id_rsa
+</span></span></code></pre></div><h3 id="check-public-key">Check Public Key</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen -l -f id_rsa
 </span></span></code></pre></div><h3 id="generate-no-passphrase-ssh-key-from-encrypted-key">Generate no passphrase SSH key from encrypted key</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl rsa -in id_rsa_encrypted -out ./id_rsa
 </span></span></code></pre></div><h3 id="add-ssh-access-to-target">Add SSH Access to Target</h3>

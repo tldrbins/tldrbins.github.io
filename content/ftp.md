@@ -27,6 +27,11 @@ ls
 ```
 
 ```bash
+# Switch to binary transfer mode
+bin
+```
+
+```bash
 # Download
 get filename
 ```

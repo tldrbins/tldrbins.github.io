@@ -1,10 +1,13 @@
 ---
 title: "Compressed Files"
 date: 2024-6-26
-tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar"]
+tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", "7z", "bz"]
 ---
 
 ---
+
+<small>*Hint: Always put the zip file inside a new folder before unzip*</small>
+
 ### zip
 
 ```bash
@@ -21,10 +24,6 @@ zip -r folder.zip folder/
 # unzip
 unzip file.zip
 ```
-
-<small>*Note: Always put the zip file inside a new folder before unzip*</small>
-
----
 
 ### tar.gz
 
@@ -43,10 +42,6 @@ tar -cvzf folder.tar.gz folder/
 tar -xvzf file.tar.gz
 ```
 
-<small>*Note: Always put the zip file inside a new folder before Extract*</small>
-
----
-
 ### gz
 
 ```bash
@@ -64,11 +59,7 @@ gzip -k -r folder/
 gunzip file.gz
 ```
 
-<small>*Note: Always put the zip file inside a new folder before unzip*</small>
-<br>
 <small>*Note: If you want to zip the entire folder, use tar instead*</small>
-
----
 
 ### rar
 
@@ -77,4 +68,23 @@ gunzip file.gz
 unrar e file.rar
 ```
 
-<small>*Note: Always put the zip file inside a new folder before unzip*</small>
+### 7z
+
+```bash
+# Install
+sudo apt install p7zip-full
+```
+
+```bash
+# Extract
+7z x file.zip
+```
+
+### bz
+
+```bash
+# Extract and keep original files
+bunzip2 -k file.bz2
+```
+
+<br>

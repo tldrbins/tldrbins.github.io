@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Microsoft Access Database | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/microsoft_access_database/">
+      <span>Microsoft Access Database</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@access/">Access</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@database/">Database</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@mdb/">Mdb</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="tool">Tool</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install mdbtools
+</span></span></code></pre></div><h3 id="basic">Basic</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all tables</span>
+</span></span><span class="line"><span class="cl">mdb-tables database.mdb 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show tables with data</span>
+</span></span><span class="line"><span class="cl">mdb-tables database.mdb <span class="p">|</span> tr <span class="s1">&#39; &#39;</span> <span class="s1">&#39;\n&#39;</span> <span class="p">|</span> grep . <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> table<span class="p">;</span> <span class="k">do</span> <span class="nv">lines</span><span class="o">=</span><span class="k">$(</span>mdb-export database.mdb <span class="nv">$table</span> <span class="p">|</span> wc -l<span class="k">)</span><span class="p">;</span> <span class="k">if</span> <span class="o">[</span> <span class="nv">$lines</span> -gt <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$table</span><span class="s2">: </span><span class="nv">$lines</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span><span class="p">;</span> <span class="k">done</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump data from table</span>
+</span></span><span class="line"><span class="cl">mdb-export database.mdb table_name
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Microsoft Oulook Email Folder | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/microsoft_outlook/">
+      <span>Microsoft Oulook Email Folder</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@outlook/">Outlook</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@email/">Email</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@pst/">Pst</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@mbox/">Mbox</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="open-pst-file">Open .pst file</h3>
+<h4 id="tool">Tool</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install readpst
+</span></span></code></pre></div><h4 id="basic">Basic</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to mbox format</span>
+</span></span><span class="line"><span class="cl">readpst emails.pst
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open .mbox (plaintext)</span>
+</span></span><span class="line"><span class="cl">cat emails.mbox
+</span></span></code></pre></div><h4 id="read-many-emails">Read many emails</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use mutt</span>
+</span></span><span class="line"><span class="cl">mutt -Rf emails.mbox
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>Note: Answer No to create /root/Mail<span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>                                    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>Arrow   : Move to the email         <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>Enter   : View email                <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>q       : back                      <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>q again : quit                      <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+------------------------------------+
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>
