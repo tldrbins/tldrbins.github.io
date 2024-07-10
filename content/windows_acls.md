@@ -1,7 +1,7 @@
 ---
 title: "Windows ACLs"
 date: 2024-6-28
-tags: ["icacls", "acl", "Windows", "access control lists"]
+tags: ["icacls", "acl", "Windows", "access control lists", "powershell", "cmd"]
 ---
 
 ---
@@ -9,13 +9,19 @@ tags: ["icacls", "acl", "Windows", "access control lists"]
 
 #### Check ACLs
 
-```cmd
+```powershell
+# Check a file/directory
 icacls "C:\Users\User"
+```
+
+```powershell
+# Check all files and directories
+icacls * /C
 ```
 
 #### Grant user full control
 
-```cmd
+```powershell
 icacls file_name /grant user:F
 ```
 

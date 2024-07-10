@@ -53,8 +53,25 @@ sudo mount -t cifs //10.10.11.10/share /mnt
 ```
 
 ```bash
+# Without creds
+sudo mount -t cifs -o user=,password= //10.10.11.10/share /mnt
+```
+
+```bash
 # With creds
 sudo mount -t cifs -o user=username,pass=password //10.10.11.10/share /mnt
+```
+
+### From inside the target
+
+```powershell
+# Mount
+net use \\localhost\c$ /u:domain\username password
+```
+
+```powershell
+# Check
+dir \\localhost\c$\users\administrator\desktop
 ```
 
 <br>

@@ -53,6 +53,9 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ping -c3 10.10.11.10
 </span></span></code></pre></div><h3 id="test-reverse-connectivity">Test Reverse Connectivity</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo tcpdump -ni tun0 icmp
+</span></span></code></pre></div><h3 id="sniff-network-traffic">Sniff Network Traffic</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example: on port 389</span>
+</span></span><span class="line"><span class="cl">tcpdump -i lo -nnXs <span class="m">0</span> <span class="s1">&#39;port 389&#39;</span>
 </span></span></code></pre></div><h3 id="use-ping-to-scan-subnet">Use ping to Scan Subnet</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 254<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="o">(</span>ping -c <span class="m">1</span> 10.100.10.<span class="si">${</span><span class="nv">i</span><span class="si">}</span> <span class="p">|</span> grep <span class="s2">&#34;bytes from&#34;</span> <span class="p">&amp;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span>
 </span></span></code></pre></div><h3 id="use-nc-to-scan-ports">Use nc to Scan Ports</h3>
@@ -72,6 +75,8 @@
 </span></span><span class="line"><span class="cl">netstat -plant
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># UDP</span>
 </span></span><span class="line"><span class="cl">netstat -plunt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If netstat not present</span>
+</span></span><span class="line"><span class="cl">cat /proc/net/tcp <span class="p">|</span> grep <span class="s1">&#39;00000000:0000 0A&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Windows</span>
 </span></span><span class="line"><span class="cl">netstat -ano
 </span></span></code></pre></div><br></div></div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>VPN | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/vpn/">
+      <span>VPN</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@internet-key-exchange/">Internet Key Exchange</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ike/">Ike</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@vpn/">Vpn</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@udp/">Udp</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="enum">Enum</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check with ikeV1</span>
+</span></span><span class="line"><span class="cl">ike-scan -M 10.10.11.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check with ikeV2</span>
+</span></span><span class="line"><span class="cl">ike-scan -M --ikev2 10.10.10.116
+</span></span></code></pre></div><h3 id="connect-to-vpn">Connect to VPN</h3>
+<h4 id="tools">Tools</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install strongswan
+</span></span></code></pre></div><h4 id="settings">Settings</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/ipsec.secrets</span>
+</span></span><span class="line"><span class="cl">%any : PSK <span class="s2">&#34;password&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/ipsec.conf (copy from ike-scan result)</span>
+</span></span><span class="line"><span class="cl">config setup
+</span></span><span class="line"><span class="cl">    <span class="nv">charondebug</span><span class="o">=</span><span class="s2">&#34;all&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">uniqueids</span><span class="o">=</span>yes
+</span></span><span class="line"><span class="cl">    <span class="nv">strictcrlpolicy</span><span class="o">=</span>no
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">conn testvpn
+</span></span><span class="line"><span class="cl">    <span class="nv">authby</span><span class="o">=</span>secret
+</span></span><span class="line"><span class="cl">    <span class="nv">auto</span><span class="o">=</span>add
+</span></span><span class="line"><span class="cl">    <span class="nv">ike</span><span class="o">=</span>3des-sha1-modp1024!
+</span></span><span class="line"><span class="cl">    <span class="nv">esp</span><span class="o">=</span>3des-sha1!
+</span></span><span class="line"><span class="cl">    <span class="nv">type</span><span class="o">=</span>transport
+</span></span><span class="line"><span class="cl">    <span class="nv">keyexchange</span><span class="o">=</span>ikev1
+</span></span><span class="line"><span class="cl">    <span class="nv">left</span><span class="o">=</span>10.10.14.10
+</span></span><span class="line"><span class="cl">    <span class="nv">right</span><span class="o">=</span>10.10.11.10
+</span></span><span class="line"><span class="cl">    <span class="nv">rightsubnet</span><span class="o">=</span>10.10.11.10<span class="o">[</span>tcp<span class="o">]</span>
+</span></span></code></pre></div><h4 id="connect">Connect</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Reset</span>
+</span></span><span class="line"><span class="cl">ipsec restart
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
+</span></span><span class="line"><span class="cl">ipsec up testvpn
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

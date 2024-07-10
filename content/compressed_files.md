@@ -1,7 +1,7 @@
 ---
 title: "Compressed Files"
 date: 2024-6-26
-tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", "7z", "bz"]
+tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", "7z", "bz", "Windows", "powershell"]
 ---
 
 ---
@@ -23,6 +23,11 @@ zip -r folder.zip folder/
 ```bash
 # unzip
 unzip file.zip
+```
+
+```powershell
+# unzip (powershell)
+Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('c:\windows\tasks\file.zip', 'c:\windows\tasks\')
 ```
 
 ### tar.gz

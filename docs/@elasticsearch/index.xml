@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elasticsearch on TLDRBins</title>
+    <link>https://tldrbins.github.io/@elasticsearch/</link>
+    <description>Recent content in Elasticsearch on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>elasticsearch</title>
+      <link>https://tldrbins.github.io/elasticsearch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/elasticsearch/</guid>
+      <description> Basic Commands # List indexes curl -s http://10.10.11.10:9200/_cat/indices?v # Dump data with index name (e.g. index_name) curl -s -X GET &amp;#34;http://10.10.11.10:9200/index_name/_search?size=100&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; { &amp;#34;query&amp;#34;: { &amp;#34;match_all&amp;#34;: {} } } &amp;#39; | jq . </description>
+    </item>
+  </channel>
+</rss>

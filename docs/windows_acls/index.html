@@ -42,14 +42,21 @@
   
   <li><a href="https://tldrbins.github.io/@access-control-lists/">Access Control Lists</a></li>
   
+  <li><a href="https://tldrbins.github.io/@powershell/">Powershell</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@cmd/">Cmd</a></li>
+  
 </ul>
 
 <div class="content"><hr>
 <h3 id="window-acls-access-control-lists">Window ACLs (Access Control Lists)</h3>
 <h4 id="check-acls">Check ACLs</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">icacls <span class="s2">&#34;C:\Users\User&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check a file/directory</span>
+</span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="s2">&#34;C:\Users\User&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check all files and directories</span>
+</span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">*</span> <span class="p">/</span><span class="n">C</span>
 </span></span></code></pre></div><h4 id="grant-user-full-control">Grant user full control</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">icacls file_name /grant user:F
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">icacls</span> <span class="n">file_name</span> <span class="p">/</span><span class="n">grant</span> <span class="n">user</span><span class="err">:</span><span class="n">F</span>
 </span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+-------------------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span>F    <span class="o">(</span>full access<span class="o">)</span>                               <span class="p">|</span>

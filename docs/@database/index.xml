@@ -15,6 +15,20 @@
       <description> Basic # Show all databases curl http://localhost:5984/_all_dbs # Show all databases (With Creds) curl http://user:password@localhost:5984/_all_dbs # Show all docs from database curl http://localhost:5984/DB_name/_all_docs # Show a entry curl http://localhost:5984/DB_name/ID_hash </description>
     </item>
     <item>
+      <title>elasticsearch</title>
+      <link>https://tldrbins.github.io/elasticsearch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/elasticsearch/</guid>
+      <description> Basic Commands # List indexes curl -s http://10.10.11.10:9200/_cat/indices?v # Dump data with index name (e.g. index_name) curl -s -X GET &amp;#34;http://10.10.11.10:9200/index_name/_search?size=100&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; { &amp;#34;query&amp;#34;: { &amp;#34;match_all&amp;#34;: {} } } &amp;#39; | jq . </description>
+    </item>
+    <item>
+      <title>Graphql</title>
+      <link>https://tldrbins.github.io/graphql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/graphql/</guid>
+      <description>Basic Commands # Get fields from schema curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{queryType{name,fields{name,description}}}}&amp;#34;}&amp;#39; | jq . # Get types name curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{types{name}}}&amp;#34;}&amp;#39; | jq . # Get fields of type (e.g. User) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__type(name:\&amp;#34;User\&amp;#34;){name,fields{name}}}&amp;#34;}&amp;#39; | jq . # Dump data from type (e.g. User type with fields username and password) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{User{username,password}}&amp;#34;}&amp;#39; | jq .</description>
+    </item>
+    <item>
       <title>Microsoft Access Database</title>
       <link>https://tldrbins.github.io/microsoft_access_database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

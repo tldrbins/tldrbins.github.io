@@ -7,6 +7,29 @@ tags: ["smtp", "mail", "email", "25", "enum"]
 ---
 ### SMTP
 
+#### Simple Debugging Server
+
+```python
+#!/usr/bin/env python3
+
+import aiosmtpd.controller
+
+class CustomSMTPHandler:
+    async def handle_DATA(self, server, session, envelope):
+        print(f"[+] Received a mail.")
+        print("=" * 50)
+        print(envelope.content.decode())
+        print("=" * 50)
+        return "250 OK"
+
+handler = CustomSMTPHandler()
+server = aiosmtpd.controller.Controller(handler, hostname="0.0.0.0", port=25)
+server.start()
+print("[*] Listening on 0.0.0.0:25")
+input("[*] Server started. Press Return to quit.\n")
+server.stop()
+```
+
 #### User Enum
 
 ```bash

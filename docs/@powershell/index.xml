@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on TLDRBins</title>
+    <link>https://tldrbins.github.io/@powershell/</link>
+    <description>Recent content in Powershell on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@powershell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alternate Data Stream</title>
+      <link>https://tldrbins.github.io/alternate_data_stream/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/alternate_data_stream/</guid>
+      <description> Show ADS # cmd cmd /C dir /R \windows\tasks\file.txt Get-Item -Path \windows\tasks\file.txt -force -stream * </description>
+    </item>
+    <item>
+      <title>Compressed Files</title>
+      <link>https://tldrbins.github.io/compressed_files/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/compressed_files/</guid>
+      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # unzip unzip file.zip # unzip (powershell) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\windows\tasks\file.zip&amp;#39;, &amp;#39;c:\windows\tasks\&amp;#39;) tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.tar.gz folder/ # Extract tar -xvzf file.tar.gz gz # Compress file, and keep the original file gzip -k -r file # Compress all files individually inside a folder, and keep original files gzip -k -r folder/ # Extract gunzip file.</description>
+    </item>
+    <item>
+      <title>Find (Windows)</title>
+      <link>https://tldrbins.github.io/find_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/find_windows/</guid>
+      <description> Find a file ls -path \Users -Filter file.txt -recurse -erroraction silent where /R C:\Users file.txt Find a file, with rule dir /s /b /a:-d-h \Users\Administrator | findstr /i /v &amp;#34;appdata&amp;#34; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v appdata : exclude &amp;#39;appdata&amp;#39; | +---------------------------------------+ Show hidden files Get-ChildItem -force </description>
+    </item>
+    <item>
+      <title>Firewall (Windows)</title>
+      <link>https://tldrbins.github.io/firewall_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firewall_windows/</guid>
+      <description> Check Firewall Rules # cmd cmd /c &amp;#34;netsh advfirewall firewall show rule name=all|findstr Name:&amp;#34; # powershell Get-NetFirewallProfile # Check outbound rules Get-NetFirewallRule -Direction Outbound -Enabled True </description>
+    </item>
+    <item>
+      <title>Runas</title>
+      <link>https://tldrbins.github.io/runas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/runas/</guid>
+      <description>Runas (with creds) Create Cred Object $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Run Commnad Invoke-Command -ScriptBlock { whoami } -Credential $cred -Computer localhost # If error, try Invoke-Command -ScriptBlock { whoami } -Credential $cred -Computer localhost -auth credssp Create a new PS session new-pssession -computername . -credential $cred # Switch to new session enter-pssession 1 Runas (with cache creds) Check cache creds cmdkey /list Run Command # e.</description>
+    </item>
+    <item>
+      <title>Secure String</title>
+      <link>https://tldrbins.github.io/secrue_string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secrue_string/</guid>
+      <description> Decrypt secure string $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
+    </item>
+    <item>
+      <title>Windows ACLs</title>
+      <link>https://tldrbins.github.io/windows_acls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_acls/</guid>
+      <description> Window ACLs (Access Control Lists) Check ACLs # Check a file/directory icacls &amp;#34;C:\Users\User&amp;#34; # Check all files and directories icacls * /C Grant user full control icacls file_name /grant user:F +-------------------------------------------------+ |F (full access) | |M (modify access) | |RX (read and execute access) | |R (read-only access) | |W (write-only access) | |D (delete) | |RC (read control) | |WDAC (write DAC) | |WO (write owner) | |S (synchronize) | |AS (access system security) | |MA (maximum allowed) | |GR (generic read) | |GW (generic write) | |GE (generic execute) | |GA (generic all) | |RD (read data/list directory) | |WD (write data/add file) | |AD (append data/add subdirectory) | |REA (read extended attributes) | |WEA (write extended attributes) | |X (execute/traverse) | |DC (delete child) | |RA (read attributes) | |WA (write attributes) | |OI (object inherit) | |CI (container inherit) | |IO (inherit only) | |NP (do not propagate inherit) | |I (permission inherited from parent container)| +-------------------------------------------------+ </description>
+    </item>
+  </channel>
+</rss>

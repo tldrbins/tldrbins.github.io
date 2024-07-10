@@ -69,8 +69,15 @@
 <h3 id="smb">SMB</h3>
 <h4 id="mount-share-1">Mount share</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs //10.10.11.10/share /mnt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Without creds</span>
+</span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">user</span><span class="o">=</span>,password<span class="o">=</span> //10.10.11.10/share /mnt
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
 </span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">user</span><span class="o">=</span>username,pass<span class="o">=</span>password //10.10.11.10/share /mnt
+</span></span></code></pre></div><h3 id="from-inside-the-target">From inside the target</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Mount</span>
+</span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">\\</span><span class="n">localhost</span><span class="p">\</span><span class="n">c</span><span class="p">$</span> <span class="p">/</span><span class="n">u:domain</span><span class="p">\</span><span class="n">username</span> <span class="n">password</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check</span>
+</span></span><span class="line"><span class="cl"><span class="nb">dir </span><span class="p">\\</span><span class="n">localhost</span><span class="p">\</span><span class="n">c</span><span class="p">$\</span><span class="n">users</span><span class="p">\</span><span class="n">administrator</span><span class="p">\</span><span class="n">desktop</span>
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

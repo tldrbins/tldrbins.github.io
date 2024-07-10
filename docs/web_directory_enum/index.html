@@ -54,7 +54,6 @@
 
 <div class="content"><hr>
 <h3 id="feroxbuster">feroxbuster</h3>
-<p><a href="https://github.com/epi052/feroxbuster">Download feroxbuster</a></p>
 <h4 id="http">HTTP</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 </span></span></code></pre></div><h4 id="https">HTTPS</h4>
@@ -71,8 +70,12 @@
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="gobuster">gobuster</h3>
-<p><a href="https://github.com/OJ/gobuster">Download gobuster</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t <span class="m">40</span> -x php
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="bfac-backup-file-artifacts-checker">BFAC (Backup File Artifacts Checker)</h3>
+<p><a href="https://github.com/mazen160/bfac">Download BFAC</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bfac --url http://example.com
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

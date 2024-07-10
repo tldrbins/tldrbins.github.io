@@ -7,6 +7,12 @@ tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads"]
 ---
 ### SMB Share Enum
 
+#### nmap script
+
+```bash
+sudo nmap --script=smb-enum-shares -p 445 10.10.11.10
+```
+
 #### Login without password
 
 #### smbmap
@@ -33,33 +39,6 @@ smbclient -N -L \\\\10.10.11.10\\
 ```bash
 #After found an accessible share
 smbclient -N \\\\10.10.11.10\\share\\
-```
-
-```bash
-#After connection
-#List all files in a share
-recurse ON
-```
-
-```bash
-ls
-```
-
-```bash
-#Download all files
-mask ""
-```
-
-```bash
-recurse ON
-```
-
-```bash
-prompt OFF
-```
-
-```bash
-mget *
 ```
 
 ```bash
@@ -99,6 +78,34 @@ smbclient -L \\\\10.10.11.10\\ -U domain/username%password
 ```bash
 #After found an accessible share
 smbclient  \\\\10.10.11.10\\share\\ -U domain/username%password
+```
+
+#### smbclient Basic Commands
+
+```bash
+#List all files in a share
+recurse ON
+```
+
+```bash
+ls
+```
+
+```bash
+#Download all files
+mask ""
+```
+
+```bash
+recurse ON
+```
+
+```bash
+prompt OFF
+```
+
+```bash
+mget *
 ```
 
 <br>

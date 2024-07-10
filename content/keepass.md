@@ -15,6 +15,11 @@ kpcli --kdb key.kdbx
 ```
 
 ```bash
+# Open kdbx with a key file
+kpcli --key key.png --kdb key.kdbx
+```
+
+```bash
 # List all passwords
 find .
 ```

@@ -50,7 +50,9 @@
 
 <div class="content"><hr>
 <h3 id="smb-share-enum">SMB Share Enum</h3>
-<h4 id="login-without-password">Login without password</h4>
+<h4 id="nmap-script">nmap script</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nmap --script<span class="o">=</span>smb-enum-shares -p <span class="m">445</span> 10.10.11.10
+</span></span></code></pre></div><h4 id="login-without-password">Login without password</h4>
 <h4 id="smbmap">smbmap</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10 --no-banner
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u null --no-banner
@@ -60,15 +62,6 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After found an accessible share</span>
 </span></span><span class="line"><span class="cl">smbclient -N <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>share<span class="se">\\</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After connection</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#List all files in a share</span>
-</span></span><span class="line"><span class="cl">recurse ON
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Download all files</span>
-</span></span><span class="line"><span class="cl">mask <span class="s2">&#34;&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">recurse ON
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">prompt OFF
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mget *
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED</span>
 </span></span><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span> --option<span class="o">=</span><span class="s1">&#39;client min protocol=NT1&#39;</span>
 </span></span></code></pre></div><h4 id="login-with-password">Login with password</h4>
@@ -84,6 +77,15 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span> -U domain/username%password
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After found an accessible share</span>
 </span></span><span class="line"><span class="cl">smbclient  <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>share<span class="se">\\</span> -U domain/username%password
+</span></span></code></pre></div><h4 id="smbclient-basic-commands">smbclient Basic Commands</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#List all files in a share</span>
+</span></span><span class="line"><span class="cl">recurse ON
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Download all files</span>
+</span></span><span class="line"><span class="cl">mask <span class="s2">&#34;&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">recurse ON
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">prompt OFF
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mget *
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="mount-smb-share">Mount SMB Share</h3>

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +----------------------------------------------------------------------------------------+ |root_squash : running as root on local system will be treated as nobody user in target | |no_all_squash: every other users permission will translate from local system to target | +----------------------------------------------------------------------------------------+ SMB Mount share sudo mount -t cifs //10.10.11.10/share /mnt # With creds sudo mount -t cifs -o user=username,pass=password //10.</description>
+      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +----------------------------------------------------------------------------------------+ |root_squash : running as root on local system will be treated as nobody user in target | |no_all_squash: every other users permission will translate from local system to target | +----------------------------------------------------------------------------------------+ SMB Mount share sudo mount -t cifs //10.10.11.10/share /mnt # Without creds sudo mount -t cifs -o user=,password= //10.</description>
     </item>
   </channel>
 </rss>

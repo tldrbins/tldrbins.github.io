@@ -48,7 +48,26 @@
 
 <div class="content"><hr>
 <h3 id="smtp">SMTP</h3>
-<h4 id="user-enum">User Enum</h4>
+<h4 id="simple-debugging-server">Simple Debugging Server</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">aiosmtpd.controller</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CustomSMTPHandler</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">async</span> <span class="k">def</span> <span class="nf">handle_DATA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">envelope</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] Received a mail.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">envelope</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;250 OK&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">handler</span> <span class="o">=</span> <span class="n">CustomSMTPHandler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">=</span> <span class="n">aiosmtpd</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">Controller</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] Listening on 0.0.0.0:25&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;[*] Server started. Press Return to quit.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</span></span></code></pre></div><h4 id="user-enum">User Enum</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">perl smtp-user-enum.pl -M RCPT -U users.txt -t 10.10.11.10
 </span></span></code></pre></div><p><small><em>Note: <a href="https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl">smtp-user-enum.pl</a></em></small></p>
 </div></div>

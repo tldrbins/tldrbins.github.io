@@ -17,6 +17,13 @@ ping -c3 10.10.11.10
 sudo tcpdump -ni tun0 icmp
 ```
 
+### Sniff Network Traffic
+
+```bash
+# For example: on port 389
+tcpdump -i lo -nnXs 0 'port 389'
+```
+
 ### Use ping to Scan Subnet
 
 ```bash
@@ -69,6 +76,11 @@ netstat -plant
 ```bash
 # UDP
 netstat -plunt
+```
+
+```bash
+# If netstat not present
+cat /proc/net/tcp | grep '00000000:0000 0A'
 ```
 
 ```bash

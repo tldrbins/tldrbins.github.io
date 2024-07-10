@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Oulook Email Folder"
 date: 2024-7-8
-tags: ["outlook", "email", "Windows", "pst", "mbox"]
+tags: ["outlook", "email", "Windows", "pst", "ost", "mbox"]
 ---
 
 ---

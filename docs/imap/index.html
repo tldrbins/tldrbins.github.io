@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>IMAP | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/imap/">
+      <span>IMAP</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@imap/">Imap</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@imaps/">Imaps</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@mail/">Mail</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@email/">Email</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@openssl/">Openssl</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="imapimaps">IMAP/IMAPS</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect to IMAP over ssl</span>
+</span></span><span class="line"><span class="cl">rlwrap openssl s_client -connect 10.10.11.10:993
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Login</span>
+</span></span><span class="line"><span class="cl">a LOGIN username password
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all mailboxes</span>
+</span></span><span class="line"><span class="cl">a LIST <span class="s2">&#34;&#34;</span> <span class="s2">&#34;*&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Select a mailbox (e.g. Inbox)</span>
+</span></span><span class="line"><span class="cl">a SELECT INBOX
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get mail from mailbox (e.g. #1)</span>
+</span></span><span class="line"><span class="cl">a FETCH <span class="m">1</span> BODY.PEEK<span class="o">[]</span>
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

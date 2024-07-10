@@ -54,6 +54,10 @@
   
   <li><a href="https://tldrbins.github.io/@bz/">Bz</a></li>
   
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@powershell/">Powershell</a></li>
+  
 </ul>
 
 <div class="content"><hr>
@@ -65,6 +69,8 @@
 </span></span><span class="line"><span class="cl">zip -r folder.zip folder/
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># unzip</span>
 </span></span><span class="line"><span class="cl">unzip file.zip
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># unzip (powershell)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="py">IO</span><span class="p">.</span><span class="py">Compression</span><span class="p">.</span><span class="n">FileSystem</span><span class="p">;</span> <span class="p">[</span><span class="no">System.IO.Compression.ZipFile</span><span class="p">]::</span><span class="n">ExtractToDirectory</span><span class="p">(</span><span class="s1">&#39;c:\windows\tasks\file.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;c:\windows\tasks\&#39;</span><span class="p">)</span>
 </span></span></code></pre></div><h3 id="targz">tar.gz</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a file</span>
 </span></span><span class="line"><span class="cl">tar -cvzf file.tar.gz file

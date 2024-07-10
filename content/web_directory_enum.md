@@ -7,8 +7,6 @@ tags: ["web", "directory", "domain", "feroxbuster", "enum", "wfuzz", "idor", "go
 ---
 ### feroxbuster
 
-[Download feroxbuster](https://github.com/epi052/feroxbuster)
-
 #### HTTP
 
 ```bash
@@ -51,10 +49,20 @@ wfuzz -z range,1-99 http://example.com/users/FUZZ
 
 ### gobuster
 
-[Download gobuster](https://github.com/OJ/gobuster)
-
 ```bash
 gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
+```
+
+<br>
+
+---
+
+### BFAC (Backup File Artifacts Checker)
+
+[Download BFAC](https://github.com/mazen160/bfac)
+
+```bash
+bfac --url http://example.com
 ```
 
 <br>
