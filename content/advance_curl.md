@@ -13,6 +13,11 @@ curl --data-urlencode 'cmd=ping -c3 10.10.14.10' http://10.10.11.10/cmd.php
 ```
 
 ```bash
+# Put the POST data to url and use GET
+curl -G --data-urlencode 'cmd=ping -c3 10.10.14.10' http://10.10.11.10/cmd.php
+```
+
+```bash
 # PUT a file
 curl -X PUT http://10.10.11.10/test.txt -d @test.txt
 ```

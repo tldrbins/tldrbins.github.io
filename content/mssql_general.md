@@ -47,12 +47,22 @@ SELECT DB_NAME();
 
 ```mysql
 # List tables and schema
-select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES;
+SELECT table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES;
 ```
 
 ```mysql
 # Select all from table
-select * from db_name.table_schema.table_name;
+SELECT * from db_name.table_schema.table_name;
+```
+
+```mysql
+# Get domain name
+SELECT DEFAULT_DOMAIN();
+```
+
+```mysql
+# Get domain RID
+SELECT master.dbo.fn_varbintohexstr(SUSER_SID('EXAMPLE\Domain Admins'))
 ```
 
 <br>

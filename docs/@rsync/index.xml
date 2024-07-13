@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rsync on TLDRBins</title>
+    <link>https://tldrbins.github.io/@rsync/</link>
+    <description>Recent content in Rsync on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@rsync/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>rsync</title>
+      <link>https://tldrbins.github.io/rsync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rsync/</guid>
+      <description>Basic Commands # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/ # List a file with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/passwd # List files (wildcard) with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/rsync* # Get a file with ipv6 rsync -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/passwd . # Get files (wildcard) with ipv6 rsync -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=password; rsync -aR .ssh/ rsync://user@[dead:beef::1234:5678:90ab:cdef]:8730/home_user/ Bruteforce rsync password # Check user from /etc/passwd, module from /etc/rsyncrsyncd.</description>
+    </item>
+  </channel>
+</rss>

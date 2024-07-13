@@ -31,4 +31,11 @@ nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-
 nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash
 ```
 
+#### WINRM
+
+```bash
+# Single user and password
+nxc winrm 10.10.11.10 -u username -p password
+```
+
 <br>

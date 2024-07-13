@@ -1,7 +1,7 @@
 ---
 title: "PHP Command Shell"
 date: 2024-7-8
-tags: ["php", "shell"]
+tags: ["php", "shell", "template"]
 ---
 
 ---

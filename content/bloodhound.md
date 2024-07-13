@@ -1,7 +1,7 @@
 ---
 title: "Bloodhound"
 date: 2024-7-9
-tags: ["bloodhound", "enum", "active driectory", "ad", "Windows"]
+tags: ["bloodhound", "enum", "active driectory", "ad", "Windows", "sharphound"]
 ---
 
 ---
@@ -17,6 +17,12 @@ tags: ["bloodhound", "enum", "active driectory", "ad", "Windows"]
 ```powershell
 # Run
 Invoke-BloodHound -CollectionMethods All
+```
+
+### sharphound.exe
+
+```powershell
+.\SharpHound.exe -c all
 ```
 
 <br>

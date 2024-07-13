@@ -45,7 +45,11 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="kpcli">kpcli</h3>
+<h3 id="master-password-cracking">Master password cracking</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">keepass2john key.kdbx &gt; <span class="nb">hash</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With a key file</span>
+</span></span><span class="line"><span class="cl">keepass2john -k key.png key.kdbx &gt; <span class="nb">hash</span>
+</span></span></code></pre></div><h3 id="kpcli">kpcli</h3>
 <p><a href="https://github.com/rebkwok/kpcli">Download kpcli</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open kdbx</span>
 </span></span><span class="line"><span class="cl">kpcli --kdb key.kdbx

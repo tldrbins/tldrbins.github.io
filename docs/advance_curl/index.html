@@ -48,6 +48,8 @@
 <h3 id="advance-curl">Advance curl</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST url-encoded data</span>
 </span></span><span class="line"><span class="cl">curl --data-urlencode <span class="s1">&#39;cmd=ping -c3 10.10.14.10&#39;</span> http://10.10.11.10/cmd.php
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Put the POST data to url and use GET</span>
+</span></span><span class="line"><span class="cl">curl -G --data-urlencode <span class="s1">&#39;cmd=ping -c3 10.10.14.10&#39;</span> http://10.10.11.10/cmd.php
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># PUT a file</span>
 </span></span><span class="line"><span class="cl">curl -X PUT http://10.10.11.10/test.txt -d @test.txt
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># PUT a file (with creds)</span>

