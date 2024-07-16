@@ -19,17 +19,22 @@ ldapdomaindump -u 'example.com\username' -p 'passowrd' 10.10.11.10 -o ./ldap
 
 ```bash
 # Get domain base
-ldapsearch -x -h 10.10.11.10 -s base namingcontexts
+ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts
 ```
 
 ```bash
-# Get info about domain
-ldapsearch -x -h 10.10.11.10 -b 'DC=EXAMPLE,DC=COM'
+# Get all from domain
+ldapsearch -x -H ldap://10.10.11.10 -b 'DC=EXAMPLE,DC=COM'
 ```
 
 ```bash
 # Just get a class (e.g. person)
-ldapsearch -x -h 10.10.11.10 -b 'DC=EXAMPLE,DC=COM' '(objectClass=person)'
+ldapsearch -x -H ldap://10.10.11.10 -b 'DC=EXAMPLE,DC=COM' '(objectClass=person)'
+```
+
+```bash
+# With creds (e.g. john.appleseed)
+ldapsearch -x -H ldap://10.10.11.10 -D "CN=John Appleseed,CN=Users,DC=EXAMPLE,DC=COM" -w 'passowrd' -b 'DC=EXAMPLE,DC=COM'
 ```
 
 <br>

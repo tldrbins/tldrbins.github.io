@@ -10,7 +10,7 @@ tags: ["mssql", "database", "Windows"]
 #### Connect to MSSQL DB
 
 ```bash
-impacket-mssqlclient username:password@10.10.11.10
+impacket-mssqlclient -windows-auth username:password@10.10.11.10
 ```
 
 #### Basic Commands

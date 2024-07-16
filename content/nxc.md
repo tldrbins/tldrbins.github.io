@@ -9,7 +9,7 @@ tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Wi
 
 [Download nxc](https://github.com/Pennyw0rth/NetExec)
 
-#### SMB
+#### Basic Commands
 
 ```bash
 # Single user and password
@@ -31,11 +31,12 @@ nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-
 nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash
 ```
 
-#### WINRM
+### Supported protocols
 
-```bash
-# Single user and password
-nxc winrm 10.10.11.10 -u username -p password
+```
++----------------------------------------------------------+
+| ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi |
++----------------------------------------------------------+
 ```
 
 <br>

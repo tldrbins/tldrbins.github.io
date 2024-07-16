@@ -25,4 +25,10 @@ Invoke-BloodHound -CollectionMethods All
 .\SharpHound.exe -c all
 ```
 
+### bloodhound.py
+
+```bash
+python3 bloodhound.py -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip
+```
+
 <br>

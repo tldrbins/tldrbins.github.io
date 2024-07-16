@@ -51,11 +51,13 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Using ldapdomaindump (With Creds)</span>
 </span></span><span class="line"><span class="cl">ldapdomaindump -u <span class="s1">&#39;example.com\username&#39;</span> -p <span class="s1">&#39;passowrd&#39;</span> 10.10.11.10 -o ./ldap
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get domain base</span>
-</span></span><span class="line"><span class="cl">ldapsearch -x -h 10.10.11.10 -s base namingcontexts
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get info about domain</span>
-</span></span><span class="line"><span class="cl">ldapsearch -x -h 10.10.11.10 -b <span class="s1">&#39;DC=EXAMPLE,DC=COM&#39;</span>
+</span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get all from domain</span>
+</span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -b <span class="s1">&#39;DC=EXAMPLE,DC=COM&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Just get a class (e.g. person)</span>
-</span></span><span class="line"><span class="cl">ldapsearch -x -h 10.10.11.10 -b <span class="s1">&#39;DC=EXAMPLE,DC=COM&#39;</span> <span class="s1">&#39;(objectClass=person)&#39;</span>
+</span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -b <span class="s1">&#39;DC=EXAMPLE,DC=COM&#39;</span> <span class="s1">&#39;(objectClass=person)&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds (e.g. john.appleseed)</span>
+</span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -D <span class="s2">&#34;CN=John Appleseed,CN=Users,DC=EXAMPLE,DC=COM&#34;</span> -w <span class="s1">&#39;passowrd&#39;</span> -b <span class="s1">&#39;DC=EXAMPLE,DC=COM&#39;</span>
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

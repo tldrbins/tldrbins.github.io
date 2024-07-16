@@ -22,6 +22,13 @@
       <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # unzip unzip file.zip # unzip (powershell) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\windows\tasks\file.zip&amp;#39;, &amp;#39;c:\windows\tasks\&amp;#39;) tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.tar.gz folder/ # Extract tar -xvzf file.tar.gz gz # Compress file, and keep the original file gzip -k -r file # Compress all files individually inside a folder, and keep original files gzip -k -r folder/ # Extract gunzip file.</description>
     </item>
     <item>
+      <title>Defender (Windows)</title>
+      <link>https://tldrbins.github.io/windows_defender/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_defender/</guid>
+      <description> Disable defender # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
+    </item>
+    <item>
       <title>Find (Windows)</title>
       <link>https://tldrbins.github.io/find_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
