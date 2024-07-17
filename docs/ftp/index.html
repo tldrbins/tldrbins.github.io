@@ -62,7 +62,12 @@
 </span></span><span class="line"><span class="cl">put filename
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exit</span>
 </span></span><span class="line"><span class="cl">quit
-</span></span></code></pre></div><br>
+</span></span></code></pre></div><h3 id="recusive-download">Recusive download</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># anonymous login</span>
+</span></span><span class="line"><span class="cl">wget -r ftp://anonymous:@10.10.11.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># with creds</span>
+</span></span><span class="line"><span class="cl">wget --user username --password password -m ftp://10.10.11.11
+</span></span></code></pre></div><p><small><em>Note: Always check what&rsquo;s in there first</em></small></p>
 </div></div>
     
     <script src="/js/utils.js"></script>

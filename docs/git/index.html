@@ -71,11 +71,17 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run</span>
 </span></span><span class="line"><span class="cl">sudo /usr/bin/git pull
 </span></span></code></pre></div><p><small><em>Note: Make changes to the project to make the pull work</em></small></p>
-<br>
 <hr>
 <h3 id="git-dumper">git-dumper</h3>
 <p><a href="https://github.com/arthaud/git-dumper">Download git-dumper</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git-dumper http://10.10.11.10/.git result/
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="git-bundle">git-bundle</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all bundles</span>
+</span></span><span class="line"><span class="cl">find . -type f -exec file <span class="o">{}</span> <span class="se">\;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get bundle</span>
+</span></span><span class="line"><span class="cl">git clone -b master @hashed/ab/cd/&lt;hash&gt;.bundle
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

@@ -46,4 +46,17 @@ put filename
 quit
 ```
 
-<br>
+### Recusive download
+
+```bash
+# anonymous login
+wget -r ftp://anonymous:@10.10.11.10
+```
+
+```bash
+# with creds
+wget --user username --password password -m ftp://10.10.11.11
+```
+
+<small>*Note: Always check what's in there first*</small>
+

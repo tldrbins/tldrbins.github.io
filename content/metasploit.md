@@ -1,7 +1,7 @@
 ---
 title: "Metasploit"
 date: 2024-6-28
-tags: ["metasploit", "exploit", "vuln", "CVE", "privesc", "meterpreter", "Windows", "msfconsole"]
+tags: ["metasploit", "exploit", "vuln", "CVE", "privesc", "meterpreter", "Windows", "msfconsole", "searchsploit"]
 ---
 
 ---
@@ -97,7 +97,7 @@ set session 1
 
 ```bash
 # Show exploit settings
-optiions
+options
 ```
 
 ```bash
@@ -108,6 +108,61 @@ set rhosts 10.10.11.10
 ```bash
 # Run exploit
 run 
+```
+
+<br>
+
+---
+
+### Custom Scripts
+
+#### Add scripts from searchsploit
+
+```bash
+mkdir -p ~/.msf4/modules/exploits/linux
+```
+
+```bash
+mkdir -p ~/.msf4/modules/exploits/windows
+```
+
+```bash
+# For example a linux script
+cp 12345.rb ~/.msf4/modules/exploits/linux
+```
+
+```bash
+# Inside msfconsole
+reload_all
+```
+
+```bash
+# Search
+search 12345
+```
+
+#### Fix no search result
+
+```bash
+# Inside msfconsole, check db status
+db_status
+```
+
+```bash
+sudo service postgresql start
+```
+
+```bash
+update-rc.d postgresql enable
+```
+
+```bash
+sudo msfdb init
+```
+
+```bash
+# Go bask to msfconsole and check again
+db_status
 ```
 
 <br>

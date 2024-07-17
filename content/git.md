@@ -66,8 +66,6 @@ sudo /usr/bin/git pull
 
 <small>*Note: Make changes to the project to make the pull work*</small>
 
-<br>
-
 ---
 
 ### git-dumper
@@ -76,6 +74,23 @@ sudo /usr/bin/git pull
 
 ```bash
 git-dumper http://10.10.11.10/.git result/
+```
+
+<br>
+
+---
+
+
+### git-bundle
+
+```bash
+# List all bundles
+find . -type f -exec file {} \;
+```
+
+```bash
+# Get bundle
+git clone -b master @hashed/ab/cd/<hash>.bundle
 ```
 
 <br>
