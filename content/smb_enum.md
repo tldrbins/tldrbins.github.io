@@ -131,7 +131,7 @@ sudo find . -type d | while read directory; do touch ${directory}/test 2>/dev/nu
 
 ```bash
 #Check file type you can write
-sudo touch {/mnt/,./}test.{lnk,exe,dll,ini}
+sudo touch {/mnt/,./}test.{dll,exe,ini,lnk}
 ```
 
 <br>
@@ -153,6 +153,16 @@ allinfo "file"
 ```bash
 # Download specific data stream
 get "file:Password"
+```
+
+<br>
+
+---
+
+### Change SMB password (With old creds)
+
+```bash
+smbpasswd -r 10.10.11.10 -U username
 ```
 
 <br>

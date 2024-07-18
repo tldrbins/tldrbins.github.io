@@ -8,13 +8,13 @@ tags: ["dns", "dig", "reconnaissance", "domain", "enum"]
 ### Zone Transfer
 
 ```bash
-dig test.com axfr @10.10.11.10
+dig example.com axfr @10.10.11.10
 ```
 
 ### Domain Discovery
 
 ```bash
-dig @10.10.11.10 test.com
+dig @10.10.11.10 example.com
 ```
 
 ```bash
@@ -22,15 +22,15 @@ dig @10.10.11.10 -x 10.10.11.10
 ```
 
 ```bash
-dig @10.10.11.10 +short test.com any
+dig @10.10.11.10 +short example.com any
 ```
 
 ```bash
-dig @10.10.11.10 -t NS test.com
+dig @10.10.11.10 -t NS example.com
 ```
 
 ```bash
-dig @10.10.11.10 _gc.test.com
+dig @10.10.11.10 _gc.example.com
 ```
 
 <br>

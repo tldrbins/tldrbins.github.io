@@ -14,7 +14,7 @@ tags: ["secretsdump", "impacket", "active directory", "ad", "domain controller",
 #### With ntds.dit and SYSTEM hive
 
 ```bash
-impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL
+impacket-secretsdump -ntds ntds.dit -system system LOCAL
 ```
 
 #### With SAM, SYSTEM and SECURITY Hives

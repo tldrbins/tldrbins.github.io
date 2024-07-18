@@ -95,7 +95,7 @@
 </span></span></code></pre></div><h4 id="check-write-permission">Check write permission</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo find . -type d <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> directory<span class="p">;</span> <span class="k">do</span> touch <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write file&#34;</span> <span class="o">&amp;&amp;</span> rm <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> mkdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write directory&#34;</span> <span class="o">&amp;&amp;</span> rmdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> <span class="k">done</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Check file type you can write</span>
-</span></span><span class="line"><span class="cl">sudo touch <span class="o">{</span>/mnt/,./<span class="o">}</span>test.<span class="o">{</span>lnk,exe,dll,ini<span class="o">}</span>
+</span></span><span class="line"><span class="cl">sudo touch <span class="o">{</span>/mnt/,./<span class="o">}</span>test.<span class="o">{</span>dll,exe,ini,lnk<span class="o">}</span>
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h3>
@@ -105,6 +105,10 @@
 </span></span><span class="line"><span class="cl">&gt;&gt;&gt;stream: <span class="o">[</span>:Password:<span class="nv">$DATA</span><span class="o">]</span>, <span class="m">15</span> bytes
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Download specific data stream</span>
 </span></span><span class="line"><span class="cl">get <span class="s2">&#34;file:Password&#34;</span>
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="change-smb-password-with-old-creds">Change SMB password (With old creds)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbpasswd -r 10.10.11.10 -U username
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

