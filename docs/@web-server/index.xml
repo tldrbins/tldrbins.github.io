@@ -28,5 +28,12 @@
       <guid>https://tldrbins.github.io/iis/</guid>
       <description>IIS Version +-------------------------------------------------------------------------------+ |Version Start Date End Date | +-------------------------------------------------------------------------------+ |IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 | |IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 | |IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027| |IIS 10 on Windows 10 Pro Jul 29, 2015 | |IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 | |IIS 8.</description>
     </item>
+    <item>
+      <title>Nginx</title>
+      <link>https://tldrbins.github.io/nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nginx/</guid>
+      <description> Config location /etc/nginx/sites-enabled </description>
+    </item>
   </channel>
 </rss>

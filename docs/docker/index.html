@@ -53,6 +53,15 @@
 </span></span><span class="line"><span class="cl">docker run -v /:/mnt -it image_name bash
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
 </span></span><span class="line"><span class="cl">ls /mnt/root
+</span></span></code></pre></div><h3 id="docker-api">Docker API</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show running containers</span>
+</span></span><span class="line"><span class="cl">curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create container</span>
+</span></span><span class="line"><span class="cl">curl -s -X POST -H <span class="s1">&#39;Content-Type: application/json&#39;</span> --data-binary <span class="s1">&#39;{&#34;Image&#34;: &#34;&lt;image_name&gt;:latest&#34;,&#34;HostConfig&#34;: {&#34;Binds&#34;: [&#34;/:/r&#34;]}, &#34;Cmd&#34;: [&#34;/bin/sh&#34;, &#34;-c&#34;, &#34;ls -la /r/root/&#34;], &#34;Tty&#34;: true}&#39;</span> --unix-socket /var/run/docker.sock http://localhost/containers/create
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start container</span>
+</span></span><span class="line"><span class="cl">curl -s -X POST -H <span class="s1">&#39;Content-Type: application/json&#39;</span> --unix-socket /var/run/docker.sock http://localhost/containers/&lt;container_id&gt;/start
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show results</span>
+</span></span><span class="line"><span class="cl">curl -s --unix-socket /var/run/docker.sock <span class="s2">&#34;http://localhost/containers/&lt;container_id&gt;/logs?stderr=1&amp;stdout=1&#34;</span>
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

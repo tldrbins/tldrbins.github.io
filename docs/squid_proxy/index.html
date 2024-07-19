@@ -76,6 +76,8 @@
 </span></span><span class="line"><span class="cl">http    10.10.11.10 <span class="m">3128</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect, e.g. ssh</span>
 </span></span><span class="line"><span class="cl">proxychains4 ssh root@localhost
+</span></span></code></pre></div><h3 id="squid-cache-enum">Squid Cache Enum</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">squidclient -U squid -W password -h 10.10.11.10 cache_object://10.10.11.10/
 </span></span></code></pre></div><br>
 </div></div>
     

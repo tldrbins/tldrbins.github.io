@@ -65,4 +65,10 @@ http    10.10.11.10 3128
 proxychains4 ssh root@localhost
 ```
 
+### Squid Cache Enum
+
+```bash
+squidclient -U squid -W password -h 10.10.11.10 cache_object://10.10.11.10/
+```
+
 <br>

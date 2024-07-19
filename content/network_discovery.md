@@ -84,6 +84,10 @@ cat /proc/net/tcp | grep '00000000:0000 0A'
 ```
 
 ```bash
+ss -tnl
+```
+
+```bash
 # Windows
 netstat -ano
 ```

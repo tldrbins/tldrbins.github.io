@@ -29,6 +29,12 @@ find / -name test.txt -exec cat {} \;
 find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2>/dev/null -ls
 ```
 
+### Find files owned by user
+
+```bash
+find / -user user -ls 2>/dev/null | grep -v -e " \/proc" -e " \/sys"
+```
+
 ### Find files owned by group
 
 ```bash
