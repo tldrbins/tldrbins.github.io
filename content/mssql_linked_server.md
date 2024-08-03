@@ -38,7 +38,7 @@ EXECUTE ('EXECUTE (''SELECT entity_name, permission_name FROM fn_my_permissions(
 #### Create Admin User from Privilege Linked Server
 
 ```mysql
-EXECUTE('EXECUTE(''CREATE LOGIN test WITH PASSWORD = ''''Test1234!@'''';'') AT [CURRENT_SERVER]') AT [LINKED_SERVER]
+EXECUTE('EXECUTE(''CREATE LOGIN test WITH PASSWORD = ''''password'''';'') AT [CURRENT_SERVER]') AT [LINKED_SERVER]
 ```
 
 ```mysql

@@ -57,6 +57,8 @@
 </span></span><span class="line"><span class="cl">db.COLLECTION_NAME.find<span class="o">()</span>.pretty<span class="o">()</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Insert entry into collections</span>
 </span></span><span class="line"><span class="cl">db.COLLECTION_NAME.insert<span class="o">({</span><span class="s2">&#34;key&#34;</span>: <span class="s2">&#34;value&#34;</span><span class="o">})</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update an entry (e.g. password of user)</span>
+</span></span><span class="line"><span class="cl">db.COLLECTION_NAME.update<span class="o">({</span><span class="s2">&#34;username&#34;</span>: <span class="s2">&#34;user&#34;</span><span class="o">}</span>, <span class="o">{</span><span class="nv">$set</span>: <span class="o">{</span><span class="s2">&#34;password&#34;</span>: <span class="s2">&#34;password&#34;</span><span class="o">}})</span><span class="p">;</span>
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

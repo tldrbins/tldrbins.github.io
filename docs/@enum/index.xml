@@ -12,14 +12,21 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound.py python3 bloodhound.py -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip </description>
+      <description>sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound-python # With Creds bloodhound-python -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip # With Kerberos sudo ntpdate -s dc.example.com &amp;amp;&amp;amp; bloodhound-python -u username -p &amp;#39;password&amp;#39; -k -d example.com -dc dc.example.com -ns 10.10.11.10 -c all --zip bloodhound with PKI support BloodHound&#xA;# Fix: GPU process isn&amp;#39;t usable. Goodbye.</description>
     </item>
     <item>
       <title>DNS Enum</title>
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description> Zone Transfer dig example.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 example.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short example.com any dig @10.10.11.10 -t NS example.com dig @10.10.11.10 _gc.example.com </description>
+      <description> Zone Transfer dig +noall +answer example.com axfr @10.10.11.10 Domain Discovery dig +noall +answer @10.10.11.10 example.com dig +noall +answer @10.10.11.10 -x 10.10.11.10 dig+noall +answer @10.10.11.10 +short example.com any dig +noall +answer @10.10.11.10 -t NS example.com </description>
+    </item>
+    <item>
+      <title>DPAPI</title>
+      <link>https://tldrbins.github.io/dpapi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dpapi/</guid>
+      <description>Auto dump all (From Linux) DonPAPI&#xA;DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -t &amp;lt;TARGET&amp;gt; Browser Saved Creds Auto SharpChromium.exe&#xA;.\SharpChromium.exe logins Manual (e.g. Edge) # Get Local State json file, copy and paste to local Linux type &amp;#34;C:\Users\[USER]\appdata\local\microsoft\edge\User Data\Local State&amp;#34; # Get Login Data binary file certutil -encode &amp;#34;C:\Users\[USER]\appdata\local\microsoft\edge\User Data\Default\Login Data&amp;#34; C:\Windows\Tasks\logindata # Copy and paste to local Linux type C:\Windows\Tasks\logindata # Base64 decode cat logindata_b64 | base64 -d &amp;gt; logindata # Extract key from local state cat localstate | jq -r .</description>
     </item>
     <item>
       <title>Drupal</title>
@@ -40,7 +47,7 @@
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +----------------------------------------------------------------------------------------+ |root_squash : running as root on local system will be treated as nobody user in target | |no_all_squash: every other users permission will translate from local system to target | +----------------------------------------------------------------------------------------+ SMB Mount share sudo mount -t cifs //10.10.11.10/share /mnt # Without creds sudo mount -t cifs -o user=,password= //10.</description>
+      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +----------------------------------------------------------------------------------------+ |root_squash : running as root on local system will be treated as nobody user in target | |no_all_squash: every other users permission will translate from local system to target | +----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash SMB Mount share sudo mount -t cifs //10.</description>
     </item>
     <item>
       <title>Nmap</title>
@@ -50,39 +57,46 @@
       <description>Nmap Port Scan TCP Scan target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target UDP Scan (common ports) target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Scan with nmap scripts Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with a script nmap --script=ftp-anon -sV -sC -p 21 10.</description>
     </item>
     <item>
+      <title>Scheduled tasks</title>
+      <link>https://tldrbins.github.io/scheduled_tasks_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/scheduled_tasks_windows/</guid>
+      <description> Check scheduled tasks schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
+    </item>
+    <item>
       <title>SMB Enum</title>
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 10.10.11.10 Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.10.11.10\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H 10.</description>
+      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 10.10.11.10 Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ # After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.10.11.10\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H 10.</description>
     </item>
     <item>
       <title>SMTP</title>
       <link>https://tldrbins.github.io/smtp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smtp/</guid>
-      <description>SMTP Simple Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() User Enum perl smtp-user-enum.pl -M RCPT -U users.txt -t 10.10.11.10 Note: smtp-user-enum.pl</description>
+      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() User Enum nmap script nmap -p 25 --script=smtp-enum-users 10.10.11.10 smtp-user-enum # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t 10.</description>
     </item>
     <item>
       <title>SNMP</title>
       <link>https://tldrbins.github.io/snmp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/snmp/</guid>
-      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v2c -c public 10.10.11.10 | tee snmpwalk_result # Query specific OID, e.g, ipAddressIfIndex.ipv6 snmpwalk -v2c -c public 10.</description>
+      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt snmpbrute snmpbrute.py&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t 10.10.11.10 snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public 10.</description>
     </item>
     <item>
       <title>Subdomain Enum</title>
       <link>https://tldrbins.github.io/subdomain_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description> wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts </description>
+      <description>wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.example.com&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://example.com gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
     </item>
     <item>
       <title>Web Directory Enum</title>
       <link>https://tldrbins.github.io/web_directory_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description>feroxbuster HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash / to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt wfuzz Fuzzing Number Range wfuzz -z range,1-99 http://example.com/users/FUZZ gobuster gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php BFAC (Backup File Artifacts Checker) Download BFAC</description>
+      <description>feroxbuster HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash / to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt wfuzz Fuzzing Number Range wfuzz -z range,1-99 http://example.</description>
     </item>
   </channel>
 </rss>

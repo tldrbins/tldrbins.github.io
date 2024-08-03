@@ -25,6 +25,13 @@ wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H 
 wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.example.com" -u http://example.com --hw 10
 ```
 
+#### Filter out response with header
+
+```bash
+# For example: Access-Control-Allow-Origin
+wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Origin: http://FUZZ.example.com" --filter "r.headers.response ~ 'Access-Control-Allow-Origin'" -u http://example.com
+```
+
 <br>
 
 ---

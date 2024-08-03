@@ -26,6 +26,16 @@ dotnet new console
 ```
 
 ```bash
+# Create .sln file
+dotnet new sln
+```
+
+```bash
+# Link .sln to .csproj
+dotnet sln new_project.sln add new_project.csproj 
+```
+
+```bash
 # Add dependencies (optional)
 dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
 ```
@@ -34,6 +44,11 @@ dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
 +----------------------+
 |Add Code to Program.cs|
 +----------------------+
+```
+
+```bash
+# Build solution
+dotnet build
 ```
 
 ```bash

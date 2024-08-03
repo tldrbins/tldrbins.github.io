@@ -19,7 +19,7 @@
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 10.10.11.10 Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.10.11.10\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H 10.</description>
+      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 10.10.11.10 Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ # After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.10.11.10\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H 10.</description>
     </item>
   </channel>
 </rss>

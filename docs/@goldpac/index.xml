@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kerberos/</guid>
-      <description>Kerbrute Download kerbrute&#xA;kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10 Generate Kerberos Ticket (From Linux) sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to `/etc/hosts` 10.10.11.10 example.com dc01.example.com dc01 # Step 2: Add domain controller as a DNS server to `/etc/resolv.conf` nameserver 10.10.11.10 # Step 3: Edit `/etc/krb5.conf` [libdefaults] default_realm = EXAMPLE.COM [realms] example.com = { kdc = dc01.example.com:88 admin_serve = dc01.example.com default_domain = example.com } [domain_realm] .</description>
+      <description>Kerbrute kerbrute&#xA;kerbrute userenum --domain example.com --dc 10.10.11.10 usernames.txt Usernames generator username-anarchy&#xA;./username-anarchy -i users.txt | tee usernames.txt Generate Kerberos Ticket (From Linux) Method #1 : Using impacket sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; example.com/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist Method #2 : Using kinit # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.</description>
     </item>
   </channel>
 </rss>

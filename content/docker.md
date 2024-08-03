@@ -1,10 +1,45 @@
 ---
 title: "Docker"
 date: 2024-7-3
-tags: ["docker", "privesc", "container", "escape"]
+tags: ["docker", "privesc", "container", "escape", "dive"]
 ---
 
 ---
+### Basic Commands
+
+```bash
+# Show all running processes
+sudo docker ps -a
+```
+
+```bash
+# Show all images
+sudo docker images -a
+```
+
+```bash
+# Stop all processes
+sudo docker stop $(sudo docker ps -a -q)
+```
+
+```bash
+# Remove all processes
+sudo docker rm -vf $(sudo docker ps -a -q)
+```
+
+```bash
+# Remove all images
+sudo docker rmi -f $(sudo docker images -aq)
+```
+
+### Explore Docker image
+
+[dive](https://github.com/wagoodman/dive)
+
+```bash
+dive docker-archive://image.tar
+```
+
 ### Privesc
 
 #### Abuse docker group

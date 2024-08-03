@@ -22,7 +22,20 @@ icacls * /C
 #### Grant user full control
 
 ```powershell
+# cmd
+cmd.exe /c cacls file_name /E /G user:F
+```
+
+```powershell
+# powershell
 icacls file_name /grant user:F
+```
+
+#### Change owner (WO)
+
+```powershell
+# cmd
+cmd.exe /c takeown /F file_name
 ```
 
 <br>

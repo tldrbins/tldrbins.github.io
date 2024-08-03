@@ -5,6 +5,12 @@ tags: ["ftp", "file transfer", "21"]
 ---
 
 ---
+### Config Location
+
+```bash
+/etc/vsftpd.conf
+```
+
 ### Basic
 
 ```bash
@@ -39,6 +45,11 @@ get filename
 ```bash
 # Upload
 put filename
+```
+
+```bash
+# Connect over tunnel
+passive
 ```
 
 ```bash

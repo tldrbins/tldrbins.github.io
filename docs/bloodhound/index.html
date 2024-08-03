@@ -57,8 +57,15 @@
 </span></span><span class="line"><span class="cl"><span class="nb">Invoke-BloodHound</span> <span class="n">-CollectionMethods</span> <span class="n">All</span>
 </span></span></code></pre></div><h3 id="sharphoundexe">sharphound.exe</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">SharpHound</span><span class="p">.</span><span class="py">exe</span> <span class="n">-c</span> <span class="n">all</span>
-</span></span></code></pre></div><h3 id="bloodhoundpy">bloodhound.py</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bloodhound.py -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip
+</span></span></code></pre></div><h3 id="bloodhound-python">bloodhound-python</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With Creds</span>
+</span></span><span class="line"><span class="cl">bloodhound-python -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With Kerberos</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s dc.example.com <span class="o">&amp;&amp;</span> bloodhound-python -u username -p <span class="s1">&#39;password&#39;</span> -k -d example.com -dc dc.example.com -ns 10.10.11.10 -c all --zip
+</span></span></code></pre></div><h3 id="bloodhound-with-pki-support">bloodhound with PKI support</h3>
+<p><a href="https://github.com/ly4k/BloodHound">BloodHound</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: GPU process isn&#39;t usable. Goodbye.</span>
+</span></span><span class="line"><span class="cl">./BloodHound --no-sandbox
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

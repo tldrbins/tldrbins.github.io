@@ -56,7 +56,13 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check all files and directories</span>
 </span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">*</span> <span class="p">/</span><span class="n">C</span>
 </span></span></code></pre></div><h4 id="grant-user-full-control">Grant user full control</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">icacls</span> <span class="n">file_name</span> <span class="p">/</span><span class="n">grant</span> <span class="n">user</span><span class="err">:</span><span class="n">F</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
+</span></span><span class="line"><span class="cl"><span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">c</span> <span class="n">cacls</span> <span class="n">file_name</span> <span class="p">/</span><span class="n">E</span> <span class="p">/</span><span class="n">G</span> <span class="n">user</span><span class="err">:</span><span class="n">F</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
+</span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="n">file_name</span> <span class="p">/</span><span class="n">grant</span> <span class="n">user</span><span class="err">:</span><span class="n">F</span>
+</span></span></code></pre></div><h4 id="change-owner-wo">Change owner (WO)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
+</span></span><span class="line"><span class="cl"><span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">c</span> <span class="n">takeown</span> <span class="p">/</span><span class="n">F</span> <span class="n">file_name</span>
 </span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+-------------------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span>F    <span class="o">(</span>full access<span class="o">)</span>                               <span class="p">|</span>

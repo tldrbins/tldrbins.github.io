@@ -43,4 +43,30 @@ mutt -Rf emails.mbox
 +------------------------------------+
 ```
 
+### Open .msg file
+
+#### Tool
+
+```bash
+# Install msgconvert
+sudo apt install libemail-outlook-message-perl
+```
+
+```bash
+# Install formail
+sudo apt install procmail
+```
+
+#### Basic
+
+```bash
+# Convert to .eml format
+msgconvert *.msg
+```
+
+```bash
+# Convert to .mbox format
+cat messages.eml | formail -b > emails.mbox
+```
+
 <br>

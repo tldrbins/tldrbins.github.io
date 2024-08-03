@@ -10,13 +10,13 @@ tags: ["web", "directory", "domain", "feroxbuster", "enum", "wfuzz", "idor", "go
 #### HTTP
 
 ```bash
-feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
 #### HTTPS
 
 ```bash
-feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
 #### Specify Extension
@@ -29,6 +29,12 @@ feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/se
 
 ```bash
 feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+```
+
+#### API Fuzzing
+
+```bash
+feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 ```
 
 <br>

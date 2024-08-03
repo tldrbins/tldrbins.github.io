@@ -55,13 +55,15 @@
 <div class="content"><hr>
 <h3 id="feroxbuster">feroxbuster</h3>
 <h4 id="http">HTTP</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 </span></span></code></pre></div><h4 id="https">HTTPS</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u https://example.com/ -k --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u https://example.com/ -k --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 </span></span></code></pre></div><h4 id="specify-extension">Specify Extension</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --methods<span class="o">=</span>GET,POST --depth<span class="o">=</span><span class="m">1</span> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
 </span></span></code></pre></div><h4 id="add-trailing-slash--to-each-request">Add trailing slash <code>/</code> to each request</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ -f --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+</span></span></code></pre></div><h4 id="api-fuzzing">API Fuzzing</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="wfuzz">wfuzz</h3>

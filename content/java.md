@@ -15,4 +15,17 @@ tags: ["java", "jd-gui", "decompiler", "reversing"]
 jd-gui
 ```
 
+#### Compile
+
+```bash
+# Compile
+javac src/program.java 
+```
+
+```bash
+# Pack into jar
+jar -cvf program.jar -C src/ .
+```
+
+
 <br>

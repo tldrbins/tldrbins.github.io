@@ -42,10 +42,12 @@
   
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
+  <li><a href="https://tldrbins.github.io/@nxc/">Nxc</a></li>
+  
 </ul>
 
 <div class="content"><hr>
-<h3 id="enum">Enum</h3>
+<h3 id="ldapsearch">ldapsearch</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Using nmap script</span>
 </span></span><span class="line"><span class="cl">sudo nmap -p <span class="m">389</span> --script ldap-search 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Using ldapdomaindump (With Creds)</span>
@@ -58,6 +60,13 @@
 </span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -b <span class="s1">&#39;DC=EXAMPLE,DC=COM&#39;</span> <span class="s1">&#39;(objectClass=person)&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds (e.g. john.appleseed)</span>
 </span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -D <span class="s2">&#34;CN=John Appleseed,CN=Users,DC=EXAMPLE,DC=COM&#34;</span> -w <span class="s1">&#39;passowrd&#39;</span> -b <span class="s1">&#39;DC=EXAMPLE,DC=COM&#39;</span>
+</span></span></code></pre></div><h4 id="with-kerberos">With kerberos</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add GSSAPI</span>
+</span></span><span class="line"><span class="cl">sudo apt install libsasl2-modules-gssapi-mit
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ldapsearch -H ldap://dc.example.com -Y GSSAPI -b <span class="s2">&#34;dc=example,dc=com&#34;</span>
+</span></span></code></pre></div><h3 id="nxc">nxc</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With kerberos</span>
+</span></span><span class="line"><span class="cl">nxc ldap 10.10.11.10 -u username -p <span class="s1">&#39;password&#39;</span> -k --users
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

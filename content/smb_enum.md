@@ -1,7 +1,7 @@
 ---
 title: "SMB Enum"
 date: 2024-6-26
-tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads"]
+tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads", "sid", "ad"]
 ---
 
 ---
@@ -37,7 +37,7 @@ smbclient -N -L \\\\10.10.11.10\\
 ```
 
 ```bash
-#After found an accessible share
+# After found an accessible share
 smbclient -N \\\\10.10.11.10\\share\\
 ```
 
@@ -76,14 +76,14 @@ smbclient -L \\\\10.10.11.10\\ -U domain/username%password
 ```
 
 ```bash
-#After found an accessible share
+# After found an accessible share
 smbclient  \\\\10.10.11.10\\share\\ -U domain/username%password
 ```
 
 #### smbclient Basic Commands
 
 ```bash
-#List all files in a share
+# List all files in a share
 recurse ON
 ```
 
@@ -92,7 +92,7 @@ ls
 ```
 
 ```bash
-#Download all files
+# Download all files
 mask ""
 ```
 
@@ -106,6 +106,23 @@ prompt OFF
 
 ```bash
 mget *
+```
+
+#### impacket-smbclient (Kerberos)
+
+```bash
+impacket-smbclient 'example.com/username:password@dc.example.com' -k -no-pass
+```
+
+<br>
+
+---
+
+#### SID Brute
+
+```bash
+# Null auth allowed
+impacket-lookupsid test@<DOMAIN> -no-pass
 ```
 
 <br>

@@ -1,13 +1,11 @@
 ---
 title: "SMTP"
 date: 2024-7-5
-tags: ["smtp", "mail", "email", "25", "enum"]
+tags: ["smtp", "mail", "email", "25", "enum", "template"]
 ---
 
 ---
-### SMTP
-
-#### Simple Debugging Server
+### Simple Mail Debugging Server
 
 ```python
 #!/usr/bin/env python3
@@ -30,10 +28,24 @@ input("[*] Server started. Press Return to quit.\n")
 server.stop()
 ```
 
-#### User Enum
+### User Enum
+
+#### nmap script
 
 ```bash
-perl smtp-user-enum.pl -M RCPT -U users.txt -t 10.10.11.10
+nmap -p 25 --script=smtp-enum-users 10.10.11.10
+```
+
+#### smtp-user-enum
+
+```bash
+# Use RCPT
+smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t 10.10.11.10
+```
+
+```bash
+# Use VRFY
+smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t 10.10.11.10
 ```
 
 <small>*Note: [smtp-user-enum.pl](https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl)*</small>

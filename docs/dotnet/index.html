@@ -60,11 +60,17 @@
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> new_project
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Init</span>
 </span></span><span class="line"><span class="cl">dotnet new console
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create .sln file</span>
+</span></span><span class="line"><span class="cl">dotnet new sln
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Link .sln to .csproj</span>
+</span></span><span class="line"><span class="cl">dotnet sln new_project.sln add new_project.csproj 
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add dependencies (optional)</span>
 </span></span><span class="line"><span class="cl">dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------+
 </span></span><span class="line"><span class="cl">|Add Code to Program.cs|
 </span></span><span class="line"><span class="cl">+----------------------+
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Build solution</span>
+</span></span><span class="line"><span class="cl">dotnet build
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run</span>
 </span></span><span class="line"><span class="cl">dotnet run
 </span></span></code></pre></div><br></div></div>

@@ -54,6 +54,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">showmount -e 10.10.11.10
 </span></span></code></pre></div><h4 id="mount-share">Mount share</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t nfs 10.10.11.10:/share /mnt/share/
+</span></span></code></pre></div><h4 id="unmount-share">Unmount share</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo umount /mnt/share/
 </span></span></code></pre></div><h4 id="others">Others</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check all mounted drives</span>
 </span></span><span class="line"><span class="cl">mount
@@ -64,6 +66,13 @@
 </span></span><span class="line"><span class="cl"><span class="p">|</span>root_squash  : running as root on <span class="nb">local</span> system will be treated as nobody user in target <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span>no_all_squash: every other users permission will translate from <span class="nb">local</span> system to target  <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+----------------------------------------------------------------------------------------+
+</span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add dummy user</span>
+</span></span><span class="line"><span class="cl">sudo useradd dummy
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Change uid</span>
+</span></span><span class="line"><span class="cl">sudo usermod -u <span class="m">1001</span> dummy 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Switch to dummy user</span>
+</span></span><span class="line"><span class="cl">sudo su dummy -c bash
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="smb">SMB</h3>

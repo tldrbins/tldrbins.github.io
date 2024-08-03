@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description> Zone Transfer dig example.com axfr @10.10.11.10 Domain Discovery dig @10.10.11.10 example.com dig @10.10.11.10 -x 10.10.11.10 dig @10.10.11.10 +short example.com any dig @10.10.11.10 -t NS example.com dig @10.10.11.10 _gc.example.com </description>
+      <description> Zone Transfer dig +noall +answer example.com axfr @10.10.11.10 Domain Discovery dig +noall +answer @10.10.11.10 example.com dig +noall +answer @10.10.11.10 -x 10.10.11.10 dig+noall +answer @10.10.11.10 +short example.com any dig +noall +answer @10.10.11.10 -t NS example.com </description>
     </item>
     <item>
       <title>Drupal</title>
@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description> Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Sniff Network Traffic # For example: on port 389 tcpdump -i lo -nnXs 0 &amp;#39;port 389&amp;#39; Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&amp;gt;&amp;amp;1 | grep -v &amp;#34;Connection refused&amp;#34; &amp;amp;); done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # If netstat not present cat /proc/net/tcp | grep &amp;#39;00000000:0000 0A&amp;#39; ss -tnl # Windows netstat -ano </description>
+      <description>Test Connectivity ping -c3 10.10.11.10 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Sniff Network Traffic # For example: on port 389 tcpdump -i lo -nnXs 0 &amp;#39;port 389&amp;#39; Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&amp;gt;&amp;amp;1 | grep -v &amp;#34;Connection refused&amp;#34; &amp;amp;); done Check ARP arp -na cat /proc/net/arp Check IP # Linux ifconfig ip addr cat /proc/net/fib_trie # Windows ipconfig Check Network Connections # TCP netstat -plant # UDP netstat -plunt # If netstat not present cat /proc/net/tcp | grep &amp;#39;00000000:0000 0A&amp;#39; ss -tnl # Windows netstat -ano | findstr LISTENING # Windows, List tcp listening ports and processes Get-NetTCPConnection -State Listen | Select-Object -Property *,@{&amp;#39;Name&amp;#39; = &amp;#39;ProcessName&amp;#39;;&amp;#39;Expression&amp;#39;={(Get-Process -Id $_.</description>
     </item>
     <item>
       <title>Nmap</title>
@@ -40,14 +40,14 @@
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 10.10.11.10 Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ #After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.10.11.10\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H 10.</description>
+      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 10.10.11.10 Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ # After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.10.11.10\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H 10.</description>
     </item>
     <item>
       <title>SNMP</title>
       <link>https://tldrbins.github.io/snmp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/snmp/</guid>
-      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v2c -c public 10.10.11.10 | tee snmpwalk_result # Query specific OID, e.g, ipAddressIfIndex.ipv6 snmpwalk -v2c -c public 10.</description>
+      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt snmpbrute snmpbrute.py&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t 10.10.11.10 snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public 10.</description>
     </item>
   </channel>
 </rss>

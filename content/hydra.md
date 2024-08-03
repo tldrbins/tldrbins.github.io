@@ -32,7 +32,7 @@ hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.
 +-----------------------------------------+
 |-l                 : username            |
 |-P                 : wordlist            |
-|http-post-form    : service             |
+|http-post-form     : service             |
 |/login.php         : action              |
 |^PASS^             : payload indicator   |
 |Incorrect password : login failure string|

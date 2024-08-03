@@ -52,6 +52,8 @@
   
   <li><a href="https://tldrbins.github.io/@winrm/">Winrm</a></li>
   
+  <li><a href="https://tldrbins.github.io/@rid/">Rid</a></li>
+  
 </ul>
 
 <div class="content"><hr>
@@ -64,12 +66,20 @@
 </span></span><span class="line"><span class="cl">nxc smb -u username -p password -d domain -dc-ip 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple users or passwords</span>
 </span></span><span class="line"><span class="cl">nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Match username to corresponding password</span>
+</span></span><span class="line"><span class="cl">nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With LM Hash:NT Hash</span>
 </span></span><span class="line"><span class="cl">nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash
-</span></span></code></pre></div><h3 id="supported-protocols">Supported protocols</h3>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled)</span>
+</span></span><span class="line"><span class="cl">nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 -k
+</span></span></code></pre></div><h4 id="supported-protocols">Supported protocols</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------------------------------------------+
 </span></span><span class="line"><span class="cl">| ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi |
 </span></span><span class="line"><span class="cl">+----------------------------------------------------------+
+</span></span></code></pre></div><h4 id="rid-brute">RID Brute</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc smb 10.10.11.10 -u guest -p <span class="s1">&#39;&#39;</span> --rid-brute <span class="m">10000</span>
+</span></span></code></pre></div><h4 id="user-enum-authenticated">User Enum (Authenticated)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc smb 10.10.11.10 -u username -p password -d example.com --users
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

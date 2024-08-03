@@ -46,6 +46,10 @@
   
   <li><a href="https://tldrbins.github.io/@ads/">Ads</a></li>
   
+  <li><a href="https://tldrbins.github.io/@sid/">Sid</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
 </ul>
 
 <div class="content"><hr>
@@ -60,7 +64,7 @@
 </span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -r <span class="s1">&#39;share&#39;</span>
 </span></span></code></pre></div><h4 id="smbclient">smbclient</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After found an accessible share</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After found an accessible share</span>
 </span></span><span class="line"><span class="cl">smbclient -N <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>share<span class="se">\\</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED</span>
 </span></span><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span> --option<span class="o">=</span><span class="s1">&#39;client min protocol=NT1&#39;</span>
@@ -75,17 +79,24 @@
 </span></span><span class="line"><span class="cl">smbmap -H 10.10.11.10 -u username -p password -r <span class="s1">&#39;share&#39;</span>  -A FILE_PATTERN
 </span></span></code></pre></div><h4 id="smbclient-1">smbclient</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -L <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span> -U domain/username%password
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After found an accessible share</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After found an accessible share</span>
 </span></span><span class="line"><span class="cl">smbclient  <span class="se">\\\\</span>10.10.11.10<span class="se">\\</span>share<span class="se">\\</span> -U domain/username%password
 </span></span></code></pre></div><h4 id="smbclient-basic-commands">smbclient Basic Commands</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#List all files in a share</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all files in a share</span>
 </span></span><span class="line"><span class="cl">recurse ON
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Download all files</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Download all files</span>
 </span></span><span class="line"><span class="cl">mask <span class="s2">&#34;&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">recurse ON
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">prompt OFF
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mget *
+</span></span></code></pre></div><h4 id="impacket-smbclient-kerberos">impacket-smbclient (Kerberos)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-smbclient <span class="s1">&#39;example.com/username:password@dc.example.com&#39;</span> -k -no-pass
+</span></span></code></pre></div><br>
+<hr>
+<h4 id="sid-brute">SID Brute</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Null auth allowed</span>
+</span></span><span class="line"><span class="cl">impacket-lookupsid test@&lt;DOMAIN&gt; -no-pass
 </span></span></code></pre></div><br>
 <hr>
 <h3 id="mount-smb-share">Mount SMB Share</h3>

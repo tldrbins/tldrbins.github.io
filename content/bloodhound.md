@@ -25,10 +25,25 @@ Invoke-BloodHound -CollectionMethods All
 .\SharpHound.exe -c all
 ```
 
-### bloodhound.py
+### bloodhound-python
 
 ```bash
-python3 bloodhound.py -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip
+# With Creds
+bloodhound-python -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip
+```
+
+```bash
+# With Kerberos
+sudo ntpdate -s dc.example.com && bloodhound-python -u username -p 'password' -k -d example.com -dc dc.example.com -ns 10.10.11.10 -c all --zip
+```
+
+### bloodhound with PKI support
+
+[BloodHound](https://github.com/ly4k/BloodHound)
+
+```bash
+# Fix: GPU process isn't usable. Goodbye.
+./BloodHound --no-sandbox
 ```
 
 <br>

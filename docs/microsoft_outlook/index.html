@@ -68,6 +68,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">|</span>q       : back                      <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span>q again : quit                      <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+------------------------------------+
+</span></span></code></pre></div><h3 id="open-msg-file">Open .msg file</h3>
+<h4 id="tool-1">Tool</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install msgconvert</span>
+</span></span><span class="line"><span class="cl">sudo apt install libemail-outlook-message-perl
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install formail</span>
+</span></span><span class="line"><span class="cl">sudo apt install procmail
+</span></span></code></pre></div><h4 id="basic-1">Basic</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to .eml format</span>
+</span></span><span class="line"><span class="cl">msgconvert *.msg
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to .mbox format</span>
+</span></span><span class="line"><span class="cl">cat messages.eml <span class="p">|</span> formail -b &gt; emails.mbox
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

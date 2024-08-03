@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound.py python3 bloodhound.py -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip </description>
+      <description>sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound-python # With Creds bloodhound-python -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip # With Kerberos sudo ntpdate -s dc.example.com &amp;amp;&amp;amp; bloodhound-python -u username -p &amp;#39;password&amp;#39; -k -d example.com -dc dc.example.com -ns 10.10.11.10 -c all --zip bloodhound with PKI support BloodHound&#xA;# Fix: GPU process isn&amp;#39;t usable. Goodbye.</description>
     </item>
   </channel>
 </rss>

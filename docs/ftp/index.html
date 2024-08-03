@@ -43,7 +43,9 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="basic">Basic</h3>
+<h3 id="config-location">Config Location</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/vsftpd.conf
+</span></span></code></pre></div><h3 id="basic">Basic</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
 </span></span><span class="line"><span class="cl">ftp 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+-------------------+
@@ -60,6 +62,8 @@
 </span></span><span class="line"><span class="cl">get filename
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload</span>
 </span></span><span class="line"><span class="cl">put filename
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect over tunnel</span>
+</span></span><span class="line"><span class="cl">passive
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exit</span>
 </span></span><span class="line"><span class="cl">quit
 </span></span></code></pre></div><h3 id="recusive-download">Recusive download</h3>

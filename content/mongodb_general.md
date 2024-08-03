@@ -45,4 +45,9 @@ db.COLLECTION_NAME.find().pretty()
 db.COLLECTION_NAME.insert({"key": "value"})
 ```
 
+```bash
+# Update an entry (e.g. password of user)
+db.COLLECTION_NAME.update({"username": "user"}, {$set: {"password": "password"}});
+```
+
 <br>

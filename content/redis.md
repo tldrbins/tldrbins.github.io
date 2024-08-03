@@ -13,6 +13,11 @@ redis-cli -h 127.0.0.1
 ```
 
 ```bash
+# Provide password
+auth password
+```
+
+```bash
 # List current keys
 keys *
 ```

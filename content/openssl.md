@@ -25,6 +25,12 @@ cat b64_file | openssl enc -d -base64 -out ./file
 
 ### Certificate
 
+#### Show content of a request
+
+```bash
+openssl req -in request.csr -noout -text
+```
+
 #### Create Client Certificate
 
 ```bash

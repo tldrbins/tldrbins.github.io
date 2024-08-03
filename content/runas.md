@@ -7,7 +7,7 @@ tags: ["powershell", "cred object", "Windows", "runas"]
 ---
 ### Runas (with creds)
 
-#### Create Cred Object
+#### Create Cred Object #1
 
 ```powershell
 $username = "domain\username"
@@ -29,6 +29,16 @@ $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
 ```
 
+#### Create Cred Object #2
+
+```powershell
+$password = ConvertTo-SecureString "password" -AsPlainText -Force
+```
+
+```powershell
+$cred = New-Object System.Management.Automation.PSCredential("domain\username", $password)
+```
+
 #### Run Commnad
 
 ```powershell
@@ -38,6 +48,11 @@ Invoke-Command -ScriptBlock { whoami } -Credential $cred -Computer localhost
 ```powershell
 # If error, try
 Invoke-Command -ScriptBlock { whoami } -Credential $cred -Computer localhost -auth credssp
+```
+
+```powershell
+# Invoke command with config
+Invoke-Command -ScriptBlock { whoami } -Credential $cred -Computer localhost -ConfigurationName config_name
 ```
 
 #### Create a new PS session

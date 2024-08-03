@@ -44,15 +44,20 @@
 <h3 id="general">General</h3>
 <h4 id="connect-to-postgresql-database">Connect to postgresql Database</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">psql -h 127.0.0.1 -U user -p <span class="m">5432</span> -d database
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">psql postgresql://username:password@localhost:5432/db_name
 </span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show databases</span>
 </span></span><span class="line"><span class="cl"><span class="se">\l</span>ist
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use database</span>
+</span></span><span class="line"><span class="cl"><span class="se">\c</span>onnect db_name
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show tables in current database</span>
 </span></span><span class="line"><span class="cl"><span class="se">\d</span>t
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump data from table</span>
 </span></span><span class="line"><span class="cl"><span class="k">select</span> * from table_name<span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Insert data into table (e.g)</span>
 </span></span><span class="line"><span class="cl">insert into table_name <span class="o">(</span>username, password, role<span class="o">)</span> values <span class="o">(</span><span class="s1">&#39;user&#39;</span>, <span class="s1">&#39;password&#39;</span>, <span class="s1">&#39;admin&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Write text</span>
+</span></span><span class="line"><span class="cl">copy <span class="o">(</span><span class="k">select</span> <span class="s1">&#39;test&#39;</span><span class="o">)</span> to <span class="s1">&#39;/var/lib/postgresql/.profile&#39;</span><span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exit</span>
 </span></span><span class="line"><span class="cl"><span class="se">\q</span>
 </span></span></code></pre></div><h3 id="rce">RCE</h3>

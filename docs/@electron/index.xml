@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Electron on TLDRBins</title>
+    <link>https://tldrbins.github.io/@electron/</link>
+    <description>Recent content in Electron on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@electron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Electron</title>
+      <link>https://tldrbins.github.io/electron/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/electron/</guid>
+      <description> Tools sudo npm -g install asar Unpack app.asar # List files asar l app.asar # Extract all files asar e app.asar # Extract a file asar ef app.asar main.js </description>
+    </item>
+  </channel>
+</rss>

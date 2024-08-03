@@ -5,6 +5,12 @@ tags: ["wordpress", "wpscan"]
 ---
 
 ---
+### Default config location
+
+```bash
+/var/www/html/wp-config.php
+```
+
 ### wpscan
 
 [Get Free API key](https://wpscan.com/)

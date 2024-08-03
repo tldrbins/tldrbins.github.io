@@ -59,4 +59,10 @@ find / -exec getcap {} \; 2>/dev/null
 find . -type d | while read dir; do mkdir ${dir}/test 2>/dev/null && echo "${dir} - directory create OK" && rmdir ${dir}/test; touch ${dir}/test 2>/dev/null && echo "${dir} - file write OK" && rm ${dir}/test; done
 ```
 
+### Find files not modified by dpkg (i.e. modified by something else)
+
+```bash
+find /lib -type f -printf "%M %n %-6u %-6g %6s %TY-%Tm-%Td %TT %TZ %h/%f\n" | sort -k 6,7 | grep -v ".0000000000"
+```
+
 <br>

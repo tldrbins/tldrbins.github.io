@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/firefox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firefox/</guid>
-      <description> Extract saved passwords Download firefox_decrypt&#xA;# Auto detect path python firefox_decrypt.py # Specify path python firefox_decrypt.py /folder/containing/profiles.ini/ </description>
+      <description> Extract saved passwords firefox_decrypt&#xA;# Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /folder/containing/profiles.ini/ firepwd&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py </description>
     </item>
   </channel>
 </rss>

@@ -21,6 +21,16 @@ zip -r folder.zip folder/
 ```
 
 ```bash
+# zip a symlinks (not the destination file)
+zip --symlinks file.zip symlink
+```
+
+```bash
+# List files without unzip
+unzip -l file.zip
+```
+
+```bash
 # unzip
 unzip file.zip
 ```
@@ -45,6 +55,28 @@ tar -cvzf folder.tar.gz folder/
 ```bash
 # Extract
 tar -xvzf file.tar.gz
+```
+
+```bash
+# Extract Only with wildcard (e.g. .txt)
+tar -xvzf file.tar.gz --wildcards '*.txt'
+```
+
+### tar
+
+```bash
+# List files without extract
+tar -tf file.tar
+```
+
+```bash
+# Extract
+tar -xvf file.tar
+```
+
+```bash
+# Extract Only with wildcard (e.g. .txt)
+tar -xvf file.tar --wildcards '*.txt'
 ```
 
 ### gz
@@ -83,6 +115,11 @@ sudo apt install p7zip-full
 ```bash
 # Extract
 7z x file.zip
+```
+
+```bash
+# Show meta data
+7z l -slt file.zip
 ```
 
 ### bz

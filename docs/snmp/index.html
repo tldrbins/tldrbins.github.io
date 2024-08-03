@@ -53,6 +53,10 @@
 <p><a href="https://github.com/trailofbits/onesixtyone">Download onesixtyone</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Brute force community string for snmpwalk use</span>
 </span></span><span class="line"><span class="cl">onesixtyone 10.10.11.10 -c /usr/share/doc/onesixtyone/dict.txt
+</span></span></code></pre></div><h3 id="snmpbrute">snmpbrute</h3>
+<p><a href="https://github.com/SECFORCE/SNMP-Brute/blob/master/snmpbrute.py">snmpbrute.py</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Brute force community string (Check also SNMPv2)</span>
+</span></span><span class="line"><span class="cl">python3 snmpbrute.py -t 10.10.11.10
 </span></span></code></pre></div><h3 id="snmpwalk">snmpwalk</h3>
 <h4 id="installation">Installation</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install snmp
@@ -64,9 +68,12 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># Uncomment this line in /etc/snmp/snmp.conf</span>
 </span></span><span class="line"><span class="cl">mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
 </span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpwalk -v2c -c public 10.10.11.10 <span class="p">|</span> tee snmpwalk_result
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpwalk -v1 -c public 10.10.11.10 <span class="p">|</span> tee snmpwalk_result
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpwalk -v2c -c public 10.10.11.10 <span class="p">|</span> tee snmpwalk_result
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Query specific OID, e.g, ipAddressIfIndex.ipv6</span>
 </span></span><span class="line"><span class="cl">snmpwalk -v2c -c public 10.10.11.10 ipAddressIfIndex.ipv6
+</span></span></code></pre></div><h3 id="snmpbulkwalk-multithreads-much-faster">snmpbulkwalk (multithreads, much faster)</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpbulkwalk -Cr <span class="m">50</span> -c public -v2c 10.10.11.10
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

