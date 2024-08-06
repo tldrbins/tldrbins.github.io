@@ -9,17 +9,17 @@ tags: ["jwt", "jwks", "forge", "cookies"]
 
 #### 0. Sample jwks.json
 
-```json
-{
-	"keys": [
-			{
-			"kty": "RSA",
-			"use": "sig",
-			"alg": "RS256",
-			"n": "<some_long_base64_encoded_number>",
-			"e": "AQAB"
-	        }
-	]
+```
+{ 
+    "keys": [
+        {
+        "kty": "RSA",
+        "use": "sig",
+        "alg": "RS256",
+        "n": "<some_long_base64_encoded_number>",
+        "e": "AQAB"
+        }
+    ]
 }
 ```
 
