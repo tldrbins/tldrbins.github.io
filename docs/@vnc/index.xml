@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vnc on TLDRBins</title>
+    <link>https://tldrbins.github.io/@vnc/</link>
+    <description>Recent content in Vnc on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@vnc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VNC</title>
+      <link>https://tldrbins.github.io/vnc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/vnc/</guid>
+      <description>Basic # Connect vncviewer &amp;lt;TARGET&amp;gt;:5901 -passwd &amp;lt;SECRET_FILE&amp;gt; Note: secret is a cookie binary file</description>
+    </item>
+  </channel>
+</rss>

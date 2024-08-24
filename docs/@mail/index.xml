@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mail on TLDRBins</title>
+    <link>https://tldrbins.github.io/@mail/</link>
+    <description>Recent content in Mail on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@mail/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IMAP</title>
+      <link>https://tldrbins.github.io/imap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/imap/</guid>
+      <description> IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect 10.10.11.10:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
+    </item>
+    <item>
+      <title>POP3</title>
+      <link>https://tldrbins.github.io/pop3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pop3/</guid>
+      <description> POP3 # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
+    </item>
+    <item>
+      <title>SMTP</title>
+      <link>https://tldrbins.github.io/smtp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smtp/</guid>
+      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() User Enum nmap script nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; smtp-user-enum # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
+    </item>
+  </channel>
+</rss>

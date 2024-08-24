@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Snmpwalk on TLDRBins</title>
+    <link>https://tldrbins.github.io/@snmpwalk/</link>
+    <description>Recent content in Snmpwalk on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@snmpwalk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SNMP</title>
+      <link>https://tldrbins.github.io/snmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/snmp/</guid>
+      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt snmpbrute snmpbrute.py&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result snmpwalk -v2c -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result # Query specific OID, e.</description>
+    </item>
+  </channel>
+</rss>

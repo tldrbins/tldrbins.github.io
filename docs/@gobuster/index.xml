@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gobuster on TLDRBins</title>
+    <link>https://tldrbins.github.io/@gobuster/</link>
+    <description>Recent content in Gobuster on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@gobuster/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web Directory Enum</title>
+      <link>https://tldrbins.github.io/web_directory_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/web_directory_enum/</guid>
+      <description>feroxbuster HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash / to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt wfuzz Fuzzing Number Range wfuzz -z range,1-99 http://example.</description>
+    </item>
+  </channel>
+</rss>

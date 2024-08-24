@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tftp on TLDRBins</title>
+    <link>https://tldrbins.github.io/@tftp/</link>
+    <description>Recent content in Tftp on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@tftp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TFTP</title>
+      <link>https://tldrbins.github.io/tftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/tftp/</guid>
+      <description>TFTP # Connect tftp &amp;lt;TARGET&amp;gt; # Download get &amp;lt;FILE&amp;gt; # Exit quit Note: You need to know the exact filename, there is no directory listing in tftp</description>
+    </item>
+  </channel>
+</rss>

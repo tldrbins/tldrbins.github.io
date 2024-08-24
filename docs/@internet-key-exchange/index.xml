@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Internet Key Exchange on TLDRBins</title>
+    <link>https://tldrbins.github.io/@internet-key-exchange/</link>
+    <description>Recent content in Internet Key Exchange on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@internet-key-exchange/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VPN</title>
+      <link>https://tldrbins.github.io/vpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/vpn/</guid>
+      <description> Enum # Check with ikeV1 ike-scan -M &amp;lt;TARGET&amp;gt; # Check with ikeV2 ike-scan -M --ikev2 &amp;lt;TARGET&amp;gt; Connect to VPN Tools sudo apt install strongswan Settings # Edit /etc/ipsec.secrets %any : PSK &amp;lt;PASSWORD&amp;gt; # Edit /etc/ipsec.conf (copy from ike-scan result) config setup charondebug=&amp;#34;all&amp;#34; uniqueids=yes strictcrlpolicy=no conn testvpn authby=secret auto=add ike=3des-sha1-modp1024! esp=3des-sha1! type=transport keyexchange=ikev1 left=&amp;lt;LOCAL&amp;gt; right=&amp;lt;TARGET&amp;gt; rightsubnet=&amp;lt;TARGET&amp;gt;[tcp] Connect # Reset ipsec restart # Connect ipsec up testvpn </description>
+    </item>
+  </channel>
+</rss>

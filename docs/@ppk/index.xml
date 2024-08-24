@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ppk on TLDRBins</title>
+    <link>https://tldrbins.github.io/@ppk/</link>
+    <description>Recent content in Ppk on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@ppk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH</title>
+      <link>https://tldrbins.github.io/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ssh/</guid>
+      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;lt;id_rsa.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Graphql on TLDRBins</title>
+    <link>https://tldrbins.github.io/@graphql/</link>
+    <description>Recent content in Graphql on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@graphql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Graphql</title>
+      <link>https://tldrbins.github.io/graphql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/graphql/</guid>
+      <description>Visualize Tool graphql-voyager&#xA;+---------------------------------------------------------------+ | 1. Change Schema -&amp;gt; Introspection -&amp;gt; Copy Introspection Query | | 2. Paste query | | 3. Display | +---------------------------------------------------------------+ Basic Commands # Get fields from schema curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{queryType{name,fields{name,description}}}}&amp;#34;}&amp;#39; | jq . # Get types name curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{types{name}}}&amp;#34;}&amp;#39; | jq . # Get fields of type (e.g. User) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__type(name:\&amp;#34;User\&amp;#34;){name,fields{name}}}&amp;#34;}&amp;#39; | jq .</description>
+    </item>
+  </channel>
+</rss>

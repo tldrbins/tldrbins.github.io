@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Memcache on TLDRBins</title>
+    <link>https://tldrbins.github.io/@memcache/</link>
+    <description>Recent content in Memcache on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@memcache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>memcache</title>
+      <link>https://tldrbins.github.io/memcache/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/memcache/</guid>
+      <description> Connect Using Telnet # Connect telnet 127.0.0.1 11211 Using memcached-cli # Install sudo npm install -g memcached-cli # Connect (With Creds) memcached-cli &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@10.10.11.10:11211 Basic Commmands # Info about slabs stats slabs # Show slab info (e.g. slab 1 and display all keys) stats cachedump 1 0 # Dump info get &amp;lt;ITEM_NAME&amp;gt; </description>
+    </item>
+  </channel>
+</rss>

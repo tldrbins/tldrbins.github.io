@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sqlplus on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sqlplus/</link>
+    <description>Recent content in Sqlplus on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sqlplus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V ODAT (Oracle Database Attacking Tool) Download ODAT&#xA;# Install sudo apt install odat # Check odat --version Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.</description>
+    </item>
+  </channel>
+</rss>

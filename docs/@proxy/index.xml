@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Proxy on TLDRBins</title>
+    <link>https://tldrbins.github.io/@proxy/</link>
+    <description>Recent content in Proxy on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@proxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Squid Proxy</title>
+      <link>https://tldrbins.github.io/squid_proxy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/squid_proxy/</guid>
+      <description>Config location /etc/squid/squid.conf Connect via FoxyProxy Firefox plugin +--------------------------+ | Settings | +--------------------------+ | Title : squid proxy | | Proxy Type : HTTP | | Proxy IP : &amp;lt;TARGET&amp;gt; | | Port : 3128 | | Username : (If any) | | Password : (If any) | +--------------------------+ # Connect http://&amp;lt;TARGET&amp;gt; # Or http://127.0.0.1 Internal ports scan via proxy # 1. Take note of word size, then Ctrl+C wfuzz -z range,1-1000 -p &amp;lt;TARGET&amp;gt;:3128:HTTP -u http://127.</description>
+    </item>
+  </channel>
+</rss>

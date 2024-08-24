@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pwncat on TLDRBins</title>
+    <link>https://tldrbins.github.io/@pwncat/</link>
+    <description>Recent content in Pwncat on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@pwncat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Listeners</title>
+      <link>https://tldrbins.github.io/listeners/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/listeners/</guid>
+      <description> nc rlwrap nc -lvnp 1337 ncat # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 # After getting a connection (local) pwncat$ back </description>
+    </item>
+  </channel>
+</rss>

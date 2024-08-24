@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wordpress on TLDRBins</title>
+    <link>https://tldrbins.github.io/@wordpress/</link>
+    <description>Recent content in Wordpress on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wordpress</title>
+      <link>https://tldrbins.github.io/wordpress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/wordpress/</guid>
+      <description> Default config location /var/www/html/wp-config.php wpscan Get Free API key&#xA;# HTTP wpscan --url http://example.com -e ap,t,tt,u # HTTPS wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://example.com -e ap,t,tt,u --api-token &amp;lt;API_KEY&amp;gt; # Brute force wp-admin wpscan --url http://example.com --passwords passwords.txt --usernames admin </description>
+    </item>
+  </channel>
+</rss>

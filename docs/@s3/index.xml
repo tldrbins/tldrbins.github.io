@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>S3 on TLDRBins</title>
+    <link>https://tldrbins.github.io/@s3/</link>
+    <description>Recent content in S3 on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@s3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS</title>
+      <link>https://tldrbins.github.io/aws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/aws/</guid>
+      <description>Setup # Install awscli sudo apt install awscli # Set config aws configure AWS Access Key ID [None]: test AWS Secret Access Key [None]: test Default region name [None]: test Default output format [None]: Default AWS Credential Location ~/.aws/credentials S3 # List buckets aws s3 --endpoint-url http://s3.example.com ls # List bucket aws s3 --endpoint-url http://s3.example.com ls s3://&amp;lt;BUCKET_NAME&amp;gt; # Upload to bucket aws s3 --endpoint-url http://s3.example.com cp &amp;lt;FILE&amp;gt; s3://&amp;lt;BUCKET_NAME&amp;gt;/&amp;lt;FILE&amp;gt; dynamodb # List tables aws --endpoint-url http://s3.</description>
+    </item>
+  </channel>
+</rss>

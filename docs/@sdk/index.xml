@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sdk on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sdk/</link>
+    <description>Recent content in Sdk on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sdk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dotnet</title>
+      <link>https://tldrbins.github.io/dotnet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dotnet/</guid>
+      <description> Compile C# project (From Linux) Download dotnet&#xA;# Check dotnet --info # Prepare mkdir &amp;lt;PROJECT_NAME&amp;gt; cd &amp;lt;PROJECT_NAME&amp;gt; # Init dotnet new console # Create .sln file dotnet new sln # Link .sln to .csproj dotnet sln &amp;lt;PROJECT_NAME&amp;gt;.sln add &amp;lt;PROJECT_NAME&amp;gt;.csproj # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Build solution dotnet build # Run dotnet run </description>
+    </item>
+  </channel>
+</rss>

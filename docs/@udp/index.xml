@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Udp on TLDRBins</title>
+    <link>https://tldrbins.github.io/@udp/</link>
+    <description>Recent content in Udp on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@udp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SNMP</title>
+      <link>https://tldrbins.github.io/snmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/snmp/</guid>
+      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt snmpbrute snmpbrute.py&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result snmpwalk -v2c -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result # Query specific OID, e.</description>
+    </item>
+    <item>
+      <title>VPN</title>
+      <link>https://tldrbins.github.io/vpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/vpn/</guid>
+      <description> Enum # Check with ikeV1 ike-scan -M &amp;lt;TARGET&amp;gt; # Check with ikeV2 ike-scan -M --ikev2 &amp;lt;TARGET&amp;gt; Connect to VPN Tools sudo apt install strongswan Settings # Edit /etc/ipsec.secrets %any : PSK &amp;lt;PASSWORD&amp;gt; # Edit /etc/ipsec.conf (copy from ike-scan result) config setup charondebug=&amp;#34;all&amp;#34; uniqueids=yes strictcrlpolicy=no conn testvpn authby=secret auto=add ike=3des-sha1-modp1024! esp=3des-sha1! type=transport keyexchange=ikev1 left=&amp;lt;LOCAL&amp;gt; right=&amp;lt;TARGET&amp;gt; rightsubnet=&amp;lt;TARGET&amp;gt;[tcp] Connect # Reset ipsec restart # Connect ipsec up testvpn </description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Private Key on TLDRBins</title>
+    <link>https://tldrbins.github.io/@private-key/</link>
+    <description>Recent content in Private Key on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@private-key/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPG</title>
+      <link>https://tldrbins.github.io/gpg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/gpg/</guid>
+      <description>GPG # Check version gpg --version # Generate new key gpg --gen-key # Export public key gpg --export -a user@example.com # Check keys gpg --list-keys # Import public key gpg --import key.pub # Encrypt a message with public key (email from pub key) gpg --encrypt --armor -r user@example.com plaintext.txt # Decrypt a message with our private key gpg -d ciphertext.txt # Sign our own message gpg --clearsign --output - plaintext.</description>
+    </item>
+    <item>
+      <title>SSH</title>
+      <link>https://tldrbins.github.io/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ssh/</guid>
+      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;lt;id_rsa.</description>
+    </item>
+  </channel>
+</rss>

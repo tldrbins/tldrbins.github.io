@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Openssl | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/openssl/">
+      <span>Openssl</span>
+    </a>
+  </h1>
+  <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+    
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+
+     
+    float: right;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(223, 61%, 44%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+</style>
+
+<script>
+    var body = document.body;
+    var switcher = document.getElementsByClassName('js-toggle')[0];
+
+    
+    switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        
+        if (this.classList.contains('js-toggle--checked')) {
+            body.classList.add('dark-mode');
+            
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            body.classList.remove('dark-mode');
+            setTimeout(function() {
+                localStorage.removeItem('darkMode');
+            }, 100);
+        }
+    })
+
+    
+    if (localStorage.getItem('darkMode')) {
+        
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+    }
+
+</script>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@openssl/">Openssl</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@base64/">Base64</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@cert/">Cert</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ssl/">Ssl</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@certificate-signing-request/">Certificate Signing Request</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@csr/">Csr</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@pem/">Pem</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@p12/">P12</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@key/">Key</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@crt/">Crt</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="show-tls-certificate">Show TLS Certificate</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="p">|</span> openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2&gt;/dev/null <span class="p">|</span> openssl x509 -inform pem -noout -text
+</span></span></code></pre></div><h3 id="base64-encodedecode">Base64 Encode/Decode</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># base64 encode a file</span>
+</span></span><span class="line"><span class="cl">openssl base64 -in ./file
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># base64 decode a file and output to a file</span>
+</span></span><span class="line"><span class="cl">cat b64_file <span class="p">|</span> openssl enc -d -base64 -out ./file
+</span></span></code></pre></div><h3 id="certificate">Certificate</h3>
+<h4 id="show-content-of-a-request">Show content of a request</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl req -in request.csr -noout -text
+</span></span></code></pre></div><h4 id="create-client-certificate">Create Client Certificate</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate a user key</span>
+</span></span><span class="line"><span class="cl">openssl genrsa -out username.key <span class="m">2048</span>                                                      
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a CSR</span>
+</span></span><span class="line"><span class="cl">openssl req -new -key username.key -out username.csr
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Settings</span>
+</span></span><span class="line"><span class="cl">+-----------------------------------------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> You are about to be asked to enter information that will be incorporated    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> into your certificate request.                                              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> What you are about to enter is what is called a Distinguished Name or a DN. <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> There are quite a few fields but you can leave some blank                   <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> For some fields there will be a default value,                              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> -----                                                                       <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Country Name <span class="o">(</span><span class="m">2</span> letter code<span class="o">)</span> <span class="o">[</span>AU<span class="o">]</span>:US                                        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> State or Province Name <span class="o">(</span>full name<span class="o">)</span> <span class="o">[</span>Some-State<span class="o">]</span>:                            <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Locality Name <span class="o">(</span>eg, city<span class="o">)</span> <span class="o">[]</span>:                                                <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Organization Name <span class="o">(</span>eg, company<span class="o">)</span> <span class="o">[</span>Internet Widgits Pty Ltd<span class="o">]</span>:COMPANY_NAME     <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Organizational Unit Name <span class="o">(</span>eg, section<span class="o">)</span> <span class="o">[]</span>:COMPANY_NAME                      <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Common Name <span class="o">(</span>e.g. server FQDN or YOUR name<span class="o">)</span> <span class="o">[]</span>:username                     <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Email Address <span class="o">[]</span>:                                                           <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>                                                                             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Please enter the following <span class="s1">&#39;extra&#39;</span> attributes                               <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> to be sent with your certificate request                                    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> A challenge password <span class="o">[]</span>:                                                    <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> An optional company name <span class="o">[]</span>:                                                <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+-----------------------------------------------------------------------------+
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Sign the .csr with a valid key and cert pair</span>
+</span></span><span class="line"><span class="cl">openssl x509 -req -in username.csr -CA company.cert.pem -CAkey company.key.pem -CAcreateserial -out username.pem -days <span class="m">1024</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to pfx that Firefox can import</span>
+</span></span><span class="line"><span class="cl">openssl pkcs12 -export -out username.pfx -inkey username.key -in username.pem -certfile company.cert.pem
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Settings</span>
+</span></span><span class="line"><span class="cl">+------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Enter Export Password:             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Verifying - Enter Export Password: <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+------------------------------------+
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Alternative: curl</span>
+</span></span><span class="line"><span class="cl">curl -k --cert username.pem --key username.key https://10.10.11.10
+</span></span></code></pre></div><h4 id="convert-p12-to-key-and-crt">Convert .p12 to .key and .crt</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create cert.key</span>
+</span></span><span class="line"><span class="cl">openssl pkcs12 -in cert.p12 -nocerts -out cert.key
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create cert.crt</span>
+</span></span><span class="line"><span class="cl">openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
+</span></span></code></pre></div><br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

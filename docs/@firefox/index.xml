@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Firefox on TLDRBins</title>
+    <link>https://tldrbins.github.io/@firefox/</link>
+    <description>Recent content in Firefox on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@firefox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firefox</title>
+      <link>https://tldrbins.github.io/firefox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firefox/</guid>
+      <description> Extract saved passwords firefox_decrypt firefox_decrypt&#xA;# Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ firepwd firepwd&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py </description>
+    </item>
+  </channel>
+</rss>

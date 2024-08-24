@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scheduled Tasks on TLDRBins</title>
+    <link>https://tldrbins.github.io/@scheduled-tasks/</link>
+    <description>Recent content in Scheduled Tasks on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@scheduled-tasks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cron Jobs</title>
+      <link>https://tldrbins.github.io/cron/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/cron/</guid>
+      <description> Check Cron Jobs ls -la /etc/cron.d/ cat /etc/crontab crontab -l Check background processes Downlaod pspy&#xA;./pspy </description>
+    </item>
+    <item>
+      <title>Scheduled tasks</title>
+      <link>https://tldrbins.github.io/scheduled_tasks_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/scheduled_tasks_windows/</guid>
+      <description> Check scheduled tasks schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
+    </item>
+  </channel>
+</rss>

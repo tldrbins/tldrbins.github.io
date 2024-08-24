@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Certify on TLDRBins</title>
+    <link>https://tldrbins.github.io/@certify/</link>
+    <description>Recent content in Certify on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@certify/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad certipy-ad find -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M adcs Enum (From Windows) Powershell # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates Certify.exe # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser ADCSTemplate ADCSTemplate&#xA;import-module .</description>
+    </item>
+  </channel>
+</rss>

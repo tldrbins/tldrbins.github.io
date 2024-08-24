@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apk on TLDRBins</title>
+    <link>https://tldrbins.github.io/@apk/</link>
+    <description>Recent content in Apk on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@apk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android</title>
+      <link>https://tldrbins.github.io/android/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/android/</guid>
+      <description>Unpack .apk file apktool&#xA;# Get .smali files java -jar apktool_2.9.3.jar d app.apk jadx&#xA;# Get .java files jadx app.apk Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;lt;PASSWORD&amp;gt; --out app_final.apk app_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
+    </item>
+  </channel>
+</rss>

