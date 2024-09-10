@@ -202,21 +202,34 @@
 
 <div class="content"><hr>
 <h3 id="simply-catch-http-request">Simply catch HTTP request</h3>
+<div>
 <p><a href="https://webhook.site">webhook.site</a></p>
+</div>
+<br>
 <hr>
 <h3 id="catch-http-request-and-host-a-web-server">Catch HTTP request and host a web server</h3>
-<h4 id="serveonet">serveo.net</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">serveo.net</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >ngrok</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start a local HTTP server</span>
 </span></span><span class="line"><span class="cl">python3 -m http.server <span class="m">3000</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Redirect http request to localhost:3000</span>
 </span></span><span class="line"><span class="cl">ssh -R 80:localhost:3000 serveo.net
-</span></span></code></pre></div><h4 id="ngrok">ngrok</h4>
-<p><a href="https://ngrok.com">Download ngrok</a></p>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ngrok http <span class="m">80</span>
-</span></span></code></pre></div><p><small><em>Note: ngrok free will show a warning message and require user accpet to proceed</em></small>
+</span></span></code></pre></div><p><small><em>Ref: <a href="https://ngrok.com">ngrok</a></em></small>
+<br>
+<small><em>Note: ngrok free will show a warning message and require user accpet to proceed</em></small>
 <br>
 <small><em>Note: Not good for XSS</em></small></p>
-</div></div>
+</div></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

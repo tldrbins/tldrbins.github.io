@@ -207,9 +207,8 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="nxc">nxc</h3>
-<p><a href="https://github.com/Pennyw0rth/NetExec">Download nxc</a></p>
 <h4 id="basic-commands">Basic Commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single user and password</span>
 </span></span><span class="line"><span class="cl">nxc smb 10.10.11.10 -u &lt;USER&gt; -p &lt;PASSWORD&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single user and password (Active Directory)</span>
@@ -221,16 +220,24 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With LM Hash:NT Hash</span>
 </span></span><span class="line"><span class="cl">nxc smb 10.10.11.10 -u &lt;USER&gt; -H &lt;LM&gt;:&lt;NT&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled)</span>
-</span></span><span class="line"><span class="cl">nxc smb -u &lt;USER&gt; -p &lt;PASSWORD&gt; -d &lt;DOMAIN&gt; -dc-ip &lt;DC_IP&gt; -k
-</span></span></code></pre></div><h4 id="supported-protocols">Supported protocols</h4>
+</span></span><span class="line"><span class="cl">nxc smb -u &lt;USER&gt; -p &lt;PASSWORD&gt; -d &lt;DOMAIN&gt; -k 10.10.11.10
+</span></span></code></pre></div></div>
+<h4 id="supported-protocols">Supported protocols</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------------------------------------------+
 </span></span><span class="line"><span class="cl">| ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi |
 </span></span><span class="line"><span class="cl">+----------------------------------------------------------+
-</span></span></code></pre></div><h4 id="rid-brute">RID Brute</h4>
+</span></span></code></pre></div></div>
+<h4 id="rid-brute">RID Brute</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc smb 10.10.11.10 -u guest -p <span class="s1">&#39;&#39;</span> --rid-brute <span class="m">10000</span>
-</span></span></code></pre></div><h4 id="user-enum-authenticated">User Enum (Authenticated)</h4>
+</span></span></code></pre></div></div>
+<h4 id="user-enum-authenticated">User Enum (Authenticated)</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc smb 10.10.11.10 -u &lt;USER&gt; -p &lt;PASSWORD&gt; -d &lt;DOMAIN&gt; --users
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/Pennyw0rth/NetExec">Download nxc</a></em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

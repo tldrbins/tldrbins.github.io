@@ -188,20 +188,22 @@
   
   <li><a href="https://tldrbins.github.io/@file-transfer/">File Transfer</a></li>
   
-  <li><a href="https://tldrbins.github.io/@79/">79</a></li>
-  
 </ul>
 
 <div class="content"><hr>
 <h3 id="basic">Basic</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check logged in users</span>
 </span></span><span class="line"><span class="cl">finger @10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check valid user</span>
 </span></span><span class="line"><span class="cl">finger &lt;USER&gt;@10.10.11.10
-</span></span></code></pre></div><h3 id="brute-force-usernames">Brute force usernames</h3>
-<p><a href="https://raw.githubusercontent.com/pentestmonkey/finger-user-enum/master/finger-user-enum.pl">finger-user-enum</a></p>
+</span></span></code></pre></div></div>
+<h3 id="brute-force-usernames">Brute force usernames</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t 10.10.11.10
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://raw.githubusercontent.com/pentestmonkey/finger-user-enum/master/finger-user-enum.pl">finger-user-enum</a></em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

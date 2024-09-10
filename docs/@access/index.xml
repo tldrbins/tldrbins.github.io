@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/microsoft_access_database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_access_database/</guid>
-      <description> Tool sudo apt install mdbtools Basic # Show all tables mdb-tables database.mdb # Show tables with data mdb-tables database.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export database.mdb $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done # Dump data from table mdb-export database.mdb &amp;lt;TABLE_NAME&amp;gt; </description>
+      <description> Tools mdbtools sudo apt install mdbtools Basic # Show all tables mdb-tables database.mdb # Show tables with data mdb-tables database.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export database.mdb $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done # Dump data from table mdb-export database.mdb &amp;lt;TABLE_NAME&amp;gt; </description>
     </item>
   </channel>
 </rss>

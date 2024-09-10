@@ -199,13 +199,24 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="binwalk">binwalk</h3>
-<p><a href="https://github.com/ReFirmLabs/binwalk">Download binwalk</a></p>
+<h3 id="tools">Tools</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">binwalk</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >pypykatz</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract files from memory dump</span>
 </span></span><span class="line"><span class="cl">binwalk -M -e memory.dmp
-</span></span></code></pre></div><h3 id="mini-dump">Mini Dump</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pypykatz lsa minidump memory.dmp
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/ReFirmLabs/binwalk">binwalk</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Mini Dump</span>
+</span></span><span class="line"><span class="cl">pypykatz lsa minidump memory.dmp
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

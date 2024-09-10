@@ -10,13 +10,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@/etc/sudoers/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@domain/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@135/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@1521/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@21/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@25/</loc>
   </url><url>
@@ -25,8 +21,6 @@
     <loc>https://tldrbins.github.io/@5901/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@5984/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@79/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@7z/</loc>
   </url><url>
@@ -67,6 +61,8 @@
     <loc>https://tldrbins.github.io/addself/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@ads/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/advance_curl/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/advance_wget/</loc>
   </url><url>
@@ -140,7 +136,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@bypass/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/bypas_asmi/</loc>
+    <loc>https://tldrbins.github.io/bypass_asmi/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@bz/</loc>
   </url><url>
@@ -228,8 +224,6 @@
   </url><url>
     <loc>https://tldrbins.github.io/@curl/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/advance_curl/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@custom/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/custom_wordlist_generator/</loc>
@@ -237,6 +231,8 @@
     <loc>https://tldrbins.github.io/@cve/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@da/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@dacledit/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@database/</loc>
   </url><url>
@@ -254,7 +250,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@defender/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/windows_defender/</loc>
+    <loc>https://tldrbins.github.io/@difr/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@dig/</loc>
   </url><url>
@@ -330,9 +326,13 @@
   </url><url>
     <loc>https://tldrbins.github.io/@escape/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@event-logs/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/evil-winrm/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@evil-winrm/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@evtx/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@excel/</loc>
   </url><url>
@@ -392,6 +392,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@forensic/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@forensics/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@forge/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@forward/</loc>
@@ -436,8 +438,6 @@
   </url><url>
     <loc>https://tldrbins.github.io/@golden-ticket/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@goldpac/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@gpg/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/gpg/</loc>
@@ -463,8 +463,6 @@
     <loc>https://tldrbins.github.io/@hashes/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@hive/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/smb_server/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@hosts/</loc>
   </url><url>
@@ -656,8 +654,6 @@
   </url><url>
     <loc>https://tldrbins.github.io/@mozilla/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@ms14-068/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@msfconsole/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@msfvenom/</loc>
@@ -679,6 +675,8 @@
     <loc>https://tldrbins.github.io/mysql_privilege_escalation/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@nc/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@neo4j/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/nxc/</loc>
   </url><url>
@@ -837,6 +835,8 @@
     <loc>https://tldrbins.github.io/@privilege-read/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@proxy/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@pssession/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@pst/</loc>
   </url><url>
@@ -1002,6 +1002,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/smb_enum/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/smb_server/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@smtp/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/smtp/</loc>
@@ -1156,11 +1158,17 @@
   </url><url>
     <loc>https://tldrbins.github.io/windows_acls/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/windows_defender/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/windows_event_logs/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@windows-rpc/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/windows_rpc/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@winrm/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/winrm_from_windows_vm/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@wordlist/</loc>
   </url><url>

@@ -202,49 +202,79 @@
 
 <div class="content"><hr>
 <h3 id="check-ssh-version">Check SSH version</h3>
-<p><a href="https://packages.ubuntu.com/search?keywords=openssh-server">openssh-server (ubuntu)</a>
-<br>
-<a href="https://packages.debian.org/search?keywords=openssh-server">openssh-server (debian)</a></p>
-<hr>
+<p><a href="https://packages.ubuntu.com/search?keywords=openssh-server">openssh-server (ubuntu)</a></p>
+<p><a href="https://packages.debian.org/search?keywords=openssh-server">openssh-server (debian)</a></p>
 <h3 id="config-location">Config Location</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/ssh/sshd_config
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Grep contents</span>
 </span></span><span class="line"><span class="cl">grep -Ev <span class="s2">&#34;^#&#34;</span> /etc/ssh/sshd_config <span class="p">|</span> grep .
-</span></span></code></pre></div><h3 id="generate-ssh-key">Generate SSH Key</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="generate-ssh-key">Generate SSH Key</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Set filename, leave passphase blank</span>
 </span></span><span class="line"><span class="cl">./id_rsa
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#After Creation</span>
 </span></span><span class="line"><span class="cl">chmod <span class="m">600</span> id_rsa
-</span></span></code></pre></div><h3 id="check-public-key">Check Public Key</h3>
+</span></span></code></pre></div></div>
+<h3 id="check-public-key">Check Public Key</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh-keygen -l -f id_rsa
-</span></span></code></pre></div><h3 id="generate-no-passphrase-ssh-key-from-encrypted-key">Generate no passphrase SSH key from encrypted key</h3>
+</span></span></code></pre></div></div>
+<h3 id="generate-no-passphrase-ssh-key-from-encrypted-key">Generate no passphrase SSH key from encrypted key</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl rsa -in id_rsa_encrypted -out ./id_rsa
-</span></span></code></pre></div><h3 id="add-ssh-access-to-target">Add SSH Access to Target</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat id_rsa.pub
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Copy and Paste to Target</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> &lt;id_rsa.pub&gt; &gt;&gt; /home/&lt;USER&gt;/.ssh/authorized_keys
-</span></span></code></pre></div><h3 id="connect-to-ssh-with-id_rsa">Connect to SSH with id_rsa</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -i id_rsa
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss</span>
-</span></span><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -i id_rsa -oHostKeyAlgorithms<span class="o">=</span>+ssh-rsa
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: sign_and_send_pubkey: no mutual signature supported </span>
-</span></span><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -i id_rsa -o <span class="nv">PubkeyAcceptedKeyTypes</span><span class="o">=</span>ssh-rsa
-</span></span></code></pre></div><p><small><em>Note: Always append a new line in id_rsa key</em></small></p>
-<h3 id="connect-to-ssh-with-creds">Connect to SSH with creds</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After first connection (i.e., after &#39;yes&#39; to fingerprint prompt)</span>
-</span></span><span class="line"><span class="cl">sshpass -p &lt;PASSWORD&gt; ssh &lt;USER&gt;@&lt;TARGET&gt;
-</span></span></code></pre></div><h3 id="connect-to-ssh-with-target-shell-bypass-restricted-shell">Connect to SSH with target shell (bypass restricted shell)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -t bash
-</span></span></code></pre></div><h3 id="convert-ppk-to-pem-format">Convert .ppk to .pem format</h3>
+</span></span></code></pre></div></div>
+<h3 id="convert-ppk-to-pem-format">Convert .ppk to .pem format</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
 </span></span><span class="line"><span class="cl">sudo apt install putty-tools
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to private key in pem format</span>
 </span></span><span class="line"><span class="cl">puttygen key.ppk -O private-openssh -o key.pem
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to public key in pem format</span>
 </span></span><span class="line"><span class="cl">puttygen key.ppk -O public-openssh -o key.pem.pub
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="add-ssh-access-to-target">Add SSH Access to Target</h3>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat id_rsa.pub
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Copy and Paste to Target</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> &lt;id_rsa.pub&gt; &gt;&gt; /home/&lt;USER&gt;/.ssh/authorized_keys
+</span></span></code></pre></div></div>
+<h3 id="ssh-connect">SSH Connect</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">password</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >id_rsa</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >target shell</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After first connection (i.e., after &#39;yes&#39; to fingerprint prompt)</span>
+</span></span><span class="line"><span class="cl">sshpass -p &lt;PASSWORD&gt; ssh &lt;USER&gt;@&lt;TARGET&gt;
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -i id_rsa
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss</span>
+</span></span><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -i id_rsa -oHostKeyAlgorithms<span class="o">=</span>+ssh-rsa
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: sign_and_send_pubkey: no mutual signature supported </span>
+</span></span><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -i id_rsa -o <span class="nv">PubkeyAcceptedKeyTypes</span><span class="o">=</span>ssh-rsa
+</span></span></code></pre></div></div>
+<p><small><em>Note: Always append a new line in id_rsa key</em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Spawn target shell to escape restricted shell</span>
+</span></span><span class="line"><span class="cl">ssh &lt;USER&gt;@&lt;TARGET&gt; -t bash
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

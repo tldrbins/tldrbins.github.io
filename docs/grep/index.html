@@ -193,19 +193,31 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="basic">Basic</h3>
+<h4 id="basic">Basic</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep <span class="s1">&#39;text&#39;</span> file.txt
-</span></span></code></pre></div><h3 id="grep-from-files-recursively-eg-from-current-directory">Grep from files recursively (e.g from current directory)</h3>
+</span></span></code></pre></div></div>
+<h4 id="grep-from-files-recursively-eg-from-current-directory">Grep from files recursively (e.g from current directory)</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -rni <span class="s1">&#39;text&#39;</span> .
-</span></span></code></pre></div><h3 id="grep-from-binary">Grep from binary</h3>
+</span></span></code></pre></div></div>
+<h4 id="grep-from-binary">Grep from binary</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -a <span class="s1">&#39;text&#39;</span> binary
-</span></span></code></pre></div><h3 id="grep-hash-from-binary-with-perl-regex">Grep hash from binary with perl regex</h3>
+</span></span></code></pre></div></div>
+<h4 id="grep-hash-from-binary-with-perl-regex">Grep hash from binary with perl regex</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -aPo <span class="s1">&#39;[a-fA-F0-9]{32}&#39;</span> binary
-</span></span></code></pre></div><h3 id="grep-from-binaries-recusively-eg-from-varlog">Grep from binaries recusively (e.g. from /var/log)</h3>
+</span></span></code></pre></div></div>
+<h4 id="grep-from-binaries-recusively-eg-from-varlog">Grep from binaries recusively (e.g. from /var/log)</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo grep -rHa <span class="s2">&#34;password&#34;</span> /var/log
-</span></span></code></pre></div><h3 id="find-unique-char-of-a-file">Find unique char of a file</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-unique-char-of-a-file">Find unique char of a file</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat file.txt <span class="p">|</span> od -cvA none -w1 <span class="p">|</span> sort -bu <span class="p">|</span> tr -d <span class="s1">&#39;\n&#39;</span> <span class="p">|</span> tr -d <span class="s1">&#39; &#39;</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

@@ -199,45 +199,67 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="nfs">NFS</h3>
-<h4 id="list-share">List share</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">nfs</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >smb</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="list-share">List share</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">showmount -e 10.10.11.10
-</span></span></code></pre></div><h4 id="mount-share">Mount share</h4>
+</span></span></code></pre></div></div>
+<h4 id="mount-share">Mount share</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t nfs 10.10.11.10:/share /mnt/share/
-</span></span></code></pre></div><h4 id="unmount-share">Unmount share</h4>
+</span></span></code></pre></div></div>
+<h4 id="unmount-share">Unmount share</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo umount /mnt/share/
-</span></span></code></pre></div><h4 id="others">Others</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="mount-share">Mount share</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs //10.10.11.10/share /mnt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Without creds</span>
+</span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">user</span><span class="o">=</span>,password<span class="o">=</span> //10.10.11.10/share /mnt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
+</span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">user</span><span class="o">=</span>&lt;USER&gt;,pass<span class="o">=</span>&lt;PASSWORD&gt; //10.10.11.10/share /mnt
+</span></span></code></pre></div></div>
+<h4 id="mount-inside-windows">Mount inside Windows</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Mount</span>
+</span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">\\</span><span class="n">localhost</span><span class="p">\</span><span class="n">c</span><span class="p">$</span> <span class="p">/</span><span class="n">u:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;\&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check</span>
+</span></span><span class="line"><span class="cl"><span class="nb">dir </span><span class="p">\\</span><span class="n">localhost</span><span class="p">\</span><span class="n">c</span><span class="p">$\</span><span class="n">users</span><span class="p">\</span><span class="n">administrator</span><span class="p">\</span><span class="n">desktop</span>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
+<hr>
+<h3 id="abuse-1-misconfigured-share">Abuse #1: Misconfigured Share</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check all mounted drives</span>
 </span></span><span class="line"><span class="cl">mount
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check how shares are mounted</span>
 </span></span><span class="line"><span class="cl">cat /etc/exports
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+-----------------------------------------------------------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span> root_squash  : running as root on <span class="nb">local</span> system will be treated as nobody user in target <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span> no_all_squash: every other users permission will translate from <span class="nb">local</span> system to target  <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+-----------------------------------------------------------------------------------------+
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add dummy user</span>
 </span></span><span class="line"><span class="cl">sudo useradd dummy
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Change uid</span>
 </span></span><span class="line"><span class="cl">sudo usermod -u <span class="m">1001</span> dummy 
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Switch to dummy user</span>
 </span></span><span class="line"><span class="cl">sudo su dummy -c bash
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="smb">SMB</h3>
-<h4 id="mount-share-1">Mount share</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs //10.10.11.10/share /mnt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Without creds</span>
-</span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">user</span><span class="o">=</span>,password<span class="o">=</span> //10.10.11.10/share /mnt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
-</span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">user</span><span class="o">=</span>&lt;USER&gt;,pass<span class="o">=</span>&lt;PASSWORD&gt; //10.10.11.10/share /mnt
-</span></span></code></pre></div><h3 id="from-inside-the-target">From inside the target</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Mount</span>
-</span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">\\</span><span class="n">localhost</span><span class="p">\</span><span class="n">c</span><span class="p">$</span> <span class="p">/</span><span class="n">u:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;\&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check</span>
-</span></span><span class="line"><span class="cl"><span class="nb">dir </span><span class="p">\\</span><span class="n">localhost</span><span class="p">\</span><span class="n">c</span><span class="p">$\</span><span class="n">users</span><span class="p">\</span><span class="n">administrator</span><span class="p">\</span><span class="n">desktop</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

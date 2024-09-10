@@ -7,6 +7,8 @@ tags: ["internet key exchange", "ike", "vpn", "udp"]
 ---
 ### Enum
 
+<div>
+
 ```bash
 # Check with ikeV1
 ike-scan -M <TARGET>
@@ -17,20 +19,37 @@ ike-scan -M <TARGET>
 ike-scan -M --ikev2 <TARGET>
 ```
 
+</div>
+
 ### Connect to VPN
 
-#### Tools
+{{< tab set1 tab1 active >}}strongswan{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 sudo apt install strongswan
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
 #### Settings
+
+<div>
 
 ```bash
 # Edit /etc/ipsec.secrets
 %any : PSK <PASSWORD>
 ```
+
+</div>
+
+<br>
+
+<div>
 
 ```bash
 # Edit /etc/ipsec.conf (copy from ike-scan result)
@@ -51,7 +70,11 @@ conn testvpn
     rightsubnet=<TARGET>[tcp]
 ```
 
+</div>
+
 #### Connect
+
+<div>
 
 ```bash
 # Reset
@@ -62,5 +85,7 @@ ipsec restart
 # Connect
 ipsec up testvpn
 ```
+
+</div>
 
 <br>

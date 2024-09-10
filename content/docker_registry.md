@@ -5,7 +5,9 @@ tags: ["docker", "container", "docker registry", "api"]
 ---
 
 ---
-### API
+### Docker Registry API
+
+<div>
 
 ```bash
 # List repos
@@ -27,9 +29,18 @@ curl -s -k --user "<USER>:<PASSWORD>" https://docker.example.com/v2/<REPO_NAME>/
 curl -s -k --user "<USER>:<PASSWORD>" https://docker.example.com/v2/<REPO_NAME>/blobs/sha256:<BLOB_HASH>'
 ```
 
-### DockerRegistryGrabber
+</div>
 
-[DockerRegistryGrabber](https://github.com/Syzik/DockerRegistryGrabber)
+<br>
+
+---
+
+### Docker Registry Dump
+
+{{< tab set1 tab1 active >}}DockerRegistryGrabber{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # List repos
@@ -40,5 +51,11 @@ python3 drg.py https://example.com -A <TOKEN> --list
 # Dump repo
 python3 drg.py https://example.com -A <TOKEN> --dump <REPO>
 ```
+
+</div>
+
+<small>*Ref: [DockerRegistryGrabber](https://github.com/Syzik/DockerRegistryGrabber)*</small>
+
+{{< /tabcontent >}}
 
 <br>

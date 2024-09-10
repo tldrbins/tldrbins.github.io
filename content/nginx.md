@@ -7,8 +7,12 @@ tags: ["nginx", "web server", "reverse proxy"]
 ---
 ### Config location
 
+<div>
+
 ```bash
 /etc/nginx/sites-enabled
 ```
+
+</div>
 
 <br>

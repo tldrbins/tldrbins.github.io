@@ -5,82 +5,114 @@ tags: ["web", "directory", "domain", "feroxbuster", "enum", "wfuzz", "idor", "go
 ---
 
 ---
-### feroxbuster
+{{< tab set1 tab1 active >}}feroxbuster{{< /tab >}}
+{{< tab set1 tab2 >}}wfuzz{{< /tab >}}
+{{< tab set1 tab3 >}}gobuster{{< /tab >}}
+{{< tab set1 tab4 >}}bfac{{< /tab >}}
+{{< tab set1 tab5 >}}ds_walk{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
 #### HTTP
+
+<div>
 
 ```bash
 feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
+</div>
+
 #### HTTPS
+
+<div>
 
 ```bash
 feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
+</div>
+
 #### Specify Extension
+
+<div>
 
 ```bash
 feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
 ```
 
-#### Add trailing slash `/` to each request
+</div>
+
+#### Add trailing slash '/' to each request
+
+<div>
 
 ```bash
 feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 ```
 
+</div>
+
 #### API Fuzzing
+
+<div>
 
 ```bash
 feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 ```
 
-<br>
+</div>
 
---- 
-
-### wfuzz
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
 #### Fuzzing Number Range
+
+<div>
 
 ```bash
 wfuzz -z range,1-99 http://example.com/users/FUZZ
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
 
-### gobuster
+<div>
 
 ```bash
 gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
 
-### BFAC (Backup File Artifacts Checker)
-
-[BFAC](https://github.com/mazen160/bfac)
+<div>
 
 ```bash
+# BFAC (Backup File Artifacts Checker)
 bfac --url http://example.com
 ```
 
-<br>
+</div>
 
---- 
+<small>*Ref: [BFAC](https://github.com/mazen160/bfac)*</small>
 
-### DS_WALK
+{{< /tabcontent >}}
+{{< tabcontent set1 tab5 >}}
 
-[DS_WALK](https://github.com/Keramas/DS_Walk)
+<div>
 
 ```bash
 python3 ds_walk.py -u http://example.com
 ```
+
+</div>
+
+<small>*Ref: [DS_WALK](https://github.com/Keramas/DS_Walk)*</small>
+
+{{< /tabcontent >}}
 
 <br>

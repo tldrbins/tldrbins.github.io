@@ -12,56 +12,56 @@
       <link>https://tldrbins.github.io/alternate_data_stream/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/alternate_data_stream/</guid>
-      <description> Show ADS # cmd cmd /C dir /R \Windows\Tasks\example.txt # powershell Get-Item -Path \Windows\Tasks\example.txt -force -stream * </description>
+      <description> Show ADS Windows # cmd cmd /C dir /R \Windows\Tasks\example.txt # powershell Get-Item -Path \Windows\Tasks\example.txt -force -stream * </description>
     </item>
     <item>
       <title>Compressed Files</title>
       <link>https://tldrbins.github.io/compressed_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/compressed_files/</guid>
-      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # zip a symlink (not the destination file) zip --symlinks file.zip symlink # List files without unzip unzip -l file.zip # unzip unzip file.zip # unzip (Windows) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;C:\ProgramData\file.zip&amp;#39;, &amp;#39;C:\ProgramData\&amp;#39;) tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.</description>
-    </item>
-    <item>
-      <title>Defender (Windows)</title>
-      <link>https://tldrbins.github.io/windows_defender/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/windows_defender/</guid>
-      <description> Disable defender # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
+      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip tar.gz tar gz rar 7z bz # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # zip a symlink (not the destination file) zip --symlinks file.zip symlink # List files without unzip unzip -l file.zip # unzip unzip file.zip # unzip (Windows) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;C:\ProgramData\file.zip&amp;#39;, &amp;#39;C:\ProgramData\&amp;#39;) # Compress a file tar -cvzf file.</description>
     </item>
     <item>
       <title>Find (Windows)</title>
       <link>https://tldrbins.github.io/find_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find_windows/</guid>
-      <description> Show hidden files Get-ChildItem -force Find a file ls -path \Users -Filter example.txt -recurse -erroraction silent where /R C:\Users example.txt Find a file, with rules dir /s /b /a:-d-h \Users\Administrator | findstr /i /v &amp;#34;appdata&amp;#34; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v appdata : exclude &amp;#39;appdata&amp;#39; | +---------------------------------------+ </description>
+      <description> Windows Show hidden files Get-ChildItem -force Find a file ls -path \Users -Filter example.txt -recurse -erroraction silent where /R C:\Users example.txt Find a file, with rules dir /s /b /a:-d-h \Users\Administrator | findstr /i /v &amp;#34;appdata&amp;#34; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v appdata : exclude &amp;#39;appdata&amp;#39; | +---------------------------------------+ </description>
     </item>
     <item>
       <title>Firewall (Windows)</title>
       <link>https://tldrbins.github.io/firewall_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firewall_windows/</guid>
-      <description> Check Firewall Rules # cmd cmd /c &amp;#34;netsh advfirewall firewall show rule name=all|findstr Name:&amp;#34; # powershell Get-NetFirewallProfile # Check outbound rules Get-NetFirewallRule -Direction Outbound -Enabled True # Pretty Print powershell -c &amp;#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&amp;#39;Protocol&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).Protocol}},@{Name=&amp;#39;LocalPort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).LocalPort}},@{Name=&amp;#39;RemotePort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).RemotePort}},@{Name=&amp;#39;RemoteAddress&amp;#39;;Expression={($PSItem | Get-NetFirewallAddressFilter).RemoteAddress}}, Enabled, Profile,Direction,Action&amp;#34; Add Inbound Rules # Allow all inbound traffic from local subnet New-NetFirewallRule -DisplayName &amp;#34;Allow All&amp;#34; -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY </description>
+      <description> Windows Check Firewall Rules # cmd cmd /c &amp;#34;netsh advfirewall firewall show rule name=all|findstr Name:&amp;#34; # powershell Get-NetFirewallProfile # Check outbound rules Get-NetFirewallRule -Direction Outbound -Enabled True # Pretty Print powershell -c &amp;#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&amp;#39;Protocol&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).Protocol}},@{Name=&amp;#39;LocalPort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).LocalPort}},@{Name=&amp;#39;RemotePort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).RemotePort}},@{Name=&amp;#39;RemoteAddress&amp;#39;;Expression={($PSItem | Get-NetFirewallAddressFilter).RemoteAddress}}, Enabled, Profile,Direction,Action&amp;#34; Add Inbound Rules # Allow all inbound traffic from local subnet New-NetFirewallRule -DisplayName &amp;#34;Allow All&amp;#34; -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY </description>
     </item>
     <item>
       <title>Runas</title>
       <link>https://tldrbins.github.io/runas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/runas/</guid>
-      <description>Runas (with cred object) Create cred object (Method #1) $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = &amp;#34;&amp;lt;PASSWORD&amp;gt;&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Create cred object (Method #2) $password = ConvertTo-SecureString &amp;#34;&amp;lt;PASSWORD&amp;gt;&amp;#34; -AsPlainText -Force $cred = New-Object System.Management.Automation.PSCredential(&amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34;, $password) Run Commnad Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost # If error, try Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -auth credssp # Invoke command with config Invoke-Command -ScriptBlock { C:\ProgramData\rev.</description>
+      <description>Create credential object Method #1 Method #2 $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = New-Object System.Management.Automation.PSCredential($username, $password) $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Runas (with cred object) Invoke-Command PSSession Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost # If error, try Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -auth credssp # Invoke command with config Invoke-Command -ScriptBlock { C:\ProgramData\rev.</description>
     </item>
     <item>
       <title>Secure String</title>
       <link>https://tldrbins.github.io/secrue_string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secrue_string/</guid>
-      <description> Decrypt secure string $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
+      <description> Decrypt secure string Windows $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
     </item>
     <item>
       <title>Windows ACLs</title>
       <link>https://tldrbins.github.io/windows_acls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_acls/</guid>
-      <description> Window ACLs (Access Control Lists) Check ACLs # Check a file/directory icacls &amp;lt;PATH&amp;gt; # Check all files and directories icacls * /C Grant user full control # cmd cmd.exe /c cacls &amp;lt;FILE&amp;gt; /E /G &amp;lt;USER&amp;gt;:F # powershell icacls &amp;lt;FILE&amp;gt; /grant &amp;lt;USER&amp;gt;:F Change owner (WO) # cmd cmd.exe /c takeown /F &amp;lt;FILE&amp;gt; +---------------------------------------------------+ | F (full access) | | M (modify access) | | RX (read and execute access) | | R (read-only access) | | W (write-only access) | | D (delete) | | RC (read control) | | WDAC (write DAC) | | WO (write owner) | | S (synchronize) | | AS (access system security) | | MA (maximum allowed) | | GR (generic read) | | GW (generic write) | | GE (generic execute) | | GA (generic all) | | RD (read data/list directory) | | WD (write data/add file) | | AD (append data/add subdirectory) | | REA (read extended attributes) | | WEA (write extended attributes) | | X (execute/traverse) | | DC (delete child) | | RA (read attributes) | | WA (write attributes) | | OI (object inherit) | | CI (container inherit) | | IO (inherit only) | | NP (do not propagate inherit) | | I (permission inherited from parent container) | +---------------------------------------------------+ </description>
+      <description> Window ACLs (Access Control Lists) Check ACLs powershell # Check a file/directory icacls &amp;lt;PATH&amp;gt; # Check all files and directories icacls * /C Grant user full control cmd powershell # cmd cmd.exe /c cacls &amp;lt;FILE&amp;gt; /E /G &amp;lt;USER&amp;gt;:F # powershell icacls &amp;lt;FILE&amp;gt; /grant &amp;lt;USER&amp;gt;:F Change owner (WO) cmd # cmd cmd.exe /c takeown /F &amp;lt;FILE&amp;gt; ACLs +---------------------------------------------------+ | F (full access) | | M (modify access) | | RX (read and execute access) | | R (read-only access) | | W (write-only access) | | D (delete) | | RC (read control) | | WDAC (write DAC) | | WO (write owner) | | S (synchronize) | | AS (access system security) | | MA (maximum allowed) | | GR (generic read) | | GW (generic write) | | GE (generic execute) | | GA (generic all) | | RD (read data/list directory) | | WD (write data/add file) | | AD (append data/add subdirectory) | | REA (read extended attributes) | | WEA (write extended attributes) | | X (execute/traverse) | | DC (delete child) | | RA (read attributes) | | WA (write attributes) | | OI (object inherit) | | CI (container inherit) | | IO (inherit only) | | NP (do not propagate inherit) | | I (permission inherited from parent container) | +---------------------------------------------------+ </description>
+    </item>
+    <item>
+      <title>Windows Defender</title>
+      <link>https://tldrbins.github.io/windows_defender/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_defender/</guid>
+      <description> Disable defender Powershell # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
     </item>
   </channel>
 </rss>

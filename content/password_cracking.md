@@ -5,9 +5,9 @@ tags: ["password", "cracking", "john", "hashcat"]
 ---
 
 ---
-### john
+### Convert file to hash format
 
-#### Convert file to john hash format
+<div>
 
 ```bash
 # For example
@@ -27,7 +27,17 @@ zip2john test.zip > hash
 find / -name *2john 2>/dev/null
 ```
 
-#### Basic
+</div>
+
+<br>
+
+---
+
+{{< tab set1 tab1 active >}}john{{< /tab >}}
+{{< tab set1 tab2 >}}hashcat{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # General use
@@ -49,15 +59,12 @@ john --show hash
 john --show hash --format=Raw-SHA512
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
-### hashcat
-
-[Example Hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)
-
-#### Basic
+<div>
 
 ```bash
 # Auto detect hash format
@@ -74,14 +81,22 @@ hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.txt --force
 hashcat hash --user
 ```
 
+</div>
+
 #### Create a wordlist
+
+<div>
 
 ```bash
 # For example, `Test` with 4 digits and a symbol
 hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 ```
 
+</div>
+
 <br>
+
+<div>
 
 ```
 +------------------------------------------+
@@ -97,5 +112,11 @@ hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 |  b | 0x00 - 0xff                         |
 +-----------------------------------------+
 ```
+
+</div>
+
+<small>*Ref: [Example Hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)*</small>
+
+{{< /tabcontent >}}
 
 <br>

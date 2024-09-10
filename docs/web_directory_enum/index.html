@@ -205,37 +205,61 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="feroxbuster">feroxbuster</h3>
-<h4 id="http">HTTP</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">feroxbuster</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >wfuzz</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >gobuster</button>
+
+<button data-tabset="set1" data-tabcontent="tab4" >bfac</button>
+
+<button data-tabset="set1" data-tabcontent="tab5" >ds_walk</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="http">HTTP</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
-</span></span></code></pre></div><h4 id="https">HTTPS</h4>
+</span></span></code></pre></div></div>
+<h4 id="https">HTTPS</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u https://example.com/ -k --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
-</span></span></code></pre></div><h4 id="specify-extension">Specify Extension</h4>
+</span></span></code></pre></div></div>
+<h4 id="specify-extension">Specify Extension</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --methods<span class="o">=</span>GET,POST --depth<span class="o">=</span><span class="m">1</span> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
-</span></span></code></pre></div><h4 id="add-trailing-slash--to-each-request">Add trailing slash <code>/</code> to each request</h4>
+</span></span></code></pre></div></div>
+<h4 id="add-trailing-slash--to-each-request">Add trailing slash &lsquo;/&rsquo; to each request</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ -f --depth <span class="m">1</span> --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
-</span></span></code></pre></div><h4 id="api-fuzzing">API Fuzzing</h4>
+</span></span></code></pre></div></div>
+<h4 id="api-fuzzing">API Fuzzing</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods<span class="o">=</span>GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="wfuzz">wfuzz</h3>
-<h4 id="fuzzing-number-range">Fuzzing Number Range</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="fuzzing-number-range">Fuzzing Number Range</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wfuzz -z range,1-99 http://example.com/users/FUZZ
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="gobuster">gobuster</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t <span class="m">40</span> -x php
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="bfac-backup-file-artifacts-checker">BFAC (Backup File Artifacts Checker)</h3>
-<p><a href="https://github.com/mazen160/bfac">BFAC</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bfac --url http://example.com
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="ds_walk">DS_WALK</h3>
-<p><a href="https://github.com/Keramas/DS_Walk">DS_WALK</a></p>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># BFAC (Backup File Artifacts Checker)</span>
+</span></span><span class="line"><span class="cl">bfac --url http://example.com
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/mazen160/bfac">BFAC</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 ds_walk.py -u http://example.com
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/Keramas/DS_Walk">DS_WALK</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

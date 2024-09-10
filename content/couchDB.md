@@ -7,6 +7,8 @@ tags: ["couchDB", "database", "5984"]
 ---
 ### Basic
 
+<div>
+
 ```bash
 # Show all databases
 curl http://localhost:5984/_all_dbs
@@ -26,5 +28,7 @@ curl http://localhost:5984/<DB_NAME>/_all_docs
 # Show a entry
 curl http://localhost:5984/<DB_NAME>/<ID_HASH>
 ```
+
+</div>
 
 <br>

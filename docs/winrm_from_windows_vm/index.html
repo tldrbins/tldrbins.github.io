@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Winrm from Windows VM | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/winrm_from_windows_vm/">
+      <span>Winrm from Windows VM</span>
+    </a>
+  </h1>
+  <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+    
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+
+     
+    float: right;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(223, 61%, 44%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+</style>
+
+<script>
+    var body = document.body;
+    var switcher = document.getElementsByClassName('js-toggle')[0];
+
+    
+    switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        
+        if (this.classList.contains('js-toggle--checked')) {
+            body.classList.add('dark-mode');
+            
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            body.classList.remove('dark-mode');
+            setTimeout(function() {
+                localStorage.removeItem('darkMode');
+            }, 100);
+        }
+    })
+
+    
+    if (localStorage.getItem('darkMode')) {
+        
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+    }
+
+</script>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@winrm/">Winrm</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@pssession/">Pssession</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@file-transfer/">File Transfer</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
+  
+</ul>
+
+<div class="content"><hr>
+<h3 id="preparation">Preparation</h3>
+<h4 id="0-check-systeminfo">0. Check Systeminfo</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Windows Pro is needed</span>
+</span></span><span class="line"><span class="cl"><span class="n">systeminfo</span>
+</span></span></code></pre></div></div>
+<h4 id="1-connect-to-vpn">1. Connect to VPN</h4>
+<p><a href="https://openvpn.net/client/">OpenVPN client</a></p>
+<h4 id="2-add-dns-server">2. Add DNS Server</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+-----------------------------------------------------------------------------------+
+</span></span><span class="line"><span class="cl">| 1. Go to &#39;Control Panel\Network and Internet\Network and Sharing Center&#39;          |
+</span></span><span class="line"><span class="cl">| 2. Click &#39;Local Area Connection&#39;                                                  |
+</span></span><span class="line"><span class="cl">| 3. Go to &#39;Properties&#39; -&gt; &#39;Internet Protocol Version 4 (TCP/IPv4)&#39; -&gt; &#39;Properties&#39; |
+</span></span><span class="line"><span class="cl">| 4. Under &#39;General&#39;, check &#39;Obtain an IP address automatically&#39;                    |
+</span></span><span class="line"><span class="cl">| 5. Check &#39;Use the following DNS address&#39; -&gt; &#39;Prefer DNS Server&#39; -&gt; &lt;DC_IP&gt;        |
+</span></span><span class="line"><span class="cl">+-----------------------------------------------------------------------------------+
+</span></span></code></pre></div></div>
+<h4 id="3-add-domain-to-hosts">3. Add domain to hosts</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+--------------------------------------------------------+
+</span></span><span class="line"><span class="cl">| 1. Run text editor as Administrator                    |
+</span></span><span class="line"><span class="cl">| 2. Add &#39;10.10.11.10 DC01 dc01.example.com example.com&#39; |
+</span></span><span class="line"><span class="cl">|    to &#39;C:\Windows\System32\drivers\etc\hosts&#39;          |
+</span></span><span class="line"><span class="cl">+--------------------------------------------------------+
+</span></span></code></pre></div></div>
+<h4 id="4-add-computer-to-domain">4. Add computer to domain</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+--------------------------------------------------------------------+
+</span></span><span class="line"><span class="cl">| 1. &#39;Control Panel&#39; -&gt; Search &#39;Domain&#39;                              |
+</span></span><span class="line"><span class="cl">| 2. Click &#39;Join a Domain&#39;                                           |
+</span></span><span class="line"><span class="cl">| 3. Under tab &#39;Computer Name&#39; -&gt; &#39;Change&#39;                           |
+</span></span><span class="line"><span class="cl">| 4. Check &#39;Domain&#39; -&gt; &#39;example.com&#39;                                 |
+</span></span><span class="line"><span class="cl">| 5. Enter username and password (domain user)                       |
+</span></span><span class="line"><span class="cl">| 6. If succeed, will pop an alert, &#39;Welcome to example.com domain.&#39; |
+</span></span><span class="line"><span class="cl">+--------------------------------------------------------------------+
+</span></span></code></pre></div></div>
+<h4 id="5-sync-time-with-dc">5. Sync Time with DC</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">powershell</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">W32tm</span> <span class="p">/</span><span class="n">resync</span> <span class="p">/</span><span class="n">force</span>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
+<hr>
+<h3 id="authentication">Authentication</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Kerberos</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >Credentials</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-get-tgt-ticket">1. Get TGT ticket</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get a Kerberos ticket</span>
+</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgt</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">password</span><span class="err">:</span><span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">enctype</span><span class="err">:</span><span class="n">AES256</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">ptt</span> <span class="p">/</span><span class="n">nowrap</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">klist
+</span></span></code></pre></div></div>
+<h4 id="2-pssession">2. PSSession</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Create new pssession</span>
+</span></span><span class="line"><span class="cl"><span class="nb">New-PSSession</span> <span class="n">-ComputerName</span> <span class="n">DC01</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Enter pssession</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Enter-PSSession</span> <span class="n">-Id</span> <span class="mf">1</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><h4 id="1-set-trusted-hosts">1. Set trusted hosts</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
+</span></span><span class="line"><span class="cl"><span class="n">winrm</span> <span class="n">quickconfig</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winrm</span> <span class="nb">set </span><span class="n">winrm</span><span class="p">/</span><span class="n">config</span><span class="p">/</span><span class="n">client</span> <span class="vm">@</span><span class="p">{</span><span class="n">TrustedHosts</span><span class="p">=</span><span class="s2">&#34;*&#34;</span><span class="p">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-Item</span> <span class="n">WSMan</span><span class="err">:</span><span class="p">\</span><span class="n">localhost</span><span class="p">\</span><span class="n">Client</span><span class="p">\</span><span class="n">TrustedHosts</span> <span class="n">-Value</span> <span class="s2">&#34;*&#34;</span> <span class="n">-Force</span>
+</span></span></code></pre></div></div>
+<h4 id="2-enable-credssp">2. Enable CredSSP</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Enable-WSManCredSSP</span> <span class="n">-Role</span> <span class="s2">&#34;Client&#34;</span> <span class="n">-DelegateComputer</span> <span class="s2">&#34;*&#34;</span>
+</span></span></code></pre></div></div>
+<h4 id="3-create-cred-object">3. Create cred object</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span><span class="p">(</span><span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span>
+</span></span></code></pre></div></div>
+<h4 id="4-pssession">4. PSSession</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$s1</span> <span class="p">=</span> <span class="nb">New-PSSession</span> <span class="n">-ComputerName</span> <span class="n">DC01</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Enter-PSSession</span> <span class="nv">$s1</span>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
+<hr>
+<h3 id="copy-files-from-remote-pssession-to-local">Copy files from remote pssession to local</h3>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">powershell</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Exit-PSSession</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Copy-Item</span> <span class="s1">&#39;&lt;REMOTE_FILE_PATH&gt;&#39;</span>  <span class="n">-Destination</span> <span class="s1">&#39;&lt;LOCAL_FILE_PATH&gt;&#39;</span> <span class="n">-FromSession</span> <span class="nv">$s1</span>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
+    
+    <script src="/js/utils.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
+                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
+    </div>
+</footer>
+</body>
+</html>

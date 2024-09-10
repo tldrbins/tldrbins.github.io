@@ -5,9 +5,12 @@ tags: ["dotnet", "sdk", "c#", "c sharp", "Windows", "compile", ".NET"]
 ---
 
 ---
-### Compile C# project (From Linux)
+### Compile C# project
 
-[Download dotnet](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Check
@@ -48,12 +51,18 @@ dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
 
 ```bash
 # Build solution
-dotnet build
+dotnet build -c Release
 ```
 
 ```bash
 # Run
 dotnet run
 ```
+
+</div>
+
+<small>*Ref: [dotnet](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)*</small>
+
+{{< /tabcontent >}}
 
 <br>

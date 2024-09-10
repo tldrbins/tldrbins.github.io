@@ -7,13 +7,20 @@ tags: ["wordpress", "wpscan"]
 ---
 ### Default config location
 
+<div>
+
 ```bash
 /var/www/html/wp-config.php
 ```
 
-### wpscan
+</div>
 
-[Get Free API key](https://wpscan.com/)
+### Tools
+
+{{< tab set1 tab1 active >}}wpscan{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # HTTP
@@ -34,5 +41,11 @@ wpscan --url http://example.com -e ap,t,tt,u --api-token <API_KEY>
 # Brute force wp-admin
 wpscan --url http://example.com --passwords passwords.txt --usernames admin
 ```
+
+</div>
+
+<small>*Ref: [Get Free API key](https://wpscan.com/)*</small>
+
+{{< /tabcontent >}}
 
 <br>

@@ -194,6 +194,7 @@
 
 <div class="content"><hr>
 <h3 id="setup">Setup</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install awscli</span>
 </span></span><span class="line"><span class="cl">sudo apt install awscli
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Set config</span>
@@ -202,16 +203,32 @@
 </span></span><span class="line"><span class="cl">AWS Secret Access Key [None]: test
 </span></span><span class="line"><span class="cl">Default region name [None]: test
 </span></span><span class="line"><span class="cl">Default output format [None]:
-</span></span></code></pre></div><h3 id="default-aws-credential-location">Default AWS Credential Location</h3>
+</span></span></code></pre></div></div>
+<h3 id="default-aws-credential-location">Default AWS Credential Location</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">~/.aws/credentials
-</span></span></code></pre></div><h3 id="s3">S3</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="aws-services">AWS Services</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">S3</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >dynamodb</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >lambda</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List buckets</span>
 </span></span><span class="line"><span class="cl">aws s3 --endpoint-url http://s3.example.com ls
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List bucket</span>
 </span></span><span class="line"><span class="cl">aws s3 --endpoint-url http://s3.example.com ls s3://&lt;BUCKET_NAME&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload to bucket</span>
 </span></span><span class="line"><span class="cl">aws s3 --endpoint-url http://s3.example.com cp &lt;FILE&gt; s3://&lt;BUCKET_NAME&gt;/&lt;FILE&gt;
-</span></span></code></pre></div><h3 id="dynamodb">dynamodb</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List tables</span>
 </span></span><span class="line"><span class="cl">aws --endpoint-url http://s3.example.com dynamodb list-tables
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump table</span>
@@ -220,13 +237,18 @@
 </span></span><span class="line"><span class="cl">aws --endpoint-url http://s3.example.com dynamodb create-table --table-name &lt;TABLE_NAME&gt; --attribute-definitions <span class="nv">AttributeName</span><span class="o">=</span>title,AttributeType<span class="o">=</span>S <span class="nv">AttributeName</span><span class="o">=</span>content,AttributeType<span class="o">=</span>S --key-schema <span class="nv">AttributeName</span><span class="o">=</span>title,KeyType<span class="o">=</span>HASH <span class="nv">AttributeName</span><span class="o">=</span>content,KeyType<span class="o">=</span>RANGE --provisioned-throughput <span class="nv">ReadCapacityUnits</span><span class="o">=</span>10,WriteCapacityUnits<span class="o">=</span><span class="m">5</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add item to table</span>
 </span></span><span class="line"><span class="cl">aws --endpoint-url http://s3.example.com dynamodb put-item --table-name &lt;TABLE_NAME&gt; --item <span class="s1">&#39;{&#34;title&#34;:{&#34;S&#34;:&#34;&lt;TITLE&gt;&#34;},&#34;content&#34;:{&#34;S&#34;:&#34;&lt;CONTENT&gt;&#34;}}&#39;</span>
-</span></span></code></pre></div><h3 id="lambda">lambda</h3>
-<h4 id="basic">Basic</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><h4 id="basic">Basic</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List functions</span>
 </span></span><span class="line"><span class="cl">aws lambda list-functions --endpoint-url http://s3.example.com
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check a function</span>
 </span></span><span class="line"><span class="cl">aws lambda get-function --function-name<span class="o">=</span>&lt;FUNC_NAME&gt; --endpoint-url<span class="o">=</span>http://s3.example.com
-</span></span></code></pre></div><h4 id="create-a-function-eg-nodejs">Create a function (e.g. NodeJS)</h4>
+</span></span></code></pre></div></div>
+<h4 id="create-a-function-eg-nodejs">Create a function (e.g. NodeJS)</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span>  <span class="kr">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;EVENT: \n&#34;</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">context</span><span class="p">.</span><span class="nx">logStreamName</span>
@@ -239,7 +261,9 @@
 </span></span><span class="line"><span class="cl">aws lambda invoke --function-name &lt;FUNC_NAME&gt; --endpoint-url http://s3.example.com result.json
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check result</span>
 </span></span><span class="line"><span class="cl">cat result.json
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

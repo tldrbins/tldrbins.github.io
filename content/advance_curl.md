@@ -1,11 +1,13 @@
 ---
-title: "Curl"
+title: "Advance curl"
 date: 2024-6-26
 tags: ["curl", "http", "file transfer", "web"]
 ---
 
 ---
 ### Advance curl
+
+<div>
 
 ```bash
 # POST url-encoded data
@@ -51,5 +53,7 @@ curl --path-as-is --ignore-content-length http://example.com/../../../../etc/pas
 # Save the same name as the file on the server
 curl http://example.com/example.txt -O
 ```
+
+</div>
 
 <br>

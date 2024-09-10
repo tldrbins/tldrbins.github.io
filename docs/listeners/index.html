@@ -195,17 +195,32 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="nc">nc</h3>
+<h3 id="listener-tools">Listener Tools</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">nc</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >ncat</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >pwncat</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">1337</span>
-</span></span></code></pre></div><h3 id="ncat">ncat</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Default listening on both ipv4 and ipv6</span>
 </span></span><span class="line"><span class="cl">rlwrap ncat -lvnp <span class="m">1337</span>
-</span></span></code></pre></div><h3 id="pwncat">pwncat</h3>
-<p><small><a href="https://github.com/calebstewart/pwncat">Download pwncat</a></small></p>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pwncat-cs -lp <span class="m">1337</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After getting a connection</span>
 </span></span><span class="line"><span class="cl"><span class="o">(</span><span class="nb">local</span><span class="o">)</span> pwncat$ back
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/calebstewart/pwncat">pwncat</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

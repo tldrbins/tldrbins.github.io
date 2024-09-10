@@ -7,8 +7,12 @@ tags: ["openvpn", "vpn"]
 ---
 ### Connect to vpn
 
+<div>
+
 ```bash
 sudo openvpn my_vpn.ovpn
 ```
+
+</div>
 
 <br>

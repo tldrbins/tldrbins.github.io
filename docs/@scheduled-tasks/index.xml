@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/cron/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/cron/</guid>
-      <description> Check Cron Jobs ls -la /etc/cron.d/ cat /etc/crontab crontab -l Check background processes Downlaod pspy&#xA;./pspy </description>
+      <description>Linux Check Cron Jobs ls -la /etc/cron.d/ cat /etc/crontab crontab -l Check background processes ./pspy Ref: pspy</description>
     </item>
     <item>
       <title>Scheduled tasks</title>
       <link>https://tldrbins.github.io/scheduled_tasks_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/scheduled_tasks_windows/</guid>
-      <description> Check scheduled tasks schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
+      <description> Check scheduled tasks Windows schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
     </item>
   </channel>
 </rss>

@@ -7,7 +7,7 @@ tags: ["graphql", "database"]
 ---
 ### Visualize Tool
 
-[graphql-voyager](https://graphql-kit.com/graphql-voyager/)
+<div>
 
 ```
 +---------------------------------------------------------------+
@@ -17,7 +17,13 @@ tags: ["graphql", "database"]
 +---------------------------------------------------------------+
 ```
 
+</div>
+
+<small>*Ref: [graphql-voyager](https://graphql-kit.com/graphql-voyager/)*</small>
+
 ### Basic Commands
+
+<div>
 
 ```bash
 # Get fields from schema
@@ -38,5 +44,7 @@ curl -s 10.10.11.10:3000/graphql -H "Content-Type: application/json" -d '{"query
 # Dump data from type (e.g. User type with fields username and password)
 curl -s 10.10.11.10:3000/graphql -H "Content-Type: application/json" -d '{"query":"{User{username,password}}"}' | jq .
 ```
+
+</div>
 
 <br>

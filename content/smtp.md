@@ -7,6 +7,8 @@ tags: ["smtp", "mail", "email", "25", "enum", "template"]
 ---
 ### Simple Mail Debugging Server
 
+<div>
+
 ```python
 #!/usr/bin/env python3
 
@@ -28,15 +30,20 @@ input("[*] Server started. Press Return to quit.\n")
 server.stop()
 ```
 
-### User Enum
+</div>
 
-#### nmap script
+### Users Enum
+
+{{< tab set1 tab1 active >}}nmap script{{< /tab >}}
+{{< tab set1 tab2 >}}smtp-user-enum{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
 ```bash
 nmap -p 25 --script=smtp-enum-users <TARGET>
 ```
 
-#### smtp-user-enum
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
 ```bash
 # Use RCPT
@@ -48,4 +55,8 @@ smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.t
 smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t <TARGET>
 ```
 
-<small>*Note: [smtp-user-enum.pl](https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl)*</small>
+<small>*Ref: [smtp-user-enum.pl](https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl)*</small>
+
+{{< /tabcontent >}}
+
+<br>

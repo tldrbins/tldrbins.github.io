@@ -7,6 +7,8 @@ tags: ["java", "javac", "update-alternatives"]
 ---
 ### Set JDK Environment
 
+<div>
+
 ```bash
 sudo update-alternatives --config java
 ```
@@ -14,5 +16,7 @@ sudo update-alternatives --config java
 ```bash
 sudo update-alternatives --config javac
 ```
+
+</div>
 
 <br>

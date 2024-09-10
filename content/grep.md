@@ -5,40 +5,64 @@ tags: ["grep", "regex", "strings"]
 ---
 
 ---
-### Basic
+#### Basic
+
+<div>
 
 ```bash
 grep 'text' file.txt
 ```
 
-### Grep from files recursively (e.g from current directory)
+</div>
+
+#### Grep from files recursively (e.g from current directory)
+
+<div>
 
 ```bash
 grep -rni 'text' .
 ```
 
-### Grep from binary
+</div>
+
+#### Grep from binary
+
+<div>
 
 ```bash
 grep -a 'text' binary
 ```
 
-### Grep hash from binary with perl regex
+</div>
+
+#### Grep hash from binary with perl regex
+
+<div>
 
 ```bash
 grep -aPo '[a-fA-F0-9]{32}' binary
 ```
 
-### Grep from binaries recusively (e.g. from /var/log)
+</div>
+
+#### Grep from binaries recusively (e.g. from /var/log)
+
+<div>
 
 ```bash
 sudo grep -rHa "password" /var/log
 ```
 
-### Find unique char of a file
+</div>
+
+#### Find unique char of a file
+
+<div>
 
 ```bash
 cat file.txt | od -cvA none -w1 | sort -bu | tr -d '\n' | tr -d ' '
 ```
+
+</div>
 
 <br>

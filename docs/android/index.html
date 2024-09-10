@@ -202,22 +202,35 @@
 
 <div class="content"><hr>
 <h3 id="unpack-apk-file">Unpack .apk file</h3>
-<p><a href="https://apktool.org/">apktool</a></p>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get .smali files</span>
 </span></span><span class="line"><span class="cl">java -jar apktool_2.9.3.jar d app.apk
-</span></span></code></pre></div><p><a href="https://github.com/skylot/jadx">jadx</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get .java files</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get .java files</span>
 </span></span><span class="line"><span class="cl">jadx app.apk
-</span></span></code></pre></div><h3 id="re-pack-apk-file">Re-pack .apk file</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://apktool.org/">apktool</a></em></small>
+<br>
+<small><em>Ref: <a href="https://github.com/skylot/jadx">jadx</a></em></small></p>
+<hr>
+<h3 id="re-pack-apk-file">Re-pack .apk file</h3>
 <h4 id="1-initial-pack">1. Initial pack</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk
-</span></span></code></pre></div><h4 id="2-zip-align">2. zip align</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-zip-align">2. zip align</h4>
+<div>
 <p><a href="https://www.sisik.eu/zipalign">zipalign</a></p>
+</div>
 <h4 id="3-sign-the-apk">3. Sign the apk</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize <span class="m">2048</span> -validity <span class="m">10000</span> -alias my-alias
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">apksigner sign --ks my-release-key.jks --ks-pass pass:&lt;PASSWORD&gt; --out app_final.apk app_repacked.apk
-</span></span></code></pre></div><h3 id="dynamic-debugging">Dynamic Debugging</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="dynamic-debugging">Dynamic Debugging</h3>
 <h4 id="1-set-up">1. Set up</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">+--------------------------------------------------------------------+</span>
 </span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="mf">1.</span> <span class="n">Open</span> <span class="n">genymotion</span> <span class="ow">and</span> <span class="n">boot</span> <span class="n">up</span> <span class="n">Galaxy</span> <span class="n">S9</span> <span class="p">(</span><span class="n">Random</span> <span class="n">Pick</span><span class="p">)</span>             <span class="o">|</span>
 </span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="mf">2.</span> <span class="n">Open</span> <span class="n">IntelliJ</span> <span class="n">Idea</span> <span class="n">IDE</span>                                          <span class="o">|</span>
@@ -225,22 +238,31 @@
 </span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="mf">4.</span> <span class="n">Run</span> <span class="o">-&gt;</span> <span class="n">Edit</span> <span class="n">Config</span> <span class="o">-&gt;</span> <span class="n">JVM</span> <span class="n">Remote</span> <span class="n">Debug</span> <span class="o">-&gt;</span> <span class="n">OK</span>                    <span class="o">|</span>
 </span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="mf">5.</span> <span class="ne">File</span> <span class="o">-&gt;</span> <span class="n">Project</span> <span class="n">Structure</span> <span class="o">-&gt;</span> <span class="n">Project</span> <span class="o">-&gt;</span> <span class="n">SDK</span> <span class="o">-&gt;</span> <span class="n">OpenSDK</span> <span class="mi">20</span> <span class="o">-&gt;</span> <span class="n">OK</span> <span class="o">|</span>
 </span></span><span class="line"><span class="cl"><span class="o">+--------------------------------------------------------------------+</span>
-</span></span></code></pre></div><h4 id="2-connect">2. Connect</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-connect">2. Connect</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./adb kill-server
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./adb connect 127.0.0.1:6555
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./adb -s 127.0.0.1:6555 install app.apk
-</span></span></code></pre></div><h4 id="3-run-the-app">3. Run the app</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-run-the-app">3. Run the app</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+-------------------------+
 </span></span><span class="line"><span class="cl">| Run the app in emulator |
 </span></span><span class="line"><span class="cl">+-------------------------+
-</span></span></code></pre></div><h4 id="4-get-pid-and-forward-to-debugger">4. Get PID and forward to Debugger</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-get-pid-and-forward-to-debugger">4. Get PID and forward to Debugger</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./adb -s 127.0.0.1:6555 shell ps -A <span class="p">|</span> grep &lt;com.example.app&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./adb -s 127.0.0.1:6555 forward tcp:5005 jdwp:&lt;PID&gt;
-</span></span></code></pre></div><h4 id="5-startdebugging">5. StartDebugging</h4>
+</span></span></code></pre></div></div>
+<h4 id="5-startdebugging">5. StartDebugging</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+-------------------------------------------+
 </span></span><span class="line"><span class="cl">| Click the debug icon in IntelliJ Idea IDE |
 </span></span><span class="line"><span class="cl">+-------------------------------------------+
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

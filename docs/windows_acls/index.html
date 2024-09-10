@@ -201,19 +201,47 @@
 <div class="content"><hr>
 <h3 id="window-acls-access-control-lists">Window ACLs (Access Control Lists)</h3>
 <h4 id="check-acls">Check ACLs</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">powershell</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check a file/directory</span>
 </span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">&lt;</span><span class="n">PATH</span><span class="p">&gt;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check all files and directories</span>
 </span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">*</span> <span class="p">/</span><span class="n">C</span>
-</span></span></code></pre></div><h4 id="grant-user-full-control">Grant user full control</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="grant-user-full-control">Grant user full control</h4>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">cmd</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >powershell</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
 </span></span><span class="line"><span class="cl"><span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">c</span> <span class="n">cacls</span> <span class="p">&lt;</span><span class="n">FILE</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">E</span> <span class="p">/</span><span class="n">G</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span><span class="err">:</span><span class="n">F</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
 </span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">&lt;</span><span class="n">FILE</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">grant</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span><span class="err">:</span><span class="n">F</span>
-</span></span></code></pre></div><h4 id="change-owner-wo">Change owner (WO)</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="change-owner-wo">Change owner (WO)</h4>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">cmd</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
 </span></span><span class="line"><span class="cl"><span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">c</span> <span class="n">takeown</span> <span class="p">/</span><span class="n">F</span> <span class="p">&lt;</span><span class="n">FILE</span><span class="p">&gt;</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div>
+<br></p>
+<p>
+<button data-tabset="set4" data-tabcontent="tab1" class="active">ACLs</button>
+
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+---------------------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span> F    <span class="o">(</span>full access<span class="o">)</span>                                <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span> M    <span class="o">(</span>modify access<span class="o">)</span>                              <span class="p">|</span>
@@ -246,7 +274,9 @@
 </span></span><span class="line"><span class="cl"><span class="p">|</span> NP   <span class="o">(</span><span class="k">do</span> not propagate inherit<span class="o">)</span>                   <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span> I    <span class="o">(</span>permission inherited from parent container<span class="o">)</span> <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+---------------------------------------------------+
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

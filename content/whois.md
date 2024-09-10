@@ -7,6 +7,8 @@ tags: ["whois", "domain", "dns", "ip"]
 ---
 ### WHOIS
 
+<div>
+
 ```bash
 # General
 whois example.com
@@ -16,5 +18,7 @@ whois example.com
 # With specific server
 whois -h <WHOIS_SERVER> -p 43 example.com
 ```
+
+</div>
 
 <br>

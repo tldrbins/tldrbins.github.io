@@ -5,11 +5,9 @@ tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Wi
 ---
 
 ---
-### nxc
-
-[Download nxc](https://github.com/Pennyw0rth/NetExec)
-
 #### Basic Commands
+
+<div>
 
 ```bash
 # Single user and password
@@ -38,10 +36,14 @@ nxc smb 10.10.11.10 -u <USER> -H <LM>:<NT>
 
 ```bash
 # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled)
-nxc smb -u <USER> -p <PASSWORD> -d <DOMAIN> -dc-ip <DC_IP> -k
+nxc smb -u <USER> -p <PASSWORD> -d <DOMAIN> -k 10.10.11.10
 ```
 
+</div>
+
 #### Supported protocols
+
+<div>
 
 ```
 +----------------------------------------------------------+
@@ -49,16 +51,28 @@ nxc smb -u <USER> -p <PASSWORD> -d <DOMAIN> -dc-ip <DC_IP> -k
 +----------------------------------------------------------+
 ```
 
+</div>
+
 #### RID Brute
+
+<div>
 
 ```bash
 nxc smb 10.10.11.10 -u guest -p '' --rid-brute 10000
 ```
 
+</div>
+
 #### User Enum (Authenticated)
+
+<div>
 
 ```bash
 nxc smb 10.10.11.10 -u <USER> -p <PASSWORD> -d <DOMAIN> --users
 ```
+
+</div>
+
+<small>*Ref: [Download nxc](https://github.com/Pennyw0rth/NetExec)*</small>
 
 <br>

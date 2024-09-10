@@ -12,14 +12,21 @@
       <link>https://tldrbins.github.io/nxc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
-      <description>nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # Single user and password (Active Directory) nxc smb -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; # Multiple users or passwords nxc smb -u usernames.txt -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
+      <description>Basic Commands # Single user and password nxc smb 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # Single user and password (Active Directory) nxc smb -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; # Multiple users or passwords nxc smb -u usernames.txt -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
     </item>
     <item>
       <title>RPC</title>
       <link>https://tldrbins.github.io/rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rpc/</guid>
-      <description> rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 # Inline execute command rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid impacket-lookupsid &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+      <description> Remote Procedure Call Tools rpcclient impacket # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 # Inline execute command rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+    </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
     </item>
   </channel>
 </rss>

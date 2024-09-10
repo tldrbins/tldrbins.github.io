@@ -7,6 +7,8 @@ tags: ["keepass", "kpcli", "password", "kdbx"]
 ---
 ### Master password cracking
 
+<div>
+
 ```bash
 keepass2john key.kdbx > hash
 ```
@@ -16,9 +18,11 @@ keepass2john key.kdbx > hash
 keepass2john -k key.png key.kdbx > hash
 ```
 
+</div>
+
 ### kpcli
 
-[Download kpcli](https://github.com/rebkwok/kpcli)
+<div>
 
 ```bash
 # Open kdbx
@@ -39,5 +43,14 @@ find .
 # Show password (e.g. #0)
 show -f 0
 ```
+
+```bash
+# Export attachment (e.g. #0)
+attach 0
+```
+
+</div>
+
+<small>*Ref: [Download kpcli](https://github.com/rebkwok/kpcli)*</small>
 
 <br>

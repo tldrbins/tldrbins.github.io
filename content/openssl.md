@@ -5,33 +5,35 @@ tags: ["openssl", "base64", "cert", "ssl", "certificate signing request", "csr",
 ---
 
 ---
-### Show TLS Certificate
+### Show TLS Certificate from HTTPS web server
+
+<div>
 
 ```bash
 echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2>/dev/null | openssl x509 -inform pem -noout -text
 ```
 
-### Base64 Encode/Decode
+</div>
 
-```bash
-# base64 encode a file
-openssl base64 -in ./file
-```
+<br>
 
-```bash
-# base64 decode a file and output to a file
-cat b64_file | openssl enc -d -base64 -out ./file
-```
+---
 
 ### Certificate
 
 #### Show content of a request
 
+<div>
+
 ```bash
 openssl req -in request.csr -noout -text
 ```
 
+</div>
+
 #### Create Client Certificate
+
+<div>
 
 ```bash
 # Generate a user key
@@ -91,7 +93,11 @@ openssl pkcs12 -export -out username.pfx -inkey username.key -in username.pem -c
 curl -k --cert username.pem --key username.key https://10.10.11.10
 ```
 
+</div>
+
 #### Convert .p12 to .key and .crt
+
+<div>
 
 ```bash
 # Create cert.key
@@ -102,5 +108,27 @@ openssl pkcs12 -in cert.p12 -nocerts -out cert.key
 # Create cert.crt
 openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
 ```
+
+</div>
+
+<br>
+
+---
+
+### Base64 Encode/Decode
+
+<div>
+
+```bash
+# base64 encode a file
+openssl base64 -in ./file
+```
+
+```bash
+# base64 decode a file and output to a file
+cat b64_file | openssl enc -d -base64 -out ./file
+```
+
+</div>
 
 <br>

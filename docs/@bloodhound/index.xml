@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description>sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound-python # With Creds bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip bloodhound with PKI support BloodHound&#xA;# Fix: GPU process isn&amp;#39;t usable. Goodbye.</description>
+      <description>Info Collection (From Linux) bloodhound-python # With Creds bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All -OutputDirectory C:\ProgramData Ref: sharphound.</description>
     </item>
   </channel>
 </rss>

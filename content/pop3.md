@@ -5,7 +5,9 @@ tags: ["pop3", "telnet", "mail", "email"]
 ---
 
 ---
-### POP3
+### Basic
+
+<div>
 
 ```bash
 # Connect to POP3 mail server
@@ -35,5 +37,7 @@ RETR 1
 # Exit Ctrl + ], then
 quit
 ```
+
+</div>
 
 <br>

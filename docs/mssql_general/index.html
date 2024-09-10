@@ -194,14 +194,26 @@
 
 <div class="content"><hr>
 <h3 id="general">General</h3>
-<h4 id="connect-to-mssql-db-from-linux">Connect to MSSQL DB (From Linux)</h4>
+<h4 id="connect-to-mssql-db">Connect to MSSQL DB</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-mssqlclient <span class="s1">&#39;&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Without TLS</span>
 </span></span><span class="line"><span class="cl">impacket-mssqlclient -windows-auth <span class="s1">&#39;&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;</span>
-</span></span></code></pre></div><h4 id="connect-to-mssql-db-from-windows">Connect to MSSQL DB (From Windows)</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># With inline query</span>
 </span></span><span class="line"><span class="cl"><span class="n">sqlcmd</span> <span class="n">-S</span> <span class="p">&lt;</span><span class="n">TARGET</span><span class="p">&gt;</span> <span class="n">-U</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="n">-P</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="n">-d</span> <span class="p">&lt;</span><span class="n">DB_NAME</span><span class="p">&gt;</span> <span class="n">-Q</span> <span class="s2">&#34;SELECT @@version;&#34;</span>
-</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="basic-commands">Basic Commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Check mssql version
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="n">version</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Check users
@@ -232,10 +244,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">dbo</span><span class="p">.</span><span class="nf">fn_varbintohexstr</span><span class="p">(</span><span class="nf">SUSER_SID</span><span class="p">(</span><span class="s1">&#39;EXAMPLE\Domain Admins&#39;</span><span class="p">))</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Read a text file
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nf">OPENROWSET</span><span class="p">(</span><span class="n">BULK</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;C:\users\administrator\desktop\root.txt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">SINGLE_CLOB</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Contents</span><span class="w">
-</span></span></span></code></pre></div><h4 id="create-sa-user">Create sa user</h4>
+</span></span></span></code></pre></div></div>
+<h4 id="create-sa-user">Create sa user</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="n">LOGIN</span><span class="w"> </span><span class="s1">&#39;&lt;USER&gt;&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">EXEC</span><span class="w"> </span><span class="n">sp_addsrvrolemember</span><span class="w"> </span><span class="s1">&#39;&lt;USER&gt;&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sysadmin&#39;</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><br></div></div>
+</span></span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

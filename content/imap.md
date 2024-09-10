@@ -7,6 +7,8 @@ tags: ["imap", "imaps", "mail", "email", "openssl"]
 ---
 ### IMAP/IMAPS
 
+<div>
+
 ```bash
 # Connect to IMAP over ssl
 rlwrap openssl s_client -connect 10.10.11.10:993
@@ -31,5 +33,7 @@ a SELECT INBOX
 # Get mail from mailbox (e.g. #1)
 a FETCH 1 BODY.PEEK[]
 ```
+
+</div>
 
 <br>

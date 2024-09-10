@@ -7,6 +7,8 @@ tags: ["searchsploit", "exploit", "vuln", "CVE"]
 ---
 ### searchsploit
 
+<div>
+
 ```bash
 # Search service with specific version
 # For example: samba 3.0
@@ -22,5 +24,7 @@ searchsploit -x unix/remote/16320.rb
 # Copy the exploit
 searchsploit -m unix/remote/16320.rb
 ```
+
+</div>
 
 <br>

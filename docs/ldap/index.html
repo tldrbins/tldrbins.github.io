@@ -198,11 +198,27 @@
 
 <div class="content"><hr>
 <h3 id="enum">Enum</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">nmap</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >ldapdomaindump</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >ldapsearch</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Using nmap script</span>
 </span></span><span class="line"><span class="cl">sudo nmap -p <span class="m">389</span> --script ldap-search &lt;TARGET&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Using ldapdomaindump (With Creds)</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Using ldapdomaindump (With Creds)</span>
 </span></span><span class="line"><span class="cl">ldapdomaindump -u <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span> -p &lt;PASSWORD&gt; &lt;TARGET&gt; -o ./ldap
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get domain base</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get domain base</span>
 </span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get all from domain</span>
 </span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -b <span class="s1">&#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;</span>
@@ -210,14 +226,27 @@
 </span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -b <span class="s1">&#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;</span> <span class="s1">&#39;(objectClass=person)&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds (e.g. john.appleseed)</span>
 </span></span><span class="line"><span class="cl">ldapsearch -x -H ldap://10.10.11.10 -D <span class="s2">&#34;CN=John Appleseed,CN=Users,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#34;</span> -w &lt;PASSWORD&gt; -b <span class="s1">&#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;</span>
-</span></span></code></pre></div><h3 id="enum-with-kerberos">Enum with kerberos</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="enum-with-kerberos">Enum with Kerberos</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">ldapsearch</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >nxc</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add GSSAPI</span>
 </span></span><span class="line"><span class="cl">sudo apt install libsasl2-modules-gssapi-mit
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ldapsearch -H ldap://10.10.11.10 -Y GSSAPI -b <span class="s1">&#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;</span>
-</span></span></code></pre></div><h4 id="nxc">nxc</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With kerberos</span>
 </span></span><span class="line"><span class="cl">nxc ldap 10.10.11.10 -u &lt;USER&gt; -p &lt;PASSWORD&gt; -k --users
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

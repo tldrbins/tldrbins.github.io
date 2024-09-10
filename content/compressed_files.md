@@ -8,7 +8,16 @@ tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", 
 
 <small>*Hint: Always put the zip file inside a new folder before unzip*</small>
 
-### zip
+{{< tab set1 tab1 active >}}zip{{< /tab >}}
+{{< tab set1 tab2 >}}tar.gz{{< /tab >}}
+{{< tab set1 tab3 >}}tar{{< /tab >}}
+{{< tab set1 tab4 >}}gz{{< /tab >}}
+{{< tab set1 tab5 >}}rar{{< /tab >}}
+{{< tab set1 tab6 >}}7z{{< /tab >}}
+{{< tab set1 tab7 >}}bz{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # zip a file
@@ -40,7 +49,12 @@ unzip file.zip
 Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('C:\ProgramData\file.zip', 'C:\ProgramData\')
 ```
 
-### tar.gz
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
 # Compress a file
@@ -62,7 +76,12 @@ tar -xvzf file.tar.gz
 tar -xvzf file.tar.gz --wildcards '*.txt'
 ```
 
-### tar
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
+
+<div>
 
 ```bash
 # List files without extract
@@ -79,7 +98,12 @@ tar -xvf file.tar
 tar -xvf file.tar --wildcards '*.txt'
 ```
 
-### gz
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
+
+<div>
 
 ```bash
 # Compress file, and keep the original file
@@ -98,14 +122,24 @@ gunzip file.gz
 
 <small>*Note: If you want to zip the entire folder, use tar instead*</small>
 
-### rar
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab5 >}}
+
+<div>
 
 ```bash
 # Extract
 unrar e file.rar
 ```
 
-### 7z
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab6 >}}
+
+<div>
 
 ```bash
 # Install
@@ -122,11 +156,20 @@ sudo apt install p7zip-full
 7z l -slt file.zip
 ```
 
-### bz
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab7 >}}
+
+<div>
 
 ```bash
 # Extract and keep original files
 bunzip2 -k file.bz2
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

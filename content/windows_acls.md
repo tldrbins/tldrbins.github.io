@@ -9,6 +9,11 @@ tags: ["icacls", "acl", "Windows", "access control lists", "powershell", "cmd"]
 
 #### Check ACLs
 
+{{< tab set1 tab1 active >}}powershell{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
+
 ```powershell
 # Check a file/directory
 icacls <PATH>
@@ -19,26 +24,60 @@ icacls <PATH>
 icacls * /C
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
 #### Grant user full control
+
+{{< tab set2 tab1 active >}}cmd{{< /tab >}}
+{{< tab set2 tab2 >}}powershell{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+<div>
 
 ```powershell
 # cmd
 cmd.exe /c cacls <FILE> /E /G <USER>:F
 ```
 
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+<div>
+
 ```powershell
 # powershell
 icacls <FILE> /grant <USER>:F
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
 #### Change owner (WO)
+
+{{< tab set3 tab1 active >}}cmd{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+<div>
 
 ```powershell
 # cmd
 cmd.exe /c takeown /F <FILE>
 ```
 
+</div>
+
+{{< /tabcontent >}}
 <br>
+
+{{< tab set4 tab1 active >}}ACLs{{< /tab >}}
+{{< tabcontent set4 tab1 >}}
+
+<div>
 
 ```bash
 +---------------------------------------------------+
@@ -74,5 +113,9 @@ cmd.exe /c takeown /F <FILE>
 | I    (permission inherited from parent container) |
 +---------------------------------------------------+
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

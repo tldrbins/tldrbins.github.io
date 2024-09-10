@@ -201,31 +201,52 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="nmap-port-scan">Nmap Port Scan</h3>
-<h4 id="tcp-scan">TCP Scan</h4>
+<h3 id="nmap-scan">Nmap Scan</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">TCP</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >UDP</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >Script</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">target</span><span class="o">=</span>10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p- --min-rate <span class="m">10000</span> -oA ./nmap-alltcp <span class="nv">$target</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">ports</span><span class="o">=</span><span class="k">$(</span>cat nmap-alltcp.nmap<span class="p">|</span> grep -Eo <span class="s2">&#34;^[0-9]+&#34;</span> <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;,&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;s/,$//&#39;</span><span class="k">)</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p <span class="nv">$ports</span> -sCV -oA ./nmap-tcpscripts <span class="nv">$target</span>
-</span></span></code></pre></div><h4 id="udp-scan-common-ports">UDP Scan (common ports)</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">target</span><span class="o">=</span>10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -sU --min-rate <span class="m">10000</span> -oA ./nmap-udp <span class="nv">$target</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">ports</span><span class="o">=</span><span class="k">$(</span>cat nmap-udp.nmap<span class="p">|</span> grep -Eo <span class="s2">&#34;^[0-9]+&#34;</span> <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;,&#39;</span> <span class="p">|</span> sed -r <span class="s1">&#39;s/,$//&#39;</span><span class="k">)</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p <span class="nv">$ports</span> -sU -sCV -oA ./nmap-udpscripts <span class="nv">$target</span>
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="scan-with-nmap-scripts">Scan with nmap scripts</h3>
-<h4 id="update-scripts-db">Update scripts DB</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><h4 id="update-scripts-db">Update scripts DB</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --script-updatedb
-</span></span></code></pre></div><h4 id="search-scripts">Search scripts</h4>
+</span></span></code></pre></div></div>
+<h4 id="search-scripts">Search scripts</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --script-help ftp*
-</span></span></code></pre></div><h4 id="scan-with-a-script">Scan with a script</h4>
+</span></span></code></pre></div></div>
+<h4 id="scan-with-a-script">Scan with a script</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --script<span class="o">=</span>ftp-anon -sV -sC -p <span class="m">21</span> 10.10.11.10
-</span></span></code></pre></div><h4 id="scan-with-all-scripts">Scan with all scripts</h4>
+</span></span></code></pre></div></div>
+<h4 id="scan-with-all-scripts">Scan with all scripts</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap --script<span class="o">=</span>smb-vuln* -sV -sC -p <span class="m">445</span> 10.10.11.10
-</span></span></code></pre></div><h4 id="run-script-with-args">Run script with args</h4>
+</span></span></code></pre></div></div>
+<h4 id="run-script-with-args">Run script with args</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p <span class="m">1234</span> 10.10.11.10 --script &lt;SCRIPT_NAME&gt; --script-args<span class="o">=</span><span class="s2">&#34;&lt;SCRIPT_ARGS&gt;&#34;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -193,10 +193,23 @@
 <div class="content"><hr>
 <h3 id="general">General</h3>
 <h4 id="connect-to-mongo-database">Connect to Mongo Database</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">anonymous</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >authenticate</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mongo 10.10.11.10:27017
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect local with creds and specified database</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect local with creds and specified database</span>
 </span></span><span class="line"><span class="cl">mongo -u &lt;USER&gt; -p &lt;PASSWORD&gt; &lt;DB_NAME&gt;
-</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="basic-commands">Basic Commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all databases</span>
 </span></span><span class="line"><span class="cl">show dbs
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Choose database</span>
@@ -209,7 +222,8 @@
 </span></span><span class="line"><span class="cl">db.&lt;COLLECTION_NAME&gt;.insert<span class="o">({</span><span class="s2">&#34;&lt;key&gt;&#34;</span>: <span class="s2">&#34;&lt;value&gt;&#34;</span><span class="o">})</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update an entry (e.g. password of user)</span>
 </span></span><span class="line"><span class="cl">db.&lt;COLLECTION_NAME&gt;.update<span class="o">({</span><span class="s2">&#34;username&#34;</span>: <span class="s2">&#34;user&#34;</span><span class="o">}</span>, <span class="o">{</span><span class="nv">$set</span>: <span class="o">{</span><span class="s2">&#34;password&#34;</span>: <span class="s2">&#34;password&#34;</span><span class="o">}})</span><span class="p">;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

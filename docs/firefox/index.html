@@ -196,17 +196,25 @@
 
 <div class="content"><hr>
 <h3 id="extract-saved-passwords">Extract saved passwords</h3>
-<h4 id="firefox_decrypt">firefox_decrypt</h4>
-<p><a href="https://github.com/unode/firefox_decrypt">firefox_decrypt</a></p>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">firefox_decrypt</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >firepwd</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Auto detect path</span>
 </span></span><span class="line"><span class="cl">python3 firefox_decrypt.py
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Specify path</span>
 </span></span><span class="line"><span class="cl">python3 firefox_decrypt.py /&lt;PATH&gt;/profiles.ini/
-</span></span></code></pre></div><h4 id="firepwd">firepwd</h4>
-<p><a href="https://github.com/lclevy/firepwd">firepwd</a></p>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/unode/firefox_decrypt">firefox_decrypt</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With key4.db, logins.json in the same directory</span>
 </span></span><span class="line"><span class="cl">python3 firepwd.py
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/lclevy/firepwd">firepwd</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

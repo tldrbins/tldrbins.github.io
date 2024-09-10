@@ -196,27 +196,56 @@
   
   <li><a href="https://tldrbins.github.io/@sharphound/">Sharphound</a></li>
   
+  <li><a href="https://tldrbins.github.io/@neo4j/">Neo4j</a></li>
+  
 </ul>
 
 <div class="content"><hr>
-<h3 id="sharphoundps1">sharphound.ps1</h3>
-<p><a href="https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.ps1">Download sharphound.ps1</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Import module</span>
-</span></span><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">SharpHound</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Run</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Invoke-BloodHound</span> <span class="n">-CollectionMethods</span> <span class="n">All</span>
-</span></span></code></pre></div><h3 id="sharphoundexe">sharphound.exe</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">SharpHound</span><span class="p">.</span><span class="py">exe</span> <span class="n">-c</span> <span class="n">all</span>
-</span></span></code></pre></div><h3 id="bloodhound-python">bloodhound-python</h3>
+<h3 id="info-collection-from-linux">Info Collection (From Linux)</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">bloodhound-python</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With Creds</span>
 </span></span><span class="line"><span class="cl">bloodhound-python -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With Kerberos</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> bloodhound-python -u &lt;USER&gt; -p &lt;PASSWORD&gt; -k -d &lt;DOMAIN&gt; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip
-</span></span></code></pre></div><h3 id="bloodhound-with-pki-support">bloodhound with PKI support</h3>
-<p><a href="https://github.com/ly4k/BloodHound">BloodHound</a></p>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="info-collection-from-windows">Info Collection (From Windows)</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">SharpHound.exe</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >SharpHound.ps1</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">SharpHound</span><span class="p">.</span><span class="py">exe</span> <span class="n">-c</span> <span class="n">all</span> <span class="p">-</span><span class="n">-outputdirectory</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Import module</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">SharpHound</span><span class="p">.</span><span class="py">ps1</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Run</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Invoke-BloodHound</span> <span class="n">-CollectionMethods</span> <span class="n">All</span> <span class="n">-OutputDirectory</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.ps1">sharphound.ps1</a></em></small></p></div></p>
+<br>
+<hr>
+<h3 id="bloodhound">bloodhound</h3>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start neo4j server</span>
+</span></span><span class="line"><span class="cl">sudo neo4j console
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start bloodhound</span>
+</span></span><span class="line"><span class="cl">bloodhound
+</span></span></code></pre></div></div>
+<h3 id="bloodhound-with-pki-support">bloodhound (with PKI support)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: GPU process isn&#39;t usable. Goodbye.</span>
 </span></span><span class="line"><span class="cl">./BloodHound --no-sandbox
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/ly4k/BloodHound">BloodHound (with PKI support)</a></em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

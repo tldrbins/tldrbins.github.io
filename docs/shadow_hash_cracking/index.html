@@ -202,13 +202,25 @@
 
 <div class="content"><hr>
 <h3 id="shadow-hash-cracking">Shadow Hash Cracking</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Prepare an unshadowed hashes file</span>
 </span></span><span class="line"><span class="cl">unshadow passwd.txt shadow.txt &gt; unshadowed.txt
-</span></span></code></pre></div><h4 id="john">john</h4>
+</span></span></code></pre></div></div>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">john</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >hashcat</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">john --wordlist<span class="o">=</span>/usr/share/wordlists/rockyou.txt unshadowed.txt
-</span></span></code></pre></div><h4 id="hashcat">hashcat</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hashcat -m <span class="m">7400</span> unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

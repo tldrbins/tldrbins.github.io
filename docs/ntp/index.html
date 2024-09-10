@@ -198,20 +198,35 @@
 
 <div class="content"><hr>
 <h3 id="check-server-time">Check Server Time</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nmap -sU -sV --script <span class="s2">&#34;ntp* and (discovery or vuln) and not (dos or brute)&#34;</span> -p <span class="m">123</span> 10.10.11.10
-</span></span></code></pre></div><h3 id="check-time-skew">Check Time Skew</h3>
+</span></span></code></pre></div></div>
+<h3 id="check-time-skew">Check Time Skew</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">date<span class="p">;</span> ntpdate -q 10.10.11.10
-</span></span></code></pre></div><h3 id="update-time">Update Time</h3>
-<h4 id="fix-ntpdate-from-doing-nothing">Fix ntpdate from doing nothing</h4>
+</span></span></code></pre></div></div>
+<h3 id="update-time">Update Time</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">ntpdate</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >faketime</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="fix-ntpdate-from-doing-nothing">Fix ntpdate from doing nothing</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install chrony
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo timedatectl set-ntp <span class="nb">true</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s 10.10.11.10
-</span></span></code></pre></div><h4 id="using-faketime">Using faketime</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After getting the time skew</span>
 </span></span><span class="line"><span class="cl">faketime -f +9999s &lt;COMMAND&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get from http server</span>
 </span></span><span class="line"><span class="cl">faketime <span class="s2">&#34;</span><span class="k">$(</span>curl -sI http://example.com <span class="p">|</span> grep <span class="s1">&#39;Date:&#39;</span> <span class="p">|</span> awk -F <span class="s1">&#39;Date:&#39;</span> <span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

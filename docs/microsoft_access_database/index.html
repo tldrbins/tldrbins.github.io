@@ -195,16 +195,24 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="tool">Tool</h3>
+<h3 id="tools">Tools</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">mdbtools</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install mdbtools
-</span></span></code></pre></div><h3 id="basic">Basic</h3>
+</span></span></code></pre></div></div>
+<h4 id="basic">Basic</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all tables</span>
 </span></span><span class="line"><span class="cl">mdb-tables database.mdb 
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show tables with data</span>
 </span></span><span class="line"><span class="cl">mdb-tables database.mdb <span class="p">|</span> tr <span class="s1">&#39; &#39;</span> <span class="s1">&#39;\n&#39;</span> <span class="p">|</span> grep . <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> table<span class="p">;</span> <span class="k">do</span> <span class="nv">lines</span><span class="o">=</span><span class="k">$(</span>mdb-export database.mdb <span class="nv">$table</span> <span class="p">|</span> wc -l<span class="k">)</span><span class="p">;</span> <span class="k">if</span> <span class="o">[</span> <span class="nv">$lines</span> -gt <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$table</span><span class="s2">: </span><span class="nv">$lines</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span><span class="p">;</span> <span class="k">done</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump data from table</span>
 </span></span><span class="line"><span class="cl">mdb-export database.mdb &lt;TABLE_NAME&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

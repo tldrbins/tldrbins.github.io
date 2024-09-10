@@ -7,9 +7,11 @@ tags: ["firefox", "mozilla", "creds", "password"]
 ---
 ### Extract saved passwords
 
-#### firefox_decrypt
+{{< tab set1 tab1 active >}}firefox_decrypt{{< /tab >}}
+{{< tab set1 tab2 >}}firepwd{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
-[firefox_decrypt](https://github.com/unode/firefox_decrypt)
+<div>
 
 ```bash
 # Auto detect path
@@ -21,13 +23,24 @@ python3 firefox_decrypt.py
 python3 firefox_decrypt.py /<PATH>/profiles.ini/
 ```
 
-#### firepwd
+</div>
 
-[firepwd](https://github.com/lclevy/firepwd)
+<small>*Ref: [firefox_decrypt](https://github.com/unode/firefox_decrypt)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
 # With key4.db, logins.json in the same directory
 python3 firepwd.py
 ```
+
+</div>
+
+<small>*Ref: [firepwd](https://github.com/lclevy/firepwd)*</small>
+
+{{< /tabcontent >}}
 
 <br>

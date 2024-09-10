@@ -198,6 +198,7 @@
 
 <div class="content"><hr>
 <h3 id="imapimaps">IMAP/IMAPS</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect to IMAP over ssl</span>
 </span></span><span class="line"><span class="cl">rlwrap openssl s_client -connect 10.10.11.10:993
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Login</span>
@@ -208,7 +209,8 @@
 </span></span><span class="line"><span class="cl">a SELECT INBOX
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get mail from mailbox (e.g. #1)</span>
 </span></span><span class="line"><span class="cl">a FETCH <span class="m">1</span> BODY.PEEK<span class="o">[]</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

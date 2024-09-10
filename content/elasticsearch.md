@@ -7,6 +7,8 @@ tags: ["elasticsearch", "database"]
 ---
 ### Basic Commands
 
+<div>
+
 ```bash
 # List indexes
 curl -s http://example.com:9200/_cat/indices?v
@@ -22,5 +24,7 @@ curl -s -X GET "http://example.com:9200/<INDEX_NAME>/_search?size=100" -H 'Conte
 }
 ' | jq .
 ```
+
+</div>
 
 <br>

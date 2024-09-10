@@ -5,13 +5,22 @@ tags: ["Access", "database", "Windows", "mdb"]
 ---
 
 ---
-### Tool
+### Tools
+
+{{< tab set1 tab1 active >}}mdbtools{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 sudo apt install mdbtools
 ```
 
-### Basic
+</div>
+
+#### Basic
+
+<div>
 
 ```bash
 # Show all tables
@@ -27,5 +36,10 @@ mdb-tables database.mdb | tr ' ' '\n' | grep . | while read table; do lines=$(md
 # Dump data from table
 mdb-export database.mdb <TABLE_NAME>
 ```
+
+</div>
+
+{{< /tabcontent >}}
+
 
 <br>

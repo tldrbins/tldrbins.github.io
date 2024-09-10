@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/ad_recycle_bin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
-      <description> Privesc #1: Restore deleted AD account 1. Import AD module import-module activedirectory 2. Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects 3. Get all details for the deleted account Get-ADObject -filter { SAMAccountName -eq &amp;#34;&amp;lt;DELETED_USER&amp;gt;&amp;#34; } -includeDeletedObjects -property * 4. Restore deleted account # Rename the target account to avoid user exist error Restore-ADObject -Identity &amp;lt;ObjectGUID&amp;gt; -NewName &amp;lt;NEW_USER&amp;gt; -TargetPath &amp;#34;CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; </description>
+      <description> Privesc #1: Restore deleted AD account Windows 1. Import AD module import-module activedirectory 2. Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects 3. Get all details for the deleted account Get-ADObject -filter { SAMAccountName -eq &amp;#34;&amp;lt;DELETED_USER&amp;gt;&amp;#34; } -includeDeletedObjects -property * 4. Restore deleted account # Rename the target account to avoid user exist error Restore-ADObject -Identity &amp;lt;ObjectGUID&amp;gt; -NewName &amp;lt;NEW_USER&amp;gt; -TargetPath &amp;#34;CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; </description>
     </item>
   </channel>
 </rss>

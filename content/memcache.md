@@ -5,16 +5,25 @@ tags: ["memcache", "telnet"]
 ---
 
 ---
-### Connect 
+### Connect
 
-#### Using Telnet
+{{< tab set1 tab1 active >}}telnet{{< /tab >}}
+{{< tab set1 tab2 >}}memcached-cli{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Connect
 telnet 127.0.0.1 11211
 ```
 
-#### Using memcached-cli
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
 # Install
@@ -26,7 +35,13 @@ sudo npm install -g memcached-cli
 memcached-cli <USER>:<PASSWORD>@10.10.11.10:11211
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
 ### Basic Commmands
+
+<div>
 
 ```bash
 # Info about slabs
@@ -42,5 +57,7 @@ stats cachedump 1 0
 # Dump info
 get <ITEM_NAME>
 ```
+
+</div>
 
 <br>

@@ -5,23 +5,32 @@ tags: ["steganography", "steg", "exiftool", "ctf"]
 ---
 
 ---
-### exiftool
+### Tools
+
+{{< tab set1 tab1 active >}}exiftool{{< /tab >}}
+{{< tab set1 tab2 >}}steghide{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 exiftool <FILE>
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
-### steg
-
-#### steghide
+<div>
 
 ```bash
 # Always try with empty passphrase
 steghide extract -sf <FILE>
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

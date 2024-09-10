@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/memory_dump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memory_dump/</guid>
-      <description> binwalk Download binwalk&#xA;# Extract files from memory dump binwalk -M -e memory.dmp Mini Dump pypykatz lsa minidump memory.dmp </description>
+      <description> Tools binwalk pypykatz # Extract files from memory dump binwalk -M -e memory.dmp Ref: binwalk&#xA;# Mini Dump pypykatz lsa minidump memory.dmp </description>
     </item>
   </channel>
 </rss>

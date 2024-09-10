@@ -7,6 +7,8 @@ tags: ["sqlite", "database"]
 ---
 ### General
 
+<div>
+
 ```bash
 # Open a db
 sqlite3 sql.db
@@ -31,5 +33,7 @@ sqlite3 sql.db
 # Dump data
 select * from <TABLE_NAME>;
 ```
+
+</div>
 
 <br>

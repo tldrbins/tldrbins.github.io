@@ -199,27 +199,51 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="locate-a-file">Locate a file</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="locate-a-file">Locate a file</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">locate cmd.php
-</span></span></code></pre></div><h3 id="find-files-of-type-file">Find files of type file</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-files-of-type-file">Find files of type file</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type f
-</span></span></code></pre></div><h3 id="find-and-open">Find and Open</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-and-open">Find and Open</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find / -name test.txt -exec cat <span class="o">{}</span> <span class="se">\;</span>
-</span></span></code></pre></div><h3 id="find-suid-bit-set-files">Find SUID bit set files</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-suid-bit-set-files">Find SUID bit set files</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find / -type f -user root <span class="se">\(</span> -perm -4000 -o -perm -2000 <span class="se">\)</span> 2&gt;/dev/null -ls
-</span></span></code></pre></div><h3 id="find-files-owned-by-user">Find files owned by user</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-files-owned-by-user">Find files owned by user</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find / -user user -ls 2&gt;/dev/null <span class="p">|</span> grep -v -e <span class="s2">&#34; \/proc&#34;</span> -e <span class="s2">&#34; \/sys&#34;</span>
-</span></span></code></pre></div><h3 id="find-files-owned-by-group">Find files owned by group</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-files-owned-by-group">Find files owned by group</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find / -group adm 2&gt;/dev/null <span class="p">|</span> grep -v -e ^/proc
-</span></span></code></pre></div><h3 id="find-files-created-between-112024-and-31122024">Find files created between 1/1/2024 and 31/12/2024</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-files-created-between-112024-and-31122024">Find files created between 1/1/2024 and 31/12/2024</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find / -type f -newermt 2024-01-01 ! -newermt 2024-12-31 -ls 2&gt;/dev/null
-</span></span></code></pre></div><h3 id="find-files-with-capabilities">Find files with capabilities</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-files-with-capabilities">Find files with capabilities</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find / -exec getcap <span class="o">{}</span> <span class="se">\;</span> 2&gt;/dev/null
-</span></span></code></pre></div><h3 id="find-writable-folders">Find writable folders</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-writable-folders">Find writable folders</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find . -type d <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> dir<span class="p">;</span> <span class="k">do</span> mkdir <span class="si">${</span><span class="nv">dir</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">dir</span><span class="si">}</span><span class="s2"> - directory create OK&#34;</span> <span class="o">&amp;&amp;</span> rmdir <span class="si">${</span><span class="nv">dir</span><span class="si">}</span>/test<span class="p">;</span> touch <span class="si">${</span><span class="nv">dir</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">dir</span><span class="si">}</span><span class="s2"> - file write OK&#34;</span> <span class="o">&amp;&amp;</span> rm <span class="si">${</span><span class="nv">dir</span><span class="si">}</span>/test<span class="p">;</span> <span class="k">done</span>
-</span></span></code></pre></div><h3 id="find-files-not-modified-by-dpkg-ie-modified-by-something-else">Find files not modified by dpkg (i.e. modified by something else)</h3>
+</span></span></code></pre></div></div>
+<h4 id="find-files-not-modified-by-dpkg-ie-modified-by-something-else">Find files not modified by dpkg (i.e. modified by something else)</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find /lib -type f -printf <span class="s2">&#34;%M %n %-6u %-6g %6s %TY-%Tm-%Td %TT %TZ %h/%f\n&#34;</span> <span class="p">|</span> sort -k 6,7 <span class="p">|</span> grep -v <span class="s2">&#34;.0000000000&#34;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

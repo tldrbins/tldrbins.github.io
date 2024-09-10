@@ -190,7 +190,7 @@
   
   <li><a href="https://tldrbins.github.io/@reconnaissance/">Reconnaissance</a></li>
   
-  <li><a href="https://tldrbins.github.io/@domain/">&lt;DOMAIN&gt;</a></li>
+  <li><a href="https://tldrbins.github.io/@domain/">Domain</a></li>
   
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
@@ -204,22 +204,50 @@
 
 <div class="content"><hr>
 <h3 id="smb-share-enum">SMB Share Enum</h3>
-<h4 id="nmap-script">nmap script</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">nmap</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nmap --script<span class="o">=</span>smb-enum-shares -p <span class="m">445</span> &lt;TARGET&gt;
-</span></span></code></pre></div><h4 id="login-without-password">Login without password</h4>
-<h4 id="smbmap">smbmap</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="anonymous-login">Anonymous Login</h4>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">smbmap</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >smbclient</button>
+
+<button data-tabset="set2" data-tabcontent="tab3" >impacket</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H &lt;TARGET&gt; --no-banner
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H &lt;TARGET&gt; -u null --no-banner
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List known share</span>
 </span></span><span class="line"><span class="cl">smbmap -H &lt;TARGET&gt; -r &lt;SHARE&gt;
-</span></span></code></pre></div><h4 id="smbclient">smbclient</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>&lt;TARGET&gt;<span class="se">\\</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After found an accessible share</span>
 </span></span><span class="line"><span class="cl">smbclient -N <span class="se">\\\\</span>&lt;TARGET&gt;<span class="se">\\</span>&lt;SHARE&gt;<span class="se">\\</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED</span>
 </span></span><span class="line"><span class="cl">smbclient -N -L <span class="se">\\\\</span>&lt;TARGET&gt;<span class="se">\\</span> --option<span class="o">=</span><span class="s1">&#39;client min protocol=NT1&#39;</span>
-</span></span></code></pre></div><h4 id="login-with-password">Login with password</h4>
-<h4 id="smbmap-1">smbmap</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># SID brute, if null auth allowed</span>
+</span></span><span class="line"><span class="cl">impacket-lookupsid test@&lt;DOMAIN&gt; -no-pass
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="authenticated">Authenticated</h4>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">smbmap</button>
+
+<button data-tabset="set3" data-tabcontent="tab2" >smbclient</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbmap -H &lt;TARGET&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List known share</span>
 </span></span><span class="line"><span class="cl">smbmap -H &lt;TARGET&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -R &lt;SHARE&gt;
@@ -227,11 +255,23 @@
 </span></span><span class="line"><span class="cl">smbmap -H &lt;TARGET&gt; -r &lt;SHARE&gt; --download &lt;PATH/TO/FILE&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List files with regex pattern</span>
 </span></span><span class="line"><span class="cl">smbmap -H &lt;TARGET&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -r &lt;SHARE&gt; -A &lt;FILE_PATTERN&gt;
-</span></span></code></pre></div><h4 id="smbclient-1">smbclient</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -L <span class="se">\\\\</span>&lt;TARGET&gt;<span class="se">\\</span> -U &lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbclient -L <span class="se">\\\\</span>&lt;TARGET&gt;<span class="se">\\</span> -U &lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After found an accessible share</span>
 </span></span><span class="line"><span class="cl">smbclient  <span class="se">\\\\</span>&lt;TARGET&gt;<span class="se">\\</span>&lt;SHARE&gt;<span class="se">\\</span> -U &lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;
-</span></span></code></pre></div><h4 id="smbclient-basic-commands">smbclient Basic Commands</h4>
+</span></span></code></pre></div></div></p>
+<h4 id="authenticated-with-kerberos">Authenticated with Kerberos</h4>
+<p>
+<button data-tabset="set4" data-tabcontent="tab1" class="active">impacket</button>
+
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-smbclient &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt; -k -no-pass
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="basic-commands">Basic commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all files in a share</span>
 </span></span><span class="line"><span class="cl">recurse ON
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls
@@ -240,37 +280,45 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">recurse ON
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">prompt OFF
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mget *
-</span></span></code></pre></div><h4 id="impacket-smbclient-kerberos">impacket-smbclient (Kerberos)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-smbclient &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt; -k -no-pass
-</span></span></code></pre></div><br>
-<hr>
-<h4 id="sid-brute">SID Brute</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Null auth allowed</span>
-</span></span><span class="line"><span class="cl">impacket-lookupsid test@&lt;DOMAIN&gt; -no-pass
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="mount-smb-share">Mount SMB Share</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
-</span></span><span class="line"><span class="cl">sudo mount -t cifs -o ro,user<span class="o">=</span>&lt;USER&gt;,password<span class="o">=</span>&lt;PASSWORD&gt; //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
-</span></span></code></pre></div><h4 id="check-write-permission">Check write permission</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo find . -type d <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> directory<span class="p">;</span> <span class="k">do</span> touch <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write file&#34;</span> <span class="o">&amp;&amp;</span> rm <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> mkdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write directory&#34;</span> <span class="o">&amp;&amp;</span> rmdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> <span class="k">done</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Check file type you can write</span>
-</span></span><span class="line"><span class="cl">sudo touch <span class="o">{</span>/mnt/,./<span class="o">}</span>test.<span class="o">{</span>dll,exe,ini,lnk<span class="o">}</span>
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inside smbclient session</span>
-</span></span><span class="line"><span class="cl">allinfo &lt;FILE&gt;
+</span></span></code></pre></div></div>
+<h4 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">allinfo &lt;FILE&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Example Response</span>
 </span></span><span class="line"><span class="cl">&gt;&gt;&gt;stream: <span class="o">[</span>:Password:<span class="nv">$DATA</span><span class="o">]</span>, <span class="m">15</span> bytes
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Download specific data stream</span>
 </span></span><span class="line"><span class="cl">get <span class="s2">&#34;&lt;FILE&gt;:Password&#34;</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
 <hr>
-<h3 id="change-smb-password-with-old-creds">Change SMB password (With old creds)</h3>
+<h3 id="mount-smb-share">Mount SMB Share</h3>
+<p>
+<button data-tabset="set5" data-tabcontent="tab1" class="active">Anonymous</button>
+
+<button data-tabset="set5" data-tabcontent="tab2" >Authenticated</button>
+
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount -t cifs -o ro,user<span class="o">=</span>&lt;USER&gt;,password<span class="o">=</span>&lt;PASSWORD&gt; //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="check-write-permission">Check write permission</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo find . -type d <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> directory<span class="p">;</span> <span class="k">do</span> touch <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write file&#34;</span> <span class="o">&amp;&amp;</span> rm <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> mkdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test 2&gt;/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">directory</span><span class="si">}</span><span class="s2"> - write directory&#34;</span> <span class="o">&amp;&amp;</span> rmdir <span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test<span class="p">;</span> <span class="k">done</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#Check file type you can write</span>
+</span></span><span class="line"><span class="cl">sudo touch <span class="o">{</span>/mnt/,./<span class="o">}</span>test.<span class="o">{</span>dll,exe,ini,lnk<span class="o">}</span>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="change-smb-password-with-old-password">Change SMB password (With old password)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">smbpasswd -r &lt;TARGET&gt; -U &lt;USER&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

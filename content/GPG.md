@@ -7,6 +7,8 @@ tags: ["gpg", "encryption", "crypto", "Pretty Good Privacy", "public key", "priv
 ---
 ### GPG
 
+<div>
+
 ```bash
 # Check version
 gpg --version
@@ -46,5 +48,7 @@ gpg -d ciphertext.txt
 # Sign our own message
 gpg --clearsign --output - plaintext.txt
 ```
+
+</div>
 
 <br>

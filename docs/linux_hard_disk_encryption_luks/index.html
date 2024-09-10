@@ -194,16 +194,22 @@
 
 <div class="content"><hr>
 <h3 id="brute-force-luks-password">Brute force LUKS password</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bruteforce-luks -t <span class="m">10</span> -f wordlist.txt -w state.txt -v <span class="m">30</span> backup.img
-</span></span></code></pre></div><p><small><em>Note: This is slow, create a small wordlist</em></small></p>
-<h3 id="open">Open</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cryptsetup open --type luks backup.img backup
-</span></span></code></pre></div><h3 id="check">Check</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ls -l /dev/mapper/
-</span></span></code></pre></div><h3 id="mount">Mount</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mkdir /mnt/backup
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mount /dev/mapper/backup /mnt/backup/
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<p><small><em>Note: This is slow, create a small wordlist</em></small></p>
+<h3 id="basic">Basic</h3>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open</span>
+</span></span><span class="line"><span class="cl">cryptsetup open --type luks backup.img backup
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
+</span></span><span class="line"><span class="cl">ls -l /dev/mapper/
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create mount folder</span>
+</span></span><span class="line"><span class="cl">sudo mkdir /mnt/backup
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Mount</span>
+</span></span><span class="line"><span class="cl">sudo mount /dev/mapper/backup /mnt/backup/
+</span></span></code></pre></div></div>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

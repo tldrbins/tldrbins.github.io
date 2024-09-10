@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/kubelet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kubelet/</guid>
-      <description> Tools kubeletctl&#xA;Basic Commands # List all the pods on the node kubeletctl pods -s 10.10.11.10 # List running pods kubeletctl runningpods -s 10.10.11.10 # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s 10.10.11.10 </description>
+      <description>Basic Commands # List all the pods on the node kubeletctl pods -s 10.10.11.10 # List running pods kubeletctl runningpods -s 10.10.11.10 # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s 10.10.11.10 Ref: kubeletctl</description>
     </item>
   </channel>
 </rss>

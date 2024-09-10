@@ -5,13 +5,22 @@ tags: ["powershell", "find", "files", "Windows", "cmd"]
 ---
 
 ---
+{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
 ### Show hidden files
+
+<div>
 
 ```powershell
 Get-ChildItem -force
 ```
 
+</div>
+
 ### Find a file
+
+<div>
 
 ```powershell
 ls -path \Users -Filter example.txt -recurse -erroraction silent
@@ -21,7 +30,11 @@ ls -path \Users -Filter example.txt -recurse -erroraction silent
 where /R C:\Users example.txt
 ```
 
+</div>
+
 ### Find a file, with rules
+
+<div>
 
 ```powershell
 dir /s /b /a:-d-h \Users\Administrator | findstr /i /v "appdata"
@@ -39,5 +52,9 @@ dir /s /b /a:-d-h \Users\Administrator | findstr /i /v "appdata"
 |/v appdata : exclude 'appdata'         |
 +---------------------------------------+
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

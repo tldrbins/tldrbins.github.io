@@ -203,17 +203,32 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="chisel">Chisel</h3>
-<p><small><a href="https://github.com/jpillora/chisel">Download chisel</a></small></p>
-<h4 id="start-a-local-chisel-server">Start a Local chisel Server</h4>
+<h3 id="tunneling">Tunneling</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Chisel</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >ssh</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >socat</button>
+
+<button data-tabset="set1" data-tabcontent="tab4" >metasploit</button>
+
+<button data-tabset="set1" data-tabcontent="tab5" >sliver</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-a-local-chisel-server">Start a local chisel Server</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
 </span></span><span class="line"><span class="cl">./chisel server --reverse --port <span class="m">8000</span>
-</span></span></code></pre></div><h4 id="chisel-with-ports">chisel with ports</h4>
+</span></span></code></pre></div></div>
+<h4 id="ports-forwarding">Ports forwarding</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In target machine</span>
 </span></span><span class="line"><span class="cl">./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Mutiple ports fowarding, can be different targets in the same subnet</span>
 </span></span><span class="line"><span class="cl">./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000
-</span></span></code></pre></div><h4 id="chisel-with-socks5">chisel with socks5</h4>
+</span></span></code></pre></div></div>
+<h4 id="socks5">Socks5</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
 </span></span><span class="line"><span class="cl">sudo nano /etc/proxychains4.conf
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add to the end of the file</span>
@@ -222,25 +237,30 @@
 </span></span><span class="line"><span class="cl">./chisel client 10.10.11.10:8000 R:1080:socks
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Usage, in our local machine</span>
 </span></span><span class="line"><span class="cl">proxychains4 curl http://127.0.0.1:1080
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="ssh">SSH</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/jpillora/chisel">chisel</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># SSH port forwarding without spawning a shell</span>
 </span></span><span class="line"><span class="cl">ssh -N -L 8080:127.0.0.1:8080 &lt;USER&gt;@10.10.11.10
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="socat">socat</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Any traffic go to port 1337 will be forwarded to 10.10.14.10:1337</span>
 </span></span><span class="line"><span class="cl">./socat tcp-listen:1337,fork tcp:10.10.14.10:1337 <span class="p">&amp;</span>
-</span></span></code></pre></div><br>
-<hr>
-<h3 id="metasploit">Metasploit</h3>
-<h4 id="ports">Ports</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><h4 id="ports-forwarding">Ports forwarding</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add</span>
 </span></span><span class="line"><span class="cl">portfwd add -l <span class="m">80</span> -r 127.0.0.1 -p <span class="m">80</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Delete</span>
 </span></span><span class="line"><span class="cl">portfwd delete -l <span class="m">80</span> -r 127.0.0.1 -p <span class="m">80</span>
-</span></span></code></pre></div><h4 id="socks">Socks</h4>
+</span></span></code></pre></div></div>
+<h4 id="socks5">Socks5</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># First add routes to target subnet</span>
 </span></span><span class="line"><span class="cl">use post/multi/manage/autoroute
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> session &lt;ID&gt;
@@ -248,9 +268,14 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Then create socks proxy</span>
 </span></span><span class="line"><span class="cl">use auxiliary/server/socks_proxy
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">run
-</span></span></code></pre></div><h3 id="sliver-c2">Sliver C2</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">socks5 start
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

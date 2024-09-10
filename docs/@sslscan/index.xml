@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssl/</guid>
-      <description>sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix Old ssl Protocol Connection Problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
+      <description>Tools sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix old ssl protocol connection problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
     </item>
   </channel>
 </rss>

@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/openssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/openssl/</guid>
-      <description>Show TLS Certificate echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Base64 Encode/Decode # base64 encode a file openssl base64 -in ./file # base64 decode a file and output to a file cat b64_file | openssl enc -d -base64 -out ./file Certificate Show content of a request openssl req -in request.csr -noout -text Create Client Certificate # Generate a user key openssl genrsa -out username.</description>
+      <description>Show TLS Certificate from HTTPS web server echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Certificate Show content of a request openssl req -in request.csr -noout -text Create Client Certificate # Generate a user key openssl genrsa -out username.key 2048 # Create a CSR openssl req -new -key username.key -out username.csr # Settings +-----------------------------------------------------------------------------+ | You are about to be asked to enter information that will be incorporated | | into your certificate request.</description>
     </item>
     <item>
       <title>SSL</title>
       <link>https://tldrbins.github.io/ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssl/</guid>
-      <description>sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix Old ssl Protocol Connection Problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
+      <description>Tools sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix old ssl protocol connection problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
     </item>
   </channel>
 </rss>

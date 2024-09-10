@@ -200,6 +200,7 @@
 
 <div class="content"><hr>
 <h3 id="simple-mail-debugging-server">Simple Mail Debugging Server</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">aiosmtpd.controller</span>
@@ -218,16 +219,22 @@
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] Listening on 0.0.0.0:25&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;[*] Server started. Press Return to quit.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">server</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-</span></span></code></pre></div><h3 id="user-enum">User Enum</h3>
-<h4 id="nmap-script">nmap script</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p <span class="m">25</span> --script<span class="o">=</span>smtp-enum-users &lt;TARGET&gt;
-</span></span></code></pre></div><h4 id="smtp-user-enum">smtp-user-enum</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use RCPT</span>
+</span></span></code></pre></div></div>
+<h3 id="users-enum">Users Enum</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">nmap script</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >smtp-user-enum</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p <span class="m">25</span> --script<span class="o">=</span>smtp-enum-users &lt;TARGET&gt;
+</span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use RCPT</span>
 </span></span><span class="line"><span class="cl">smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &lt;TARGET&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use VRFY</span>
 </span></span><span class="line"><span class="cl">smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &lt;TARGET&gt;
-</span></span></code></pre></div><p><small><em>Note: <a href="https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl">smtp-user-enum.pl</a></em></small></p>
-</div></div>
+</span></span></code></pre></div><p><small><em>Ref: <a href="https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl">smtp-user-enum.pl</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

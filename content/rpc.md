@@ -5,7 +5,15 @@ tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Wi
 ---
 
 ---
-### rpcclient
+### Remote Procedure Call
+
+#### Tools
+
+{{< tab set1 tab1 active >}}rpcclient{{< /tab >}}
+{{< tab set1 tab2 >}}impacket{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Connect without creds
@@ -22,7 +30,11 @@ rpcclient -U <DOMAIN>/<USER>%<PASSWORD> 10.10.11.10
 rpcclient -U <DOMAIN>/<USER>%<PASSWORD> 10.10.11.10 -c 'querydispinfo'
 ```
 
+</div>
+
 #### Basic Commands
+
+<div>
 
 ```bash
 # General info
@@ -64,10 +76,15 @@ lookupnames <USER>
 lookupsids <SID>
 ```
 
-### impacket-lookupsid
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
 ```bash
 impacket-lookupsid <USER>:<PASSWORD>@<TARGET>
 ```
+
+{{< /tabcontent >}}
 
 <br>

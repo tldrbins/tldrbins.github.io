@@ -191,10 +191,17 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="sslscan">sslscan</h3>
+<h3 id="tools">Tools</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">sslscan</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Scan target SSL version</span>
 </span></span><span class="line"><span class="cl">sslscan &lt;TARGET&gt;
-</span></span></code></pre></div><h3 id="fix-old-ssl-protocol-connection-problem">Fix Old ssl Protocol Connection Problem</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="fix-old-ssl-protocol-connection-problem">Fix old ssl protocol connection problem</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/ssl/openssl.cnf</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="o">[</span>system_default_sect<span class="o">]</span>
@@ -202,8 +209,9 @@
 </span></span><span class="line"><span class="cl"><span class="nv">MinProtocol</span> <span class="o">=</span> None
 </span></span><span class="line"><span class="cl"><span class="c1">#CipherString = DEFAULT@SECLEVEL=2</span>
 </span></span><span class="line"><span class="cl"><span class="nv">CipherString</span> <span class="o">=</span> None
-</span></span></code></pre></div><p><small><em>Note: Remember to revert the changes after job done</em></small></p>
-</div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Note: Remember to revert the changes after job done</em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

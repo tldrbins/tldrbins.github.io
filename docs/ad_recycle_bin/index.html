@@ -196,16 +196,28 @@
 
 <div class="content"><hr>
 <h3 id="privesc-1-restore-deleted-ad-account">Privesc #1: Restore deleted AD account</h3>
-<h4 id="1-import-ad-module">1. Import AD module</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-ad-module">1. Import AD module</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="n">activedirectory</span>
-</span></span></code></pre></div><h4 id="2-query-all-deleted-objects-within-domain">2. Query all deleted objects within domain</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-query-all-deleted-objects-within-domain">2. Query all deleted objects within domain</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-ADObject</span> <span class="n">-filter</span> <span class="s1">&#39;isDeleted -eq $true -and name -ne &#34;Deleted Objects&#34;&#39;</span> <span class="n">-includeDeletedObjects</span>
-</span></span></code></pre></div><h4 id="3-get-all-details-for-the-deleted-account">3. Get all details for the deleted account</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-get-all-details-for-the-deleted-account">3. Get all details for the deleted account</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-ADObject</span> <span class="n">-filter</span> <span class="p">{</span> <span class="n">SAMAccountName</span> <span class="o">-eq</span> <span class="s2">&#34;&lt;DELETED_USER&gt;&#34;</span> <span class="p">}</span> <span class="n">-includeDeletedObjects</span> <span class="n">-property</span> <span class="p">*</span>
-</span></span></code></pre></div><h4 id="4-restore-deleted-account">4. Restore deleted account</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-restore-deleted-account">4. Restore deleted account</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Rename the target account to avoid user exist error</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Restore-ADObject</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">ObjectGUID</span><span class="p">&gt;</span> <span class="n">-NewName</span> <span class="p">&lt;</span><span class="n">NEW_USER</span><span class="p">&gt;</span> <span class="n">-TargetPath</span> <span class="s2">&#34;CN=Users,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#34;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

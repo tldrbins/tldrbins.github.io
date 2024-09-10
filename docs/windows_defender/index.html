@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Defender (Windows) | TLDRBins</title>
+<title>Windows Defender | TLDRBins</title>
 <meta name="robots" content='noindex, nofollow'>
 <meta name="description" content="">
 <meta name="generator" content="hugo-index">
@@ -25,7 +25,7 @@
     </a>
     <span class="hl">/</span>
     <a href="https://tldrbins.github.io/windows_defender/">
-      <span>Defender (Windows)</span>
+      <span>Windows Defender</span>
     </a>
   </h1>
   <div class="js-toggle-wrapper">
@@ -200,11 +200,17 @@
 
 <div class="content"><hr>
 <h3 id="disable-defender">Disable defender</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Powershell</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Disable realtime monitoring</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Set-MpPreference</span> <span class="n">-DisableRealtimeMonitoring</span> <span class="vm">$true</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Completely disable defender</span>
 </span></span><span class="line"><span class="cl"><span class="nb">New-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&#34;</span> <span class="n">-Name</span> <span class="n">DisableAntiSpyware</span> <span class="n">-Value</span> <span class="mf">1</span> <span class="n">-PropertyType</span> <span class="n">DWORD</span> <span class="n">-Force</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

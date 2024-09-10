@@ -7,7 +7,9 @@ tags: ["npm", "nodejs", "privesc", "sudo"]
 ---
 #### SUDO
 
-Create a `package.json`
+Create a 'package.json'
+
+<div>
 
 ```json
 {
@@ -18,6 +20,12 @@ Create a `package.json`
   }
 }
 ```
+
+</div>
+
+<br>
+
+<div>
 
 ```bash
 mkdir test
@@ -30,5 +38,7 @@ mv package.json test/
 ```bash
 sudo npm i test/ --unsafe
 ```
+
+</div>
 
 <br>

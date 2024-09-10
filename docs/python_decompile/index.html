@@ -199,25 +199,40 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="pyinstxtractor">pyinstxtractor</h3>
+<h3 id="tools">Tools</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">pyinstxtractor</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >uncompyle6</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >pycdc</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Unpack pyinstaller packed binary</span>
 </span></span><span class="line"><span class="cl">pyinstxtractor test.elf
-</span></span></code></pre></div><h3 id="uncompyle6">uncompyle6</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
 </span></span><span class="line"><span class="cl">pip3 install uncompyle6
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run (need .pyc extension)</span>
 </span></span><span class="line"><span class="cl">uncompyle6 script.pyc
-</span></span></code></pre></div><h3 id="pycdc">pycdc</h3>
-<h4 id="installation">Installation</h4>
-<p><a href="https://github.com/zrax/pycdc">pycdc</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/zrax/pycdc.git
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
+</span></span><span class="line"><span class="cl">git clone https://github.com/zrax/pycdc.git
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> pycdc
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cmake .
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">make
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">make check
-</span></span></code></pre></div><h4 id="run">Run</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">./pycdc script.pyc
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run</span>
+</span></span><span class="line"><span class="cl">./pycdc script.pyc
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/zrax/pycdc">pycdc</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

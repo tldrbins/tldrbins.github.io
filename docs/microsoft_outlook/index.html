@@ -199,16 +199,28 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="open-pst-file">Open .pst file</h3>
-<h4 id="tool">Tool</h4>
+<h3 id="open-email-file">Open email file</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">.pst</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >.msg</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="tools">Tools</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install readpst
-</span></span></code></pre></div><h4 id="basic">Basic</h4>
+</span></span></code></pre></div></div>
+<h4 id="basic">Basic</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to mbox format</span>
 </span></span><span class="line"><span class="cl">readpst emails.pst
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open .mbox (plaintext)</span>
 </span></span><span class="line"><span class="cl">cat emails.mbox
-</span></span></code></pre></div><h4 id="read-many-emails">Read many emails</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use mutt</span>
+</span></span></code></pre></div></div>
+<h4 id="read-many-emails">Read many emails</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install mutt</span>
+</span></span><span class="line"><span class="cl">sudo apt install mutt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open in mutt terminal</span>
 </span></span><span class="line"><span class="cl">mutt -Rf emails.mbox
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+--------------------------------------+
 </span></span><span class="line"><span class="cl"><span class="p">|</span> Note: Answer No to create /root/Mail <span class="p">|</span>
@@ -218,18 +230,25 @@
 </span></span><span class="line"><span class="cl"><span class="p">|</span> q       : back                       <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span> q again : quit                       <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+--------------------------------------+
-</span></span></code></pre></div><h3 id="open-msg-file">Open .msg file</h3>
-<h4 id="tool-1">Tool</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="tools">Tools</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install msgconvert</span>
 </span></span><span class="line"><span class="cl">sudo apt install libemail-outlook-message-perl
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install formail</span>
 </span></span><span class="line"><span class="cl">sudo apt install procmail
-</span></span></code></pre></div><h4 id="basic-1">Basic</h4>
+</span></span></code></pre></div></div>
+<h4 id="basic">Basic</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to .eml format</span>
 </span></span><span class="line"><span class="cl">msgconvert *.msg
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to .mbox format</span>
 </span></span><span class="line"><span class="cl">cat messages.eml <span class="p">|</span> formail -b &gt; emails.mbox
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -201,7 +201,11 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="check-firewall-rules">Check Firewall Rules</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h3 id="check-firewall-rules">Check Firewall Rules</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
 </span></span><span class="line"><span class="cl"><span class="n">cmd</span> <span class="p">/</span><span class="n">c</span> <span class="s2">&#34;netsh advfirewall firewall show rule name=all|findstr Name:&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
@@ -210,10 +214,14 @@
 </span></span><span class="line"><span class="cl"><span class="nb">Get-NetFirewallRule</span> <span class="n">-Direction</span> <span class="n">Outbound</span> <span class="n">-Enabled</span> <span class="n">True</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Pretty Print</span>
 </span></span><span class="line"><span class="cl"><span class="n">powershell</span> <span class="n">-c</span> <span class="s2">&#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&#39;Protocol&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallPortFilter).Protocol}},@{Name=&#39;LocalPort&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallPortFilter).LocalPort}},@{Name=&#39;RemotePort&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallPortFilter).RemotePort}},@{Name=&#39;RemoteAddress&#39;;Expression={(</span><span class="nv">$PSItem</span><span class="s2"> | Get-NetFirewallAddressFilter).RemoteAddress}}, Enabled, Profile,Direction,Action&#34;</span>
-</span></span></code></pre></div><h3 id="add-inbound-rules">Add Inbound Rules</h3>
+</span></span></code></pre></div></div>
+<h3 id="add-inbound-rules">Add Inbound Rules</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Allow all inbound traffic from local subnet</span>
 </span></span><span class="line"><span class="cl"><span class="nb">New-NetFirewallRule</span> <span class="n">-DisplayName</span> <span class="s2">&#34;Allow All&#34;</span> <span class="n">-Direction</span> <span class="n">Inbound</span> <span class="n">-Enabled</span> <span class="n">True</span> <span class="n">-RemoteAddress</span> <span class="n">LocalSubnet</span> <span class="n">-Action</span> <span class="n">Allow</span> <span class="n">-Protocol</span> <span class="n">TCP</span> <span class="n">-Profile</span> <span class="n">ANY</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+</div></p>
+<br>
 </div></div>
     
     <script src="/js/utils.js"></script>

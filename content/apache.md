@@ -7,9 +7,15 @@ tags: ["apache", "web server"]
 ---
 ### Check Apache version
 
+<div>
+
 [apache](https://packages.ubuntu.com/search?keywords=apache2)
 
+</div>
+
 ### Config location
+
+<div>
 
 ```bash
 /etc/apache2/sites-enabled/000-default.conf
@@ -18,5 +24,7 @@ tags: ["apache", "web server"]
 ```bash
 /etc/apache2/sites-enabled/default-ssl.conf
 ```
+
+</div>
 
 <br>

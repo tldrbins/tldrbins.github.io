@@ -207,14 +207,23 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="rpcclient">rpcclient</h3>
+<h3 id="remote-procedure-call">Remote Procedure Call</h3>
+<h4 id="tools">Tools</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">rpcclient</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >impacket</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect without creds</span>
 </span></span><span class="line"><span class="cl">rpcclient -U <span class="s1">&#39;&#39;</span> -N 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect with creds</span>
 </span></span><span class="line"><span class="cl">rpcclient -U &lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt; 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Inline execute command</span>
 </span></span><span class="line"><span class="cl">rpcclient -U &lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt; 10.10.11.10 -c <span class="s1">&#39;querydispinfo&#39;</span>
-</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+</span></span></code></pre></div></div>
+<h4 id="basic-commands">Basic Commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># General info</span>
 </span></span><span class="line"><span class="cl">querydispinfo
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List of users</span>
@@ -231,9 +240,12 @@
 </span></span><span class="line"><span class="cl">lookupnames &lt;USER&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Look up by SID</span>
 </span></span><span class="line"><span class="cl">lookupsids &lt;SID&gt;
-</span></span></code></pre></div><h3 id="impacket-lookupsid">impacket-lookupsid</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-lookupsid &lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-lookupsid &lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;
+</span></span></code></pre></div></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

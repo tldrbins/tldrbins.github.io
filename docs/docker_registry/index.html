@@ -195,7 +195,8 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="api">API</h3>
+<h3 id="docker-registry-api">Docker Registry API</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List repos</span>
 </span></span><span class="line"><span class="cl">curl -s -k --user <span class="s2">&#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34;</span> https://docker.example.com/v2/_catalog
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List of tags of this repo</span>
@@ -204,13 +205,21 @@
 </span></span><span class="line"><span class="cl">curl -s -k --user <span class="s2">&#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34;</span> https://docker.example.com/v2/&lt;REPO_NAME&gt;/manifests/latest
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get a commit of the image</span>
 </span></span><span class="line"><span class="cl">curl -s -k --user <span class="s2">&#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34;</span> https://docker.example.com/v2/&lt;REPO_NAME&gt;/blobs/sha256:&lt;BLOB_HASH&gt;<span class="err">&#39;</span>
-</span></span></code></pre></div><h3 id="dockerregistrygrabber">DockerRegistryGrabber</h3>
-<p><a href="https://github.com/Syzik/DockerRegistryGrabber">DockerRegistryGrabber</a></p>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="docker-registry-dump">Docker Registry Dump</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">DockerRegistryGrabber</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List repos</span>
 </span></span><span class="line"><span class="cl">python3 drg.py https://example.com -A &lt;TOKEN&gt; --list
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump repo</span>
 </span></span><span class="line"><span class="cl">python3 drg.py https://example.com -A &lt;TOKEN&gt; --dump &lt;REPO&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/Syzik/DockerRegistryGrabber">DockerRegistryGrabber</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

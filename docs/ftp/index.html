@@ -188,14 +188,15 @@
   
   <li><a href="https://tldrbins.github.io/@file-transfer/">File Transfer</a></li>
   
-  <li><a href="https://tldrbins.github.io/@21/">21</a></li>
-  
 </ul>
 
 <div class="content"><hr>
 <h3 id="config-location">Config Location</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/vsftpd.conf
-</span></span></code></pre></div><h3 id="basic">Basic</h3>
+</span></span></code></pre></div></div>
+<h3 id="basic">Basic</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
 </span></span><span class="line"><span class="cl">ftp 10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+---------------------+
@@ -204,6 +205,10 @@
 </span></span><span class="line"><span class="cl"><span class="p">|</span> Username: anonymous <span class="p">|</span>
 </span></span><span class="line"><span class="cl"><span class="p">|</span> Password: <span class="o">(</span>empty<span class="o">)</span>   <span class="p">|</span>
 </span></span><span class="line"><span class="cl">+---------------------+
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Over SSL</span>
+</span></span><span class="line"><span class="cl">lftp 10.10.11.10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix cert error</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -n <span class="s1">&#39;set ssl:verify-certificate no&#39;</span> &gt;&gt; ~/.lftp/rc
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List</span>
 </span></span><span class="line"><span class="cl">ls
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Switch to binary transfer mode</span>
@@ -216,13 +221,16 @@
 </span></span><span class="line"><span class="cl">passive
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exit</span>
 </span></span><span class="line"><span class="cl">quit
-</span></span></code></pre></div><h3 id="recusive-download">Recusive download</h3>
+</span></span></code></pre></div></div>
+<h3 id="recusive-download">Recusive download</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># anonymous login</span>
 </span></span><span class="line"><span class="cl">wget -r ftp://anonymous:@10.10.11.10
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># with creds</span>
 </span></span><span class="line"><span class="cl">wget --user &lt;USER&gt; --password &lt;PASSWORD&gt; -m ftp://10.10.11.10
 </span></span></code></pre></div><p><small><em>Note: Always check what&rsquo;s in there first</em></small></p>
-</div></div>
+</div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

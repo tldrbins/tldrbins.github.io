@@ -199,32 +199,58 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="onesixtyone">onesixtyone</h3>
-<p><a href="https://github.com/trailofbits/onesixtyone">Download onesixtyone</a></p>
+<h3 id="bruteforce-commmuity-string">Bruteforce commmuity string</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">onesixtyone</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >snmpbrute</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Brute force community string for snmpwalk use</span>
 </span></span><span class="line"><span class="cl">onesixtyone &lt;TARGET&gt; -c /usr/share/doc/onesixtyone/dict.txt
-</span></span></code></pre></div><h3 id="snmpbrute">snmpbrute</h3>
-<p><a href="https://github.com/SECFORCE/SNMP-Brute/blob/master/snmpbrute.py">snmpbrute.py</a></p>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/trailofbits/onesixtyone">onesixtyone</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Brute force community string (Check also SNMPv2)</span>
 </span></span><span class="line"><span class="cl">python3 snmpbrute.py -t &lt;TARGET&gt;
-</span></span></code></pre></div><h3 id="snmpwalk">snmpwalk</h3>
-<h4 id="installation">Installation</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install snmp
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/SECFORCE/SNMP-Brute/blob/master/snmpbrute.py">snmpbrute.py</a></em></small></p></div></p>
+<h3 id="tools">Tools</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">snmpwalk</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >snmpbulkwalk</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
+</span></span><span class="line"><span class="cl">sudo apt install snmp
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install Add-on for better result readability</span>
 </span></span><span class="line"><span class="cl">sudo apt install snmp-mibs-downloader
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Comment out this line in /etc/snmp/snmp.conf</span>
+</span></span></code></pre></div></div>
+<br>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Comment out this line in /etc/snmp/snmp.conf</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># mibs :</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Uncomment this line in /etc/snmp/snmp.conf</span>
 </span></span><span class="line"><span class="cl">mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
-</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+</span></span></code></pre></div></div>
+<h4 id="basic-commands">Basic Commands</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpwalk -v1 -c public &lt;TARGET&gt; <span class="p">|</span> tee snmpwalk_result
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpwalk -v2c -c public &lt;TARGET&gt; <span class="p">|</span> tee snmpwalk_result
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Query specific OID, e.g, ipAddressIfIndex.ipv6</span>
 </span></span><span class="line"><span class="cl">snmpwalk -v2c -c public &lt;TARGET&gt; ipAddressIfIndex.ipv6
-</span></span></code></pre></div><h3 id="snmpbulkwalk-multithreads-much-faster">snmpbulkwalk (multithreads, much faster)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">snmpbulkwalk -Cr <span class="m">50</span> -c public -v2c &lt;TARGET&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multithreads, much faster</span>
+</span></span><span class="line"><span class="cl">snmpbulkwalk -Cr <span class="m">50</span> -c public -v2c &lt;TARGET&gt;
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

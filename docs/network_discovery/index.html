@@ -196,36 +196,101 @@
   
   <li><a href="https://tldrbins.github.io/@tcpdump/">Tcpdump</a></li>
   
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@linux/">Linux</a></li>
+  
 </ul>
 
 <div class="content"><hr>
-<h3 id="test-connectivity">Test Connectivity</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ping -c3 10.10.11.10
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Windows</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Test-NetConnection</span> <span class="n">dc1</span> <span class="n">-Port</span> <span class="mf">5985</span>
-</span></span></code></pre></div><h3 id="test-reverse-connectivity">Test Reverse Connectivity</h3>
+<h3 id="test-connectivity">Test connectivity</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Default infinite pings</span>
+</span></span><span class="line"><span class="cl">ping -c3 10.10.11.10
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Default 5 pings</span>
+</span></span><span class="line"><span class="cl"><span class="n">ping</span> <span class="mf">10.10</span><span class="p">.</span><span class="py">11</span><span class="p">.</span><span class="py">10</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check specific port</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Test-NetConnection</span> <span class="p">&lt;</span><span class="n">TARGET</span><span class="p">&gt;</span> <span class="n">-Port</span> <span class="mf">5985</span>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="test-reverse-connectivity">Test reverse connectivity</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo tcpdump -ni tun0 icmp
-</span></span></code></pre></div><h3 id="sniff-network-traffic">Sniff Network Traffic</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="sniff-network-traffic">Sniff network traffic</h3>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example: on port 389</span>
-</span></span><span class="line"><span class="cl">tcpdump -i lo -nnXs <span class="m">0</span> <span class="s1">&#39;port 389&#39;</span>
-</span></span></code></pre></div><p><a href="https://mitmproxy.org/">mitmproxy</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Sniff HTTPS traffic</span>
+</span></span><span class="line"><span class="cl">sudo tcpdump -i lo -nnXs <span class="m">0</span> <span class="s1">&#39;port 389&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Sniff HTTPS traffic</span>
 </span></span><span class="line"><span class="cl">sudo ./mitmdump -p <span class="m">443</span> --mode reverse:https://example.com --ssl-insecure --set <span class="nv">flow_detail</span><span class="o">=</span><span class="m">3</span>
-</span></span></code></pre></div><h3 id="use-ping-to-scan-subnet">Use ping to Scan Subnet</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://mitmproxy.org/">mitmproxy</a></em></small></p></div></p>
+<h3 id="use-ping-to-scan-subnet">Use ping to scan subnet</h3>
+<p>
+<button data-tabset="set4" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 254<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="o">(</span>ping -c <span class="m">1</span> 10.100.10.<span class="si">${</span><span class="nv">i</span><span class="si">}</span> <span class="p">|</span> grep <span class="s2">&#34;bytes from&#34;</span> <span class="p">&amp;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span>
-</span></span></code></pre></div><h3 id="use-nc-to-scan-ports">Use nc to Scan Ports</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="use-nc-to-scan-ports">Use nc to scan ports</h3>
+<p>
+<button data-tabset="set5" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 65535<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="o">(</span>nc -zvn 127.0.0.1 <span class="si">${</span><span class="nv">i</span><span class="si">}</span> 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep -v <span class="s2">&#34;Connection refused&#34;</span> <span class="p">&amp;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span>
-</span></span></code></pre></div><h3 id="check-arp">Check ARP</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="check-arp-table">Check arp table</h3>
+<p>
+<button data-tabset="set6" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arp -na
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/net/arp
-</span></span></code></pre></div><h3 id="check-ip">Check IP</h3>
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="check-ip">Check IP</h3>
+<p>
+<button data-tabset="set7" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set7" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Linux</span>
 </span></span><span class="line"><span class="cl">ifconfig
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip addr
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/net/fib_trie
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Windows</span>
-</span></span><span class="line"><span class="cl">ipconfig
-</span></span></code></pre></div><h3 id="check-network-connections">Check Network Connections</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set7" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ipconfig
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="check-network-connections">Check network connections</h3>
+<p>
+<button data-tabset="set8" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set8" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># TCP</span>
 </span></span><span class="line"><span class="cl">netstat -plant
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># UDP</span>
@@ -233,11 +298,17 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If netstat not present</span>
 </span></span><span class="line"><span class="cl">cat /proc/net/tcp <span class="p">|</span> grep <span class="s1">&#39;00000000:0000 0A&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ss -tnl
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Windows</span>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set8" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># List only listening ports</span>
 </span></span><span class="line"><span class="cl"><span class="n">netstat</span> <span class="n">-ano</span> <span class="p">|</span> <span class="n">findstr</span> <span class="n">LISTENING</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Windows, List tcp listening ports and processes</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># List tcp listening ports and processes</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Get-NetTCPConnection</span> <span class="n">-State</span> <span class="n">Listen</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-Property</span> <span class="p">*,</span><span class="vm">@</span><span class="p">{</span><span class="s1">&#39;Name&#39;</span> <span class="p">=</span> <span class="s1">&#39;ProcessName&#39;</span><span class="p">;</span><span class="s1">&#39;Expression&#39;</span><span class="p">={(</span><span class="nb">Get-Process</span> <span class="n">-Id</span> <span class="nv">$_</span><span class="p">.</span><span class="n">OwningProcess</span><span class="p">).</span><span class="n">Name</span><span class="p">}}</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-Property</span> <span class="n">LocalAddress</span><span class="p">,</span><span class="n">LocalPort</span><span class="p">,</span><span class="n">OwningProcess</span><span class="p">,</span><span class="n">ProcessName</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

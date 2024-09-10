@@ -193,15 +193,54 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="connect-by-password">Connect by password</h3>
+<h3 id="connection-methods">Connection Methods</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Password</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Hash</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >Kerberos</button>
+
+<button data-tabset="set1" data-tabcontent="tab4" >crt &amp; key</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt;
-</span></span></code></pre></div><h3 id="connect-by-hash">Connect by hash</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;HASH&gt; 
-</span></span></code></pre></div><h3 id="connect-by-kerberos">Connect by kerberos</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> evil-winrm -i &lt;TARGET&gt; -r &lt;DOMAIN&gt;
-</span></span></code></pre></div><h3 id="connect-by-crt-and-key">Connect by .crt and .key</h3>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Edit &#39;/etc/krb5.conf&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>libdefaults<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">default_realm</span> <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>realms<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    &lt;DOMAIN&gt; <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">kdc</span> <span class="o">=</span> &lt;DC&gt;:88
+</span></span><span class="line"><span class="cl">        <span class="nv">admin_server</span> <span class="o">=</span> &lt;DC&gt;
+</span></span><span class="line"><span class="cl">        <span class="nv">default_domain</span> <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl"><span class="o">[</span>domain_realm<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    .domain.internal <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> &lt;DOMAIN&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: export .ccache</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>&lt;CCACHE&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 3: Connect</span>
+</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> evil-winrm -i &lt;TARGET&gt; -r &lt;DC&gt;
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -S -k auth.key -c auth.crt
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

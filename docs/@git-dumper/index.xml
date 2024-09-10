@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/git/</guid>
-      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; SUDO # Copy target project cp -r /var/www/html/project .</description>
+      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff [a] [b] # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; Git Tools git-dumper git-bundle git-dumper http://10.</description>
     </item>
   </channel>
 </rss>

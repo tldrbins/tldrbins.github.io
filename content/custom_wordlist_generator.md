@@ -5,13 +5,20 @@ tags: ["wordlist", "custom", "cewl", "generator"]
 ---
 
 ---
-### CeWL
+{{< tab set1 tab1 active >}}CeWL{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
-[Download CeWL](https://github.com/digininja/CeWL)
+<div>
 
 ```bash
 # Creating custom wordlist by spidering target website
 cewl example.com -w wordlist.txt --with-numbers
 ```
+
+</div>
+
+<small>*Ref: [CeWL](https://github.com/digininja/CeWL)*</small>
+
+{{< /tabcontent >}}
 
 <br>

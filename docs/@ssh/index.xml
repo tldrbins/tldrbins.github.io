@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/network_traffic_privoting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_traffic_privoting/</guid>
-      <description>Chisel Download chisel&#xA;Start a Local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 chisel with ports # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 chisel with socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
+      <description>Tunneling Chisel ssh socat metasploit sliver Start a local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 Ports forwarding # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 Socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
     </item>
     <item>
       <title>Port Knocking</title>
       <link>https://tldrbins.github.io/port_knocking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/port_knocking/</guid>
-      <description> knockd # Find knock sequence cat /etc/knockd.conf # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 </description>
+      <description> knockd config location # Find knock sequence cat /etc/knockd.conf TCP UDP # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 </description>
     </item>
     <item>
       <title>SSH</title>
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH version openssh-server (ubuntu) openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Add SSH Access to Target cat id_rsa.pub #Copy and Paste to Target echo &amp;lt;id_rsa.</description>
+      <description>Check SSH version openssh-server (ubuntu)&#xA;openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Convert .ppk to .pem format # Install sudo apt install putty-tools # Convert to private key in pem format puttygen key.</description>
     </item>
   </channel>
 </rss>

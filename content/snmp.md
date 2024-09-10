@@ -5,29 +5,49 @@ tags: ["snmp", "reconnaissance", "enum", "snmpwalk", "udp", "onesixtyone"]
 ---
 
 ---
-### onesixtyone
+### Bruteforce commmuity string
 
-[Download onesixtyone](https://github.com/trailofbits/onesixtyone)
+{{< tab set1 tab1 active >}}onesixtyone{{< /tab >}}
+{{< tab set1 tab2 >}}snmpbrute{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Brute force community string for snmpwalk use
 onesixtyone <TARGET> -c /usr/share/doc/onesixtyone/dict.txt
 ```
 
-### snmpbrute
+</div>
 
-[snmpbrute.py](https://github.com/SECFORCE/SNMP-Brute/blob/master/snmpbrute.py)
+<small>*Ref: [onesixtyone](https://github.com/trailofbits/onesixtyone)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
 # Brute force community string (Check also SNMPv2)
 python3 snmpbrute.py -t <TARGET>
 ```
 
-### snmpwalk
+</div>
 
-#### Installation
+<small>*Ref: [snmpbrute.py](https://github.com/SECFORCE/SNMP-Brute/blob/master/snmpbrute.py)*</small>
+
+{{< /tabcontent >}}
+
+### Tools
+
+{{< tab set2 tab1 active >}}snmpwalk{{< /tab >}}
+{{< tab set2 tab2 >}}snmpbulkwalk{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+<div>
 
 ```bash
+# Install
 sudo apt install snmp
 ```
 
@@ -35,6 +55,12 @@ sudo apt install snmp
 # Install Add-on for better result readability
 sudo apt install snmp-mibs-downloader
 ```
+
+</div>
+
+<br>
+
+<div>
 
 ```bash
 # Comment out this line in /etc/snmp/snmp.conf
@@ -44,7 +70,11 @@ sudo apt install snmp-mibs-downloader
 mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
 ```
 
+</div>
+
 #### Basic Commands
+
+<div>
 
 ```bash
 snmpwalk -v1 -c public <TARGET> | tee snmpwalk_result
@@ -59,10 +89,20 @@ snmpwalk -v2c -c public <TARGET> | tee snmpwalk_result
 snmpwalk -v2c -c public <TARGET> ipAddressIfIndex.ipv6
 ```
 
-### snmpbulkwalk (multithreads, much faster)
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+<div>
 
 ```bash
+# Multithreads, much faster
 snmpbulkwalk -Cr 50 -c public -v2c <TARGET>
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

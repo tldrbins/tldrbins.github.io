@@ -5,7 +5,12 @@ tags: ["cron", "scheduled tasks", "Linux"]
 ---
 
 ---
+{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
 ### Check Cron Jobs
+
+<div>
 
 ```bash
 ls -la /etc/cron.d/
@@ -19,12 +24,20 @@ cat /etc/crontab
 crontab -l
 ```
 
+</div>
+
 ### Check background processes
 
-[Downlaod pspy](https://github.com/DominicBreuker/pspy)
+<div>
 
 ```bash
 ./pspy
 ```
+
+</div>
+
+<small>*Ref: [pspy](https://github.com/DominicBreuker/pspy)*</small>
+
+{{< /tabcontent >}}
 
 <br>

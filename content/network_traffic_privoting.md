@@ -5,18 +5,29 @@ tags: ["pivot", "chisel", "ssh", "metasploit", "network", "socat", "port forward
 ---
 
 ---
-### Chisel 
+### Tunneling
 
-<small>[Download chisel](https://github.com/jpillora/chisel)</small>
+{{< tab set1 tab1 active >}}Chisel{{< /tab >}}
+{{< tab set1 tab2 >}}ssh{{< /tab >}}
+{{< tab set1 tab3 >}}socat{{< /tab >}}
+{{< tab set1 tab4 >}}metasploit{{< /tab >}}
+{{< tab set1 tab5 >}}sliver{{< /tab >}}
+{{< tabcontent set1 tab1 >}} 
 
-#### Start a Local chisel Server
+#### Start a local chisel Server
+
+<div>
 
 ```bash
 # In our local Linux machine
 ./chisel server --reverse --port 8000
 ```
 
-#### chisel with ports
+</div>
+
+#### Ports forwarding
+
+<div>
 
 ```bash
 # In target machine
@@ -28,7 +39,11 @@ tags: ["pivot", "chisel", "ssh", "metasploit", "network", "socat", "port forward
 ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000
 ```
 
-#### chisel with socks5
+</div>
+
+#### Socks5
+
+<div>
 
 ```bash
 # In our local Linux machine
@@ -50,35 +65,40 @@ socks5 127.0.0.1 1080
 proxychains4 curl http://127.0.0.1:1080
 ```
 
-<br>
+</div>
 
----
+<small>*Ref: [chisel](https://github.com/jpillora/chisel)*</small>
 
-### SSH
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+<div>
 
 ```bash
 # SSH port forwarding without spawning a shell
 ssh -N -L 8080:127.0.0.1:8080 <USER>@10.10.11.10
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
 
-### socat
+<div>
 
 ```bash
 # Any traffic go to port 1337 will be forwarded to 10.10.14.10:1337
 ./socat tcp-listen:1337,fork tcp:10.10.14.10:1337 &
 ```
 
-<br>
+</div>
 
----
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
 
-### Metasploit
+#### Ports forwarding
 
-#### Ports
+<div>
 
 ```bash
 # Add
@@ -90,7 +110,11 @@ portfwd add -l 80 -r 127.0.0.1 -p 80
 portfwd delete -l 80 -r 127.0.0.1 -p 80
 ```
 
-#### Socks
+</div>
+
+#### Socks5
+
+<div>
 
 ```bash
 # First add routes to target subnet
@@ -114,11 +138,20 @@ use auxiliary/server/socks_proxy
 run
 ```
 
-### Sliver C2
+</div>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab5 >}}
+
+<div>
 
 ```bash
 socks5 start
 ```
+
+</div>
+
+{{< /tabcontent >}}
 
 <br>
 

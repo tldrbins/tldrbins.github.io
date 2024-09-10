@@ -201,8 +201,11 @@
 </ul>
 
 <div class="content"><hr>
-<h3 id="compile-c-project-from-linux">Compile C# project (From Linux)</h3>
-<p><a href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">Download dotnet</a></p>
+<h3 id="compile-c-project">Compile C# project</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
 </span></span><span class="line"><span class="cl">dotnet --info
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Prepare</span>
@@ -220,10 +223,12 @@
 </span></span><span class="line"><span class="cl">|Add Code to Program.cs|
 </span></span><span class="line"><span class="cl">+----------------------+
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Build solution</span>
-</span></span><span class="line"><span class="cl">dotnet build
+</span></span><span class="line"><span class="cl">dotnet build -c Release
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run</span>
 </span></span><span class="line"><span class="cl">dotnet run
-</span></span></code></pre></div><br></div></div>
+</span></span></code></pre></div></div>
+<p><small><em>Ref: <a href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">dotnet</a></em></small></p></div></p>
+<br></div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

