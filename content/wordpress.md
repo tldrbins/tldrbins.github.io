@@ -4,12 +4,11 @@ date: 2024-6-28
 tags: ["wordpress", "wpscan"]
 ---
 
----
 ### Default config location
 
 <div>
 
-```bash
+```console
 /var/www/html/wp-config.php
 ```
 
@@ -22,24 +21,24 @@ tags: ["wordpress", "wpscan"]
 
 <div>
 
-```bash
+```console
 # HTTP
-wpscan --url http://example.com -e ap,t,tt,u
+wpscan --url <TARGET> -e ap,t,tt,u
 ```
 
-```bash
+```console
 # HTTPS
-wpscan --url http://example.com -e ap,t,tt,u --disable-tls-checks
+wpscan --url <TARGET> -e ap,t,tt,u --disable-tls-checks
 ```
 
-```bash
+```console
 # You will need an api token to scan vulns
-wpscan --url http://example.com -e ap,t,tt,u --api-token <API_KEY>
+wpscan --url <TARGET> -e ap,t,tt,u --api-token <API_KEY>
 ```
 
-```bash
+```console
 # Brute force wp-admin
-wpscan --url http://example.com --passwords passwords.txt --usernames admin
+wpscan --url <TARGET> --passwords passwords.txt --usernames admin
 ```
 
 </div>

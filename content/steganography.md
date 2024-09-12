@@ -4,7 +4,6 @@ date: 2024-6-28
 tags: ["steganography", "steg", "exiftool", "ctf"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}exiftool{{< /tab >}}
@@ -13,7 +12,7 @@ tags: ["steganography", "steg", "exiftool", "ctf"]
 
 <div>
 
-```bash
+```console
 exiftool <FILE>
 ```
 
@@ -24,7 +23,7 @@ exiftool <FILE>
 
 <div>
 
-```bash
+```console
 # Always try with empty passphrase
 steghide extract -sf <FILE>
 ```

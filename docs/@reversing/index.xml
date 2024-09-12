@@ -12,28 +12,28 @@
       <link>https://tldrbins.github.io/android/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/android/</guid>
-      <description>Unpack .apk file # Get .smali files java -jar apktool_2.9.3.jar d app.apk # Get .java files jadx app.apk Ref: apktool Ref: jadx&#xA;Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;lt;PASSWORD&amp;gt; --out app_final.apk app_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
+      <description>Unpack .apk file # Get .smali files java -jar apktool_2.9.3.jar d &amp;lt;FILE&amp;gt; # Get .java files jadx &amp;lt;FILE&amp;gt; Ref: apktool Ref: jadx&#xA;Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 &amp;lt;APP&amp;gt; -o &amp;lt;APP&amp;gt;_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --out &amp;lt;APP&amp;gt;_final.apk &amp;lt;APP&amp;gt;_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
     </item>
     <item>
       <title>Java</title>
       <link>https://tldrbins.github.io/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/java/</guid>
-      <description> Java Decompile JAR jd-gui Ref: Download jd-gui&#xA;Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
+      <description>Java Decompile JAR jd-gui Ref: Download jd-gui&#xA;Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
     </item>
     <item>
       <title>Memory Dump</title>
       <link>https://tldrbins.github.io/memory_dump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memory_dump/</guid>
-      <description> Tools binwalk pypykatz # Extract files from memory dump binwalk -M -e memory.dmp Ref: binwalk&#xA;# Mini Dump pypykatz lsa minidump memory.dmp </description>
+      <description>Tools binwalk pypykatz # Extract files from memory dump binwalk -M -e &amp;lt;MEMORY_DUMP&amp;gt; Ref: binwalk&#xA;# Mini Dump pypykatz lsa minidump &amp;lt;MEMORY_DUMP&amp;gt; </description>
     </item>
     <item>
       <title>Python Decompile</title>
       <link>https://tldrbins.github.io/python_decompile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/python_decompile/</guid>
-      <description>Tools pyinstxtractor uncompyle6 pycdc # Unpack pyinstaller packed binary pyinstxtractor test.elf # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc # Install git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check # Run ./pycdc script.pyc Ref: pycdc</description>
+      <description>Tools pyinstxtractor uncompyle6 pycdc # Unpack pyinstaller packed binary pyinstxtractor &amp;lt;FILE&amp;gt; # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 &amp;lt;PYC_FILE&amp;gt; # Install git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check # Run ./pycdc &amp;lt;PYC_FILE&amp;gt; Ref: pycdc</description>
     </item>
   </channel>
 </rss>

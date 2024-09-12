@@ -4,25 +4,24 @@ date: 2024-6-27
 tags: ["password", "cracking", "john", "hashcat"]
 ---
 
----
 ### Convert file to hash format
 
 <div>
 
-```bash
+```console
 # For example
 ssh2john id_rsa_encrypted > hash
 ```
 
-```bash
+```console
 keepass2john test.kdbx > hash
 ```
 
-```bash
+```console
 zip2john test.zip > hash
 ```
 
-```bash
+```console
 # Get a full list of *2john
 find / -name *2john 2>/dev/null
 ```
@@ -39,22 +38,22 @@ find / -name *2john 2>/dev/null
 
 <div>
 
-```bash
+```console
 # General use
 john --wordlist=/usr/share/wordlists/rockyou.txt hash
 ```
 
-```bash
+```console
 # Specify hash format
 john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512
 ```
 
-```bash
+```console
 # Show cracked hash
 john --show hash
 ```
 
-```bash
+```console
 # Show cracked hash with specific format
 john --show hash --format=Raw-SHA512
 ```
@@ -66,17 +65,17 @@ john --show hash --format=Raw-SHA512
 
 <div>
 
-```bash
+```console
 # Auto detect hash format
 hashcat hash
 ```
 
-```bash
+```console
 # Specify hash format
 hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.txt --force
 ```
 
-```bash
+```console
 # Auto skip username and colon
 hashcat hash --user
 ```
@@ -87,7 +86,7 @@ hashcat hash --user
 
 <div>
 
-```bash
+```console
 # For example, `Test` with 4 digits and a symbol
 hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 ```
@@ -98,7 +97,7 @@ hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 
 <div>
 
-```
+```console
 +------------------------------------------+
 |  ? | Charset                             |
 | ===+=========                            |

@@ -4,12 +4,11 @@ date: 2024-7-4
 tags: ["squid proxy", "web", "3128", "proxy", "port scan"]
 ---
 
----
 ### Config location
 
 <div>
 
-```bash
+```console
 /etc/squid/squid.conf
 ```
 
@@ -19,7 +18,7 @@ tags: ["squid proxy", "web", "3128", "proxy", "port scan"]
 
 <div>
 
-```bash
+```console
 +--------------------------+
 | Settings                 |
 +--------------------------+
@@ -38,12 +37,12 @@ tags: ["squid proxy", "web", "3128", "proxy", "port scan"]
 
 <div>
 
-```bash
+```console
 # Connect
 http://<TARGET>
 ```
 
-```bash
+```console
 # Or
 http://127.0.0.1
 ```
@@ -54,12 +53,12 @@ http://127.0.0.1
 
 <div>
 
-```bash
+```console
 # 1. Take note of word size, then Ctrl+C
 wfuzz -z range,1-1000 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ
 ```
 
-```bash
+```console
 # 2. Re-run with word size filter
 wfuzz -z range,1-65535 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ --hw 100
 ```
@@ -70,7 +69,7 @@ wfuzz -z range,1-65535 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ --hw 100
 
 <div>
 
-```bash
+```console
 # Edit /etc/proxychains4.conf
 # Settings
 [ProxyList]
@@ -83,7 +82,7 @@ http    <TARGET> 3128
 
 <div>
 
-```bash
+```console
 # Connect, e.g. ssh
 proxychains4 ssh <USER>@127.0.0.1
 ```
@@ -95,8 +94,8 @@ proxychains4 ssh <USER>@127.0.0.1
 {{< tab set1 tab1 active >}}squidclient{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-```bash
-squidclient -U squid -W <PASSWORD> -h <TARGET> cache_object://<TARGET>/
+```console
+squidclient -U squid -W '<PASSWORD>' -h <TARGET> cache_object://<TARGET>/
 ```
 
 {{< /tabcontent >}}

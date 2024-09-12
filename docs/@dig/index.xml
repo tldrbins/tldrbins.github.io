@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description> Zone Transfer dig +noall +answer example.com axfr @10.10.11.10 Domain Discovery dig +noall +answer @10.10.11.10 example.com dig +noall +answer @10.10.11.10 -x 10.10.11.10 dig +noall +answer @10.10.11.10 +short example.com any dig +noall +answer @10.10.11.10 -t NS example.com </description>
+      <description>Zone Transfer dig +noall +answer &amp;lt;DOMAIN&amp;gt; axfr @&amp;lt;TARGET&amp;gt; Domain Discovery dig +noall +answer @&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; -x &amp;lt;TARGET&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; +short &amp;lt;DOMAIN&amp;gt; any dig +noall +answer @&amp;lt;TARGET&amp;gt; -t NS &amp;lt;DOMAIN&amp;gt; </description>
     </item>
   </channel>
 </rss>

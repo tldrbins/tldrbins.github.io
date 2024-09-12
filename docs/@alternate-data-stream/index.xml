@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/alternate_data_stream/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/alternate_data_stream/</guid>
-      <description> Show ADS Windows # cmd cmd /C dir /R \Windows\Tasks\example.txt # powershell Get-Item -Path \Windows\Tasks\example.txt -force -stream * </description>
+      <description>Show ADS Windows # cmd cmd /C dir /R &amp;lt;FILE_PATH&amp;gt; # powershell Get-Item -Path &amp;lt;FILE_PATH&amp;gt; -force -stream * </description>
     </item>
   </channel>
 </rss>

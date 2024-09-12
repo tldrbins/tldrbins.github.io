@@ -4,17 +4,16 @@ date: 2024-7-21
 tags: ["aws", "cloud", "s3"]
 ---
 
----
 ### Setup
 
 <div>
 
-```bash
+```console
 # Install awscli
 sudo apt install awscli
 ```
 
-```bash
+```console
 # Set config
 aws configure
 ```
@@ -32,7 +31,7 @@ Default output format [None]:
 
 <div>
 
-```bash
+```console
 ~/.aws/credentials
 ```
 
@@ -51,19 +50,19 @@ Default output format [None]:
 
 <div>
 
-```bash
+```console
 # List buckets
-aws s3 --endpoint-url http://s3.example.com ls
+aws s3 --endpoint-url <TARGET> ls
 ```
 
-```bash
+```console
 # List bucket
-aws s3 --endpoint-url http://s3.example.com ls s3://<BUCKET_NAME>
+aws s3 --endpoint-url <TARGET> ls s3://<BUCKET_NAME>
 ```
 
-```bash
+```console
 # Upload to bucket
-aws s3 --endpoint-url http://s3.example.com cp <FILE> s3://<BUCKET_NAME>/<FILE>
+aws s3 --endpoint-url <TARGET> cp <FILE> s3://<BUCKET_NAME>/<FILE>
 ```
 
 </div>
@@ -73,24 +72,24 @@ aws s3 --endpoint-url http://s3.example.com cp <FILE> s3://<BUCKET_NAME>/<FILE>
 
 <div>
 
-```bash
+```console
 # List tables
-aws --endpoint-url http://s3.example.com dynamodb list-tables
+aws --endpoint-url <TARGET> dynamodb list-tables
 ```
 
-```bash
+```console
 # Dump table
-aws --endpoint-url http://s3.example.com dynamodb scan --table-name <TABLE_NAME>
+aws --endpoint-url <TARGET> dynamodb scan --table-name <TABLE_NAME>
 ```
 
-```bash
+```console
 # Create table (e.g. with column 'title' and 'content')
-aws --endpoint-url http://s3.example.com dynamodb create-table --table-name <TABLE_NAME> --attribute-definitions AttributeName=title,AttributeType=S AttributeName=content,AttributeType=S --key-schema AttributeName=title,KeyType=HASH AttributeName=content,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=5
+aws --endpoint-url <TARGET> dynamodb create-table --table-name <TABLE_NAME> --attribute-definitions AttributeName=title,AttributeType=S AttributeName=content,AttributeType=S --key-schema AttributeName=title,KeyType=HASH AttributeName=content,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=5
 ```
 
-```bash
-# Add item to table
-aws --endpoint-url http://s3.example.com dynamodb put-item --table-name <TABLE_NAME> --item '{"title":{"S":"<TITLE>"},"content":{"S":"<CONTENT>"}}'
+```console
+# Add item to table (e.g. with column 'title' and 'content')
+aws --endpoint-url <TARGET> dynamodb put-item --table-name <TABLE_NAME> --item '{"title":{"S":"<TITLE>"},"content":{"S":"<CONTENT>"}}'
 ```
 
 </div>
@@ -102,14 +101,14 @@ aws --endpoint-url http://s3.example.com dynamodb put-item --table-name <TABLE_N
 
 <div>
 
-```bash
+```console
 # List functions
-aws lambda list-functions --endpoint-url http://s3.example.com
+aws lambda list-functions --endpoint-url <TARGET>
 ```
 
-```bash
+```console
 # Check a function
-aws lambda get-function --function-name=<FUNC_NAME> --endpoint-url=http://s3.example.com
+aws lambda get-function --function-name=<FUNC_NAME> --endpoint-url <TARGET>
 ```
 
 </div>
@@ -118,7 +117,7 @@ aws lambda get-function --function-name=<FUNC_NAME> --endpoint-url=http://s3.exa
 
 <div>
 
-```js
+```console
 exports.handler =  async function(event, context) {
   console.log("EVENT: \n" + JSON.stringify(event, null, 2))
   return context.logStreamName
@@ -127,21 +126,21 @@ exports.handler =  async function(event, context) {
 
 <br>
 
-```bash
+```console
 zip index.zip index.js
 ```
 
-```bash
+```console
 # Create a function
-aws lambda create-function --function-name <FUNC_NAME> --zip-file fileb://index.zip --role arn:aws:iam::123456789012:role/lambda-role --endpoint-url http://s3.example.com --handler index.handler --runtime nodejs12.x
+aws lambda create-function --function-name <FUNC_NAME> --zip-file fileb://index.zip --role arn:aws:iam::123456789012:role/lambda-role --endpoint-url <TARGET> --handler index.handler --runtime nodejs12.x
 ```
 
-```bash
+```console
 # Invoke function test
-aws lambda invoke --function-name <FUNC_NAME> --endpoint-url http://s3.example.com result.json
+aws lambda invoke --function-name <FUNC_NAME> --endpoint-url <TARGET> result.json
 ```
 
-```bash
+```console
 # Check result
 cat result.json
 ```

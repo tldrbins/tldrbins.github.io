@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/network_traffic_privoting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_traffic_privoting/</guid>
-      <description>Tunneling Chisel ssh socat metasploit sliver Start a local chisel Server # In our local Linux machine ./chisel server --reverse --port 8000 Ports forwarding # In target machine ./chisel client 10.10.14.10:8000 R:8080:127.0.0.1:8080 # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client 10.10.14.10:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 Socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
+      <description>Tunneling Chisel ssh socat metasploit sliver Start a local chisel Server # In our local Linux machine ./chisel server --reverse --port &amp;lt;LOCAL_PORT&amp;gt; Ports forwarding # In target machine ./chisel client &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; R:&amp;lt;TARGET_PORT&amp;gt;:127.0.0.1:&amp;lt;TARGET_PORT&amp;gt; # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 Socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1080 # In target machine .</description>
     </item>
     <item>
       <title>Port Knocking</title>
       <link>https://tldrbins.github.io/port_knocking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/port_knocking/</guid>
-      <description> knockd config location # Find knock sequence cat /etc/knockd.conf TCP UDP # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 </description>
+      <description>knockd config location # Find knock sequence cat /etc/knockd.conf TCP UDP # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i &amp;lt;TARGET&amp;gt; &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i &amp;lt;TARGET&amp;gt; &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
     </item>
     <item>
       <title>SSH</title>

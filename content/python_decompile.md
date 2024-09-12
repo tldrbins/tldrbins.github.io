@@ -4,7 +4,6 @@ date: 2024-7-12
 tags: ["python", "pyc", "decompile", "uncompyle6", "reversing", "pyinstxtractor"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}pyinstxtractor{{< /tab >}}
@@ -14,9 +13,9 @@ tags: ["python", "pyc", "decompile", "uncompyle6", "reversing", "pyinstxtractor"
 
 <div>
 
-```bash
+```console
 # Unpack pyinstaller packed binary
-pyinstxtractor test.elf
+pyinstxtractor <FILE>
 ```
 
 </div>
@@ -26,14 +25,14 @@ pyinstxtractor test.elf
 
 <div>
 
-```bash
+```console
 # Install
 pip3 install uncompyle6
 ```
 
-```bash
+```console
 # Run (need .pyc extension)
-uncompyle6 script.pyc
+uncompyle6 <PYC_FILE>
 ```
 
 </div>
@@ -43,30 +42,30 @@ uncompyle6 script.pyc
 
 <div>
 
-```bash
+```console
 # Install
 git clone https://github.com/zrax/pycdc.git
 ```
 
-```bash
+```console
 cd pycdc
 ```
 
-```bash
+```console
 cmake .
 ```
 
-```bash
+```console
 make
 ```
 
-```bash
+```console
 make check
 ```
 
-```bash
+```console
 # Run
-./pycdc script.pyc
+./pycdc <PYC_FILE>
 ```
 
 </div>

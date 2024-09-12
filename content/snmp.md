@@ -4,7 +4,6 @@ date: 2024-6-29
 tags: ["snmp", "reconnaissance", "enum", "snmpwalk", "udp", "onesixtyone"]
 ---
 
----
 ### Bruteforce commmuity string
 
 {{< tab set1 tab1 active >}}onesixtyone{{< /tab >}}
@@ -13,7 +12,7 @@ tags: ["snmp", "reconnaissance", "enum", "snmpwalk", "udp", "onesixtyone"]
 
 <div>
 
-```bash
+```console
 # Brute force community string for snmpwalk use
 onesixtyone <TARGET> -c /usr/share/doc/onesixtyone/dict.txt
 ```
@@ -27,7 +26,7 @@ onesixtyone <TARGET> -c /usr/share/doc/onesixtyone/dict.txt
 
 <div>
 
-```bash
+```console
 # Brute force community string (Check also SNMPv2)
 python3 snmpbrute.py -t <TARGET>
 ```
@@ -46,12 +45,12 @@ python3 snmpbrute.py -t <TARGET>
 
 <div>
 
-```bash
+```console
 # Install
 sudo apt install snmp
 ```
 
-```bash
+```console
 # Install Add-on for better result readability
 sudo apt install snmp-mibs-downloader
 ```
@@ -62,7 +61,7 @@ sudo apt install snmp-mibs-downloader
 
 <div>
 
-```bash
+```console
 # Comment out this line in /etc/snmp/snmp.conf
 # mibs :
 
@@ -76,15 +75,15 @@ mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
 
 <div>
 
-```bash
+```console
 snmpwalk -v1 -c public <TARGET> | tee snmpwalk_result
 ```
 
-```bash
+```console
 snmpwalk -v2c -c public <TARGET> | tee snmpwalk_result
 ```
 
-```bash
+```console
 # Query specific OID, e.g, ipAddressIfIndex.ipv6
 snmpwalk -v2c -c public <TARGET> ipAddressIfIndex.ipv6
 ```
@@ -96,7 +95,7 @@ snmpwalk -v2c -c public <TARGET> ipAddressIfIndex.ipv6
 
 <div>
 
-```bash
+```console
 # Multithreads, much faster
 snmpbulkwalk -Cr 50 -c public -v2c <TARGET>
 ```

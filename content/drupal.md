@@ -4,7 +4,6 @@ date: 2024-6-28
 tags: ["drupal", "reconnaissance", "enum", "droopescan"]
 ---
 
----
 ### Enum
 
 {{< tab set1 tab1 active >}}droopescan{{< /tab >}}
@@ -12,8 +11,8 @@ tags: ["drupal", "reconnaissance", "enum", "droopescan"]
 
 <div>
 
-```bash
-droopescan scan drupal -u http://example.com
+```console
+droopescan scan drupal -u <TARGET>
 ```
 
 <small>*Ref: [droopescan](https://github.com/SamJoan/droopescan)*</small>

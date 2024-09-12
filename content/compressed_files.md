@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", "7z", "bz", "Windows", "powershell"]
 ---
 
----
 
 <small>*Hint: Always put the zip file inside a new folder before unzip*</small>
 
@@ -19,34 +18,34 @@ tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", 
 
 <div>
 
-```bash
+```console
 # zip a file
-zip file.zip file
+zip <FILE>.zip <FILE>
 ```
 
-```bash
+```console
 # zip a folder
-zip -r folder.zip folder/
+zip -r <FOLDER>.zip <FOLDER>/
 ```
 
-```bash
+```console
 # zip a symlink (not the destination file)
-zip --symlinks file.zip symlink
+zip --symlinks file.zip <SYMLINK>
 ```
 
-```bash
+```console
 # List files without unzip
-unzip -l file.zip
+unzip -l <FILE>
 ```
 
-```bash
+```console
 # unzip
-unzip file.zip
+unzip <FILE>
 ```
 
-```powershell
+```console
 # unzip (Windows)
-Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('C:\ProgramData\file.zip', 'C:\ProgramData\')
+Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('<FILE_PATH>', 'C:\ProgramData\')
 ```
 
 </div>
@@ -56,24 +55,24 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.
 
 <div>
 
-```bash
+```console
 # Compress a file
-tar -cvzf file.tar.gz file
+tar -cvzf <FILE>.tar.gz <FILE>
 ```
 
-```bash
+```console
 # Compress a folder
-tar -cvzf folder.tar.gz folder/
+tar -cvzf <FOLDER>.tar.gz <FOLDER>/
 ```
 
-```bash
+```console
 # Extract
-tar -xvzf file.tar.gz
+tar -xvzf <FILE>
 ```
 
-```bash
+```console
 # Extract filter with wildcard (e.g. .txt)
-tar -xvzf file.tar.gz --wildcards '*.txt'
+tar -xvzf <FILE> --wildcards '*.txt'
 ```
 
 </div>
@@ -83,19 +82,19 @@ tar -xvzf file.tar.gz --wildcards '*.txt'
 
 <div>
 
-```bash
+```console
 # List files without extract
-tar -tf file.tar
+tar -tf <FILE>
 ```
 
-```bash
+```console
 # Extract
-tar -xvf file.tar
+tar -xvf <FILE>
 ```
 
-```bash
+```console
 # Extract filter with wildcard (e.g. .txt)
-tar -xvf file.tar --wildcards '*.txt'
+tar -xvf <FILE> --wildcards '*.txt'
 ```
 
 </div>
@@ -105,19 +104,19 @@ tar -xvf file.tar --wildcards '*.txt'
 
 <div>
 
-```bash
+```console
 # Compress file, and keep the original file
-gzip -k -r file
+gzip -k -r <FILE>
 ```
 
-```bash
+```console
 # Compress all files individually inside a folder, and keep original files
-gzip -k -r folder/
+gzip -k -r <FOLDER>/
 ```
 
-```bash
+```console
 # Extract
-gunzip file.gz
+gunzip <FILE>
 ```
 
 <small>*Note: If you want to zip the entire folder, use tar instead*</small>
@@ -129,9 +128,9 @@ gunzip file.gz
 
 <div>
 
-```bash
+```console
 # Extract
-unrar e file.rar
+unrar e <FILE>
 ```
 
 </div>
@@ -141,19 +140,19 @@ unrar e file.rar
 
 <div>
 
-```bash
+```console
 # Install
 sudo apt install p7zip-full
 ```
 
-```bash
+```console
 # Extract
-7z x file.zip
+7z x <FILE>
 ```
 
-```bash
+```console
 # Show meta data
-7z l -slt file.zip
+7z l -slt <FILE>
 ```
 
 </div>
@@ -163,9 +162,9 @@ sudo apt install p7zip-full
 
 <div>
 
-```bash
+```console
 # Extract and keep original files
-bunzip2 -k file.bz2
+bunzip2 -k <FILE>
 ```
 
 </div>

@@ -4,7 +4,6 @@ date: 2024-7-9
 tags: ["ldap", "active directory", "ad", "Windows", "nxc"]
 ---
 
----
 ### Enum
 
 {{< tab set1 tab1 active >}}nmap{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["ldap", "active directory", "ad", "Windows", "nxc"]
 
 <div>
 
-```bash
+```console
 # Using nmap script
 sudo nmap -p 389 --script ldap-search <TARGET>
 ```
@@ -26,9 +25,9 @@ sudo nmap -p 389 --script ldap-search <TARGET>
 
 <div>
 
-```bash
+```console
 # Using ldapdomaindump (With Creds)
-ldapdomaindump -u '<DOMAIN>\<USER>' -p <PASSWORD> <TARGET> -o ./ldap
+ldapdomaindump -u '<DOMAIN>\<USER>' -p '<PASSWORD>' <TARGET> -o ./ldap
 ```
 
 </div>
@@ -38,24 +37,24 @@ ldapdomaindump -u '<DOMAIN>\<USER>' -p <PASSWORD> <TARGET> -o ./ldap
 
 <div>
 
-```bash
+```console
 # Get domain base
-ldapsearch -x -H ldap://10.10.11.10 -s base namingcontexts
+ldapsearch -x -H ldap://<TARGET> -s base namingcontexts
 ```
 
-```bash
+```console
 # Get all from domain
-ldapsearch -x -H ldap://10.10.11.10 -b 'DC=<EXAMPLE>,DC=<COM>'
+ldapsearch -x -H ldap://<TARGET> -b 'DC=<EXAMPLE>,DC=<COM>'
 ```
 
-```bash
+```console
 # Just get a class (e.g. person)
-ldapsearch -x -H ldap://10.10.11.10 -b 'DC=<EXAMPLE>,DC=<COM>' '(objectClass=person)'
+ldapsearch -x -H ldap://<TARGET> -b 'DC=<EXAMPLE>,DC=<COM>' '(objectClass=person)'
 ```
 
-```bash
-# With creds (e.g. john.appleseed)
-ldapsearch -x -H ldap://10.10.11.10 -D "CN=John Appleseed,CN=Users,DC=<EXAMPLE>,DC=<COM>" -w <PASSWORD> -b 'DC=<EXAMPLE>,DC=<COM>'
+```console
+# With creds
+ldapsearch -x -H ldap://<TARGET> -D "CN=<USER>,CN=Users,DC=<EXAMPLE>,DC=<COM>" -w '<PASSWORD>' -b 'DC=<EXAMPLE>,DC=<COM>'
 ```
 
 </div>
@@ -70,13 +69,13 @@ ldapsearch -x -H ldap://10.10.11.10 -D "CN=John Appleseed,CN=Users,DC=<EXAMPLE>,
 
 <div>
 
-```bash
+```console
 # Add GSSAPI
 sudo apt install libsasl2-modules-gssapi-mit
 ```
 
-```bash
-ldapsearch -H ldap://10.10.11.10 -Y GSSAPI -b 'DC=<EXAMPLE>,DC=<COM>'
+```console
+ldapsearch -H ldap://<TARGET> -Y GSSAPI -b 'DC=<EXAMPLE>,DC=<COM>'
 ```
 
 </div>
@@ -86,9 +85,9 @@ ldapsearch -H ldap://10.10.11.10 -Y GSSAPI -b 'DC=<EXAMPLE>,DC=<COM>'
 
 <div>
 
-```bash
+```console
 # With kerberos
-nxc ldap 10.10.11.10 -u <USER> -p <PASSWORD> -k --users
+nxc ldap <TARGET> -u <USER> -p '<PASSWORD>' -k --users
 ```
 
 </div>

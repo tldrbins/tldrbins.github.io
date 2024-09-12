@@ -4,13 +4,12 @@ date: 2024-7-22
 tags: ["ntp", "time", "network time protocol", "faketime", "ntpdate"]
 ---
 
----
 ### Check Server Time
 
 <div>
 
-```bash
-sudo nmap -sU -sV --script "ntp* and (discovery or vuln) and not (dos or brute)" -p 123 10.10.11.10
+```console
+sudo nmap -sU -sV --script "ntp* and (discovery or vuln) and not (dos or brute)" -p 123 <TARGET>
 ```
 
 </div>
@@ -19,8 +18,8 @@ sudo nmap -sU -sV --script "ntp* and (discovery or vuln) and not (dos or brute)"
 
 <div>
 
-```bash
-date; ntpdate -q 10.10.11.10
+```console
+date; ntpdate -q <TARGET>
 ```
 
 </div>
@@ -35,16 +34,16 @@ date; ntpdate -q 10.10.11.10
 
 <div>
 
-```bash
+```console
 sudo apt install chrony
 ```
 
-```bash
+```console
 sudo timedatectl set-ntp true
 ```
 
-```bash
-sudo ntpdate -s 10.10.11.10
+```console
+sudo ntpdate -s <TARGET>
 ```
 
 </div>
@@ -54,14 +53,14 @@ sudo ntpdate -s 10.10.11.10
 
 <div>
 
-```bash
+```console
 # After getting the time skew
 faketime -f +9999s <COMMAND>
 ```
 
-```bash
+```console
 # Get from http server
-faketime "$(curl -sI http://example.com | grep 'Date:' | awk -F 'Date:' '{print $2}')"
+faketime "$(curl -sI http://<DOMAIN> | grep 'Date:' | awk -F 'Date:' '{print $2}')"
 ```
 
 </div>

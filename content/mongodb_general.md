@@ -4,7 +4,6 @@ date: 2024-6-27
 tags: ["mongodb", "database"]
 ---
 
----
 ### General
 
 #### Connect to Mongo Database
@@ -15,8 +14,8 @@ tags: ["mongodb", "database"]
 
 <div>
 
-```bash
-mongo 10.10.11.10:27017
+```console
+mongo <TARGET>:27017
 ```
 
 </div>
@@ -26,9 +25,9 @@ mongo 10.10.11.10:27017
 
 <div>
 
-```bash
+```console
 # Connect local with creds and specified database
-mongo -u <USER> -p <PASSWORD> <DB_NAME>
+mongo -u <USER> -p '<PASSWORD>' <DB_NAME>
 ```
 
 </div>
@@ -39,32 +38,32 @@ mongo -u <USER> -p <PASSWORD> <DB_NAME>
 
 <div>
 
-```bash
+```console
 # Show all databases
 show dbs
 ```
 
-```bash
+```console
 # Choose database
 use <DB_NAME>
 ```
 
-```bash
+```console
 # Show all collections
 show collections
 ```
 
-```bash
+```console
 # Show all of the collection
 db.<COLLECTION_NAME>.find().pretty()
 ```
 
-```bash
+```console
 # Insert entry into collections
 db.<COLLECTION_NAME>.insert({"<key>": "<value>"})
 ```
 
-```bash
+```console
 # Update an entry (e.g. password of user)
 db.<COLLECTION_NAME>.update({"username": "user"}, {$set: {"password": "password"}});
 ```

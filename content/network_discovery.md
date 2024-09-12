@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["port", "network", "discovery", "reconnaissance", "ping", "tcpdump", "Windows", "Linux"]
 ---
 
----
 ### Test connectivity
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -13,9 +12,9 @@ tags: ["port", "network", "discovery", "reconnaissance", "ping", "tcpdump", "Win
 
 <div>
 
-```bash
+```console
 # Default infinite pings
-ping -c3 10.10.11.10
+ping -c3 <TARGET>
 ```
 
 </div>
@@ -25,14 +24,14 @@ ping -c3 10.10.11.10
 
 <div>
 
-```powershell
+```console
 # Default 5 pings
-ping 10.10.11.10
+ping <TARGET>
 ```
 
-```powershell
+```console
 # Check specific port
-Test-NetConnection <TARGET> -Port 5985
+Test-NetConnection <TARGET> -Port <TARGET_PORT>
 ```
 
 </div>
@@ -46,7 +45,7 @@ Test-NetConnection <TARGET> -Port 5985
 
 <div>
 
-```bash
+```console
 sudo tcpdump -ni tun0 icmp
 ```
 
@@ -61,14 +60,14 @@ sudo tcpdump -ni tun0 icmp
 
 <div>
 
-```bash
+```console
 # For example: on port 389
-sudo tcpdump -i lo -nnXs 0 'port 389'
+sudo tcpdump -i lo -nnXs 0 'port <TARGET_PORT>'
 ```
 
-```bash
+```console
 # Sniff HTTPS traffic
-sudo ./mitmdump -p 443 --mode reverse:https://example.com --ssl-insecure --set flow_detail=3
+sudo ./mitmdump -p 443 --mode reverse:https://<DOMAIN> --ssl-insecure --set flow_detail=3
 ```
 
 </div>
@@ -84,7 +83,7 @@ sudo ./mitmdump -p 443 --mode reverse:https://example.com --ssl-insecure --set f
 
 <div>
 
-```bash
+```console
 for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep "bytes from" &); done;
 ```
 
@@ -99,7 +98,7 @@ for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep "bytes from" &); done
 
 <div>
 
-```bash
+```console
 for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2>&1 | grep -v "Connection refused" &); done
 ```
 
@@ -114,11 +113,11 @@ for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2>&1 | grep -v "Connection r
 
 <div>
 
-```bash
+```console
 arp -na
 ```
 
-```bash
+```console
 cat /proc/net/arp
 ```
 
@@ -134,16 +133,16 @@ cat /proc/net/arp
 
 <div>
 
-```bash
+```console
 # Linux
 ifconfig
 ```
 
-```bash
+```console
 ip addr
 ```
 
-```bash
+```console
 cat /proc/net/fib_trie
 ```
 
@@ -154,7 +153,7 @@ cat /proc/net/fib_trie
 
 <div>
 
-```bash
+```console
 ipconfig
 ```
 
@@ -170,22 +169,22 @@ ipconfig
 
 <div>
 
-```bash
+```console
 # TCP
 netstat -plant
 ```
 
-```bash
+```console
 # UDP
 netstat -plunt
 ```
 
-```bash
+```console
 # If netstat not present
 cat /proc/net/tcp | grep '00000000:0000 0A'
 ```
 
-```bash
+```console
 ss -tnl
 ```
 
@@ -196,12 +195,12 @@ ss -tnl
 
 <div>
 
-```powershell
+```console
 # List only listening ports
 netstat -ano | findstr LISTENING
 ```
 
-```powershell
+```console
 # List tcp listening ports and processes
 Get-NetTCPConnection -State Listen | Select-Object -Property *,@{'Name' = 'ProcessName';'Expression'={(Get-Process -Id $_.OwningProcess).Name}} | Format-Table -Property LocalAddress,LocalPort,OwningProcess,ProcessName
 ```

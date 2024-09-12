@@ -4,7 +4,6 @@ date: 2024-7-8
 tags: ["Access", "database", "Windows", "mdb"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}mdbtools{{< /tab >}}
@@ -12,7 +11,7 @@ tags: ["Access", "database", "Windows", "mdb"]
 
 <div>
 
-```bash
+```console
 sudo apt install mdbtools
 ```
 
@@ -22,19 +21,19 @@ sudo apt install mdbtools
 
 <div>
 
-```bash
+```console
 # Show all tables
-mdb-tables database.mdb 
+mdb-tables <MDB_FILE> 
 ```
 
-```bash
+```console
 # Show tables with data
-mdb-tables database.mdb | tr ' ' '\n' | grep . | while read table; do lines=$(mdb-export database.mdb $table | wc -l); if [ $lines -gt 1 ]; then echo "$table: $lines"; fi; done
+mdb-tables <MDB_FILE> | tr ' ' '\n' | grep . | while read table; do lines=$(mdb-export <MDB_FILE> $table | wc -l); if [ $lines -gt 1 ]; then echo "$table: $lines"; fi; done
 ```
 
-```bash
+```console
 # Dump data from table
-mdb-export database.mdb <TABLE_NAME>
+mdb-export <MDB_FILE> <TABLE_NAME>
 ```
 
 </div>

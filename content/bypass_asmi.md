@@ -4,18 +4,17 @@ date: 2024-7-13
 tags: ["asmi", "bypass", "av", "Windows"]
 ---
 
----
 {{< tab set1 tab1 active >}}evil-winrm{{< /tab >}}
 {{< tab set1 tab2 >}}payloads{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 <div>
 
-```bash
+```console
 menu
 ```
 
-```bash
+```console
 Bypass-4MSI
 ```
 

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/volume_shadow_copies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/volume_shadow_copies/</guid>
-      <description> Abuse #1: Recover data from shadow copies Windows 1. Check vssadmin list shadows 2. Create symlink and expose the volume cmd /c mklink /d C:\VSS &amp;lt;SHADOW_COPY_VOLUME_PATH&amp;gt; 3. Access ls C:\VSS\Users </description>
+      <description>Abuse #1: Recover data from shadow copies Windows 1. Check vssadmin list shadows 2. Create symlink and expose the volume cmd /c mklink /d C:\VSS &amp;lt;SHADOW_COPY_VOLUME_PATH&amp;gt; 3. Access ls C:\VSS\Users </description>
     </item>
   </channel>
 </rss>

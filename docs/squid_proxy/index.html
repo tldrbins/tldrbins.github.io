@@ -195,58 +195,182 @@
   <li><a href="https://tldrbins.github.io/@port-scan/">Port Scan</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="config-location">Config location</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/squid/squid.conf
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/etc/squid/squid.conf
+</span></span></span></code></pre></div></div>
 <h3 id="connect-via-foxyproxy-firefox-plugin">Connect via FoxyProxy Firefox plugin</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+--------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Settings                 <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+--------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Title      : squid proxy <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Proxy Type : HTTP        <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Proxy IP   : &lt;TARGET&gt;    <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Port       : <span class="m">3128</span>        <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Username   : <span class="o">(</span>If any<span class="o">)</span>    <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Password   : <span class="o">(</span>If any<span class="o">)</span>    <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+--------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+--------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| Settings                 |
+</span></span></span><span class="line"><span class="cl"><span class="go">+--------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| Title      : squid proxy |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Proxy Type : HTTP        |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Proxy IP   : &lt;TARGET&gt;    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Port       : 3128        |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Username   : (If any)    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Password   : (If any)    |
+</span></span></span><span class="line"><span class="cl"><span class="go">+--------------------------+
+</span></span></span></code></pre></div></div>
 <br>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
-</span></span><span class="line"><span class="cl">http://&lt;TARGET&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Or</span>
-</span></span><span class="line"><span class="cl">http://127.0.0.1
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect
+</span></span><span class="line"><span class="cl"><span class="go">http://&lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or
+</span></span><span class="line"><span class="cl"><span class="go">http://127.0.0.1
+</span></span></span></code></pre></div></div>
 <h3 id="internal-ports-scan-via-proxy">Internal ports scan via proxy</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 1. Take note of word size, then Ctrl+C</span>
-</span></span><span class="line"><span class="cl">wfuzz -z range,1-1000 -p &lt;TARGET&gt;:3128:HTTP -u http://127.0.0.1:FUZZ
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 2. Re-run with word size filter</span>
-</span></span><span class="line"><span class="cl">wfuzz -z range,1-65535 -p &lt;TARGET&gt;:3128:HTTP -u http://127.0.0.1:FUZZ --hw <span class="m">100</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> 1. Take note of word size, <span class="k">then</span> Ctrl+C
+</span></span><span class="line"><span class="cl"><span class="go">wfuzz -z range,1-1000 -p &lt;TARGET&gt;:3128:HTTP -u http://127.0.0.1:FUZZ
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> 2. Re-run with word size filter
+</span></span><span class="line"><span class="cl"><span class="go">wfuzz -z range,1-65535 -p &lt;TARGET&gt;:3128:HTTP -u http://127.0.0.1:FUZZ --hw 100
+</span></span></span></code></pre></div></div>
 <h3 id="connect-to-internal-services">Connect to internal services</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/proxychains4.conf</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Settings</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>ProxyList<span class="o">]</span>
-</span></span><span class="line"><span class="cl">http    &lt;TARGET&gt; <span class="m">3128</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Edit /etc/proxychains4.conf
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> Settings
+</span></span><span class="line"><span class="cl"><span class="go">[ProxyList]
+</span></span></span><span class="line"><span class="cl"><span class="go">http    &lt;TARGET&gt; 3128
+</span></span></span></code></pre></div></div>
 <br>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect, e.g. ssh</span>
-</span></span><span class="line"><span class="cl">proxychains4 ssh &lt;USER&gt;@127.0.0.1
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect, e.g. ssh
+</span></span><span class="line"><span class="cl"><span class="go">proxychains4 ssh &lt;USER&gt;@127.0.0.1
+</span></span></span></code></pre></div></div>
 <h3 id="squid-cache-enum">Squid Cache Enum</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">squidclient</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">squidclient -U squid -W &lt;PASSWORD&gt; -h &lt;TARGET&gt; cache_object://&lt;TARGET&gt;/
-</span></span></code></pre></div></div></p>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">squidclient -U squid -W &#39;&lt;PASSWORD&gt;&#39; -h &lt;TARGET&gt; cache_object://&lt;TARGET&gt;/
+</span></span></span></code></pre></div></div></p>
 <br>
+
 </div></div>
     
     <script src="/js/utils.js"></script>

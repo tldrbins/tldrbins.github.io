@@ -4,7 +4,6 @@ date: 2024-7-9
 tags: ["irc", "Internet Relay Chat"]
 ---
 
----
 ### IRC Tools
 
 {{< tab set1 tab1 active >}}hexchat{{< /tab >}}
@@ -12,7 +11,7 @@ tags: ["irc", "Internet Relay Chat"]
 
 <div>
 
-```bash
+```console
 sudo apt install hexchat
 ```
 

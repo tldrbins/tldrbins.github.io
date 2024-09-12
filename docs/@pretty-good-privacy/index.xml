@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/gpg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/gpg/</guid>
-      <description>GPG # Check version gpg --version # Generate new key gpg --gen-key # Export public key gpg --export -a user@example.com # Check keys gpg --list-keys # Import public key gpg --import key.pub # Encrypt a message with public key (email from pub key) gpg --encrypt --armor -r user@example.com plaintext.txt # Decrypt a message with our private key gpg -d ciphertext.txt # Sign our own message gpg --clearsign --output - plaintext.</description>
+      <description>GPG # Check version gpg --version # Generate new key gpg --gen-key # Export public key gpg --export -a &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; # Check keys gpg --list-keys # Import public key gpg --import &amp;lt;PUB_KEY&amp;gt; # Encrypt a message with public key (email from pub key) gpg --encrypt --armor -r &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; &amp;lt;FILE&amp;gt; # Decrypt a message with our private key gpg -d &amp;lt;ENC_FILE&amp;gt; # Sign our own message gpg --clearsign --output - &amp;lt;FILE&amp;gt; </description>
     </item>
   </channel>
 </rss>

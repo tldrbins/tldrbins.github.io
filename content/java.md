@@ -4,14 +4,13 @@ date: 2024-7-2
 tags: ["java", "jd-gui", "decompiler", "reversing"]
 ---
 
----
 ### Java
 
 #### Decompile JAR
 
 <div>
 
-```bash
+```console
 jd-gui
 ```
 
@@ -23,12 +22,12 @@ jd-gui
 
 <div>
 
-```bash
+```console
 # Compile
 javac src/program.java 
 ```
 
-```bash
+```console
 # Pack into jar
 jar -cvf program.jar -C src/ .
 ```

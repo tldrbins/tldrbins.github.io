@@ -191,28 +191,152 @@
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="iis-version">IIS Version</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+---------------------------------------------------------------------------------+
-</span></span><span class="line"><span class="cl">| Version                                            Start Date      End Date     |
-</span></span><span class="line"><span class="cl">+---------------------------------------------------------------------------------+
-</span></span><span class="line"><span class="cl">| IIS 10 on Windows Server 2019                      Nov 13, 2018    Jan 9, 2029  |
-</span></span><span class="line"><span class="cl">| IIS 10 on Windows Server (Semi-Annual Channel)     Oct 17, 2017                 |
-</span></span><span class="line"><span class="cl">| IIS 10 on Windows Server 2016                      Oct 15, 2016    Jan 12, 2027 |
-</span></span><span class="line"><span class="cl">| IIS 10 on Windows 10 Pro                           Jul 29, 2015                 |
-</span></span><span class="line"><span class="cl">| IIS 10 on Windows 10, Enterprise and Education     Jul 29, 2015                 |
-</span></span><span class="line"><span class="cl">| IIS 8.5 on Windows Server 2012 R2                  Nov 25, 2013    Oct 10, 2023 |
-</span></span><span class="line"><span class="cl">| IIS 8.5 on Windows 8.1                             Nov 13, 2013    Jan 10, 2023 |
-</span></span><span class="line"><span class="cl">| IIS 8 on Windows Server 2012                       Oct 30, 2012    Oct 10, 2023 |
-</span></span><span class="line"><span class="cl">| IIS 7.5 on Windows 7*                              Oct 22, 2009    Jan 14, 2020 |
-</span></span><span class="line"><span class="cl">| IIS 7.5 on Windows Server 2008 R2*                 Oct 22, 2009    Jan 14, 2020 |
-</span></span><span class="line"><span class="cl">| IIS 7.0 on Windows Server 2008*                    May 6, 2008     Jan 14, 2020 |
-</span></span><span class="line"><span class="cl">| IIS 6.0 on Windows Server 20                                                    |
-</span></span><span class="line"><span class="cl">+---------------------------------------------------------------------------------+
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| Version                                            Start Date      End Date     |
+</span></span></span><span class="line"><span class="cl"><span class="go">+---------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 10 on Windows Server 2019                      Nov 13, 2018    Jan 9, 2029  |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 10 on Windows Server (Semi-Annual Channel)     Oct 17, 2017                 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 10 on Windows Server 2016                      Oct 15, 2016    Jan 12, 2027 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 10 on Windows 10 Pro                           Jul 29, 2015                 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 10 on Windows 10, Enterprise and Education     Jul 29, 2015                 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 8.5 on Windows Server 2012 R2                  Nov 25, 2013    Oct 10, 2023 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 8.5 on Windows 8.1                             Nov 13, 2013    Jan 10, 2023 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 8 on Windows Server 2012                       Oct 30, 2012    Oct 10, 2023 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 7.5 on Windows 7*                              Oct 22, 2009    Jan 14, 2020 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 7.5 on Windows Server 2008 R2*                 Oct 22, 2009    Jan 14, 2020 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 7.0 on Windows Server 2008*                    May 6, 2008     Jan 14, 2020 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IIS 6.0 on Windows Server 20                                                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">+---------------------------------------------------------------------------------+
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

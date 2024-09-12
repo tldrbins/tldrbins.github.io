@@ -4,18 +4,17 @@ date: 2024-7-3
 tags: ["keepass", "kpcli", "password", "kdbx"]
 ---
 
----
 ### Master password cracking
 
 <div>
 
-```bash
-keepass2john key.kdbx > hash
+```console
+keepass2john <KDBX> > hash
 ```
 
-```bash
+```console
 # With a key file
-keepass2john -k key.png key.kdbx > hash
+keepass2john -k <KEY_FILE> <KDBX> > hash
 ```
 
 </div>
@@ -24,27 +23,27 @@ keepass2john -k key.png key.kdbx > hash
 
 <div>
 
-```bash
+```console
 # Open kdbx
-kpcli --kdb key.kdbx
+kpcli --kdb <KDBX>
 ```
 
-```bash
+```console
 # Open kdbx with a key file
-kpcli --key key.png --kdb key.kdbx
+kpcli --key <KEY_FILE> --kdb <KDBX>
 ```
 
-```bash
+```console
 # List all passwords
 find .
 ```
 
-```bash
+```console
 # Show password (e.g. #0)
 show -f 0
 ```
 
-```bash
+```console
 # Export attachment (e.g. #0)
 attach 0
 ```

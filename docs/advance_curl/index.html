@@ -193,30 +193,154 @@
   <li><a href="https://tldrbins.github.io/@web/">Web</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="advance-curl">Advance curl</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST url-encoded data</span>
-</span></span><span class="line"><span class="cl">curl --data-urlencode <span class="s1">&#39;cmd=ping -c3 10.10.14.10&#39;</span> http://example.com/cmd.php
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Put the POST data to url and use GET</span>
-</span></span><span class="line"><span class="cl">curl -G --data-urlencode <span class="s1">&#39;cmd=ping -c3 10.10.14.10&#39;</span> http://example.com/cmd.php
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># PUT a file</span>
-</span></span><span class="line"><span class="cl">curl -X PUT http://example.com/example.txt -d @example.txt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># PUT a file (with creds)</span>
-</span></span><span class="line"><span class="cl">curl -X PUT http://&lt;USER&gt;:&lt;PASSWORD&gt;@example.com/example.txt -d @example.txt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Put a file as raw binary format (preserve newlines and control characters)</span>
-</span></span><span class="line"><span class="cl">curl -X PUT http://example.com/example.txt --data-binary @example.aspx
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST a file with form param &#39;file&#39;</span>
-</span></span><span class="line"><span class="cl">curl -X POST -F <span class="s2">&#34;file=@example.php;type=application/php;filename=example.php&#34;</span> http://example.com/upload
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># POST a file in raw-text format (not as attachment) with form param &#39;file&#39;</span>
-</span></span><span class="line"><span class="cl">curl -X POST -F <span class="s1">&#39;file=&lt;example.zip&#39;</span> http://example.com/upload
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Not to handle sequences of &#39;/../&#39; or &#39;/./&#39; in the given URL</span>
-</span></span><span class="line"><span class="cl">curl --path-as-is --ignore-content-length http://example.com/../../../../etc/passwd
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Save the same name as the file on the server</span>
-</span></span><span class="line"><span class="cl">curl http://example.com/example.txt -O
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> POST url-encoded data
+</span></span><span class="line"><span class="cl"><span class="go">curl --data-urlencode &#39;&lt;QUERY_STRING&gt;&#39; &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Put the POST data to url and use GET
+</span></span><span class="line"><span class="cl"><span class="go">curl -G --data-urlencode &#39;&lt;QUERY_STRING&gt;&#39; &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> PUT a file
+</span></span><span class="line"><span class="cl"><span class="go">curl -X PUT &lt;TARGET&gt;/&lt;FILE&gt; -d @&lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> PUT a file <span class="o">(</span>with creds<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -X PUT http://&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;DOMAIN&gt;/&lt;FILE&gt; -d @&lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Put a file as raw binary format <span class="o">(</span>preserve newlines and control characters<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -X PUT &lt;TARGET&gt;/&lt;FILE&gt; --data-binary @&lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> POST a file with form param <span class="s1">&#39;file&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -X POST -F &#39;file=@&lt;FILE&gt;p;type=&lt;APPLICATION_TYPE&gt;;filename=&lt;FILE&gt;&#39; &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> POST a file in raw-text format <span class="o">(</span>not as attachment<span class="o">)</span> with form param <span class="s1">&#39;file&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -X POST -F &#39;file=&lt;&lt;FILE&gt;&#39; &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Not to handle sequences of <span class="s1">&#39;/../&#39;</span> or <span class="s1">&#39;/./&#39;</span> in the given URL
+</span></span><span class="line"><span class="cl"><span class="go">curl --path-as-is --ignore-content-length &#39;&lt;TARGET&gt;/../../../..&lt;FILE_PATH&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Save the same name as the file on the server
+</span></span><span class="line"><span class="cl"><span class="go">curl &lt;TARGET&gt;/&lt;FILE&gt; -O
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

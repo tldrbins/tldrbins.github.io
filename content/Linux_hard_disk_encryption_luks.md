@@ -4,13 +4,12 @@ date: 2024-7-10
 tags: ["luks", "Linux hard disk encryption", "privesc"]
 ---
 
----
 ### Brute force LUKS password
 
 <div>
 
-```bash
-bruteforce-luks -t 10 -f wordlist.txt -w state.txt -v 30 backup.img
+```console
+bruteforce-luks -t 10 -f <WORDLIST> -w state.txt -v 30 <BACKUP_IMG>
 ```
 
 </div>
@@ -21,22 +20,22 @@ bruteforce-luks -t 10 -f wordlist.txt -w state.txt -v 30 backup.img
 
 <div>
 
-```bash
+```console
 # Open
-cryptsetup open --type luks backup.img backup
+cryptsetup open --type luks <BACKUP_IMG> backup
 ```
 
-```bash
+```console
 # Check
 ls -l /dev/mapper/
 ```
 
-```bash
+```console
 # Create mount folder
 sudo mkdir /mnt/backup
 ```
 
-```bash
+```console
 # Mount
 sudo mount /dev/mapper/backup /mnt/backup/
 ```

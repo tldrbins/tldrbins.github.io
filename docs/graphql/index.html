@@ -189,29 +189,153 @@
   <li><a href="https://tldrbins.github.io/@database/">Database</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="visualize-tool">Visualize Tool</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+---------------------------------------------------------------+
-</span></span><span class="line"><span class="cl">| 1. Change Schema -&gt; Introspection -&gt; Copy Introspection Query |
-</span></span><span class="line"><span class="cl">| 2. Paste query                                                |
-</span></span><span class="line"><span class="cl">| 3. Display                                                    |
-</span></span><span class="line"><span class="cl">+---------------------------------------------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| 1. Change Schema -&gt; Introspection -&gt; Copy Introspection Query |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 2. Paste query                                                |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 3. Display                                                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">+---------------------------------------------------------------+
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://graphql-kit.com/graphql-voyager/">graphql-voyager</a></em></small></p>
 <h3 id="basic-commands">Basic Commands</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get fields from schema</span>
-</span></span><span class="line"><span class="cl">curl -s 10.10.11.10:3000/graphql -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -d <span class="s1">&#39;{&#34;query&#34;:&#34;{__schema{queryType{name,fields{name,description}}}}&#34;}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get types name</span>
-</span></span><span class="line"><span class="cl">curl -s 10.10.11.10:3000/graphql -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -d <span class="s1">&#39;{&#34;query&#34;:&#34;{__schema{types{name}}}&#34;}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get fields of type (e.g. User)</span>
-</span></span><span class="line"><span class="cl">curl -s 10.10.11.10:3000/graphql -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -d <span class="s1">&#39;{&#34;query&#34;:&#34;{__type(name:\&#34;User\&#34;){name,fields{name}}}&#34;}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump data from type (e.g. User type with fields username and password)</span>
-</span></span><span class="line"><span class="cl">curl -s 10.10.11.10:3000/graphql -H <span class="s2">&#34;Content-Type: application/json&#34;</span> -d <span class="s1">&#39;{&#34;query&#34;:&#34;{User{username,password}}&#34;}&#39;</span> <span class="p">|</span> jq .
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get fields from schema
+</span></span><span class="line"><span class="cl"><span class="go">curl -s &lt;TARGET&gt;:3000/graphql -H &#34;Content-Type: application/json&#34; -d &#39;{&#34;query&#34;:&#34;{__schema{queryType{name,fields{name,description}}}}&#34;}&#39; | jq .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get types name
+</span></span><span class="line"><span class="cl"><span class="go">curl -s &lt;TARGET&gt;:3000/graphql -H &#34;Content-Type: application/json&#34; -d &#39;{&#34;query&#34;:&#34;{__schema{types{name}}}&#34;}&#39; | jq .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get fields of <span class="nb">type</span> <span class="o">(</span>e.g. User<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s &lt;TARGET&gt;:3000/graphql -H &#34;Content-Type: application/json&#34; -d &#39;{&#34;query&#34;:&#34;{__type(name:\&#34;User\&#34;){name,fields{name}}}&#34;}&#39; | jq .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Dump data from <span class="nb">type</span> <span class="o">(</span>e.g. User <span class="nb">type</span> with fields username and password<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s &lt;TARGET&gt;:3000/graphql -H &#34;Content-Type: application/json&#34; -d &#39;{&#34;query&#34;:&#34;{User{username,password}}&#34;}&#39; | jq .
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

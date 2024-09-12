@@ -4,7 +4,6 @@ date: 2024-7-10
 tags: ["cron", "scheduled tasks", "Linux"]
 ---
 
----
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -12,15 +11,15 @@ tags: ["cron", "scheduled tasks", "Linux"]
 
 <div>
 
-```bash
+```console
 ls -la /etc/cron.d/
 ```
 
-```bash
+```console
 cat /etc/crontab
 ```
 
-```bash
+```console
 crontab -l
 ```
 
@@ -30,7 +29,7 @@ crontab -l
 
 <div>
 
-```bash
+```console
 ./pspy
 ```
 

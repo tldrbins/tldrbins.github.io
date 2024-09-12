@@ -4,54 +4,53 @@ date: 2024-6-26
 tags: ["curl", "http", "file transfer", "web"]
 ---
 
----
 ### Advance curl
 
 <div>
 
-```bash
+```console
 # POST url-encoded data
-curl --data-urlencode 'cmd=ping -c3 10.10.14.10' http://example.com/cmd.php
+curl --data-urlencode '<QUERY_STRING>' <TARGET>
 ```
 
-```bash
+```console
 # Put the POST data to url and use GET
-curl -G --data-urlencode 'cmd=ping -c3 10.10.14.10' http://example.com/cmd.php
+curl -G --data-urlencode '<QUERY_STRING>' <TARGET>
 ```
 
-```bash
+```console
 # PUT a file
-curl -X PUT http://example.com/example.txt -d @example.txt
+curl -X PUT <TARGET>/<FILE> -d @<FILE>
 ```
 
-```bash
+```console
 # PUT a file (with creds)
-curl -X PUT http://<USER>:<PASSWORD>@example.com/example.txt -d @example.txt
+curl -X PUT http://<USER>:<PASSWORD>@<DOMAIN>/<FILE> -d @<FILE>
 ```
 
-```bash
+```console
 # Put a file as raw binary format (preserve newlines and control characters)
-curl -X PUT http://example.com/example.txt --data-binary @example.aspx
+curl -X PUT <TARGET>/<FILE> --data-binary @<FILE>
 ```
 
-```bash
+```console
 # POST a file with form param 'file'
-curl -X POST -F "file=@example.php;type=application/php;filename=example.php" http://example.com/upload
+curl -X POST -F 'file=@<FILE>p;type=<APPLICATION_TYPE>;filename=<FILE>' <TARGET>
 ```
 
-```bash
+```console
 # POST a file in raw-text format (not as attachment) with form param 'file'
-curl -X POST -F 'file=<example.zip' http://example.com/upload
+curl -X POST -F 'file=<<FILE>' <TARGET>
 ```
 
-```bash
+```console
 # Not to handle sequences of '/../' or '/./' in the given URL
-curl --path-as-is --ignore-content-length http://example.com/../../../../etc/passwd
+curl --path-as-is --ignore-content-length '<TARGET>/../../../..<FILE_PATH>'
 ```
 
-```bash
+```console
 # Save the same name as the file on the server
-curl http://example.com/example.txt -O
+curl <TARGET>/<FILE> -O
 ```
 
 </div>

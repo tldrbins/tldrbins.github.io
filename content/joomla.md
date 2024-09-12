@@ -4,13 +4,12 @@ date: 2024-7-8
 tags: ["joomla", "cms"]
 ---
 
----
 ### Check Version
 
 <div>
 
-```bash
-curl -s http://10.10.11.10/administrator/manifests/files/joomla.xml | head
+```console
+curl -s http://<TARGET>/administrator/manifests/files/joomla.xml | head
 ```
 
 </div>
@@ -19,8 +18,8 @@ curl -s http://10.10.11.10/administrator/manifests/files/joomla.xml | head
 
 <div>
 
-```bash
-http://10.10.11.10/administrator
+```console
+http://<TARGET>/administrator
 ```
 
 </div>

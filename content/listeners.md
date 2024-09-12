@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["listener", "revshell", "nc", "pwncat"]
 ---
 
----
 ### Listener Tools
 
 {{< tab set1 tab1 active >}}nc{{< /tab >}}
@@ -14,8 +13,8 @@ tags: ["listener", "revshell", "nc", "pwncat"]
 
 <div>
 
-```bash
-rlwrap nc -lvnp 1337
+```console
+rlwrap nc -lvnp <LOCAL_PORT>
 ```
 
 </div>
@@ -25,9 +24,9 @@ rlwrap nc -lvnp 1337
 
 <div>
 
-```bash
+```console
 # Default listening on both ipv4 and ipv6
-rlwrap ncat -lvnp 1337
+rlwrap ncat -lvnp <LOCAL_PORT>
 ```
 
 </div>
@@ -37,11 +36,11 @@ rlwrap ncat -lvnp 1337
 
 <div>
 
-```bash
-pwncat-cs -lp 1337
+```console
+pwncat-cs -lp <LOCAL_PORT>
 ```
 
-```bash
+```console
 # After getting a connection
 (local) pwncat$ back
 ```

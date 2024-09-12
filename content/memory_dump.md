@@ -4,7 +4,6 @@ date: 2024-6-29
 tags: ["dmp", "memory dump", "binwalk", "reversing", "forensic", "minidump"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}binwalk{{< /tab >}}
@@ -13,9 +12,9 @@ tags: ["dmp", "memory dump", "binwalk", "reversing", "forensic", "minidump"]
 
 <div>
 
-```bash
+```console
 # Extract files from memory dump
-binwalk -M -e memory.dmp
+binwalk -M -e <MEMORY_DUMP>
 ```
 
 </div>
@@ -27,9 +26,9 @@ binwalk -M -e memory.dmp
 
 <div>
 
-```bash
+```console
 # Mini Dump
-pypykatz lsa minidump memory.dmp
+pypykatz lsa minidump <MEMORY_DUMP>
 ```
 
 </div>

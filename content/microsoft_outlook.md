@@ -4,7 +4,6 @@ date: 2024-7-8
 tags: ["outlook", "email", "Windows", "pst", "ost", "mbox"]
 ---
 
----
 ### Open email file
 
 {{< tab set1 tab1 active >}}.pst{{< /tab >}}
@@ -15,7 +14,7 @@ tags: ["outlook", "email", "Windows", "pst", "ost", "mbox"]
 
 <div>
 
-```bash
+```console
 sudo apt install readpst
 ```
 
@@ -25,14 +24,14 @@ sudo apt install readpst
 
 <div>
 
-```bash
+```console
 # Convert to mbox format
-readpst emails.pst
+readpst <PST_FILE>
 ```
 
-```bash
+```console
 # Open .mbox (plaintext)
-cat emails.mbox
+cat <MBOX_FILE>
 ```
 
 </div>
@@ -41,17 +40,17 @@ cat emails.mbox
 
 <div>
 
-```bash
+```console
 # Install mutt
 sudo apt install mutt
 ```
 
-```bash
+```console
 # Open in mutt terminal
-mutt -Rf emails.mbox
+mutt -Rf <MBOX_FILE>
 ```
 
-```bash
+```console
 +--------------------------------------+
 | Note: Answer No to create /root/Mail |
 |                                      |
@@ -71,12 +70,12 @@ mutt -Rf emails.mbox
 
 <div>
 
-```bash
+```console
 # Install msgconvert
 sudo apt install libemail-outlook-message-perl
 ```
 
-```bash
+```console
 # Install formail
 sudo apt install procmail
 ```
@@ -87,14 +86,14 @@ sudo apt install procmail
 
 <div>
 
-```bash
+```console
 # Convert to .eml format
 msgconvert *.msg
 ```
 
-```bash
+```console
 # Convert to .mbox format
-cat messages.eml | formail -b > emails.mbox
+cat <EML_FILE> | formail -b > emails.mbox
 ```
 
 </div>

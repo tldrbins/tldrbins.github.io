@@ -4,7 +4,6 @@ date: 2024-6-28
 tags: ["webdav", "http", "web"]
 ---
 
----
 ### Tools
 {{< tab set1 tab1 active >}}davtest{{< /tab >}}
 {{< tab set1 tab2 >}}curl{{< /tab >}}
@@ -12,14 +11,14 @@ tags: ["webdav", "http", "web"]
 
 <div>
 
-```bash
+```console
 # Without creds
-davtest -url http://example.com
+davtest -url http://<TARGET>
 ```
 
-```bash
+```console
 # With creds
-davtest -url http://example.com -auth <USER>:<PASSWORD>
+davtest -url http://<TARGET> -auth '<USER>:<PASSWORD>'
 ```
 
 </div>
@@ -31,9 +30,9 @@ davtest -url http://example.com -auth <USER>:<PASSWORD>
 
 <div>
 
-```bash
+```console
 # Rename a remote file
-curl -X MOVE -H 'Destination:http://example.com/test.php' http://example.com/test.txt
+curl -X MOVE -H 'Destination:http://<TARGET>/<NEW_FILENAME>' http://<TARGET>/<FILE>
 ```
 
 </div>

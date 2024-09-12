@@ -4,39 +4,38 @@ date: 2024-7-2
 tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Windows", "smb", "ldap", "winrm", "rid"]
 ---
 
----
 #### Basic Commands
 
 <div>
 
-```bash
+```console
 # Single user and password
-nxc smb 10.10.11.10 -u <USER> -p <PASSWORD>
+nxc smb <TARGET> -u <USER> -p '<PASSWORD>'
 ```
 
-```bash
+```console
 # Single user and password (Active Directory)
-nxc smb -u <USER> -p <PASSWORD> -d <DOMAIN> -dc-ip <DC_IP>
+nxc smb -u <USER> -p '<PASSWORD>' -d <DOMAIN> -dc-ip <DC_IP>
 ```
 
-```bash
+```console
 # Multiple users or passwords
-nxc smb -u usernames.txt -p <PASSWORD> -d <DOMAIN> -dc-ip <DC_IP> --continue-on-success
+nxc smb -u <USERNAMES> -p '<PASSWORD>' -d <DOMAIN> -dc-ip <DC_IP> --continue-on-success
 ```
 
-```bash
+```console
 # Match username to corresponding password
-nxc smb 10.10.11.10 -u usernames.txt -p passwords.txt --no-bruteforce --continue-on-success
+nxc smb <TARGET> -u <USERNAMES> -p <PASSWORDS> --no-bruteforce --continue-on-success
 ```
 
-```bash
+```console
 # With LM Hash:NT Hash
-nxc smb 10.10.11.10 -u <USER> -H <LM>:<NT>
+nxc smb <TARGET> -u <USER> -H <LM>:<NT>
 ```
 
-```bash
+```console
 # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled)
-nxc smb -u <USER> -p <PASSWORD> -d <DOMAIN> -k 10.10.11.10
+nxc smb -u <USER> -p '<PASSWORD>' -d <DOMAIN> -k <TARGET>
 ```
 
 </div>
@@ -57,8 +56,8 @@ nxc smb -u <USER> -p <PASSWORD> -d <DOMAIN> -k 10.10.11.10
 
 <div>
 
-```bash
-nxc smb 10.10.11.10 -u guest -p '' --rid-brute 10000
+```console
+nxc smb <TARGET> -u guest -p '' --rid-brute 10000
 ```
 
 </div>
@@ -67,8 +66,8 @@ nxc smb 10.10.11.10 -u guest -p '' --rid-brute 10000
 
 <div>
 
-```bash
-nxc smb 10.10.11.10 -u <USER> -p <PASSWORD> -d <DOMAIN> --users
+```console
+nxc smb <TARGET> -u <USER> -p '<PASSWORD>' -d <DOMAIN> --users
 ```
 
 </div>

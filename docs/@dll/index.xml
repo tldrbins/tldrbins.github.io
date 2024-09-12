@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/create_custom_dll/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/create_custom_dll/</guid>
-      <description>Create Custom Dll +---------------------------------------------------------+ | 1. Open Visual Studio | | 2. Create New Project -&amp;gt; C++ Dynamic-Link Library (DLL) | +---------------------------------------------------------+ #include &amp;#34;pch.h&amp;#34; #include &amp;lt;stdlib.h&amp;gt; BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: system(&amp;#34;cmd.exe /c ping 10.10.14.10&amp;#34;); case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } +----------------------------+ | 3. Replace the code | | 4. Dropdown release -&amp;gt; x64 | | 5.</description>
+      <description>Create Custom Dll +---------------------------------------------------------+ | 1. Open Visual Studio | | 2. Create New Project -&amp;gt; C++ Dynamic-Link Library (DLL) | +---------------------------------------------------------+ #include &amp;#34;pch.h&amp;#34; #include &amp;lt;stdlib.h&amp;gt; BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: system(&amp;#34;cmd.exe /c ping &amp;lt;LOCAL_IP&amp;gt;&amp;#34;); case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } +----------------------------+ | 3. Replace the code | | 4. Dropdown release -&amp;gt; x64 | | 5.</description>
     </item>
   </channel>
 </rss>

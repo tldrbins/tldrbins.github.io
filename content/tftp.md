@@ -4,22 +4,21 @@ date: 2024-6-29
 tags: ["tftp", "file transfer"]
 ---
 
----
 ### TFTP
 
 <div>
 
-```bash
+```console
 # Connect
 tftp <TARGET>
 ```
 
-```bash
+```console
 # Download
 get <FILE>
 ```
 
-```bash
+```console
 # Exit
 quit
 ```

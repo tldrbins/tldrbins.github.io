@@ -4,36 +4,35 @@ date: 2024-7-2
 tags: ["pop3", "telnet", "mail", "email"]
 ---
 
----
 ### Basic
 
 <div>
 
-```bash
+```console
 # Connect to POP3 mail server
-telnet 10.10.11.10 110
+telnet <TARGET> 110
 ```
 
-```bash
+```console
 # Send cmd after +OK
 USER <USER>
 ```
 
-```bash
+```console
 PASS <PASSWORD>
 ```
 
-```bash
+```console
 # List all mails
 LIST
 ```
 
-```bash
+```console
 # Retrieve mail #1
 RETR 1
 ```
 
-```bash
+```console
 # Exit Ctrl + ], then
 quit
 ```

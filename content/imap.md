@@ -4,32 +4,31 @@ date: 2024-7-9
 tags: ["imap", "imaps", "mail", "email", "openssl"]
 ---
 
----
 ### IMAP/IMAPS
 
 <div>
 
-```bash
+```console
 # Connect to IMAP over ssl
-rlwrap openssl s_client -connect 10.10.11.10:993
+rlwrap openssl s_client -connect <TARGET>:993
 ```
 
-```bash
+```console
 # Login
 a LOGIN <USER> <PASSWORD>
 ```
 
-```bash
+```console
 # List all mailboxes
 a LIST "" "*"
 ```
 
-```bash
+```console
 # Select a mailbox (e.g. Inbox)
 a SELECT INBOX
 ```
 
-```bash
+```console
 # Get mail from mailbox (e.g. #1)
 a FETCH 1 BODY.PEEK[]
 ```

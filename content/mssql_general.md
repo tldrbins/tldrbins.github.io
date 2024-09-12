@@ -4,7 +4,6 @@ date: 2024-6-27
 tags: ["mssql", "database", "Windows"]
 ---
 
----
 ### General
 
 #### Connect to MSSQL DB
@@ -15,11 +14,11 @@ tags: ["mssql", "database", "Windows"]
 
 <div>
 
-```bash
+```console
 impacket-mssqlclient '<USER>:<PASSWORD>@<TARGET>'
 ```
 
-```bash
+```console
 # Without TLS
 impacket-mssqlclient -windows-auth '<USER>:<PASSWORD>@<TARGET>'
 ```
@@ -31,9 +30,9 @@ impacket-mssqlclient -windows-auth '<USER>:<PASSWORD>@<TARGET>'
 
 <div>
 
-```powershell
+```console
 # With inline query
-sqlcmd -S <TARGET> -U <USER> -P <PASSWORD> -d <DB_NAME> -Q "SELECT @@version;"
+sqlcmd -S <TARGET> -U <USER> -P '<PASSWORD>' -d <DB_NAME> -Q "SELECT @@version;"
 ```
 
 </div>
@@ -44,79 +43,79 @@ sqlcmd -S <TARGET> -U <USER> -P <PASSWORD> -d <DB_NAME> -Q "SELECT @@version;"
 
 <div>
 
-```mysql
+```console
 # Check mssql version
 SELECT @@version;
 ```
 
-```mysql
+```console
 # Check users
 SELECT name FROM master..syslogins
 ```
 
-```mysql
+```console
 # Check users
 SELECT name FROM master..syslogins WHERE sysadmin = '1';
 ```
 
-```mysql
+```console
 # Check service name and the account authorized to control the service
 SELECT servicename, service_account FROM sys.dm_server_services;
 ```
 
-```mysql
+```console
 # List principals
 SELECT name FROM sys.database_principals;
 ```
 
-```mysql
+```console
 # Check privilege over a principal from current user
 SELECT entity_name, permission_name FROM fn_my_permissions('<PRINCIPAL>', 'USER');
 ```
 
-```mysql
+```console
 # Fix : Cannot resolve the collation conflict between "Latin1_General_CI_AI" and "SQL_Latin1_General_CP1_CI_AS"
 SELECT entity_name collate DATABASE_DEFAULT,permission_name collate DATABASE_DEFAULT FROM fn_my_permissions('<PRINCIPAL>', 'USER');
 ```
 
-```mysql
+```console
 # Check privilege
 SELECT entity_name, permission_name FROM fn_my_permissions(NULL, 'SERVER');
 ```
 
-```mysql
+```console
 # Show databases
 SELECT name FROM master..sysdatabases;
 ```
 
-```mysql
+```console
 # Show current database
 SELECT DB_NAME();
 ```
 
-```mysql
+```console
 # List tables and schema
 SELECT table_name,table_schema from <DB_NAME>.INFORMATION_SCHEMA.TABLES;
 ```
 
-```mysql
+```console
 # Select all from table
 SELECT * from <DB_NAME>.<TABLE_SCHEMA>.<TABLE_NAME>;
 ```
 
-```mysql
+```console
 # Get domain name
 SELECT DEFAULT_DOMAIN();
 ```
 
-```mysql
+```console
 # Get domain RID
-SELECT master.dbo.fn_varbintohexstr(SUSER_SID('EXAMPLE\Domain Admins'))
+SELECT master.dbo.fn_varbintohexstr(SUSER_SID('<DOMAIN>\Domain Admins'))
 ```
 
-```mysql
+```console
 # Read a text file
-SELECT * FROM OPENROWSET(BULK N'C:\users\administrator\desktop\root.txt', SINGLE_CLOB) AS Contents
+SELECT * FROM OPENROWSET(BULK N'<FILE>', SINGLE_CLOB) AS Contents
 ```
 
 </div>
@@ -125,11 +124,11 @@ SELECT * FROM OPENROWSET(BULK N'C:\users\administrator\desktop\root.txt', SINGLE
 
 <div>
 
-```mysql
+```console
 CREATE LOGIN '<USER>' WITH PASSWORD = '<PASSWORD>';
 ```
 
-```mysql
+```console
 EXEC sp_addsrvrolemember '<USER>', 'sysadmin';
 ```
 

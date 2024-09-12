@@ -4,7 +4,6 @@ date: 2024-8-22
 tags: ["Volume Shadow Copies", "privesc", "Windows", "secretsdump", "vsc"]
 ---
 
----
 ### Abuse #1: Recover data from shadow copies
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["Volume Shadow Copies", "privesc", "Windows", "secretsdump", "vsc"]
 
 <div>
 
-```powershell
+```console
 vssadmin list shadows
 ```
 
@@ -24,7 +23,7 @@ vssadmin list shadows
 
 <div>
 
-```powershell
+```console
 cmd /c mklink /d C:\VSS <SHADOW_COPY_VOLUME_PATH>
 ```
 
@@ -34,7 +33,7 @@ cmd /c mklink /d C:\VSS <SHADOW_COPY_VOLUME_PATH>
 
 <div>
 
-```powershell
+```console
 ls C:\VSS\Users
 ```
 

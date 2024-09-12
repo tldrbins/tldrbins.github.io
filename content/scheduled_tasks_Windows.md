@@ -4,7 +4,6 @@ date: 2024-7-10
 tags: ["scheduled tasks", "Windows", "enum"]
 ---
 
----
 ### Check scheduled tasks
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -12,11 +11,11 @@ tags: ["scheduled tasks", "Windows", "enum"]
 
 <div>
 
-```powershell
+```console
 schtasks /query
 ```
 
-```powershell
+```console
 # List details
 schtasks /TN \Microsoft\Windows\<FOLDER>\<TASKNAME> /FO LIST /V
 ```

@@ -4,7 +4,6 @@ date: 2024-6-28
 tags: ["icacls", "acl", "Windows", "access control lists", "powershell", "cmd"]
 ---
 
----
 ### Window ACLs (Access Control Lists)
 
 #### Check ACLs
@@ -14,12 +13,12 @@ tags: ["icacls", "acl", "Windows", "access control lists", "powershell", "cmd"]
 
 <div>
 
-```powershell
+```console
 # Check a file/directory
 icacls <PATH>
 ```
 
-```powershell
+```console
 # Check all files and directories
 icacls * /C
 ```
@@ -36,7 +35,7 @@ icacls * /C
 
 <div>
 
-```powershell
+```console
 # cmd
 cmd.exe /c cacls <FILE> /E /G <USER>:F
 ```
@@ -48,7 +47,7 @@ cmd.exe /c cacls <FILE> /E /G <USER>:F
 
 <div>
 
-```powershell
+```console
 # powershell
 icacls <FILE> /grant <USER>:F
 ```
@@ -64,7 +63,7 @@ icacls <FILE> /grant <USER>:F
 
 <div>
 
-```powershell
+```console
 # cmd
 cmd.exe /c takeown /F <FILE>
 ```
@@ -79,7 +78,7 @@ cmd.exe /c takeown /F <FILE>
 
 <div>
 
-```bash
+```console
 +---------------------------------------------------+
 | F    (full access)                                |
 | M    (modify access)                              |

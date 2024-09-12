@@ -4,13 +4,12 @@ date: 2024-7-9
 tags: ["openssl", "base64", "cert", "ssl", "certificate signing request", "csr", "pem", "p12", "key", "crt"]
 ---
 
----
 ### Show TLS Certificate from HTTPS web server
 
 <div>
 
-```bash
-echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2>/dev/null | openssl x509 -inform pem -noout -text
+```console
+echo | openssl s_client -showcerts -servername <TARGET> -connect <TARGET>:443 2>/dev/null | openssl x509 -inform pem -noout -text
 ```
 
 </div>
@@ -25,7 +24,7 @@ echo | openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:
 
 <div>
 
-```bash
+```console
 openssl req -in request.csr -noout -text
 ```
 
@@ -35,17 +34,17 @@ openssl req -in request.csr -noout -text
 
 <div>
 
-```bash
+```console
 # Generate a user key
 openssl genrsa -out username.key 2048                                                      
 ```
 
-```bash
+```console
 # Create a CSR
 openssl req -new -key username.key -out username.csr
 ```
 
-```bash
+```console
 # Settings
 +-----------------------------------------------------------------------------+
 | You are about to be asked to enter information that will be incorporated    |
@@ -70,17 +69,17 @@ openssl req -new -key username.key -out username.csr
 +-----------------------------------------------------------------------------+
 ```
 
-```bash
+```console
 # Sign the .csr with a valid key and cert pair
 openssl x509 -req -in username.csr -CA company.cert.pem -CAkey company.key.pem -CAcreateserial -out username.pem -days 1024
 ```
 
-```bash
+```console
 # Convert to pfx that Firefox can import
 openssl pkcs12 -export -out username.pfx -inkey username.key -in username.pem -certfile company.cert.pem
 ```
 
-```bash
+```console
 # Settings
 +------------------------------------+
 | Enter Export Password:             |
@@ -88,9 +87,9 @@ openssl pkcs12 -export -out username.pfx -inkey username.key -in username.pem -c
 +------------------------------------+
 ```
 
-```bash
+```console
 # Alternative: curl
-curl -k --cert username.pem --key username.key https://10.10.11.10
+curl -k --cert username.pem --key username.key https://<TARGET>
 ```
 
 </div>
@@ -99,12 +98,12 @@ curl -k --cert username.pem --key username.key https://10.10.11.10
 
 <div>
 
-```bash
+```console
 # Create cert.key
 openssl pkcs12 -in cert.p12 -nocerts -out cert.key
 ```
 
-```bash
+```console
 # Create cert.crt
 openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
 ```
@@ -119,12 +118,12 @@ openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
 
 <div>
 
-```bash
+```console
 # base64 encode a file
 openssl base64 -in ./file
 ```
 
-```bash
+```console
 # base64 decode a file and output to a file
 cat b64_file | openssl enc -d -base64 -out ./file
 ```

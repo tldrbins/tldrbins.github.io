@@ -4,16 +4,15 @@ date: 2024-7-2
 tags: ["hydra", "password", "brute force"]
 ---
 
----
 ### HTTP basic auth
 
 <div>
 
-```bash
-hydra -L usernames -P passwords -s 8080 -f example.com http-get /
+```console
+hydra -L <USERS_FILE> -P <PASSWORD_FILE> -s <TARGET_PORT> -f <TARGET> http-get /
 ```
 
-```
+```console
 +-------------------------------------------+
 | -s : port                                 |
 | -L : usernames file                       |
@@ -28,11 +27,11 @@ hydra -L usernames -P passwords -s 8080 -f example.com http-get /
 
 <div>
 
-```bash
-hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form "/login.php:username=admin&password=^PASS^&remember=yes:Incorrect password"
+```console
+hydra <TARGET> -l <USER> -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form '/login.php:username=admin&password=^PASS^&remember=yes:Incorrect password'
 ```
 
-```
+```console
 +-------------------------------------------+
 | -l                 : username             |
 | -P                 : wordlist             |
@@ -49,8 +48,8 @@ hydra 10.10.11.10 -l admin -P /usr/share/seclists/Passwords/500-worst-passwords.
 
 <div>
 
-```bash
-hydra -C creds.txt ssh://10.10.11.10
+```console
+hydra -C <USERS_PASSWORDS_FILE> ssh://<TARGET>
 ```
 
 </div>

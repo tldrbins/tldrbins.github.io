@@ -209,8 +209,131 @@
   <li><a href="https://tldrbins.github.io/@powershell/">Powershell</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <p><small><em>Hint: Always put the zip file inside a new folder before unzip</em></small></p>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">zip</button>
@@ -228,75 +351,76 @@
 <button data-tabset="set1" data-tabcontent="tab7" >bz</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a file</span>
-</span></span><span class="line"><span class="cl">zip file.zip file
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a folder</span>
-</span></span><span class="line"><span class="cl">zip -r folder.zip folder/
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># zip a symlink (not the destination file)</span>
-</span></span><span class="line"><span class="cl">zip --symlinks file.zip symlink
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List files without unzip</span>
-</span></span><span class="line"><span class="cl">unzip -l file.zip
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># unzip</span>
-</span></span><span class="line"><span class="cl">unzip file.zip
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># unzip (Windows)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="py">IO</span><span class="p">.</span><span class="py">Compression</span><span class="p">.</span><span class="n">FileSystem</span><span class="p">;</span> <span class="p">[</span><span class="no">System.IO.Compression.ZipFile</span><span class="p">]::</span><span class="n">ExtractToDirectory</span><span class="p">(</span><span class="s1">&#39;C:\ProgramData\file.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;C:\ProgramData\&#39;</span><span class="p">)</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> zip a file
+</span></span><span class="line"><span class="cl"><span class="go">zip &lt;FILE&gt;.zip &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> zip a folder
+</span></span><span class="line"><span class="cl"><span class="go">zip -r &lt;FOLDER&gt;.zip &lt;FOLDER&gt;/
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> zip a symlink <span class="o">(</span>not the destination file<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">zip --symlinks file.zip &lt;SYMLINK&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List files without unzip
+</span></span><span class="line"><span class="cl"><span class="go">unzip -l &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> unzip
+</span></span><span class="line"><span class="cl"><span class="go">unzip &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> unzip <span class="o">(</span>Windows<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&#39;&lt;FILE_PATH&gt;&#39;, &#39;C:\ProgramData\&#39;)
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a file</span>
-</span></span><span class="line"><span class="cl">tar -cvzf file.tar.gz file
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress a folder</span>
-</span></span><span class="line"><span class="cl">tar -cvzf folder.tar.gz folder/
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
-</span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract filter with wildcard (e.g. .txt)</span>
-</span></span><span class="line"><span class="cl">tar -xvzf file.tar.gz --wildcards <span class="s1">&#39;*.txt&#39;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Compress a file
+</span></span><span class="line"><span class="cl"><span class="go">tar -cvzf &lt;FILE&gt;.tar.gz &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Compress a folder
+</span></span><span class="line"><span class="cl"><span class="go">tar -cvzf &lt;FOLDER&gt;.tar.gz &lt;FOLDER&gt;/
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract
+</span></span><span class="line"><span class="cl"><span class="go">tar -xvzf &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract filter with wildcard <span class="o">(</span>e.g. .txt<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">tar -xvzf &lt;FILE&gt; --wildcards &#39;*.txt&#39;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List files without extract</span>
-</span></span><span class="line"><span class="cl">tar -tf file.tar
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
-</span></span><span class="line"><span class="cl">tar -xvf file.tar
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract filter with wildcard (e.g. .txt)</span>
-</span></span><span class="line"><span class="cl">tar -xvf file.tar --wildcards <span class="s1">&#39;*.txt&#39;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List files without extract
+</span></span><span class="line"><span class="cl"><span class="go">tar -tf &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract
+</span></span><span class="line"><span class="cl"><span class="go">tar -xvf &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract filter with wildcard <span class="o">(</span>e.g. .txt<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">tar -xvf &lt;FILE&gt; --wildcards &#39;*.txt&#39;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress file, and keep the original file</span>
-</span></span><span class="line"><span class="cl">gzip -k -r file
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compress all files individually inside a folder, and keep original files</span>
-</span></span><span class="line"><span class="cl">gzip -k -r folder/
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
-</span></span><span class="line"><span class="cl">gunzip file.gz
-</span></span></code></pre></div><p><small><em>Note: If you want to zip the entire folder, use tar instead</em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Compress file, and keep the original file
+</span></span><span class="line"><span class="cl"><span class="go">gzip -k -r &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Compress all files individually inside a folder, and keep original files
+</span></span><span class="line"><span class="cl"><span class="go">gzip -k -r &lt;FOLDER&gt;/
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract
+</span></span><span class="line"><span class="cl"><span class="go">gunzip &lt;FILE&gt;
+</span></span></span></code></pre></div><p><small><em>Note: If you want to zip the entire folder, use tar instead</em></small></p>
 </div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
-</span></span><span class="line"><span class="cl">unrar e file.rar
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract
+</span></span><span class="line"><span class="cl"><span class="go">unrar e &lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab6"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
-</span></span><span class="line"><span class="cl">sudo apt install p7zip-full
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract</span>
-</span></span><span class="line"><span class="cl">7z x file.zip
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Show meta data</span>
-</span></span><span class="line"><span class="cl">7z l -slt file.zip
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install
+</span></span><span class="line"><span class="cl"><span class="go">sudo apt install p7zip-full
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract
+</span></span><span class="line"><span class="cl"><span class="go">7z x &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show meta data
+</span></span><span class="line"><span class="cl"><span class="go">7z l -slt &lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab7"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract and keep original files</span>
-</span></span><span class="line"><span class="cl">bunzip2 -k file.bz2
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract and keep original files
+</span></span><span class="line"><span class="cl"><span class="go">bunzip2 -k &lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
+
 </div></div>
     
     <script src="/js/utils.js"></script>

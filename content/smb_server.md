@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["smb", "file transfer", "ntlm", "Windows"]
 ---
 
----
 ### Start a SMB Server for File Transfer
 
 {{< tab set1 tab1 active >}}Anonymous{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["smb", "file transfer", "ntlm", "Windows"]
 
 <div>
 
-```bash
+```console
 impacket-smbserver share . -smb2support
 ```
 
@@ -25,8 +24,8 @@ impacket-smbserver share . -smb2support
 
 <div>
 
-```bash
-impacket-smbserver share . -smb2support -username <USER> -password <PASSWORD>
+```console
+impacket-smbserver share . -smb2support -username <USER> -password '<PASSWORD>'
 ```
 
 </div>
@@ -38,7 +37,7 @@ impacket-smbserver share . -smb2support -username <USER> -password <PASSWORD>
 
 <div>
 
-```bash
+```console
 impacket-smbserver share .
 ```
 

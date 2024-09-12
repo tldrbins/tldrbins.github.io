@@ -4,13 +4,12 @@ date: 2024-6-26
 tags: ["web", "domain", "subdomain", "wfuzz", "http", "enum", "hosts"]
 ---
 
----
 ### Add domain/subdomain to /etc/hosts
 
 <div>
 
-```bash
-echo "10.10.11.10 example.com" | sudo tee -a /etc/hosts
+```console
+echo "<TARGET> <DOMAIN>" | sudo tee -a /etc/hosts
 ```
 
 </div>
@@ -25,8 +24,8 @@ echo "10.10.11.10 example.com" | sudo tee -a /etc/hosts
 
 <div>
 
-```bash
-wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.example.com" -u http://example.com
+```console
+wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.<DOMAIN>" -u http://<DOMAIN>
 ```
 
 </div>
@@ -35,8 +34,8 @@ wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H 
 
 <div>
 
-```bash
-wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.example.com" -u http://example.com --hw 10
+```console
+wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.<DOMAIN>" -u http://<DOMAIN> --hw 10
 ```
 
 </div>
@@ -45,9 +44,9 @@ wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H 
 
 <div>
 
-```bash
+```console
 # For example: Access-Control-Allow-Origin
-wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Origin: http://FUZZ.example.com" --filter "r.headers.response ~ 'Access-Control-Allow-Origin'" -u http://example.com
+wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Origin: http://FUZZ.<DOMAIN>" --filter "r.headers.response ~ 'Access-Control-Allow-Origin'" -u http://<DOMAIN>
 ```
 
 </div>
@@ -57,8 +56,8 @@ wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H 
 
 <div>
 
-```bash
-gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://example.com
+```console
+gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://<DOMAIN>
 ```
 
 </div>

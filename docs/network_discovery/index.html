@@ -201,8 +201,131 @@
   <li><a href="https://tldrbins.github.io/@linux/">Linux</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="test-connectivity">Test connectivity</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
@@ -210,61 +333,61 @@
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Default infinite pings</span>
-</span></span><span class="line"><span class="cl">ping -c3 10.10.11.10
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Default infinite pings
+</span></span><span class="line"><span class="cl"><span class="go">ping -c3 &lt;TARGET&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Default 5 pings</span>
-</span></span><span class="line"><span class="cl"><span class="n">ping</span> <span class="mf">10.10</span><span class="p">.</span><span class="py">11</span><span class="p">.</span><span class="py">10</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check specific port</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Test-NetConnection</span> <span class="p">&lt;</span><span class="n">TARGET</span><span class="p">&gt;</span> <span class="n">-Port</span> <span class="mf">5985</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Default <span class="m">5</span> pings
+</span></span><span class="line"><span class="cl"><span class="go">ping &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check specific port
+</span></span><span class="line"><span class="cl"><span class="go">Test-NetConnection &lt;TARGET&gt; -Port &lt;TARGET_PORT&gt;
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="test-reverse-connectivity">Test reverse connectivity</h3>
 <p>
 <button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo tcpdump -ni tun0 icmp
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo tcpdump -ni tun0 icmp
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="sniff-network-traffic">Sniff network traffic</h3>
 <p>
 <button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># For example: on port 389</span>
-</span></span><span class="line"><span class="cl">sudo tcpdump -i lo -nnXs <span class="m">0</span> <span class="s1">&#39;port 389&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Sniff HTTPS traffic</span>
-</span></span><span class="line"><span class="cl">sudo ./mitmdump -p <span class="m">443</span> --mode reverse:https://example.com --ssl-insecure --set <span class="nv">flow_detail</span><span class="o">=</span><span class="m">3</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example: on port <span class="m">389</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo tcpdump -i lo -nnXs 0 &#39;port &lt;TARGET_PORT&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Sniff HTTPS traffic
+</span></span><span class="line"><span class="cl"><span class="go">sudo ./mitmdump -p 443 --mode reverse:https://&lt;DOMAIN&gt; --ssl-insecure --set flow_detail=3
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://mitmproxy.org/">mitmproxy</a></em></small></p></div></p>
 <h3 id="use-ping-to-scan-subnet">Use ping to scan subnet</h3>
 <p>
 <button data-tabset="set4" data-tabcontent="tab1" class="active">Linux</button>
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 254<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="o">(</span>ping -c <span class="m">1</span> 10.100.10.<span class="si">${</span><span class="nv">i</span><span class="si">}</span> <span class="p">|</span> grep <span class="s2">&#34;bytes from&#34;</span> <span class="p">&amp;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &#34;bytes from&#34; &amp;); done;
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="use-nc-to-scan-ports">Use nc to scan ports</h3>
 <p>
 <button data-tabset="set5" data-tabcontent="tab1" class="active">Linux</button>
 
 <div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">1</span> 65535<span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="o">(</span>nc -zvn 127.0.0.1 <span class="si">${</span><span class="nv">i</span><span class="si">}</span> 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> grep -v <span class="s2">&#34;Connection refused&#34;</span> <span class="p">&amp;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&gt;&amp;1 | grep -v &#34;Connection refused&#34; &amp;); done
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="check-arp-table">Check arp table</h3>
 <p>
 <button data-tabset="set6" data-tabcontent="tab1" class="active">Linux</button>
 
 <div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arp -na
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/net/arp
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">arp -na
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /proc/net/arp
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="check-ip">Check IP</h3>
 <p>
@@ -273,16 +396,16 @@
 <button data-tabset="set7" data-tabcontent="tab2" >Windows</button>
 
 <div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Linux</span>
-</span></span><span class="line"><span class="cl">ifconfig
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip addr
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /proc/net/fib_trie
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">ifconfig
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ip addr
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /proc/net/fib_trie
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set7" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ipconfig
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ipconfig
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="check-network-connections">Check network connections</h3>
 <p>
@@ -291,24 +414,25 @@
 <button data-tabset="set8" data-tabcontent="tab2" >Windows</button>
 
 <div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># TCP</span>
-</span></span><span class="line"><span class="cl">netstat -plant
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># UDP</span>
-</span></span><span class="line"><span class="cl">netstat -plunt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If netstat not present</span>
-</span></span><span class="line"><span class="cl">cat /proc/net/tcp <span class="p">|</span> grep <span class="s1">&#39;00000000:0000 0A&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ss -tnl
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> TCP
+</span></span><span class="line"><span class="cl"><span class="go">netstat -plant
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> UDP
+</span></span><span class="line"><span class="cl"><span class="go">netstat -plunt
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If netstat not present
+</span></span><span class="line"><span class="cl"><span class="go">cat /proc/net/tcp | grep &#39;00000000:0000 0A&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ss -tnl
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set8" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># List only listening ports</span>
-</span></span><span class="line"><span class="cl"><span class="n">netstat</span> <span class="n">-ano</span> <span class="p">|</span> <span class="n">findstr</span> <span class="n">LISTENING</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># List tcp listening ports and processes</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Get-NetTCPConnection</span> <span class="n">-State</span> <span class="n">Listen</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-Property</span> <span class="p">*,</span><span class="vm">@</span><span class="p">{</span><span class="s1">&#39;Name&#39;</span> <span class="p">=</span> <span class="s1">&#39;ProcessName&#39;</span><span class="p">;</span><span class="s1">&#39;Expression&#39;</span><span class="p">={(</span><span class="nb">Get-Process</span> <span class="n">-Id</span> <span class="nv">$_</span><span class="p">.</span><span class="n">OwningProcess</span><span class="p">).</span><span class="n">Name</span><span class="p">}}</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-Property</span> <span class="n">LocalAddress</span><span class="p">,</span><span class="n">LocalPort</span><span class="p">,</span><span class="n">OwningProcess</span><span class="p">,</span><span class="n">ProcessName</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List only listening ports
+</span></span><span class="line"><span class="cl"><span class="go">netstat -ano | findstr LISTENING
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List tcp listening ports and processes
+</span></span><span class="line"><span class="cl"><span class="go">Get-NetTCPConnection -State Listen | Select-Object -Property *,@{&#39;Name&#39; = &#39;ProcessName&#39;;&#39;Expression&#39;={(Get-Process -Id $_.OwningProcess).Name}} | Format-Table -Property LocalAddress,LocalPort,OwningProcess,ProcessName
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

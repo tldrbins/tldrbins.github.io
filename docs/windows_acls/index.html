@@ -197,19 +197,142 @@
   <li><a href="https://tldrbins.github.io/@cmd/">Cmd</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="window-acls-access-control-lists">Window ACLs (Access Control Lists)</h3>
 <h4 id="check-acls">Check ACLs</h4>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">powershell</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check a file/directory</span>
-</span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">&lt;</span><span class="n">PATH</span><span class="p">&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Check all files and directories</span>
-</span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">*</span> <span class="p">/</span><span class="n">C</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check a file/directory
+</span></span><span class="line"><span class="cl"><span class="go">icacls &lt;PATH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check all files and directories
+</span></span><span class="line"><span class="cl"><span class="go">icacls * /C
+</span></span></span></code></pre></div></div>
 </div></p>
 <h4 id="grant-user-full-control">Grant user full control</h4>
 <p>
@@ -218,65 +341,66 @@
 <button data-tabset="set2" data-tabcontent="tab2" >powershell</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
-</span></span><span class="line"><span class="cl"><span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">c</span> <span class="n">cacls</span> <span class="p">&lt;</span><span class="n">FILE</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">E</span> <span class="p">/</span><span class="n">G</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span><span class="err">:</span><span class="n">F</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> cmd
+</span></span><span class="line"><span class="cl"><span class="go">cmd.exe /c cacls &lt;FILE&gt; /E /G &lt;USER&gt;:F
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
-</span></span><span class="line"><span class="cl"><span class="n">icacls</span> <span class="p">&lt;</span><span class="n">FILE</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">grant</span> <span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span><span class="err">:</span><span class="n">F</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> powershell
+</span></span><span class="line"><span class="cl"><span class="go">icacls &lt;FILE&gt; /grant &lt;USER&gt;:F
+</span></span></span></code></pre></div></div>
 </div></p>
 <h4 id="change-owner-wo">Change owner (WO)</h4>
 <p>
 <button data-tabset="set3" data-tabcontent="tab1" class="active">cmd</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
-</span></span><span class="line"><span class="cl"><span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">c</span> <span class="n">takeown</span> <span class="p">/</span><span class="n">F</span> <span class="p">&lt;</span><span class="n">FILE</span><span class="p">&gt;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> cmd
+</span></span><span class="line"><span class="cl"><span class="go">cmd.exe /c takeown /F &lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 </div>
 <br></p>
 <p>
 <button data-tabset="set4" data-tabcontent="tab1" class="active">ACLs</button>
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+---------------------------------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> F    <span class="o">(</span>full access<span class="o">)</span>                                <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> M    <span class="o">(</span>modify access<span class="o">)</span>                              <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> RX   <span class="o">(</span><span class="nb">read</span> and execute access<span class="o">)</span>                    <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> R    <span class="o">(</span>read-only access<span class="o">)</span>                           <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> W    <span class="o">(</span>write-only access<span class="o">)</span>                          <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> D    <span class="o">(</span>delete<span class="o">)</span>                                     <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> RC   <span class="o">(</span><span class="nb">read</span> control<span class="o">)</span>                               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> WDAC <span class="o">(</span>write DAC<span class="o">)</span>                                  <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> WO   <span class="o">(</span>write owner<span class="o">)</span>                                <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> S    <span class="o">(</span>synchronize<span class="o">)</span>                                <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> AS   <span class="o">(</span>access system security<span class="o">)</span>                     <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> MA   <span class="o">(</span>maximum allowed<span class="o">)</span>                            <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> GR   <span class="o">(</span>generic <span class="nb">read</span><span class="o">)</span>                               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> GW   <span class="o">(</span>generic write<span class="o">)</span>                              <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> GE   <span class="o">(</span>generic execute<span class="o">)</span>                            <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> GA   <span class="o">(</span>generic all<span class="o">)</span>                                <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> RD   <span class="o">(</span><span class="nb">read</span> data/list directory<span class="o">)</span>                   <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> WD   <span class="o">(</span>write data/add file<span class="o">)</span>                        <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> AD   <span class="o">(</span>append data/add subdirectory<span class="o">)</span>               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> REA  <span class="o">(</span><span class="nb">read</span> extended attributes<span class="o">)</span>                   <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> WEA  <span class="o">(</span>write extended attributes<span class="o">)</span>                  <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> X    <span class="o">(</span>execute/traverse<span class="o">)</span>                           <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> DC   <span class="o">(</span>delete child<span class="o">)</span>                               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> RA   <span class="o">(</span><span class="nb">read</span> attributes<span class="o">)</span>                            <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> WA   <span class="o">(</span>write attributes<span class="o">)</span>                           <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> OI   <span class="o">(</span>object inherit<span class="o">)</span>                             <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> CI   <span class="o">(</span>container inherit<span class="o">)</span>                          <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> IO   <span class="o">(</span>inherit only<span class="o">)</span>                               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> NP   <span class="o">(</span><span class="k">do</span> not propagate inherit<span class="o">)</span>                   <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> I    <span class="o">(</span>permission inherited from parent container<span class="o">)</span> <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+---------------------------------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| F    (full access)                                |
+</span></span></span><span class="line"><span class="cl"><span class="go">| M    (modify access)                              |
+</span></span></span><span class="line"><span class="cl"><span class="go">| RX   (read and execute access)                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| R    (read-only access)                           |
+</span></span></span><span class="line"><span class="cl"><span class="go">| W    (write-only access)                          |
+</span></span></span><span class="line"><span class="cl"><span class="go">| D    (delete)                                     |
+</span></span></span><span class="line"><span class="cl"><span class="go">| RC   (read control)                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| WDAC (write DAC)                                  |
+</span></span></span><span class="line"><span class="cl"><span class="go">| WO   (write owner)                                |
+</span></span></span><span class="line"><span class="cl"><span class="go">| S    (synchronize)                                |
+</span></span></span><span class="line"><span class="cl"><span class="go">| AS   (access system security)                     |
+</span></span></span><span class="line"><span class="cl"><span class="go">| MA   (maximum allowed)                            |
+</span></span></span><span class="line"><span class="cl"><span class="go">| GR   (generic read)                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| GW   (generic write)                              |
+</span></span></span><span class="line"><span class="cl"><span class="go">| GE   (generic execute)                            |
+</span></span></span><span class="line"><span class="cl"><span class="go">| GA   (generic all)                                |
+</span></span></span><span class="line"><span class="cl"><span class="go">| RD   (read data/list directory)                   |
+</span></span></span><span class="line"><span class="cl"><span class="go">| WD   (write data/add file)                        |
+</span></span></span><span class="line"><span class="cl"><span class="go">| AD   (append data/add subdirectory)               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| REA  (read extended attributes)                   |
+</span></span></span><span class="line"><span class="cl"><span class="go">| WEA  (write extended attributes)                  |
+</span></span></span><span class="line"><span class="cl"><span class="go">| X    (execute/traverse)                           |
+</span></span></span><span class="line"><span class="cl"><span class="go">| DC   (delete child)                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| RA   (read attributes)                            |
+</span></span></span><span class="line"><span class="cl"><span class="go">| WA   (write attributes)                           |
+</span></span></span><span class="line"><span class="cl"><span class="go">| OI   (object inherit)                             |
+</span></span></span><span class="line"><span class="cl"><span class="go">| CI   (container inherit)                          |
+</span></span></span><span class="line"><span class="cl"><span class="go">| IO   (inherit only)                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| NP   (do not propagate inherit)                   |
+</span></span></span><span class="line"><span class="cl"><span class="go">| I    (permission inherited from parent container) |
+</span></span></span><span class="line"><span class="cl"><span class="go">+---------------------------------------------------+
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

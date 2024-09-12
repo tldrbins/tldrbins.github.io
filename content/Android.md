@@ -4,19 +4,18 @@ date: 2024-7-27
 tags: ["Android", "apk", "decompile", "java", "reversing", "apktool", "adb"]
 ---
 
----
 ### Unpack .apk file
 
 <div>
 
-```bash
+```console
 # Get .smali files
-java -jar apktool_2.9.3.jar d app.apk
+java -jar apktool_2.9.3.jar d <FILE>
 ```
 
-```bash
+```console
 # Get .java files
-jadx app.apk
+jadx <FILE>
 ```
 
 </div>
@@ -34,8 +33,8 @@ jadx app.apk
 
 <div>
 
-```bash
-java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk
+```console
+java -jar apktool_2.9.3.jar b --use-aapt2 <APP> -o <APP>_repacked.apk
 ```
 
 </div>
@@ -52,12 +51,12 @@ java -jar apktool_2.9.3.jar b --use-aapt2 app -o app_repacked.apk
 
 <div>
 
-```bash
+```console
 keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias
 ```
 
-```bash  
-apksigner sign --ks my-release-key.jks --ks-pass pass:<PASSWORD> --out app_final.apk app_repacked.apk
+```console
+apksigner sign --ks my-release-key.jks --ks-pass pass:'<PASSWORD>' --out <APP>_final.apk <APP>_repacked.apk
 ```
 
 </div>
@@ -72,7 +71,7 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:<PASSWORD> --out app_final
 
 <div>
 
-```
+```console
 +--------------------------------------------------------------------+
 | 1. Open genymotion and boot up Galaxy S9 (Random Pick)             |
 | 2. Open IntelliJ Idea IDE                                          |
@@ -88,16 +87,16 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:<PASSWORD> --out app_final
 
 <div>
 
-```bash
+```console
 ./adb kill-server
 ```
 
-```bash                                               
+```console
 ./adb connect 127.0.0.1:6555
 ```
 
-```bash   
-./adb -s 127.0.0.1:6555 install app.apk
+```console
+./adb -s 127.0.0.1:6555 install <FILE>
 ```
 
 </div>
@@ -106,7 +105,7 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:<PASSWORD> --out app_final
 
 <div>
 
-```
+```console
 +-------------------------+
 | Run the app in emulator |
 +-------------------------+
@@ -118,11 +117,11 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:<PASSWORD> --out app_final
 
 <div>
 
-```bash
-./adb -s 127.0.0.1:6555 shell ps -A | grep <com.example.app>
+```console
+./adb -s 127.0.0.1:6555 shell ps -A | grep <REVERSE_DOMAIN_NAME_NOTATION>
 ```
 
-```bash 
+```console
 ./adb -s 127.0.0.1:6555 forward tcp:5005 jdwp:<PID>
 ```
 
@@ -132,7 +131,7 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:<PASSWORD> --out app_final
 
 <div>
 
-```
+```console
 +-------------------------------------------+
 | Click the debug icon in IntelliJ Idea IDE |
 +-------------------------------------------+

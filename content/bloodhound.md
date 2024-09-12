@@ -4,7 +4,6 @@ date: 2024-7-9
 tags: ["bloodhound", "enum", "active driectory", "ad", "Windows", "sharphound", "neo4j"]
 ---
 
----
 ### Info Collection (From Linux)
 
 {{< tab set1 tab1 active >}}bloodhound-python{{< /tab >}}
@@ -12,14 +11,14 @@ tags: ["bloodhound", "enum", "active driectory", "ad", "Windows", "sharphound", 
 
 <div>
 
-```bash
+```console
 # With Creds
-bloodhound-python -d <DOMAIN> -u <USER> -p <PASSWORD> -dc <DC> -ns <DC_IP> -c all --zip
+bloodhound-python -d <DOMAIN> -u <USER> -p '<PASSWORD>' -dc <DC> -ns <DC_IP> -c all --zip
 ```
 
-```bash
+```console
 # With Kerberos
-sudo ntpdate -s <DC> && bloodhound-python -u <USER> -p <PASSWORD> -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip
+sudo ntpdate -s <DC> && bloodhound-python -u <USER> -p '<PASSWORD>' -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip
 ```
 
 </div>
@@ -34,7 +33,7 @@ sudo ntpdate -s <DC> && bloodhound-python -u <USER> -p <PASSWORD> -k -d <DOMAIN>
 
 <div>
 
-```powershell
+```console
 .\SharpHound.exe -c all --outputdirectory C:\ProgramData
 ```
 
@@ -45,12 +44,12 @@ sudo ntpdate -s <DC> && bloodhound-python -u <USER> -p <PASSWORD> -k -d <DOMAIN>
 
 <div>
 
-```powershell
+```console
 # Import module
 . .\SharpHound.ps1
 ```
 
-```powershell
+```console
 # Run
 Invoke-BloodHound -CollectionMethods All -OutputDirectory C:\ProgramData
 ```
@@ -69,12 +68,12 @@ Invoke-BloodHound -CollectionMethods All -OutputDirectory C:\ProgramData
 
 <div>
 
-```bash
+```console
 # Start neo4j server
 sudo neo4j console
 ```
 
-```bash
+```console
 # Start bloodhound
 bloodhound
 ```
@@ -85,7 +84,7 @@ bloodhound
 
 <div>
 
-```bash
+```console
 # Fix: GPU process isn't usable. Goodbye.
 ./BloodHound --no-sandbox
 ```

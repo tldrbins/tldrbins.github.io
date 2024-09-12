@@ -191,8 +191,131 @@
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="connection-methods">Connection Methods</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Password</button>
@@ -204,43 +327,44 @@
 <button data-tabset="set1" data-tabcontent="tab4" >crt &amp; key</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -p &lt;PASSWORD&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;HASH&gt; 
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;HASH&gt; 
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 1: Edit &#39;/etc/krb5.conf&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>libdefaults<span class="o">]</span>
-</span></span><span class="line"><span class="cl">    <span class="nv">default_realm</span> <span class="o">=</span> &lt;DOMAIN&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>realms<span class="o">]</span>
-</span></span><span class="line"><span class="cl">    &lt;DOMAIN&gt; <span class="o">=</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">kdc</span> <span class="o">=</span> &lt;DC&gt;:88
-</span></span><span class="line"><span class="cl">        <span class="nv">admin_server</span> <span class="o">=</span> &lt;DC&gt;
-</span></span><span class="line"><span class="cl">        <span class="nv">default_domain</span> <span class="o">=</span> &lt;DOMAIN&gt;
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl"><span class="o">[</span>domain_realm<span class="o">]</span>
-</span></span><span class="line"><span class="cl">    .domain.internal <span class="o">=</span> &lt;DOMAIN&gt;
-</span></span><span class="line"><span class="cl">    domain.internal <span class="o">=</span> &lt;DOMAIN&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 2: export .ccache</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>&lt;CCACHE&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Step 3: Connect</span>
-</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> evil-winrm -i &lt;TARGET&gt; -r &lt;DC&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 1: Edit <span class="s1">&#39;/etc/krb5.conf&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[libdefaults]
+</span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = &lt;DOMAIN&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[realms]
+</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;DOMAIN&gt; = {
+</span></span></span><span class="line"><span class="cl"><span class="go">        kdc = &lt;DC&gt;:88
+</span></span></span><span class="line"><span class="cl"><span class="go">        admin_server = &lt;DC&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">        default_domain = &lt;DOMAIN&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    }
+</span></span></span><span class="line"><span class="cl"><span class="go">    
+</span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
+</span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = &lt;DOMAIN&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 2: <span class="nb">export</span> .ccache
+</span></span><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;CCACHE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 3: Connect
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; evil-winrm -i &lt;TARGET&gt; -r &lt;DC&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">evil-winrm -i &lt;TARGET&gt; -S -k auth.key -c auth.crt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -S -k auth.key -c auth.crt
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

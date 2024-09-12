@@ -4,15 +4,14 @@ date: 2024-2-2
 tags: ["wordlist", "custom", "cewl", "generator"]
 ---
 
----
 {{< tab set1 tab1 active >}}CeWL{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 <div>
 
-```bash
+```console
 # Creating custom wordlist by spidering target website
-cewl example.com -w wordlist.txt --with-numbers
+cewl <TARGET> -w wordlist.txt --with-numbers
 ```
 
 </div>

@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["ssh", "private key", "public key", "id_rsa", "ppk", "pem", "openssh"]
 ---
 
----
 ### Check SSH version
 
 [openssh-server (ubuntu)](https://packages.ubuntu.com/search?keywords=openssh-server)
@@ -15,11 +14,11 @@ tags: ["ssh", "private key", "public key", "id_rsa", "ppk", "pem", "openssh"]
 
 <div>
 
-```bash
+```console
 /etc/ssh/sshd_config
 ```
 
-```bash
+```console
 # Grep contents
 grep -Ev "^#" /etc/ssh/sshd_config | grep .
 ```
@@ -34,16 +33,16 @@ grep -Ev "^#" /etc/ssh/sshd_config | grep .
 
 <div>
 
-```bash
+```console
 ssh-keygen
 ```
 
-```bash
+```console
 #Set filename, leave passphase blank
 ./id_rsa
 ```
 
-```bash
+```console
 #After Creation
 chmod 600 id_rsa
 ```
@@ -54,7 +53,7 @@ chmod 600 id_rsa
 
 <div>
 
-```bash
+```console
 ssh-keygen -l -f id_rsa
 ```
 
@@ -64,7 +63,7 @@ ssh-keygen -l -f id_rsa
 
 <div>
 
-```bash
+```console
 openssl rsa -in id_rsa_encrypted -out ./id_rsa
 ```
 
@@ -74,17 +73,17 @@ openssl rsa -in id_rsa_encrypted -out ./id_rsa
 
 <div>
 
-```bash
+```console
 # Install
 sudo apt install putty-tools
 ```
 
-```bash
+```console
 # Convert to private key in pem format
 puttygen key.ppk -O private-openssh -o key.pem
 ```
 
-```bash
+```console
 # Convert to public key in pem format
 puttygen key.ppk -O public-openssh -o key.pem.pub
 ```
@@ -99,13 +98,13 @@ puttygen key.ppk -O public-openssh -o key.pem.pub
 
 <div>
 
-```bash
+```console
 cat id_rsa.pub
 ```
 
-```bash
+```console
 #Copy and Paste to Target
-echo <id_rsa.pub> >> /home/<USER>/.ssh/authorized_keys
+echo <BASE64_PUB_KEY> >> /home/<USER>/.ssh/authorized_keys
 ```
 
 </div>
@@ -119,13 +118,13 @@ echo <id_rsa.pub> >> /home/<USER>/.ssh/authorized_keys
 
 <div>
 
-```bash
+```console
 ssh <USER>@<TARGET>
 ```
 
-```bash
+```console
 # After first connection (i.e., after 'yes' to fingerprint prompt)
-sshpass -p <PASSWORD> ssh <USER>@<TARGET>
+sshpass -p '<PASSWORD>' ssh <USER>@<TARGET>
 ```
 
 </div>
@@ -135,16 +134,16 @@ sshpass -p <PASSWORD> ssh <USER>@<TARGET>
 
 <div>
 
-```bash
+```console
 ssh <USER>@<TARGET> -i id_rsa
 ```
 
-```bash
+```console
 # Fix: no matching host key type found. Their offer: ssh-rsa,ssh-dss
 ssh <USER>@<TARGET> -i id_rsa -oHostKeyAlgorithms=+ssh-rsa
 ```
 
-```bash
+```console
 # Fix: sign_and_send_pubkey: no mutual signature supported 
 ssh <USER>@<TARGET> -i id_rsa -o PubkeyAcceptedKeyTypes=ssh-rsa
 ```
@@ -158,7 +157,7 @@ ssh <USER>@<TARGET> -i id_rsa -o PubkeyAcceptedKeyTypes=ssh-rsa
 
 <div>
 
-```bash
+```console
 # Spawn target shell to escape restricted shell
 ssh <USER>@<TARGET> -t bash
 ```

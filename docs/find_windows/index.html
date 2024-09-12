@@ -195,36 +195,160 @@
   <li><a href="https://tldrbins.github.io/@cmd/">Cmd</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h3 id="show-hidden-files">Show hidden files</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Get-ChildItem</span> <span class="n">-force</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ChildItem -force
+</span></span></span></code></pre></div></div>
 <h3 id="find-a-file">Find a file</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">ls </span><span class="n">-path</span> <span class="p">\</span><span class="n">Users</span> <span class="n">-Filter</span> <span class="n">example</span><span class="p">.</span><span class="py">txt</span> <span class="n">-recurse</span> <span class="n">-erroraction</span> <span class="n">silent</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">where </span><span class="p">/</span><span class="nb">R </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span> <span class="n">example</span><span class="p">.</span><span class="py">txt</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls -path &lt;PATH&gt; -Filter &lt;FILE&gt; -recurse -erroraction silent
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">where /R &lt;PATH&gt; &lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 <h3 id="find-a-file-with-rules">Find a file, with rules</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">dir </span><span class="p">/</span><span class="n">s</span> <span class="p">/</span><span class="n">b</span> <span class="p">/</span><span class="n">a:-d-h</span> <span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="n">Administrator</span> <span class="p">|</span> <span class="n">findstr</span> <span class="p">/</span><span class="n">i</span> <span class="p">/</span><span class="n">v</span> <span class="s2">&#34;appdata&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+---------------------------------------+
-</span></span><span class="line"><span class="cl">|dir:                                   |
-</span></span><span class="line"><span class="cl">|/s      : include subfolders           |
-</span></span><span class="line"><span class="cl">|/b      : bare format                  |
-</span></span><span class="line"><span class="cl">|/a:-d-h : exclude directories or hidden|
-</span></span><span class="line"><span class="cl">|                                       |
-</span></span><span class="line"><span class="cl">|findstr:                               |
-</span></span><span class="line"><span class="cl">|/i         : case insensitive          |
-</span></span><span class="line"><span class="cl">|/v appdata : exclude &#39;appdata&#39;         |
-</span></span><span class="line"><span class="cl">+---------------------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dir /s /b /a:-d-h &lt;PATH&gt; | findstr /i /v &#39;&lt;STRING&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">|dir:                                   |
+</span></span></span><span class="line"><span class="cl"><span class="go">|/s      : include subfolders           |
+</span></span></span><span class="line"><span class="cl"><span class="go">|/b      : bare format                  |
+</span></span></span><span class="line"><span class="cl"><span class="go">|/a:-d-h : exclude directories or hidden|
+</span></span></span><span class="line"><span class="cl"><span class="go">|                                       |
+</span></span></span><span class="line"><span class="cl"><span class="go">|findstr:                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">|/i          : case insensitive         |
+</span></span></span><span class="line"><span class="cl"><span class="go">|/v STRING   : exclude STRING           |
+</span></span></span><span class="line"><span class="cl"><span class="go">+---------------------------------------+
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
+
 </div></div>
     
     <script src="/js/utils.js"></script>

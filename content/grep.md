@@ -4,13 +4,12 @@ date: 2024-7-10
 tags: ["grep", "regex", "strings"]
 ---
 
----
 #### Basic
 
 <div>
 
-```bash
-grep 'text' file.txt
+```console
+grep '<STRING>' <FILE>
 ```
 
 </div>
@@ -19,8 +18,8 @@ grep 'text' file.txt
 
 <div>
 
-```bash
-grep -rni 'text' .
+```console
+grep -rni '<STRING>' .
 ```
 
 </div>
@@ -29,8 +28,8 @@ grep -rni 'text' .
 
 <div>
 
-```bash
-grep -a 'text' binary
+```console
+grep -a '<STRING>' <FILE>
 ```
 
 </div>
@@ -39,8 +38,8 @@ grep -a 'text' binary
 
 <div>
 
-```bash
-grep -aPo '[a-fA-F0-9]{32}' binary
+```console
+grep -aPo '[a-fA-F0-9]{32}' <FILE>
 ```
 
 </div>
@@ -49,8 +48,8 @@ grep -aPo '[a-fA-F0-9]{32}' binary
 
 <div>
 
-```bash
-sudo grep -rHa "password" /var/log
+```console
+sudo grep -rHa "<STRING>" /var/log
 ```
 
 </div>
@@ -59,8 +58,8 @@ sudo grep -rHa "password" /var/log
 
 <div>
 
-```bash
-cat file.txt | od -cvA none -w1 | sort -bu | tr -d '\n' | tr -d ' '
+```console
+cat <FILE> | od -cvA none -w1 | sort -bu | tr -d '\n' | tr -d ' '
 ```
 
 </div>

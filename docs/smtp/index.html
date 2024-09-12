@@ -197,44 +197,168 @@
   <li><a href="https://tldrbins.github.io/@template/">Template</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="simple-mail-debugging-server">Simple Mail Debugging Server</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">aiosmtpd.controller</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CustomSMTPHandler</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">async</span> <span class="k">def</span> <span class="nf">handle_DATA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">envelope</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] Received a mail.&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">envelope</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;250 OK&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">handler</span> <span class="o">=</span> <span class="n">CustomSMTPHandler</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">=</span> <span class="n">aiosmtpd</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">Controller</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] Listening on 0.0.0.0:25&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;[*] Server started. Press Return to quit.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">server</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>!/usr/bin/env python3
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">import aiosmtpd.controller
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">class CustomSMTPHandler:
+</span></span></span><span class="line"><span class="cl"><span class="go">    async def handle_DATA(self, server, session, envelope):
+</span></span></span><span class="line"><span class="cl"><span class="go">        print(f&#34;[+] Received a mail.&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="go">        print(&#34;=&#34; * 50)
+</span></span></span><span class="line"><span class="cl"><span class="go">        print(envelope.content.decode())
+</span></span></span><span class="line"><span class="cl"><span class="go">        print(&#34;=&#34; * 50)
+</span></span></span><span class="line"><span class="cl"><span class="go">        return &#34;250 OK&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">handler = CustomSMTPHandler()
+</span></span></span><span class="line"><span class="cl"><span class="go">server = aiosmtpd.controller.Controller(handler, hostname=&#34;0.0.0.0&#34;, port=25)
+</span></span></span><span class="line"><span class="cl"><span class="go">server.start()
+</span></span></span><span class="line"><span class="cl"><span class="go">print(&#34;[*] Listening on 0.0.0.0:25&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="go">input(&#34;[*] Server started. Press Return to quit.\n&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="go">server.stop()
+</span></span></span></code></pre></div></div>
 <h3 id="users-enum">Users Enum</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">nmap script</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >smtp-user-enum</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nmap -p <span class="m">25</span> --script<span class="o">=</span>smtp-enum-users &lt;TARGET&gt;
-</span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nmap -p 25 --script=smtp-enum-users &lt;TARGET&gt;
+</span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use RCPT</span>
-</span></span><span class="line"><span class="cl">smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &lt;TARGET&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use VRFY</span>
-</span></span><span class="line"><span class="cl">smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &lt;TARGET&gt;
-</span></span></code></pre></div><p><small><em>Ref: <a href="https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl">smtp-user-enum.pl</a></em></small></p></div></p>
-<br></div></div>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Use RCPT
+</span></span><span class="line"><span class="cl"><span class="go">smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Use VRFY
+</span></span><span class="line"><span class="cl"><span class="go">smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &lt;TARGET&gt;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl">smtp-user-enum.pl</a></em></small></p></div></p>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

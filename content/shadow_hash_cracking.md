@@ -4,12 +4,11 @@ date: 2024-7-5
 tags: ["password", "cracking", "john", "hashcat", "shadow", "unshadow", "passwd"]
 ---
 
----
 ### Shadow Hash Cracking
 
 <div>
 
-```bash
+```console
 # Prepare an unshadowed hashes file
 unshadow passwd.txt shadow.txt > unshadowed.txt
 ```
@@ -22,7 +21,7 @@ unshadow passwd.txt shadow.txt > unshadowed.txt
 
 <div>
 
-```bash
+```console
 john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
 ```
 
@@ -33,7 +32,7 @@ john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
 
 <div>
 
-```bash
+```console
 hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user
 ```
 

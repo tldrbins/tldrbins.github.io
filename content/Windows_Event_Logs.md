@@ -4,7 +4,6 @@ date: 2024-8-27
 tags: ["evtx", "event logs", "forensics", "Windows", "DIFR"]
 ---
 
----
 ### Convert evtx to json
 
 {{< tab set1 tab1 active >}}evtx_dump{{< /tab >}}
@@ -12,7 +11,7 @@ tags: ["evtx", "event logs", "forensics", "Windows", "DIFR"]
 
 <div>
 
-```bash
+```console
 ./evtx_dump -o jsonl -t 1 -f Security.json Security.evtx
 ```
 
@@ -26,7 +25,7 @@ tags: ["evtx", "event logs", "forensics", "Windows", "DIFR"]
 
 <div>
 
-```bash
+```console
 wc -l Security.json
 ```
 
@@ -38,7 +37,7 @@ wc -l Security.json
 
 <div>
 
-```bash
+```console
 cat Security.json | jq '.Event.System.Computer' -r | sort | uniq -c | sort -nr
 ```
 
@@ -48,7 +47,7 @@ cat Security.json | jq '.Event.System.Computer' -r | sort | uniq -c | sort -nr
 
 <div>
 
-```bash
+```console
 cat Security.json | jq '.Event.System.EventID' | sort | uniq -c | sort -nr
 ```
 
@@ -58,7 +57,7 @@ cat Security.json | jq '.Event.System.EventID' | sort | uniq -c | sort -nr
 
 <div>
 
-```bash
+```console
 cat Security.json | jq 'select(.Event.System.EventID==4624)'
 ```
 

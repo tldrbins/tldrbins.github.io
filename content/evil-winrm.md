@@ -4,7 +4,6 @@ date: 2024-7-27
 tags: ["evil-winrm", "remote", "Windows"]
 ---
 
----
 ### Connection Methods
 
 {{< tab set1 tab1 active >}}Password{{< /tab >}}
@@ -15,8 +14,8 @@ tags: ["evil-winrm", "remote", "Windows"]
 
 <div>
 
-```bash
-evil-winrm -i <TARGET> -u <USER> -p <PASSWORD>
+```console
+evil-winrm -i <TARGET> -u <USER> -p '<PASSWORD>'
 ```
 
 </div>
@@ -26,7 +25,7 @@ evil-winrm -i <TARGET> -u <USER> -p <PASSWORD>
 
 <div>
 
-```bash
+```console
 evil-winrm -i <TARGET> -u <USER> -H <HASH> 
 ```
 
@@ -37,7 +36,7 @@ evil-winrm -i <TARGET> -u <USER> -H <HASH>
 
 <div>
 
-```bash
+```console
 # Step 1: Edit '/etc/krb5.conf'
 
 [libdefaults]
@@ -55,12 +54,12 @@ evil-winrm -i <TARGET> -u <USER> -H <HASH>
     domain.internal = <DOMAIN>
 ```
 
-```bash
+```console
 # Step 2: export .ccache
 export KRB5CCNAME=<CCACHE>
 ```
 
-```bash
+```console
 # Step 3: Connect
 sudo ntpdate -s <DC> && evil-winrm -i <TARGET> -r <DC>
 ```
@@ -72,7 +71,7 @@ sudo ntpdate -s <DC> && evil-winrm -i <TARGET> -r <DC>
 
 <div>
 
-```bash
+```console
 evil-winrm -i <TARGET> -S -k auth.key -c auth.crt
 ```
 

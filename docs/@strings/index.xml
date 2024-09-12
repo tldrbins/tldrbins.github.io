@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/grep/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/grep/</guid>
-      <description> Basic grep &amp;#39;text&amp;#39; file.txt Grep from files recursively (e.g from current directory) grep -rni &amp;#39;text&amp;#39; . Grep from binary grep -a &amp;#39;text&amp;#39; binary Grep hash from binary with perl regex grep -aPo &amp;#39;[a-fA-F0-9]{32}&amp;#39; binary Grep from binaries recusively (e.g. from /var/log) sudo grep -rHa &amp;#34;password&amp;#34; /var/log Find unique char of a file cat file.txt | od -cvA none -w1 | sort -bu | tr -d &amp;#39;\n&amp;#39; | tr -d &amp;#39; &amp;#39; </description>
+      <description>Basic grep &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; &amp;lt;FILE&amp;gt; Grep from files recursively (e.g from current directory) grep -rni &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; . Grep from binary grep -a &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; &amp;lt;FILE&amp;gt; Grep hash from binary with perl regex grep -aPo &amp;#39;[a-fA-F0-9]{32}&amp;#39; &amp;lt;FILE&amp;gt; Grep from binaries recusively (e.g. from /var/log) sudo grep -rHa &amp;#34;&amp;lt;STRING&amp;gt;&amp;#34; /var/log Find unique char of a file cat &amp;lt;FILE&amp;gt; | od -cvA none -w1 | sort -bu | tr -d &amp;#39;\n&amp;#39; | tr -d &amp;#39; &amp;#39; </description>
     </item>
   </channel>
 </rss>

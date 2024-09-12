@@ -12,6 +12,12 @@ markup:
     guessSyntax: true
     lineNos: false
   goldmark:
+    extensions:
+      typographer:
+        leftDoubleQuote: '&quot;'
+        leftSingleQuote: '&apos;'
+        rightDoubleQuote: '&quot;'
+        rightSingleQuote: '&apos;'
     renderer:
       unsafe: true
 

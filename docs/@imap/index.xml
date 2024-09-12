@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/imap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/imap/</guid>
-      <description> IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect 10.10.11.10:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
+      <description>IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect &amp;lt;TARGET&amp;gt;:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
     </item>
   </channel>
 </rss>

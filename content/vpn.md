@@ -4,17 +4,16 @@ date: 2024-7-9
 tags: ["internet key exchange", "ike", "vpn", "udp"]
 ---
 
----
 ### Enum
 
 <div>
 
-```bash
+```console
 # Check with ikeV1
 ike-scan -M <TARGET>
 ```
 
-```bash
+```console
 # Check with ikeV2
 ike-scan -M --ikev2 <TARGET>
 ```
@@ -28,7 +27,7 @@ ike-scan -M --ikev2 <TARGET>
 
 <div>
 
-```bash
+```console
 sudo apt install strongswan
 ```
 
@@ -40,7 +39,7 @@ sudo apt install strongswan
 
 <div>
 
-```bash
+```console
 # Edit /etc/ipsec.secrets
 %any : PSK <PASSWORD>
 ```
@@ -51,7 +50,7 @@ sudo apt install strongswan
 
 <div>
 
-```bash
+```console
 # Edit /etc/ipsec.conf (copy from ike-scan result)
 config setup
     charondebug="all"
@@ -76,12 +75,12 @@ conn testvpn
 
 <div>
 
-```bash
+```console
 # Reset
 ipsec restart
 ```
 
-```bash
+```console
 # Connect
 ipsec up testvpn
 ```

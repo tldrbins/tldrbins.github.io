@@ -4,7 +4,6 @@ date: 2024-7-13
 tags: ["ad recycle bin", "active driectory", "ad", "Windows"]
 ---
 
----
 ### Privesc #1: Restore deleted AD account
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["ad recycle bin", "active driectory", "ad", "Windows"]
 
 <div>
 
-```powershell
+```console
 import-module activedirectory
 ```
 
@@ -24,7 +23,7 @@ import-module activedirectory
 
 <div>
 
-```powershell
+```console
 Get-ADObject -filter 'isDeleted -eq $true -and name -ne "Deleted Objects"' -includeDeletedObjects
 ```
 
@@ -34,8 +33,8 @@ Get-ADObject -filter 'isDeleted -eq $true -and name -ne "Deleted Objects"' -incl
 
 <div>
 
-```powershell
-Get-ADObject -filter { SAMAccountName -eq "<DELETED_USER>" } -includeDeletedObjects -property *
+```console
+Get-ADObject -filter { SAMAccountName -eq <DELETED_USER> } -includeDeletedObjects -property *
 ```
 
 </div>
@@ -44,9 +43,9 @@ Get-ADObject -filter { SAMAccountName -eq "<DELETED_USER>" } -includeDeletedObje
 
 <div>
 
-```powershell
+```console
 # Rename the target account to avoid user exist error
-Restore-ADObject -Identity <ObjectGUID> -NewName <NEW_USER> -TargetPath "CN=Users,DC=<EXAMPLE>,DC=<COM>"
+Restore-ADObject -Identity <OBJECT_GUID> -NewName <NEW_USER> -TargetPath 'CN=Users,DC=<EXAMPLE>,DC=<COM>'
 ```
 
 </div>

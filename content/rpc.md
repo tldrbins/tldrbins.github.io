@@ -4,7 +4,6 @@ date: 2024-7-2
 tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Windows", "smb", "ldap", "winrm", "impacket"]
 ---
 
----
 ### Remote Procedure Call
 
 #### Tools
@@ -15,19 +14,19 @@ tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Wi
 
 <div>
 
-```bash
+```console
 # Connect without creds
-rpcclient -U '' -N 10.10.11.10
+rpcclient -U '' -N <TARGET>
 ```
 
-```bash
+```console
 # Connect with creds
-rpcclient -U <DOMAIN>/<USER>%<PASSWORD> 10.10.11.10
+rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET>
 ```
 
-```bash
+```console
 # Inline execute command
-rpcclient -U <DOMAIN>/<USER>%<PASSWORD> 10.10.11.10 -c 'querydispinfo'
+rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET> -c 'querydispinfo'
 ```
 
 </div>
@@ -36,42 +35,42 @@ rpcclient -U <DOMAIN>/<USER>%<PASSWORD> 10.10.11.10 -c 'querydispinfo'
 
 <div>
 
-```bash
+```console
 # General info
 querydispinfo
 ```
 
-```bash
+```console
 # List of users
 enumdomusers
 ```
 
-```bash
+```console
 # List of groups
 enumdomgroups
 ```
 
-```bash
+```console
 # Query group by rid
 querygroup <RID>
 ```
 
-```bash
+```console
 # Query group member by rid
 querygroupmem <RID>
 ```
 
-```bash
+```console
 # Query user by rid
 queryuser <RID>
 ```
 
-```bash
+```console
 # Look up a user
 lookupnames <USER>
 ```
 
-```bash
+```console
 # Look up by SID
 lookupsids <SID>
 ```
@@ -81,8 +80,8 @@ lookupsids <SID>
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-```bash
-impacket-lookupsid <USER>:<PASSWORD>@<TARGET>
+```console
+impacket-lookupsid '<USER>:<PASSWORD>@<TARGET>'
 ```
 
 {{< /tabcontent >}}

@@ -4,12 +4,11 @@ date: 2024-7-4
 tags: ["ftp", "file transfer"]
 ---
 
----
 ### Config Location
 
 <div>
 
-```bash
+```console
 /etc/vsftpd.conf
 ```
 
@@ -19,12 +18,12 @@ tags: ["ftp", "file transfer"]
 
 <div>
 
-```bash
+```console
 # Connect
-ftp 10.10.11.10
+ftp <TARGET>
 ```
 
-```bash
+```console
 +---------------------+
 | Anonymous login     |
 +---------------------+
@@ -33,42 +32,42 @@ ftp 10.10.11.10
 +---------------------+
 ```
 
-```bash
+```console
 # Over SSL
-lftp 10.10.11.10
+lftp <TARGET>
 ```
 
-```bash
+```console
 # Fix cert error
 echo -n 'set ssl:verify-certificate no' >> ~/.lftp/rc
 ```
 
-```bash
+```console
 # List
 ls
 ```
 
-```bash
+```console
 # Switch to binary transfer mode
 bin
 ```
 
-```bash
+```console
 # Download
 get <FILE>
 ```
 
-```bash
+```console
 # Upload
 put <FILE>
 ```
 
-```bash
+```console
 # Connect over tunnel
 passive
 ```
 
-```bash
+```console
 # Exit
 quit
 ```
@@ -79,14 +78,14 @@ quit
 
 <div>
 
-```bash
+```console
 # anonymous login
-wget -r ftp://anonymous:@10.10.11.10
+wget -r ftp://anonymous:@<TARGET>
 ```
 
-```bash
+```console
 # with creds
-wget --user <USER> --password <PASSWORD> -m ftp://10.10.11.10
+wget --user <USER> --password '<PASSWORD>' -m ftp://<TARGET>
 ```
 
 <small>*Note: Always check what's in there first*</small>

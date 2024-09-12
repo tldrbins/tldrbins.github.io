@@ -4,49 +4,48 @@ date: 2024-8-1
 tags: ["gpg", "encryption", "crypto", "Pretty Good Privacy", "public key", "private key"]
 ---
 
----
 ### GPG
 
 <div>
 
-```bash
+```console
 # Check version
 gpg --version
 ```
 
-```bash
+```console
 # Generate new key
 gpg --gen-key
 ```
 
-```bash
+```console
 # Export public key
-gpg --export -a user@example.com
+gpg --export -a <USER>@<DOMAIN>
 ```
 
-```bash
+```console
 # Check keys
 gpg --list-keys
 ```
 
-```bash
+```console
 # Import public key
-gpg --import key.pub
+gpg --import <PUB_KEY>
 ```
 
-```bash
+```console
 # Encrypt a message with public key (email from pub key)
-gpg --encrypt --armor -r user@example.com plaintext.txt
+gpg --encrypt --armor -r <USER>@<DOMAIN> <FILE>
 ```
 
-```bash
+```console
 # Decrypt a message with our private key
-gpg -d ciphertext.txt 
+gpg -d <ENC_FILE>
 ```
 
-```bash
+```console
 # Sign our own message
-gpg --clearsign --output - plaintext.txt
+gpg --clearsign --output - <FILE>
 ```
 
 </div>

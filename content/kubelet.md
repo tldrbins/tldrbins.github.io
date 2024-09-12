@@ -4,24 +4,23 @@ date: 2024-7-27
 tags: ["Kubelet", "Kubernetes", "container"]
 ---
 
----
 ### Basic Commands
 
 <div>
 
-```bash
+```console
 # List all the pods on the node
-kubeletctl pods -s 10.10.11.10
+kubeletctl pods -s <TARGET>
 ```
 
-```bash
+```console
 # List running pods
-kubeletctl runningpods -s 10.10.11.10
+kubeletctl runningpods -s <TARGET>
 ```
 
-```bash
+```console
 # Exec command
-kubeletctl exec "/bin/bash" -p <POD_NAME> -c <CONTAINER_NAME> -s 10.10.11.10
+kubeletctl exec "/bin/bash" -p <POD_NAME> -c <CONTAINER_NAME> -s <TARGET>
 ```
 
 </div>

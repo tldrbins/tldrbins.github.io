@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/memcache/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memcache/</guid>
-      <description> Connect telnet memcached-cli # Connect telnet 127.0.0.1 11211 # Install sudo npm install -g memcached-cli # Connect (With Creds) memcached-cli &amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@10.10.11.10:11211 Basic Commmands # Info about slabs stats slabs # Show slab info (e.g. slab 1 and display all keys) stats cachedump 1 0 # Dump info get &amp;lt;ITEM_NAME&amp;gt; </description>
+      <description>Connect telnet memcached-cli # Connect telnet 127.0.0.1 11211 # Install sudo npm install -g memcached-cli # Connect (With Creds) memcached-cli &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;:11211&amp;#39; Basic Commmands # Info about slabs stats slabs # Show slab info (e.g. slab 1 and display all keys) stats cachedump 1 0 # Dump info get &amp;lt;ITEM_NAME&amp;gt; </description>
     </item>
   </channel>
 </rss>

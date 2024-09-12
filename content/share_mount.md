@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["smb", "share", "mount", "cifs", "enum", "nfs"]
 ---
 
----
 {{< tab set1 tab1 active >}}nfs{{< /tab >}}
 {{< tab set1 tab2 >}}smb{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
@@ -13,8 +12,8 @@ tags: ["smb", "share", "mount", "cifs", "enum", "nfs"]
 
 <div>
 
-```bash
-showmount -e 10.10.11.10
+```console
+showmount -e <TARGET>
 ```
 
 </div>
@@ -23,8 +22,8 @@ showmount -e 10.10.11.10
 
 <div>
 
-```bash
-sudo mount -t nfs 10.10.11.10:/share /mnt/share/
+```console
+sudo mount -t nfs <TARGET>:/share /mnt/share/
 ```
 
 </div>
@@ -33,7 +32,7 @@ sudo mount -t nfs 10.10.11.10:/share /mnt/share/
 
 <div>
 
-```bash
+```console
 sudo umount /mnt/share/
 ```
 
@@ -46,18 +45,18 @@ sudo umount /mnt/share/
 
 <div>
 
-```bash
-sudo mount -t cifs //10.10.11.10/share /mnt
+```console
+sudo mount -t cifs //<TARGET>/share /mnt
 ```
 
-```bash
+```console
 # Without creds
-sudo mount -t cifs -o user=,password= //10.10.11.10/share /mnt
+sudo mount -t cifs -o user=,password= //<TARGET>/share /mnt
 ```
 
-```bash
+```console
 # With creds
-sudo mount -t cifs -o user=<USER>,pass=<PASSWORD> //10.10.11.10/share /mnt
+sudo mount -t cifs -o user=<USER>,pass='<PASSWORD>' //<TARGET>/share /mnt
 ```
 
 </div>
@@ -66,12 +65,12 @@ sudo mount -t cifs -o user=<USER>,pass=<PASSWORD> //10.10.11.10/share /mnt
 
 <div>
 
-```powershell
+```console
 # Mount
-net use \\localhost\c$ /u:<DOMAIN>\<USER> <PASSWORD>
+net use \\localhost\c$ /u:<DOMAIN>\<USER> '<PASSWORD>'
 ```
 
-```powershell
+```console
 # Check
 dir \\localhost\c$\users\administrator\desktop
 ```
@@ -88,12 +87,12 @@ dir \\localhost\c$\users\administrator\desktop
 
 <div>
 
-```bash
+```console
 # Check all mounted drives
 mount
 ```
 
-```bash
+```console
 # Check how shares are mounted
 cat /etc/exports
 ```
@@ -104,7 +103,7 @@ cat /etc/exports
 
 <div>
 
-```bash
+```console
 +-----------------------------------------------------------------------------------------+
 | root_squash  : running as root on local system will be treated as nobody user in target |
 | no_all_squash: every other users permission will translate from local system to target  |
@@ -117,17 +116,17 @@ cat /etc/exports
 
 <div>
 
-```bash
+```console
 # Add dummy user
 sudo useradd dummy
 ```
 
-```bash
+```console
 # Change uid
 sudo usermod -u 1001 dummy 
 ```
 
-```bash
+```console
 # Switch to dummy user
 sudo su dummy -c bash
 ```

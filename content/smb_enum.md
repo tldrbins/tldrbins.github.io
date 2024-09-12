@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads", "sid", "ad"]
 ---
 
----
 ### SMB Share Enum
 
 {{< tab set1 tab1 active >}}nmap{{< /tab >}}
@@ -12,7 +11,7 @@ tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads", "sid", "ad"]
 
 <div>
 
-```bash
+```console
 sudo nmap --script=smb-enum-shares -p 445 <TARGET>
 ```
 
@@ -29,15 +28,15 @@ sudo nmap --script=smb-enum-shares -p 445 <TARGET>
 
 <div>
 
-```bash
+```console
 smbmap -H <TARGET> --no-banner
 ```
 
-```bash
+```console
 smbmap -H <TARGET> -u null --no-banner
 ```
 
-```bash
+```console
 # List known share
 smbmap -H <TARGET> -r <SHARE>
 ```
@@ -49,16 +48,16 @@ smbmap -H <TARGET> -r <SHARE>
 
 <div>
 
-```bash
+```console
 smbclient -N -L \\\\<TARGET>\\
 ```
 
-```bash
+```console
 # After found an accessible share
 smbclient -N \\\\<TARGET>\\<SHARE>\\
 ```
 
-```bash
+```console
 # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED
 smbclient -N -L \\\\<TARGET>\\ --option='client min protocol=NT1'
 ```
@@ -70,7 +69,7 @@ smbclient -N -L \\\\<TARGET>\\ --option='client min protocol=NT1'
 
 <div>
 
-```bash
+```console
 # SID brute, if null auth allowed
 impacket-lookupsid test@<DOMAIN> -no-pass
 ```
@@ -87,23 +86,23 @@ impacket-lookupsid test@<DOMAIN> -no-pass
 
 <div>
 
-```bash
-smbmap -H <TARGET> -u <USER> -p <PASSWORD>
+```console
+smbmap -H <TARGET> -u <USER> -p '<PASSWORD>'
 ```
 
-```bash
+```console
 # List known share
-smbmap -H <TARGET> -u <USER> -p <PASSWORD> -R <SHARE>
+smbmap -H <TARGET> -u <USER> -p '<PASSWORD>' -R <SHARE>
 ```
 
-```bash
+```console
 # Download file
-smbmap -H <TARGET> -r <SHARE> --download <PATH/TO/FILE>
+smbmap -H <TARGET> -r <SHARE> --download <PATH_TO_FILE>
 ```
 
-```bash
+```console
 # List files with regex pattern
-smbmap -H <TARGET> -u <USER> -p <PASSWORD> -r <SHARE> -A <FILE_PATTERN>
+smbmap -H <TARGET> -u <USER> -p '<PASSWORD>' -r <SHARE> -A <FILE_PATTERN>
 ```
 
 </div>
@@ -112,13 +111,13 @@ smbmap -H <TARGET> -u <USER> -p <PASSWORD> -r <SHARE> -A <FILE_PATTERN>
 {{< tabcontent set3 tab2 >}}
 
 
-```bash
-smbclient -L \\\\<TARGET>\\ -U <DOMAIN>/<USER>%<PASSWORD>
+```console
+smbclient -L \\\\<TARGET>\\ -U '<DOMAIN>/<USER>%<PASSWORD>'
 ```
 
-```bash
+```console
 # After found an accessible share
-smbclient  \\\\<TARGET>\\<SHARE>\\ -U <DOMAIN>/<USER>%<PASSWORD>
+smbclient  \\\\<TARGET>\\<SHARE>\\ -U '<DOMAIN>/<USER>%<PASSWORD>'
 ```
 
 {{< /tabcontent >}}
@@ -130,8 +129,8 @@ smbclient  \\\\<TARGET>\\<SHARE>\\ -U <DOMAIN>/<USER>%<PASSWORD>
 
 <div>
 
-```bash
-impacket-smbclient <DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN> -k -no-pass
+```console
+impacket-smbclient '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 </div>
@@ -142,29 +141,29 @@ impacket-smbclient <DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN> -k -no-pass
 
 <div>
 
-```bash
+```console
 # List all files in a share
 recurse ON
 ```
 
-```bash
+```console
 ls
 ```
 
-```bash
+```console
 # Download all files
 mask ""
 ```
 
-```bash
+```console
 recurse ON
 ```
 
-```bash
+```console
 prompt OFF
 ```
 
-```bash
+```console
 mget *
 ```
 
@@ -174,16 +173,16 @@ mget *
 
 <div>
 
-```bash
+```console
 allinfo <FILE>
 ```
 
-```bash
+```console
 # Example Response
 >>>stream: [:Password:$DATA], 15 bytes
 ```
 
-```bash
+```console
 # Download specific data stream
 get "<FILE>:Password"
 ```
@@ -203,7 +202,7 @@ get "<FILE>:Password"
 
 <div>
 
-```bash
+```console
 sudo mount -t cifs //<TARGET>/<SHARE> /mnt
 ```
 
@@ -214,8 +213,8 @@ sudo mount -t cifs //<TARGET>/<SHARE> /mnt
 
 <div>
 
-```bash
-sudo mount -t cifs -o ro,user=<USER>,password=<PASSWORD> //<TARGET>/<SHARE> /mnt
+```console
+sudo mount -t cifs -o ro,user=<USER>,password='<PASSWORD>' //<TARGET>/<SHARE> /mnt
 ```
 
 </div>
@@ -227,11 +226,11 @@ sudo mount -t cifs -o ro,user=<USER>,password=<PASSWORD> //<TARGET>/<SHARE> /mnt
 
 <div>
 
-```bash
+```console
 sudo find . -type d | while read directory; do touch ${directory}/test 2>/dev/null && echo "${directory} - write file" && rm ${directory}/test; mkdir ${directory}/test 2>/dev/null && echo "${directory} - write directory" && rmdir ${directory}/test; done
 ```
 
-```bash
+```console
 #Check file type you can write
 sudo touch {/mnt/,./}test.{dll,exe,ini,lnk}
 ```
@@ -246,7 +245,7 @@ sudo touch {/mnt/,./}test.{dll,exe,ini,lnk}
 
 <div>
 
-```bash
+```console
 smbpasswd -r <TARGET> -U <USER>
 ```
 

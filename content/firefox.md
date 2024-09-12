@@ -4,7 +4,6 @@ date: 2024-7-9
 tags: ["firefox", "mozilla", "creds", "password"]
 ---
 
----
 ### Extract saved passwords
 
 {{< tab set1 tab1 active >}}firefox_decrypt{{< /tab >}}
@@ -13,12 +12,12 @@ tags: ["firefox", "mozilla", "creds", "password"]
 
 <div>
 
-```bash
+```console
 # Auto detect path
 python3 firefox_decrypt.py
 ```
 
-```bash
+```console
 # Specify path
 python3 firefox_decrypt.py /<PATH>/profiles.ini/
 ```
@@ -32,7 +31,7 @@ python3 firefox_decrypt.py /<PATH>/profiles.ini/
 
 <div>
 
-```bash
+```console
 # With key4.db, logins.json in the same directory
 python3 firepwd.py
 ```

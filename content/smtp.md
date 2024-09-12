@@ -4,12 +4,11 @@ date: 2024-7-5
 tags: ["smtp", "mail", "email", "25", "enum", "template"]
 ---
 
----
 ### Simple Mail Debugging Server
 
 <div>
 
-```python
+```console
 #!/usr/bin/env python3
 
 import aiosmtpd.controller
@@ -38,19 +37,19 @@ server.stop()
 {{< tab set1 tab2 >}}smtp-user-enum{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-```bash
+```console
 nmap -p 25 --script=smtp-enum-users <TARGET>
 ```
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-```bash
+```console
 # Use RCPT
 smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t <TARGET>
 ```
 
-```bash
+```console
 # Use VRFY
 smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t <TARGET>
 ```

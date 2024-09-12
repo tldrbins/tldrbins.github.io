@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
 ---
 
----
 ### Simply catch HTTP request
 
 <div>
@@ -25,14 +24,14 @@ tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
 
 <div>
 
-```bash
+```console
 # Start a local HTTP server
-python3 -m http.server 3000
+python3 -m http.server <LOCAL_PORT>
 ```
 
-```bash
-# Redirect http request to localhost:3000
-ssh -R 80:localhost:3000 serveo.net
+```console
+# Redirect http request to localhost:<LOCAL_PORT>
+ssh -R 80:localhost:<LOCAL_PORT> serveo.net
 ```
 
 </div>
@@ -42,7 +41,7 @@ ssh -R 80:localhost:3000 serveo.net
 
 <div>
 
-```bash
+```console
 ngrok http 80
 ```
 

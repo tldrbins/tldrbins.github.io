@@ -4,12 +4,11 @@ date: 2024-7-22
 tags: ["Electron", "web"]
 ---
 
----
 ### Tools
 
 <div>
 
-```bash
+```console
 sudo npm -g install asar
 ```
 
@@ -19,19 +18,19 @@ sudo npm -g install asar
 
 <div>
 
-```bash
+```console
 # List files
-asar l app.asar
+asar l <FILE>
 ```
 
-```bash
+```console
 # Extract all files
-asar e app.asar
+asar e <FILE>
 ```
 
-```bash
+```console
 # Extract a file
-asar ef app.asar main.js
+asar ef <FILE> main.js
 ```
 
 </div>

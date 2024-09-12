@@ -4,12 +4,11 @@ date: 2024-6-28
 tags: ["openvpn", "vpn"]
 ---
 
----
 ### Connect to vpn
 
 <div>
 
-```bash
+```console
 sudo openvpn my_vpn.ovpn
 ```
 

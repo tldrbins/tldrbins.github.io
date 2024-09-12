@@ -4,7 +4,6 @@ date: 2024-7-17
 tags: ["memcache", "telnet"]
 ---
 
----
 ### Connect
 
 {{< tab set1 tab1 active >}}telnet{{< /tab >}}
@@ -13,7 +12,7 @@ tags: ["memcache", "telnet"]
 
 <div>
 
-```bash
+```console
 # Connect
 telnet 127.0.0.1 11211
 ```
@@ -25,14 +24,14 @@ telnet 127.0.0.1 11211
 
 <div>
 
-```bash
+```console
 # Install
 sudo npm install -g memcached-cli
 ```
 
-```bash
+```console
 # Connect (With Creds)
-memcached-cli <USER>:<PASSWORD>@10.10.11.10:11211
+memcached-cli '<USER>:<PASSWORD>@<TARGET>:11211'
 ```
 
 </div>
@@ -43,17 +42,17 @@ memcached-cli <USER>:<PASSWORD>@10.10.11.10:11211
 
 <div>
 
-```bash
+```console
 # Info about slabs
 stats slabs
 ```
 
-```bash
+```console
 # Show slab info (e.g. slab 1 and display all keys)
 stats cachedump 1 0
 ```
 
-```bash
+```console
 # Dump info
 get <ITEM_NAME>
 ```

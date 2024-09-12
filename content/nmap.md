@@ -4,7 +4,6 @@ date: 2024-6-26
 tags: ["nmap", "port", "network", "discovery", "reconnaissance", "scan", "enum"]
 ---
 
----
 ### Nmap Scan
 
 {{< tab set1 tab1 active >}}TCP{{< /tab >}}
@@ -14,19 +13,19 @@ tags: ["nmap", "port", "network", "discovery", "reconnaissance", "scan", "enum"]
 
 <div>
 
-```bash
-target=10.10.11.10
+```console
+target=<TARGET>
 ```
 
-```bash
+```console
 nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target
 ```
 
-```bash
+```console
 ports=$(cat nmap-alltcp.nmap| grep -Eo "^[0-9]+" | tr '\n' ',' | sed -r 's/,$//')
 ```
 
-```bash
+```console
 nmap -p $ports -sCV -oA ./nmap-tcpscripts $target
 ```
 
@@ -37,19 +36,19 @@ nmap -p $ports -sCV -oA ./nmap-tcpscripts $target
 
 <div>
 
-```bash
-target=10.10.11.10
+```console
+target=<TARGET>
 ```
 
-```bash
+```console
 nmap -sU --min-rate 10000 -oA ./nmap-udp $target
 ```
 
-```bash
+```console
 ports=$(cat nmap-udp.nmap| grep -Eo "^[0-9]+" | tr '\n' ',' | sed -r 's/,$//')
 ```
 
-```bash
+```console
 nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target
 ```
 
@@ -62,7 +61,7 @@ nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target
 
 <div>
 
-```bash
+```console
 nmap --script-updatedb
 ```
 
@@ -72,7 +71,7 @@ nmap --script-updatedb
 
 <div>
 
-```bash
+```console
 nmap --script-help ftp*
 ```
 
@@ -82,8 +81,8 @@ nmap --script-help ftp*
 
 <div>
 
-```bash
-nmap --script=ftp-anon -sV -sC -p 21 10.10.11.10
+```console
+nmap --script=ftp-anon -sV -sC -p 21 <TARGET>
 ```
 
 </div>
@@ -92,8 +91,8 @@ nmap --script=ftp-anon -sV -sC -p 21 10.10.11.10
 
 <div>
 
-```bash
-nmap --script=smb-vuln* -sV -sC -p 445 10.10.11.10
+```console
+nmap --script=smb-vuln* -sV -sC -p 445 <TARGET>
 ```
 
 </div>
@@ -102,8 +101,8 @@ nmap --script=smb-vuln* -sV -sC -p 445 10.10.11.10
 
 <div>
 
-```bash
-nmap -p 1234 10.10.11.10 --script <SCRIPT_NAME> --script-args="<SCRIPT_ARGS>"
+```console
+nmap -p <TARGET_PORT> <TARGET> --script <SCRIPT_NAME> --script-args="<SCRIPT_ARGS>"
 ```
 
 </div>

@@ -4,7 +4,6 @@ date: 2024-6-27
 tags: ["web", "directory", "domain", "feroxbuster", "enum", "wfuzz", "idor", "gobuster", ".ds_store"]
 ---
 
----
 {{< tab set1 tab1 active >}}feroxbuster{{< /tab >}}
 {{< tab set1 tab2 >}}wfuzz{{< /tab >}}
 {{< tab set1 tab3 >}}gobuster{{< /tab >}}
@@ -16,8 +15,8 @@ tags: ["web", "directory", "domain", "feroxbuster", "enum", "wfuzz", "idor", "go
 
 <div>
 
-```bash
-feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
+```console
+feroxbuster -u http://<TARGET>/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
 </div>
@@ -26,8 +25,8 @@ feroxbuster -u http://example.com/ --depth 1 --methods=GET,POST -w /usr/share/se
 
 <div>
 
-```bash
-feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
+```console
+feroxbuster -u https://<TARGET>/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
 </div>
@@ -36,8 +35,8 @@ feroxbuster -u https://example.com/ -k --depth 1 --methods=GET,POST -w /usr/shar
 
 <div>
 
-```bash
-feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
+```console
+feroxbuster -u http://<TARGET>/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
 ```
 
 </div>
@@ -46,8 +45,8 @@ feroxbuster -u http://example.com/ --methods=GET,POST --depth=1 -w /usr/share/se
 
 <div>
 
-```bash
-feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+```console
+feroxbuster -u http://<TARGET>/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 ```
 
 </div>
@@ -56,8 +55,8 @@ feroxbuster -u http://example.com/ -f --depth 1 --methods=GET,POST -w /usr/share
 
 <div>
 
-```bash
-feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+```console
+feroxbuster -u http://<TARGET>/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 ```
 
 </div>
@@ -69,8 +68,8 @@ feroxbuster -u http://example.com/ --force-recursion -C 404,405 --methods=GET,PO
 
 <div>
 
-```bash
-wfuzz -z range,1-99 http://example.com/users/FUZZ
+```console
+wfuzz -z range,1-99 http://<TARGET>/users/FUZZ
 ```
 
 </div>
@@ -80,8 +79,8 @@ wfuzz -z range,1-99 http://example.com/users/FUZZ
 
 <div>
 
-```bash
-gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
+```console
+gobuster dir -u http://<TARGET> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
 ```
 
 </div>
@@ -91,9 +90,9 @@ gobuster dir -u http://example.com -w /usr/share/seclists/Discovery/Web-Content/
 
 <div>
 
-```bash
+```console
 # BFAC (Backup File Artifacts Checker)
-bfac --url http://example.com
+bfac --url http://<TARGET>
 ```
 
 </div>
@@ -105,8 +104,8 @@ bfac --url http://example.com
 
 <div>
 
-```bash
-python3 ds_walk.py -u http://example.com
+```console
+python3 ds_walk.py -u http://<TARGET>
 ```
 
 </div>

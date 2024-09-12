@@ -195,31 +195,154 @@
   <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="preparation">Preparation</h3>
 <h4 id="0-check-systeminfo">0. Check Systeminfo</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Windows Pro is needed</span>
-</span></span><span class="line"><span class="cl"><span class="n">systeminfo</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Windows Pro is needed
+</span></span><span class="line"><span class="cl"><span class="go">systeminfo
+</span></span></span></code></pre></div></div>
 <h4 id="1-connect-to-vpn">1. Connect to VPN</h4>
 <p><a href="https://openvpn.net/client/">OpenVPN client</a></p>
 <h4 id="2-add-dns-server">2. Add DNS Server</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+-----------------------------------------------------------------------------------+
-</span></span><span class="line"><span class="cl">| 1. Go to &#39;Control Panel\Network and Internet\Network and Sharing Center&#39;          |
-</span></span><span class="line"><span class="cl">| 2. Click &#39;Local Area Connection&#39;                                                  |
-</span></span><span class="line"><span class="cl">| 3. Go to &#39;Properties&#39; -&gt; &#39;Internet Protocol Version 4 (TCP/IPv4)&#39; -&gt; &#39;Properties&#39; |
-</span></span><span class="line"><span class="cl">| 4. Under &#39;General&#39;, check &#39;Obtain an IP address automatically&#39;                    |
-</span></span><span class="line"><span class="cl">| 5. Check &#39;Use the following DNS address&#39; -&gt; &#39;Prefer DNS Server&#39; -&gt; &lt;DC_IP&gt;        |
-</span></span><span class="line"><span class="cl">+-----------------------------------------------------------------------------------+
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+-----------------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| 1. Go to &#39;Control Panel\Network and Internet\Network and Sharing Center&#39;          |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 2. Click &#39;Local Area Connection&#39;                                                  |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 3. Go to &#39;Properties&#39; -&gt; &#39;Internet Protocol Version 4 (TCP/IPv4)&#39; -&gt; &#39;Properties&#39; |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 4. Under &#39;General&#39;, check &#39;Obtain an IP address automatically&#39;                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 5. Check &#39;Use the following DNS address&#39; -&gt; &#39;Prefer DNS Server&#39; -&gt; &lt;DC_IP&gt;        |
+</span></span></span><span class="line"><span class="cl"><span class="go">+-----------------------------------------------------------------------------------+
+</span></span></span></code></pre></div></div>
 <h4 id="3-add-domain-to-hosts">3. Add domain to hosts</h4>
 <div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+--------------------------------------------------------+
 </span></span><span class="line"><span class="cl">| 1. Run text editor as Administrator                    |
-</span></span><span class="line"><span class="cl">| 2. Add &#39;10.10.11.10 DC01 dc01.example.com example.com&#39; |
+</span></span><span class="line"><span class="cl">| 2. Add &#39;&lt;TARGET&gt; &lt;DC_COMPUTER_NAME&gt; &lt;DC&gt; &lt;DOMAIN&gt;&#39;     |
 </span></span><span class="line"><span class="cl">|    to &#39;C:\Windows\System32\drivers\etc\hosts&#39;          |
 </span></span><span class="line"><span class="cl">+--------------------------------------------------------+
 </span></span></code></pre></div></div>
@@ -229,9 +352,9 @@
 </span></span><span class="line"><span class="cl">| 1. &#39;Control Panel&#39; -&gt; Search &#39;Domain&#39;                              |
 </span></span><span class="line"><span class="cl">| 2. Click &#39;Join a Domain&#39;                                           |
 </span></span><span class="line"><span class="cl">| 3. Under tab &#39;Computer Name&#39; -&gt; &#39;Change&#39;                           |
-</span></span><span class="line"><span class="cl">| 4. Check &#39;Domain&#39; -&gt; &#39;example.com&#39;                                 |
+</span></span><span class="line"><span class="cl">| 4. Check &#39;Domain&#39; -&gt; &#39;&lt;DOMAIN&gt;&#39;                                    |
 </span></span><span class="line"><span class="cl">| 5. Enter username and password (domain user)                       |
-</span></span><span class="line"><span class="cl">| 6. If succeed, will pop an alert, &#39;Welcome to example.com domain.&#39; |
+</span></span><span class="line"><span class="cl">| 6. If succeed, will pop an alert, &#39;Welcome to DOMAIN domain.&#39;      |
 </span></span><span class="line"><span class="cl">+--------------------------------------------------------------------+
 </span></span></code></pre></div></div>
 <h4 id="5-sync-time-with-dc">5. Sync Time with DC</h4>
@@ -239,8 +362,8 @@
 <button data-tabset="set1" data-tabcontent="tab1" class="active">powershell</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">W32tm</span> <span class="p">/</span><span class="n">resync</span> <span class="p">/</span><span class="n">force</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">W32tm /resync /force
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
@@ -252,44 +375,44 @@
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-get-tgt-ticket">1. Get TGT ticket</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Get a Kerberos ticket</span>
-</span></span><span class="line"><span class="cl"><span class="p">.\</span><span class="n">Rubeus</span><span class="p">.</span><span class="py">exe</span> <span class="n">asktgt</span> <span class="p">/</span><span class="n">user</span><span class="err">:</span><span class="p">&lt;</span><span class="n">USER</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">password</span><span class="err">:</span><span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">enctype</span><span class="err">:</span><span class="n">AES256</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DOMAIN</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">dc</span><span class="err">:</span><span class="p">&lt;</span><span class="n">DC</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">ptt</span> <span class="p">/</span><span class="n">nowrap</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check</span>
-</span></span><span class="line"><span class="cl">klist
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get a Kerberos ticket
+</span></span><span class="line"><span class="cl"><span class="go">.\Rubeus.exe asktgt /user:&lt;USER&gt; /password:&#39;&lt;PASSWORD&gt;&#39; /enctype:AES256 /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div></div>
 <h4 id="2-pssession">2. PSSession</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Create new pssession</span>
-</span></span><span class="line"><span class="cl"><span class="nb">New-PSSession</span> <span class="n">-ComputerName</span> <span class="n">DC01</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># Enter pssession</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Enter-PSSession</span> <span class="n">-Id</span> <span class="mf">1</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create new pssession
+</span></span><span class="line"><span class="cl"><span class="go">New-PSSession -ComputerName &lt;DC_COMPUTER_NAME&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Enter pssession
+</span></span><span class="line"><span class="cl"><span class="go">Enter-PSSession -Id 1
+</span></span></span></code></pre></div></div>
 </div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><h4 id="1-set-trusted-hosts">1. Set trusted hosts</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># cmd</span>
-</span></span><span class="line"><span class="cl"><span class="n">winrm</span> <span class="n">quickconfig</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">winrm</span> <span class="nb">set </span><span class="n">winrm</span><span class="p">/</span><span class="n">config</span><span class="p">/</span><span class="n">client</span> <span class="vm">@</span><span class="p">{</span><span class="n">TrustedHosts</span><span class="p">=</span><span class="s2">&#34;*&#34;</span><span class="p">}</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Set-Item</span> <span class="n">WSMan</span><span class="err">:</span><span class="p">\</span><span class="n">localhost</span><span class="p">\</span><span class="n">Client</span><span class="p">\</span><span class="n">TrustedHosts</span> <span class="n">-Value</span> <span class="s2">&#34;*&#34;</span> <span class="n">-Force</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> cmd
+</span></span><span class="line"><span class="cl"><span class="go">winrm quickconfig
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">winrm set winrm/config/client @{TrustedHosts=&#34;*&#34;}
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> powershell
+</span></span><span class="line"><span class="cl"><span class="go">Set-Item WSMan:\localhost\Client\TrustedHosts -Value &#34;*&#34; -Force
+</span></span></span></code></pre></div></div>
 <h4 id="2-enable-credssp">2. Enable CredSSP</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># powershell</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Enable-WSManCredSSP</span> <span class="n">-Role</span> <span class="s2">&#34;Client&#34;</span> <span class="n">-DelegateComputer</span> <span class="s2">&#34;*&#34;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> powershell
+</span></span><span class="line"><span class="cl"><span class="go">Enable-WSManCredSSP -Role &#34;Client&#34; -DelegateComputer &#34;*&#34;
+</span></span></span></code></pre></div></div>
 <h4 id="3-create-cred-object">3. Create cred object</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$username</span> <span class="p">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$password</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="p">&lt;</span><span class="n">PASSWORD</span><span class="p">&gt;</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Management</span><span class="p">.</span><span class="py">Automation</span><span class="p">.</span><span class="py">PSCredential</span><span class="p">(</span><span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> New-Object System.Management.Automation.PSCredential<span class="o">(</span><span class="nv">$username</span>, <span class="nv">$password</span><span class="o">)</span>
 </span></span></code></pre></div></div>
 <h4 id="4-pssession">4. PSSession</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nv">$s1</span> <span class="p">=</span> <span class="nb">New-PSSession</span> <span class="n">-ComputerName</span> <span class="n">DC01</span> <span class="n">-Credential</span> <span class="nv">$cred</span>
-</span></span><span class="line"><span class="cl"><span class="nb">Enter-PSSession</span> <span class="nv">$s1</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">s1</span> <span class="o">=</span> New-PSSession -ComputerName &lt;DC_COMPUTER_NAME&gt; -Credential <span class="nv">$cred</span>
+</span></span><span class="line"><span class="cl"><span class="go">Enter-PSSession $s1
+</span></span></span></code></pre></div></div>
 </div></p>
 <br>
 <hr>
@@ -298,11 +421,12 @@
 <button data-tabset="set3" data-tabcontent="tab1" class="active">powershell</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Exit-PSSession</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Copy-Item</span> <span class="s1">&#39;&lt;REMOTE_FILE_PATH&gt;&#39;</span>  <span class="n">-Destination</span> <span class="s1">&#39;&lt;LOCAL_FILE_PATH&gt;&#39;</span> <span class="n">-FromSession</span> <span class="nv">$s1</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Exit-PSSession
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-Item &#39;&lt;REMOTE_FILE_PATH&gt;&#39;  -Destination &#39;&lt;LOCAL_FILE_PATH&gt;&#39; -FromSession $s1
+</span></span></span></code></pre></div></div>
 </div></p>
-<br></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

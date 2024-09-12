@@ -4,7 +4,6 @@ date: 2024-6-30
 tags: ["dotnet", "sdk", "c#", "c sharp", "Windows", "compile", ".NET"]
 ---
 
----
 ### Compile C# project
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
@@ -12,33 +11,33 @@ tags: ["dotnet", "sdk", "c#", "c sharp", "Windows", "compile", ".NET"]
 
 <div>
 
-```bash
+```console
 # Check
 dotnet --info
 ```
 
-```bash
+```console
 # Prepare
 mkdir <PROJECT_NAME>
 cd <PROJECT_NAME>
 ```
 
-```bash
+```console
 # Init
 dotnet new console
 ```
 
-```bash
+```console
 # Create .sln file
 dotnet new sln
 ```
 
-```bash
+```console
 # Link .sln to .csproj
 dotnet sln <PROJECT_NAME>.sln add <PROJECT_NAME>.csproj 
 ```
 
-```bash
+```console
 # Add dependencies (optional)
 dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
 ```
@@ -49,12 +48,12 @@ dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0
 +----------------------+
 ```
 
-```bash
+```console
 # Build solution
 dotnet build -c Release
 ```
 
-```bash
+```console
 # Run
 dotnet run
 ```

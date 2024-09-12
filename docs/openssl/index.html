@@ -205,76 +205,200 @@
   <li><a href="https://tldrbins.github.io/@crt/">Crt</a></li>
   
 </ul>
+<hr>
+<div class="content">
+<div id="params">
+	<form id="params_form" style="display: none;">
+	</form>
+	<div class="center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
 
-<div class="content"><hr>
+<style>
+#params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#params * {
+    box-sizing: border-box;
+}
+
+#params input {
+  margin-bottom: 15px;
+}
+
+#params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #f5f5f5;
+}
+
+#params label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+}
+
+#params button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #params {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 20px 50px 40px;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #params * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #params input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input:focus {
+	margin-bottom: 15px;
+	outline: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #params input[type=text] {
+	display: block;
+	height: 32px;
+	padding: 6px 16px;
+	width: 100%;
+	border: none;
+	background-color: #bdbdbd;
+}
+
+body.dark-mode #params label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #params button {
+	display: inline-block;
+	margin: 20px auto 0;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+}
+
+body.dark-mode #params button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+
+
+</style>
 <h3 id="show-tls-certificate-from-https-web-server">Show TLS Certificate from HTTPS web server</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="p">|</span> openssl s_client -showcerts -servername 10.10.11.10 -connect 10.10.11.10:443 2&gt;/dev/null <span class="p">|</span> openssl x509 -inform pem -noout -text
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo | openssl s_client -showcerts -servername &lt;TARGET&gt; -connect &lt;TARGET&gt;:443 2&gt;/dev/null | openssl x509 -inform pem -noout -text
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="certificate">Certificate</h3>
 <h4 id="show-content-of-a-request">Show content of a request</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl req -in request.csr -noout -text
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">openssl req -in request.csr -noout -text
+</span></span></span></code></pre></div></div>
 <h4 id="create-client-certificate">Create Client Certificate</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Generate a user key</span>
-</span></span><span class="line"><span class="cl">openssl genrsa -out username.key <span class="m">2048</span>                                                      
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create a CSR</span>
-</span></span><span class="line"><span class="cl">openssl req -new -key username.key -out username.csr
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Settings</span>
-</span></span><span class="line"><span class="cl">+-----------------------------------------------------------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> You are about to be asked to enter information that will be incorporated    <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> into your certificate request.                                              <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> What you are about to enter is what is called a Distinguished Name or a DN. <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> There are quite a few fields but you can leave some blank                   <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> For some fields there will be a default value,                              <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> If you enter <span class="s1">&#39;.&#39;</span>, the field will be left blank.                             <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> -----                                                                       <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Country Name <span class="o">(</span><span class="m">2</span> letter code<span class="o">)</span> <span class="o">[</span>AU<span class="o">]</span>:US                                        <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> State or Province Name <span class="o">(</span>full name<span class="o">)</span> <span class="o">[</span>Some-State<span class="o">]</span>:                            <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Locality Name <span class="o">(</span>eg, city<span class="o">)</span> <span class="o">[]</span>:                                                <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Organization Name <span class="o">(</span>eg, company<span class="o">)</span> <span class="o">[</span>Internet Widgits Pty Ltd<span class="o">]</span>:COMPANY_NAME     <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Organizational Unit Name <span class="o">(</span>eg, section<span class="o">)</span> <span class="o">[]</span>:COMPANY_NAME                      <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Common Name <span class="o">(</span>e.g. server FQDN or YOUR name<span class="o">)</span> <span class="o">[]</span>:username                     <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Email Address <span class="o">[]</span>:                                                           <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span>                                                                             <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Please enter the following <span class="s1">&#39;extra&#39;</span> attributes                               <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> to be sent with your certificate request                                    <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> A challenge password <span class="o">[]</span>:                                                    <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> An optional company name <span class="o">[]</span>:                                                <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+-----------------------------------------------------------------------------+
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Sign the .csr with a valid key and cert pair</span>
-</span></span><span class="line"><span class="cl">openssl x509 -req -in username.csr -CA company.cert.pem -CAkey company.key.pem -CAcreateserial -out username.pem -days <span class="m">1024</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Convert to pfx that Firefox can import</span>
-</span></span><span class="line"><span class="cl">openssl pkcs12 -export -out username.pfx -inkey username.key -in username.pem -certfile company.cert.pem
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Settings</span>
-</span></span><span class="line"><span class="cl">+------------------------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Enter Export Password:             <span class="p">|</span>
-</span></span><span class="line"><span class="cl"><span class="p">|</span> Verifying - Enter Export Password: <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+------------------------------------+
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Alternative: curl</span>
-</span></span><span class="line"><span class="cl">curl -k --cert username.pem --key username.key https://10.10.11.10
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Generate a user key
+</span></span><span class="line"><span class="cl"><span class="go">openssl genrsa -out username.key 2048                                                      
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create a CSR
+</span></span><span class="line"><span class="cl"><span class="go">openssl req -new -key username.key -out username.csr
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Settings
+</span></span><span class="line"><span class="cl"><span class="go">+-----------------------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| You are about to be asked to enter information that will be incorporated    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| into your certificate request.                                              |
+</span></span></span><span class="line"><span class="cl"><span class="go">| What you are about to enter is what is called a Distinguished Name or a DN. |
+</span></span></span><span class="line"><span class="cl"><span class="go">| There are quite a few fields but you can leave some blank                   |
+</span></span></span><span class="line"><span class="cl"><span class="go">| For some fields there will be a default value,                              |
+</span></span></span><span class="line"><span class="cl"><span class="go">| If you enter &#39;.&#39;, the field will be left blank.                             |
+</span></span></span><span class="line"><span class="cl"><span class="go">| -----                                                                       |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Country Name (2 letter code) [AU]:US                                        |
+</span></span></span><span class="line"><span class="cl"><span class="go">| State or Province Name (full name) [Some-State]:                            |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Locality Name (eg, city) []:                                                |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Organization Name (eg, company) [Internet Widgits Pty Ltd]:COMPANY_NAME     |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Organizational Unit Name (eg, section) []:COMPANY_NAME                      |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Common Name (e.g. server FQDN or YOUR name) []:username                     |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Email Address []:                                                           |
+</span></span></span><span class="line"><span class="cl"><span class="go">|                                                                             |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Please enter the following &#39;extra&#39; attributes                               |
+</span></span></span><span class="line"><span class="cl"><span class="go">| to be sent with your certificate request                                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| A challenge password []:                                                    |
+</span></span></span><span class="line"><span class="cl"><span class="go">| An optional company name []:                                                |
+</span></span></span><span class="line"><span class="cl"><span class="go">+-----------------------------------------------------------------------------+
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Sign the .csr with a valid key and cert pair
+</span></span><span class="line"><span class="cl"><span class="go">openssl x509 -req -in username.csr -CA company.cert.pem -CAkey company.key.pem -CAcreateserial -out username.pem -days 1024
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to pfx that Firefox can import
+</span></span><span class="line"><span class="cl"><span class="go">openssl pkcs12 -export -out username.pfx -inkey username.key -in username.pem -certfile company.cert.pem
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Settings
+</span></span><span class="line"><span class="cl"><span class="go">+------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| Enter Export Password:             |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Verifying - Enter Export Password: |
+</span></span></span><span class="line"><span class="cl"><span class="go">+------------------------------------+
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Alternative: curl
+</span></span><span class="line"><span class="cl"><span class="go">curl -k --cert username.pem --key username.key https://&lt;TARGET&gt;
+</span></span></span></code></pre></div></div>
 <h4 id="convert-p12-to-key-and-crt">Convert .p12 to .key and .crt</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create cert.key</span>
-</span></span><span class="line"><span class="cl">openssl pkcs12 -in cert.p12 -nocerts -out cert.key
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Create cert.crt</span>
-</span></span><span class="line"><span class="cl">openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
-</span></span></code></pre></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create cert.key
+</span></span><span class="line"><span class="cl"><span class="go">openssl pkcs12 -in cert.p12 -nocerts -out cert.key
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create cert.crt
+</span></span><span class="line"><span class="cl"><span class="go">openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
+</span></span></span></code></pre></div></div>
 <br>
 <hr>
 <h3 id="base64-encodedecode">Base64 Encode/Decode</h3>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># base64 encode a file</span>
-</span></span><span class="line"><span class="cl">openssl base64 -in ./file
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># base64 decode a file and output to a file</span>
-</span></span><span class="line"><span class="cl">cat b64_file <span class="p">|</span> openssl enc -d -base64 -out ./file
-</span></span></code></pre></div></div>
-<br></div></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> base64 encode a file
+</span></span><span class="line"><span class="cl"><span class="go">openssl base64 -in ./file
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> base64 decode a file and output to a file
+</span></span><span class="line"><span class="cl"><span class="go">cat b64_file | openssl enc -d -base64 -out ./file
+</span></span></span></code></pre></div></div>
+<br>
+</div></div>
     
     <script src="/js/utils.js"></script>
     <footer>

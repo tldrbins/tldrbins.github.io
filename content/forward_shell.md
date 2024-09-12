@@ -4,7 +4,6 @@ date: 2024-7-11
 tags: ["python", "shell", "forward", "template"]
 ---
 
----
 ### Python Forward Shell Template
 
 <div>

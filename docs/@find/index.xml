@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/find/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
-      <description>Linux Locate a file locate cmd.php Find files of type file find . -type f Find and Open find / -name test.txt -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user user -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group adm 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
+      <description>Linux Locate a file locate &amp;lt;FILE&amp;gt; Find files of type file find . -type f Find and Open find / -name &amp;lt;FILE&amp;gt; -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user &amp;lt;USER&amp;gt; -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group &amp;lt;GROUP&amp;gt; 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
     </item>
     <item>
       <title>Find (Windows)</title>
       <link>https://tldrbins.github.io/find_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find_windows/</guid>
-      <description> Windows Show hidden files Get-ChildItem -force Find a file ls -path \Users -Filter example.txt -recurse -erroraction silent where /R C:\Users example.txt Find a file, with rules dir /s /b /a:-d-h \Users\Administrator | findstr /i /v &amp;#34;appdata&amp;#34; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v appdata : exclude &amp;#39;appdata&amp;#39; | +---------------------------------------+ </description>
+      <description> Windows Show hidden files Get-ChildItem -force Find a file ls -path &amp;lt;PATH&amp;gt; -Filter &amp;lt;FILE&amp;gt; -recurse -erroraction silent where /R &amp;lt;PATH&amp;gt; &amp;lt;FILE&amp;gt; Find a file, with rules dir /s /b /a:-d-h &amp;lt;PATH&amp;gt; | findstr /i /v &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v STRING : exclude STRING | +---------------------------------------+ </description>
     </item>
   </channel>
 </rss>

@@ -4,7 +4,6 @@ date: 2024-6-28
 tags: ["ssl", "sslscan"]
 ---
 
----
 ### Tools
 
 {{< tab set1 tab1 active >}}sslscan{{< /tab >}}
@@ -12,7 +11,7 @@ tags: ["ssl", "sslscan"]
 
 <div>
 
-```bash
+```console
 # Scan target SSL version
 sslscan <TARGET>
 ```
@@ -25,7 +24,7 @@ sslscan <TARGET>
 
 <div>
 
-```bash
+```console
 # Edit /etc/ssl/openssl.cnf
 
 [system_default_sect]
