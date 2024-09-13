@@ -18,10 +18,12 @@ bloodhound-python -d <DOMAIN> -u <USER> -p '<PASSWORD>' -dc <DC> -ns <DC_IP> -c 
 
 ```console
 # With Kerberos
-sudo ntpdate -s <DC> && bloodhound-python -u <USER> -p '<PASSWORD>' -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip
+sudo ntpdate -s <DC> && bloodhound-python -u <USER> -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip -no-pass --use-ldaps
 ```
 
 </div>
+
+<small>*Note: passing '-no-pass' will still ask for password, press enter*</small>
 
 {{< /tabcontent >}}
 
@@ -57,6 +59,23 @@ Invoke-BloodHound -CollectionMethods All -OutputDirectory C:\ProgramData
 </div>
 
 <small>*Ref: [sharphound.ps1](https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.ps1)*</small>
+
+{{< /tabcontent >}}
+
+### Info Collection (From C2)
+
+{{< tab set3 tab1 active >}}Sliver{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+<div>
+
+```console
+sharp-hound-4 --  '-c all --outputdirectory C:\ProgramData'
+```
+
+</div>
+
+<small>*Note: passing '-no-pass' will still ask for password, press enter*</small>
 
 {{< /tabcontent >}}
 

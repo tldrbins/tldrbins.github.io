@@ -15,12 +15,12 @@ nxc smb <TARGET> -u <USER> -p '<PASSWORD>'
 
 ```console
 # Single user and password (Active Directory)
-nxc smb -u <USER> -p '<PASSWORD>' -d <DOMAIN> -dc-ip <DC_IP>
+nxc smb -u <USER> -p '<PASSWORD>' -d <DOMAIN> <TARGET>
 ```
 
 ```console
 # Multiple users or passwords
-nxc smb -u <USERNAMES> -p '<PASSWORD>' -d <DOMAIN> -dc-ip <DC_IP> --continue-on-success
+nxc smb -u <USERNAMES> -p '<PASSWORD>' -d <DOMAIN> <TARGET> --continue-on-success
 ```
 
 ```console

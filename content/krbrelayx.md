@@ -17,7 +17,7 @@ sudo responder -I tun0
 ```
 
 ```console
-python3 dnstool.py -u '<DOMAIN>\\<USER>' -p '<PASSWORD>' --action add --record test --data <LOCAL_IP> --type A <DOMAIN>
+python3 dnstool.py -u '<DOMAIN>\<USER>' -p '<PASSWORD>' --action add --record <TARGET_RECORD> --data <LOCAL_IP> <TARGET_IP>
 ```
 
 </div>

@@ -20,6 +20,11 @@ select @@servername
 select srvname from sysservers;
 ```
 
+```console
+# Show linked servers
+enum_links
+```
+
 </div>
 
 ### Execute Query between Linked Servers

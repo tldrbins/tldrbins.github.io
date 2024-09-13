@@ -14,7 +14,7 @@ tags: ["ReadGMSAPassword", "gMSADumper", "active driectory", "ad", "Windows"]
 <div>
 
 ```console
-python3 gMSADumper.py -u <USER> -p '<PASSWORD>' -l <TARGET> -d <DOMAIN>
+python3 gMSADumper.py -u <USER> -p '<PASSWORD>' -l <DC> -d <DOMAIN>
 ```
 
 </div>
