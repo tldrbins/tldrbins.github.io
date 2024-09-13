@@ -55,7 +55,18 @@ sudo ntpdate -s <DC> && impacket-secretsdump -k -no-pass -just-dc-user administr
 
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
+
+#### 1. TO-DO
+
+<div>
+
+```console
 TO-DO
+```
+
+</div>
+
+
 {{< /tabcontent >}}
 
 <br>

@@ -9,12 +9,12 @@ tags: ["keepass", "kpcli", "password", "kdbx"]
 <div>
 
 ```console
-keepass2john <KDBX> > hash
+keepass2john <KDBX_FILE> > hash
 ```
 
 ```console
 # With a key file
-keepass2john -k <KEY_FILE> <KDBX> > hash
+keepass2john -k <KEY_FILE> <KDBX_FILE> > hash
 ```
 
 </div>
@@ -25,12 +25,12 @@ keepass2john -k <KEY_FILE> <KDBX> > hash
 
 ```console
 # Open kdbx
-kpcli --kdb <KDBX>
+kpcli --kdb <KDBX_FILE>
 ```
 
 ```console
 # Open kdbx with a key file
-kpcli --key <KEY_FILE> --kdb <KDBX>
+kpcli --key <KEY_FILE> --kdb <KDBX_FILE>
 ```
 
 ```console

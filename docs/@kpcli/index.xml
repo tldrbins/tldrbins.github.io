@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/keepass/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/keepass/</guid>
-      <description>Master password cracking keepass2john &amp;lt;KDBX&amp;gt; &amp;gt; hash # With a key file keepass2john -k &amp;lt;KEY_FILE&amp;gt; &amp;lt;KDBX&amp;gt; &amp;gt; hash kpcli # Open kdbx kpcli --kdb &amp;lt;KDBX&amp;gt; # Open kdbx with a key file kpcli --key &amp;lt;KEY_FILE&amp;gt; --kdb &amp;lt;KDBX&amp;gt; # List all passwords find . # Show password (e.g. #0) show -f 0 # Export attachment (e.g. #0) attach 0 Ref: Download kpcli</description>
+      <description>Master password cracking keepass2john &amp;lt;KDBX_FILE&amp;gt; &amp;gt; hash # With a key file keepass2john -k &amp;lt;KEY_FILE&amp;gt; &amp;lt;KDBX_FILE&amp;gt; &amp;gt; hash kpcli # Open kdbx kpcli --kdb &amp;lt;KDBX_FILE&amp;gt; # Open kdbx with a key file kpcli --key &amp;lt;KEY_FILE&amp;gt; --kdb &amp;lt;KDBX_FILE&amp;gt; # List all passwords find . # Show password (e.g. #0) show -f 0 # Export attachment (e.g. #0) attach 0 Ref: Download kpcli</description>
     </item>
   </channel>
 </rss>

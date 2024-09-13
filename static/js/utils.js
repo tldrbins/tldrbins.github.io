@@ -1,208 +1,205 @@
 function arraysEqual(a, b) {
-  if (a === b) return true;
-  if (a == null || b == null) return false;
-  if (a.length !== b.length) return false;
+    if (a === b) return true;
+    if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
+    return a.every((value, index) => value === b[index]);
+}
 
-  for (var i = 0; i < a.length; ++i) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
+function debounce(func, wait, immediate = false) {
+    let timeout;
+    return function(...args) {
+        const context = this;
+        const later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
 }
 
 function addCopyButtons(clipboard) {
     document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
-        var button = document.createElement('button');
+        const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px">
+            <path d="M0 0h24v24H0V0z" fill="none"/>
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+        </svg>`;
+
+        const checkmarkIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9 16.2l-4.2-4.2-1.4 1.4 5.6 5.6L20.6 7.8l-1.4-1.4z"/>
+        </svg>`;
+
+        let button = document.createElement('button');
         button.className = 'copy-code-button';
         button.type = 'button';
-        button.innerText = '  Copy  ';
+        button.innerHTML = copyIcon;
 
-        let showDelay = 100, hideDelay = 100;
+        const showDelay = 100, hideDelay = 100;
         let codeBlockEnterTimer, codeBlockLeaveTimer;
 
-        button.addEventListener('click', function () {
+        const copyCode = () => {
             const lines = codeBlock.innerText.replace(/\r\n/, "\n").split("\n");
             const cmds = lines.filter(line => !(/^#\s/.test(line)));
-            result = cmds.join('\n');
+            const result = cmds.join('\n');
 
-            clipboard.writeText(result.trim().replace(/\n\n/g, '\n')).then(function () {
-                /* Chrome doesn't seem to blur automatically,
-                   leaving the button in a focused state. */
+            clipboard.writeText(result.trim().replace(/\n\n/g, '\n')).then(() => {
                 button.blur();
-
-                button.innerText = 'Copied';
-
-                setTimeout(function () {
-                    button.innerText = '  Copy  ';
+                button.innerHTML = checkmarkIcon;
+                setTimeout(() => {
+                    button.innerHTML = copyIcon;
                 }, 1500);
-            }, function (error) {
+            }).catch(() => {
                 button.innerText = 'Error';
             });
-        });
+        };
 
+        const handleClick = () => copyCode();
+        button.addEventListener('click', handleClick);
         codeBlock.parentNode.insertBefore(button, codeBlock);
+        codeBlock.parentNode.addEventListener('click', handleClick);
 
-        codeBlock.parentNode.addEventListener('click', function () {
-            const lines = codeBlock.innerText.replace(/\r\n/, "\n").split("\n");
-            const cmds = lines.filter(line => !(/^#\s/.test(line)));
-            result = cmds.join('\n');
+        codeBlock.parentNode.addEventListener('mouseenter', debounce(function () {
+            button.setAttribute("style", "opacity: 0.9;");
+        }, showDelay));
 
-            clipboard.writeText(result.trim().replace(/\n\n/g, '\n')).then(function () {
-                /* Chrome doesn't seem to blur automatically,
-                   leaving the button in a focused state. */
-                button.blur();
-
-                button.innerText = 'Copied';
-
-                setTimeout(function () {
-                    button.innerText = '  Copy  ';
-                }, 1500);
-            }, function (error) {
-                button.innerText = 'Error';
-            });
-        });
-
-        codeBlock.parentNode.addEventListener('mouseenter', function () {
-            clearTimeout(codeBlockLeaveTimer);
-            codeBlockEnterTimer = setTimeout(function () {
-                button.setAttribute("style", "opacity: 0.9;");
-            }, showDelay);
-        });
-
-        codeBlock.parentNode.addEventListener('mouseleave', function () {
-            clearTimeout(codeBlockEnterTimer);
-            codeBlockLeaveTimer = setTimeout(function () {
-                button.setAttribute("style", "opacity: 0.0;");
-            }, hideDelay);
-        });
+        codeBlock.parentNode.addEventListener('mouseleave', debounce(function () {
+            button.setAttribute("style", "opacity: 0.0;");
+        }, hideDelay));
     });
 }
 
 if (navigator && navigator.clipboard) {
     addCopyButtons(navigator.clipboard);
 } else {
-    var script = document.createElement('script');
+    let script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/clipboard-polyfill/2.7.0/clipboard-polyfill.promise.js';
     script.integrity = 'sha256-waClS2re9NUbXRsryKoof+F9qc1gjjIhc2eT7ZbIv94=';
     script.crossOrigin = 'anonymous';
     script.onload = function() {
         addCopyButtons(clipboard);
     };
-
     document.body.appendChild(script);
 }
 
 (function() {
-    var tab = document.querySelectorAll('button[data-tabset]');
-    if (tab != null) {
+    const tabs = document.querySelectorAll('button[data-tabset]');
+    if (tabs != null) {
+        const clear = (nodeList) => nodeList.forEach(node => node.classList.remove('active'));
 
-        var i, el, tabcontent, tabset, tabSetList, tabContentList;
+        const onTabClick = function() {
+            const tabset = event.target.dataset.tabset;
+            const tabcontent = event.target.dataset.tabcontent;
+            const tabSetList = document.querySelectorAll(`button[data-tabset="${tabset}"]`);
+            const tabContentList = document.querySelectorAll(`.tabcontent[data-tabset="${tabset}"]`);
 
-        var clear = function(nodeList) {
-            for (i = 0; i < nodeList.length; i++) {
-                nodeList[i].classList.remove('active');
-            }
-        }
-
-        var onTabClick = function() {
-            tabset = event.target.dataset.tabset;
-            tabcontent = event.target.dataset.tabcontent;
-            tabSetList = document.querySelectorAll('button[data-tabset="'+ tabset +'"]');
-            tabContentList = document.querySelectorAll('.tabcontent[data-tabset="'+ tabset +'"]');
             clear(tabSetList);
             event.target.classList.add('active');
             clear(tabContentList);
-            el = document.querySelector('.tabcontent[data-tabset="' + tabset + '"].tabcontent[data-tabcontent="' + tabcontent + '"]');
+
+            let el = document.querySelector(`.tabcontent[data-tabset="${tabset}"][data-tabcontent="${tabcontent}"]`);
             if (el != null) {
                 el.classList.add('active');
             }
-        }
+        };
 
-        for (i = 0; i < tab.length; i++) {
-            tabset = tab[i].dataset.tabset;
-            tabcontent = tab[i].dataset.tabcontent;
+        tabs.forEach(tab => {
+            const tabset = tab.dataset.tabset;
+            const tabcontent = tab.dataset.tabcontent;
 
-            // add `tabs` class to parent element
-            if (!tab[i].parentElement.classList.contains('tabs')) {
-                tab[i].parentElement.classList.add('tabs');
+            if (!tab.parentElement.classList.contains('tabs')) {
+                tab.parentElement.classList.add('tabs');
             }
 
-            // show active content
-            if (tab[i].classList.contains('active')) {
-                el = document.querySelector('.tabcontent[data-tabset="' + tabset + '"].tabcontent[data-tabcontent="' + tabcontent + '"]');
+            if (tab.classList.contains('active')) {
+                const el = document.querySelector(`.tabcontent[data-tabset="${tabset}"][data-tabcontent="${tabcontent}"]`);
                 if (el != null) {
                     el.classList.add('active');
                 }
             }
-        }
+        });
 
-        for (i = 0; i < tab.length; i++) {
-            tab[i].addEventListener('click', onTabClick);
-        }
+        tabs.forEach(tabElement => {
+            tabElement.addEventListener('click', onTabClick);
+        });
     }
-
 })();
 
 (function() {
-    var form = document.getElementById("params_form");
+    let container = document.getElementById("dynamicFormContainer");
+    let form = document.getElementById("dynamicForm");
+
+    const buttons = {
+        form: document.getElementById("form_btn"),
+        replace: document.getElementById("replace_btn"),
+        reset: document.getElementById("reset_btn"),
+        clear: document.getElementById("clear_btn"),
+    };
 
     if (form != null) {
         const regex = /&lt;([A-Z0-9_]+)&gt;/g;
-        var matches = [...new Set(document.documentElement.innerHTML.match(regex))];
-        if (matches != null) {
-            for (const match of matches) {
+        const matches = [...new Set(document.documentElement.innerHTML.match(regex))];
+
+        if (matches.length === 0) {
+            container.style.display = "none";
+        } else {
+            matches.forEach(match => {
+                const div = document.createElement("div");
+                div.setAttribute("class", "input-group");
+                form.insertBefore(div, form.firstChild);
+
                 const param = match.slice(4, match.length - 4);
 
-                var label = document.createElement("label");
+                const label = document.createElement("label");
                 label.setAttribute("for", param);
-                label.innerText = param.replace(/_/g, " ").replace(/(^\w|\s\w)(\S*)/g, (_,m1,m2) => m1.toUpperCase()+m2.toLowerCase()) + ": ";
-                form.appendChild(label);
+                label.innerText = param.replace(/_/g, " ") + ": ";
+                div.appendChild(label);
 
-                var input = document.createElement("input");
+                const input = document.createElement("input");
                 input.setAttribute("type", "text");
                 input.setAttribute("name", param);
 
                 if (localStorage.getItem(param)) {
                     input.value = localStorage.getItem(param);
                 }
-
-                form.appendChild(input);
-            }
+                div.appendChild(input);
+            });
         }
 
+        const formElements = [...form.elements];
         const orig_codeblocks = [];
 
         document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
             if (matches != null) {
-                for (const match of matches) {
-                    const find = match;
-                    const regex = new RegExp(find, "g");
+                matches.forEach(match => {
+                    const regex = new RegExp(match, "g");
                     codeBlock.innerHTML = codeBlock.innerHTML.replace(regex, '<span class="o">' + match + '</span>');
-                }
+                });
             }
             orig_codeblocks.push(codeBlock.innerHTML);
         });
 
-        var onShowFormButtonClick = function() {
-            var replace_btn = document.getElementById("replace_btn");
+        const onShowFormButtonClick = function() {
             if (form.classList.contains('active')) {
                 form.classList.remove('active');
                 form.style.display = "none";
-                form_btn.innerText = "Show Params Form";
-                replace_btn.style.display = "none";
-                reset_btn.style.display = "none";
-                clear_btn.style.display = "none";
-            } else  {
+                buttons.form.innerText = "Show Params Form";
+                buttons.replace.style.display = "none";
+                buttons.reset.style.display = "none";
+                buttons.clear.style.display = "none";
+            } else {
                 form.classList.add('active');
-                form.style.display = "block";
-                form_btn.innerText = "Hide Params Form";
-                replace_btn.style.display = "inline-block";
-                reset_btn.style.display = "inline-block";
-                clear_btn.style.display = "inline-block";
-            } 
-        }
+                form.style.display = "grid";
+                buttons.form.innerText = "Hide Params Form";
+                buttons.replace.style.display = "inline-block";
+                buttons.reset.style.display = "inline-block";
+                buttons.clear.style.display = "inline-block";
+            }
+        };
 
-        var onReplaceParamsButtonClick = function() {
-            var curr_codeblocks = [];
+        const onReplaceParamsButtonClick = function() {
+            let curr_codeblocks = [];
 
             document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
                 curr_codeblocks.push(codeBlock.innerHTML);
@@ -213,27 +210,25 @@ if (navigator && navigator.clipboard) {
             }
 
             document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock, i) {
-                temp_codeblock = curr_codeblocks[i];
-                for (const element of form.elements) {
-                    input_value = element.value;
+                let temp_codeblock = curr_codeblocks[i];
+                formElements.forEach(element => {
+                    const input_value = element.value;
                     if (input_value) {
-                        const find = '&lt;' + element.name + '&gt;';
-                        const regex = new RegExp(find, "g");
+                        const regex = new RegExp(`&lt;${element.name}&gt;`, "g");
                         temp_codeblock = temp_codeblock.replace(regex, input_value);
+                        try {
+                            localStorage.setItem(element.name, element.value);
+                        } catch (e) {
+                            console.error("LocalStorage error: ", e);
+                        }
                     }
-                }
+                });
                 codeBlock.innerHTML = temp_codeblock;
             });
+        };
 
-            for (const element of form.elements) {
-                if (element.value) {
-                    localStorage.setItem(element.name, element.value);
-                }
-            }
-        }
-
-        var onResetButtonClick = function() {
-            var curr_codeblocks = [];
+        const onResetButtonClick = function() {
+            let curr_codeblocks = [];
 
             document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
                 curr_codeblocks.push(codeBlock.innerHTML);
@@ -247,50 +242,27 @@ if (navigator && navigator.clipboard) {
                 codeBlock.innerHTML = curr_codeblocks[i];
             });
 
-            for (const element of form.elements) {
+            formElements.forEach(element => {
                 element.value = "";
-            }
-        }
+            });
+        };
 
-         var onClearButtonClick = function() {
-            var curr_codeblocks = [];
-
-            for (const element of form.elements) {
+        const onClearButtonClick = function() {
+            formElements.forEach(element => {
                 element.value = "";
-            }
+            });
 
-            darkMode = 'false';
-
-            if (localStorage.getItem("darkMode")) {
-                darkMode = 'true';
-            }
-
+            const tempDarkMode = localStorage.getItem('darkMode');
             localStorage.clear();
-
-            if (darkMode) {
-                localStorage.setItem('darkMode', 'true');
+            if (tempDarkMode) {
+                localStorage.setItem('darkMode', tempDarkMode);
             }
-        }
 
-        var form_btn = document.getElementById('form_btn');
-            if (form_btn != null) {
-                form_btn.addEventListener('click', onShowFormButtonClick);
-        }
+        };
 
-        var replace_btn = document.getElementById('replace_btn');
-            if (replace_btn != null) {
-                replace_btn.addEventListener('click', onReplaceParamsButtonClick);
-        }
-
-        var reset_btn = document.getElementById('reset_btn');
-            if (reset_btn != null) {
-                reset_btn.addEventListener('click', onResetButtonClick);
-        }
-
-        var clear_btn = document.getElementById('clear_btn');
-            if (clear_btn != null) {
-                clear_btn.addEventListener('click', onClearButtonClick);
-        }
+        buttons.form?.addEventListener('click', onShowFormButtonClick);
+        buttons.replace?.addEventListener('click', onReplaceParamsButtonClick);
+        buttons.reset?.addEventListener('click', onResetButtonClick);
+        buttons.clear?.addEventListener('click', onClearButtonClick);
     }
-
 })();

