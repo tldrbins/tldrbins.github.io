@@ -12,17 +12,11 @@ tags: ["outlook", "email", "Windows", "pst", "ost", "mbox"]
 
 #### Tools
 
-<div>
-
 ```console
 sudo apt install readpst
 ```
 
-</div>
-
 #### Basic
-
-<div>
 
 ```console
 # Convert to mbox format
@@ -34,11 +28,7 @@ readpst <PST_FILE>
 cat <MBOX_FILE>
 ```
 
-</div>
-
 #### Read many emails
-
-<div>
 
 ```console
 # Install mutt
@@ -61,14 +51,10 @@ mutt -Rf <MBOX_FILE>
 +--------------------------------------+
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 #### Tools
-
-<div>
 
 ```console
 # Install msgconvert
@@ -80,11 +66,7 @@ sudo apt install libemail-outlook-message-perl
 sudo apt install procmail
 ```
 
-</div>
-
 #### Basic
-
-<div>
 
 ```console
 # Convert to .eml format
@@ -96,8 +78,4 @@ msgconvert *.msg
 cat <EML_FILE> | formail -b > emails.mbox
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

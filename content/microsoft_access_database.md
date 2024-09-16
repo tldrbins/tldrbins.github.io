@@ -9,17 +9,11 @@ tags: ["Access", "database", "Windows", "mdb"]
 {{< tab set1 tab1 active >}}mdbtools{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 sudo apt install mdbtools
 ```
 
-</div>
-
 #### Basic
-
-<div>
 
 ```console
 # Show all tables
@@ -36,9 +30,4 @@ mdb-tables <MDB_FILE> | tr ' ' '\n' | grep . | while read table; do lines=$(mdb-
 mdb-export <MDB_FILE> <TABLE_NAME>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-
-<br>

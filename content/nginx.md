@@ -6,12 +6,6 @@ tags: ["nginx", "web server", "reverse proxy"]
 
 ### Config location
 
-<div>
-
 ```console
 /etc/nginx/sites-enabled
 ```
-
-</div>
-
-<br>

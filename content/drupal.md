@@ -9,8 +9,6 @@ tags: ["drupal", "reconnaissance", "enum", "droopescan"]
 {{< tab set1 tab1 active >}}droopescan{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 droopescan scan drupal -u <TARGET>
 ```
@@ -19,8 +17,4 @@ droopescan scan drupal -u <TARGET>
 <br>
 <small>*Note: This can take a long time to run*</small>
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

@@ -6,8 +6,6 @@ tags: ["gpg", "encryption", "crypto", "Pretty Good Privacy", "public key", "priv
 
 ### GPG
 
-<div>
-
 ```console
 # Check version
 gpg --version
@@ -48,6 +46,3 @@ gpg -d <ENC_FILE>
 gpg --clearsign --output - <FILE>
 ```
 
-</div>
-
-<br>

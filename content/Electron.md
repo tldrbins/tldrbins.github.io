@@ -6,17 +6,11 @@ tags: ["Electron", "web"]
 
 ### Tools
 
-<div>
-
 ```console
 sudo npm -g install asar
 ```
 
-</div>
-
 ### Unpack app.asar
-
-<div>
 
 ```console
 # List files
@@ -32,7 +26,3 @@ asar e <FILE>
 # Extract a file
 asar ef <FILE> main.js
 ```
-
-</div>
-
-<br>

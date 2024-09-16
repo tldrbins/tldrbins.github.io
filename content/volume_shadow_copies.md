@@ -11,34 +11,20 @@ tags: ["Volume Shadow Copies", "privesc", "Windows", "secretsdump", "vsc"]
 
 #### 1. Check
 
-<div>
-
 ```console
 vssadmin list shadows
 ```
 
-</div>
-
 #### 2. Create symlink and expose the volume
-
-<div>
 
 ```console
 cmd /c mklink /d C:\VSS <SHADOW_COPY_VOLUME_PATH>
 ```
 
-</div>
-
 #### 3. Access
-
-<div>
 
 ```console
 ls C:\VSS\Users
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

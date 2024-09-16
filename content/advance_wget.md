@@ -6,8 +6,6 @@ tags: ["wget", "file transfer", "http", "web"]
 
 ### Advance wget
 
-<div>
-
 ```console
 # Provide a file with urls
 wget --input-file <FILE_PATH>
@@ -22,7 +20,3 @@ wget --post-file <FILE_PATH> <TARGET>
 # Overwrite a file
 wget <TARGET>/<FILE> -O <FILE_PATH>
 ```
-
-</div>
-
-<br>

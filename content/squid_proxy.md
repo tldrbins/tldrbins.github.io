@@ -6,17 +6,11 @@ tags: ["squid proxy", "web", "3128", "proxy", "port scan"]
 
 ### Config location
 
-<div>
-
 ```console
 /etc/squid/squid.conf
 ```
 
-</div>
-
 ### Connect via FoxyProxy Firefox plugin
-
-<div>
 
 ```console
 +--------------------------+
@@ -31,11 +25,7 @@ tags: ["squid proxy", "web", "3128", "proxy", "port scan"]
 +--------------------------+
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 # Connect
@@ -47,11 +37,7 @@ http://<TARGET>
 http://127.0.0.1
 ```
 
-</div>
-
 ### Internal ports scan via proxy
-
-<div>
 
 ```console
 # 1. Take note of word size, then Ctrl+C
@@ -63,11 +49,7 @@ wfuzz -z range,1-1000 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ
 wfuzz -z range,1-65535 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ --hw 100
 ```
 
-</div>
-
 ### Connect to internal services
-
-<div>
 
 ```console
 # Edit /etc/proxychains4.conf
@@ -76,18 +58,12 @@ wfuzz -z range,1-65535 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ --hw 100
 http    <TARGET> 3128
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 # Connect, e.g. ssh
 proxychains4 ssh <USER>@127.0.0.1
 ```
-
-</div>
 
 ### Squid Cache Enum
 
@@ -99,5 +75,3 @@ squidclient -U squid -W '<PASSWORD>' -h <TARGET> cache_object://<TARGET>/
 ```
 
 {{< /tabcontent >}}
-
-<br>

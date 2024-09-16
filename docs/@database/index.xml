@@ -19,7 +19,7 @@
       <link>https://tldrbins.github.io/elasticsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/elasticsearch/</guid>
-      <description>Basic Commands # List indexes curl -s http://&amp;lt;DOMAIN&amp;gt;:9200/_cat/indices?v # Dump data with index name curl -s -X GET &amp;#34;http://&amp;lt;DOMAIN&amp;gt;:9200/&amp;lt;INDEX_NAME&amp;gt;/_search?size=100&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; { &amp;#34;query&amp;#34;: { &amp;#34;match_all&amp;#34;: {} } } &amp;#39; | jq . </description>
+      <description>Basic Commands # List indexes curl -s &amp;lt;TARGET&amp;gt;:9200/_cat/indices?v # Dump data with index name curl -s -X GET &amp;#34;&amp;lt;TARGET&amp;gt;:9200/&amp;lt;INDEX_NAME&amp;gt;/_search?size=100&amp;#34; -H &amp;#39;Content-Type: application/json&amp;#39; -d&amp;#39; { &amp;#34;query&amp;#34;: { &amp;#34;match_all&amp;#34;: {} } } &amp;#39; | jq . </description>
     </item>
     <item>
       <title>Graphql</title>
@@ -89,7 +89,7 @@
       <link>https://tldrbins.github.io/oracle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/oracle/</guid>
-      <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;lt;USER&amp;gt; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
+      <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
     </item>
     <item>
       <title>Postgresql</title>

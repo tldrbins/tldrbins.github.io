@@ -9,8 +9,6 @@ tags: ["alternate Data Stream", "ads", "Windows", "cmd", "powershell"]
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # cmd
 cmd /C dir /R <FILE_PATH>
@@ -21,8 +19,4 @@ cmd /C dir /R <FILE_PATH>
 Get-Item -Path <FILE_PATH> -force -stream *
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

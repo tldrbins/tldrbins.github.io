@@ -6,20 +6,14 @@ tags: ["wordpress", "wpscan"]
 
 ### Default config location
 
-<div>
-
 ```console
 /var/www/html/wp-config.php
 ```
-
-</div>
 
 ### Tools
 
 {{< tab set1 tab1 active >}}wpscan{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
-
-<div>
 
 ```console
 # HTTP
@@ -41,10 +35,6 @@ wpscan --url <TARGET> -e ap,t,tt,u --api-token <API_KEY>
 wpscan --url <TARGET> --passwords passwords.txt --usernames admin
 ```
 
-</div>
-
 <small>*Ref: [Get Free API key](https://wpscan.com/)*</small>
 
 {{< /tabcontent >}}
-
-<br>

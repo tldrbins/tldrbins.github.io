@@ -6,22 +6,12 @@ tags: ["joomla", "cms"]
 
 ### Check Version
 
-<div>
-
 ```console
-curl -s http://<TARGET>/administrator/manifests/files/joomla.xml | head
+curl -s <TARGET>/administrator/manifests/files/joomla.xml | head
 ```
-
-</div>
 
 ### Admin Panel
 
-<div>
-
 ```console
-http://<TARGET>/administrator
+curl -s <TARGET>/administrator
 ```
-
-</div>
-
-<br>

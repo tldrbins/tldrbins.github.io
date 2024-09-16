@@ -9,20 +9,14 @@ tags: ["ssl", "sslscan"]
 {{< tab set1 tab1 active >}}sslscan{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Scan target SSL version
 sslscan <TARGET>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 ### Fix old ssl protocol connection problem
-
-<div>
 
 ```console
 # Edit /etc/ssl/openssl.cnf
@@ -34,8 +28,4 @@ MinProtocol = None
 CipherString = None
 ```
 
-</div>
-
 <small>*Note: Remember to revert the changes after job done*</small>
-
-<br>

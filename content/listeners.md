@@ -11,30 +11,20 @@ tags: ["listener", "revshell", "nc", "pwncat"]
 {{< tab set1 tab3 >}}pwncat{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 rlwrap nc -lvnp <LOCAL_PORT>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Default listening on both ipv4 and ipv6
 rlwrap ncat -lvnp <LOCAL_PORT>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
-
-<div>
 
 ```console
 pwncat-cs -lp <LOCAL_PORT>
@@ -42,13 +32,9 @@ pwncat-cs -lp <LOCAL_PORT>
 
 ```console
 # After getting a connection
-(local) pwncat$ back
+back
 ```
-
-</div>
 
 <small>*Ref: [pwncat](https://github.com/calebstewart/pwncat)*</small>
 
 {{< /tabcontent >}}
-
-<br>

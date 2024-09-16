@@ -6,8 +6,6 @@ tags: ["whois", "domain", "dns", "ip"]
 
 ### WHOIS
 
-<div>
-
 ```console
 # General
 whois <DOMAIN>
@@ -17,7 +15,3 @@ whois <DOMAIN>
 # With specific server
 whois -h <WHOIS_SERVER> -p 43 <DOMAIN>
 ```
-
-</div>
-
-<br>

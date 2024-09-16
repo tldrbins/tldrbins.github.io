@@ -8,8 +8,6 @@ tags: ["mysql", "database"]
 
 #### Connect to mysql Database
 
-<div>
-
 ```console
 # Database unknown
 mysql -u <USER> -h <TARGET> -p'<PASSWORD>'
@@ -25,11 +23,7 @@ mysql -u <USER> -D <DB_NAME> -h <TARGET> -p'<PASSWORD>'
 mysql -u <USER> -D <DB_NAME> -h <TARGET> -p'<PASSWORD>' -e 'show tables;'
 ```
 
-</div>
-
 #### Basic Commands
-
-<div>
 
 ```console
 # Show all databases
@@ -51,27 +45,15 @@ show tables;
 select * from <TABLE_NAME>;
 ```
 
-</div>
-
 #### Update Entry
-
-<div>
 
 ```console
 # Update Entry Example
 UPDATE users set user_type='Administrator' where email='test@example.com';
 ```
 
-</div>
-
 #### Arbitrary File Read
-
-<div>
 
 ```console
 select load_file("/etc/passwd");
 ```
-
-</div>
-
-<br>

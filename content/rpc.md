@@ -12,8 +12,6 @@ tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Wi
 {{< tab set1 tab2 >}}impacket{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Connect without creds
 rpcclient -U '' -N <TARGET>
@@ -29,11 +27,7 @@ rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET>
 rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET> -c 'querydispinfo'
 ```
 
-</div>
-
 #### Basic Commands
-
-<div>
 
 ```console
 # General info
@@ -75,8 +69,6 @@ lookupnames <USER>
 lookupsids <SID>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
@@ -85,5 +77,3 @@ impacket-lookupsid '<USER>:<PASSWORD>@<TARGET>'
 ```
 
 {{< /tabcontent >}}
-
-<br>

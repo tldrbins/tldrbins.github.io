@@ -11,8 +11,6 @@ tags: ["nmap", "port", "network", "discovery", "reconnaissance", "scan", "enum"]
 {{< tab set1 tab3 >}}Script{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 target=<TARGET>
 ```
@@ -29,12 +27,8 @@ ports=$(cat nmap-alltcp.nmap| grep -Eo "^[0-9]+" | tr '\n' ',' | sed -r 's/,$//'
 nmap -p $ports -sCV -oA ./nmap-tcpscripts $target
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 target=<TARGET>
@@ -52,61 +46,40 @@ ports=$(cat nmap-udp.nmap| grep -Eo "^[0-9]+" | tr '\n' ',' | sed -r 's/,$//')
 nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
 
 #### Update scripts DB
 
-<div>
-
 ```console
 nmap --script-updatedb
 ```
 
-</div>
-
 #### Search scripts
 
-<div>
-
 ```console
+# e.g. ftp
 nmap --script-help ftp*
 ```
 
-</div>
-
 #### Scan with a script
 
-<div>
-
 ```console
+# e.g ftp-anon
 nmap --script=ftp-anon -sV -sC -p 21 <TARGET>
 ```
 
-</div>
-
-#### Scan with all scripts
-
-<div>
+#### Scan with wildcard
 
 ```console
+# e.g. smb-vuln*
 nmap --script=smb-vuln* -sV -sC -p 445 <TARGET>
 ```
 
-</div>
-
 #### Run script with args
 
-<div>
-
 ```console
-nmap -p <TARGET_PORT> <TARGET> --script <SCRIPT_NAME> --script-args="<SCRIPT_ARGS>"
+nmap -p <TARGET_PORT> <TARGET> --script <SCRIPT_NAME> --script-args='<SCRIPT_ARGS>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

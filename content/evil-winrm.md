@@ -12,32 +12,22 @@ tags: ["evil-winrm", "remote", "Windows"]
 {{< tab set1 tab4 >}}crt & key{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 evil-winrm -i <TARGET> -u <USER> -p '<PASSWORD>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 evil-winrm -i <TARGET> -u <USER> -H <HASH> 
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
 
-<div>
-
 ```console
-# Step 1: Edit '/etc/krb5.conf'
+# Step 1: Edit '/etc/krb5.conf' (All in uppercase)
 
 [libdefaults]
     default_realm = <DOMAIN>
@@ -64,19 +54,11 @@ export KRB5CCNAME=<CCACHE>
 sudo ntpdate -s <DC> && evil-winrm -i <TARGET> -r <DC>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab4 >}}
-
-<div>
 
 ```console
 evil-winrm -i <TARGET> -S -k auth.key -c auth.crt
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

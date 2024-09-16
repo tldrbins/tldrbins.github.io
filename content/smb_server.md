@@ -11,38 +11,24 @@ tags: ["smb", "file transfer", "ntlm", "Windows"]
 {{< tab set1 tab3 >}}Older Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 impacket-smbserver share . -smb2support
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 impacket-smbserver share . -smb2support -username <USER> -password '<PASSWORD>'
 ```
-
-</div>
 
 <small>*Note: Sometimes smb server with creds may not work*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
 
-<div>
-
 ```console
 impacket-smbserver share .
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

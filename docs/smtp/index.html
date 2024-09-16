@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -199,7 +183,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -339,31 +323,27 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="simple-mail-debugging-server">Simple Mail Debugging Server</h3>
-<div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>!/usr/bin/env python3
-</span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">import aiosmtpd.controller
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">class CustomSMTPHandler:
-</span></span></span><span class="line"><span class="cl"><span class="go">    async def handle_DATA(self, server, session, envelope):
-</span></span></span><span class="line"><span class="cl"><span class="go">        print(f&#34;[+] Received a mail.&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="go">        print(&#34;=&#34; * 50)
-</span></span></span><span class="line"><span class="cl"><span class="go">        print(envelope.content.decode())
-</span></span></span><span class="line"><span class="cl"><span class="go">        print(&#34;=&#34; * 50)
-</span></span></span><span class="line"><span class="cl"><span class="go">        return &#34;250 OK&#34;
-</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">handler = CustomSMTPHandler()
-</span></span></span><span class="line"><span class="cl"><span class="go">server = aiosmtpd.controller.Controller(handler, hostname=&#34;0.0.0.0&#34;, port=25)
-</span></span></span><span class="line"><span class="cl"><span class="go">server.start()
-</span></span></span><span class="line"><span class="cl"><span class="go">print(&#34;[*] Listening on 0.0.0.0:25&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="go">input(&#34;[*] Server started. Press Return to quit.\n&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="go">server.stop()
-</span></span></span></code></pre></div></div>
-<h3 id="users-enum">Users Enum</h3>
+  <h3 id="simple-mail-debugging-server">Simple Mail Debugging Server</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">aiosmtpd.controller</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CustomSMTPHandler</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">async</span> <span class="k">def</span> <span class="nf">handle_DATA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">envelope</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] Received a mail.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">envelope</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;250 OK&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">handler</span> <span class="o">=</span> <span class="n">CustomSMTPHandler</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="o">=</span> <span class="n">aiosmtpd</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">Controller</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="s2">&#34;0.0.0.0&#34;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] Listening on 0.0.0.0:25&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;[*] Server started. Press Return to quit.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</span></span></code></pre></div><h3 id="users-enum">Users Enum</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">nmap script</button>
 
@@ -377,7 +357,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Use VRFY
 </span></span><span class="line"><span class="cl"><span class="go">smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &lt;TARGET&gt;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl">smtp-user-enum.pl</a></em></small></p></div></p>
-<br>
+
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -385,8 +365,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

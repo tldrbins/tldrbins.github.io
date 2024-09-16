@@ -9,8 +9,6 @@ tags: ["webdav", "http", "web"]
 {{< tab set1 tab2 >}}curl{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Without creds
 davtest -url http://<TARGET>
@@ -21,22 +19,14 @@ davtest -url http://<TARGET>
 davtest -url http://<TARGET> -auth '<USER>:<PASSWORD>'
 ```
 
-</div>
-
 <small>*Ref: [Download davtest](https://github.com/cldrn/davtest)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Rename a remote file
 curl -X MOVE -H 'Destination:http://<TARGET>/<NEW_FILENAME>' http://<TARGET>/<FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

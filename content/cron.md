@@ -9,8 +9,6 @@ tags: ["cron", "scheduled tasks", "Linux"]
 
 ### Check Cron Jobs
 
-<div>
-
 ```console
 ls -la /etc/cron.d/
 ```
@@ -23,20 +21,12 @@ cat /etc/crontab
 crontab -l
 ```
 
-</div>
-
 ### Check background processes
-
-<div>
 
 ```console
 ./pspy
 ```
 
-</div>
-
 <small>*Ref: [pspy](https://github.com/DominicBreuker/pspy)*</small>
 
 {{< /tabcontent >}}
-
-<br>

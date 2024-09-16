@@ -9,8 +9,6 @@ tags: ["dotnet", "sdk", "c#", "c sharp", "Windows", "compile", ".NET"]
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Check
 dotnet --info
@@ -58,10 +56,6 @@ dotnet build -c Release
 dotnet run
 ```
 
-</div>
-
 <small>*Ref: [dotnet](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)*</small>
 
 {{< /tabcontent >}}
-
-<br>

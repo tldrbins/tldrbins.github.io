@@ -6,19 +6,13 @@ tags: ["luks", "Linux hard disk encryption", "privesc"]
 
 ### Brute force LUKS password
 
-<div>
-
 ```console
 bruteforce-luks -t 10 -f <WORDLIST> -w state.txt -v 30 <BACKUP_IMG>
 ```
 
-</div>
-
 <small>*Note: This is slow, create a small wordlist*</small>
 
 ### Basic
-
-<div>
 
 ```console
 # Open
@@ -39,7 +33,3 @@ sudo mkdir /mnt/backup
 # Mount
 sudo mount /dev/mapper/backup /mnt/backup/
 ```
-
-</div>
-
-<br>

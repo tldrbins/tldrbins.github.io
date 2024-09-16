@@ -6,8 +6,6 @@ tags: ["iis", "web server", "Windows"]
 
 ### IIS Version
 
-<div>
-
 ```console
 +---------------------------------------------------------------------------------+
 | Version                                            Start Date      End Date     |
@@ -26,7 +24,3 @@ tags: ["iis", "web server", "Windows"]
 | IIS 6.0 on Windows Server 20                                                    |
 +---------------------------------------------------------------------------------+
 ```
-
-</div>
-
-<br>

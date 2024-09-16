@@ -10,19 +10,13 @@ tags: ["port", "network", "discovery", "reconnaissance", "ping", "tcpdump", "Win
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Default infinite pings
 ping -c3 <TARGET>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Default 5 pings
@@ -34,8 +28,6 @@ ping <TARGET>
 Test-NetConnection <TARGET> -Port <TARGET_PORT>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 ### Test reverse connectivity
@@ -43,13 +35,9 @@ Test-NetConnection <TARGET> -Port <TARGET_PORT>
 {{< tab set2 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-<div>
-
 ```console
 sudo tcpdump -ni tun0 icmp
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -57,8 +45,6 @@ sudo tcpdump -ni tun0 icmp
 
 {{< tab set3 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
-
-<div>
 
 ```console
 # For example: on port 389
@@ -70,8 +56,6 @@ sudo tcpdump -i lo -nnXs 0 'port <TARGET_PORT>'
 sudo ./mitmdump -p 443 --mode reverse:https://<DOMAIN> --ssl-insecure --set flow_detail=3
 ```
 
-</div>
-
 <small>*Ref: [mitmproxy](https://mitmproxy.org/)*</small>
 
 {{< /tabcontent >}}
@@ -81,13 +65,9 @@ sudo ./mitmdump -p 443 --mode reverse:https://<DOMAIN> --ssl-insecure --set flow
 {{< tab set4 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
-<div>
-
 ```console
 for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep "bytes from" &); done;
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -96,13 +76,9 @@ for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep "bytes from" &); done
 {{< tab set5 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
-<div>
-
 ```console
 for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2>&1 | grep -v "Connection refused" &); done
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -110,8 +86,6 @@ for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2>&1 | grep -v "Connection r
 
 {{< tab set6 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
-
-<div>
 
 ```console
 arp -na
@@ -121,8 +95,6 @@ arp -na
 cat /proc/net/arp
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 ### Check IP
@@ -130,8 +102,6 @@ cat /proc/net/arp
 {{< tab set7 tab1 active >}}Linux{{< /tab >}}
 {{< tab set7 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set7 tab1 >}}
-
-<div>
 
 ```console
 # Linux
@@ -146,18 +116,12 @@ ip addr
 cat /proc/net/fib_trie
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set7 tab2 >}}
-
-<div>
 
 ```console
 ipconfig
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -166,8 +130,6 @@ ipconfig
 {{< tab set8 tab1 active >}}Linux{{< /tab >}}
 {{< tab set8 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set8 tab1 >}}
-
-<div>
 
 ```console
 # TCP
@@ -188,12 +150,8 @@ cat /proc/net/tcp | grep '00000000:0000 0A'
 ss -tnl
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set8 tab2 >}}
-
-<div>
 
 ```console
 # List only listening ports
@@ -205,8 +163,4 @@ netstat -ano | findstr LISTENING
 Get-NetTCPConnection -State Listen | Select-Object -Property *,@{'Name' = 'ProcessName';'Expression'={(Get-Process -Id $_.OwningProcess).Name}} | Format-Table -Property LocalAddress,LocalPort,OwningProcess,ProcessName
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

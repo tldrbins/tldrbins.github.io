@@ -9,8 +9,6 @@ tags: ["defender", "av", "antivirus", "Windows", "powershell", "bypass"]
 {{< tab set1 tab1 active >}}Powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Disable realtime monitoring
 Set-MpPreference -DisableRealtimeMonitoring $true
@@ -21,8 +19,4 @@ Set-MpPreference -DisableRealtimeMonitoring $true
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

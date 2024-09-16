@@ -10,26 +10,16 @@ tags: ["steganography", "steg", "exiftool", "ctf"]
 {{< tab set1 tab2 >}}steghide{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 exiftool <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Always try with empty passphrase
 steghide extract -sf <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

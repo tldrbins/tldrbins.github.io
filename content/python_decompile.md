@@ -11,19 +11,13 @@ tags: ["python", "pyc", "decompile", "uncompyle6", "reversing", "pyinstxtractor"
 {{< tab set1 tab3 >}}pycdc{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Unpack pyinstaller packed binary
 pyinstxtractor <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Install
@@ -35,12 +29,8 @@ pip3 install uncompyle6
 uncompyle6 <PYC_FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
-
-<div>
 
 ```console
 # Install
@@ -68,10 +58,6 @@ make check
 ./pycdc <PYC_FILE>
 ```
 
-</div>
-
 <small>*Ref: [pycdc](https://github.com/zrax/pycdc)*</small>
 
 {{< /tabcontent >}}
-
-<br>

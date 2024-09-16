@@ -6,8 +6,6 @@ tags: ["docker", "container", "docker registry", "api"]
 
 ### Docker Registry API
 
-<div>
-
 ```console
 # List repos
 curl -s -k --user "<USER>:<PASSWORD>" <TARGET>/v2/_catalog
@@ -28,18 +26,12 @@ curl -s -k --user "<USER>:<PASSWORD>" <TARGET>/v2/<REPO_NAME>/manifests/latest
 curl -s -k --user "<USER>:<PASSWORD>" <TARGET>/v2/<REPO_NAME>/blobs/sha256:<BLOB_HASH>'
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Docker Registry Dump
 
 {{< tab set1 tab1 active >}}DockerRegistryGrabber{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
-
-<div>
 
 ```console
 # List repos
@@ -51,10 +43,6 @@ python3 drg.py <TARGET> -A <TOKEN> --list
 python3 drg.py <TARGET> -A <TOKEN> --dump <REPO>
 ```
 
-</div>
-
 <small>*Ref: [DockerRegistryGrabber](https://github.com/Syzik/DockerRegistryGrabber)*</small>
 
 {{< /tabcontent >}}
-
-<br>

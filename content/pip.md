@@ -8,8 +8,6 @@ tags: ["pip", "pip3", "python", "sudo", "privesc"]
 
 #### 1. Create a setup.py
 
-<div>
-
 ```console
 #!/usr/bin/env python3
 
@@ -35,17 +33,9 @@ setup(
 )
 ```
 
-</div>
-
 #### 2. Exploit
-
-<div>
 
 ```console
 # Run
 sudo pip install .
 ```
-
-</div>
-
-<br>

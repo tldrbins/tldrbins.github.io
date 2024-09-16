@@ -8,19 +8,13 @@ tags: ["java", "jd-gui", "decompiler", "reversing"]
 
 #### Decompile JAR
 
-<div>
-
 ```console
 jd-gui
 ```
 
-</div>
-
 <small>*Ref: [Download jd-gui](https://github.com/java-decompiler/jd-gui)*</small>
 
 #### Compile
-
-<div>
 
 ```console
 # Compile
@@ -31,7 +25,3 @@ javac src/program.java
 # Pack into jar
 jar -cvf program.jar -C src/ .
 ```
-
-</div>
-
-<br>

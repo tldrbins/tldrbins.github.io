@@ -10,8 +10,6 @@ tags: ["firefox", "mozilla", "creds", "password"]
 {{< tab set1 tab2 >}}firepwd{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Auto detect path
 python3 firefox_decrypt.py
@@ -22,24 +20,16 @@ python3 firefox_decrypt.py
 python3 firefox_decrypt.py /<PATH>/profiles.ini/
 ```
 
-</div>
-
 <small>*Ref: [firefox_decrypt](https://github.com/unode/firefox_decrypt)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # With key4.db, logins.json in the same directory
 python3 firepwd.py
 ```
 
-</div>
-
 <small>*Ref: [firepwd](https://github.com/lclevy/firepwd)*</small>
 
 {{< /tabcontent >}}
-
-<br>

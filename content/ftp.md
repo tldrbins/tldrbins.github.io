@@ -6,22 +6,11 @@ tags: ["ftp", "file transfer"]
 
 ### Config Location
 
-<div>
-
 ```console
 /etc/vsftpd.conf
 ```
 
-</div>
-
 ### Basic
-
-<div>
-
-```console
-# Connect
-ftp <TARGET>
-```
 
 ```console
 +---------------------+
@@ -30,6 +19,13 @@ ftp <TARGET>
 | Username: anonymous |
 | Password: (empty)   |
 +---------------------+
+```
+
+<br>
+
+```console
+# Connect
+ftp <TARGET>
 ```
 
 ```console
@@ -72,24 +68,16 @@ passive
 quit
 ```
 
-</div>
-
 ### Recusive download
 
-<div>
-
 ```console
-# anonymous login
+# Anonymous login
 wget -r ftp://anonymous:@<TARGET>
 ```
 
 ```console
-# with creds
+# With creds
 wget --user <USER> --password '<PASSWORD>' -m ftp://<TARGET>
 ```
 
 <small>*Note: Always check what's in there first*</small>
-
-</div>
-
-<br>

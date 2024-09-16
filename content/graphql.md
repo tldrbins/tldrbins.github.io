@@ -6,8 +6,6 @@ tags: ["graphql", "database"]
 
 ### Visualize Tool
 
-<div>
-
 ```console
 +---------------------------------------------------------------+
 | 1. Change Schema -> Introspection -> Copy Introspection Query |
@@ -16,13 +14,9 @@ tags: ["graphql", "database"]
 +---------------------------------------------------------------+
 ```
 
-</div>
-
 <small>*Ref: [graphql-voyager](https://graphql-kit.com/graphql-voyager/)*</small>
 
 ### Basic Commands
-
-<div>
 
 ```console
 # Get fields from schema
@@ -43,7 +37,3 @@ curl -s <TARGET>:3000/graphql -H "Content-Type: application/json" -d '{"query":"
 # Dump data from type (e.g. User type with fields username and password)
 curl -s <TARGET>:3000/graphql -H "Content-Type: application/json" -d '{"query":"{User{username,password}}"}' | jq .
 ```
-
-</div>
-
-<br>

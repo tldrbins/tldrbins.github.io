@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -205,7 +189,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -345,29 +329,22 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<p>
+  <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">msfconsole</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >meterpreter</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-msfconsole">Start msfconsole</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfconsole -q
-</span></span></span></code></pre></div></div>
-<h4 id="basic-commands">Basic Commands</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Return to previous page
 </span></span><span class="line"><span class="cl"><span class="go">back
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upgrade session
 </span></span><span class="line"><span class="cl"><span class="go">sessions -u
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> quit metasploit
 </span></span><span class="line"><span class="cl"><span class="go">exit
-</span></span></span></code></pre></div></div>
-<h4 id="search-exploit">Search Exploit</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="search-exploit">Search Exploit</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example: samba
 </span></span><span class="line"><span class="cl"><span class="go">search samba
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Choose by <span class="c1">#num</span>
@@ -382,10 +359,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set lport &lt;LOCAL_PORT&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run exploit
 </span></span><span class="line"><span class="cl"><span class="go">run 
-</span></span></span></code></pre></div></div>
-<p><small><em>Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</em></small></p>
+</span></span></span></code></pre></div><p><small><em>Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</em></small></p>
 <h4 id="add-scripts-from-searchsploit">Add scripts from searchsploit</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mkdir -p ~/.msf4/modules/exploits/linux
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mkdir -p ~/.msf4/modules/exploits/windows
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example a linux script
@@ -394,9 +369,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">reload_all
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Search
 </span></span><span class="line"><span class="cl"><span class="go">search 12345
-</span></span></span></code></pre></div></div>
-<h4 id="fix-no-search-result">Fix no search result</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="fix-no-search-result">Fix no search result</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Inside msfconsole, check db status
 </span></span><span class="line"><span class="cl"><span class="go">db_status
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo service postgresql start
@@ -404,15 +377,12 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo msfdb init
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Go bask to msfconsole and check again
 </span></span><span class="line"><span class="cl"><span class="go">db_status
-</span></span></span></code></pre></div></div></div>
+</span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="basic-commands">Basic Commands</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Return from meterpreter
 </span></span><span class="line"><span class="cl"><span class="go">background
-</span></span></span></code></pre></div></div>
-<h4 id="use-exploit">Use Exploit</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="use-exploit">Use Exploit</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Quick look of potential privesc <span class="o">(</span>Windows<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="gp">#</span> Need to <span class="k">return</span> from meterpreter
 </span></span><span class="line"><span class="cl"><span class="go">use post/multi/recon/local_exploit_suggester
@@ -424,18 +394,15 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">set rhosts &lt;TARGET&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run exploit
 </span></span><span class="line"><span class="cl"><span class="go">run 
-</span></span></span></code></pre></div></div>
-<h4 id="use-powershell">Use powershell</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="use-powershell">Use powershell</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Use powershell module
 </span></span><span class="line"><span class="cl"><span class="go">use powershell
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import module
 </span></span><span class="line"><span class="cl"><span class="go">powershell_import /usr/share/windows-resources/powersploit/Recon/PowerView.ps1
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Spawn powershell session
 </span></span><span class="line"><span class="cl"><span class="go">powershell_shell 
-</span></span></span></code></pre></div></div>
-</div></p>
-<br>
+</span></span></span></code></pre></div></div></p>
+
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -443,8 +410,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

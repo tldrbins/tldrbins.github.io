@@ -9,8 +9,6 @@ tags: ["scheduled tasks", "Windows", "enum"]
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 schtasks /query
 ```
@@ -20,8 +18,4 @@ schtasks /query
 schtasks /TN \Microsoft\Windows\<FOLDER>\<TASKNAME> /FO LIST /V
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

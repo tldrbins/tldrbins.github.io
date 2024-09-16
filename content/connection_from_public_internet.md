@@ -6,13 +6,7 @@ tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
 
 ### Simply catch HTTP request
 
-<div>
-
 [webhook.site](https://webhook.site)
-
-</div>
-
-<br>
 
 ---
 
@@ -21,8 +15,6 @@ tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
 {{< tab set1 tab1 active >}}serveo.net{{< /tab >}}
 {{< tab set1 tab2 >}}ngrok{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
-
-<div>
 
 ```console
 # Start a local HTTP server
@@ -34,12 +26,8 @@ python3 -m http.server <LOCAL_PORT>
 ssh -R 80:localhost:<LOCAL_PORT> serveo.net
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 ngrok http 80
@@ -51,8 +39,4 @@ ngrok http 80
 <br>
 <small>*Note: Not good for XSS*</small>
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

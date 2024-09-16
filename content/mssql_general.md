@@ -12,8 +12,6 @@ tags: ["mssql", "database", "Windows"]
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 impacket-mssqlclient '<USER>:<PASSWORD>@<TARGET>'
 ```
@@ -23,25 +21,17 @@ impacket-mssqlclient '<USER>:<PASSWORD>@<TARGET>'
 impacket-mssqlclient -windows-auth '<USER>:<PASSWORD>@<TARGET>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # With inline query
 sqlcmd -S <TARGET> -U <USER> -P '<PASSWORD>' -d <DB_NAME> -Q "SELECT @@version;"
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 #### Basic Commands
-
-<div>
 
 ```console
 # Check mssql version
@@ -118,11 +108,7 @@ SELECT master.dbo.fn_varbintohexstr(SUSER_SID('<DOMAIN>\Domain Admins'))
 SELECT * FROM OPENROWSET(BULK N'<FILE>', SINGLE_CLOB) AS Contents
 ```
 
-</div>
-
 #### Create sa user
-
-<div>
 
 ```console
 CREATE LOGIN '<USER>' WITH PASSWORD = '<PASSWORD>';
@@ -131,7 +117,3 @@ CREATE LOGIN '<USER>' WITH PASSWORD = '<PASSWORD>';
 ```console
 EXEC sp_addsrvrolemember '<USER>', 'sysadmin';
 ```
-
-</div>
-
-<br>

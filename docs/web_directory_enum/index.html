@@ -44,16 +44,20 @@
 </div>
     
 <style>
+ 
 
  
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 
 .js-toggle-wrapper {
     display: table;
-
-     
     float: right;
     margin-left: auto;
-    margin-right: 0;
 }
 
 .js-toggle {
@@ -62,76 +66,60 @@
     position: relative;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    padding: 0;
-    -webkit-touch-callout: none;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .js-toggle-screenreader-only {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
+}
+
+.js-toggle-screenreader-only {
     position: absolute;
     width: 1px;
-  }
-  
-  .js-toggle-track {
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
     width: 50px;
     height: 24px;
-    padding: 0;
     border-radius: 30px;
     background-color: hsl(223, 61%, 44%);
-    transition: all 0.2s ease;
-  }
-  
-  .js-toggle-track-check {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-    transition: opacity 0.25s ease;
-  }
+    transition: background-color 0.2s ease;
+}
 
-  .js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-  }
-  
-  .js-toggle-track-x {
+.js-toggle-track-check,
+.js-toggle-track-x {
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 5px;
-    top: 0px;
-    bottom: 0px;
-    margin-top: auto;
-    margin-bottom: auto;
-    line-height: 0;
-    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
     transition: opacity 0.25s ease;
-  }
-  
-  .js-toggle--checked .js-toggle-track-x {
+}
+
+.js-toggle-track-check {
+    left: 5px;
     opacity: 0;
-  }
-  
-  .js-toggle-thumb {
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
     position: absolute;
     top: 1px;
     left: 1px;
@@ -139,15 +127,12 @@
     height: 22px;
     border-radius: 50%;
     background-color: #fafafa;
-    box-sizing: border-box;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-    transform: translateX(0);
-  }
-  
-  .js-toggle--checked .js-toggle-thumb {
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
     transform: translateX(26px);
-    border-color: #19ab27;
-  }
+}
 </style>
 
 <script>
@@ -176,7 +161,6 @@
         switcher.classList.add('js-toggle--checked');
         body.classList.add('dark-mode');
     }
-
 </script>
   <p class="desc"></p>
 </header>
@@ -205,7 +189,7 @@
 </ul>
 <hr>
 <div class="content">
-<div id="dynamicFormContainer">
+  <div id="dynamicFormContainer">
 	<form id="dynamicForm" style="display: none;">
 	</form>
 	<div class="buttons center">
@@ -345,10 +329,8 @@ body.dark-mode #dynamicFormContainer button:hover {
     cursor: pointer;
     background: #424242;
 }
-
-
 </style>
-<p>
+  <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">feroxbuster</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >wfuzz</button>
@@ -360,49 +342,31 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab5" >ds_walk</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="http">HTTP</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
-</span></span></span></code></pre></div></div>
-<h4 id="https">HTTPS</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="https">HTTPS</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u https://&lt;TARGET&gt;/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
-</span></span></span></code></pre></div></div>
-<h4 id="specify-extension">Specify Extension</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="specify-extension">Specify Extension</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
-</span></span></span></code></pre></div></div>
-<h4 id="add-trailing-slash--to-each-request">Add trailing slash &apos;/&apos; to each request</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="add-trailing-slash--to-each-request">Add trailing slash &apos;/&apos; to each request</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
-</span></span></span></code></pre></div></div>
-<h4 id="api-fuzzing">API Fuzzing</h4>
-<div>
+</span></span></span></code></pre></div><h4 id="api-fuzzing">API Fuzzing</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 </span></span></span></code></pre></div></div>
-</div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="fuzzing-number-range">Fuzzing Number Range</h4>
-<div>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">wfuzz -z range,1-99 http://&lt;TARGET&gt;/users/FUZZ
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gobuster dir -u http://&lt;TARGET&gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gobuster dir -u http://&lt;TARGET&gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
 </span></span></span></code></pre></div></div>
-</div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> BFAC <span class="o">(</span>Backup File Artifacts Checker<span class="o">)</span>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> BFAC <span class="o">(</span>Backup File Artifacts Checker<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">bfac --url http://&lt;TARGET&gt;
-</span></span></span></code></pre></div></div>
-<p><small><em>Ref: <a href="https://github.com/mazen160/bfac">BFAC</a></em></small></p></div>
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mazen160/bfac">BFAC</a></em></small></p></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 ds_walk.py -u http://&lt;TARGET&gt;
-</span></span></span></code></pre></div></div>
-<p><small><em>Ref: <a href="https://github.com/Keramas/DS_Walk">DS_WALK</a></em></small></p></div></p>
-<br>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 ds_walk.py -u http://&lt;TARGET&gt;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/Keramas/DS_Walk">DS_WALK</a></em></small></p></div></p>
+
 </div></div>
     
     <script src="/js/utils.js"></script>
@@ -410,8 +374,6 @@ body.dark-mode #dynamicFormContainer button:hover {
     <hr>
     <div class="footer-text">
         <div>© 2024 TLDRBins</div>
-        <div>Powered by <a href="https://gohugo.io/">Hugo</a> & <a
-                href="https://github.com/adityatelange/hugo-index/">Index</a></div>
     </div>
 </footer>
 </body>

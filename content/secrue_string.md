@@ -9,8 +9,6 @@ tags: ["powershell", "secure strings", "Windows", "decrypt"]
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 $s = cat pass.xml
 ```
@@ -27,8 +25,4 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 $cred.GetNetworkCredential().password
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

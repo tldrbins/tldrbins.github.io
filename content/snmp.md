@@ -10,28 +10,20 @@ tags: ["snmp", "reconnaissance", "enum", "snmpwalk", "udp", "onesixtyone"]
 {{< tab set1 tab2 >}}snmpbrute{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Brute force community string for snmpwalk use
 onesixtyone <TARGET> -c /usr/share/doc/onesixtyone/dict.txt
 ```
-
-</div>
 
 <small>*Ref: [onesixtyone](https://github.com/trailofbits/onesixtyone)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-<div>
-
 ```console
 # Brute force community string (Check also SNMPv2)
 python3 snmpbrute.py -t <TARGET>
 ```
-
-</div>
 
 <small>*Ref: [snmpbrute.py](https://github.com/SECFORCE/SNMP-Brute/blob/master/snmpbrute.py)*</small>
 
@@ -43,8 +35,6 @@ python3 snmpbrute.py -t <TARGET>
 {{< tab set2 tab2 >}}snmpbulkwalk{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-<div>
-
 ```console
 # Install
 sudo apt install snmp
@@ -55,11 +45,7 @@ sudo apt install snmp
 sudo apt install snmp-mibs-downloader
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 # Comment out this line in /etc/snmp/snmp.conf
@@ -69,11 +55,7 @@ sudo apt install snmp-mibs-downloader
 mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
 ```
 
-</div>
-
 #### Basic Commands
-
-<div>
 
 ```console
 snmpwalk -v1 -c public <TARGET> | tee snmpwalk_result
@@ -88,20 +70,12 @@ snmpwalk -v2c -c public <TARGET> | tee snmpwalk_result
 snmpwalk -v2c -c public <TARGET> ipAddressIfIndex.ipv6
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
-
-<div>
 
 ```console
 # Multithreads, much faster
 snmpbulkwalk -Cr 50 -c public -v2c <TARGET>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

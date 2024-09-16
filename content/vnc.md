@@ -6,13 +6,9 @@ tags: ["vnc", "remote desktop", "5901"]
 
 ### Basic
 
-<div>
-
 ```console
 # Connect
 vncviewer <TARGET>:5901 -passwd <SECRET_FILE>
 ```
-
-</div>
 
 <small>*Note: secret is a cookie binary file*</small>

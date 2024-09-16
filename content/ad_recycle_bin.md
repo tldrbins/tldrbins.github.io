@@ -11,45 +11,27 @@ tags: ["ad recycle bin", "active driectory", "ad", "Windows"]
 
 #### 1. Import AD module
 
-<div>
-
 ```console
 import-module activedirectory
 ```
 
-</div>
-
 #### 2. Query all deleted objects within domain
-
-<div>
 
 ```console
 Get-ADObject -filter 'isDeleted -eq $true -and name -ne "Deleted Objects"' -includeDeletedObjects
 ```
 
-</div>
-
 #### 3. Get all details for the deleted account
-
-<div>
 
 ```console
 Get-ADObject -filter { SAMAccountName -eq <DELETED_USER> } -includeDeletedObjects -property *
 ```
 
-</div>
-
-#### 4. Restore deleted account
-
-<div>
+#### 4. Restore the deleted account
 
 ```console
-# Rename the target account to avoid user exist error
-Restore-ADObject -Identity <OBJECT_GUID> -NewName <NEW_USER> -TargetPath 'CN=Users,DC=<EXAMPLE>,DC=<COM>'
+# Rename the target account to avoid user exists error
+Restore-ADObject -Identity <OBJECT_GUID> -NewName '<NEW_USER>' -TargetPath 'CN=Users,DC=<EXAMPLE>,DC=<COM>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

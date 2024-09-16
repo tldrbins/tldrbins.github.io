@@ -9,13 +9,9 @@ tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads", "sid", "ad"]
 {{< tab set1 tab1 active >}}nmap{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 sudo nmap --script=smb-enum-shares -p 445 <TARGET>
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -25,8 +21,6 @@ sudo nmap --script=smb-enum-shares -p 445 <TARGET>
 {{< tab set2 tab2 >}}smbclient{{< /tab >}}
 {{< tab set2 tab3 >}}impacket{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
-
-<div>
 
 ```console
 smbmap -H <TARGET> --no-banner
@@ -41,12 +35,8 @@ smbmap -H <TARGET> -u null --no-banner
 smbmap -H <TARGET> -r <SHARE>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
-
-<div>
 
 ```console
 smbclient -N -L \\\\<TARGET>\\
@@ -62,19 +52,13 @@ smbclient -N \\\\<TARGET>\\<SHARE>\\
 smbclient -N -L \\\\<TARGET>\\ --option='client min protocol=NT1'
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set2 tab3 >}}
-
-<div>
 
 ```console
 # SID brute, if null auth allowed
 impacket-lookupsid test@<DOMAIN> -no-pass
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -83,8 +67,6 @@ impacket-lookupsid test@<DOMAIN> -no-pass
 {{< tab set3 tab1 active >}}smbmap{{< /tab >}}
 {{< tab set3 tab2 >}}smbclient{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
-
-<div>
 
 ```console
 smbmap -H <TARGET> -u <USER> -p '<PASSWORD>'
@@ -104,8 +86,6 @@ smbmap -H <TARGET> -r <SHARE> --download <PATH_TO_FILE>
 # List files with regex pattern
 smbmap -H <TARGET> -u <USER> -p '<PASSWORD>' -r <SHARE> -A <FILE_PATTERN>
 ```
-
-</div>
 
 {{< /tabcontent >}}
 {{< tabcontent set3 tab2 >}}
@@ -127,19 +107,13 @@ smbclient  \\\\<TARGET>\\<SHARE>\\ -U '<DOMAIN>/<USER>%<PASSWORD>'
 {{< tab set4 tab1 active >}}impacket{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
-<div>
-
 ```console
 impacket-smbclient '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 #### Basic commands
-
-<div>
 
 ```console
 # List all files in a share
@@ -167,11 +141,7 @@ prompt OFF
 mget *
 ```
 
-</div>
-
 #### List Alternate Data Streams (ADS)
-
-<div>
 
 ```console
 allinfo <FILE>
@@ -187,10 +157,6 @@ allinfo <FILE>
 get "<FILE>:Password"
 ```
 
-</div>
-
-
-<br>
 
 ---
 
@@ -200,31 +166,21 @@ get "<FILE>:Password"
 {{< tab set5 tab2 >}}Authenticated{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
-<div>
-
 ```console
 sudo mount -t cifs //<TARGET>/<SHARE> /mnt
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set5 tab2 >}}
-
-<div>
 
 ```console
 sudo mount -t cifs -o ro,user=<USER>,password='<PASSWORD>' //<TARGET>/<SHARE> /mnt
 ```
 
-</div>
-
 {{< /tabcontent >}}
 
 
 #### Check write permission
-
-<div>
 
 ```console
 sudo find . -type d | while read directory; do touch ${directory}/test 2>/dev/null && echo "${directory} - write file" && rm ${directory}/test; mkdir ${directory}/test 2>/dev/null && echo "${directory} - write directory" && rmdir ${directory}/test; done
@@ -235,20 +191,10 @@ sudo find . -type d | while read directory; do touch ${directory}/test 2>/dev/nu
 sudo touch {/mnt/,./}test.{dll,exe,ini,lnk}
 ```
 
-</div>
-
-<br>
-
 ---
 
 ### Change SMB password (With old password)
 
-<div>
-
 ```console
 smbpasswd -r <TARGET> -U <USER>
 ```
-
-</div>
-
-<br>

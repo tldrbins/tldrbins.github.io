@@ -6,9 +6,7 @@ tags: ["smtp", "mail", "email", "25", "enum", "template"]
 
 ### Simple Mail Debugging Server
 
-<div>
-
-```console
+```python
 #!/usr/bin/env python3
 
 import aiosmtpd.controller
@@ -28,8 +26,6 @@ print("[*] Listening on 0.0.0.0:25")
 input("[*] Server started. Press Return to quit.\n")
 server.stop()
 ```
-
-</div>
 
 ### Users Enum
 
@@ -57,5 +53,3 @@ smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.t
 <small>*Ref: [smtp-user-enum.pl](https://raw.githubusercontent.com/pentestmonkey/smtp-user-enum/master/smtp-user-enum.pl)*</small>
 
 {{< /tabcontent >}}
-
-<br>

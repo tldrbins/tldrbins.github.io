@@ -6,8 +6,6 @@ tags: ["password", "cracking", "john", "hashcat"]
 
 ### Convert file to hash format
 
-<div>
-
 ```console
 # For example
 ssh2john id_rsa_encrypted > hash
@@ -26,17 +24,11 @@ zip2john test.zip > hash
 find / -name *2john 2>/dev/null
 ```
 
-</div>
-
-<br>
-
 ---
 
 {{< tab set1 tab1 active >}}john{{< /tab >}}
 {{< tab set1 tab2 >}}hashcat{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
-
-<div>
 
 ```console
 # General use
@@ -58,12 +50,8 @@ john --show hash
 john --show hash --format=Raw-SHA512
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Auto detect hash format
@@ -80,22 +68,14 @@ hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.txt --force
 hashcat hash --user
 ```
 
-</div>
-
 #### Create a wordlist
-
-<div>
 
 ```console
 # For example, `Test` with 4 digits and a symbol
 hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 +------------------------------------------+
@@ -112,10 +92,6 @@ hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
 +-----------------------------------------+
 ```
 
-</div>
-
 <small>*Ref: [Example Hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)*</small>
 
 {{< /tabcontent >}}
-
-<br>

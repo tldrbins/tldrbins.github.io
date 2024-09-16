@@ -6,8 +6,6 @@ tags: ["pop3", "telnet", "mail", "email"]
 
 ### Basic
 
-<div>
-
 ```console
 # Connect to POP3 mail server
 telnet <TARGET> 110
@@ -36,7 +34,3 @@ RETR 1
 # Exit Ctrl + ], then
 quit
 ```
-
-</div>
-
-<br>

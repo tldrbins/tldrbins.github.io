@@ -6,43 +6,31 @@ tags: ["openssl", "base64", "cert", "ssl", "certificate signing request", "csr",
 
 ### Show TLS Certificate from HTTPS web server
 
-<div>
-
 ```console
 echo | openssl s_client -showcerts -servername <TARGET> -connect <TARGET>:443 2>/dev/null | openssl x509 -inform pem -noout -text
 ```
 
-</div>
-
-<br>
-
----
-
-### Certificate
-
-#### Show content of a request
-
-<div>
+### Show content of a CSR
 
 ```console
 openssl req -in request.csr -noout -text
 ```
 
-</div>
+### Create Client Certificate
 
-#### Create Client Certificate
-
-<div>
+#### 1. Generate a user key
 
 ```console
-# Generate a user key
 openssl genrsa -out username.key 2048                                                      
 ```
 
+#### 2. Create a CSR
+
 ```console
-# Create a CSR
 openssl req -new -key username.key -out username.csr
 ```
+
+<br>
 
 ```console
 # Settings
@@ -69,10 +57,17 @@ openssl req -new -key username.key -out username.csr
 +-----------------------------------------------------------------------------+
 ```
 
+#### 3. Sign the .csr with a valid key and cert pair
+
 ```console
-# Sign the .csr with a valid key and cert pair
-openssl x509 -req -in username.csr -CA company.cert.pem -CAkey company.key.pem -CAcreateserial -out username.pem -days 1024
+openssl x509 -req -in username.csr -CA <CERT_PEM_FILE> -CAkey <CERT_KEY_FILE> -CAcreateserial -out username.pem -days 1024
 ```
+
+#### 4. Use the pfx file
+
+{{< tab set1 tab1 active >}}firefox{{< /tab >}}
+{{< tab set1 tab2 >}}curl{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
 ```console
 # Convert to pfx that Firefox can import
@@ -87,16 +82,16 @@ openssl pkcs12 -export -out username.pfx -inkey username.key -in username.pem -c
 +------------------------------------+
 ```
 
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
 ```console
-# Alternative: curl
-curl -k --cert username.pem --key username.key https://<TARGET>
+curl -k --cert username.pem --key username.key <TARGET>
 ```
 
-</div>
+{{< /tabcontent >}}
 
-#### Convert .p12 to .key and .crt
-
-<div>
+### Convert .p12 to .key and .crt
 
 ```console
 # Create cert.key
@@ -108,15 +103,7 @@ openssl pkcs12 -in cert.p12 -nocerts -out cert.key
 openssl pkcs12 -in cert.p12 -clcerts -nokeys -out cert.crt
 ```
 
-</div>
-
-<br>
-
----
-
 ### Base64 Encode/Decode
-
-<div>
 
 ```console
 # base64 encode a file
@@ -127,7 +114,3 @@ openssl base64 -in ./file
 # base64 decode a file and output to a file
 cat b64_file | openssl enc -d -base64 -out ./file
 ```
-
-</div>
-
-<br>

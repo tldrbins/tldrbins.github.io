@@ -10,40 +10,26 @@ tags: ["smb", "share", "mount", "cifs", "enum", "nfs"]
 
 #### List share
 
-<div>
-
 ```console
 showmount -e <TARGET>
 ```
 
-</div>
-
 #### Mount share
-
-<div>
 
 ```console
 sudo mount -t nfs <TARGET>:/share /mnt/share/
 ```
 
-</div>
-
 #### Unmount share
-
-<div>
 
 ```console
 sudo umount /mnt/share/
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 #### Mount share
-
-<div>
 
 ```console
 sudo mount -t cifs //<TARGET>/share /mnt
@@ -56,18 +42,14 @@ sudo mount -t cifs -o user=,password= //<TARGET>/share /mnt
 
 ```console
 # With creds
-sudo mount -t cifs -o user=<USER>,pass='<PASSWORD>' //<TARGET>/share /mnt
+sudo mount -t cifs -o user='<USER>',pass='<PASSWORD>' //<TARGET>/share /mnt
 ```
-
-</div>
 
 #### Mount inside Windows
 
-<div>
-
 ```console
 # Mount
-net use \\localhost\c$ /u:<DOMAIN>\<USER> '<PASSWORD>'
+net use \\localhost\c$ /u:'<DOMAIN>\<USER>' '<PASSWORD>'
 ```
 
 ```console
@@ -75,17 +57,11 @@ net use \\localhost\c$ /u:<DOMAIN>\<USER> '<PASSWORD>'
 dir \\localhost\c$\users\administrator\desktop
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
 ### Abuse #1: Misconfigured Share
-
-<div>
 
 ```console
 # Check all mounted drives
@@ -97,11 +73,7 @@ mount
 cat /etc/exports
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 +-----------------------------------------------------------------------------------------+
@@ -110,11 +82,7 @@ cat /etc/exports
 +-----------------------------------------------------------------------------------------+
 ```
 
-</div>
-
 <br>
-
-<div>
 
 ```console
 # Add dummy user
@@ -130,7 +98,3 @@ sudo usermod -u 1001 dummy
 # Switch to dummy user
 sudo su dummy -c bash
 ```
-
-</div>
-
-<br>

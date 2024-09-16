@@ -9,17 +9,11 @@ tags: ["powershell", "find", "files", "Windows", "cmd"]
 
 ### Show hidden files
 
-<div>
-
 ```console
 Get-ChildItem -force
 ```
 
-</div>
-
 ### Find a file
-
-<div>
 
 ```console
 ls -path <PATH> -Filter <FILE> -recurse -erroraction silent
@@ -29,11 +23,7 @@ ls -path <PATH> -Filter <FILE> -recurse -erroraction silent
 where /R <PATH> <FILE>
 ```
 
-</div>
-
 ### Find a file, with rules
-
-<div>
 
 ```console
 dir /s /b /a:-d-h <PATH> | findstr /i /v '<STRING>'
@@ -52,8 +42,4 @@ dir /s /b /a:-d-h <PATH> | findstr /i /v '<STRING>'
 +---------------------------------------+
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

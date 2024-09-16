@@ -9,8 +9,6 @@ tags: ["flask", "python", "cookie", "sign", "unsign"]
 {{< tab set1 tab1 active >}}flask-unsign{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Install
 pip3 install flask-unsign
@@ -31,8 +29,4 @@ flask-unsign --unsign --cookie <COOKIE> -w /usr/share/wordlists/rockyou.txt --no
 flask-unsign --sign --cookie <COOKIE_DATA> --secret <SECRET>
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

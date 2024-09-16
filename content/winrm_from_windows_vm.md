@@ -8,22 +8,16 @@ tags: ["winrm", "pssession", "Windows", "file transfer", "kerberos"]
 
 #### 0. Check Systeminfo
 
-<div>
-
 ```console
 # Windows Pro is needed
 systeminfo
 ```
-
-</div>
 
 #### 1. Connect to VPN
 
 [OpenVPN client](https://openvpn.net/client/)
 
 #### 2. Add DNS Server
-
-<div>
 
 ```console
 +-----------------------------------------------------------------------------------+
@@ -35,11 +29,7 @@ systeminfo
 +-----------------------------------------------------------------------------------+
 ```
 
-</div>
-
 #### 3. Add domain to hosts
-
-<div>
 
 ```
 +--------------------------------------------------------+
@@ -49,11 +39,7 @@ systeminfo
 +--------------------------------------------------------+
 ```
 
-</div>
-
 #### 4. Add computer to domain
-
-<div>
 
 ```
 +--------------------------------------------------------------------+
@@ -66,24 +52,16 @@ systeminfo
 +--------------------------------------------------------------------+
 ```
 
-</div>
-
 #### 5. Sync Time with DC
 
 {{< tab set1 tab1 active >}}powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 W32tm /resync /force
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -95,11 +73,9 @@ W32tm /resync /force
 
 #### 1. Get TGT ticket
 
-<div>
-
 ```console
 # Get a Kerberos ticket
-.\Rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+.\rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
 ```
 
 ```console
@@ -107,11 +83,7 @@ W32tm /resync /force
 klist
 ```
 
-</div>
-
 #### 2. PSSession
-
-<div>
 
 ```console
 # Create new pssession
@@ -123,14 +95,10 @@ New-PSSession -ComputerName <DC_COMPUTER_NAME>
 Enter-PSSession -Id 1
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
 
 #### 1. Set trusted hosts
-
-<div>
 
 ```console
 # cmd
@@ -146,22 +114,14 @@ winrm set winrm/config/client @{TrustedHosts="*"}
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value "*" -Force
 ```
 
-</div>
-
 #### 2. Enable CredSSP
-
-<div>
 
 ```console
 # powershell
 Enable-WSManCredSSP -Role "Client" -DelegateComputer "*"
 ```
 
-</div>
-
 #### 3. Create cred object
-
-<div>
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -175,22 +135,14 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential($username, $password)
 ```
 
-</div>
-
 #### 4. PSSession
-
-<div>
 
 ```console
 $s1 = New-PSSession -ComputerName <DC_COMPUTER_NAME> -Credential $cred
 Enter-PSSession $s1
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>
 
 ---
 
@@ -198,8 +150,6 @@ Enter-PSSession $s1
 
 {{< tab set3 tab1 active >}}powershell{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
-
-<div>
 
 ```console
 Exit-PSSession
@@ -209,8 +159,4 @@ Exit-PSSession
 Copy-Item '<REMOTE_FILE_PATH>'  -Destination '<LOCAL_FILE_PATH>' -FromSession $s1
 ```
 
-</div>
-
 {{< /tabcontent >}}
-
-<br>

