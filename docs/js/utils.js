@@ -28,43 +28,48 @@ const checkmarkIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 2
 </svg>`;
 
 function addCopyButtons(clipboard) {
-    document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
-        let button = document.createElement('button');
+    document.querySelectorAll('code[class^="language-"]').forEach((codeBlock) => {
+        const button = document.createElement('button');
         button.className = 'copy-code-button';
         button.type = 'button';
         button.innerHTML = copyIcon;
 
-        const showDelay = 100, hideDelay = 100;
-        let codeBlockEnterTimer, codeBlockLeaveTimer;
+        // Insert the button inside the parent of the code block
+        codeBlock.parentNode.insertBefore(button, codeBlock);
 
+        // Define the function to copy code, excluding lines starting with '# '
         const copyCode = () => {
-            const lines = codeBlock.innerText.replace(/\r\n/, "\n").split("\n");
-            const cmds = lines.filter(line => !(/^#\s/.test(line)));
-            const result = cmds.join('\n');
-
-            clipboard.writeText(result.trim().replace(/\n\n/g, '\n')).then(() => {
-                button.blur();
+            const lines = codeBlock.innerText.split("\n");
+            const filteredLines = lines.filter(line => !line.trim().startsWith('# '));  // Exclude lines starting with '#'
+            const result = filteredLines.join('\n').trim().replace(/\n\n/g, '\n'); // Join filtered lines and clean up
+            
+            clipboard.writeText(result).then(() => {
                 button.innerHTML = checkmarkIcon;
-                setTimeout(() => {
-                    button.innerHTML = copyIcon;
-                }, 1500);
+                setTimeout(() => button.innerHTML = copyIcon, 1500);
             }).catch(() => {
                 button.innerText = 'Error';
             });
         };
 
-        const handleClick = () => copyCode();
-        button.addEventListener('click', handleClick);
-        codeBlock.parentNode.insertBefore(button, codeBlock);
-        codeBlock.parentNode.addEventListener('click', handleClick);
+        // Attach the copy action to the button
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent click from propagating to the parent div
+            copyCode();
+        });
 
-        codeBlock.parentNode.addEventListener('mouseenter', debounce(function () {
-            button.setAttribute("style", "opacity: 0.9;");
-        }, showDelay));
+        // Attach the copy action to the parent div (including the button area)
+        codeBlock.parentNode.addEventListener('click', () => {
+            copyCode();
+        });
 
-        codeBlock.parentNode.addEventListener('mouseleave', debounce(function () {
-            button.setAttribute("style", "opacity: 0.0;");
-        }, hideDelay));
+        // Show and hide button on hover
+        codeBlock.parentNode.addEventListener('mouseenter', debounce(() => {
+            button.style.opacity = 0.9;
+        }, 100));
+
+        codeBlock.parentNode.addEventListener('mouseleave', debounce(() => {
+            button.style.opacity = 0;
+        }, 100));
     });
 }
 
@@ -95,41 +100,44 @@ if (navigator && navigator.clipboard) {
     };
 
     // Event handler for tab clicks
-    const onTabClick = function(event) {
+    const onTabClick = (event) => {
         const { tabset, tabcontent } = event.target.dataset;
 
-        // Find corresponding tab buttons and contents for the clicked tabset
+        // Find all tab buttons and content sections for the clicked tabset
         const tabSetList = document.querySelectorAll(`button[data-tabset="${tabset}"]`);
         const tabContentList = document.querySelectorAll(`.tabcontent[data-tabset="${tabset}"]`);
 
-        // Clear previous active states
-        clear(tabSetList);
-        clear(tabContentList);
+        // Clear previous active tabs and their content, including nested content
+        tabSetList.forEach(tab => tab.classList.remove('active'));
+        tabContentList.forEach(content => {
+            content.classList.remove('active');
+            
+            // Make sure any nested content inside this content is also hidden
+            const nestedContents = content.querySelectorAll('.tabcontent');
+            nestedContents.forEach(nestedContent => nestedContent.classList.remove('active'));
+        });
 
-        // Clear any nested active content within this tabset
-        clearNested(tabContentList);
-
-        // Set the clicked tab as active
+        // Set the clicked tab to active
         event.target.classList.add('active');
 
-        // Activate the associated tab content
+        // Show the corresponding content for the clicked tab
         const targetContent = document.querySelector(`.tabcontent[data-tabset="${tabset}"][data-tabcontent="${tabcontent}"]`);
         if (targetContent) {
             targetContent.classList.add('active');
 
-            // If the target content has nested tabs, activate them too
+            // Handle any nested tabs inside the target content
             const nestedTabs = targetContent.querySelectorAll('button[data-tabset]');
-            if (nestedTabs.length > 0) {
-                nestedTabs.forEach(nestedTab => {
-                    if (nestedTab.classList.contains('active')) {
-                        const { tabset: nestedTabset, tabcontent: nestedTabcontent } = nestedTab.dataset;
-                        const activeNestedContent = document.querySelector(`.tabcontent[data-tabset="${nestedTabset}"][data-tabcontent="${nestedTabcontent}"]`);
-                        if (activeNestedContent) {
-                            activeNestedContent.classList.add('active');
-                        }
+            nestedTabs.forEach(nestedTab => {
+                if (nestedTab.classList.contains('active')) {
+                    const { tabset: nestedTabset, tabcontent: nestedTabcontent } = nestedTab.dataset;
+                    const activeNestedContent = document.querySelector(`.tabcontent[data-tabset="${nestedTabset}"][data-tabcontent="${nestedTabcontent}"]`);
+                    
+                    // Make sure the active nested tab content is shown
+                    if (activeNestedContent) {
+                        activeNestedContent.classList.add('active');
                     }
-                });
-            }
+                }
+            });
         }
     };
 
@@ -409,38 +417,24 @@ function reorderForm() {
 })();
 
 (function(){
-    // Get all highlight elements
-    const highlightElements = document.querySelectorAll('.highlight');
+    let groups = [[]]; // Start with a single empty group
 
-    // Initialize an array to store groups
-    let groups = [];
-    let currentGroup = [];
-
-    // Loop through all highlight elements
-    highlightElements.forEach((element, index) => {
-        // Add the current element to the current group
-        currentGroup.push(element);
-
-        // Check if the next element is not a highlight or this is the last element
-        if (!highlightElements[index + 1] || highlightElements[index + 1].previousElementSibling !== element) {
-            // Push the current group to the groups array
-            groups.push(currentGroup);
-            // Reset current group for the next consecutive group
-            currentGroup = [];
+    document.querySelectorAll('.highlight').forEach((element, i, elements) => {
+        groups[groups.length - 1].push(element);
+        
+        if (elements[i + 1] && elements[i + 1].previousElementSibling !== element) {
+            groups.push([]); // Start a new group if next element is not a highlight
         }
     });
 
-    // Apply styles or do something with the grouped elements
-    groups.forEach((group, groupIndex) => {
-        if (group.length === 1) { return; }
-        group.forEach((element, elementIndex) => {
-            if (elementIndex === 0) {
-                element.classList.add("codeBlock-start");
-            } else if (elementIndex === (group.length - 1)) {
-                element.classList.add("codeBlock-end");
-            } else {
-                element.classList.add("codeBlock")
-            }
-        });
+    // Apply styles to groups
+    groups.forEach(group => {
+        if (group.length > 1) {
+            group.forEach((element, index) => {
+                if (index === 0) element.classList.add('codeBlock-start');
+                else if (index === group.length - 1) element.classList.add('codeBlock-end');
+                else element.classList.add('codeBlock');
+            });
+        }
     });
 })();
