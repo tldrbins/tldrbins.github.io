@@ -1,7 +1,7 @@
 ---
 title: "GenericAll"
 date: 2024-7-12
-tags: ["GenericAll", "active driectory", "ad", "Windows", "shadow credentials"]
+tags: ["Shadow Credentials", "Powerview", "Credential Dumping", "AddMember", "Impacket", "Genericall", "Domain Controller", "Active Driectory", "Windows"]
 ---
 
 ### Abuse #1: Change target user password

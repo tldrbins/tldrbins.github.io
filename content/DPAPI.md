@@ -1,7 +1,7 @@
 ---
 title: "DPAPI"
 date: 2024-7-31
-tags: ["DPAPI", "enum", "Windows", "password", "credentials", "DonPAPI"]
+tags: ["Credential Dumping", "Mimikatz", "DPAPI", "Windows", "Password", "Donpapi"]
 ---
 
 ### Abuse #1: Auto dump (From Linux)

@@ -1,7 +1,7 @@
 ---
 title: "Find (Windows)"
 date: 2024-7-10
-tags: ["powershell", "find", "files", "Windows", "cmd"]
+tags: ["File Metadata", "Hidden Files", "File Attributes", "Find", "Files", "Windows"]
 ---
 
 {{< tab set1 tab1 active >}}Windows{{< /tab >}}

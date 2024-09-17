@@ -1,7 +1,7 @@
 ---
 title: "SeLoadDriverPrivilege"
 date: 2024-7-18
-tags: ["SeLoadDriverPrivilege", "privesc", "Windows", "Backup Operators", "diskshadow", "secretsdump"]
+tags: ["Exploitation", "SeLoadDriverPrivilege", "Privilege Escalation", "Windows", "Reverse Shell"]
 ---
 
 ### Abuse #1: Install malicious driver

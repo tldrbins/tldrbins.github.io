@@ -1,7 +1,7 @@
 ---
 title: "Postgresql"
 date: 2024-7-9
-tags: ["postgresql", "database"]
+tags: ["Database Dumping", "Privilege Escalation In Databases", "Postgresql", "RCE", "Database"]
 ---
 
 ### Connect

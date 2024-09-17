@@ -1,7 +1,7 @@
 ---
 title: "SSH"
 date: 2024-6-26
-tags: ["ssh", "private key", "public key", "id_rsa", "ppk", "pem", "openssh"]
+tags: ["SSH", "Private Key", "Public Key", "id_Rsa", "Ppk", "Pem", "Openssh", "Remote Access"]
 ---
 
 ### Check SSH version

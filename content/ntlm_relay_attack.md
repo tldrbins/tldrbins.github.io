@@ -1,7 +1,7 @@
 ---
 title: "NTLM Relay Attack"
 date: 2024-8-3
-tags: ["ntlmreplay", "PetitPotam", "active driectory", "ad", "Windows", "adcs", "webdav", "ntlm", "PKINIT", "tgt"]
+tags: ["Shadow Credentials", "Attack Chain", "Ntlm", "Ldap", "Pass-The-Hash", "Impacket", "Ntlmreplay", "Petitpotam", "Active Driectory", "Windows", "ADCS", "Webdav", "Pkinit", "Ticket Granting Ticket"]
 ---
 
 ### NTLM Relay Attack

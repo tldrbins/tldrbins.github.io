@@ -1,7 +1,7 @@
 ---
 title: "Android"
 date: 2024-7-27
-tags: ["Android", "apk", "decompile", "java", "reversing", "apktool", "adb"]
+tags: ["Android", "Apk", "Decompile", "Java", "Reversing", "Apktool", "Adb"]
 ---
 
 ### Unpack .apk file

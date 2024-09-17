@@ -1,7 +1,7 @@
 ---
 title: "Apt"
 date: 2024-7-4
-tags: ["apt", "update", "privesc", "pre-invoke", "sudo"]
+tags: ["Mitm", "Mitmproxy", "Apt", "Sudo"]
 ---
 
 ### MITM (Man-in-the-Middle)

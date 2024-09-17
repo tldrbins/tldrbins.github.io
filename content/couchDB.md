@@ -1,7 +1,7 @@
 ---
 title: "CouchDB"
 date: 2024-7-5
-tags: ["couchDB", "database", "5984"]
+tags: ["Database Dumping", "Couchdb", "Database"]
 ---
 
 ### Basic

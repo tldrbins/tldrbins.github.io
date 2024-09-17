@@ -1,7 +1,7 @@
 ---
 title: "Zabbix"
 date: 2024-7-8
-tags: ["zabbix", "api", "monitoring"]
+tags: ["Zabbix", "Api", "Monitoring", "Web Exploitation", "RCE"]
 ---
 
 ### Zabbix API

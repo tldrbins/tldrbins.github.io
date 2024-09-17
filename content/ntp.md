@@ -1,7 +1,7 @@
 ---
 title: "NTP"
 date: 2024-7-22
-tags: ["ntp", "time", "network time protocol", "faketime", "ntpdate"]
+tags: ["NTP", "Time", "Network Time Protocol", "Faketime", "Ntpdate"]
 ---
 
 ### Check Server Time

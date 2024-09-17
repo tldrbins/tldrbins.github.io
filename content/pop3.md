@@ -1,7 +1,7 @@
 ---
 title: "POP3"
 date: 2024-7-2
-tags: ["pop3", "telnet", "mail", "email"]
+tags: ["Pop3", "Telnet", "Mail", "Email", "Enumeration"]
 ---
 
 ### Basic

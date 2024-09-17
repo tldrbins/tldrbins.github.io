@@ -1,7 +1,7 @@
 ---
 title: "SQL Injection"
-date: 2024-6-30
-tags: ["sqlmap", "sqli", "sql injection", "burpsuite"]
+date: 2024-6-30s
+tags: ["SQL", "SQL Injection", "MySQL", "Sqlmap", "Nosql", "Sqlite", "SQLi", "Burpsuite", "Database Dumping", "Database"]
 ---
 
 ### sqlmap

@@ -1,7 +1,7 @@
 ---
 title: "Runas"
 date: 2024-7-10
-tags: ["powershell", "cred object", "Windows", "runas"]
+tags: ["Powershell", "Credential Object", "Windows", "Runas"]
 ---
 
 ### Create credential object

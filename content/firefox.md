@@ -1,7 +1,7 @@
 ---
 title: "Firefox"
 date: 2024-7-9
-tags: ["firefox", "mozilla", "creds", "password"]
+tags: ["Password Cracking", "Firefox", "Mozilla", "Credential Dumping", "Password"]
 ---
 
 ### Extract saved passwords

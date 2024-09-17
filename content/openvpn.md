@@ -1,7 +1,7 @@
 ---
 title: "openvpn"
 date: 2024-6-28
-tags: ["openvpn", "vpn"]
+tags: ["Vpn", "Openvpn", "Network"]
 ---
 
 ### Connect to vpn

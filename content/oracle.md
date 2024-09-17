@@ -1,7 +1,7 @@
 ---
 title: "Oracle Database"
 date: 2024-7-5
-tags: ["oracle", "database", "1521", "sqlplus", "odat", "revshell", "rce"]
+tags: ["Oracle Db", "File System Permissions Vulnerabilities", "Database Dumping", "Brute Force", "Enumeration", "Privilege Escalation In Databases", "Database", "Sqlplus", "Odat", "Reverse Shell", "RCE"]
 ---
 
 ### Tools

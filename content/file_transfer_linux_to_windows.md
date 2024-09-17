@@ -1,7 +1,7 @@
 ---
 title: "File Transfer (Linux to Windows)"
 date: 2024-6-26
-tags: ["file transfer", "Windows", "evil-winrm"]
+tags: ["Curl", "Http File Transfer", "File Transfer", "Windows", "Evil-Winrm", "IEX", "IWR", "certutil"]
 ---
 
 {{< tab set1 tab1 active >}}Powershell{{< /tab >}}

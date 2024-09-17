@@ -1,7 +1,7 @@
 ---
 title: "Java"
 date: 2024-7-2
-tags: ["java", "jd-gui", "decompiler", "reversing"]
+tags: ["Java", "Jd-Gui", "Decompiler", "Reversing"]
 ---
 
 ### Java

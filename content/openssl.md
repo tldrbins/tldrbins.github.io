@@ -1,7 +1,7 @@
 ---
 title: "Openssl"
 date: 2024-7-9
-tags: ["openssl", "base64", "cert", "ssl", "certificate signing request", "csr", "pem", "p12", "key", "crt"]
+tags: ["Ssl", "Tls", "Web Exploitation", "Openssl", "Certificate", "Certificate Signing Request", "CSR", "Pem", "P12", "Key", "Crt"]
 ---
 
 ### Show TLS Certificate from HTTPS web server

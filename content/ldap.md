@@ -1,7 +1,7 @@
 ---
 title: "LDAP"
 date: 2024-7-9
-tags: ["ldap", "active directory", "ad", "Windows", "nxc"]
+tags: ["Kerberos", "Ldap", "Nmap", "Ldap Search", "Enumeration", "Active Directory", "Windows", "Nxc"]
 ---
 
 ### Enum

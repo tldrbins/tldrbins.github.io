@@ -1,7 +1,7 @@
 ---
 title: "Network Traffic Pivoting"
 date: 2024-6-26
-tags: ["pivot", "chisel", "ssh", "metasploit", "network", "socat", "port forward", "tunneling"]
+tags: ["Pivoting", "Sliver", "Pivot", "Chisel", "Ssh", "Network", "Socat", "Port Forwarding", "Tunneling", "Metasploit"]
 ---
 
 ### Tunneling

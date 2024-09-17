@@ -1,7 +1,7 @@
 ---
 title: "Redis"
 date: 2024-7-6
-tags: ["redis", "redis-cli", "privesc"]
+tags: ["Redis-Cli", "Redis", "Exploitation", "Database"]
 ---
 
 ### Basic

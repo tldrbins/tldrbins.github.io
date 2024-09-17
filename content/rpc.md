@@ -1,7 +1,7 @@
 ---
 title: "RPC"
 date: 2024-7-2
-tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Windows", "smb", "ldap", "winrm", "impacket"]
+tags: ["Impacket", "Domain Controller", "Nxc", "Active Directory", "Windows", "Enumeration", "SID"]
 ---
 
 ### Remote Procedure Call

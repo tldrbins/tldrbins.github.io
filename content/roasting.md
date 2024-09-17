@@ -1,7 +1,7 @@
 ---
 title: "Kerberoasting"
 date: 2024-7-6
-tags: ["as_rep roasting", "impacket", "active directory", "ad", "domain controller", "Windows", "kerberoasting", "GetNPUsers"]
+tags: ["Kerberos", "Impacket", "Kerberoasting", "Asreproast", "Rubeus", "Domain Controller", "Active Directory", "Windows", "GetNPUsers"]
 ---
 
 ### AS_REP Roasting

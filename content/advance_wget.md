@@ -1,7 +1,7 @@
 ---
 title: "Advance wget"
 date: 2024-7-5
-tags: ["wget", "file transfer", "http", "web"]
+tags: ["Wget", "Http File Transfer", "File Transfer", "Http"]
 ---
 
 ### Advance wget

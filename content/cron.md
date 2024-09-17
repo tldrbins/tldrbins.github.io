@@ -1,7 +1,7 @@
 ---
 title: "Cron Jobs"
 date: 2024-7-10
-tags: ["cron", "scheduled tasks", "Linux"]
+tags: ["Cron", "Scheduled Tasks", "Linux"]
 ---
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}

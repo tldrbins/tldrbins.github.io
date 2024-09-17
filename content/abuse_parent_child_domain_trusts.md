@@ -1,7 +1,7 @@
 ---
 title: "Abuse Parent Child Domain Trusts"
 date: 2024-7-2
-tags: ["kerberos", "da", "ea", "active directory", "ad", "domain controller", "Windows", "golden ticket", "privesc", "mimikatz", "rubeus", "trusts"]
+tags: ["Kerberos", "Pass-The-Ticket", "Rubeus", "Domain Trust", "Golden Ticket", "Silver Ticket", "Credential Dumping", "Trust Relationship", "Mimikatz", "Pass-The-Hash", "Ticket Granting Ticket", "Domain Controller", "Active Directory", "Windows"]
 ---
 
 ### Privesc from DA (Domain Admin) to EA (Enterprise Admin)

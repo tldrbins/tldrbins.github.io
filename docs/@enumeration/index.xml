@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Enumeration on TLDRBins</title>
+    <link>https://tldrbins.github.io/@enumeration/</link>
+    <description>Recent content in Enumeration on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@enumeration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bloodhound</title>
+      <link>https://tldrbins.github.io/bloodhound/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/bloodhound/</guid>
+      <description>Info Collection (From Linux) bloodhound-python # With password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip -no-pass --use-ldaps Note: passing &amp;apos;-no-pass&amp;apos; will still ask for password, press enter&#xA;Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .</description>
+    </item>
+    <item>
+      <title>DNS Enum</title>
+      <link>https://tldrbins.github.io/dns_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dns_enum/</guid>
+      <description>Zone Transfer dig +noall +answer &amp;lt;DOMAIN&amp;gt; axfr @&amp;lt;TARGET&amp;gt; Domain Discovery dig +noall +answer @&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; -x &amp;lt;TARGET&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; +short &amp;lt;DOMAIN&amp;gt; any dig +noall +answer @&amp;lt;TARGET&amp;gt; -t NS &amp;lt;DOMAIN&amp;gt; </description>
+    </item>
+    <item>
+      <title>Drupal</title>
+      <link>https://tldrbins.github.io/drupal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/drupal/</guid>
+      <description>Enum droopescan droopescan scan drupal -u &amp;lt;TARGET&amp;gt; Ref: droopescan Note: This can take a long time to run</description>
+    </item>
+    <item>
+      <title>Find</title>
+      <link>https://tldrbins.github.io/find/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/find/</guid>
+      <description>Linux Locate a file locate &amp;lt;FILE&amp;gt; Find files of type file find . -type f Find and Open find / -name &amp;lt;FILE&amp;gt; -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user &amp;lt;USER&amp;gt; -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group &amp;lt;GROUP&amp;gt; 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
+    </item>
+    <item>
+      <title>Finger Protocol</title>
+      <link>https://tldrbins.github.io/finger/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/finger/</guid>
+      <description>Basic # Check logged in users finger @&amp;lt;TARGET&amp;gt; # Check valid user finger &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; Brute force usernames perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t &amp;lt;TARGET&amp;gt; Ref: finger-user-enum</description>
+    </item>
+    <item>
+      <title>git</title>
+      <link>https://tldrbins.github.io/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/git/</guid>
+      <description>Basic Commands # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff &amp;lt;A_COMMIT_HASH&amp;gt; &amp;lt;B_COMMIT_HASH&amp;gt; # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; Git Tools git-dumper git-bundle git-dumper &amp;lt;TARGET&amp;gt;/.</description>
+    </item>
+    <item>
+      <title>Grep</title>
+      <link>https://tldrbins.github.io/grep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/grep/</guid>
+      <description>Basic grep &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; &amp;lt;FILE&amp;gt; Grep from files recursively (e.g from current directory) grep -rni &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; . Grep from binary grep -a &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; &amp;lt;FILE&amp;gt; Grep hash from binary with perl regex grep -aPo &amp;#39;[a-fA-F0-9]{32}&amp;#39; &amp;lt;FILE&amp;gt; Grep from binaries recusively (e.g. from /var/log) sudo grep -rHa &amp;#34;&amp;lt;STRING&amp;gt;&amp;#34; /var/log Find unique char of a file cat &amp;lt;FILE&amp;gt; | od -cvA none -w1 | sort -bu | tr -d &amp;#39;\n&amp;#39; | tr -d &amp;#39; &amp;#39; </description>
+    </item>
+    <item>
+      <title>IMAP</title>
+      <link>https://tldrbins.github.io/imap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/imap/</guid>
+      <description>IMAP/IMAPS # Connect to IMAP over ssl rlwrap openssl s_client -connect &amp;lt;TARGET&amp;gt;:993 # Login a LOGIN &amp;lt;USER&amp;gt; &amp;lt;PASSWORD&amp;gt; # List all mailboxes a LIST &amp;#34;&amp;#34; &amp;#34;*&amp;#34; # Select a mailbox (e.g. Inbox) a SELECT INBOX # Get mail from mailbox (e.g. #1) a FETCH 1 BODY.PEEK[] </description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i &amp;lt;USERS_FILE&amp;gt; | tee &amp;lt;USERNAMES_FILE&amp;gt; Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Kinit Impacket 1. Set up # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) &amp;lt;TARGET&amp;gt; &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
+    </item>
+    <item>
+      <title>LDAP</title>
+      <link>https://tldrbins.github.io/ldap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ldap/</guid>
+      <description>Enum ldapsearch ldapdomaindump nmap # Get domain base ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -D &amp;#34;CN=&amp;lt;USER&amp;gt;,CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With creds ldapdomaindump -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -o ./ldap # Using nmap script sudo nmap -p 389 --script ldap-search &amp;lt;TARGET&amp;gt; Enum with Kerberos ldapsearch nxc # Add GSSAPI sudo apt install libsasl2-modules-gssapi-mit ldapsearch -H ldap://&amp;lt;TARGET&amp;gt; -Y GSSAPI -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With kerberos nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -k --users </description>
+    </item>
+    <item>
+      <title>MongoDB General</title>
+      <link>https://tldrbins.github.io/mongodb_general/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mongodb_general/</guid>
+      <description>General Connect to Mongo Database anonymous authenticate mongo &amp;lt;TARGET&amp;gt;:27017 # Connect local with creds and specified database mongo -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;DB_NAME&amp;gt; Basic Commands # Show all databases show dbs # Choose database use &amp;lt;DB_NAME&amp;gt; # Show all collections show collections # Show all of the collection db.&amp;lt;COLLECTION_NAME&amp;gt;.find().pretty() # Insert entry into collections db.&amp;lt;COLLECTION_NAME&amp;gt;.insert({&amp;#34;&amp;lt;key&amp;gt;&amp;#34;: &amp;#34;&amp;lt;value&amp;gt;&amp;#34;}) # Update an entry (e.g. password of user) db.&amp;lt;COLLECTION_NAME&amp;gt;.update({&amp;#34;username&amp;#34;: &amp;#34;user&amp;#34;}, {$set: {&amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;}}); </description>
+    </item>
+    <item>
+      <title>Mount Share</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description> nfs smb List share showmount -e &amp;lt;TARGET&amp;gt; Mount share sudo mount -t nfs &amp;lt;TARGET&amp;gt;:/share /mnt/share/ Unmount share sudo umount /mnt/share/ Mount share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/share /mnt # Without creds sudo mount -t cifs -o user=,password= //&amp;lt;TARGET&amp;gt;/share /mnt # With creds sudo mount -t cifs -o user=&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;,pass=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/share /mnt Mount inside Windows # Mount net use \\localhost\c$ /u:&amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Check dir \\localhost\c$\users\administrator\desktop Abuse #1: Misconfigured Share # Check all mounted drives mount # Check how shares are mounted cat /etc/exports +-----------------------------------------------------------------------------------------+ | root_squash : running as root on local system will be treated as nobody user in target | | no_all_squash: every other users permission will translate from local system to target | +-----------------------------------------------------------------------------------------+ # Add dummy user sudo useradd dummy # Change uid sudo usermod -u 1001 dummy # Switch to dummy user sudo su dummy -c bash </description>
+    </item>
+    <item>
+      <title>NetExec (nxc)</title>
+      <link>https://tldrbins.github.io/nxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nxc/</guid>
+      <description>Basic Commands # Single user and password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Single user and password (Active Directory) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; # Multiple users or passwords nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --continue-on-success # Match username to corresponding password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;lt;PASSWORDS&amp;gt; --no-bruteforce --continue-on-success # With hash nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;LM&amp;gt;:&amp;lt;NT&amp;gt; # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -k &amp;lt;TARGET&amp;gt; Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ RID Brute nxc smb &amp;lt;TARGET&amp;gt; -u guest -p &amp;#39;&amp;#39; --rid-brute 10000 User Enum (Authenticated) nxc smb &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; --users Ref: Download nxc</description>
+    </item>
+    <item>
+      <title>Nmap</title>
+      <link>https://tldrbins.github.io/nmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nmap/</guid>
+      <description>Nmap Scan TCP UDP Script target=&amp;lt;TARGET&amp;gt; nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target target=&amp;lt;TARGET&amp;gt; nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Update scripts DB nmap --script-updatedb Search scripts # e.</description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
+    </item>
+    <item>
+      <title>POP3</title>
+      <link>https://tldrbins.github.io/pop3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pop3/</guid>
+      <description>Basic # Connect to POP3 mail server telnet &amp;lt;TARGET&amp;gt; 110 # Send cmd after +OK USER &amp;lt;USER&amp;gt; PASS &amp;lt;PASSWORD&amp;gt; # List all mails LIST # Retrieve mail #1 RETR 1 # Exit Ctrl + ], then quit </description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>https://tldrbins.github.io/rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rpc/</guid>
+      <description>Remote Procedure Call Tools rpcclient impacket # Connect without creds rpcclient -U &amp;#39;&amp;#39; -N &amp;lt;TARGET&amp;gt; # Connect with creds rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Inline execute command rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo # List of users enumdomusers # List of groups enumdomgroups # Query group by rid querygroup &amp;lt;RID&amp;gt; # Query group member by rid querygroupmem &amp;lt;RID&amp;gt; # Query user by rid queryuser &amp;lt;RID&amp;gt; # Look up a user lookupnames &amp;lt;USER&amp;gt; # Look up by SID lookupsids &amp;lt;SID&amp;gt; impacket-lookupsid &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
+    </item>
+    <item>
+      <title>rsync</title>
+      <link>https://tldrbins.github.io/rsync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rsync/</guid>
+      <description>Basic Commands # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List a file rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd # List files (wildcard) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* # Get a file rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd . # Get files (wildcard) rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;; rsync -aR .ssh/ rsync://&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;/home_user/ Bruteforce rsync password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
+    </item>
+    <item>
+      <title>Scheduled tasks</title>
+      <link>https://tldrbins.github.io/scheduled_tasks_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/scheduled_tasks_windows/</guid>
+      <description>Check scheduled tasks Windows schtasks /query # List details schtasks /TN \Microsoft\Windows\&amp;lt;FOLDER&amp;gt;\&amp;lt;TASKNAME&amp;gt; /FO LIST /V </description>
+    </item>
+    <item>
+      <title>SMB Enum</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum nmap sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Anonymous Login smbmap smbclient impacket smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; # SID brute, if null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Authenticated smbmap smbclient smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH_TO_FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; Authenticated with Kerberos impacket impacket-smbclient &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; -k -no-pass Basic commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * List Alternate Data Streams (ADS) allinfo &amp;lt;FILE&amp;gt; # Example Response &amp;gt;&amp;gt;&amp;gt;stream: [:Password:$DATA], 15 bytes # Download specific data stream get &amp;#34;&amp;lt;FILE&amp;gt;:Password&amp;#34; Mount SMB Share Anonymous Authenticated sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
+    </item>
+    <item>
+      <title>SMTP</title>
+      <link>https://tldrbins.github.io/smtp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smtp/</guid>
+      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() Users Enum nmap script smtp-user-enum nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
+    </item>
+    <item>
+      <title>SNMP</title>
+      <link>https://tldrbins.github.io/snmp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/snmp/</guid>
+      <description>Bruteforce commmuity string onesixtyone snmpbrute # Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt Ref: onesixtyone&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; Ref: snmpbrute.py&#xA;Tools snmpwalk snmpbulkwalk # Install sudo apt install snmp # Install Add-on for better result readability sudo apt install snmp-mibs-downloader # Comment out this line in /etc/snmp/snmp.conf # mibs : # Uncomment this line in /etc/snmp/snmp.conf mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf Basic Commands snmpwalk -v1 -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result snmpwalk -v2c -c public &amp;lt;TARGET&amp;gt; | tee snmpwalk_result # Query specific OID, e.</description>
+    </item>
+    <item>
+      <title>SQLite</title>
+      <link>https://tldrbins.github.io/sqlite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sqlite/</guid>
+      <description>General # Open a db sqlite3 &amp;lt;DB_FILE&amp;gt; # Show tables .tables # Show schema of a table .schema &amp;lt;TABLE_NAME&amp;gt; # Show column headers .headers on # Dump data select * from &amp;lt;TABLE_NAME&amp;gt;; </description>
+    </item>
+    <item>
+      <title>Squid Proxy</title>
+      <link>https://tldrbins.github.io/squid_proxy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/squid_proxy/</guid>
+      <description>Config location /etc/squid/squid.conf Connect via FoxyProxy Firefox plugin +--------------------------+ | Settings | +--------------------------+ | Title : squid proxy | | Proxy Type : HTTP | | Proxy IP : &amp;lt;TARGET&amp;gt; | | Port : 3128 | | Username : (If any) | | Password : (If any) | +--------------------------+ # Connect http://&amp;lt;TARGET&amp;gt; # Or http://127.0.0.1 Internal ports scan via proxy # 1. Take note of word size, then Ctrl+C wfuzz -z range,1-1000 -p &amp;lt;TARGET&amp;gt;:3128:HTTP -u http://127.</description>
+    </item>
+    <item>
+      <title>Subdomain Enum</title>
+      <link>https://tldrbins.github.io/subdomain_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/subdomain_enum/</guid>
+      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
+    </item>
+    <item>
+      <title>Volume Shadow Copies</title>
+      <link>https://tldrbins.github.io/volume_shadow_copies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/volume_shadow_copies/</guid>
+      <description>Abuse #1: Recover data from shadow copies Windows 1. Check vssadmin list shadows 2. Create symlink and expose the volume cmd /c mklink /d C:\VSS &amp;lt;SHADOW_COPY_VOLUME_PATH&amp;gt; 3. Access ls C:\VSS\Users </description>
+    </item>
+    <item>
+      <title>Web Directory Enum</title>
+      <link>https://tldrbins.github.io/web_directory_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/web_directory_enum/</guid>
+      <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://&amp;lt;TARGET&amp;gt;/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;apos;/&amp;apos; to each request feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 http://&amp;lt;TARGET&amp;gt;/users/FUZZ gobuster dir -u http://&amp;lt;TARGET&amp;gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.</description>
+    </item>
+    <item>
+      <title>Webdav</title>
+      <link>https://tldrbins.github.io/webdav/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/webdav/</guid>
+      <description>Tools davtest curl # Without creds davtest -url http://&amp;lt;TARGET&amp;gt; # With creds davtest -url http://&amp;lt;TARGET&amp;gt; -auth &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; Ref: Download davtest&#xA;# Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://&amp;lt;TARGET&amp;gt;/&amp;lt;NEW_FILENAME&amp;gt;&amp;#39; http://&amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; </description>
+    </item>
+    <item>
+      <title>Windows RPC</title>
+      <link>https://tldrbins.github.io/windows_rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_rpc/</guid>
+      <description>Windows RPC impacket IOXIDResolver # Show mappings impacket-rpcmap &amp;#39;ncacn_ip_tcp:&amp;lt;TARGET&amp;gt;&amp;#39; # Get network interface without auth python3 IOXIDResolver.py -t &amp;lt;TARGET&amp;gt; Ref: IOXIDResolver</description>
+    </item>
+    <item>
+      <title>Wordpress</title>
+      <link>https://tldrbins.github.io/wordpress/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/wordpress/</guid>
+      <description>Default config location /var/www/html/wp-config.php Tools wpscan # HTTP wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u # HTTPS wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u --api-token &amp;lt;API_KEY&amp;gt; # Brute force wp-admin wpscan --url &amp;lt;TARGET&amp;gt; --passwords passwords.txt --usernames admin Ref: Get Free API key</description>
+    </item>
+  </channel>
+</rss>

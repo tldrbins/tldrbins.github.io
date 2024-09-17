@@ -1,7 +1,7 @@
 ---
 title: "Volume Shadow Copies"
 date: 2024-8-22
-tags: ["Volume Shadow Copies", "privesc", "Windows", "secretsdump", "vsc"]
+tags: ["Data Leakage", "Data Exfiltration", "Volume Shadow Copies", "Enumeration", "Windows", "VSC"]
 ---
 
 ### Abuse #1: Recover data from shadow copies

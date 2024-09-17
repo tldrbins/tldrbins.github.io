@@ -1,7 +1,7 @@
 ---
 title: "Flask Cookie"
 date: 2024-6-27
-tags: ["flask", "python", "cookie", "sign", "unsign"]
+tags: ["Flask", "Python", "Cookie", "Sign", "Unsign", "Web Exploitation"]
 ---
 
 ### Cookie Tools

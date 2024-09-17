@@ -1,7 +1,7 @@
 ---
 title: "FTP"
 date: 2024-7-4
-tags: ["ftp", "file transfer"]
+tags: ["Lftp", "Ftp", "File Transfer"]
 ---
 
 ### Config Location

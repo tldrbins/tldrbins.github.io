@@ -1,7 +1,7 @@
 ---
 title: "Phishing"
 date: 2024-6-26
-tags: ["phishing", "email", "xll", "excel", "hta", "shortcut", "Windows", "odt", "libre", "vba", "ntlm_theft"]
+tags: ["Phishing", "Social Engineering", "Responder", "Phishing Campaigns", "Email", "Xll", "Excel", "Hta", "Shortcut", "Windows", "Odt", "Libre", "Vba", "Ntlm_Theft", "Pdf", "Ntlm"]
 ---
 
 {{< tab set1 tab1 active >}}lnk{{< /tab >}}

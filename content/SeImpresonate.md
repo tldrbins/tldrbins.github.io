@@ -1,7 +1,7 @@
 ---
 title: "SeImpresonate"
 date: 2024-8-2
-tags: ["SeImpresonate", "Windows", "potato", "privesc", "fullpower"]
+tags: ["SeImpresonate", "Windows", "Potato", "Privilege Escalation", "Fullpower", "Scheduled Tasks"]
 ---
 
 ### Abuse #1: Recover SeImpresonate

@@ -1,7 +1,7 @@
 ---
 title: "Grep"
 date: 2024-7-10
-tags: ["grep", "regex", "strings"]
+tags: ["Grep", "Regex", "Strings", "Enumeration", "Files"]
 ---
 
 #### Basic

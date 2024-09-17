@@ -1,7 +1,7 @@
 ---
 title: "IIS"
 date: 2024-7-3
-tags: ["iis", "web server", "Windows"]
+tags: ["IIS", "Web Server", "Windows"]
 ---
 
 ### IIS Version

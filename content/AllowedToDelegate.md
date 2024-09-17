@@ -1,7 +1,7 @@
 ---
 title: "AllowedToDelegate"
 date: 2024-7-23
-tags: ["AllowedToDelegate", "gMSADumper", "active driectory", "ad", "Windows", "privesc"]
+tags: ["Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "Allowedtodelegate", "Active Driectory", "Windows"]
 ---
 
 ### Privesc #1: Forge a Ticket

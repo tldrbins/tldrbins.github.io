@@ -1,7 +1,7 @@
 ---
 title: "lxd"
 date: 2024-6-28
-tags: ["lxd", "lxc", "privesc", "container", "escape"]
+tags: ["File System Permissions Vulnerabilities", "File System Mounting", "Lxd", "Lxc", "Container"]
 ---
 
 ### Basic Commands

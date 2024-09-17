@@ -8,20 +8,6 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@web/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Advance curl</title>
-      <link>https://tldrbins.github.io/advance_curl/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # PUT a file curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a file (with creds) curl -X PUT -u &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; --data-binary @&amp;lt;FILE&amp;gt; # POST a file with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=@&amp;lt;FILE&amp;gt;;type=&amp;lt;APPLICATION_TYPE&amp;gt;;filename=&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST a file in raw-text format (not as attachment) with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=&amp;lt;&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Not to handle sequences of &amp;#39;/.</description>
-    </item>
-    <item>
-      <title>Advance wget</title>
-      <link>https://tldrbins.github.io/advance_wget/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/advance_wget/</guid>
-      <description>Advance wget # Provide a file with urls wget --input-file &amp;lt;FILE_PATH&amp;gt; # POST a file wget --post-file &amp;lt;FILE_PATH&amp;gt; &amp;lt;TARGET&amp;gt; # Overwrite a file wget &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O &amp;lt;FILE_PATH&amp;gt; </description>
-    </item>
-    <item>
       <title>Electron</title>
       <link>https://tldrbins.github.io/electron/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

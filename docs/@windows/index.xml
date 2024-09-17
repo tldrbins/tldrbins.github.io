@@ -92,13 +92,6 @@
       <description>evil-winrm payloads menu Bypass-4MSI Note: have to run menu first&#xA;Amsi-Bypass-Payloads</description>
     </item>
     <item>
-      <title>Compressed Files</title>
-      <link>https://tldrbins.github.io/compressed_files/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/compressed_files/</guid>
-      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip tar.gz tar gz rar 7z bz # zip a file zip &amp;lt;FILE&amp;gt;.zip &amp;lt;FILE&amp;gt; # zip a folder zip -r &amp;lt;FOLDER&amp;gt;.zip &amp;lt;FOLDER&amp;gt;/ # zip a symlink (not the destination file) zip --symlinks file.zip &amp;lt;SYMLINK&amp;gt; # List files without unzip unzip -l &amp;lt;FILE&amp;gt; # unzip unzip &amp;lt;FILE&amp;gt; # unzip (Windows) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;&amp;lt;FILE_PATH&amp;gt;&amp;#39;, &amp;#39;C:\ProgramData\&amp;#39;) # Compress a file tar -cvzf &amp;lt;FILE&amp;gt;.</description>
-    </item>
-    <item>
       <title>Constrained Delegation</title>
       <link>https://tldrbins.github.io/constrained_delegation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -300,13 +293,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nxc/</guid>
       <description>Basic Commands # Single user and password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Single user and password (Active Directory) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; # Multiple users or passwords nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --continue-on-success # Match username to corresponding password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;lt;PASSWORDS&amp;gt; --no-bruteforce --continue-on-success # With hash nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;LM&amp;gt;:&amp;lt;NT&amp;gt; # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -k &amp;lt;TARGET&amp;gt; Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ RID Brute nxc smb &amp;lt;TARGET&amp;gt; -u guest -p &amp;#39;&amp;#39; --rid-brute 10000 User Enum (Authenticated) nxc smb &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; --users Ref: Download nxc</description>
-    </item>
-    <item>
-      <title>Network Discovery</title>
-      <link>https://tldrbins.github.io/network_discovery/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description>Test connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; Test reverse connectivity Linux sudo tcpdump -ni tun0 icmp Sniff network traffic Linux # For example: on port 389 sudo tcpdump -i lo -nnXs 0 &amp;#39;port &amp;lt;TARGET_PORT&amp;gt;&amp;#39; # Sniff HTTPS traffic sudo ./mitmdump -p 443 --mode reverse:https://&amp;lt;DOMAIN&amp;gt; --ssl-insecure --set flow_detail=3 Ref: mitmproxy&#xA;Use ping to scan subnet Linux for i in $(seq 1 254); do (ping -c 1 10.</description>
     </item>
     <item>
       <title>NTLM Relay Attack</title>

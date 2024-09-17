@@ -1,7 +1,7 @@
 ---
 title: "AWS"
 date: 2024-7-21
-tags: ["aws", "cloud", "s3"]
+tags: ["AWS", "Cloud", "S3", "Bucket", "Dynamodb", "Lambda"]
 ---
 
 ### Setup

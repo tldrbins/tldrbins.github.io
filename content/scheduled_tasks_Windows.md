@@ -1,7 +1,7 @@
 ---
 title: "Scheduled tasks"
 date: 2024-7-10
-tags: ["scheduled tasks", "Windows", "enum"]
+tags: ["Enumeration", "Scheduled Tasks", "Windows", "Enum"]
 ---
 
 ### Check scheduled tasks

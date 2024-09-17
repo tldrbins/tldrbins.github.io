@@ -1,7 +1,7 @@
 ---
 title: "ForceChangePassword"
 date: 2024-7-18
-tags: ["ForceChangePassword", "active driectory", "ad", "Windows"]
+tags: ["Forcechangepassword", "Powerview", "Active Driectory", "Windows", "bloodyAD"]
 ---
 
 ### Change target user password (From Linux)

@@ -1,7 +1,7 @@
 ---
 title: "Windows Event Logs"
 date: 2024-8-27
-tags: ["evtx", "event logs", "forensics", "Windows", "DIFR"]
+tags: ["Forensics", "Evtx", "Event Logs", "Windows", "DIFR"]
 ---
 
 ### Convert evtx to json

@@ -1,7 +1,7 @@
 ---
 title: "Bypass ASMI"
 date: 2024-7-13
-tags: ["asmi", "bypass", "av", "Windows"]
+tags: ["ASMI", "Anti-Virus", "Windows"]
 ---
 
 {{< tab set1 tab1 active >}}evil-winrm{{< /tab >}}

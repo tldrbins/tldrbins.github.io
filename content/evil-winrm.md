@@ -1,7 +1,7 @@
 ---
 title: "evil-winrm"
 date: 2024-7-27
-tags: ["evil-winrm", "remote", "Windows"]
+tags: ["Kerberos", "Pass-The-Hash", "RCE", "Evil-Winrm", "Windows", "Pass-The-Ticket", "Pass-The-Cert"]
 ---
 
 ### Connection Methods

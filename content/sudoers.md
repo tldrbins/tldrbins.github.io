@@ -1,7 +1,7 @@
 ---
 title: "sudoers"
 date: 2024-7-3
-tags: ["sudoers", "sudo", "privesc", "/etc/sudoers"]
+tags: ["Sudoers", "Sudo", "Privilege Escalation", "/etc/sudoers"]
 ---
 
 #### Abuse #1: Writable /etc/sudoers

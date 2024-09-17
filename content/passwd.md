@@ -1,7 +1,7 @@
 ---
 title: "Writable /etc/passwd"
 date: 2024-7-1
-tags: ["passwd", "shadow", "/etc/passwd", "privesc"]
+tags: ["passwd", "shadow", "/etc/passwd", "Privilege Escalation"]
 ---
 
 ### Abuse #1: Writable /etc/passwd

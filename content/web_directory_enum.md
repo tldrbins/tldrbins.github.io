@@ -1,7 +1,7 @@
 ---
 title: "Web Directory Enum"
 date: 2024-6-27
-tags: ["web", "directory", "domain", "feroxbuster", "enum", "wfuzz", "idor", "gobuster", ".ds_store"]
+tags: ["Waf (Web Application Firewall)", "Gobuster", "Enumeration", "Reconnaissance", "Web", "Directory", "Feroxbuster", "Wfuzz", "IDOR", ".Ds_Store"]
 ---
 
 {{< tab set1 tab1 active >}}feroxbuster{{< /tab >}}

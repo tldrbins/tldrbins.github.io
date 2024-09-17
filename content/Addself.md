@@ -1,7 +1,7 @@
 ---
 title: "AddSelf"
 date: 2024-8-2
-tags: ["addself", "active directory", "ad", "domain controller", "Windows", "powerview", "bloodAD", "privesc"]
+tags: ["Powerview", "Genericall", "AddMember", "Group Policy", "Domain Controller", "Addself", "Active Directory", "Windows", "BloodyAD"]
 ---
 
 ### Privesc #1: Add self to group (From Linux)

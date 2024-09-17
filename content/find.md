@@ -1,7 +1,7 @@
 ---
 title: "Find"
 date: 2024-6-29
-tags: ["find", "linux", "file system", "enum", "suid", "locate"]
+tags: ["File Metadata", "Enumeration", "File Attributes", "Hidden Files", "Find", "Linux", "File System", "SUID"]
 ---
 
 {{< tab set1 tab1 active >}}Linux{{< /tab >}}

@@ -1,7 +1,7 @@
 ---
 title: "Forward Shell"
 date: 2024-7-11
-tags: ["python", "shell", "forward", "template"]
+tags: ["Reverse Shell", "Python", "Shell", "Forward Shell", "Template"]
 ---
 
 ### Python Forward Shell Template

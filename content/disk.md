@@ -1,7 +1,7 @@
 ---
 title: "disk group"
 date: 2024-7-2
-tags: ["disk", "mount", "backup", "privilege read", "container", "lvm"]
+tags: ["Privilege Escalation", "Data Exfiltration", "File System Mounting", "Disk", "Backup", "Privilege Read", "Container", "LVM"]
 ---
 
 ### Basic

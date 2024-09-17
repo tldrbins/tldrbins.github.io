@@ -1,7 +1,7 @@
 ---
 title: "Cross Session Relay"
 date: 2024-8-2
-tags: ["cross session relay", "ntlm", "active driectory", "ad", "Windows", "krbrelay", "RemotePotato0"]
+tags: ["Ntlm", "Pass-The-Hash", "Authentication", "Cross Session Relay", "Active Driectory", "Windows", "Krbrelay", "Remotepotato0"]
 ---
 
 ### Display information about the session host

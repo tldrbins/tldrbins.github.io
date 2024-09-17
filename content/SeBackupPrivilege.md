@@ -1,7 +1,7 @@
 ---
 title: "SeBackupPrivilege/SeRestorePrivilege"
 date: 2024-7-18
-tags: ["SeBackupPrivilege", "SeRestorePrivilege", "privesc", "Windows", "Backup Operators", "diskshadow", "secretsdump"]
+tags: ["Credential Dumping", "File System", "SeBackupPrivilege", "SeRestorePrivilege", "Windows", "Backup Operators", "Diskshadow"]
 ---
 
 ### Abuse #1: Robocopy

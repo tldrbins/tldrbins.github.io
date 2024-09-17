@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Password Cracking on TLDRBins</title>
+    <link>https://tldrbins.github.io/@password-cracking/</link>
+    <description>Recent content in Password Cracking on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@password-cracking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Custom Word List Generator</title>
+      <link>https://tldrbins.github.io/custom_wordlist_generator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
+      <description>CeWL # Creating custom wordlist by spidering target website cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL</description>
+    </item>
+    <item>
+      <title>Firefox</title>
+      <link>https://tldrbins.github.io/firefox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firefox/</guid>
+      <description>Extract saved passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
+    </item>
+    <item>
+      <title>Hydra</title>
+      <link>https://tldrbins.github.io/hydra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/hydra/</guid>
+      <description>HTTP basic auth hydra -L &amp;lt;USERS_FILE&amp;gt; -P &amp;lt;PASSWORD_FILE&amp;gt; -s &amp;lt;TARGET_PORT&amp;gt; -f &amp;lt;TARGET&amp;gt; http-get / +-------------------------------------------+ | -s : port | | -L : usernames file | | -P : passwords file | | -f : exit when a login/pass pair is found | +-------------------------------------------+ Web Page Login Form hydra &amp;lt;TARGET&amp;gt; -l &amp;lt;USER&amp;gt; -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form &amp;#39;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#39; +-------------------------------------------+ | -l : username | | -P : wordlist | | http-post-form : service | | /login.</description>
+    </item>
+    <item>
+      <title>Keepass</title>
+      <link>https://tldrbins.github.io/keepass/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/keepass/</guid>
+      <description>Master password cracking keepass2john &amp;lt;KDBX_FILE&amp;gt; &amp;gt; hash # With a key file keepass2john -k &amp;lt;KEY_FILE&amp;gt; &amp;lt;KDBX_FILE&amp;gt; &amp;gt; hash kpcli # Open kdbx kpcli --kdb &amp;lt;KDBX_FILE&amp;gt; # Open kdbx with a key file kpcli --key &amp;lt;KEY_FILE&amp;gt; --kdb &amp;lt;KDBX_FILE&amp;gt; # List all passwords find . # Show password (e.g. #0) show -f 0 # Export attachment (e.g. #0) attach 0 Ref: Download kpcli</description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i &amp;lt;USERS_FILE&amp;gt; | tee &amp;lt;USERNAMES_FILE&amp;gt; Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Kinit Impacket 1. Set up # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) &amp;lt;TARGET&amp;gt; &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
+    </item>
+    <item>
+      <title>Linux hard disk encryption</title>
+      <link>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</guid>
+      <description>Brute force LUKS password bruteforce-luks -t 10 -f &amp;lt;WORDLIST&amp;gt; -w state.txt -v 30 &amp;lt;BACKUP_IMG&amp;gt; Note: This is slow, create a small wordlist&#xA;Basic # Open cryptsetup open --type luks &amp;lt;BACKUP_IMG&amp;gt; backup # Check ls -l /dev/mapper/ # Create mount folder sudo mkdir /mnt/backup # Mount sudo mount /dev/mapper/backup /mnt/backup/ </description>
+    </item>
+    <item>
+      <title>Password Cracking</title>
+      <link>https://tldrbins.github.io/password_cracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/password_cracking/</guid>
+      <description>Convert file to hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.</description>
+    </item>
+    <item>
+      <title>rsync</title>
+      <link>https://tldrbins.github.io/rsync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rsync/</guid>
+      <description>Basic Commands # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List a file rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd # List files (wildcard) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* # Get a file rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd . # Get files (wildcard) rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;; rsync -aR .ssh/ rsync://&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;/home_user/ Bruteforce rsync password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
+    </item>
+    <item>
+      <title>Shadow Hash Cracking</title>
+      <link>https://tldrbins.github.io/shadow_hash_cracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/shadow_hash_cracking/</guid>
+      <description>Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
+    </item>
+  </channel>
+</rss>

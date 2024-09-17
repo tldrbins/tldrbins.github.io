@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sql/</link>
+    <description>Recent content in SQL on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL Injection</title>
+      <link>https://tldrbins.github.io/sql_injection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sql_injection/</guid>
+      <description>sqlmap # In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # Initial testing HTTPS sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # Add a string to indicate injection succeed (e.</description>
+    </item>
+  </channel>
+</rss>

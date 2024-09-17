@@ -1,7 +1,7 @@
 ---
 title: "Connection from Public Internet"
 date: 2024-6-26
-tags: ["file transfer", "public ip", "ngrok", "serveo", "webhook", "xss", "xxe"]
+tags: ["Web Exploitation", "Http File Transfer", "Remote File Inclusion", "XSS", "File Transfer", "Public Ip", "Ngrok", "Serveo", "Webhook", "XXE"]
 ---
 
 ### Simply catch HTTP request

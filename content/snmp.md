@@ -1,7 +1,7 @@
 ---
 title: "SNMP"
 date: 2024-6-29
-tags: ["snmp", "reconnaissance", "enum", "snmpwalk", "udp", "onesixtyone"]
+tags: ["Reconnaissance", "Enumeration", "SNMP", "Snmpwalk", "Onesixtyone", "Database Dumping"]
 ---
 
 ### Bruteforce commmuity string

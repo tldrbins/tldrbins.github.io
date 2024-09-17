@@ -1,7 +1,7 @@
 ---
 title: "Squid Proxy"
 date: 2024-7-4
-tags: ["squid proxy", "web", "3128", "proxy", "port scan"]
+tags: ["Port Scanning", "Enumeration", "Squid Proxy", "Web", "Proxy"]
 ---
 
 ### Config location

@@ -1,7 +1,7 @@
 ---
 title: "Metasploit Listener"
 date: 2024-6-26
-tags: ["metasploit", "listener", "revshell", "msfconsole"]
+tags: ["Metasploit", "Firewall", "Reverse Shell", "Shellcode", "Listener", "Reverse Shell", "Msfconsole"]
 ---
 
 ### Start a Metasploit Listener

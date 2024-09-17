@@ -1,7 +1,7 @@
 ---
 title: "Alternate Data Stream"
 date: 2024-7-10
-tags: ["alternate Data Stream", "ads", "Windows", "cmd", "powershell"]
+tags: ["File Metadata", "Alternate Data Stream", "ADS", "Windows", "Hidden Files"]
 ---
 
 ### Show ADS

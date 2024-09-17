@@ -1,7 +1,7 @@
 ---
 title: "Subdomain Enum"
 date: 2024-6-26
-tags: ["web", "domain", "subdomain", "wfuzz", "http", "enum", "hosts"]
+tags: ["Gobuster", "Enumeration", "Web", "Subdomain", "Wfuzz", "Http", "Hosts", "Reconnaissance"]
 ---
 
 ### Add domain/subdomain to /etc/hosts

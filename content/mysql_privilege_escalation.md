@@ -1,7 +1,7 @@
 ---
 title: "Mysql Privilege Escalation"
 date: 2024-6-27
-tags: ["mysql", "database", "RCE", "php", "UDF", "exploit", "pe"]
+tags: ["Exploitation", "Privilege Escalation In Databases", "Mysql", "RCE", "Database", "php", "UDF"]
 ---
 
 ### Abuse #1: User Defined Function (UDF)

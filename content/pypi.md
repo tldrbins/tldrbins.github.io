@@ -1,7 +1,7 @@
 ---
 title: "Pypi"
 date: 2024-7-19
-tags: ["python", "pypi", "package", "rce"]
+tags: ["Exploitation", "Python", "Pypi", "Package", "RCE"]
 ---
 
 ### Abuse #1: Remote Pypi Server

@@ -1,7 +1,7 @@
 ---
 title: "Retrieve Flask Debug Pin"
 date: 2024-7-12
-tags: ["python", "flask", "werkzeug", "debug", "LFI"]
+tags: ["Local File Inclusion", "Web Exploitation", "Credential Dumping", "Python", "Flask", "Werkzeug", "Debug", "LFI"]
 ---
 
 ### Retrieve Flask Debug Pin

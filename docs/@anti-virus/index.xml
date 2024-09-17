@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anti-Virus on TLDRBins</title>
+    <link>https://tldrbins.github.io/@anti-virus/</link>
+    <description>Recent content in Anti-Virus on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@anti-virus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bypass ASMI</title>
+      <link>https://tldrbins.github.io/bypass_asmi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/bypass_asmi/</guid>
+      <description>evil-winrm payloads menu Bypass-4MSI Note: have to run menu first&#xA;Amsi-Bypass-Payloads</description>
+    </item>
+    <item>
+      <title>Windows Defender</title>
+      <link>https://tldrbins.github.io/windows_defender/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_defender/</guid>
+      <description>Disable defender Powershell # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
+    </item>
+  </channel>
+</rss>

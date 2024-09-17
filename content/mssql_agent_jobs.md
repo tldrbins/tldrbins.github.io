@@ -1,7 +1,7 @@
 ---
 title: "MSSQL Agent Jobs"
 date: 2024-8-3
-tags: ["mssql", "database", "Windows", "agent jobs", "privesc"]
+tags: ["Database Dumping", "Privilege Escalation In Databases", "Mssql", "Database", "Windows", "Agent Jobs"]
 ---
 
 ### 1. Pre-check

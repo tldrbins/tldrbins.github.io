@@ -1,7 +1,7 @@
 ---
 title: "npm"
 date: 2024-6-26
-tags: ["npm", "nodejs", "privesc", "sudo"]
+tags: ["Npm", "Nodejs", "Sudo", "Exploitation"]
 ---
 
 #### SUDO

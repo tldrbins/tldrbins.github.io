@@ -1,7 +1,7 @@
 ---
 title: "memcache"
 date: 2024-7-17
-tags: ["memcache", "telnet"]
+tags: ["Memcache", "Telnet", "Database Dumping"]
 ---
 
 ### Connect

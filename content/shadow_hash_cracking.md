@@ -1,7 +1,7 @@
 ---
 title: "Shadow Hash Cracking"
 date: 2024-7-5
-tags: ["password", "cracking", "john", "hashcat", "shadow", "unshadow", "passwd"]
+tags: ["Password Cracking", "Hash Cracking", "John The Ripper", "Hashcat", "shadow", "Unshadow", "passwd"]
 ---
 
 ### Shadow Hash Cracking

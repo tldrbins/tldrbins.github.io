@@ -1,7 +1,7 @@
 ---
 title: "SMB Server"
 date: 2024-6-26
-tags: ["smb", "file transfer", "ntlm", "Windows"]
+tags: ["Smbclient", "File Transfer", "Windows", "Ntlm"]
 ---
 
 ### Start a SMB Server for File Transfer

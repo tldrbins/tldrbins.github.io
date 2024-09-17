@@ -1,7 +1,7 @@
 ---
 title: "Nmap"
 date: 2024-6-26
-tags: ["nmap", "port", "network", "discovery", "reconnaissance", "scan", "enum"]
+tags: ["Port Scanning", "Nmap", "Reconnaissance", "Tcp/Ip", "Vulnerability Scanning", "Enumeration", "Port", "Network", "Discovery"]
 ---
 
 ### Nmap Scan

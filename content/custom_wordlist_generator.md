@@ -1,7 +1,7 @@
 ---
 title: "Custom Word List Generator"
 date: 2024-2-2
-tags: ["wordlist", "custom", "cewl", "generator"]
+tags: ["Password Cracking", "Wordlist", "Cewl"]
 ---
 
 {{< tab set1 tab1 active >}}CeWL{{< /tab >}}

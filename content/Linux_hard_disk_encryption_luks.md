@@ -1,7 +1,7 @@
 ---
 title: "Linux hard disk encryption"
 date: 2024-7-10
-tags: ["luks", "Linux hard disk encryption", "privesc"]
+tags: ["Luks", "Password Cracking", "Brute Force", "Encryption", "File Encryption", "Linux Hard Disk Encryption", "Mount File System"]
 ---
 
 ### Brute force LUKS password

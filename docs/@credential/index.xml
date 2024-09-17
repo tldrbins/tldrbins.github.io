@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Credential on TLDRBins</title>
+    <link>https://tldrbins.github.io/@credential/</link>
+    <description>Recent content in Credential on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@credential/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hydra</title>
+      <link>https://tldrbins.github.io/hydra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/hydra/</guid>
+      <description>HTTP basic auth hydra -L &amp;lt;USERS_FILE&amp;gt; -P &amp;lt;PASSWORD_FILE&amp;gt; -s &amp;lt;TARGET_PORT&amp;gt; -f &amp;lt;TARGET&amp;gt; http-get / +-------------------------------------------+ | -s : port | | -L : usernames file | | -P : passwords file | | -f : exit when a login/pass pair is found | +-------------------------------------------+ Web Page Login Form hydra &amp;lt;TARGET&amp;gt; -l &amp;lt;USER&amp;gt; -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form &amp;#39;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#39; +-------------------------------------------+ | -l : username | | -P : wordlist | | http-post-form : service | | /login.</description>
+    </item>
+  </channel>
+</rss>

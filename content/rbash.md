@@ -1,7 +1,7 @@
 ---
 title: "rbash"
 date: 2024-7-9
-tags: ["rbash", "shell", "escape", "bypass", "tar"]
+tags: ["Rbash", "Shell", "Escape", "Tar", "Bypass"]
 ---
 
 ### Abuse #1: tar to rbash Escape

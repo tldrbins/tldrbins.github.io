@@ -1,7 +1,7 @@
 ---
 title: "ExecuteDCOM"
 date: 2024-8-3
-tags: ["ExecuteDCOM", "active driectory", "ad", "Windows", "dcsync", "secretsdump"]
+tags: ["Executedcom", "Active Driectory", "Windows", "RCE"]
 ---
 
 ### Abuse #1: ExecuteDCOM

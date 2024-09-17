@@ -1,7 +1,7 @@
 ---
 title: "Finger Protocol"
 date: 2024-7-5
-tags: ["finger", "file transfer"]
+tags: ["Enumeration", "Finger", "File Transfer"]
 ---
 
 ### Basic

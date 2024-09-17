@@ -1,7 +1,7 @@
 ---
 title: "Password Cracking"
 date: 2024-6-27
-tags: ["password", "cracking", "john", "hashcat"]
+tags: ["Hash Cracking", "Password Cracking", "File Encryption", "John The Ripper", "Hashcat"]
 ---
 
 ### Convert file to hash format

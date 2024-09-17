@@ -1,7 +1,7 @@
 ---
 title: "NetExec (nxc)"
 date: 2024-7-2
-tags: ["nxc", "crackmapexec", "active directory", "ad", "domain controller", "Windows", "smb", "ldap", "winrm", "rid"]
+tags: ["Ldap", "Crackmapexec", "Rid", "Brute Force", "Smb", "Ldap Search", "Enumeration", "Domain Controller", "Nxc", "Active Directory", "Windows", "Winrm"]
 ---
 
 #### Basic Commands

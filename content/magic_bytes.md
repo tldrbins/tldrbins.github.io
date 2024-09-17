@@ -1,7 +1,7 @@
 ---
 title: "Magic Bytes"
 date: 2024-7-2
-tags: ["file upload", "magic bytes", "png", "bypass"]
+tags: ["File Upload Vulnerability", "File Metadata", "File Carving", "Bypass", "Magic Bytes", "Png"]
 ---
 
 ### Forge File Signature

@@ -1,7 +1,7 @@
 ---
 title: "Metasploit"
 date: 2024-6-28
-tags: ["metasploit", "exploit", "vuln", "CVE", "privesc", "meterpreter", "Windows", "msfconsole", "searchsploit"]
+tags: ["Exploitation", "Post-Exploitation", "Searchsploit", "Metasploit", "Vulnerability Scanning", "Exploit", "Meterpreter", "Windows", "Msfconsole"]
 ---
 
 {{< tab set1 tab1 active >}}msfconsole{{< /tab >}}

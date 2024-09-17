@@ -1,7 +1,7 @@
 ---
 title: "elasticsearch"
 date: 2024-7-10
-tags: ["elasticsearch", "database"]
+tags: ["Database Dumping", "Elasticsearch", "Database"]
 ---
 
 ### Basic Commands

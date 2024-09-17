@@ -1,7 +1,7 @@
 ---
 title: "Krbrelayx"
 date: 2024-7-23
-tags: ["Krbrelayx", "dnstools", "active driectory", "ad", "Windows", "dns"]
+tags: ["Dns Spoofing", "Krbrelayx", "Dnstools", "Active Driectory", "Windows", "DNS", "Ntlm"]
 ---
 
 ### Abuse #1: Add Active Directory Integrated DNS records via LDAP

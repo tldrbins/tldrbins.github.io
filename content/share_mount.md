@@ -1,7 +1,7 @@
 ---
 title: "Mount Share"
 date: 2024-6-26
-tags: ["smb", "share", "mount", "cifs", "enum", "nfs"]
+tags: ["NFS", "Mount", "Smb", "File System Mounting", "Enumeration", "Share", "Cifs", "File System Permissions Vulnerabilities"]
 ---
 
 {{< tab set1 tab1 active >}}nfs{{< /tab >}}

@@ -1,7 +1,7 @@
 ---
 title: "Windows Defender"
 date: 2024-7-16
-tags: ["defender", "av", "antivirus", "Windows", "powershell", "bypass"]
+tags: ["Bypass", "Defender", "AV", "Anti-Virus", "Windows"]
 ---
 
 ### Disable defender

@@ -1,7 +1,7 @@
 ---
 title: "Webdav"
 date: 2024-6-28
-tags: ["webdav", "http", "web"]
+tags: ["Http File Transfer", "Curl", "Webdav", "Http", "Web", "Enumeration"]
 ---
 
 ### Tools

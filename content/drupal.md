@@ -1,7 +1,7 @@
 ---
 title: "Drupal"
 date: 2024-6-28
-tags: ["drupal", "reconnaissance", "enum", "droopescan"]
+tags: ["Reconnaissance", "Enumeration", "Drupal", "Droopescan"]
 ---
 
 ### Enum

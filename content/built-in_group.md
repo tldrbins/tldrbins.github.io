@@ -1,7 +1,7 @@
 ---
 title: "Built-in Group"
 date: 2024-7-24
-tags: ["built-in group", "active driectory", "ad", "Windows", "privesc"]
+tags: ["Built-In Group", "Windows", "Windows Service"]
 ---
 
 #### Abuse #1. Modify service path

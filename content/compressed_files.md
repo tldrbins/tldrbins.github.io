@@ -1,7 +1,7 @@
 ---
 title: "Compressed Files"
 date: 2024-6-26
-tags: ["compress", "decompress", "extract", "zip", "unzip", "gz", "tar", "rar", "7z", "bz", "Windows", "powershell"]
+tags: ["Compress", "Decompress", "Extract", "Zip", "Unzip", "Gz", "Tar", "Rar", "7Z", "Bz"]
 ---
 
 

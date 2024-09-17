@@ -1,7 +1,7 @@
 ---
 title: "Windows ACLs"
 date: 2024-6-28
-tags: ["icacls", "acl", "Windows", "access control lists", "powershell", "cmd"]
+tags: ["Acls", "Icacls", "Windows", "Access Control Lists", "Files"]
 ---
 
 ### Window ACLs (Access Control Lists)

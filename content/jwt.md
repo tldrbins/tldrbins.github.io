@@ -1,7 +1,7 @@
 ---
 title: "JWT"
 date: 2024-8-1
-tags: ["jwt", "jwks", "forge", "cookies"]
+tags: ["Jwt", "Jwks", "Cookies", "Cryptography", "Web Exploitation", "Token-Based Authentication"]
 ---
 
 ### Abuse #1: Algorithm confusion

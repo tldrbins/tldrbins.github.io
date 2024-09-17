@@ -1,7 +1,7 @@
 ---
 title: "SMB Enum"
 date: 2024-6-26
-tags: ["smb", "enum", "reconnaissance", "domain", "Windows", "ads", "sid", "ad"]
+tags: ["Kerberos", "Nmap", "SID", "Smbclient", "Mount", "Enumeration", "Smb", "Impacket", "Reconnaissance", "Windows", "ADS"]
 ---
 
 ### SMB Share Enum

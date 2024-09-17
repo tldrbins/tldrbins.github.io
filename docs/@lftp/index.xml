@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lftp on TLDRBins</title>
+    <link>https://tldrbins.github.io/@lftp/</link>
+    <description>Recent content in Lftp on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@lftp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FTP</title>
+      <link>https://tldrbins.github.io/ftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ftp/</guid>
+      <description>Config Location /etc/vsftpd.conf Basic +---------------------+ | Anonymous login | +---------------------+ | Username: anonymous | | Password: (empty) | +---------------------+ # Connect ftp &amp;lt;TARGET&amp;gt; # Over SSL lftp &amp;lt;TARGET&amp;gt; # Fix cert error echo -n &amp;#39;set ssl:verify-certificate no&amp;#39; &amp;gt;&amp;gt; ~/.lftp/rc # List ls # Switch to binary transfer mode bin # Download get &amp;lt;FILE&amp;gt; # Upload put &amp;lt;FILE&amp;gt; # Connect over tunnel passive # Exit quit Recusive download # Anonymous login wget -r ftp://anonymous:@&amp;lt;TARGET&amp;gt; # With creds wget --user &amp;lt;USER&amp;gt; --password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -m ftp://&amp;lt;TARGET&amp;gt; Note: Always check what&amp;rsquo;s in there first</description>
+    </item>
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 ---
 title: "Server Operators"
 date: 2024-7-13
-tags: ["server operators", "active driectory", "ad", "Windows", "privesc", "service"]
+tags: ["Server Operators", "Active Driectory", "Windows", "Privilege Escalation", "Service", "Reverse Shell"]
 ---
 
 ### Abuse #1: Change service path

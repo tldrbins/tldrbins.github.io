@@ -1,7 +1,7 @@
 ---
 title: "Metasploit Shellcode"
 date: 2024-6-26
-tags: ["metasploit", "shellcode", "revshell", "msfconsole", "msfvenom"]
+tags: ["Code Execution", "Metasploit", "Firewall", "Payload", "RCE", "Dll Hijacking", "Shellcode", "Reverse Shell", "Msfconsole", "Msfvenom"]
 ---
 
 ### Generate Shellcode

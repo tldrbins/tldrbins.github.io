@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@gobuster/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Subdomain Enum</title>
+      <link>https://tldrbins.github.io/subdomain_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/subdomain_enum/</guid>
+      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
+    </item>
+    <item>
       <title>Web Directory Enum</title>
       <link>https://tldrbins.github.io/web_directory_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Port Scanning on TLDRBins</title>
+    <link>https://tldrbins.github.io/@port-scanning/</link>
+    <description>Recent content in Port Scanning on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@port-scanning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network Discovery</title>
+      <link>https://tldrbins.github.io/network_discovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/network_discovery/</guid>
+      <description>Test connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; Test reverse connectivity Linux sudo tcpdump -ni tun0 icmp Sniff network traffic Linux # For example: on port 389 sudo tcpdump -i lo -nnXs 0 &amp;#39;port &amp;lt;TARGET_PORT&amp;gt;&amp;#39; # Sniff HTTPS traffic sudo ./mitmdump -p 443 --mode reverse:https://&amp;lt;DOMAIN&amp;gt; --ssl-insecure --set flow_detail=3 Ref: mitmproxy&#xA;Use ping to scan subnet Linux for i in $(seq 1 254); do (ping -c 1 10.</description>
+    </item>
+    <item>
+      <title>Nmap</title>
+      <link>https://tldrbins.github.io/nmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nmap/</guid>
+      <description>Nmap Scan TCP UDP Script target=&amp;lt;TARGET&amp;gt; nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target target=&amp;lt;TARGET&amp;gt; nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Update scripts DB nmap --script-updatedb Search scripts # e.</description>
+    </item>
+    <item>
+      <title>Squid Proxy</title>
+      <link>https://tldrbins.github.io/squid_proxy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/squid_proxy/</guid>
+      <description>Config location /etc/squid/squid.conf Connect via FoxyProxy Firefox plugin +--------------------------+ | Settings | +--------------------------+ | Title : squid proxy | | Proxy Type : HTTP | | Proxy IP : &amp;lt;TARGET&amp;gt; | | Port : 3128 | | Username : (If any) | | Password : (If any) | +--------------------------+ # Connect http://&amp;lt;TARGET&amp;gt; # Or http://127.0.0.1 Internal ports scan via proxy # 1. Take note of word size, then Ctrl+C wfuzz -z range,1-1000 -p &amp;lt;TARGET&amp;gt;:3128:HTTP -u http://127.</description>
+    </item>
+  </channel>
+</rss>

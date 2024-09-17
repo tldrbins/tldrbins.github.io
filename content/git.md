@@ -1,7 +1,7 @@
 ---
 title: "git"
 date: 2024-6-28
-tags: ["git", "git-dumper", "sudo", "privesc"]
+tags: ["Git", "Git-Dumper", "Sudo", "Enumeration", "Web Exploitation"]
 ---
 
 ### Basic Commands

@@ -1,7 +1,7 @@
 ---
 title: "Upgrade Shell"
 date: 2024-6-27
-tags: ["shell", "python", "bash", "sh", "tty"]
+tags: ["Reverse Shell", "Shell", "Python", "Bash", "Sh", "Tty", "Socat"]
 ---
 
 ### Upgrade Shell

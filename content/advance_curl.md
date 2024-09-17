@@ -1,7 +1,7 @@
 ---
 title: "Advance curl"
 date: 2024-6-26
-tags: ["curl", "http", "file transfer", "web"]
+tags: ["Path Traversal", "Curl", "Http File Transfer", "Http", "File Transfer"]
 ---
 
 ### Advance curl

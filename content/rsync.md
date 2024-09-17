@@ -1,7 +1,7 @@
 ---
 title: "rsync"
 date: 2024-7-12
-tags: ["rsync"]
+tags: ["Rsync", "Password Cracking", "Enumeration"]
 ---
 
 ### Basic Commands

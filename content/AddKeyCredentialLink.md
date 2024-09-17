@@ -1,7 +1,7 @@
 ---
 title: "AddKeyCredentialLink"
 date: 2024-7-31
-tags: ["AddKeyCredentialLink", "active driectory", "ad", "Windows", "shadow credentials", "whisker", "pywhisker"]
+tags: ["Shadow Credentials", "Pass-The-Cert", "AddkeyCredentialLink", "Active Driectory", "Windows", "Whisker", "Pywhisker"]
 ---
 
 ### Privesc #1: Shadow credentials

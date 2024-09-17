@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>John the Ripper on TLDRBins</title>
+    <link>https://tldrbins.github.io/@john-the-ripper/</link>
+    <description>Recent content in John the Ripper on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@john-the-ripper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Password Cracking</title>
+      <link>https://tldrbins.github.io/password_cracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/password_cracking/</guid>
+      <description>Convert file to hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.</description>
+    </item>
+    <item>
+      <title>Shadow Hash Cracking</title>
+      <link>https://tldrbins.github.io/shadow_hash_cracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/shadow_hash_cracking/</guid>
+      <description>Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
+    </item>
+  </channel>
+</rss>

@@ -1,7 +1,7 @@
 ---
 title: "Windows RPC"
 date: 2024-7-21
-tags: ["Windows RPC", "Windows", "COM", "135"]
+tags: ["Impacket", "Windows RPC", "Windows", "COM", "Enumeration"]
 ---
 
 ### Windows RPC

@@ -1,7 +1,7 @@
 ---
 title: "RBCD Attack"
 date: 2024-7-30
-tags: ["GenericAll", "active driectory", "ad", "Windows", "rbcd", "resource-based constrained delegation", "s4u", "impersonate"]
+tags: ["Pass-The-Ticket", "Pass-The-Hash", "Silver Ticket", "Ticket Granting Ticket", "Active Driectory", "Windows", "RBCD", "Resource-Based Constrained Delegation", "S4U", "Impersonate", "Credential Dumping"]
 ---
 
 ### RBCD Attack

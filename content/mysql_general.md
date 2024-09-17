@@ -1,7 +1,7 @@
 ---
 title: "Mysql General"
 date: 2024-6-27
-tags: ["mysql", "database"]
+tags: ["Database Dumping", "Privilege Escalation In Databases", "Mysql", "Database"]
 ---
 
 ### General

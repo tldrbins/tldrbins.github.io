@@ -1,7 +1,7 @@
 ---
 title: "Winrm from Windows VM"
 date: 2024-9-6
-tags: ["winrm", "pssession", "Windows", "file transfer", "kerberos"]
+tags: ["Kerberos", "Pass-The-Ticket", "Domain", "Http File Transfer", "Authentication", "Ticket Granting Ticket", "Domain Controller", "Winrm", "Pssession", "Windows", "File Transfer", "Active Directory"]
 ---
 
 ### Preparation

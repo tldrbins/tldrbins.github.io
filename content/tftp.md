@@ -1,7 +1,7 @@
 ---
 title: "TFTP"
 date: 2024-6-29
-tags: ["tftp", "file transfer"]
+tags: ["Tftp", "File Transfer"]
 ---
 
 ### TFTP

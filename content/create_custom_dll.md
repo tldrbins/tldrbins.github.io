@@ -1,7 +1,7 @@
 ---
 title: "Create custom dll"
 date: 2024-7-29
-tags: ["dll", "cpp", "template"]
+tags: ["Dll Hijacking", "Dll", "cpp", "Template"]
 ---
 
 ### Create Custom Dll

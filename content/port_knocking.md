@@ -1,7 +1,7 @@
 ---
 title: "Port Knocking"
 date: 2024-7-2
-tags: ["port knocking", "knockd", "ssh"]
+tags: ["Port Knocking", "Knockd", "Ssh", "Authentication"]
 ---
 
 ### knockd config location

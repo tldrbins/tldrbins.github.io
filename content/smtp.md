@@ -1,7 +1,7 @@
 ---
 title: "SMTP"
 date: 2024-7-5
-tags: ["smtp", "mail", "email", "enum", "template"]
+tags: ["Nmap", "Enumeration", "SMTP", "Mail", "Email", "Template"]
 ---
 
 ### Simple Mail Debugging Server

@@ -1,7 +1,7 @@
 ---
 title: "XXE (XML External Entity)"
 date: 2024-7-5
-tags: ["xxe", "xml", "dtd", "web"]
+tags: ["Web Exploitation", "XXE", "Xml", "Dtd", "Web", "Remote File Inclusion", "Data Exfiltration"]
 ---
 
 ### XXE Template

@@ -1,7 +1,7 @@
 ---
 title: "Java Environment"
 date: 2024-6-27
-tags: ["java", "javac", "update-alternatives"]
+tags: ["Java", "Javac", "Update-Alternatives"]
 ---
 
 ### Set JDK Environment

@@ -1,7 +1,7 @@
 ---
 title: "GPG"
 date: 2024-8-1
-tags: ["gpg", "encryption", "crypto", "Pretty Good Privacy", "public key", "private key"]
+tags: ["Cryptography", "Encryption", "File Encryption", "Gpg", "Pretty Good Privacy", "Public Key", "Private Key"]
 ---
 
 ### GPG

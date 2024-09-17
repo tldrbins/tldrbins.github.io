@@ -8,11 +8,32 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@nmap/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>LDAP</title>
+      <link>https://tldrbins.github.io/ldap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ldap/</guid>
+      <description>Enum ldapsearch ldapdomaindump nmap # Get domain base ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -D &amp;#34;CN=&amp;lt;USER&amp;gt;,CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With creds ldapdomaindump -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -o ./ldap # Using nmap script sudo nmap -p 389 --script ldap-search &amp;lt;TARGET&amp;gt; Enum with Kerberos ldapsearch nxc # Add GSSAPI sudo apt install libsasl2-modules-gssapi-mit ldapsearch -H ldap://&amp;lt;TARGET&amp;gt; -Y GSSAPI -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With kerberos nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -k --users </description>
+    </item>
+    <item>
       <title>Nmap</title>
       <link>https://tldrbins.github.io/nmap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nmap/</guid>
       <description>Nmap Scan TCP UDP Script target=&amp;lt;TARGET&amp;gt; nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target target=&amp;lt;TARGET&amp;gt; nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Update scripts DB nmap --script-updatedb Search scripts # e.</description>
+    </item>
+    <item>
+      <title>SMB Enum</title>
+      <link>https://tldrbins.github.io/smb_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smb_enum/</guid>
+      <description>SMB Share Enum nmap sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Anonymous Login smbmap smbclient impacket smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; # SID brute, if null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Authenticated smbmap smbclient smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH_TO_FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; Authenticated with Kerberos impacket impacket-smbclient &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; -k -no-pass Basic commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * List Alternate Data Streams (ADS) allinfo &amp;lt;FILE&amp;gt; # Example Response &amp;gt;&amp;gt;&amp;gt;stream: [:Password:$DATA], 15 bytes # Download specific data stream get &amp;#34;&amp;lt;FILE&amp;gt;:Password&amp;#34; Mount SMB Share Anonymous Authenticated sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
+    </item>
+    <item>
+      <title>SMTP</title>
+      <link>https://tldrbins.github.io/smtp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/smtp/</guid>
+      <description>Simple Mail Debugging Server #!/usr/bin/env python3 import aiosmtpd.controller class CustomSMTPHandler: async def handle_DATA(self, server, session, envelope): print(f&amp;#34;[+] Received a mail.&amp;#34;) print(&amp;#34;=&amp;#34; * 50) print(envelope.content.decode()) print(&amp;#34;=&amp;#34; * 50) return &amp;#34;250 OK&amp;#34; handler = CustomSMTPHandler() server = aiosmtpd.controller.Controller(handler, hostname=&amp;#34;0.0.0.0&amp;#34;, port=25) server.start() print(&amp;#34;[*] Listening on 0.0.0.0:25&amp;#34;) input(&amp;#34;[*] Server started. Press Return to quit.\n&amp;#34;) server.stop() Users Enum nmap script smtp-user-enum nmap -p 25 --script=smtp-enum-users &amp;lt;TARGET&amp;gt; # Use RCPT smtp-user-enum -M RCPT -U /usr/share/seclists/Usernames/cirt-default-usernames.txt -t &amp;lt;TARGET&amp;gt; # Use VRFY smtp-user-enum -M VRFY -U /usr/share/seclists/Usernames/cirt-default-usernames.</description>
     </item>
   </channel>
 </rss>

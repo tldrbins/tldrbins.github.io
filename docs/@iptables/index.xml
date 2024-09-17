@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Iptables on TLDRBins</title>
+    <link>https://tldrbins.github.io/@iptables/</link>
+    <description>Recent content in Iptables on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@iptables/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network Discovery</title>
+      <link>https://tldrbins.github.io/network_discovery/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/network_discovery/</guid>
+      <description>Test connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; Test reverse connectivity Linux sudo tcpdump -ni tun0 icmp Sniff network traffic Linux # For example: on port 389 sudo tcpdump -i lo -nnXs 0 &amp;#39;port &amp;lt;TARGET_PORT&amp;gt;&amp;#39; # Sniff HTTPS traffic sudo ./mitmdump -p 443 --mode reverse:https://&amp;lt;DOMAIN&amp;gt; --ssl-insecure --set flow_detail=3 Ref: mitmproxy&#xA;Use ping to scan subnet Linux for i in $(seq 1 254); do (ping -c 1 10.</description>
+    </item>
+  </channel>
+</rss>

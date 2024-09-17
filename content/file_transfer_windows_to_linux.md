@@ -1,7 +1,7 @@
 ---
 title: "File Transfer (Windows To Linux)"
 date: 2024-6-26
-tags: ["file transfer", "Windows", "smb", "evil-winrm"]
+tags: ["Smb", "File System Mounting",  "Http File Transfer", "Remote File Inclusion", "File Transfer", "Windows", "Evil-Winrm"]
 ---
 
 {{< tab set1 tab1 active >}}SMB{{< /tab >}}

@@ -1,7 +1,7 @@
 ---
 title: "Memory Dump"
 date: 2024-6-29
-tags: ["dmp", "memory dump", "binwalk", "reversing", "forensic", "minidump"]
+tags: ["Forensics", "Credential Dumping", "Binwalk", "Dmp", "Memory Dump", "Reversing", "Minidump"]
 ---
 
 ### Tools

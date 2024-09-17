@@ -1,7 +1,7 @@
 ---
 title: "File Transfer (Linux To Linux)"
 date: 2024-6-26
-tags: ["file transfer", "nc", "scp"]
+tags: ["scp", "Http File Transfer", "File Transfer", "nc"]
 ---
 
 {{< tab set1 tab1 active >}}HTTP{{< /tab >}}

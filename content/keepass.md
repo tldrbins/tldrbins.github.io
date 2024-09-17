@@ -1,7 +1,7 @@
 ---
 title: "Keepass"
 date: 2024-7-3
-tags: ["keepass", "kpcli", "password", "kdbx"]
+tags: ["Password Cracking", "Hash Cracking", "Keepass", "Kpcli", "Password", "Kdbx"]
 ---
 
 ### Master password cracking

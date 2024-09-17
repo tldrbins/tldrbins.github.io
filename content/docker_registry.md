@@ -1,7 +1,7 @@
 ---
 title: "Docker Registry"
 date: 2024-7-12
-tags: ["docker", "container", "docker registry", "api"]
+tags: ["Database Dumping", "Docker", "Container", "Docker Registry"]
 ---
 
 ### Docker Registry API

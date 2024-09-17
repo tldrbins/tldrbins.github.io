@@ -1,7 +1,7 @@
 ---
 title: "Apache Tomcat"
 date: 2024-7-2
-tags: ["tomcat", "apache", "web server", "war", "java", "rce"]
+tags: ["Web Exploitation", "Tomcat", "Apache", "Web Server", "War", "Java", "RCE"]
 ---
 
 ### Config Location

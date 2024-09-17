@@ -1,7 +1,7 @@
 ---
 title: "MSSQL Privilege Escalation"
 date: 2024-6-27
-tags: ["mssql", "database", "Windows", "exploit", "rce", "privesc", "pe"]
+tags: ["Hash Cracking", "Database Dumping", "Privilege Escalation In Databases", "Ntlm", "Mssql", "Database", "Windows", "RCE"]
 ---
 
 ### Abuse #1: Steal NTLM hash

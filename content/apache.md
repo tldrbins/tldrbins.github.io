@@ -1,7 +1,7 @@
 ---
 title: "Apache"
 date: 2024-7-1
-tags: ["apache", "web server"]
+tags: ["Web Exploitation", "Waf (Web Application Firewall)", "Apache", "Web Server"]
 ---
 
 ### Check Apache version

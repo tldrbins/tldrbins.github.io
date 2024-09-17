@@ -1,7 +1,7 @@
 ---
 title: "Wordpress"
 date: 2024-6-28
-tags: ["wordpress", "wpscan"]
+tags: ["Wpscan", "Wordpress", "Reconnaissance", "Enumeration"]
 ---
 
 ### Default config location

@@ -15,32 +15,18 @@
       <description>Zone Transfer dig +noall +answer &amp;lt;DOMAIN&amp;gt; axfr @&amp;lt;TARGET&amp;gt; Domain Discovery dig +noall +answer @&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; -x &amp;lt;TARGET&amp;gt; dig +noall +answer @&amp;lt;TARGET&amp;gt; +short &amp;lt;DOMAIN&amp;gt; any dig +noall +answer @&amp;lt;TARGET&amp;gt; -t NS &amp;lt;DOMAIN&amp;gt; </description>
     </item>
     <item>
-      <title>SMB Enum</title>
-      <link>https://tldrbins.github.io/smb_enum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/smb_enum/</guid>
-      <description>SMB Share Enum nmap sudo nmap --script=smb-enum-shares -p 445 &amp;lt;TARGET&amp;gt; Anonymous Login smbmap smbclient impacket smbmap -H &amp;lt;TARGET&amp;gt; --no-banner smbmap -H &amp;lt;TARGET&amp;gt; -u null --no-banner # List known share smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ # After found an accessible share smbclient -N \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ # Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED smbclient -N -L \\\\&amp;lt;TARGET&amp;gt;\\ --option=&amp;#39;client min protocol=NT1&amp;#39; # SID brute, if null auth allowed impacket-lookupsid test@&amp;lt;DOMAIN&amp;gt; -no-pass Authenticated smbmap smbclient smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # List known share smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -R &amp;lt;SHARE&amp;gt; # Download file smbmap -H &amp;lt;TARGET&amp;gt; -r &amp;lt;SHARE&amp;gt; --download &amp;lt;PATH_TO_FILE&amp;gt; # List files with regex pattern smbmap -H &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -r &amp;lt;SHARE&amp;gt; -A &amp;lt;FILE_PATTERN&amp;gt; smbclient -L \\\\&amp;lt;TARGET&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; # After found an accessible share smbclient \\\\&amp;lt;TARGET&amp;gt;\\&amp;lt;SHARE&amp;gt;\\ -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; Authenticated with Kerberos impacket impacket-smbclient &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; -k -no-pass Basic commands # List all files in a share recurse ON ls # Download all files mask &amp;#34;&amp;#34; recurse ON prompt OFF mget * List Alternate Data Streams (ADS) allinfo &amp;lt;FILE&amp;gt; # Example Response &amp;gt;&amp;gt;&amp;gt;stream: [:Password:$DATA], 15 bytes # Download specific data stream get &amp;#34;&amp;lt;FILE&amp;gt;:Password&amp;#34; Mount SMB Share Anonymous Authenticated sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt sudo mount -t cifs -o ro,user=&amp;lt;USER&amp;gt;,password=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt Check write permission sudo find .</description>
-    </item>
-    <item>
-      <title>Subdomain Enum</title>
-      <link>https://tldrbins.github.io/subdomain_enum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;&amp;lt;TARGET&amp;gt; &amp;lt;DOMAIN&amp;gt;&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; --hw 10 Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u http://&amp;lt;DOMAIN&amp;gt; gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
-    </item>
-    <item>
-      <title>Web Directory Enum</title>
-      <link>https://tldrbins.github.io/web_directory_enum/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/web_directory_enum/</guid>
-      <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u https://&amp;lt;TARGET&amp;gt;/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;apos;/&amp;apos; to each request feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u http://&amp;lt;TARGET&amp;gt;/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 http://&amp;lt;TARGET&amp;gt;/users/FUZZ gobuster dir -u http://&amp;lt;TARGET&amp;gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.</description>
-    </item>
-    <item>
       <title>whois</title>
       <link>https://tldrbins.github.io/whois/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/whois/</guid>
       <description>WHOIS # General whois &amp;lt;DOMAIN&amp;gt; # With specific server whois -h &amp;lt;WHOIS_SERVER&amp;gt; -p 43 &amp;lt;DOMAIN&amp;gt; </description>
+    </item>
+    <item>
+      <title>Winrm from Windows VM</title>
+      <link>https://tldrbins.github.io/winrm_from_windows_vm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
+      <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
     </item>
   </channel>
 </rss>

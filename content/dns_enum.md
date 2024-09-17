@@ -1,7 +1,7 @@
 ---
 title: "DNS Enum"
 date: 2024-6-26
-tags: ["dns", "dig", "reconnaissance", "domain", "enum"]
+tags: ["Domain", "Reconnaissance", "Enumeration", "DNS", "Dig", "Zone Transfer"]
 ---
 
 ### Zone Transfer

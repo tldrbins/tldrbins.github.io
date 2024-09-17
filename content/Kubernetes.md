@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes"
 date: 2024-7-22
-tags: ["Kubernetes", "container", "privesc"]
+tags: ["Token-Based Authentication", "File System Permissions Vulnerabilities", "File System Mounting", "Kubernetes", "Container"]
 ---
 
 ### Token Location

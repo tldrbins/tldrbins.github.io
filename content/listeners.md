@@ -1,7 +1,7 @@
 ---
 title: "Listeners"
 date: 2024-6-26
-tags: ["listener", "revshell", "nc", "pwncat"]
+tags: ["Ncat", "Listener", "Reverse Shell", "Nc", "Pwncat"]
 ---
 
 ### Listener Tools

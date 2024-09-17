@@ -1,7 +1,7 @@
 ---
 title: "GPOs"
 date: 2024-8-3
-tags: ["GPOs", "Windows", "privesc", "Group Policy Objects"]
+tags: ["GPOs", "Windows", "Group Policy Objects"]
 ---
 
 ### Abuse #1: Add local admin

@@ -1,7 +1,7 @@
 ---
 title: "Network Discovery"
 date: 2024-6-26
-tags: ["port", "network", "discovery", "reconnaissance", "ping", "tcpdump", "Windows", "Linux"]
+tags: ["Port Scanning", "Arp", "Iptables", "Tcpdump", "Packet Sniffing", "Reconnaissance", "Port", "Network", "Discovery", "Ping"]
 ---
 
 ### Test connectivity

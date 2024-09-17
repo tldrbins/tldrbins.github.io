@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dynamodb on TLDRBins</title>
+    <link>https://tldrbins.github.io/@dynamodb/</link>
+    <description>Recent content in Dynamodb on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@dynamodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS</title>
+      <link>https://tldrbins.github.io/aws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/aws/</guid>
+      <description>Setup # Install awscli sudo apt install awscli # Set config aws configure AWS Access Key ID [None]: test AWS Secret Access Key [None]: test Default region name [None]: test Default output format [None]: Default AWS Credential Location ~/.aws/credentials AWS Services S3 dynamodb lambda # List buckets aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; ls # List bucket aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; ls s3://&amp;lt;BUCKET_NAME&amp;gt; # Upload to bucket aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; cp &amp;lt;FILE&amp;gt; s3://&amp;lt;BUCKET_NAME&amp;gt;/&amp;lt;FILE&amp;gt; # List tables aws --endpoint-url &amp;lt;TARGET&amp;gt; dynamodb list-tables # Dump table aws --endpoint-url &amp;lt;TARGET&amp;gt; dynamodb scan --table-name &amp;lt;TABLE_NAME&amp;gt; # Create table (e.</description>
+    </item>
+  </channel>
+</rss>

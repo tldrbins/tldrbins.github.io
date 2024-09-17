@@ -1,7 +1,7 @@
 ---
 title: "Kubelet"
 date: 2024-7-27
-tags: ["Kubelet", "Kubernetes", "container"]
+tags: ["Kubelet", "Kubernetes", "Container", "RCE"]
 ---
 
 ### Basic Commands

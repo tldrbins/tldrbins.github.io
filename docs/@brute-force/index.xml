@@ -14,5 +14,26 @@
       <guid>https://tldrbins.github.io/hydra/</guid>
       <description>HTTP basic auth hydra -L &amp;lt;USERS_FILE&amp;gt; -P &amp;lt;PASSWORD_FILE&amp;gt; -s &amp;lt;TARGET_PORT&amp;gt; -f &amp;lt;TARGET&amp;gt; http-get / +-------------------------------------------+ | -s : port | | -L : usernames file | | -P : passwords file | | -f : exit when a login/pass pair is found | +-------------------------------------------+ Web Page Login Form hydra &amp;lt;TARGET&amp;gt; -l &amp;lt;USER&amp;gt; -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form &amp;#39;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#39; +-------------------------------------------+ | -l : username | | -P : wordlist | | http-post-form : service | | /login.</description>
     </item>
+    <item>
+      <title>Linux hard disk encryption</title>
+      <link>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</guid>
+      <description>Brute force LUKS password bruteforce-luks -t 10 -f &amp;lt;WORDLIST&amp;gt; -w state.txt -v 30 &amp;lt;BACKUP_IMG&amp;gt; Note: This is slow, create a small wordlist&#xA;Basic # Open cryptsetup open --type luks &amp;lt;BACKUP_IMG&amp;gt; backup # Check ls -l /dev/mapper/ # Create mount folder sudo mkdir /mnt/backup # Mount sudo mount /dev/mapper/backup /mnt/backup/ </description>
+    </item>
+    <item>
+      <title>NetExec (nxc)</title>
+      <link>https://tldrbins.github.io/nxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/nxc/</guid>
+      <description>Basic Commands # Single user and password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Single user and password (Active Directory) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; # Multiple users or passwords nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --continue-on-success # Match username to corresponding password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;lt;PASSWORDS&amp;gt; --no-bruteforce --continue-on-success # With hash nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;LM&amp;gt;:&amp;lt;NT&amp;gt; # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -k &amp;lt;TARGET&amp;gt; Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ RID Brute nxc smb &amp;lt;TARGET&amp;gt; -u guest -p &amp;#39;&amp;#39; --rid-brute 10000 User Enum (Authenticated) nxc smb &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; --users Ref: Download nxc</description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>https://tldrbins.github.io/oracle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/oracle/</guid>
+      <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
+    </item>
   </channel>
 </rss>

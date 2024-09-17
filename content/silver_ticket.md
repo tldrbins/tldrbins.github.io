@@ -1,7 +1,7 @@
 ---
 title: "Silver Ticket"
 date: 2024-7-30
-tags: ["silver ticket", "rubeus", "active directory", "ad", "domain controller", "Windows", "GetUserSPNs"]
+tags: ["Pass-The-Ticket", "SID", "Rubeus", "Ticket Granting Ticket", "Silver Ticket", "Sidhistory", "Domain Controller", "Active Directory", "Windows", "GetUserSPNs"]
 ---
 
 ### Silver Ticket Attack

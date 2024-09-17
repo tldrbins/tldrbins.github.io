@@ -1,7 +1,7 @@
 ---
 title: "secretsdump"
 date: 2024-7-2
-tags: ["secretsdump", "impacket", "active directory", "ad", "domain controller", "Windows", "ntds.dit", "hive", "hashes", "nxc", "dcsync"]
+tags: ["Sam", "Dcsync", "Impacket", "Domain Controller", "Credential Dumping", "Active Directory", "Windows", "Ntds.Dit", "Hive", "Nxc"]
 ---
 
 ### Convert ntds.dit to .sqlite
