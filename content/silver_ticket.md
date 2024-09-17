@@ -82,7 +82,7 @@ Get-ADDomain | fl DomainSID
 
 ```console
 # Install ldp.exe (Windows 11)
-Settings > System > Optional Features > More Windows Features and add 'Active Driectory Lightweight Directory Services'
+Settings > System > Optional Features > More Windows Features and add 'Active Directory Lightweight Directory Services'
 ```
 
 ```console

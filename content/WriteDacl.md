@@ -1,7 +1,7 @@
 ---
 title: "WriteDacl"
 date: 2024-7-12
-tags: ["Writedacl", "Dcsync", "Powerview", "Credential Dumping", "Active Driectory", "Windows"]
+tags: ["Writedacl", "Dcsync", "Powerview", "Credential Dumping", "Active Directory", "Windows"]
 ---
 
 ### Abuse #1: Add dcsync right to user

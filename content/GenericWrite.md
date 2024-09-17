@@ -1,7 +1,7 @@
 ---
 title: "GenericWrite"
 date: 2024-7-13
-tags: ["Shadow Credentials", "Pass-The-Ticket", "Kerberoasting", "Genericwrite", "Powerview", "Asreproast", "Credential Dumping", "Ticket Granting Ticket", "Active Driectory", "Windows"]
+tags: ["Shadow Credentials", "Pass-The-Ticket", "Kerberoasting", "Genericwrite", "Powerview", "Asreproast", "Credential Dumping", "Ticket Granting Ticket", "Active Directory", "Windows"]
 ---
 
 ### Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to target user

@@ -1,7 +1,7 @@
 ---
 title: "ReadLAPSPassword"
 date: 2024-7-30
-tags: ["Credential Dumping", "Powerview", "ReadLAPSpassword", "Active Driectory", "Windows", "LAPS"]
+tags: ["Credential Dumping", "Powerview", "ReadLAPSpassword", "Active Directory", "Windows", "LAPS"]
 ---
 
 ### Abuse #1: Read LAPS Password

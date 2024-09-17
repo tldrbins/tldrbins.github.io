@@ -1,7 +1,7 @@
 ---
 title: "AD Recycle Bin"
 date: 2024-7-13
-tags: ["Domain Controller", "AD Recycle Bin", "Active Driectory", "Windows"]
+tags: ["Domain Controller", "AD Recycle Bin", "Active Directory", "Windows"]
 ---
 
 ### Privesc #1: Restore deleted AD account

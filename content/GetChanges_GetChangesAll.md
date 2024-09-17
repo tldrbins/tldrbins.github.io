@@ -1,7 +1,7 @@
 ---
 title: "GetChanges/GetChangesAll"
 date: 2024-7-9
-tags: ["Dcsync", "Getchanges", "Getchangesall", "Secretsdump", "Active Driectory", "Windows"]
+tags: ["Dcsync", "Getchanges", "Getchangesall", "Secretsdump", "Active Directory", "Windows"]
 ---
 
 #### Abuse #1: DCSync Attack

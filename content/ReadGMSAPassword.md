@@ -1,7 +1,7 @@
 ---
 title: "ReadGMSAPassword"
 date: 2024-7-23
-tags: ["Credential Dumping", "ReadGMSApassword", "Gmsadumper", "Active Driectory", "Windows"]
+tags: ["Credential Dumping", "ReadGMSApassword", "Gmsadumper", "Active Directory", "Windows"]
 ---
 
 ### Abuse #1: Read GMSAPassword (From Linux)

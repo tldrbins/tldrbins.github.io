@@ -1,7 +1,7 @@
 ---
 title: "Account Operators"
 date: 2024-7-23
-tags: ["Credential Dumping", "AddMember", "Account Operators", "Active Driectory", "Windows", "LAPS"]
+tags: ["Credential Dumping", "AddMember", "Account Operators", "Active Directory", "Windows", "LAPS"]
 ---
 
 ### Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group

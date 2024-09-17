@@ -1,7 +1,7 @@
 ---
 title: "ADFS"
 date: 2024-9-14
-tags: ["SAML", "Token-Based Authentication", "ADFS", "Active Driectory", "Windows", "Federation Services"]
+tags: ["SAML", "Token-Based Authentication", "ADFS", "Active Directory", "Windows", "Federation Services"]
 ---
 
 ### Abuse #1: Generate a SAML 2.0 token for some app

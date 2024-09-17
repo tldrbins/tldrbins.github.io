@@ -1,7 +1,7 @@
 ---
 title: "Bloodhound"
 date: 2024-7-9
-tags: ["Bloodhound", "Sharphound", "Sliver", "Enumeration", "Active Driectory", "Windows", "Neo4J"]
+tags: ["Bloodhound", "Sharphound", "Sliver", "Enumeration", "Active Directory", "Windows", "Neo4J"]
 ---
 
 ### Info Collection (From Linux)

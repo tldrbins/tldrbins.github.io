@@ -1,7 +1,7 @@
 ---
 title: "WriteOwner/Own"
 date: 2024-7-27
-tags: ["Writeowner", "Permissions", "Powerview", "Impacket", "AddMember", "Domain Controller", "Active Driectory", "Windows", "Dacledit"]
+tags: ["Writeowner", "Permissions", "Powerview", "Impacket", "AddMember", "Domain Controller", "Active Directory", "Windows", "Dacledit"]
 ---
 
 ### Abuse #1 : Change owner of the group

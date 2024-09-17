@@ -1,7 +1,7 @@
 ---
 title: "Constrained Delegation"
 date: 2024-8-2
-tags: ["Credential Dumping", "Impacket", "Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "Constrained Delegation", "Active Driectory", "Windows", "RBCD"]
+tags: ["Credential Dumping", "Impacket", "Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "Constrained Delegation", "Active Directory", "Windows", "RBCD"]
 ---
 
 ### Abuse #1: RBCD Attack
