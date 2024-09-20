@@ -65,7 +65,15 @@ export function addCodeBlockButtons(clipboard) {
 
         // Event listener for clicks outside the code block to hide the output
         document.addEventListener('click', (e) => {
-            if (currentOutputBubble && !codeBlock.contains(e.target) && !currentOutputBubble.contains(e.target) && !sampleButton.contains(e.target)) {
+            const dynamicFormContainer = document.getElementById('dynamicFormContainer');
+            
+            if (
+                currentOutputBubble && 
+                !codeBlock.contains(e.target) && 
+                !currentOutputBubble.contains(e.target) && 
+                !sampleButton.contains(e.target) && 
+                !(dynamicFormContainer && dynamicFormContainer.contains(e.target))  // Exclude dynamicFormContainer
+            ) {
                 currentOutputBubble.style.display = 'none';
                 sampleButton.innerHTML = downArrowIcon;
                 currentOutputBubble = null;  // Clear the active bubble
