@@ -344,34 +344,34 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab5" >ds_walk</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="http">HTTP</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u &lt;TARGET&gt; --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 </span></span></span></code></pre></div><h4 id="https">HTTPS</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u https://&lt;TARGET&gt;/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u &lt;TARGET&gt; -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 </span></span></span></code></pre></div><h4 id="specify-extension">Specify Extension</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u &lt;TARGET&gt; --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
 </span></span></span></code></pre></div><h4 id="add-trailing-slash--to-each-request">Add trailing slash &apos;/&apos; to each request</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u &lt;TARGET&gt; -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 </span></span></span></code></pre></div><h4 id="api-fuzzing">API Fuzzing</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u http://&lt;TARGET&gt;/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">feroxbuster -u &lt;TARGET&gt; --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="fuzzing-number-range">Fuzzing Number Range</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">wfuzz -z range,1-99 http://&lt;TARGET&gt;/users/FUZZ
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">wfuzz -z range,1-99 &lt;TARGET&gt;/FUZZ
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gobuster dir -u http://&lt;TARGET&gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gobuster dir -u &lt;TARGET&gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> BFAC <span class="o">(</span>Backup File Artifacts Checker<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">bfac --url http://&lt;TARGET&gt;
+</span></span><span class="line"><span class="cl"><span class="go">bfac --url &lt;TARGET&gt;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mazen160/bfac">BFAC</a></em></small></p></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 ds_walk.py -u http://&lt;TARGET&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 ds_walk.py -u &lt;TARGET&gt;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/Keramas/DS_Walk">DS_WALK</a></em></small></p></div></p>
 
 </div></div>
     
-    <script src="/js/utils.js"></script>
+    <script type="module" src="/js/main.js"></script>
     <footer>
     <hr>
     <div class="footer-text">

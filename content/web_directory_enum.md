@@ -14,31 +14,31 @@ tags: ["Waf (Web Application Firewall)", "Gobuster", "Enumeration", "Reconnaissa
 #### HTTP
 
 ```console
-feroxbuster -u http://<TARGET>/ --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
+feroxbuster -u <TARGET> --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
 #### HTTPS
 
 ```console
-feroxbuster -u https://<TARGET>/ -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
+feroxbuster -u <TARGET> -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links
 ```
 
 #### Specify Extension
 
 ```console
-feroxbuster -u http://<TARGET>/ --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
+feroxbuster -u <TARGET> --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx
 ```
 
 #### Add trailing slash '/' to each request
 
 ```console
-feroxbuster -u http://<TARGET>/ -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+feroxbuster -u <TARGET> -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 ```
 
 #### API Fuzzing
 
 ```console
-feroxbuster -u http://<TARGET>/ --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
+feroxbuster -u <TARGET> --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt
 ```
 
 {{< /tabcontent >}}
@@ -47,14 +47,14 @@ feroxbuster -u http://<TARGET>/ --force-recursion -C 404,405 --methods=GET,POST 
 #### Fuzzing Number Range
 
 ```console
-wfuzz -z range,1-99 http://<TARGET>/users/FUZZ
+wfuzz -z range,1-99 <TARGET>/FUZZ
 ```
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
 
 ```console
-gobuster dir -u http://<TARGET> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
+gobuster dir -u <TARGET> -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -t 40 -x php
 ```
 
 {{< /tabcontent >}}
@@ -62,7 +62,7 @@ gobuster dir -u http://<TARGET> -w /usr/share/seclists/Discovery/Web-Content/raf
 
 ```console
 # BFAC (Backup File Artifacts Checker)
-bfac --url http://<TARGET>
+bfac --url <TARGET>
 ```
 
 <small>*Ref: [BFAC](https://github.com/mazen160/bfac)*</small>
@@ -71,7 +71,7 @@ bfac --url http://<TARGET>
 {{< tabcontent set1 tab5 >}}
 
 ```console
-python3 ds_walk.py -u http://<TARGET>
+python3 ds_walk.py -u <TARGET>
 ```
 
 <small>*Ref: [DS_WALK](https://github.com/Keramas/DS_Walk)*</small>

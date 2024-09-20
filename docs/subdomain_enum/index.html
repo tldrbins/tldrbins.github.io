@@ -329,27 +329,27 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <h3 id="add-domainsubdomain-to-etchosts">Add domain/subdomain to /etc/hosts</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo &#34;&lt;TARGET&gt; &lt;DOMAIN&gt;&#34; | sudo tee -a /etc/hosts
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo &#34;&lt;TARGET_IP&gt; &lt;DOMAIN&gt;&#34; | sudo tee -a /etc/hosts
 </span></span></span></code></pre></div><hr>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">wfuzz</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >gobuster</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &#34;Host: FUZZ.&lt;DOMAIN&gt;&#34; -u http://&lt;DOMAIN&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &#34;Host: FUZZ.&lt;DOMAIN&gt;&#34; -u &lt;TARGET&gt;
 </span></span></span></code></pre></div><h4 id="take-note-of-the-word-size-ctrlc-to-interrupt-the-process-then-run-again">Take note of the word size, Ctrl+C to interrupt the process, then run again</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &#34;Host: FUZZ.&lt;DOMAIN&gt;&#34; -u http://&lt;DOMAIN&gt; --hw 10
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &#34;Host: FUZZ.&lt;DOMAIN&gt;&#34; -u &lt;TARGET&gt; --hw &lt;WORD&gt;
 </span></span></span></code></pre></div><h4 id="filter-out-response-with-header">Filter out response with header</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example: Access-Control-Allow-Origin
-</span></span><span class="line"><span class="cl"><span class="go">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &#34;Origin: http://FUZZ.&lt;DOMAIN&gt;&#34; --filter &#34;r.headers.response ~ &#39;Access-Control-Allow-Origin&#39;&#34; -u http://&lt;DOMAIN&gt;
+</span></span><span class="line"><span class="cl"><span class="go">wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &#34;Origin: http://FUZZ.&lt;DOMAIN&gt;&#34; --filter &#34;r.headers.response ~ &#39;Access-Control-Allow-Origin&#39;&#34; -u &lt;TARGET&gt;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://&lt;DOMAIN&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u &lt;TARGET&gt;
 </span></span></span></code></pre></div></div></p>
 
 </div></div>
     
-    <script src="/js/utils.js"></script>
+    <script type="module" src="/js/main.js"></script>
     <footer>
     <hr>
     <div class="footer-text">
