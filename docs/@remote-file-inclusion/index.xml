@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/connection_from_public_internet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
-      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net ngrok # Start a local HTTP server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; # Redirect http request to localhost:&amp;lt;LOCAL_PORT&amp;gt; ssh -R 80:localhost:&amp;lt;LOCAL_PORT&amp;gt; serveo.net ngrok http 80 Ref: ngrok Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net ngrok # Start a local HTTP server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 3000 Serving HTTP on 0.0.0.0 port 3000 (http://0.0.0.0:3000/) ... # Redirect http request to localhost:&amp;lt;LOCAL_PORT&amp;gt; ssh -R 80:localhost:&amp;lt;LOCAL_PORT&amp;gt; serveo.net $ ssh -R 80:localhost:3000 serveo.net Forwarding HTTP traffic from https://7ddf32e17a6ac5ce04a8ecbf782ca509.serveo.net ngrok http 80 Ref: ngrok Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
       <title>File Transfer (Windows To Linux)</title>

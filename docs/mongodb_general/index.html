@@ -327,7 +327,24 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set1" data-tabcontent="tab2" >authenticate</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mongo &lt;TARGET&gt;:27017
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mongosh &lt;TARGET&gt;:27017
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> mongosh 172.17.0.3:27017
+</span></span><span class="line"><span class="cl"><span class="go">Current Mongosh Log ID: 66f2fa2192b07a1eeb856ec6
+</span></span></span><span class="line"><span class="cl"><span class="go">Connecting to:          mongodb://172.17.0.3:27017/?directConnection=true&amp;appName=mongosh+2.2.12
+</span></span></span><span class="line"><span class="cl"><span class="go">Using MongoDB:          5.0.6
+</span></span></span><span class="line"><span class="cl"><span class="go">Using Mongosh:          2.2.12
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">------
+</span></span></span><span class="line"><span class="cl"><span class="go">   The server generated these startup warnings when booting
+</span></span></span><span class="line"><span class="cl"><span class="go">   2024-09-24T10:44:22.876+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+</span></span></span><span class="line"><span class="cl"><span class="go">   2024-09-24T10:44:23.824+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+</span></span></span><span class="line"><span class="cl"><span class="go">------
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Warning: Found ~/.mongorc.js, but not ~/.mongoshrc.js. ~/.mongorc.js will not be loaded.
+</span></span></span><span class="line"><span class="cl"><span class="go">  You may want to copy or rename ~/.mongorc.js to ~/.mongoshrc.js.
+</span></span></span><span class="line"><span class="cl"><span class="go">test&gt; 
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect <span class="nb">local</span> with creds and specified database
@@ -336,16 +353,65 @@ body.dark-mode #dynamicFormContainer button:hover {
 <h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all databases
 </span></span><span class="line"><span class="cl"><span class="go">show dbs
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">test&gt; show dbs
+</span></span></span><span class="line"><span class="cl"><span class="go">admin    132.00 KiB
+</span></span></span><span class="line"><span class="cl"><span class="go">config    72.00 KiB
+</span></span></span><span class="line"><span class="cl"><span class="go">local     88.00 KiB
+</span></span></span><span class="line"><span class="cl"><span class="go">trudesk    1.01 MiB
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Choose database
 </span></span><span class="line"><span class="cl"><span class="go">use &lt;DB_NAME&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">test&gt; use trudesk
+</span></span></span><span class="line"><span class="cl"><span class="go">switched to db trudesk
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all collections
 </span></span><span class="line"><span class="cl"><span class="go">show collections
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">trudesk&gt; show collections
+</span></span></span><span class="line"><span class="cl"><span class="go">accounts
+</span></span></span><span class="line"><span class="cl"><span class="go">counters
+</span></span></span><span class="line"><span class="cl"><span class="go">departments
+</span></span></span><span class="line"><span class="cl"><span class="go">groups
+</span></span></span><span class="line"><span class="cl"><span class="go">messages
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all of the collection
 </span></span><span class="line"><span class="cl"><span class="go">db.&lt;COLLECTION_NAME&gt;.find().pretty()
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">trudesk&gt; db.accounts.find().pretty()
+</span></span></span><span class="line"><span class="cl"><span class="go">[
+</span></span></span><span class="line"><span class="cl"><span class="go">  {
+</span></span></span><span class="line"><span class="cl"><span class="go">    _id: ObjectId(&#39;623c8b20855cc5001a8ba13c&#39;),
+</span></span></span><span class="line"><span class="cl"><span class="go">    preferences: {
+</span></span></span><span class="line"><span class="cl"><span class="go">      tourCompleted: false,
+</span></span></span><span class="line"><span class="cl"><span class="go">      autoRefreshTicketGrid: true,
+</span></span></span><span class="line"><span class="cl"><span class="go">      openChatWindows: []
+</span></span></span><span class="line"><span class="cl"><span class="go">    },
+</span></span></span><span class="line"><span class="cl"><span class="go">    hasL2Auth: false,
+</span></span></span><span class="line"><span class="cl"><span class="go">    deleted: false,
+</span></span></span><span class="line"><span class="cl"><span class="go">    username: &#39;admin&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    password: &#39;$2b$10$imwoLPu0Au8LjNr08GXGy.xk/Exyr9PhKYk1lC/sKAfMFd5i3HrmS&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    fullname: &#39;Robert Frost&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    email: &#39;rfrost@carpediem.htb&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    role: ObjectId(&#39;623c8b20855cc5001a8ba138&#39;),
+</span></span></span><span class="line"><span class="cl"><span class="go">    title: &#39;Sr. Network Engineer&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    accessToken: &#39;22e56ec0b94db029b07365d520213ef6f5d3d2d9&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    __v: 0,
+</span></span></span><span class="line"><span class="cl"><span class="go">    lastOnline: ISODate(&#39;2022-04-07T20:30:32.198Z&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="go">  },
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Insert entry into collections
 </span></span><span class="line"><span class="cl"><span class="go">db.&lt;COLLECTION_NAME&gt;.insert({&#34;&lt;key&gt;&#34;: &#34;&lt;value&gt;&#34;})
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">trudesk&gt; db.accounts.insert({_id: ObjectId(&#39;33f3b8a827983e3773023633&#39;),preferences: {tourCompleted: false,autoRefreshTicketGrid: true,openChatWindows: []},hasL2Auth: false,deleted: false,username: &#39;test&#39;,password: &#39;$2b$10$imwoLPu0Au8LjNr08GXGy.xk/Exyr9PhKYk1lC/sKAfMFd5i3HrmS&#39;,fullname: &#39;Test USer&#39;,email: &#39;test@carpediem.htb&#39;,role: ObjectId(&#39;623c8b20855cc5001a8ba138&#39;),title: &#39;Test&#39;,accessToken: &#39;3fd5a5e64963cd4b973480032125011568fee525&#39;,__v: 0,lastOnline: ISODate(&#39;2022-04-07T20:30:32.198Z&#39;)})
+</span></span></span><span class="line"><span class="cl"><span class="go">{
+</span></span></span><span class="line"><span class="cl"><span class="go">  acknowledged: true,
+</span></span></span><span class="line"><span class="cl"><span class="go">  insertedIds: { &#39;0&#39;: ObjectId(&#39;33f3b8a827983e3773023633&#39;) }
+</span></span></span><span class="line"><span class="cl"><span class="go">}
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Update an entry <span class="o">(</span>e.g. password of user<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">db.&lt;COLLECTION_NAME&gt;.update({&#34;username&#34;: &#34;user&#34;}, {$set: {&#34;password&#34;: &#34;password&#34;}});
+</span></span><span class="line"><span class="cl"><span class="go">db.&lt;COLLECTION_NAME&gt;.updateOne({&#34;username&#34;: &#34;user&#34;}, {$set: {&#34;password&#34;: &#34;password&#34;}});
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">trudesk&gt; db.accounts.updateOne({&#34;username&#34;:&#34;admin&#34;}, {$set:{&#34;password&#34;:&#34;$2b$04$gj6qKJ4AhURmyt1wnUfPsOPebiur236k1m57BwteWHDV2fzJL74Yq&#34;}})
+</span></span></span><span class="line"><span class="cl"><span class="go">{
+</span></span></span><span class="line"><span class="cl"><span class="go">  acknowledged: true,
+</span></span></span><span class="line"><span class="cl"><span class="go">  insertedId: null,
+</span></span></span><span class="line"><span class="cl"><span class="go">  matchedCount: 1,
+</span></span></span><span class="line"><span class="cl"><span class="go">  modifiedCount: 0,
+</span></span></span><span class="line"><span class="cl"><span class="go">  upsertedCount: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">}
 </span></span></span></code></pre></div>
 </div></div>
     

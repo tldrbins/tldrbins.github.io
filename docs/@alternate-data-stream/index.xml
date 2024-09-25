@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/alternate_data_stream/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/alternate_data_stream/</guid>
-      <description>Show ADS Windows # cmd cmd /C dir /R &amp;lt;FILE_PATH&amp;gt; # powershell Get-Item -Path &amp;lt;FILE_PATH&amp;gt; -force -stream * </description>
+      <description>Show ADS cmd powershell # cmd cmd /C dir /R &amp;lt;PATH&amp;gt; C:\Users\Administrator\Desktop&amp;gt; cmd /C dir /R C:\users\administrator\desktop Volume in drive C has no label. Volume Serial Number is 71A1-6FA1 Directory of C:\users\administrator\desktop 11/08/2017 10:05 AM &amp;lt;DIR&amp;gt; . 11/08/2017 10:05 AM &amp;lt;DIR&amp;gt; .. 12/24/2017 03:51 AM 36 hm.txt 34 hm.txt:root.txt:$DATA 11/08/2017 10:05 AM 797 Windows 10 Update Assistant.lnk 2 File(s) 833 bytes 2 Dir(s) 2,652,184,576 bytes free # Read more &amp;lt; &amp;lt;FILE&amp;gt;:&amp;lt;STREAM&amp;gt; C:\Users\Administrator\Desktop&amp;gt; more &amp;lt; hm.</description>
     </item>
   </channel>
 </rss>

@@ -331,15 +331,27 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab3" >pwncat</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">rlwrap nc -lvnp &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> rlwrap nc -lvnp <span class="m">1337</span>  
+</span></span><span class="line"><span class="cl"><span class="go">listening on [any] 1337 ...
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Default listening on both ipv4 and ipv6
 </span></span><span class="line"><span class="cl"><span class="go">rlwrap ncat -lvnp &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> rlwrap ncat -lvnp <span class="m">1337</span>
+</span></span><span class="line"><span class="cl"><span class="go">Ncat: Version 7.94SVN ( https://nmap.org/ncat )
+</span></span></span><span class="line"><span class="cl"><span class="go">Ncat: Listening on [::]:1337
+</span></span></span><span class="line"><span class="cl"><span class="go">Ncat: Listening on 0.0.0.0:1337
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pwncat-cs -lp &lt;LOCAL_PORT&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After getting a connection
 </span></span><span class="line"><span class="cl"><span class="go">back
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pwncat-cs -lp <span class="m">1337</span>       
+</span></span><span class="line"><span class="cl"><span class="go">[11:43:14] Welcome to pwncat 🐈!                                                         __main__.py:164
+</span></span></span><span class="line"><span class="cl"><span class="go">[11:43:25] received connection from 10.10.10.55:33496                                         bind.py:84
+</span></span></span><span class="line"><span class="cl"><span class="go">[11:43:27] 10.10.10.55:33496: registered new host w/ db                                   manager.py:957
+</span></span></span><span class="line"><span class="cl"><span class="go">(local) pwncat$ back
+</span></span></span><span class="line"><span class="cl"><span class="go">(remote) atanas@kotarak-dmz:/$ 
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/calebstewart/pwncat">pwncat</a></em></small></p></div></p>
 
 </div></div>

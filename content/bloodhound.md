@@ -11,7 +11,24 @@ tags: ["Bloodhound", "Sharphound", "Sliver", "Enumeration", "Active Directory", 
 
 ```console
 # With password
-bloodhound-python -d <DOMAIN> -u <USER> -p '<PASSWORD>' -dc <DC> -ns <DC_IP> -c all --zip
+python3 bloodhound.py -d <DOMAIN> -u <USER> -p '<PASSWORD>' -dc <DC> -ns <DC_IP> -c all --zip
+```
+
+```console {class="sample-code"}
+$ python3 bloodhound.py -d rebound.htb -u oorend -p '1GR8t@$$4u' -dc dc01.rebound.htb -ns 10.10.11.231 -c all --zip 
+INFO: Found AD domain: rebound.htb
+INFO: Getting TGT for user
+INFO: Connecting to LDAP server: dc01.rebound.htb
+WARNING: LDAP Authentication is refused because LDAP signing is enabled. Trying to connect over LDAPS instead...
+INFO: Found 1 domains
+
+...[SNIP]...
+
+INFO: Found 0 trusts
+INFO: Starting computer enumeration with 10 workers
+INFO: Querying computer: dc01.rebound.htb
+INFO: Done in 00M 50S
+INFO: Compressing output into 20240923035110_bloodhound.zip
 ```
 
 ```console
@@ -20,6 +37,8 @@ sudo ntpdate -s <DC> && bloodhound-python -u <USER> -k -d <DOMAIN> -dc <DC> -ns 
 ```
 
 <small>*Note: passing '-no-pass' will still ask for password, press enter*</small>
+
+<small>*Ref: [BloodHound.py](https://github.com/dirkjanm/BloodHound.py)*</small>
 
 {{< /tabcontent >}}
 

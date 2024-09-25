@@ -19,7 +19,7 @@
       <link>https://tldrbins.github.io/listeners/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/listeners/</guid>
-      <description>Listener Tools nc ncat pwncat rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp &amp;lt;LOCAL_PORT&amp;gt; pwncat-cs -lp &amp;lt;LOCAL_PORT&amp;gt; # After getting a connection back Ref: pwncat</description>
+      <description>Listener Tools nc ncat pwncat rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp &amp;lt;LOCAL_PORT&amp;gt; $ rlwrap ncat -lvnp 1337 Ncat: Version 7.94SVN ( https://nmap.org/ncat ) Ncat: Listening on [::]:1337 Ncat: Listening on 0.0.0.0:1337 pwncat-cs -lp &amp;lt;LOCAL_PORT&amp;gt; # After getting a connection back $ pwncat-cs -lp 1337 [11:43:14] Welcome to pwncat 🐈! __main__.py:164 [11:43:25] received connection from 10.</description>
     </item>
   </channel>
 </rss>

@@ -20,6 +20,13 @@ tags: ["Pivoting", "Sliver", "Pivot", "Chisel", "Ssh", "Network", "Socat", "Port
 ./chisel server --reverse --port <LOCAL_PORT>
 ```
 
+```console {class="sample-code"}
+$ ./chisel server --reverse --port 8000 
+2024/09/23 12:27:03 server: Reverse tunnelling enabled
+2024/09/23 12:27:03 server: Fingerprint ikFn6iQOOodxIlcDQI4dvFu1pdHgV5UnHRenxUg0eho=
+2024/09/23 12:27:03 server: Listening on http://0.0.0.0:8000
+```
+
 #### Ports forwarding
 
 ```console
@@ -49,6 +56,12 @@ socks5 127.0.0.1 1081
 ./chisel client <LOCAL_IP>:<LOCAL_PORT> R:1081:socks
 ```
 
+```console {class="sample-code"}
+$ ./chisel client 10.10.14.31:8000 R:1081:socks
+2024/09/23 04:16:44 client: Connecting to ws://10.10.14.31:8000
+2024/09/23 04:16:44 client: Connected (Latency 47.945673ms)
+```
+
 ```console
 # Usage, in our local machine
 proxychains4 curl http://127.0.0.1:1081
@@ -62,6 +75,20 @@ proxychains4 curl http://127.0.0.1:1081
 ```console
 # SSH port forwarding without spawning a shell
 ssh -N -L <TARGET_PORT>:127.0.0.1:<TARGET_PORT> <USER>@<TARGET>
+```
+
+```console {class=sample-code}
+$ ssh -N -L 5985:127.0.0.1:5985 3v4Si0N@10.10.10.240
+3v4Si0N@10.10.10.240's password:  
+```
+
+```console
+# SSH socks5 tunneling without spawning a shell
+ssh -N -D 1081 <USER>@<TARGET>
+```
+
+```console {class=sample-code}
+$ ssh -i id_rsa -N -D 1081 root@10.10.11.179
 ```
 
 {{< /tabcontent >}}

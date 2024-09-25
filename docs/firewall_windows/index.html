@@ -328,15 +328,165 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h3 id="check-firewall-rules">Check Firewall Rules</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> cmd
 </span></span><span class="line"><span class="cl"><span class="go">cmd /c &#34;netsh advfirewall firewall show rule name=all|findstr Name:&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; cmd /c &#34;netsh advfirewall firewall show rule name=all|findstr Name:&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            World Wide Web Services (HTTPS Traffic-In)
+</span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            World Wide Web Services (HTTP Traffic-In)
+</span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Shell Input Application
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv6-In)
+</span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv4-In)
+</span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Virtual Machine Monitoring (DCOM-In)
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> powershell
 </span></span><span class="line"><span class="cl"><span class="go">Get-NetFirewallProfile
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Get-NetFirewallProfile
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                            : Domain
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled                         : False
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultInboundAction            : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultOutboundAction           : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowInboundRules               : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowLocalFirewallRules         : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowLocalIPsecRules            : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUserApps                   : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUserPorts                  : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUnicastResponseToMulticast : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">NotifyOnListen                  : False
+</span></span></span><span class="line"><span class="cl"><span class="go">EnableStealthModeForIPsec       : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log
+</span></span></span><span class="line"><span class="cl"><span class="go">LogMaxSizeKilobytes             : 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">LogAllowed                      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LogBlocked                      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LogIgnored                      : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">DisabledInterfaceAliases        : {NotConfigured}
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                            : Private
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled                         : False
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultInboundAction            : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultOutboundAction           : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowInboundRules               : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowLocalFirewallRules         : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowLocalIPsecRules            : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUserApps                   : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUserPorts                  : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUnicastResponseToMulticast : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">NotifyOnListen                  : False
+</span></span></span><span class="line"><span class="cl"><span class="go">EnableStealthModeForIPsec       : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log
+</span></span></span><span class="line"><span class="cl"><span class="go">LogMaxSizeKilobytes             : 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">LogAllowed                      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LogBlocked                      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LogIgnored                      : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">DisabledInterfaceAliases        : {NotConfigured}
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                            : Public
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled                         : False
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultInboundAction            : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultOutboundAction           : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowInboundRules               : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowLocalFirewallRules         : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowLocalIPsecRules            : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUserApps                   : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUserPorts                  : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">AllowUnicastResponseToMulticast : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">NotifyOnListen                  : False
+</span></span></span><span class="line"><span class="cl"><span class="go">EnableStealthModeForIPsec       : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log
+</span></span></span><span class="line"><span class="cl"><span class="go">LogMaxSizeKilobytes             : 4096
+</span></span></span><span class="line"><span class="cl"><span class="go">LogAllowed                      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LogBlocked                      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LogIgnored                      : NotConfigured
+</span></span></span><span class="line"><span class="cl"><span class="go">DisabledInterfaceAliases        : {NotConfigured}
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check outbound rules
 </span></span><span class="line"><span class="cl"><span class="go">Get-NetFirewallRule -Direction Outbound -Enabled True
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Get-NetFirewallRule -Direction Outbound -Enabled True
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                  : Microsoft-Windows-Unified-Telemetry-Client
+</span></span></span><span class="line"><span class="cl"><span class="go">DisplayName           : Connected User Experiences and Telemetry
+</span></span></span><span class="line"><span class="cl"><span class="go">Description           : Unified Telemetry Client Outbound Traffic
+</span></span></span><span class="line"><span class="cl"><span class="go">DisplayGroup          : DiagTrack
+</span></span></span><span class="line"><span class="cl"><span class="go">Group                 : DiagTrack
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled               : True
+</span></span></span><span class="line"><span class="cl"><span class="go">Profile               : Any
+</span></span></span><span class="line"><span class="cl"><span class="go">Platform              : {}
+</span></span></span><span class="line"><span class="cl"><span class="go">Direction             : Outbound
+</span></span></span><span class="line"><span class="cl"><span class="go">Action                : Allow
+</span></span></span><span class="line"><span class="cl"><span class="go">EdgeTraversalPolicy   : Block
+</span></span></span><span class="line"><span class="cl"><span class="go">LooseSourceMapping    : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LocalOnlyMapping      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">Owner                 :
+</span></span></span><span class="line"><span class="cl"><span class="go">PrimaryStatus         : OK
+</span></span></span><span class="line"><span class="cl"><span class="go">Status                : The rule was parsed successfully from the store. (65536)
+</span></span></span><span class="line"><span class="cl"><span class="go">EnforcementStatus     : NotApplicable
+</span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSource     : PersistentStore
+</span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSourceType : Local
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                  : {5ADD1B2F-E298-4E9D-AEB5-C8C4B224D74A}
+</span></span></span><span class="line"><span class="cl"><span class="go">DisplayName           : Shell Input Application
+</span></span></span><span class="line"><span class="cl"><span class="go">Description           : Shell Input Application
+</span></span></span><span class="line"><span class="cl"><span class="go">DisplayGroup          : Shell Input Application
+</span></span></span><span class="line"><span class="cl"><span class="go">Group                 : Shell Input Application
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled               : True
+</span></span></span><span class="line"><span class="cl"><span class="go">Profile               : Domain, Private, Public
+</span></span></span><span class="line"><span class="cl"><span class="go">Platform              : {6.2+}
+</span></span></span><span class="line"><span class="cl"><span class="go">Direction             : Outbound
+</span></span></span><span class="line"><span class="cl"><span class="go">Action                : Allow
+</span></span></span><span class="line"><span class="cl"><span class="go">EdgeTraversalPolicy   : Block
+</span></span></span><span class="line"><span class="cl"><span class="go">LooseSourceMapping    : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LocalOnlyMapping      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">Owner                 : S-1-5-21-4088429403-1159899800-2753317549-1106
+</span></span></span><span class="line"><span class="cl"><span class="go">PrimaryStatus         : OK
+</span></span></span><span class="line"><span class="cl"><span class="go">Status                : The rule was parsed successfully from the store. (65536)
+</span></span></span><span class="line"><span class="cl"><span class="go">EnforcementStatus     : NotApplicable
+</span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSource     : PersistentStore
+</span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSourceType : Local
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Pretty print
-</span></span><span class="line"><span class="cl"><span class="go">powershell -c &#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&#39;Protocol&#39;;Expression={($PSItem | Get-NetFirewallPortFilter).Protocol}},@{Name=&#39;LocalPort&#39;;Expression={($PSItem | Get-NetFirewallPortFilter).LocalPort}},@{Name=&#39;RemotePort&#39;;Expression={($PSItem | Get-NetFirewallPortFilter).RemotePort}},@{Name=&#39;RemoteAddress&#39;;Expression={($PSItem | Get-NetFirewallAddressFilter).RemoteAddress}}, Enabled, Profile,Direction,Action&#34;
+</span></span><span class="line"><span class="cl"><span class="go">powershell -c &#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&#39;Protocol&#39;;Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).Protocol}},@{Name=&#39;LocalPort&#39;;Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).LocalPort}},@{Name=&#39;RemotePort&#39;;Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).RemotePort}},@{Name=&#39;RemoteAddress&#39;;Expression={(Get-NetFirewallAddressFilter -AssociatedNetFirewallRule $PSItem).RemoteAddress}},Enabled,Profile,Direction,Action&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; powershell -c &#34;Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name=&#39;Protocol&#39;;Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).Protocol}},@{Name=&#39;LocalPort&#39;;Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).LocalPort}},@{Name=&#39;RemotePort&#39;;Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).RemotePort}},@{Name=&#39;RemoteAddress&#39;;Expression={(Get-NetFirewallAddressFilter -AssociatedNetFirewallRule $PSItem).RemoteAddress}},Enabled,Profile,Direction,Action&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">DisplayName     Protocol LocalPort RemotePort RemoteAddress Enabled Profile Direction Action
+</span></span></span><span class="line"><span class="cl"><span class="go">-----------     -------- --------- ---------- ------------- ------- ------- --------- ------
+</span></span></span><span class="line"><span class="cl"><span class="go">BlockOutboundDC                                                True     Any  Outbound  Block
 </span></span></span></code></pre></div><h3 id="add-inbound-rules">Add Inbound Rules</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Allow all inbound traffic from <span class="nb">local</span> subnet
 </span></span><span class="line"><span class="cl"><span class="go">New-NetFirewallRule -DisplayName &#34;Allow All&#34; -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; New-NetFirewallRule -DisplayName &#34;Allow All&#34; -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                  : {40819844-ba45-451b-be9c-f9878e2e6011}
+</span></span></span><span class="line"><span class="cl"><span class="go">DisplayName           : Allow All
+</span></span></span><span class="line"><span class="cl"><span class="go">Description           :
+</span></span></span><span class="line"><span class="cl"><span class="go">DisplayGroup          :
+</span></span></span><span class="line"><span class="cl"><span class="go">Group                 :
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled               : True
+</span></span></span><span class="line"><span class="cl"><span class="go">Profile               : Any
+</span></span></span><span class="line"><span class="cl"><span class="go">Platform              : {}
+</span></span></span><span class="line"><span class="cl"><span class="go">Direction             : Inbound
+</span></span></span><span class="line"><span class="cl"><span class="go">Action                : Allow
+</span></span></span><span class="line"><span class="cl"><span class="go">EdgeTraversalPolicy   : Block
+</span></span></span><span class="line"><span class="cl"><span class="go">LooseSourceMapping    : False
+</span></span></span><span class="line"><span class="cl"><span class="go">LocalOnlyMapping      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">Owner                 :
+</span></span></span><span class="line"><span class="cl"><span class="go">PrimaryStatus         : OK
+</span></span></span><span class="line"><span class="cl"><span class="go">Status                : The rule was parsed successfully from the store. (65536)
+</span></span></span><span class="line"><span class="cl"><span class="go">EnforcementStatus     : NotApplicable
+</span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSource     : PersistentStore
+</span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSourceType : Local
+</span></span></span></code></pre></div><h3 id="disable-firewall">Disable Firewall</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-NetFirewallProfile | Format-Table Name, Enabled
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Get-NetFirewallProfile | Format-Table Name, Enabled
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name    Enabled
+</span></span></span><span class="line"><span class="cl"><span class="go">----    -------
+</span></span></span><span class="line"><span class="cl"><span class="go">Domain    False
+</span></span></span><span class="line"><span class="cl"><span class="go">Private   False
+</span></span></span><span class="line"><span class="cl"><span class="go">Public    False
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

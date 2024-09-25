@@ -329,8 +329,57 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check a file/directory
 </span></span><span class="line"><span class="cl"><span class="go">icacls &lt;PATH&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs\internal&gt; icacls C:\xampp\htdocs\internal\applications
+</span></span></span><span class="line"><span class="cl"><span class="go">icacls C:\xampp\htdocs\internal\applications
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\xampp\htdocs\internal\applications CREATOR OWNER:(OI)(CI)(IO)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">                                      OFFICE\PPotts:(OI)(CI)(NP)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">                                      NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">                                      NT AUTHORITY\LOCAL SERVICE:(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">                                      OFFICE\web_account:(OI)(CI)(RX,W)
+</span></span></span><span class="line"><span class="cl"><span class="go">                                      BUILTIN\Administrators:(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">                                      BUILTIN\Users:(OI)(CI)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Successfully processed 1 files; Failed processing 0 files
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check all files and directories
 </span></span><span class="line"><span class="cl"><span class="go">icacls * /C
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs\internal&gt; icacls * /C
+</span></span></span><span class="line"><span class="cl"><span class="go">icacls * /C
+</span></span></span><span class="line"><span class="cl"><span class="go">applications CREATOR OWNER:(OI)(CI)(IO)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">             OFFICE\PPotts:(OI)(CI)(NP)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">             NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">             NT AUTHORITY\LOCAL SERVICE:(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">             OFFICE\web_account:(OI)(CI)(RX,W)
+</span></span></span><span class="line"><span class="cl"><span class="go">             BUILTIN\Administrators:(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">             BUILTIN\Users:(OI)(CI)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">css NT AUTHORITY\LOCAL SERVICE:(I)(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">    OFFICE\web_account:(I)(OI)(CI)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go">    NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">    BUILTIN\Administrators:(I)(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">    BUILTIN\Users:(I)(OI)(CI)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go">    CREATOR OWNER:(I)(OI)(CI)(IO)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">img NT AUTHORITY\LOCAL SERVICE:(I)(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">    OFFICE\web_account:(I)(OI)(CI)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go">    NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">    BUILTIN\Administrators:(I)(OI)(CI)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">    BUILTIN\Users:(I)(OI)(CI)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go">    CREATOR OWNER:(I)(OI)(CI)(IO)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">index.html NT AUTHORITY\LOCAL SERVICE:(I)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">           OFFICE\web_account:(I)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go">           NT AUTHORITY\SYSTEM:(I)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">           BUILTIN\Administrators:(I)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">           BUILTIN\Users:(I)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">resume.php NT AUTHORITY\LOCAL SERVICE:(I)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">           OFFICE\web_account:(I)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go">           NT AUTHORITY\SYSTEM:(I)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">           BUILTIN\Administrators:(I)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go">           BUILTIN\Users:(I)(RX)
+</span></span></span><span class="line"><span class="cl"><span class="go">           OFFICE\PPotts:(I)(F)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Successfully processed 5 files; Failed processing 0 files
 </span></span></span></code></pre></div></div></p>
 <h4 id="grant-user-full-control">Grant user full control</h4>
 <p>

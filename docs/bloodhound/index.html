@@ -331,10 +331,26 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab1" class="active">bloodhound-python</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">bloodhound-python -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodhound.py -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodhound.py -d rebound.htb -u oorend -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> -dc dc01.rebound.htb -ns 10.10.11.231 -c all --zip 
+</span></span><span class="line"><span class="cl"><span class="go">INFO: Found AD domain: rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO: Getting TGT for user
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO: Connecting to LDAP server: dc01.rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">WARNING: LDAP Authentication is refused because LDAP signing is enabled. Trying to connect over LDAPS instead...
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO: Found 1 domains
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">INFO: Found 0 trusts
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO: Starting computer enumeration with 10 workers
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO: Querying computer: dc01.rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO: Done in 00M 50S
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO: Compressing output into 20240923035110_bloodhound.zip
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; bloodhound-python -u &lt;USER&gt; -k -d &lt;DOMAIN&gt; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip -no-pass --use-ldaps
-</span></span></span></code></pre></div><p><small><em>Note: passing &apos;-no-pass&apos; will still ask for password, press enter</em></small></p></div></p>
+</span></span></span></code></pre></div><p><small><em>Note: passing &apos;-no-pass&apos; will still ask for password, press enter</em></small></p>
+<p><small><em>Ref: <a href="https://github.com/dirkjanm/BloodHound.py">BloodHound.py</a></em></small></p>
+</div></p>
 <h3 id="info-collection-from-windows">Info Collection (From Windows)</h3>
 <p>
 <button data-tabset="set2" data-tabcontent="tab1" class="active">SharpHound.exe</button>

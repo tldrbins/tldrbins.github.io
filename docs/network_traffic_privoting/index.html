@@ -347,6 +347,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-a-local-chisel-server">Start a local chisel Server</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
 </span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --port &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ./chisel server --reverse --port <span class="m">8000</span> 
+</span></span><span class="line"><span class="cl"><span class="go">2024/09/23 12:27:03 server: Reverse tunnelling enabled
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 12:27:03 server: Fingerprint ikFn6iQOOodxIlcDQI4dvFu1pdHgV5UnHRenxUg0eho=
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 12:27:03 server: Listening on http://0.0.0.0:8000
 </span></span></span></code></pre></div><h4 id="ports-forwarding">Ports forwarding</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target machine
 </span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt; R:&lt;TARGET_PORT&gt;:127.0.0.1:&lt;TARGET_PORT&gt;
@@ -359,13 +363,21 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 1081
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target machine
 </span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt; R:1081:socks
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ./chisel client 10.10.14.31:8000 R:1081:socks
+</span></span><span class="line"><span class="cl"><span class="go">2024/09/23 04:16:44 client: Connecting to ws://10.10.14.31:8000
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 04:16:44 client: Connected (Latency 47.945673ms)
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Usage, in our <span class="nb">local</span> machine
 </span></span><span class="line"><span class="cl"><span class="go">proxychains4 curl http://127.0.0.1:1081
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/jpillora/chisel">chisel</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SSH port forwarding without spawning a shell
 </span></span><span class="line"><span class="cl"><span class="go">ssh -N -L &lt;TARGET_PORT&gt;:127.0.0.1:&lt;TARGET_PORT&gt; &lt;USER&gt;@&lt;TARGET&gt;
-</span></span></span></code></pre></div></div>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ssh -N -L 5985:127.0.0.1:5985 3v4Si0N@10.10.10.240
+</span></span><span class="line"><span class="cl"><span class="go">3v4Si0N@10.10.10.240&#39;s password:  
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SSH socks5 tunneling without spawning a shell
+</span></span><span class="line"><span class="cl"><span class="go">ssh -N -D 1081 &lt;USER&gt;@&lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ssh -i id_rsa -N -D <span class="m">1081</span> root@10.10.11.179
+</span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Any traffic go to port &lt;TARGET_PORT&gt; will be forwarded to &lt;LOCAL_IP&gt;:&lt;TARGET_PORT&gt;
 </span></span><span class="line"><span class="cl"><span class="go">./socat tcp-listen:&lt;TARGET_PORT&gt;,fork tcp:&lt;LOCAL_IP&gt;:&lt;TARGET_PORT&gt; &amp;

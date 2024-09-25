@@ -16,9 +16,64 @@ tags: ["Acls", "Icacls", "Windows", "Access Control Lists", "Files"]
 icacls <PATH>
 ```
 
+```console {class="sample-code"}
+PS C:\xampp\htdocs\internal> icacls C:\xampp\htdocs\internal\applications
+icacls C:\xampp\htdocs\internal\applications
+C:\xampp\htdocs\internal\applications CREATOR OWNER:(OI)(CI)(IO)(F)
+                                      OFFICE\PPotts:(OI)(CI)(NP)(F)
+                                      NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+                                      NT AUTHORITY\LOCAL SERVICE:(OI)(CI)(F)
+                                      OFFICE\web_account:(OI)(CI)(RX,W)
+                                      BUILTIN\Administrators:(OI)(CI)(F)
+                                      BUILTIN\Users:(OI)(CI)(RX)
+
+Successfully processed 1 files; Failed processing 0 files
+```
+
 ```console
 # Check all files and directories
 icacls * /C
+```
+
+```console {class="sample-code"}
+PS C:\xampp\htdocs\internal> icacls * /C
+icacls * /C
+applications CREATOR OWNER:(OI)(CI)(IO)(F)
+             OFFICE\PPotts:(OI)(CI)(NP)(F)
+             NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+             NT AUTHORITY\LOCAL SERVICE:(OI)(CI)(F)
+             OFFICE\web_account:(OI)(CI)(RX,W)
+             BUILTIN\Administrators:(OI)(CI)(F)
+             BUILTIN\Users:(OI)(CI)(RX)
+
+css NT AUTHORITY\LOCAL SERVICE:(I)(OI)(CI)(F)
+    OFFICE\web_account:(I)(OI)(CI)(RX)
+    NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F)
+    BUILTIN\Administrators:(I)(OI)(CI)(F)
+    BUILTIN\Users:(I)(OI)(CI)(RX)
+    CREATOR OWNER:(I)(OI)(CI)(IO)(F)
+
+img NT AUTHORITY\LOCAL SERVICE:(I)(OI)(CI)(F)
+    OFFICE\web_account:(I)(OI)(CI)(RX)
+    NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F)
+    BUILTIN\Administrators:(I)(OI)(CI)(F)
+    BUILTIN\Users:(I)(OI)(CI)(RX)
+    CREATOR OWNER:(I)(OI)(CI)(IO)(F)
+
+index.html NT AUTHORITY\LOCAL SERVICE:(I)(F)
+           OFFICE\web_account:(I)(RX)
+           NT AUTHORITY\SYSTEM:(I)(F)
+           BUILTIN\Administrators:(I)(F)
+           BUILTIN\Users:(I)(RX)
+
+resume.php NT AUTHORITY\LOCAL SERVICE:(I)(F)
+           OFFICE\web_account:(I)(RX)
+           NT AUTHORITY\SYSTEM:(I)(F)
+           BUILTIN\Administrators:(I)(F)
+           BUILTIN\Users:(I)(RX)
+           OFFICE\PPotts:(I)(F)
+
+Successfully processed 5 files; Failed processing 0 files
 ```
 
 {{< /tabcontent >}}

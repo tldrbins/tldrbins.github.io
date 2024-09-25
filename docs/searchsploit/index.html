@@ -328,10 +328,42 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Search service with specific version
 </span></span><span class="line"><span class="cl"><span class="gp">#</span> For example: samba 3.0
 </span></span><span class="line"><span class="cl"><span class="go">searchsploit samba 3.0
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> searchsploit samba 3.0
+</span></span><span class="line"><span class="cl"><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go"> Exploit Title                                                                                                                                                                   |  Path
+</span></span></span><span class="line"><span class="cl"><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.10 (OSX) - &#39;lsa_io_trans_names&#39; Heap Overflow (Metasploit)                                                                                                             | osx/remote/16875.rb
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.10 &lt; 3.3.5 - Format String / Security Bypass                                                                                                                           | multiple/remote/10095.txt
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.20 &lt; 3.0.25rc3 - &#39;Username&#39; map script&#39; Command Execution (Metasploit)                                                                                                 | unix/remote/16320.rb
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.21 &lt; 3.0.24 - LSA trans names Heap Overflow (Metasploit)                                                                                                               | linux/remote/9950.rb
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.24 (Linux) - &#39;lsa_io_trans_names&#39; Heap Overflow (Metasploit)                                                                                                           | linux/remote/16859.rb
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.24 (Solaris) - &#39;lsa_io_trans_names&#39; Heap Overflow (Metasploit)                                                                                                         | solaris/remote/16329.rb
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.27a - &#39;send_mailslot()&#39; Remote Buffer Overflow                                                                                                                         | linux/dos/4732.c
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.29 (Client) - &#39;receive_smb_raw()&#39; Buffer Overflow (PoC)                                                                                                                | multiple/dos/5712.pl
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba 3.0.4 - SWAT Authorisation Buffer Overflow                                                                                                                                 | linux/remote/364.pl
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba &lt; 3.0.20 - Remote Heap Overflow                                                                                                                                            | linux/remote/7701.txt
+</span></span></span><span class="line"><span class="cl"><span class="go">Samba &lt; 3.6.2 (x86) - Denial of Service (PoC)                                                                                                                                    | linux_x86/dos/36741.py
+</span></span></span><span class="line"><span class="cl"><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">Shellcodes: No Results
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Read the exploit
 </span></span><span class="line"><span class="cl"><span class="go">searchsploit -x unix/remote/16320.rb
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> searchsploit -x unix/remote/16320.rb
+</span></span><span class="line"><span class="cl"><span class="go">  Exploit: Samba 3.0.20 &lt; 3.0.25rc3 - &#39;Username&#39; map script&#39; Command Execution (Metasploit)
+</span></span></span><span class="line"><span class="cl"><span class="go">      URL: https://www.exploit-db.com/exploits/16320
+</span></span></span><span class="line"><span class="cl"><span class="go">     Path: /usr/share/exploitdb/exploits/unix/remote/16320.rb
+</span></span></span><span class="line"><span class="cl"><span class="go">    Codes: CVE-2007-2447, OSVDB-34700
+</span></span></span><span class="line"><span class="cl"><span class="go"> Verified: True
+</span></span></span><span class="line"><span class="cl"><span class="go">File Type: Ruby script, ASCII text
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy the exploit
 </span></span><span class="line"><span class="cl"><span class="go">searchsploit -m unix/remote/16320.rb
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> searchsploit -m unix/remote/16320.rb
+</span></span><span class="line"><span class="cl"><span class="go">  Exploit: Samba 3.0.20 &lt; 3.0.25rc3 - &#39;Username&#39; map script&#39; Command Execution (Metasploit)
+</span></span></span><span class="line"><span class="cl"><span class="go">      URL: https://www.exploit-db.com/exploits/16320
+</span></span></span><span class="line"><span class="cl"><span class="go">     Path: /usr/share/exploitdb/exploits/unix/remote/16320.rb
+</span></span></span><span class="line"><span class="cl"><span class="go">    Codes: CVE-2007-2447, OSVDB-34700
+</span></span></span><span class="line"><span class="cl"><span class="go"> Verified: True
+</span></span></span><span class="line"><span class="cl"><span class="go">File Type: Ruby script, ASCII text
+</span></span></span><span class="line"><span class="cl"><span class="go">Copied to: /home/kali/16320.rb
 </span></span></span></code></pre></div>
 </div></div>
     

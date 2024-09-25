@@ -337,6 +337,16 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab4" >crt & key</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i 127.0.0.1 -u dr.zaiuss -p <span class="s1">&#39;qwe123QWE!@#&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
+</span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Dr.Zaiuss\Documents&gt;
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;HASH&gt; 
@@ -357,10 +367,34 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
 </span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = &lt;DOMAIN&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">[libdefaults]
+</span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = WINDCORP.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[realms]
+</span></span></span><span class="line"><span class="cl"><span class="go">    WINDCORP.HTB = {
+</span></span></span><span class="line"><span class="cl"><span class="go">        kdc = HOPE.WINDCORP.HTB:88
+</span></span></span><span class="line"><span class="cl"><span class="go">        admin_server = HOPE.WINDCORP.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        default_domain = WINDCORP.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">    }
+</span></span></span><span class="line"><span class="cl"><span class="go">    
+</span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
+</span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = WINDCORP.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = WINDCORP.HTB
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 2: <span class="nb">export</span> .ccache
 </span></span><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;CCACHE&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 3: Connect
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; evil-winrm -i &lt;TARGET&gt; -r &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>winrm_user.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 3: Connect
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; evil-winrm -i &lt;TARGET&gt; -r &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i dc.absolute.htb -r absolute.htb
+</span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
+</span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\winrm_user\Documents&gt; 
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -S -k auth.key -c auth.crt

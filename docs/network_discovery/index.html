@@ -403,8 +403,27 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> TCP
 </span></span><span class="line"><span class="cl"><span class="go">netstat -plant
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> netstat -plant
+</span></span><span class="line"><span class="cl"><span class="go">(Not all processes could be identified, non-owned process info                                          
+</span></span></span><span class="line"><span class="cl"><span class="go"> will not be shown, you would have to be root to see it all.)                                           
+</span></span></span><span class="line"><span class="cl"><span class="go">Active Internet connections (servers and established)                                                   
+</span></span></span><span class="line"><span class="cl"><span class="go">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name        
+</span></span></span><span class="line"><span class="cl"><span class="go">tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                       
+</span></span></span><span class="line"><span class="cl"><span class="go">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                       
+</span></span></span><span class="line"><span class="cl"><span class="go">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                       
+</span></span></span><span class="line"><span class="cl"><span class="go">tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]... 
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> UDP
 </span></span><span class="line"><span class="cl"><span class="go">netstat -plunt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> netstat -plunt
+</span></span><span class="line"><span class="cl"><span class="go">(Not all processes could be identified, non-owned process info
+</span></span></span><span class="line"><span class="cl"><span class="go"> will not be shown, you would have to be root to see it all.)
+</span></span></span><span class="line"><span class="cl"><span class="go">Active Internet connections (only servers)
+</span></span></span><span class="line"><span class="cl"><span class="go">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...                  
+</span></span></span><span class="line"><span class="cl"><span class="go">udp        0      0 127.0.0.53:53           0.0.0.0:*                           -                   
+</span></span></span><span class="line"><span class="cl"><span class="go">udp        0      0 0.0.0.0:68              0.0.0.0:*                           - 
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]... 
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If netstat not present
 </span></span><span class="line"><span class="cl"><span class="go">cat /proc/net/tcp | grep &#39;00000000:0000 0A&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ss -tnl

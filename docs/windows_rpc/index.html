@@ -330,10 +330,25 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show mappings
 </span></span><span class="line"><span class="cl"><span class="go">impacket-rpcmap &#39;ncacn_ip_tcp:&lt;TARGET&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-rpcmap <span class="s1">&#39;ncacn_ip_tcp:10.10.10.213&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Protocol: [MS-DCOM]: Distributed Component Object Model (DCOM) Remote
+</span></span></span><span class="line"><span class="cl"><span class="go">Provider: rpcss.dll
+</span></span></span><span class="line"><span class="cl"><span class="go">UUID: 99FCFEC4-5260-101B-BBCB-00AA0021347A v0.0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get network interface without auth
 </span></span><span class="line"><span class="cl"><span class="go">python3 IOXIDResolver.py -t &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 IOXIDResolver.py -t 10.10.10.213
+</span></span><span class="line"><span class="cl"><span class="go">[*] Retrieving network interface of 10.10.10.213
+</span></span></span><span class="line"><span class="cl"><span class="go">Address: apt
+</span></span></span><span class="line"><span class="cl"><span class="go">Address: 10.10.10.213
+</span></span></span><span class="line"><span class="cl"><span class="go">Address: dead:beef::b885:d62a:d679:573f
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mubix/IOXIDResolver">IOXIDResolver</a></em></small></p></div></p>
 
 </div></div>

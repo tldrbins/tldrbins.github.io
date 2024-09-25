@@ -323,21 +323,54 @@ body.dark-mode #dynamicFormContainer button:hover {
   <h3 id="docker-registry-api">Docker Registry API</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List repos
 </span></span><span class="line"><span class="cl"><span class="go">curl -s -k --user &#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34; &lt;TARGET&gt;/v2/_catalog
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl -s -k --user <span class="s2">&#34;admin:admin&#34;</span> https://docker.registry.htb/v2/_catalog
+</span></span><span class="line"><span class="cl"><span class="go">{&#34;repositories&#34;:[&#34;bolt-image&#34;]}
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List of tags of this repo
 </span></span><span class="line"><span class="cl"><span class="go">curl -s -k --user &#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34; &lt;TARGET&gt;/v2/&lt;REPO_NAME&gt;/tags/list
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl -s -k --user <span class="s2">&#34;admin:admin&#34;</span> https://docker.registry.htb/v2/bolt-image/tags/list
+</span></span><span class="line"><span class="cl"><span class="go">{&#34;name&#34;:&#34;bolt-image&#34;,&#34;tags&#34;:[&#34;latest&#34;]}
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List manifest file <span class="k">for</span> this tag <span class="o">(</span>e.g. latest<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">curl -s -k --user &#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34; &lt;TARGET&gt;/v2/&lt;REPO_NAME&gt;/manifests/latest
+</span></span><span class="line"><span class="cl"><span class="go">curl -s -k --user &#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34; &lt;TARGET&gt;/v2/&lt;REPO_NAME&gt;/manifests/&lt;TAG&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl -s -k --user <span class="s2">&#34;admin:admin&#34;</span> https://docker.registry.htb/v2/bolt-image/manifests/latest
+</span></span><span class="line"><span class="cl"><span class="go">{
+</span></span></span><span class="line"><span class="cl"><span class="go">   &#34;schemaVersion&#34;: 1,
+</span></span></span><span class="line"><span class="cl"><span class="go">   &#34;name&#34;: &#34;bolt-image&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="go">   &#34;tag&#34;: &#34;latest&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="go">   &#34;architecture&#34;: &#34;amd64&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="go">   &#34;fsLayers&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="go">      {
+</span></span></span><span class="line"><span class="cl"><span class="go">         &#34;blobSum&#34;: &#34;sha256:302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">      },
+</span></span></span><span class="line"><span class="cl"><span class="go">      {
+</span></span></span><span class="line"><span class="cl"><span class="go">         &#34;blobSum&#34;: &#34;sha256:3f12770883a63c833eab7652242d55a95aea6e2ecd09e21c29d7d7b354f3d4ee&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">      },
+</span></span></span><span class="line"><span class="cl"><span class="go">      {
+</span></span></span><span class="line"><span class="cl"><span class="go">         &#34;blobSum&#34;: &#34;sha256:02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">      },
+</span></span></span><span class="line"><span class="cl"><span class="go">      ...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">}
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get a commit of the image
-</span></span><span class="line"><span class="cl"><span class="go">curl -s -k --user &#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34; &lt;TARGET&gt;/v2/&lt;REPO_NAME&gt;/blobs/sha256:&lt;BLOB_HASH&gt;&#39;
-</span></span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl"><span class="go">curl -s -k --user &#34;&lt;USER&gt;:&lt;PASSWORD&gt;&#34; &lt;TARGET&gt;/v2/&lt;REPO_NAME&gt;/blobs/sha256:&lt;BLOB_HASH&gt; &gt; &lt;BLOB_HASH&gt;.tar.gz
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> curl -s -k --user <span class="s2">&#34;admin:admin&#34;</span> https://docker.registry.htb/v2/bolt-image/blobs/sha256:302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b &gt; 302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b.tar.gz
+</span></span></code></pre></div><hr>
 <h3 id="docker-registry-dump">Docker Registry Dump</h3>
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">DockerRegistryGrabber</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List repos
-</span></span><span class="line"><span class="cl"><span class="go">python3 drg.py &lt;TARGET&gt; -A &lt;TOKEN&gt; --list
+</span></span><span class="line"><span class="cl"><span class="go">python3 drg.py &lt;TARGET&gt; -p &lt;PORT&gt; -U &#39;&lt;USER&gt;&#39; -P &#39;&lt;PASSWORD&gt;&#39; --list
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 drg.py https://docker.registry.htb -p <span class="m">443</span> -U <span class="s1">&#39;admin&#39;</span> -P <span class="s1">&#39;admin&#39;</span> --list
+</span></span><span class="line"><span class="cl"><span class="go">[+] bolt-image
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Dump repo
-</span></span><span class="line"><span class="cl"><span class="go">python3 drg.py &lt;TARGET&gt; -A &lt;TOKEN&gt; --dump &lt;REPO&gt;
+</span></span><span class="line"><span class="cl"><span class="go">python3 drg.py &lt;TARGET&gt; -p &lt;PORT&gt; -U &#39;&lt;USER&gt;&#39; -P &#39;&lt;PASSWORD&gt;&#39; --dump &lt;REPO_NAME&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 drg.py https://docker.registry.htb -p <span class="m">443</span> -U <span class="s1">&#39;admin&#39;</span> -P <span class="s1">&#39;admin&#39;</span> --dump bolt-image
+</span></span><span class="line"><span class="cl"><span class="go">[+] BlobSum found 10
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Dumping bolt-image
+</span></span></span><span class="line"><span class="cl"><span class="go">    [+] Downloading : 302bfcb3f10c386a25a58913917257bd2fe772127e36645192fa35e4c6b3c66b
+</span></span></span><span class="line"><span class="cl"><span class="go">    [+] Downloading : 3f12770883a63c833eab7652242d55a95aea6e2ecd09e21c29d7d7b354f3d4ee
+</span></span></span><span class="line"><span class="cl"><span class="go">    [+] Downloading : 02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c
+</span></span></span><span class="line"><span class="cl"><span class="go">    [+] Downloading : c71b0b975ab8204bb66f2b659fa3d568f2d164a620159fc9f9f185d958c352a7
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/Syzik/DockerRegistryGrabber">DockerRegistryGrabber</a></em></small></p></div></p>
 
 </div></div>

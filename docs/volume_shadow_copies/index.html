@@ -330,8 +330,24 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check">1. Check</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">vssadmin list shadows
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; vssadmin list shadows
+</span></span></span><span class="line"><span class="cl"><span class="go">vssadmin list shadows
+</span></span></span><span class="line"><span class="cl"><span class="go">vssadmin 1.1 - Volume Shadow Copy Service administrative command-line tool
+</span></span></span><span class="line"><span class="cl"><span class="go">(C) Copyright 2001-2013 Microsoft Corp.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Contents of shadow copy set ID: {001689e5-f1a7-40a8-8b5b-8b6371bd07ca}
+</span></span></span><span class="line"><span class="cl"><span class="go">   Contained 1 shadow copies at creation time: 9/9/2019 3:10:57 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">      Shadow Copy ID: {046396e4-6312-45b7-96cd-5e5f6fb017ef}
+</span></span></span><span class="line"><span class="cl"><span class="go">         Original Volume: (C:)\\?\Volume{21385651-0000-0000-0000-602200000000}\
+</span></span></span><span class="line"><span class="cl"><span class="go">         Shadow Copy Volume: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
+</span></span></span><span class="line"><span class="cl"><span class="go">         Originating Machine: dev.htb.local
+</span></span></span><span class="line"><span class="cl"><span class="go">         Service Machine: dev.htb.local
+</span></span></span><span class="line"><span class="cl"><span class="go">         Provider: &#39;Microsoft Software Shadow Copy provider 1.0&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">         Type: ClientAccessible
+</span></span></span><span class="line"><span class="cl"><span class="go">         Attributes: Persistent, Client-accessible, No auto release, No writers, Differential
 </span></span></span></code></pre></div><h4 id="2-create-symlink-and-expose-the-volume">2. Create symlink and expose the volume</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c mklink /d C:\VSS &lt;SHADOW_COPY_VOLUME_PATH&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; cmd /c mklink /d C:\VSS \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1
 </span></span></span></code></pre></div><h4 id="3-access">3. Access</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls C:\VSS\Users
 </span></span></span></code></pre></div></div></p>

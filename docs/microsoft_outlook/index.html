@@ -334,14 +334,56 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo apt install readpst
 </span></span></span></code></pre></div><h4 id="basic">Basic</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to mbox format
-</span></span><span class="line"><span class="cl"><span class="go">readpst &lt;PST_FILE&gt;
+</span></span><span class="line"><span class="cl"><span class="go">readpst &#39;&lt;PST_FILE&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> readpst <span class="s1">&#39;Access Control.pst&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Opening PST file and indexes...
+</span></span></span><span class="line"><span class="cl"><span class="go">Processing Folder &#34;Deleted Items&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">        &#34;Access Control&#34; - 2 items done, 0 items skipped.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Open .mbox <span class="o">(</span>plaintext<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">cat &lt;MBOX_FILE&gt;
+</span></span><span class="line"><span class="cl"><span class="go">cat &#39;&lt;MBOX_FILE&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat <span class="s1">&#39;Access Control.mbox&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">From &#34;john@megacorp.com&#34; Fri Aug 24 07:44:07 2018
+</span></span></span><span class="line"><span class="cl"><span class="go">Status: RO
+</span></span></span><span class="line"><span class="cl"><span class="go">From: john@megacorp.com &lt;john@megacorp.com&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">Subject: MegaCorp Access Control System &#34;security&#34; account
+</span></span></span><span class="line"><span class="cl"><span class="go">To: &#39;security@accesscontrolsystems.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">Date: Thu, 23 Aug 2018 23:44:07 +0000
+</span></span></span><span class="line"><span class="cl"><span class="go">MIME-Version: 1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Type: multipart/mixed;
+</span></span></span><span class="line"><span class="cl"><span class="go">        boundary=&#34;--boundary-LibPST-iamunique-41717394_-_-&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">----boundary-LibPST-iamunique-41717394_-_-
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Type: multipart/alternative;
+</span></span></span><span class="line"><span class="cl"><span class="go">        boundary=&#34;alt---boundary-LibPST-iamunique-41717394_-_-&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--alt---boundary-LibPST-iamunique-41717394_-_-
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Type: text/plain; charset=&#34;utf-8&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Hi there,
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">The password for the “security” account has been changed to 4Cc3ssC0ntr0ller.  Please ensure this is passed on to your engineers.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Regards,
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">John
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--alt---boundary-LibPST-iamunique-41717394_-_-
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><h4 id="read-many-emails">Read many emails</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install mutt
 </span></span><span class="line"><span class="cl"><span class="go">sudo apt install mutt
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Open in mutt terminal
-</span></span><span class="line"><span class="cl"><span class="go">mutt -Rf &lt;MBOX_FILE&gt;
+</span></span><span class="line"><span class="cl"><span class="go">mutt -Rf &#39;&lt;MBOX_FILE&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> mutt -Rf <span class="s1">&#39;Access Control.mbox&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">q:Quit  d:Del  u:Undel  s:Save  m:Mail  r:Reply  g:Group  ?:Help                                                                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="go">   1     Aug 23 john@megacorp.c (  76) MegaCorp Access Control System &#34;security&#34; account
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+--------------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| Note: Answer No to create /root/Mail |
 </span></span></span><span class="line"><span class="cl"><span class="go">|                                      |
@@ -360,9 +402,11 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><h4 id="basic">Basic</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to .eml format
 </span></span><span class="line"><span class="cl"><span class="go">msgconvert *.msg
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to .mbox format
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> msgconvert *.msg
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to .mbox format
 </span></span><span class="line"><span class="cl"><span class="go">cat &lt;EML_FILE&gt; | formail -b &gt; emails.mbox
-</span></span></span></code></pre></div></div></p>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat emails.eml <span class="p">|</span> formail -b &gt; emails.mbox
+</span></span></code></pre></div></div></p>
 
 </div></div>
     

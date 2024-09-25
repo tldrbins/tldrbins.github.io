@@ -51,10 +51,10 @@ git show <COMMIT_HASH>
 {{< tabcontent set1 tab1 >}}
 
 ```console
-git-dumper <TARGET>/.git result/
+git-dumper <TARGET> result/
 ```
 
-<small>*Ref: [Download git-dumper](https://github.com/arthaud/git-dumper)*</small>
+<small>*Ref: [git-dumper](https://github.com/arthaud/git-dumper)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}

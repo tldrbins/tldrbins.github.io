@@ -327,14 +327,168 @@ body.dark-mode #dynamicFormContainer button:hover {
   <h3 id="imapimaps">IMAP/IMAPS</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Connect to IMAP over ssl
 </span></span><span class="line"><span class="cl"><span class="go">rlwrap openssl s_client -connect &lt;TARGET&gt;:993
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> rlwrap openssl s_client -connect 10.10.10.197:993
+</span></span><span class="line"><span class="cl"><span class="go">Connecting to 10.10.10.197
+</span></span></span><span class="line"><span class="cl"><span class="go">CONNECTED(00000003)
+</span></span></span><span class="line"><span class="cl"><span class="go">Can&#39;t use SSL_get_servername
+</span></span></span><span class="line"><span class="cl"><span class="go">depth=0 CN=localhost, OU=Automatically-generated IMAP SSL key, O=Courier Mail Server, L=New York, ST=NY, C=US
+</span></span></span><span class="line"><span class="cl"><span class="go">verify error:num=18:self-signed certificate
+</span></span></span><span class="line"><span class="cl"><span class="go">verify return:1
+</span></span></span><span class="line"><span class="cl"><span class="go">depth=0 CN=localhost, OU=Automatically-generated IMAP SSL key, O=Courier Mail Server, L=New York, ST=NY, C=US
+</span></span></span><span class="line"><span class="cl"><span class="go">verify error:num=10:certificate has expired
+</span></span></span><span class="line"><span class="cl"><span class="go">notAfter=May 14 17:14:21 2021 GMT
+</span></span></span><span class="line"><span class="cl"><span class="go">verify return:1
+</span></span></span><span class="line"><span class="cl"><span class="go">depth=0 CN=localhost, OU=Automatically-generated IMAP SSL key, O=Courier Mail Server, L=New York, ST=NY, C=US
+</span></span></span><span class="line"><span class="cl"><span class="go">notAfter=May 14 17:14:21 2021 GMT
+</span></span></span><span class="line"><span class="cl"><span class="go">verify return:1
+</span></span></span><span class="line"><span class="cl"><span class="go">---
+</span></span></span><span class="line"><span class="cl"><span class="go">Certificate chain
+</span></span></span><span class="line"><span class="cl"><span class="go"> 0 s:CN=localhost, OU=Automatically-generated IMAP SSL key, O=Courier Mail Server, L=New York, ST=NY, C=US
+</span></span></span><span class="line"><span class="cl"><span class="go">   i:CN=localhost, OU=Automatically-generated IMAP SSL key, O=Courier Mail Server, L=New York, ST=NY, C=US
+</span></span></span><span class="line"><span class="cl"><span class="go">   a:PKEY: rsaEncryption, 3072 (bit); sigalg: RSA-SHA256
+</span></span></span><span class="line"><span class="cl"><span class="go">   v:NotBefore: May 14 17:14:21 2020 GMT; NotAfter: May 14 17:14:21 2021 GMT
+</span></span></span><span class="line"><span class="cl"><span class="go">---
+</span></span></span><span class="line"><span class="cl"><span class="go">Server certificate
+</span></span></span><span class="line"><span class="cl"><span class="go">-----BEGIN CERTIFICATE-----
+</span></span></span><span class="line"><span class="cl"><span class="go">MIIE6zCCA1OgAwIBAgIBATANBgkqhkiG9w0BAQsFADCBjjESMBAGA1UEAxMJbG9j
+</span></span></span><span class="line"><span class="cl"><span class="go">YWxob3N0MS0wKwYDVQQLEyRBdXRvbWF0aWNhbGx5LWdlbmVyYXRlZCBJTUFQIFNT
+</span></span></span><span class="line"><span class="cl"><span class="go">TCBrZXkxHDAaBgNVBAoTE0NvdXJpZXIgTWFpbCBTZXJ2ZXIxETAPBgNVBAcTCE5l
+</span></span></span><span class="line"><span class="cl"><span class="go">dyBZb3JrMQswCQYDVQQIEwJOWTELMAkGA1UEBhMCVVMwHhcNMjAwNTE0MTcxNDIx
+</span></span></span><span class="line"><span class="cl"><span class="go">WhcNMjEwNTE0MTcxNDIxWjCBjjESMBAGA1UEAxMJbG9jYWxob3N0MS0wKwYDVQQL
+</span></span></span><span class="line"><span class="cl"><span class="go">EyRBdXRvbWF0aWNhbGx5LWdlbmVyYXRlZCBJTUFQIFNTTCBrZXkxHDAaBgNVBAoT
+</span></span></span><span class="line"><span class="cl"><span class="go">E0NvdXJpZXIgTWFpbCBTZXJ2ZXIxETAPBgNVBAcTCE5ldyBZb3JrMQswCQYDVQQI
+</span></span></span><span class="line"><span class="cl"><span class="go">EwJOWTELMAkGA1UEBhMCVVMwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGKAoIB
+</span></span></span><span class="line"><span class="cl"><span class="go">gQDCzBP4iuxxLmXPkmi5jABQrywLJK0meyW49umfYhqayBH7qtuIjyAmznnyDIR0
+</span></span></span><span class="line"><span class="cl"><span class="go">543qHgWAfSvGHLFDB9B1wnkvAU3aprjURn1956X/4jEi9xmhRwvum5T+vp3TT96d
+</span></span></span><span class="line"><span class="cl"><span class="go">JgW9SSLiPFQty5eVrKuQvg1bZg/Vjp7CUUQ0+7PmdylMOipohls5RDEppCDGFmiS
+</span></span></span><span class="line"><span class="cl"><span class="go">HN0ZayXpjd/kwqZ/O9uTJGHOzagY+ruTYAx3tanO4oDwdrz9FPr3S2KNPTjjtzqf
+</span></span></span><span class="line"><span class="cl"><span class="go">CPdcsi+6JTQJI03eMEftBKo3HZTp7Hx6FObZcvcNskTLqtsYZYuzHS7KQwiuTAJ5
+</span></span></span><span class="line"><span class="cl"><span class="go">d/ZKowCeJDaVlS35tQleisu+pJCkwcStpM1BJ51UQRZ5IpvItTfnrChEa1uyTlAy
+</span></span></span><span class="line"><span class="cl"><span class="go">ZIOQK2/+34K2ZrldYWyfKlYHxieGZgzQXLo/vyW/1gqzXy7KHx+Uuf4CAzzOP1p3
+</span></span></span><span class="line"><span class="cl"><span class="go">8QNmvsqkJrQMuH3XPXLswr9A1gPe7KTLEGNRJSxcGF1Q25m4e04HhZzK76KlBfVt
+</span></span></span><span class="line"><span class="cl"><span class="go">IJ0CAwEAAaNSMFAwDAYDVR0TAQH/BAIwADAhBgNVHREEGjAYgRZwb3N0bWFzdGVy
+</span></span></span><span class="line"><span class="cl"><span class="go">QGV4YW1wbGUuY29tMB0GA1UdDgQWBBTylxdM/AHlToKxNvmnPdXJCjjbnDANBgkq
+</span></span></span><span class="line"><span class="cl"><span class="go">hkiG9w0BAQsFAAOCAYEAAo7NqfYlXSEC8q3JXvI5EeVpkgBDOwnjxuC/P5ziEU0c
+</span></span></span><span class="line"><span class="cl"><span class="go">PRx6L3w+MxuYJdndC0hT9FexXzSgtps9Xm+TE81LgNvuipZ9bulF5pMmmO579U2Y
+</span></span></span><span class="line"><span class="cl"><span class="go">suJJpORD4P+65ezkfWDbPbdKyHMeRvVCkZCH74z2rCu+OeQTGb6GLfaaB7v9dThR
+</span></span></span><span class="line"><span class="cl"><span class="go">rfvHwM50hxNb4Zb4of7Eyw2OJGeeohoG4mFT4v7cu1WwimsDF/A7OCVOmvvFWeRA
+</span></span></span><span class="line"><span class="cl"><span class="go">EjdEReekDJsBFpHa8uRjxZ+4Ch9YvbFlYtYi6VyXV1AFR1Mb91w+iIitc6ROzjJ2
+</span></span></span><span class="line"><span class="cl"><span class="go">pVO69ePygQcjBRUTDX5reuBzaF5p9/6Ta9HP8NDI9+gdw6VGVTmYRJUbj7OeKSUq
+</span></span></span><span class="line"><span class="cl"><span class="go">FWUmtZYC288ErDAZ7z+6VqJtZsPXIItZ8J6UZE3zBclGMcQ7peL9wEvJQ8oSaHHM
+</span></span></span><span class="line"><span class="cl"><span class="go">AmgHIoMwKXSNEkHbBD24cf9KwVhcyJ4QCrSJBMAys98X6TzCwQI4Hy7XyifU3x/L
+</span></span></span><span class="line"><span class="cl"><span class="go">XUFD0JSVQp4Rmcg5Uzuk
+</span></span></span><span class="line"><span class="cl"><span class="go">-----END CERTIFICATE-----
+</span></span></span><span class="line"><span class="cl"><span class="go">subject=CN=localhost, OU=Automatically-generated IMAP SSL key, O=Courier Mail Server, L=New York, ST=NY, C=US
+</span></span></span><span class="line"><span class="cl"><span class="go">issuer=CN=localhost, OU=Automatically-generated IMAP SSL key, O=Courier Mail Server, L=New York, ST=NY, C=US
+</span></span></span><span class="line"><span class="cl"><span class="go">---
+</span></span></span><span class="line"><span class="cl"><span class="go">No client certificate CA names sent
+</span></span></span><span class="line"><span class="cl"><span class="go">Peer signing digest: SHA256
+</span></span></span><span class="line"><span class="cl"><span class="go">Peer signature type: RSA-PSS
+</span></span></span><span class="line"><span class="cl"><span class="go">Server Temp Key: X25519, 253 bits
+</span></span></span><span class="line"><span class="cl"><span class="go">---
+</span></span></span><span class="line"><span class="cl"><span class="go">SSL handshake has read 1947 bytes and written 518 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go">Verification error: certificate has expired
+</span></span></span><span class="line"><span class="cl"><span class="go">---
+</span></span></span><span class="line"><span class="cl"><span class="go">New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+</span></span></span><span class="line"><span class="cl"><span class="go">Server public key is 3072 bit
+</span></span></span><span class="line"><span class="cl"><span class="go">This TLS version forbids renegotiation.
+</span></span></span><span class="line"><span class="cl"><span class="go">Compression: NONE
+</span></span></span><span class="line"><span class="cl"><span class="go">Expansion: NONE
+</span></span></span><span class="line"><span class="cl"><span class="go">No ALPN negotiated
+</span></span></span><span class="line"><span class="cl"><span class="go">Early data was not sent
+</span></span></span><span class="line"><span class="cl"><span class="go">Verify return code: 10 (certificate has expired)
+</span></span></span><span class="line"><span class="cl"><span class="go">---
+</span></span></span><span class="line"><span class="cl"><span class="go">* OK [CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE AUTH=PLAIN ACL ACL2=UNION ENABLE UTF8=ACCEPT] Courier-IMAP ready. Copyright 1998-2018 Double Precision, Inc.  See COPYING for distribution information.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Login
 </span></span><span class="line"><span class="cl"><span class="go">a LOGIN &lt;USER&gt; &lt;PASSWORD&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">a LOGIN paulbyrd ^(#J@SkFv2[%KhIxKk(Ju`hqcHl&lt;:Ht
+</span></span></span><span class="line"><span class="cl"><span class="go">* OK [ALERT] Filesystem notification initialization error -- contact your mail administrator (check for configuration errors with the FAM/Gamin library)
+</span></span></span><span class="line"><span class="cl"><span class="go">a OK LOGIN Ok.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List all mailboxes
 </span></span><span class="line"><span class="cl"><span class="go">a LIST &#34;&#34; &#34;*&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">a LIST &#34;&#34; &#34;*&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">* LIST (\Unmarked \HasChildren) &#34;.&#34; &#34;INBOX&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">* LIST (\HasNoChildren) &#34;.&#34; &#34;INBOX.Trash&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">* LIST (\HasNoChildren) &#34;.&#34; &#34;INBOX.Sent&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">* LIST (\HasNoChildren) &#34;.&#34; &#34;INBOX.Deleted Items&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">* LIST (\HasNoChildren) &#34;.&#34; &#34;INBOX.Sent Items&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">a OK LIST completed
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Select a mailbox <span class="o">(</span>e.g. Inbox<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">a SELECT INBOX
+</span></span><span class="line"><span class="cl"><span class="go">a SELECT &lt;MAIL_BOX&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">a SELECT &#34;INBOX.Sent Items&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">* FLAGS (\Draft \Answered \Flagged \Deleted \Seen \Recent)
+</span></span></span><span class="line"><span class="cl"><span class="go">* OK [PERMANENTFLAGS (\* \Draft \Answered \Flagged \Deleted \Seen)] Limited
+</span></span></span><span class="line"><span class="cl"><span class="go">* 2 EXISTS
+</span></span></span><span class="line"><span class="cl"><span class="go">* 0 RECENT
+</span></span></span><span class="line"><span class="cl"><span class="go">* OK [UIDVALIDITY 589480766] Ok
+</span></span></span><span class="line"><span class="cl"><span class="go">* OK [MYRIGHTS &#34;acdilrsw&#34;] ACL
+</span></span></span><span class="line"><span class="cl"><span class="go">a OK [READ-WRITE] Ok
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get mail from mailbox <span class="o">(</span>e.g. <span class="c1">#1)</span>
-</span></span><span class="line"><span class="cl"><span class="go">a FETCH 1 BODY.PEEK[]
+</span></span><span class="line"><span class="cl"><span class="go">a FETCH &lt;NUM&gt; BODY.PEEK[]
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">a FETCH 1 BODY.PEEK[]
+</span></span></span><span class="line"><span class="cl"><span class="go">* 1 FETCH (BODY[] {2167}
+</span></span></span><span class="line"><span class="cl"><span class="go">MIME-Version: 1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">To: root &lt;root@debian&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">From: Paul Byrd &lt;paulbyrd@sneakymailer.htb&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">Subject: Password reset
+</span></span></span><span class="line"><span class="cl"><span class="go">Date: Fri, 15 May 2020 13:03:37 -0500
+</span></span></span><span class="line"><span class="cl"><span class="go">Importance: normal
+</span></span></span><span class="line"><span class="cl"><span class="go">X-Priority: 3
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Type: multipart/alternative;
+</span></span></span><span class="line"><span class="cl"><span class="go">        boundary=&#34;_21F4C0AC-AA5F-47F8-9F7F-7CB64B1169AD_&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--_21F4C0AC-AA5F-47F8-9F7F-7CB64B1169AD_
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Transfer-Encoding: quoted-printable
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Type: text/plain; charset=&#34;utf-8&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Hello administrator, I want to change this password for the developer accou=
+</span></span></span><span class="line"><span class="cl"><span class="go">nt
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Username: developer
+</span></span></span><span class="line"><span class="cl"><span class="go">Original-Password: m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Please notify me when you do it=20
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--_21F4C0AC-AA5F-47F8-9F7F-7CB64B1169AD_
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Transfer-Encoding: quoted-printable
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Type: text/html; charset=&#34;utf-8&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">&lt;html xmlns:o=3D&#34;urn:schemas-microsoft-com:office:office&#34; xmlns:w=3D&#34;urn:sc=
+</span></span></span><span class="line"><span class="cl"><span class="go">hemas-microsoft-com:office:word&#34; xmlns:m=3D&#34;http://schemas.microsoft.com/of=
+</span></span></span><span class="line"><span class="cl"><span class="go">fice/2004/12/omml&#34; xmlns=3D&#34;http://www.w3.org/TR/REC-html40&#34;&gt;&lt;head&gt;&lt;meta ht=
+</span></span></span><span class="line"><span class="cl"><span class="go">tp-equiv=3DContent-Type content=3D&#34;text/html; charset=3Dutf-8&#34;&gt;&lt;meta name=
+</span></span></span><span class="line"><span class="cl"><span class="go">=3DGenerator content=3D&#34;Microsoft Word 15 (filtered medium)&#34;&gt;&lt;style&gt;&lt;!--
+</span></span></span><span class="line"><span class="cl"><span class="go">/* Font Definitions */
+</span></span></span><span class="line"><span class="cl"><span class="go">@font-face
+</span></span></span><span class="line"><span class="cl"><span class="go">        {font-family:&#34;Cambria Math&#34;;
+</span></span></span><span class="line"><span class="cl"><span class="go">        panose-1:2 4 5 3 5 4 6 3 2 4;}
+</span></span></span><span class="line"><span class="cl"><span class="go">@font-face
+</span></span></span><span class="line"><span class="cl"><span class="go">        {font-family:Calibri;
+</span></span></span><span class="line"><span class="cl"><span class="go">        panose-1:2 15 5 2 2 2 4 3 2 4;}
+</span></span></span><span class="line"><span class="cl"><span class="go">/* Style Definitions */
+</span></span></span><span class="line"><span class="cl"><span class="go">p.MsoNormal, li.MsoNormal, div.MsoNormal
+</span></span></span><span class="line"><span class="cl"><span class="go">        {margin:0in;
+</span></span></span><span class="line"><span class="cl"><span class="go">        margin-bottom:.0001pt;
+</span></span></span><span class="line"><span class="cl"><span class="go">        font-size:11.0pt;
+</span></span></span><span class="line"><span class="cl"><span class="go">        font-family:&#34;Calibri&#34;,sans-serif;}
+</span></span></span><span class="line"><span class="cl"><span class="go">.MsoChpDefault
+</span></span></span><span class="line"><span class="cl"><span class="go">        {mso-style-type:export-only;}
+</span></span></span><span class="line"><span class="cl"><span class="go">@page WordSection1
+</span></span></span><span class="line"><span class="cl"><span class="go">        {size:8.5in 11.0in;
+</span></span></span><span class="line"><span class="cl"><span class="go">        margin:1.0in 1.0in 1.0in 1.0in;}
+</span></span></span><span class="line"><span class="cl"><span class="go">div.WordSection1
+</span></span></span><span class="line"><span class="cl"><span class="go">        {page:WordSection1;}
+</span></span></span><span class="line"><span class="cl"><span class="go">--&gt;&lt;/style&gt;&lt;/head&gt;&lt;body lang=3DEN-US link=3Dblue vlink=3D&#34;#954F72&#34;&gt;&lt;div cla=
+</span></span></span><span class="line"><span class="cl"><span class="go">ss=3DWordSection1&gt;&lt;p class=3DMsoNormal&gt;Hello administrator, I want to chang=
+</span></span></span><span class="line"><span class="cl"><span class="go">e this password for the developer account&lt;/p&gt;&lt;p class=3DMsoNormal&gt;&lt;o:p&gt;&amp;nbs=
+</span></span></span><span class="line"><span class="cl"><span class="go">p;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=3DMsoNormal&gt;Username: developer&lt;/p&gt;&lt;p class=3DMsoNorma=
+</span></span></span><span class="line"><span class="cl"><span class="go">l&gt;Original-Password: m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C&lt;/p&gt;&lt;p class=3DMsoNorm=
+</span></span></span><span class="line"><span class="cl"><span class="go">al&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=3DMsoNormal&gt;Please notify me when you do i=
+</span></span></span><span class="line"><span class="cl"><span class="go">t &lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--_21F4C0AC-AA5F-47F8-9F7F-7CB64B1169AD_--
+</span></span></span><span class="line"><span class="cl"><span class="go">)
+</span></span></span><span class="line"><span class="cl"><span class="go">a OK FETCH completed.
 </span></span></span></code></pre></div>
 </div></div>
     

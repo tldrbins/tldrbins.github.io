@@ -10,6 +10,14 @@ tags: ["Java", "Javac", "Update-Alternatives"]
 sudo update-alternatives --config java
 ```
 
+```console {class="sample-code"}
+
+```
+
 ```console
 sudo update-alternatives --config javac
+```
+
+```console {class="sample-code"}
+
 ```

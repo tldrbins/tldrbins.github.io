@@ -343,8 +343,12 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a <span class="nb">local</span> HTTP server
 </span></span><span class="line"><span class="cl"><span class="go">python3 -m http.server &lt;LOCAL_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 -m http.server <span class="m">3000</span> 
+</span></span><span class="line"><span class="cl"><span class="go">Serving HTTP on 0.0.0.0 port 3000 (http://0.0.0.0:3000/) ...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Redirect http request to localhost:&lt;LOCAL_PORT&gt;
 </span></span><span class="line"><span class="cl"><span class="go">ssh -R 80:localhost:&lt;LOCAL_PORT&gt; serveo.net
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ssh -R 80:localhost:3000 serveo.net
+</span></span><span class="line"><span class="cl"><span class="go">Forwarding HTTP traffic from https://7ddf32e17a6ac5ce04a8ecbf782ca509.serveo.net
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ngrok http 80

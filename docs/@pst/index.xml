@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/microsoft_outlook/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_outlook/</guid>
-      <description>Open email file .pst .msg Tools sudo apt install readpst Basic # Convert to mbox format readpst &amp;lt;PST_FILE&amp;gt; # Open .mbox (plaintext) cat &amp;lt;MBOX_FILE&amp;gt; Read many emails # Install mutt sudo apt install mutt # Open in mutt terminal mutt -Rf &amp;lt;MBOX_FILE&amp;gt; +--------------------------------------+ | Note: Answer No to create /root/Mail | | | | Arrow : Move to the email | | Enter : View email | | q : back | | q again : quit | +--------------------------------------+ Tools # Install msgconvert sudo apt install libemail-outlook-message-perl # Install formail sudo apt install procmail Basic # Convert to .</description>
+      <description>Open email file .pst .msg Tools sudo apt install readpst Basic # Convert to mbox format readpst &amp;#39;&amp;lt;PST_FILE&amp;gt;&amp;#39; $ readpst &amp;#39;Access Control.pst&amp;#39; Opening PST file and indexes... Processing Folder &amp;#34;Deleted Items&amp;#34; &amp;#34;Access Control&amp;#34; - 2 items done, 0 items skipped. # Open .mbox (plaintext) cat &amp;#39;&amp;lt;MBOX_FILE&amp;gt;&amp;#39; $ cat &amp;#39;Access Control.mbox&amp;#39; From &amp;#34;john@megacorp.com&amp;#34; Fri Aug 24 07:44:07 2018 Status: RO From: john@megacorp.com &amp;lt;john@megacorp.com&amp;gt; Subject: MegaCorp Access Control System &amp;#34;security&amp;#34; account To: &amp;#39;security@accesscontrolsystems.</description>
     </item>
   </channel>
 </rss>

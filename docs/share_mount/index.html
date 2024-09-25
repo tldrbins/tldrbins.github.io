@@ -335,18 +335,33 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="list-share">List share</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">showmount -e &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> showmount -e 10.10.11.191
+</span></span><span class="line"><span class="cl"><span class="go">Export list for 10.10.11.191:
+</span></span></span><span class="line"><span class="cl"><span class="go">/home/ross    *
+</span></span></span><span class="line"><span class="cl"><span class="go">/var/www/html *
 </span></span></span></code></pre></div><h4 id="mount-share">Mount share</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t nfs &lt;TARGET&gt;:/share /mnt/share/
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mkdir /mnt/share
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo mkdir /mnt/share
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t nfs &lt;TARGET&gt;:&lt;SHARE&gt; /mnt/share/
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo mount -t nfs 10.10.11.191:/home/ross /mnt/share/
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> ls /mnt/share 
+</span></span><span class="line"><span class="cl"><span class="go">Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
 </span></span></span></code></pre></div><h4 id="unmount-share">Unmount share</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo umount /mnt/share/
-</span></span></span></code></pre></div></div>
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo umount /mnt/share/
+</span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="mount-share">Mount share</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //&lt;TARGET&gt;/share /mnt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Without creds
-</span></span><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o user=,password= //&lt;TARGET&gt;/share /mnt
+</span></span><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o user=,password= //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With creds
-</span></span><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o user=&#39;&lt;USER&gt;&#39;,pass=&#39;&lt;PASSWORD&gt;&#39; //&lt;TARGET&gt;/share /mnt
+</span></span><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o user=&#39;&lt;USER&gt;&#39;,pass=&#39;&lt;PASSWORD&gt;&#39; //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo mount -t cifs -o ro,user<span class="o">=</span><span class="s1">&#39;localadmin&#39;</span>,password<span class="o">=</span><span class="s1">&#39;Secret123&#39;</span> //10.10.11.102/Shared /mnt
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> ls /mnt      
+</span></span><span class="line"><span class="cl"><span class="go">Documents  Software
 </span></span></span></code></pre></div><h4 id="mount-inside-windows">Mount inside Windows</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mount
 </span></span><span class="line"><span class="cl"><span class="go">net use \\localhost\c$ /u:&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39; &#39;&lt;PASSWORD&gt;&#39;
@@ -357,8 +372,15 @@ body.dark-mode #dynamicFormContainer button:hover {
 <h3 id="abuse-1-misconfigured-share">Abuse #1: Misconfigured Share</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check all mounted drives
 </span></span><span class="line"><span class="cl"><span class="go">mount
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> mount     
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">10.10.11.191:/home/ross on /mnt/share type nfs4 (rw,relatime,vers=4.2,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.10.14.31,local_lock=none,addr=10.10.11.191)
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check how shares are mounted
 </span></span><span class="line"><span class="cl"><span class="go">cat /etc/exports
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat /etc/exports
+</span></span><span class="line"><span class="cl"><span class="go">/var/nfsshare *(rw,sync,root_squash,no_all_squash)
+</span></span></span><span class="line"><span class="cl"><span class="go">/opt *(rw,sync,root_squash,no_all_squash)
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+-----------------------------------------------------------------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| root_squash  : running as root on local system will be treated as nobody user in target |
@@ -367,10 +389,15 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add dummy user
 </span></span><span class="line"><span class="cl"><span class="go">sudo useradd dummy
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Change uid
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo useradd dummy
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Change uid
 </span></span><span class="line"><span class="cl"><span class="go">sudo usermod -u 1001 dummy 
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Switch to dummy user
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo usermod -u <span class="m">1001</span> dummy
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Switch to dummy user
 </span></span><span class="line"><span class="cl"><span class="go">sudo su dummy -c bash
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo su dummy
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> id
+</span></span><span class="line"><span class="cl"><span class="go">uid=1001(dummy) gid=1001(dummy) groups=1001(dummy)
 </span></span></span></code></pre></div>
 </div></div>
     

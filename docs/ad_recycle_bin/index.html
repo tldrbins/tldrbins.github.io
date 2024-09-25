@@ -326,13 +326,35 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-ad-module">1. Import AD module</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module activedirectory
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; import-module activedirectory
 </span></span></span></code></pre></div><h4 id="2-query-all-deleted-objects-within-domain">2. Query all deleted objects within domain</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ADObject -filter &#39;isDeleted -eq $true -and name -ne &#34;Deleted Objects&#34;&#39; -includeDeletedObjects
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; Get-ADObject -filter &#39;isDeleted -eq $true -and name -ne &#34;Deleted Objects&#34;&#39; -includeDeletedObjects
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Deleted           : True
+</span></span></span><span class="line"><span class="cl"><span class="go">DistinguishedName : CN=Another User\0ADEL:ebe15df5-e265-45ec-b7fc-359877217138,CN=Deleted Objects,DC=example,DC=com
+</span></span></span><span class="line"><span class="cl"><span class="go">Name              : Another User
+</span></span></span><span class="line"><span class="cl"><span class="go">                    DEL:ebe15df5-e265-45ec-b7fc-359877217138
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectClass       : user
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectGUID        : ebe15df5-e265-45ec-b7fc-359877217138
 </span></span></span></code></pre></div><h4 id="3-get-all-details-for-the-deleted-account">3. Get all details for the deleted account</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ADObject -filter { SAMAccountName -eq &lt;DELETED_USER&gt; } -includeDeletedObjects -property *
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ADObject -filter { SAMAccountName -eq &#39;&lt;DELETED_USER&gt;&#39; } -includeDeletedObjects -property *
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; Get-ADObject -filter { SAMAccountName -eq &#39;another.user&#39; }
+</span></span></span><span class="line"><span class="cl"><span class="go">-includeDeletedObjects -property *
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">accountExpires                  : 9223372036854775807
+</span></span></span><span class="line"><span class="cl"><span class="go">badPasswordTime                 : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">badPwdCount                     : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">CanonicalName                   : example.com/Deleted Objects/Another User
+</span></span></span><span class="line"><span class="cl"><span class="go">                                  DEL:ebe15df5-e265-45ec-b7fc-359877217138
+</span></span></span><span class="line"><span class="cl"><span class="go">CN                              : Another User
+</span></span></span><span class="line"><span class="cl"><span class="go">                                  DEL:ebe15df5-e265-45ec-b7fc-359877217138
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><h4 id="4-restore-the-deleted-account">4. Restore the deleted account</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Rename the target account to avoid user exists error
 </span></span><span class="line"><span class="cl"><span class="go">Restore-ADObject -Identity &lt;OBJECT_GUID&gt; -NewName &#39;&lt;NEW_USER&gt;&#39; -TargetPath &#39;CN=Users,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; Restore-ADObject -Identity ebe15df5-e265-45ec-b7fc-359877217138 -NewName &#39;Another User2&#39; -TargetPath &#39;CN=Users,DC=EXAMPLE,DC=COM&#39;
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

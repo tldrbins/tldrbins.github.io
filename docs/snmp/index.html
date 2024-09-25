@@ -332,10 +332,31 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Brute force community string <span class="k">for</span> snmpwalk use
 </span></span><span class="line"><span class="cl"><span class="go">onesixtyone &lt;TARGET&gt; -c /usr/share/doc/onesixtyone/dict.txt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> onesixtyone 10.10.11.248 -c /usr/share/doc/onesixtyone/dict.txt
+</span></span><span class="line"><span class="cl"><span class="go">Scanning 1 hosts, 50 communities
+</span></span></span><span class="line"><span class="cl"><span class="go">10.10.11.248 [public] Linux monitored 5.10.0-28-amd64 #1 SMP Debian 5.10.209-2 (2024-01-31) x86_64
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/trailofbits/onesixtyone">onesixtyone</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Brute force community string <span class="o">(</span>Check also SNMPv2<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">python3 snmpbrute.py -t &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 snmpbrute.py -t 10.10.11.248
+</span></span><span class="line"><span class="cl"><span class="go">   _____ _   ____  _______     ____             __     
+</span></span></span><span class="line"><span class="cl"><span class="go">  / ___// | / /  |/  / __ \   / __ )_______  __/ /____ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  \__ \/  |/ / /|_/ / /_/ /  / __  / ___/ / / / __/ _ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> ___/ / /|  / /  / / ____/  / /_/ / /  / /_/ / /_/  __/
+</span></span></span><span class="line"><span class="cl"><span class="go">/____/_/ |_/_/  /_/_/      /_____/_/   \__,_/\__/\___/ 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SNMP Bruteforce &amp; Enumeration Script v2.0
+</span></span></span><span class="line"><span class="cl"><span class="go">http://www.secforce.com / nikos.vassakis &lt;at&gt; secforce.com
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">#</span><span class="c1">##############################################################</span>
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...                                                                                                                                                                       
+</span></span></span><span class="line"><span class="cl"><span class="go">Identified Community strings                                                                                                                                                                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">        0) 10.10.11.248    public (v1)(RO)
+</span></span></span><span class="line"><span class="cl"><span class="go">        1) 10.10.11.248    public (v2c)(RO)
+</span></span></span><span class="line"><span class="cl"><span class="go">        2) 10.10.11.248    public (v1)(RO)
+</span></span></span><span class="line"><span class="cl"><span class="go">        3) 10.10.11.248    public (v2c)(RO)
+</span></span></span><span class="line"><span class="cl"><span class="go">Select Community to Enumerate [0]:
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/SECFORCE/SNMP-Brute/blob/master/snmpbrute.py">snmpbrute.py</a></em></small></p></div></p>
 <h3 id="tools">Tools</h3>
 <p>
@@ -355,13 +376,37 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">mibdirs /usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
 </span></span></span></code></pre></div><h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">snmpwalk -v1 -c public &lt;TARGET&gt; | tee snmpwalk_result
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> snmpwalk -v1 -c public 10.10.11.248 <span class="p">|</span> tee snmpwalk_result
+</span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysDescr.0 = STRING: Linux monitored 5.10.0-28-amd64 #1 SMP Debian 5.10.209-2 (2024-01-31) x86_64
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysObjectID.0 = OID: NET-SNMP-MIB::netSnmpAgentOIDs.10
+</span></span></span><span class="line"><span class="cl"><span class="go">DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (33245) 0:05:32.45
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysContact.0 = STRING: Me &lt;root@monitored.htb&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysName.0 = STRING: monitored
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">snmpwalk -v2c -c public &lt;TARGET&gt; | tee snmpwalk_result
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> snmpwalk -v2c -c public 10.10.11.248 <span class="p">|</span> tee snmpwalk_result
+</span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysDescr.0 = STRING: Linux monitored 5.10.0-28-amd64 #1 SMP Debian 5.10.209-2 (2024-01-31) x86_64
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysObjectID.0 = OID: NET-SNMP-MIB::netSnmpAgentOIDs.10
+</span></span></span><span class="line"><span class="cl"><span class="go">DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (61445) 0:10:14.45
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysContact.0 = STRING: Me &lt;root@monitored.htb&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysName.0 = STRING: monitored
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Query specific OID, e.g, ipAddressIfIndex.ipv6
 </span></span><span class="line"><span class="cl"><span class="go">snmpwalk -v2c -c public &lt;TARGET&gt; ipAddressIfIndex.ipv6
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> snmpwalk -v2c -c public 10.10.11.248 ipAddressIfIndex.ipv6
+</span></span><span class="line"><span class="cl"><span class="go">IP-MIB::ipAddressIfIndex.ipv6.&#34;00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01&#34; = INTEGER: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">IP-MIB::ipAddressIfIndex.ipv6.&#34;fe:80:00:00:00:00:00:00:02:50:56:ff:fe:b9:b0:de&#34; = INTEGER: 2
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multithreads, much faster
-</span></span><span class="line"><span class="cl"><span class="go">snmpbulkwalk -Cr 50 -c public -v2c &lt;TARGET&gt;
+</span></span><span class="line"><span class="cl"><span class="go">snmpbulkwalk -C r10 -c public -v2c &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">snmpbulkwalk -C r10 -c public -v 2c 10.10.11.248
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysDescr.0 = STRING: Linux monitored 5.10.0-28-amd64 #1 SMP Debian 5.10.209-2 (2024-01-31) x86_64
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysObjectID.0 = OID: NET-SNMP-MIB::netSnmpAgentOIDs.10
+</span></span></span><span class="line"><span class="cl"><span class="go">DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (99347) 0:16:33.47
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysContact.0 = STRING: Me &lt;root@monitored.htb&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysName.0 = STRING: monitored
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

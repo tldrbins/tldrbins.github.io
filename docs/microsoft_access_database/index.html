@@ -330,10 +330,25 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><h4 id="basic">Basic</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all tables
 </span></span><span class="line"><span class="cl"><span class="go">mdb-tables &lt;MDB_FILE&gt; 
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> mdb-tables backup.mdb                                                    
+</span></span><span class="line"><span class="cl"><span class="go">acc_antiback acc_door acc_firstopen acc_firstopen_emp acc_holidays acc_interlock ...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show tables with data
 </span></span><span class="line"><span class="cl"><span class="go">mdb-tables &lt;MDB_FILE&gt; | tr &#39; &#39; &#39;\n&#39; | grep . | while read table; do lines=$(mdb-export &lt;MDB_FILE&gt; $table | wc -l); if [ $lines -gt 1 ]; then echo &#34;$table: $lines&#34;; fi; done
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> mdb-tables backup.mdb <span class="p">|</span> tr <span class="s1">&#39; &#39;</span> <span class="s1">&#39;\n&#39;</span> <span class="p">|</span> grep . <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> table<span class="p">;</span> <span class="k">do</span> <span class="nv">lines</span><span class="o">=</span><span class="k">$(</span>mdb-export backup.mdb <span class="nv">$table</span> <span class="p">|</span> wc -l<span class="k">)</span><span class="p">;</span> <span class="k">if</span> <span class="o">[</span> <span class="nv">$lines</span> -gt <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$table</span><span class="s2">: </span><span class="nv">$lines</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span><span class="p">;</span> <span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="go">acc_timeseg: 2
+</span></span></span><span class="line"><span class="cl"><span class="go">acc_wiegandfmt: 12
+</span></span></span><span class="line"><span class="cl"><span class="go">ACGroup: 6
+</span></span></span><span class="line"><span class="cl"><span class="go">action_log: 25
+</span></span></span><span class="line"><span class="cl"><span class="go">areaadmin: 4
+</span></span></span><span class="line"><span class="cl"><span class="go">auth_user: 4
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Dump data from table
 </span></span><span class="line"><span class="cl"><span class="go">mdb-export &lt;MDB_FILE&gt; &lt;TABLE_NAME&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> mdb-export backup.mdb auth_user
+</span></span><span class="line"><span class="cl"><span class="go">id,username,password,Status,last_login,RoleID,Remark
+</span></span></span><span class="line"><span class="cl"><span class="go">25,&#34;admin&#34;,&#34;admin&#34;,1,&#34;08/23/18 21:11:47&#34;,26,
+</span></span></span><span class="line"><span class="cl"><span class="go">27,&#34;engineer&#34;,&#34;access4u@security&#34;,1,&#34;08/23/18 21:13:36&#34;,26,
+</span></span></span><span class="line"><span class="cl"><span class="go">28,&#34;backup_admin&#34;,&#34;admin&#34;,1,&#34;08/23/18 21:14:02&#34;,26,
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

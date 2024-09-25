@@ -136,9 +136,34 @@ ipconfig
 netstat -plant
 ```
 
+```console {class="sample-code"}
+$ netstat -plant
+(Not all processes could be identified, non-owned process info                                          
+ will not be shown, you would have to be root to see it all.)                                           
+Active Internet connections (servers and established)                                                   
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name        
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                       
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                       
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                       
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -
+...[SNIP]... 
+```
+
 ```console
 # UDP
 netstat -plunt
+```
+
+```console {class="sample-code"}
+$ netstat -plunt
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+...[SNIP]...                  
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           -                   
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           - 
+...[SNIP]... 
 ```
 
 ```console

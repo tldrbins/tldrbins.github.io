@@ -325,8 +325,52 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">schtasks /query
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; schtasks /query
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder: \
+</span></span></span><span class="line"><span class="cl"><span class="go">TaskName                                 Next Run Time          Status
+</span></span></span><span class="line"><span class="cl"><span class="go">======================================== ====================== ===============
+</span></span></span><span class="line"><span class="cl"><span class="go">CleanUpDownloads                         N/A                    Ready
+</span></span></span><span class="line"><span class="cl"><span class="go">CreateExplorerShellUnelevatedTask        N/A                    Ready
+</span></span></span><span class="line"><span class="cl"><span class="go">fix_vm                                   N/A                    Ready
+</span></span></span><span class="line"><span class="cl"><span class="go">OneDriveUpdate                           N/A                    Running
+</span></span></span><span class="line"><span class="cl"><span class="go">User_Feed_Synchronization-{0041D634-0AC8 9/25/2024 12:48:00 AM  Ready
+</span></span></span><span class="line"><span class="cl"><span class="go">User_Feed_Synchronization-{12517E1A-613E 9/24/2024 6:58:48 PM   Ready
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List details
-</span></span><span class="line"><span class="cl"><span class="go">schtasks /TN \Microsoft\Windows\&lt;FOLDER&gt;\&lt;TASKNAME&gt; /FO LIST /V
+</span></span><span class="line"><span class="cl"><span class="go">schtasks /TN \&lt;FOLDER&gt;\&lt;TASKNAME&gt; /FO LIST /V
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; schtasks /TN \OneDriveUpdate /FO LIST /V
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder: \
+</span></span></span><span class="line"><span class="cl"><span class="go">HostName:                             DC
+</span></span></span><span class="line"><span class="cl"><span class="go">TaskName:                             \OneDriveUpdate
+</span></span></span><span class="line"><span class="cl"><span class="go">Next Run Time:                        N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Status:                               Running
+</span></span></span><span class="line"><span class="cl"><span class="go">Logon Mode:                           Interactive only
+</span></span></span><span class="line"><span class="cl"><span class="go">Last Run Time:                        9/24/2024 6:12:00 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">Last Result:                          267009
+</span></span></span><span class="line"><span class="cl"><span class="go">Author:                               HOSPITAL\Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">Task To Run:                          powershell.exe -c &#34;python.exe C:\Windows\System32\SyncAppvPublicationServer.vbs&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">Start In:                             N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Comment:                              N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Scheduled Task State:                 Enabled
+</span></span></span><span class="line"><span class="cl"><span class="go">Idle Time:                            Disabled
+</span></span></span><span class="line"><span class="cl"><span class="go">Power Management:                     Stop On Battery Mode
+</span></span></span><span class="line"><span class="cl"><span class="go">Run As User:                          drbrown
+</span></span></span><span class="line"><span class="cl"><span class="go">Delete Task If Not Rescheduled:       Disabled
+</span></span></span><span class="line"><span class="cl"><span class="go">Stop Task If Runs X Hours and X Mins: Disabled
+</span></span></span><span class="line"><span class="cl"><span class="go">Schedule:                             Scheduling data is not available in this format.
+</span></span></span><span class="line"><span class="cl"><span class="go">Schedule Type:                        At logon time
+</span></span></span><span class="line"><span class="cl"><span class="go">Start Time:                           N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Start Date:                           N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">End Date:                             N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Days:                                 N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Months:                               N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Repeat: Every:                        N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Repeat: Until: Time:                  N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Repeat: Until: Duration:              N/A
+</span></span></span><span class="line"><span class="cl"><span class="go">Repeat: Stop If Still Running:        N/A
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

