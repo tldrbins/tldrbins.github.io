@@ -6,7 +6,7 @@ tags: ["File Metadata", "Alternate Data Stream", "ADS", "Windows", "Hidden Files
 
 ### Show ADS
 
-{{< tab set1 tab1 active >}}cmd{{< /tab >}}
+{{< tab set1 tab1 >}}cmd{{< /tab >}}
 {{< tab set1 tab2 >}}powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

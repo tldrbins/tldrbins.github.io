@@ -33,7 +33,7 @@ Default output format [None]:
 
 ### AWS Services
 
-{{< tab set1 tab1 active >}}S3{{< /tab >}}
+{{< tab set1 tab1 >}}S3{{< /tab >}}
 {{< tab set1 tab2 >}}dynamodb{{< /tab >}}
 {{< tab set1 tab3 >}}lambda{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

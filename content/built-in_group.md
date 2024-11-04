@@ -16,7 +16,7 @@ $ rlwrap nc -lvnp 443
 listening on [any] 443 ...
 ```
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Change service path

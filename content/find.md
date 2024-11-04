@@ -4,7 +4,7 @@ date: 2024-6-29
 tags: ["File Metadata", "Enumeration", "File Attributes", "Hidden Files", "Find", "Linux", "File System", "SUID"]
 ---
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### Locate a file

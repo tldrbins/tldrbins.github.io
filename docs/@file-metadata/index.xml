@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/find_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find_windows/</guid>
-      <description> Windows Show hidden files Get-ChildItem -force Find a file ls -path &amp;lt;PATH&amp;gt; -Filter &amp;lt;FILE&amp;gt; -recurse -erroraction silent where /R &amp;lt;PATH&amp;gt; &amp;lt;FILE&amp;gt; Find a file, with rules dir /s /b /a:-d-h &amp;lt;PATH&amp;gt; | findstr /i /v &amp;#39;&amp;lt;STRING&amp;gt;&amp;#39; +---------------------------------------+ |dir: | |/s : include subfolders | |/b : bare format | |/a:-d-h : exclude directories or hidden| | | |findstr: | |/i : case insensitive | |/v STRING : exclude STRING | +---------------------------------------+ </description>
+      <description>Windows Show hidden files # Show hidden files in current directory Get-ChildItem -Force # Recusive Get-ChildItem -Path &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; -Recurse -Force 2&amp;gt;$Null Find a file ls -path &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; -Filter &amp;#39;&amp;lt;FILE&amp;gt;&amp;#39; -recurse -erroraction silent where /R &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; &amp;#39;&amp;lt;FILE&amp;gt;&amp;#39; # Find files with wildcard Get-ChildItem -Path &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; -Recurse -Force -Include &amp;#39;&amp;lt;PATTERN&amp;gt;&amp;#39; 2&amp;gt;$Null *Evil-WinRM* PS C:\programdata&amp;gt; Get-ChildItem -Path &amp;#39;C:\&amp;#39; -Recurse -Force -Include &amp;#39;flag.*&amp;#39; 2&amp;gt;$Null Directory: C:\Users\Administrator\Desktop Mode LastWriteTime Length Name ---- ------------- ------ ---- -a---- 10/27/2017 4:02 PM 24 flag.</description>
     </item>
     <item>
       <title>Magic Bytes</title>

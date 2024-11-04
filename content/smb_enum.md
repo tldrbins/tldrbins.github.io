@@ -6,7 +6,7 @@ tags: ["Kerberos", "Nmap", "SID", "Smbclient", "Mount", "Enumeration", "Smb", "I
 
 ### SMB Share Enum
 
-{{< tab set1 tab1 active >}}nmap{{< /tab >}}
+{{< tab set1 tab1 >}}nmap{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -30,7 +30,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.96 seconds
 
 #### Anonymous Login
 
-{{< tab set2 tab1 active >}}smbmap{{< /tab >}}
+{{< tab set2 tab1 >}}smbmap{{< /tab >}}
 {{< tab set2 tab2 >}}smbclient{{< /tab >}}
 {{< tab set2 tab3 >}}impacket{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
@@ -122,7 +122,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 
 #### Authenticated
 
-{{< tab set3 tab1 active >}}smbmap{{< /tab >}}
+{{< tab set3 tab1 >}}smbmap{{< /tab >}}
 {{< tab set3 tab2 >}}smbclient{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
@@ -272,7 +272,7 @@ smb: \>
 
 #### Authenticated with Kerberos
 
-{{< tab set4 tab1 active >}}impacket{{< /tab >}}
+{{< tab set4 tab1 >}}impacket{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
 ```console
@@ -330,7 +330,7 @@ get "<FILE>:Password"
 
 ### Mount SMB Share
 
-{{< tab set5 tab1 active >}}Anonymous{{< /tab >}}
+{{< tab set5 tab1 >}}Anonymous{{< /tab >}}
 {{< tab set5 tab2 >}}Authenticated{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 

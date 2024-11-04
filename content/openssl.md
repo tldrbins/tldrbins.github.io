@@ -21,13 +21,13 @@ openssl req -in request.csr -noout -text
 #### 1. Generate a user key
 
 ```console
-openssl genrsa -out username.key 2048                                                      
+openssl genrsa -out user.key 2048                                                      
 ```
 
 #### 2. Create a CSR
 
 ```console
-openssl req -new -key username.key -out username.csr
+openssl req -new -key user.key -out user.csr
 ```
 
 <br>
@@ -47,8 +47,8 @@ openssl req -new -key username.key -out username.csr
 | Locality Name (eg, city) []:                                                |
 | Organization Name (eg, company) [Internet Widgits Pty Ltd]:COMPANY_NAME     |
 | Organizational Unit Name (eg, section) []:COMPANY_NAME                      |
-| Common Name (e.g. server FQDN or YOUR name) []:username                     |
-| Email Address []:                                                           |
+| Common Name (e.g. server FQDN or YOUR name) []:USER                         |
+| Email Address []:EMAIL                                                      |
 |                                                                             |
 | Please enter the following 'extra' attributes                               |
 | to be sent with your certificate request                                    |
@@ -65,7 +65,7 @@ openssl x509 -req -in username.csr -CA <CERT_PEM_FILE> -CAkey <CERT_KEY_FILE> -C
 
 #### 4. Use the pfx file
 
-{{< tab set1 tab1 active >}}firefox{{< /tab >}}
+{{< tab set1 tab1 >}}firefox{{< /tab >}}
 {{< tab set1 tab2 >}}curl{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

@@ -7,7 +7,7 @@ tags: ["Compress", "Decompress", "Extract", "Zip", "Unzip", "Gz", "Tar", "Rar", 
 
 <small>*Hint: Always put the zip file inside a new folder before unzip*</small>
 
-{{< tab set1 tab1 active >}}zip{{< /tab >}}
+{{< tab set1 tab1 >}}zip{{< /tab >}}
 {{< tab set1 tab2 >}}tar.gz{{< /tab >}}
 {{< tab set1 tab3 >}}tar{{< /tab >}}
 {{< tab set1 tab4 >}}gz{{< /tab >}}
@@ -39,6 +39,21 @@ unzip -l <FILE>
 ```console
 # unzip
 unzip <FILE>
+```
+
+```console
+# zip (Windows)
+Compress-Archive -Path "<FILE_PATH>" -DestinationPath "<DEST_PATH>"
+```
+
+```console
+# zip a folder (Windows)
+Add-Type -Assembly System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::CreateFromDirectory('<FILE_PATH>', '<DEST_PATH>')
+```
+
+```console
+# unzip (Windows)
+Expand-Archive -Path "<FILE_PATH>" -DestinationPath "<DEST_PATH>" -Force
 ```
 
 ```console

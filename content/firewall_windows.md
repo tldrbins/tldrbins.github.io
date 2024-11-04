@@ -4,35 +4,21 @@ date: 2024-7-10
 tags: ["Firewall", "Inbound", "Outbound", "Network", "Windows"]
 ---
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ### Check Firewall Rules
 
-```console
-# cmd
-cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
-```
-
-```console {class="sample-code"}
-*Evil-WinRM* PS C:\Users\maria> cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
-Rule Name:                            World Wide Web Services (HTTPS Traffic-In)
-Rule Name:                            World Wide Web Services (HTTP Traffic-In)
-Rule Name:                            Shell Input Application
-...[SNIP]...
-Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv6-In)
-Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv4-In)
-Rule Name:                            Virtual Machine Monitoring (DCOM-In)
-```
+{{< tab set1-1 tab1 active >}}powershell{{< /tab >}}{{< tab set1-1 tab2 >}}cmd{{< /tab >}}
+{{< tabcontent set1-1 tab1 >}}
 
 ```console
-# powershell
+# Check profiles
 Get-NetFirewallProfile
 ```
 
 ```console {class="sample-code"}
 *Evil-WinRM* PS C:\Users\maria> Get-NetFirewallProfile
-
 
 Name                            : Domain
 Enabled                         : False
@@ -53,43 +39,38 @@ LogBlocked                      : False
 LogIgnored                      : NotConfigured
 DisabledInterfaceAliases        : {NotConfigured}
 
-Name                            : Private
-Enabled                         : False
-DefaultInboundAction            : NotConfigured
-DefaultOutboundAction           : NotConfigured
-AllowInboundRules               : NotConfigured
-AllowLocalFirewallRules         : NotConfigured
-AllowLocalIPsecRules            : NotConfigured
-AllowUserApps                   : NotConfigured
-AllowUserPorts                  : NotConfigured
-AllowUnicastResponseToMulticast : NotConfigured
-NotifyOnListen                  : False
-EnableStealthModeForIPsec       : NotConfigured
-LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log
-LogMaxSizeKilobytes             : 4096
-LogAllowed                      : False
-LogBlocked                      : False
-LogIgnored                      : NotConfigured
-DisabledInterfaceAliases        : {NotConfigured}
+...[SNIP]...
+```
 
-Name                            : Public
-Enabled                         : False
-DefaultInboundAction            : NotConfigured
-DefaultOutboundAction           : NotConfigured
-AllowInboundRules               : NotConfigured
-AllowLocalFirewallRules         : NotConfigured
-AllowLocalIPsecRules            : NotConfigured
-AllowUserApps                   : NotConfigured
-AllowUserPorts                  : NotConfigured
-AllowUnicastResponseToMulticast : NotConfigured
-NotifyOnListen                  : False
-EnableStealthModeForIPsec       : NotConfigured
-LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log
-LogMaxSizeKilobytes             : 4096
-LogAllowed                      : False
-LogBlocked                      : False
-LogIgnored                      : NotConfigured
-DisabledInterfaceAliases        : {NotConfigured}
+```console
+# Check inbound rules
+Get-NetFirewallRule -Direction InBound -Enabled True
+```
+
+```console {class="sample-code"}
+PS C:\programdata> Get-NetFirewallRule -Direction Inbound -Enabled True
+
+Name                  : DeliveryOptimization-TCP-In
+DisplayName           : Delivery Optimization (TCP-In)
+Description           : Inbound rule to allow Delivery Optimization to connect to remote endpoints
+DisplayGroup          : Delivery Optimization
+Group                 : @%systemroot%\system32\dosvc.dll,-100
+Enabled               : True
+Profile               : Any
+Platform              : {}
+Direction             : Inbound
+Action                : Allow
+EdgeTraversalPolicy   : Allow
+LooseSourceMapping    : False
+LocalOnlyMapping      : False
+Owner                 : 
+PrimaryStatus         : OK
+Status                : The rule was parsed successfully from the store. (65536)
+EnforcementStatus     : NotApplicable
+PolicyStoreSource     : PersistentStore
+PolicyStoreSourceType : Local
+
+...[SNIP]...
 ```
 
 ```console
@@ -121,58 +102,46 @@ PolicyStoreSource     : PersistentStore
 PolicyStoreSourceType : Local
 
 ...[SNIP]...
-
-Name                  : {5ADD1B2F-E298-4E9D-AEB5-C8C4B224D74A}
-DisplayName           : Shell Input Application
-Description           : Shell Input Application
-DisplayGroup          : Shell Input Application
-Group                 : Shell Input Application
-Enabled               : True
-Profile               : Domain, Private, Public
-Platform              : {6.2+}
-Direction             : Outbound
-Action                : Allow
-EdgeTraversalPolicy   : Block
-LooseSourceMapping    : False
-LocalOnlyMapping      : False
-Owner                 : S-1-5-21-4088429403-1159899800-2753317549-1106
-PrimaryStatus         : OK
-Status                : The rule was parsed successfully from the store. (65536)
-EnforcementStatus     : NotApplicable
-PolicyStoreSource     : PersistentStore
-PolicyStoreSourceType : Local
 ```
 
+{{< /tabcontent >}}
+{{< tabcontent set1-1 tab2 >}}
+
 ```console
-# Pretty print
-powershell -c "Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name='Protocol';Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).Protocol}},@{Name='LocalPort';Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).LocalPort}},@{Name='RemotePort';Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).RemotePort}},@{Name='RemoteAddress';Expression={(Get-NetFirewallAddressFilter -AssociatedNetFirewallRule $PSItem).RemoteAddress}},Enabled,Profile,Direction,Action"
+cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
 ```
 
 ```console {class="sample-code"}
-*Evil-WinRM* PS C:\Users\maria> powershell -c "Get-NetFirewallRule -Direction Outbound -Enabled True -Action Block | Format-Table -Property DisplayName,@{Name='Protocol';Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).Protocol}},@{Name='LocalPort';Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).LocalPort}},@{Name='RemotePort';Expression={(Get-NetFirewallPortFilter -AssociatedNetFirewallRule $PSItem).RemotePort}},@{Name='RemoteAddress';Expression={(Get-NetFirewallAddressFilter -AssociatedNetFirewallRule $PSItem).RemoteAddress}},Enabled,Profile,Direction,Action"
-
-
-DisplayName     Protocol LocalPort RemotePort RemoteAddress Enabled Profile Direction Action
------------     -------- --------- ---------- ------------- ------- ------- --------- ------
-BlockOutboundDC                                                True     Any  Outbound  Block
+*Evil-WinRM* PS C:\Users\maria> cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
+Rule Name:                            World Wide Web Services (HTTPS Traffic-In)
+Rule Name:                            World Wide Web Services (HTTP Traffic-In)
+Rule Name:                            Shell Input Application
+...[SNIP]...
+Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv6-In)
+Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv4-In)
+Rule Name:                            Virtual Machine Monitoring (DCOM-In)
 ```
+
+{{< /tabcontent >}}
 
 ### Add Inbound Rules
 
+{{< tab set1-2 tab1 active >}}powershell{{< /tab >}}{{< tab set1-2 tab2 >}}cmd{{< /tab >}}
+{{< tabcontent set1-2 tab1 >}}
+
 ```console
 # Allow all inbound traffic from local subnet
-New-NetFirewallRule -DisplayName "Allow All" -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY
+New-NetFirewallRule -DisplayName "Allow All From LocalSubnet" -Direction Inbound -RemoteAddress LocalSubnet -Protocol TCP -Action Allow -Enabled True -Profile ANY
 ```
 
 ```console {class="sample-code"}
-*Evil-WinRM* PS C:\Users\maria> New-NetFirewallRule -DisplayName "Allow All" -Direction Inbound -Enabled True -RemoteAddress LocalSubnet -Action Allow -Protocol TCP -Profile ANY
+PS C:\programdata> New-NetFirewallRule -DisplayName "Allow All From LocalSubnet" -Direction Inbound -RemoteAddress LocalSubnet -Protocol TCP -Action Allow -Enabled True -Profile ANY
 
-
-Name                  : {40819844-ba45-451b-be9c-f9878e2e6011}
-DisplayName           : Allow All
-Description           :
-DisplayGroup          :
-Group                 :
+Name                  : {b67cb3e9-4a15-422a-ad46-49742bf98d51}
+DisplayName           : Allow All From LocalSubnet
+Description           : 
+DisplayGroup          : 
+Group                 : 
 Enabled               : True
 Profile               : Any
 Platform              : {}
@@ -181,7 +150,7 @@ Action                : Allow
 EdgeTraversalPolicy   : Block
 LooseSourceMapping    : False
 LocalOnlyMapping      : False
-Owner                 :
+Owner                 : 
 PrimaryStatus         : OK
 Status                : The rule was parsed successfully from the store. (65536)
 EnforcementStatus     : NotApplicable
@@ -189,14 +158,70 @@ PolicyStoreSource     : PersistentStore
 PolicyStoreSourceType : Local
 ```
 
-### Disable Firewall
+{{< /tabcontent >}}
+{{< tabcontent set1-2 tab2 >}}
+
+````console
+netsh advfirewall firewall add rule name="Open Port <PORT> IN" dir=in action=allow protocol=TCP localport=<PORT>
+````
+
+{{< /tabcontent >}}
+
+### Add Outbound Rules
+
+{{< tab set1-3 tab1 active >}}powershell{{< /tab >}}{{< tab set1-3 tab2 >}}cmd{{< /tab >}}
+{{< tabcontent set1-3 tab1 >}}
 
 ```console
+New-NetFirewallRule -DisplayName "Allow Port <PORT> Outbound" -Direction Outbound -LocalPort <PORT> -Protocol TCP -Action Allow -Enabled True -Profile ANY
+```
+
+```console {class="sample-code"}
+PS C:\programdata> New-NetFirewallRule -DisplayName "Allow Port 8000 Outbound" -Direction Outbound -LocalPort 8000 -Protocol TCP -Action Allow -Enabled True -Profile ANY
+
+Name                  : {bb40ce74-5196-4435-92fe-7ecc08fbf13f}
+DisplayName           : Allow Port 8000 Outbound
+Description           : 
+DisplayGroup          : 
+Group                 : 
+Enabled               : True
+Profile               : Any
+Platform              : {}
+Direction             : Outbound
+Action                : Allow
+EdgeTraversalPolicy   : Block
+LooseSourceMapping    : False
+LocalOnlyMapping      : False
+Owner                 : 
+PrimaryStatus         : OK
+Status                : The rule was parsed successfully from the store. (65536)
+EnforcementStatus     : NotApplicable
+PolicyStoreSource     : PersistentStore
+PolicyStoreSourceType : Local
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1-3 tab2 >}}
+
+````console
+netsh advfirewall firewall add rule name="Open Port <PORT> OUT" dir=out action=allow protocol=TCP localport=<PORT>
+````
+
+{{< /tabcontent >}}
+
+
+### Disable Firewall
+
+{{< tab set1-4 tab1 active >}}powershell{{< /tab >}}{{< tab set1-4 tab2 >}}cmd{{< /tab >}}
+{{< tabcontent set1-4 tab1 >}}
+
+```console
+# Disable all firewall profiles
 Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
 ```
 
 ```console {class="sample-code"}
-*Evil-WinRM* PS C:\Users\maria> Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
+PS C:\programdata> Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
 ```
 
 ```console
@@ -205,7 +230,7 @@ Get-NetFirewallProfile | Format-Table Name, Enabled
 ```
 
 ```console {class="sample-code"}
-*Evil-WinRM* PS C:\Users\maria> Get-NetFirewallProfile | Format-Table Name, Enabled
+PS C:\programdata> Get-NetFirewallProfile | Format-Table Name, Enabled
 
 Name    Enabled
 ----    -------
@@ -214,4 +239,17 @@ Private   False
 Public    False
 ```
 
+{{< /tabcontent >}}
+{{< tabcontent set1-4 tab2 >}}
+
+```console
+netsh advfirewall set allprofiles state off
+```
+
+```console {class="sample-code"}
+C:\>netsh advfirewall set allprofiles state off
+Ok.
+```
+
+{{< /tabcontent >}}
 {{< /tabcontent >}}

@@ -83,7 +83,7 @@ echo <BASE64_PUB_KEY> >> /home/<USER>/.ssh/authorized_keys
 
 ### SSH Connect
 
-{{< tab set1 tab1 active >}}password{{< /tab >}}
+{{< tab set1 tab1 >}}password{{< /tab >}}
 {{< tab set1 tab2 >}}id_rsa{{< /tab >}}
 {{< tab set1 tab3 >}}target shell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

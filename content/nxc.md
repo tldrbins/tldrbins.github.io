@@ -7,18 +7,33 @@ tags: ["Ldap", "Crackmapexec", "Rid", "Brute Force", "Smb", "Ldap Search", "Enum
 #### Basic Commands
 
 ```console
-# Single user and password
-nxc <PROTOCOL> <TARGET> -u <USER> -p '<PASSWORD>'
+# Single user, single password
+nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>'
 ```
 
 ```console
-# Single user and password (Active Directory)
-nxc <PROTOCOL> -u <USER> -p '<PASSWORD>' -d <DOMAIN> <TARGET>
+# Single user, single password, local auth
+nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth
 ```
 
 ```console
-# Multiple users or passwords
-nxc <PROTOCOL> -u <USERNAMES> -p '<PASSWORD>' -d <DOMAIN> <TARGET> --continue-on-success
+# Single user, single password (Active Directory)
+nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN>
+```
+
+```console
+# Single user, multiple passwords
+nxc <PROTOCOL> <TARGET> -u '<USER>' -p <PASSWORDS> -d <DOMAIN>
+```
+
+```console
+# Multiple users, single password
+nxc <PROTOCOL> <TARGET> -u <USERNAMES> -p '<PASSWORD>' -d <DOMAIN> --continue-on-success
+```
+
+```console
+# Multiple users, multiple passwords
+nxc <PROTOCOL> <TARGET> -u <USERNAMES> -p <PASSWORDS> -d <DOMAIN> --continue-on-success
 ```
 
 ```console
@@ -28,13 +43,15 @@ nxc <PROTOCOL> <TARGET> -u <USERNAMES> -p <PASSWORDS> --no-bruteforce --continue
 
 ```console
 # With hash
-nxc <PROTOCOL> <TARGET> -u <USER> -H <LM>:<NT>
+nxc <PROTOCOL> <TARGET> -u '<USER>' -H <HASH>
 ```
 
 ```console
 # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled)
-nxc <PROTOCOL> -u <USER> -p '<PASSWORD>' -d <DOMAIN> -k <TARGET>
+nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k
 ```
+
+<small>*Hint: we can also run on multiple targets*</small>
 
 #### Supported protocols
 
@@ -53,7 +70,7 @@ nxc smb <TARGET> -u guest -p '' --rid-brute 10000
 #### User Enum (Authenticated)
 
 ```console
-nxc smb <TARGET> -u <USER> -p '<PASSWORD>' -d <DOMAIN> --users
+nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> --users
 ```
 
 <small>*Ref: [Download nxc](https://github.com/Pennyw0rth/NetExec)*</small>

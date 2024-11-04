@@ -12,7 +12,7 @@ tags: ["Web Exploitation", "Http File Transfer", "Remote File Inclusion", "XSS",
 
 ### Catch HTTP request and host a web server 
 
-{{< tab set1 tab1 active >}}serveo.net{{< /tab >}}
+{{< tab set1 tab1 >}}serveo.net{{< /tab >}}
 {{< tab set1 tab2 >}}ngrok{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

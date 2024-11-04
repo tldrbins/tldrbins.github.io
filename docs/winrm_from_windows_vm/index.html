@@ -367,14 +367,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl">+--------------------------------------------------------------------+
 </span></span></code></pre></div><h4 id="5-sync-time-with-dc">5. Sync Time with DC</h4>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">powershell</button>
+<button data-tabset="set1" data-tabcontent="tab1" >powershell</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">W32tm /resync /force
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="authentication">Authentication</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">Kerberos</button>
+<button data-tabset="set2" data-tabcontent="tab1" >Kerberos</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >Credentials</button>
 
@@ -405,15 +405,18 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> New-Object System.Management.Automation.PSCredential<span class="o">(</span><span class="nv">$username</span>, <span class="nv">$password</span><span class="o">)</span>
 </span></span></code></pre></div><h4 id="4-pssession">4. PSSession</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">s1</span> <span class="o">=</span> New-PSSession -ComputerName &lt;DC_COMPUTER_NAME&gt; -Credential <span class="nv">$cred</span>
-</span></span><span class="line"><span class="cl"><span class="go">Enter-PSSession $s1
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Enter-PSSession $s1
 </span></span></span></code></pre></div></div></p>
 <hr>
-<h3 id="copy-files-from-remote-pssession-to-local">Copy files from remote pssession to local</h3>
+<h3 id="copy-files-between-remote-and-local">Copy Files Between Remote and Local</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">powershell</button>
+<button data-tabset="set3" data-tabcontent="tab1" >powershell</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Exit-PSSession
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-Item &#39;&lt;REMOTE_FILE_PATH&gt;&#39;  -Destination &#39;&lt;LOCAL_FILE_PATH&gt;&#39; -FromSession $s1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Local to Remote
+</span></span><span class="line"><span class="cl"><span class="go">Copy-Item &#39;&lt;LOCAL_FILE_PATH&gt;&#39; -Destination &#39;&lt;REMOTE_FILE_PATH&gt;&#39; -ToSession $s1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote to Local
+</span></span><span class="line"><span class="cl"><span class="go">Copy-Item &#39;&lt;REMOTE_FILE_PATH&gt;&#39; -Destination &#39;&lt;LOCAL_FILE_PATH&gt;&#39; -FromSession $s1
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

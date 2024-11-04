@@ -67,7 +67,7 @@ proxychains4 ssh <USER>@127.0.0.1
 
 ### Squid Cache Enum
 
-{{< tab set1 tab1 active >}}squidclient{{< /tab >}}
+{{< tab set1 tab1 >}}squidclient{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

@@ -42,7 +42,7 @@ $ rlwrap nc -lvnp 1337
 listening on [any] 1337 ..
 ```
 
-{{< tab set1 tab1 active >}}3a. Manager GUI{{< /tab >}}
+{{< tab set1 tab1 >}}3a. Manager GUI{{< /tab >}}
 {{< tab set1 tab2 >}}3b. Manager Script{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

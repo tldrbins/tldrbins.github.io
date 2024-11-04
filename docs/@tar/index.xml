@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/compressed_files/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/compressed_files/</guid>
-      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip tar.gz tar gz rar 7z bz # zip a file zip &amp;lt;FILE&amp;gt;.zip &amp;lt;FILE&amp;gt; # zip a folder zip -r &amp;lt;FOLDER&amp;gt;.zip &amp;lt;FOLDER&amp;gt;/ # zip a symlink (not the destination file) zip --symlinks file.zip &amp;lt;SYMLINK&amp;gt; # List files without unzip unzip -l &amp;lt;FILE&amp;gt; # unzip unzip &amp;lt;FILE&amp;gt; # unzip (Windows) Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&amp;#39;&amp;lt;FILE_PATH&amp;gt;&amp;#39;, &amp;#39;C:\ProgramData\&amp;#39;) # Compress a file tar -cvzf &amp;lt;FILE&amp;gt;.</description>
+      <description>Hint: Always put the zip file inside a new folder before unzip&#xA;zip tar.gz tar gz rar 7z bz # zip a file zip &amp;lt;FILE&amp;gt;.zip &amp;lt;FILE&amp;gt; # zip a folder zip -r &amp;lt;FOLDER&amp;gt;.zip &amp;lt;FOLDER&amp;gt;/ # zip a symlink (not the destination file) zip --symlinks file.zip &amp;lt;SYMLINK&amp;gt; # List files without unzip unzip -l &amp;lt;FILE&amp;gt; # unzip unzip &amp;lt;FILE&amp;gt; # zip (Windows) Compress-Archive -Path &amp;#34;&amp;lt;FILE_PATH&amp;gt;&amp;#34; -DestinationPath &amp;#34;&amp;lt;DEST_PATH&amp;gt;&amp;#34; # zip a folder (Windows) Add-Type -Assembly System.</description>
     </item>
     <item>
       <title>rbash</title>

@@ -12,7 +12,7 @@ tags: ["Wpscan", "Wordpress", "Reconnaissance", "Enumeration"]
 
 ### Tools
 
-{{< tab set1 tab1 active >}}wpscan{{< /tab >}}
+{{< tab set1 tab1 >}}wpscan{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

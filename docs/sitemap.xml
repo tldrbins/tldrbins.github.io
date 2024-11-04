@@ -18,6 +18,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@access-control-lists/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@account/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@account-operators/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/account_operators/</loc>
@@ -41,6 +43,8 @@
     <loc>https://tldrbins.github.io/addkeycredentiallink/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@addmember/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/addmember/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@addself/</loc>
   </url><url>
@@ -105,6 +109,8 @@
     <loc>https://tldrbins.github.io/@aws/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/aws/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@background-tasks/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@backup/</loc>
   </url><url>
@@ -332,8 +338,6 @@
   </url><url>
     <loc>https://tldrbins.github.io/@event-logs/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/evil-winrm/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@evil-winrm/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@evtx/</loc>
@@ -382,6 +386,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/file_transfer_windows_to_linux/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/file_transfer_windows_to_windows/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@file-upload-vulnerability/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@files/</loc>
@@ -425,6 +431,8 @@
     <loc>https://tldrbins.github.io/ftp/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@fullpower/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@generate/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@genericall/</loc>
   </url><url>
@@ -684,6 +692,10 @@
   </url><url>
     <loc>https://tldrbins.github.io/mongodb_general/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@monitor/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/monitor_process_windows/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@monitoring/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@mount/</loc>
@@ -830,6 +842,10 @@
   </url><url>
     <loc>https://tldrbins.github.io/@permissions/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@persistence/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/persistence/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@petitpotam/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@phishing/</loc>
@@ -896,7 +912,11 @@
   </url><url>
     <loc>https://tldrbins.github.io/@privilege-read/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@process/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@proxy/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@psexec/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@pssession/</loc>
   </url><url>
@@ -933,6 +953,10 @@
     <loc>https://tldrbins.github.io/rbcd/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@rce/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@rdp/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/rdp/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@readgmsapassword/</loc>
   </url><url>
@@ -1036,9 +1060,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@server-operators/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/server_operators/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@service/</loc>
+    <loc>https://tldrbins.github.io/@services/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@sh/</loc>
   </url><url>
@@ -1184,6 +1206,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@uncompyle6/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@unquoted-service-path/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@unshadow/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@unsign/</loc>
@@ -1258,7 +1282,11 @@
   </url><url>
     <loc>https://tldrbins.github.io/@windows-service/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/server_operators/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@winrm/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/winrm/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/winrm_from_windows_vm/</loc>
   </url><url>

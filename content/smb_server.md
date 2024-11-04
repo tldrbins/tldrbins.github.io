@@ -6,7 +6,7 @@ tags: ["Smbclient", "File Transfer", "Windows", "Ntlm"]
 
 ### Start a SMB Server for File Transfer
 
-{{< tab set1 tab1 active >}}Anonymous{{< /tab >}}
+{{< tab set1 tab1 >}}Anonymous{{< /tab >}}
 {{< tab set1 tab2 >}}Authenticate{{< /tab >}}
 {{< tab set1 tab3 >}}Older Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

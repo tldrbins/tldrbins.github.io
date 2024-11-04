@@ -328,10 +328,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="info-collection-from-linux">Info Collection (From Linux)</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">bloodhound-python</button>
+<button data-tabset="set1" data-tabcontent="tab1" >bloodhound-python</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >nxc</button>
+
+<button data-tabset="set1" data-tabcontent="tab3" >certipy-ad</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodhound.py -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip
+</span></span><span class="line"><span class="cl"><span class="go">bloodhound-python -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodhound.py -d rebound.htb -u oorend -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> -dc dc01.rebound.htb -ns 10.10.11.231 -c all --zip 
 </span></span><span class="line"><span class="cl"><span class="go">INFO: Found AD domain: rebound.htb
 </span></span></span><span class="line"><span class="cl"><span class="go">INFO: Getting TGT for user
@@ -347,17 +351,26 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">INFO: Done in 00M 50S
 </span></span></span><span class="line"><span class="cl"><span class="go">INFO: Compressing output into 20240923035110_bloodhound.zip
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; bloodhound-python -u &lt;USER&gt; -k -d &lt;DOMAIN&gt; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip -no-pass --use-ldaps
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; bloodhound-python -u &#39;&lt;USER&gt;&#39; -k -d &lt;DOMAIN&gt; -dc &lt;DC&gt; -ns &lt;DC_IP&gt; -c all --zip -no-pass --use-ldaps
 </span></span></span></code></pre></div><p><small><em>Note: passing &apos;-no-pass&apos; will still ask for password, press enter</em></small></p>
 <p><small><em>Ref: <a href="https://github.com/dirkjanm/BloodHound.py">BloodHound.py</a></em></small></p>
-</div></p>
+</div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap &lt;DC&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --bloodhound --collection All --dns-tcp --dns-server &lt;DC_IP&gt;
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad find -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -target &lt;TARGET&gt;
+</span></span></span></code></pre></div></div></p>
 <h3 id="info-collection-from-windows">Info Collection (From Windows)</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">SharpHound.exe</button>
+<button data-tabset="set2" data-tabcontent="tab1" >SharpHound.exe</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >SharpHound.ps1</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpHound.exe -c all --outputdirectory C:\ProgramData
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Without Cred
+</span></span><span class="line"><span class="cl"><span class="go">.\SharpHound.exe -c all --outputdirectory C:\ProgramData
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Cred
+</span></span><span class="line"><span class="cl"><span class="go">.\SharpHound.exe -c all --outputdirectory C:\ProgramData --ldapusername &#39;&lt;USER&gt;&#39; --ldappassword &#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import module
@@ -367,9 +380,9 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/BloodHoundAD/BloodHound/blob/master/Collectors/SharpHound.ps1">sharphound.ps1</a></em></small></p></div></p>
 <h3 id="info-collection-from-c2">Info Collection (From C2)</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">Sliver</button>
+<button data-tabset="set3" data-tabcontent="tab1" >Sliver</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sharp-hound-4 --  &#39;-c all --outputdirectory C:\ProgramData&#39;
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sharp-hound-4 -- &#39;-c all --outputdirectory C:\ProgramData&#39;
 </span></span></span></code></pre></div><p><small><em>Note: passing &apos;-no-pass&apos; will still ask for password, press enter</em></small></p></div></p>
 <hr>
 <h3 id="bloodhound">bloodhound</h3>

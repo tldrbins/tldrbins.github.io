@@ -6,7 +6,7 @@ tags: ["Encryption", "Cryptography", "Web Exploitation", "Padding Oracle", "Padb
 
 ### Tools
 
-{{< tab set1 tab1 active >}}padbuster{{< /tab >}}
+{{< tab set1 tab1 >}}padbuster{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

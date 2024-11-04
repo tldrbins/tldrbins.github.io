@@ -4,9 +4,23 @@ date: 2024-7-16
 tags: ["Bypass", "Defender", "AV", "Anti-Virus", "Windows"]
 ---
 
-### Disable defender
+### Check Exclusion Path
 
-{{< tab set1 tab1 active >}}Powershell{{< /tab >}}
+```console
+.\SharpExclusionFinder.exe '<PATH>'
+```
+
+<small>*Ref: [SharpExclusionFinder](https://github.com/Friends-Security/SharpExclusionFinder)*</small>
+
+### Add Exclusion Path
+
+```console
+Add-MpPreference -ExclusionPath '<PATH>'
+```
+
+### Disable Defender
+
+{{< tab set1 tab1 >}}Powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

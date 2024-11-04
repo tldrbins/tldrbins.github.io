@@ -6,7 +6,7 @@ tags: ["Oracle Db", "File System Permissions Vulnerabilities", "Database Dumping
 
 ### Tools
 
-{{< tab set1 tab1 active >}}sqlplus{{< /tab >}}
+{{< tab set1 tab1 >}}sqlplus{{< /tab >}}
 {{< tab set1 tab2 >}}ODAT{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

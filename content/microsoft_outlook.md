@@ -6,7 +6,7 @@ tags: ["Outlook", "Email", "Windows", "Pst", "Ost", "Mbox"]
 
 ### Open email file
 
-{{< tab set1 tab1 active >}}.pst{{< /tab >}}
+{{< tab set1 tab1 >}}.pst{{< /tab >}}
 {{< tab set1 tab2 >}}.msg{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

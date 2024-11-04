@@ -6,7 +6,7 @@ tags: ["Forensics", "Credential Dumping", "Binwalk", "Dmp", "Memory Dump", "Reve
 
 ### Tools
 
-{{< tab set1 tab1 active >}}binwalk{{< /tab >}}
+{{< tab set1 tab1 >}}binwalk{{< /tab >}}
 {{< tab set1 tab2 >}}pypykatz{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

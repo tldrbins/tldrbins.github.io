@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unquoted Service Path on TLDRBins</title>
+    <link>https://tldrbins.github.io/@unquoted-service-path/</link>
+    <description>Recent content in Unquoted Service Path on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@unquoted-service-path/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows Services</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description>Check unquoted service path cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; PS C:\Users\user1&amp;gt; cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; WC Assistant WCAssistantService C:\Program Files (x86)\Lavasoft\Web Companion\Application\Lavasoft.WCAssistant.WinService.exe Auto Check service ACLs . .\Get-ServiceAcl &amp;#34;&amp;lt;SERVICE&amp;gt;&amp;#34; | Get-ServiceAcl | Select -ExpandProperty Access PS &amp;gt; &amp;#34;SomeService&amp;#34; | Get-ServiceAcl | select -ExpandProperty Access ...[SNIP]... ServiceRights : QueryConfig, ChangeConfig, QueryStatus, EnumerateDependents, Start, Stop, Interrogate, ReadControl AccessControlType : AccessAllowed IdentityReference : COMPUTER-MS01\user IsInherited : False InheritanceFlags : None PropagationFlags : None .</description>
+    </item>
+  </channel>
+</rss>

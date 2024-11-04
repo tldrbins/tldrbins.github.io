@@ -6,7 +6,7 @@ tags: ["Dns Spoofing", "Krbrelayx", "Dnstools", "Active Directory", "Windows", "
 
 ### Abuse #1: Add Active Directory Integrated DNS records via LDAP
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

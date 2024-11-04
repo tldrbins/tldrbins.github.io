@@ -1,7 +1,7 @@
 ---
 title: "Password Cracking"
 date: 2024-6-27
-tags: ["Hash Cracking", "Password Cracking", "File Encryption", "John The Ripper", "Hashcat"]
+tags: ["Hash Cracking", "Password Cracking", "File Encryption", "John The Ripper", "Hashcat", "Wordlist", "Generate"]
 ---
 
 ### Convert file to hash format
@@ -26,7 +26,7 @@ find / -name *2john 2>/dev/null
 
 ---
 
-{{< tab set1 tab1 active >}}john{{< /tab >}}
+{{< tab set1 tab1 >}}john{{< /tab >}}
 {{< tab set1 tab2 >}}hashcat{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -71,8 +71,23 @@ hashcat hash --user
 #### Create a wordlist
 
 ```console
-# For example, `Test` with 4 digits and a symbol
+# For example, 'Test' with 4 digits and a symbol
 hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
+```
+
+```console {class="sample-code"}
+$ hashcat --stdout -a 3 Test?d?d?d?d?s > passwords.txt
+$ head passwords.txt 
+Test1999*
+Test2312.
+Test5678*
+Test0000.
+Test9000.
+Test8888*
+Test3000.
+Test4523.
+Test7778*
+Test6999*
 ```
 
 <br>

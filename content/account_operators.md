@@ -6,7 +6,7 @@ tags: ["Credential Dumping", "AddMember", "Account Operators", "Active Directory
 
 ### Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Import PowerView.ps1 

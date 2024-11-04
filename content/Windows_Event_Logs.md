@@ -6,7 +6,7 @@ tags: ["Forensics", "Evtx", "Event Logs", "Windows", "DIFR"]
 
 ### Convert evtx to json
 
-{{< tab set1 tab1 active >}}evtx_dump{{< /tab >}}
+{{< tab set1 tab1 >}}evtx_dump{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

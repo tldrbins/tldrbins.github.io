@@ -6,7 +6,7 @@ tags: ["Dcsync", "Getchanges", "Getchangesall", "Secretsdump", "Active Directory
 
 #### Abuse #1: DCSync Attack
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

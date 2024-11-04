@@ -6,7 +6,7 @@ tags: ["Port Scanning", "Nmap", "Reconnaissance", "Tcp/Ip", "Vulnerability Scann
 
 ### Nmap Scan
 
-{{< tab set1 tab1 active >}}TCP{{< /tab >}}
+{{< tab set1 tab1 >}}TCP{{< /tab >}}
 {{< tab set1 tab2 >}}UDP{{< /tab >}}
 {{< tab set1 tab3 >}}Script{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

@@ -6,7 +6,7 @@ tags: ["Credential Dumping", "Impacket", "Pass-The-Ticket", "Silver Ticket", "Ti
 
 ### Abuse #1: RBCD Attack
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Find delegation

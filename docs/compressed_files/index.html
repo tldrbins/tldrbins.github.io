@@ -334,7 +334,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <p><small><em>Hint: Always put the zip file inside a new folder before unzip</em></small></p>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">zip</button>
+<button data-tabset="set1" data-tabcontent="tab1" >zip</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >tar.gz</button>
 
@@ -358,6 +358,12 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">unzip -l &lt;FILE&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> unzip
 </span></span><span class="line"><span class="cl"><span class="go">unzip &lt;FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> zip <span class="o">(</span>Windows<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">Compress-Archive -Path &#34;&lt;FILE_PATH&gt;&#34; -DestinationPath &#34;&lt;DEST_PATH&gt;&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> zip a folder <span class="o">(</span>Windows<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">Add-Type -Assembly System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::CreateFromDirectory(&#39;&lt;FILE_PATH&gt;&#39;, &#39;&lt;DEST_PATH&gt;&#39;)
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> unzip <span class="o">(</span>Windows<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">Expand-Archive -Path &#34;&lt;FILE_PATH&gt;&#34; -DestinationPath &#34;&lt;DEST_PATH&gt;&#34; -Force
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> unzip <span class="o">(</span>Windows<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory(&#39;&lt;FILE_PATH&gt;&#39;, &#39;C:\ProgramData\&#39;)
 </span></span></span></code></pre></div></div>

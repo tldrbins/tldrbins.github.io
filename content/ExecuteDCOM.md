@@ -6,7 +6,7 @@ tags: ["Executedcom", "Active Directory", "Windows", "RCE"]
 
 ### Abuse #1: ExecuteDCOM
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

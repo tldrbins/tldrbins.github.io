@@ -4,7 +4,7 @@ date: 2024-7-10
 tags: ["Cron", "Scheduled Tasks", "Linux"]
 ---
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ### Check Cron Jobs

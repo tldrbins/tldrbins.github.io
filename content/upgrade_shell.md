@@ -24,7 +24,7 @@ which python3
 which python
 ```
 
-{{< tab set1 tab1 active >}}python{{< /tab >}}
+{{< tab set1 tab1 >}}python{{< /tab >}}
 {{< tab set1 tab2 >}}socat{{< /tab >}}
 {{< tab set1 tab3 >}}script{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

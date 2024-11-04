@@ -6,7 +6,7 @@ tags: ["Memcache", "Telnet", "Database Dumping"]
 
 ### Connect
 
-{{< tab set1 tab1 active >}}telnet{{< /tab >}}
+{{< tab set1 tab1 >}}telnet{{< /tab >}}
 {{< tab set1 tab2 >}}memcached-cli{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

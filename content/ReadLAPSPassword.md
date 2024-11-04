@@ -6,7 +6,7 @@ tags: ["Credential Dumping", "Powerview", "ReadLAPSpassword", "Active Directory"
 
 ### Abuse #1: Read LAPS Password
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

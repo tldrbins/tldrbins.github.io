@@ -4,7 +4,7 @@ date: 2024-2-2
 tags: ["Password Cracking", "Wordlist", "Cewl"]
 ---
 
-{{< tab set1 tab1 active >}}CeWL{{< /tab >}}
+{{< tab set1 tab1 >}}CeWL{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

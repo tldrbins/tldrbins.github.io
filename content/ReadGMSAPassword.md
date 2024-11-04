@@ -6,7 +6,7 @@ tags: ["Credential Dumping", "ReadGMSApassword", "Gmsadumper", "Active Directory
 
 ### Abuse #1: Read GMSAPassword (From Linux)
 
-{{< tab set1 tab1 active >}}gMSADumper{{< /tab >}}
+{{< tab set1 tab1 >}}gMSADumper{{< /tab >}}
 {{< tab set1 tab2 >}}BloodyAD{{< /tab >}}
 {{< tab set1 tab3 >}}nxc{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
@@ -65,7 +65,7 @@ LDAPS       10.10.10.248    636    DC               Account: svc_int$           
 
 ### Abuse #2: Save as Cred
 
-{{< tab set2 tab1 active >}}Windows{{< /tab >}}
+{{< tab set2 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console

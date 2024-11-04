@@ -178,6 +178,10 @@
   
   <li><a href="https://tldrbins.github.io/@hashcat/">Hashcat</a></li>
   
+  <li><a href="https://tldrbins.github.io/@wordlist/">Wordlist</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@generate/">Generate</a></li>
+  
 </ul>
 <hr>
 <div class="content">
@@ -331,7 +335,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">find / -name *2john 2&gt;/dev/null
 </span></span></span></code></pre></div><hr>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">john</button>
+<button data-tabset="set1" data-tabcontent="tab1" >john</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >hashcat</button>
 
@@ -352,8 +356,20 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Auto skip username and colon
 </span></span><span class="line"><span class="cl"><span class="go">hashcat hash --user
 </span></span></span></code></pre></div><h4 id="create-a-wordlist">Create a wordlist</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example, <span class="sb">`</span>Test<span class="sb">`</span> with <span class="m">4</span> digits and a symbol
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example, <span class="s1">&#39;Test&#39;</span> with <span class="m">4</span> digits and a symbol
 </span></span><span class="line"><span class="cl"><span class="go">hashcat --stdout -a 3 Test?d?d?d?d?s &gt; passwords.txt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> hashcat --stdout -a <span class="m">3</span> Test?d?d?d?d?s &gt; passwords.txt
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> head passwords.txt 
+</span></span><span class="line"><span class="cl"><span class="go">Test1999*
+</span></span></span><span class="line"><span class="cl"><span class="go">Test2312.
+</span></span></span><span class="line"><span class="cl"><span class="go">Test5678*
+</span></span></span><span class="line"><span class="cl"><span class="go">Test0000.
+</span></span></span><span class="line"><span class="cl"><span class="go">Test9000.
+</span></span></span><span class="line"><span class="cl"><span class="go">Test8888*
+</span></span></span><span class="line"><span class="cl"><span class="go">Test3000.
+</span></span></span><span class="line"><span class="cl"><span class="go">Test4523.
+</span></span></span><span class="line"><span class="cl"><span class="go">Test7778*
+</span></span></span><span class="line"><span class="cl"><span class="go">Test6999*
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+------------------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">|  ? | Charset                             |

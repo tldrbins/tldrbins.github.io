@@ -6,7 +6,7 @@ tags: ["Ssl", "Sslscan", "Reconnaissance"]
 
 ### Tools
 
-{{< tab set1 tab1 active >}}sslscan{{< /tab >}}
+{{< tab set1 tab1 >}}sslscan{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

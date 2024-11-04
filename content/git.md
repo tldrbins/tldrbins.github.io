@@ -46,7 +46,7 @@ git show <COMMIT_HASH>
 
 ### Git Tools
 
-{{< tab set1 tab1 active >}}git-dumper{{< /tab >}}
+{{< tab set1 tab1 >}}git-dumper{{< /tab >}}
 {{< tab set1 tab2 >}}git-bundle{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

@@ -8,7 +8,7 @@ tags: ["Database Dumping", "Mongodb", "Database", "Enumeration"]
 
 #### Connect to Mongo Database
 
-{{< tab set1 tab1 active >}}anonymous{{< /tab >}}
+{{< tab set1 tab1 >}}anonymous{{< /tab >}}
 {{< tab set1 tab2 >}}authenticate{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

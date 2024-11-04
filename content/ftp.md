@@ -50,12 +50,12 @@ bin
 
 ```console
 # Download
-get <FILE>
+get "<FILE>"
 ```
 
 ```console
 # Upload
-put <FILE>
+put "<FILE>"
 ```
 
 ```console

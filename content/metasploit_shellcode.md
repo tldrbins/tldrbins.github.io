@@ -10,7 +10,7 @@ tags: ["Code Execution", "Metasploit", "Firewall", "Payload", "RCE", "Dll Hijack
 
 #### Windows x64
 
-{{< tab set1 tab1 active >}}Staged exe{{< /tab >}}
+{{< tab set1 tab1 >}}Staged exe{{< /tab >}}
 {{< tab set1 tab2 >}}Stageless exe{{< /tab >}}
 {{< tab set1 tab3 >}}Staged dll{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
@@ -58,7 +58,7 @@ Final size of dll file: 9216 bytes
 
 #### Windows x86
 
-{{< tab set2 tab1 active >}}Staged exe{{< /tab >}}
+{{< tab set2 tab1 >}}Staged exe{{< /tab >}}
 {{< tab set2 tab2 >}}Stageless exe{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
@@ -95,7 +95,7 @@ Final size of exe file: 73802 bytes
 
 #### Linux amd64
 
-{{< tab set3 tab1 active >}}Stageless elf{{< /tab >}}
+{{< tab set3 tab1 >}}Stageless elf{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console
@@ -115,7 +115,7 @@ Final size of elf file: 194 bytes
 
 #### Others
 
-{{< tab set4 tab1 active >}}Staged python{{< /tab >}}
+{{< tab set4 tab1 >}}Staged python{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
 ```console

@@ -6,7 +6,7 @@ tags: ["Reconnaissance", "Enumeration", "SNMP", "Snmpwalk", "Onesixtyone", "Data
 
 ### Bruteforce commmuity string
 
-{{< tab set1 tab1 active >}}onesixtyone{{< /tab >}}
+{{< tab set1 tab1 >}}onesixtyone{{< /tab >}}
 {{< tab set1 tab2 >}}snmpbrute{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -58,7 +58,7 @@ Select Community to Enumerate [0]:
 
 ### Tools
 
-{{< tab set2 tab1 active >}}snmpwalk{{< /tab >}}
+{{< tab set2 tab1 >}}snmpwalk{{< /tab >}}
 {{< tab set2 tab2 >}}snmpbulkwalk{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 

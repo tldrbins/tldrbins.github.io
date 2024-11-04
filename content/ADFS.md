@@ -6,7 +6,7 @@ tags: ["SAML", "Token-Based Authentication", "ADFS", "Active Directory", "Window
 
 ### Abuse #1: Generate a SAML 2.0 token for some app
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Dump encrypted PFX and DKM key

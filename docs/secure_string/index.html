@@ -322,11 +322,20 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="decrypt-secure-string">Decrypt secure string</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">s</span> <span class="o">=</span> cat pass.xml
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">ss</span> <span class="o">=</span> Convertto-securestring -string <span class="nv">$s</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="s2">&#34;administrator&#34;</span>, <span class="nv">$ss</span>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; $s = &#34;01000000d0 ...[SNIP]... e63b3f24ec&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">ss</span> <span class="o">=</span> Convertto-securestring -string <span class="nv">$s</span>
+</span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; $ss = Convertto-securestring -string $s
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span><span class="nv">ss</span> <span class="o">=</span> Convertto-securestring -string <span class="nv">$s</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Decrypt
+</span></span><span class="line"><span class="cl"><span class="go">(New-Object System.Management.Automation.PSCredential &#39;N/A&#39;, $ss).GetNetworkCredential().Password
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; (New-Object System.Management.Automation.PSCredential &#39;N/A&#39;, $ss).GetNetworkCredential().Password
+</span></span></span><span class="line"><span class="cl"><span class="go">(New-Object System.Management.Automation.PSCredential &#39;N/A&#39;, $ss).GetNetworkCredential().Password
+</span></span></span><span class="line"><span class="cl"><span class="go">AhXpFsOusi ...[SNIP]... 0LxlUqc0Y=
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or save as cred
+</span></span><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="s2">&#34;&lt;USER&gt;&#34;</span>, <span class="nv">$ss</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span>cred.GetNetworkCredential<span class="o">()</span>.password
 </span></span></code></pre></div></div></p>
 

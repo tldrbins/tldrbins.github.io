@@ -12,7 +12,7 @@ echo "<TARGET_IP> <DOMAIN>" | sudo tee -a /etc/hosts
 
 ---
 
-{{< tab set1 tab1 active >}}wfuzz{{< /tab >}}
+{{< tab set1 tab1 >}}wfuzz{{< /tab >}}
 {{< tab set1 tab2 >}}gobuster{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

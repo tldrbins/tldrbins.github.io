@@ -6,7 +6,7 @@ tags: ["Kerberos", "Ldap", "Nmap", "Ldap Search", "Enumeration", "Active Directo
 
 ### Enum
 
-{{< tab set1 tab1 active >}}ldapsearch{{< /tab >}}
+{{< tab set1 tab1 >}}ldapsearch{{< /tab >}}
 {{< tab set1 tab2 >}}ldapdomaindump{{< /tab >}}
 {{< tab set1 tab3 >}}nmap{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
@@ -51,7 +51,7 @@ sudo nmap -p 389 --script ldap-search <TARGET>
 
 ### Enum with Kerberos
 
-{{< tab set2 tab1 active >}}ldapsearch{{< /tab >}}
+{{< tab set2 tab1 >}}ldapsearch{{< /tab >}}
 {{< tab set2 tab2 >}}nxc{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 

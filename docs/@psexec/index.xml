@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Psexec on TLDRBins</title>
+    <link>https://tldrbins.github.io/@psexec/</link>
+    <description>Recent content in Psexec on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@psexec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Winrm</title>
+      <link>https://tldrbins.github.io/winrm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/winrm/</guid>
+      <description>Psexec Password Hash # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; Evil-Winrm Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; $ evil-winrm -i 127.0.0.1 -u dr.zaiuss -p &amp;#39;qwe123QWE!@#&amp;#39; Evil-WinRM shell v3.5 Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine Data: For more information, check Evil-WinRM GitHub: https://github.</description>
+    </item>
+  </channel>
+</rss>

@@ -4,23 +4,46 @@ date: 2024-7-10
 tags: ["File Metadata", "Hidden Files", "File Attributes", "Find", "Files", "Windows"]
 ---
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ### Show hidden files
 
 ```console
-Get-ChildItem -force
+# Show hidden files in current directory
+Get-ChildItem -Force
+```
+
+```console
+# Recusive
+Get-ChildItem -Path '<PATH>' -Recurse -Force 2>$Null
 ```
 
 ### Find a file
 
 ```console
-ls -path <PATH> -Filter <FILE> -recurse -erroraction silent
+ls -path '<PATH>' -Filter '<FILE>' -recurse -erroraction silent
 ```
 
 ```console
-where /R <PATH> <FILE>
+where /R '<PATH>' '<FILE>'
+```
+
+```console
+# Find files with wildcard
+Get-ChildItem -Path '<PATH>' -Recurse -Force -Include '<PATTERN>' 2>$Null
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\programdata> Get-ChildItem -Path 'C:\' -Recurse -Force -Include 'flag.*' 2>$Null
+
+    Directory: C:\Users\Administrator\Desktop
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        10/27/2017   4:02 PM             24 flag.txt
+
+...[SNIP]...
 ```
 
 ### Find a file, with rules
@@ -40,6 +63,30 @@ dir /s /b /a:-d-h <PATH> | findstr /i /v '<STRING>'
 |/i          : case insensitive         |
 |/v STRING   : exclude STRING           |
 +---------------------------------------+
+```
+
+### Find a string pattern
+
+```console
+# Show with file name
+Get-ChildItem -Recurse -Force | Select-String -Pattern "FLAG\{.*\}" -AllMatches 2>$Null
+```
+
+```console
+# Show only the value
+Get-ChildItem -Recurse -Force | Select-String -Pattern "FLAG\{.*\}" -AllMatches 2>$Null | % { $_.Matches } | % { $_.Value }
+```
+
+### Find a command location
+
+```console
+where.exe <COMMAND>
+```
+
+```console {class="sample-code"}
+PS C:\Program Files (x86)> where.exe sqlcmd
+where.exe sqlcmd
+C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\SQLCMD.EXE
 ```
 
 {{< /tabcontent >}}

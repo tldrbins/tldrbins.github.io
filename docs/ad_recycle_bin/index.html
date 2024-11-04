@@ -322,7 +322,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="privesc-1-restore-deleted-ad-account">Privesc #1: Restore deleted AD account</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-ad-module">1. Import AD module</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module activedirectory
@@ -353,7 +353,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><h4 id="4-restore-the-deleted-account">4. Restore the deleted account</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Rename the target account to avoid user exists error
-</span></span><span class="line"><span class="cl"><span class="go">Restore-ADObject -Identity &lt;OBJECT_GUID&gt; -NewName &#39;&lt;NEW_USER&gt;&#39; -TargetPath &#39;CN=Users,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;
+</span></span><span class="line"><span class="cl"><span class="go">Restore-ADObject -Identity &lt;OBJECT_GUID&gt; -NewName &#39;&lt;DELETED_USER&gt;.2&#39; -TargetPath &#39;CN=Users,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\test.user\Documents&gt; Restore-ADObject -Identity ebe15df5-e265-45ec-b7fc-359877217138 -NewName &#39;Another User2&#39; -TargetPath &#39;CN=Users,DC=EXAMPLE,DC=COM&#39;
 </span></span></span></code></pre></div></div></p>
 

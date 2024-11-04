@@ -6,7 +6,7 @@ tags: ["Ncat", "Listener", "Reverse Shell", "Nc", "Pwncat"]
 
 ### Listener Tools
 
-{{< tab set1 tab1 active >}}nc{{< /tab >}}
+{{< tab set1 tab1 >}}nc{{< /tab >}}
 {{< tab set1 tab2 >}}ncat{{< /tab >}}
 {{< tab set1 tab3 >}}pwncat{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

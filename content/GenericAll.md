@@ -6,7 +6,7 @@ tags: ["Shadow Credentials", "Powerview", "Credential Dumping", "AddMember", "Im
 
 ### Abuse #1: Change target user password
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -64,7 +64,7 @@ $ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11
 {{< tabcontent set1-2 tab1 >}}
 
 ```console
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
 ```
 
 ```console {class="sample-code"}
@@ -112,7 +112,7 @@ Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 
 ### Abuse #2: Get shadow credentials
 
-{{< tab set3 tab1 active >}}Linux{{< /tab >}}
+{{< tab set3 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 #### 1. Add Full Control to current user
@@ -213,7 +213,7 @@ User Policy update has completed successfully.
 
 ### Abuse #3 : Add user to group
 
-{{< tab set4 tab1 active >}}Windows{{< /tab >}}
+{{< tab set4 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
 #### 1. Import PowerView

@@ -8,7 +8,7 @@ tags: ["Acls", "Icacls", "Windows", "Access Control Lists", "Files"]
 
 #### Check ACLs
 
-{{< tab set1 tab1 active >}}powershell{{< /tab >}}
+{{< tab set1 tab1 >}}powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -80,7 +80,7 @@ Successfully processed 5 files; Failed processing 0 files
 
 #### Grant user full control
 
-{{< tab set2 tab1 active >}}cmd{{< /tab >}}
+{{< tab set2 tab1 >}}cmd{{< /tab >}}
 {{< tab set2 tab2 >}}powershell{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
@@ -101,7 +101,7 @@ icacls <FILE> /grant <USER>:F
 
 #### Change owner (WO)
 
-{{< tab set3 tab1 active >}}cmd{{< /tab >}}
+{{< tab set3 tab1 >}}cmd{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console
@@ -112,7 +112,7 @@ cmd.exe /c takeown /F <FILE>
 {{< /tabcontent >}}
 <br>
 
-{{< tab set4 tab1 active >}}ACLs{{< /tab >}}
+{{< tab set4 tab1 >}}ACLs{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
 ```console

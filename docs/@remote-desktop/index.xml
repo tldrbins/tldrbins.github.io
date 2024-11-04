@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@remote-desktop/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>RDP</title>
+      <link>https://tldrbins.github.io/rdp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/rdp/</guid>
+      <description>Enable RDP # Enable Terminal Server Set-ItemProperty -Path &amp;#39;HKLM:\System\CurrentControlSet\Control\Terminal Server&amp;#39; -Name &amp;#39;fDenyTSConnections&amp;#39; -Value 0 # Allow Inbound Traffic netsh advfirewall firewall add rule name=&amp;#34;Open Port 3389 IN&amp;#34; dir=in action=allow protocol=TCP localport=3389 xfreerdp remmina xfreerdp /u:&amp;#39;&amp;lt;USER&amp;gt;&amp;#39; /p:&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; /d:&amp;lt;DOMAIN&amp;gt; /v:&amp;lt;TARGET&amp;gt; /smart-sizing:1400x1080 remmina Fix ERRCONNECT_TLS_CONNECT_FAILED Advanced -&amp;gt; TLS Security Level -&amp;gt; 0 </description>
+    </item>
+    <item>
       <title>VNC</title>
       <link>https://tldrbins.github.io/vnc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

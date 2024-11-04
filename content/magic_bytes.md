@@ -6,7 +6,7 @@ tags: ["File Upload Vulnerability", "File Metadata", "File Carving", "Bypass", "
 
 ### Forge File Signature
 
-{{< tab set1 tab1 active >}}png{{< /tab >}}
+{{< tab set1 tab1 >}}png{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

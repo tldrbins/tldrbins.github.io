@@ -4,7 +4,7 @@ date: 2024-6-26
 tags: ["Smb", "File System Mounting",  "Http File Transfer", "Remote File Inclusion", "File Transfer", "Windows", "Evil-Winrm"]
 ---
 
-{{< tab set1 tab1 active >}}SMB{{< /tab >}}
+{{< tab set1 tab1 >}}SMB{{< /tab >}}
 {{< tab set1 tab2 >}}Base64{{< /tab >}}
 {{< tab set1 tab3 >}}evil-winrm{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

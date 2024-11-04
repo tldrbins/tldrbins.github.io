@@ -6,7 +6,7 @@ tags: ["Python", "Pyc", "Decompile", "Uncompyle6", "Reversing", "Pyinstxtractor"
 
 ### Tools
 
-{{< tab set1 tab1 active >}}pyinstxtractor{{< /tab >}}
+{{< tab set1 tab1 >}}pyinstxtractor{{< /tab >}}
 {{< tab set1 tab2 >}}uncompyle6{{< /tab >}}
 {{< tab set1 tab3 >}}pycdc{{< /tab >}}
 {{< tabcontent set1 tab1 >}}

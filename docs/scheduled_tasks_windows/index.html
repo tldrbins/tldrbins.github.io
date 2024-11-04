@@ -322,7 +322,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="check-scheduled-tasks">Check scheduled tasks</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">schtasks /query
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; schtasks /query
@@ -339,7 +339,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List details
-</span></span><span class="line"><span class="cl"><span class="go">schtasks /TN \&lt;FOLDER&gt;\&lt;TASKNAME&gt; /FO LIST /V
+</span></span><span class="line"><span class="cl"><span class="go">schtasks /TN &#39;\&lt;FOLDER&gt;\&lt;TASKNAME&gt;&#39; /FO LIST /V
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; schtasks /TN \OneDriveUpdate /FO LIST /V
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Folder: \

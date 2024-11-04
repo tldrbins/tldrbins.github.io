@@ -325,13 +325,27 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Windows</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h3 id="show-hidden-files">Show hidden files</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-ChildItem -force
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show hidden files in current directory
+</span></span><span class="line"><span class="cl"><span class="go">Get-ChildItem -Force
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Recusive
+</span></span><span class="line"><span class="cl"><span class="go">Get-ChildItem -Path &#39;&lt;PATH&gt;&#39; -Recurse -Force 2&gt;$Null
 </span></span></span></code></pre></div><h3 id="find-a-file">Find a file</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls -path &lt;PATH&gt; -Filter &lt;FILE&gt; -recurse -erroraction silent
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">where /R &lt;PATH&gt; &lt;FILE&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls -path &#39;&lt;PATH&gt;&#39; -Filter &#39;&lt;FILE&gt;&#39; -recurse -erroraction silent
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">where /R &#39;&lt;PATH&gt;&#39; &#39;&lt;FILE&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Find files with wildcard
+</span></span><span class="line"><span class="cl"><span class="go">Get-ChildItem -Path &#39;&lt;PATH&gt;&#39; -Recurse -Force -Include &#39;&lt;PATTERN&gt;&#39; 2&gt;$Null
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; Get-ChildItem -Path &#39;C:\&#39; -Recurse -Force -Include &#39;flag.*&#39; 2&gt;$Null
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    Directory: C:\Users\Administrator\Desktop
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Mode                 LastWriteTime         Length Name
+</span></span></span><span class="line"><span class="cl"><span class="go">----                 -------------         ------ ----
+</span></span></span><span class="line"><span class="cl"><span class="go">-a----        10/27/2017   4:02 PM             24 flag.txt
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
 </span></span></span></code></pre></div><h3 id="find-a-file-with-rules">Find a file, with rules</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dir /s /b /a:-d-h &lt;PATH&gt; | findstr /i /v &#39;&lt;STRING&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------------------------+
@@ -344,6 +358,16 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">|/i          : case insensitive         |
 </span></span></span><span class="line"><span class="cl"><span class="go">|/v STRING   : exclude STRING           |
 </span></span></span><span class="line"><span class="cl"><span class="go">+---------------------------------------+
+</span></span></span></code></pre></div><h3 id="find-a-string-pattern">Find a string pattern</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show with file name
+</span></span><span class="line"><span class="cl"><span class="go">Get-ChildItem -Recurse -Force | Select-String -Pattern &#34;FLAG\{.*\}&#34; -AllMatches 2&gt;$Null
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show only the value
+</span></span><span class="line"><span class="cl"><span class="go">Get-ChildItem -Recurse -Force | Select-String -Pattern &#34;FLAG\{.*\}&#34; -AllMatches 2&gt;$Null | % { $_.Matches } | % { $_.Value }
+</span></span></span></code></pre></div><h3 id="find-a-command-location">Find a command location</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">where.exe &lt;COMMAND&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\Program Files (x86)&gt; where.exe sqlcmd
+</span></span></span><span class="line"><span class="cl"><span class="go">where.exe sqlcmd
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\SQLCMD.EXE
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

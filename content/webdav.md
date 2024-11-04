@@ -5,7 +5,7 @@ tags: ["Http File Transfer", "Curl", "Webdav", "Http", "Web", "Enumeration"]
 ---
 
 ### Tools
-{{< tab set1 tab1 active >}}davtest{{< /tab >}}
+{{< tab set1 tab1 >}}davtest{{< /tab >}}
 {{< tab set1 tab2 >}}curl{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

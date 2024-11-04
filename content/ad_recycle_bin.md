@@ -6,7 +6,7 @@ tags: ["Domain Controller", "AD Recycle Bin", "Active Directory", "Windows"]
 
 ### Privesc #1: Restore deleted AD account
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Import AD module
@@ -61,7 +61,7 @@ CN                              : Another User
 
 ```console
 # Rename the target account to avoid user exists error
-Restore-ADObject -Identity <OBJECT_GUID> -NewName '<NEW_USER>' -TargetPath 'CN=Users,DC=<EXAMPLE>,DC=<COM>'
+Restore-ADObject -Identity <OBJECT_GUID> -NewName '<DELETED_USER>.2' -TargetPath 'CN=Users,DC=<EXAMPLE>,DC=<COM>'
 ```
 
 ```console {class="sample-code"}

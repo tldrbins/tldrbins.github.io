@@ -6,7 +6,7 @@ tags: ["Data Leakage", "Data Exfiltration", "Volume Shadow Copies", "Enumeration
 
 ### Abuse #1: Recover data from shadow copies
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Check

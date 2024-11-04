@@ -1,8 +1,46 @@
 ---
-title: "Server Operators"
+title: "Windows Services"
 date: 2024-7-13
-tags: ["Server Operators", "Active Directory", "Windows", "Privilege Escalation", "Service", "Reverse Shell"]
+tags: ["Server Operators", "Active Directory", "Windows", "Privilege Escalation", "Services", "Reverse Shell", "Unquoted Service Path"]
 ---
+
+### Check unquoted service path
+
+```console
+cmd.exe /c 'wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "C:\windows\\" |findstr /i /v """'
+```
+
+```console {class="sample-code"}
+PS C:\Users\user1> cmd.exe /c 'wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "C:\windows\\" |findstr /i /v """'
+WC Assistant    WCAssistantService    C:\Program Files (x86)\Lavasoft\Web Companion\Application\Lavasoft.WCAssistant.WinService.exe    Auto 
+```
+
+### Check service ACLs
+
+```console
+. .\Get-ServiceAcl
+```
+
+```console
+"<SERVICE>" | Get-ServiceAcl | Select -ExpandProperty Access
+```
+
+```console {class="sample-code"}
+PS > "SomeService" | Get-ServiceAcl | select -ExpandProperty Access
+
+...[SNIP]...
+
+ServiceRights     : QueryConfig, ChangeConfig, QueryStatus, EnumerateDependents, Start, Stop, Interrogate, ReadControl
+AccessControlType : AccessAllowed
+IdentityReference : COMPUTER-MS01\user
+IsInherited       : False
+InheritanceFlags  : None
+PropagationFlags  : None
+
+...[SNIP]...
+```
+
+<small>*Ref: [Get-ServiceAcl.ps1](https://raw.githubusercontent.com/Sambal0x/tools/refs/heads/master/Get-ServiceAcl.ps1)*</small>
 
 ### Abuse #1: Change service path
 
@@ -34,7 +72,7 @@ The service has not been started.
 
 ```console
 # Start service
-sc.exe stop <SERVICE>
+sc.exe start <SERVICE>
 ```
 
 ```console {class="sample-code"}

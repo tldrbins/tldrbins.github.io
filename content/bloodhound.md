@@ -6,12 +6,14 @@ tags: ["Bloodhound", "Sharphound", "Sliver", "Enumeration", "Active Directory", 
 
 ### Info Collection (From Linux)
 
-{{< tab set1 tab1 active >}}bloodhound-python{{< /tab >}}
+{{< tab set1 tab1 >}}bloodhound-python{{< /tab >}}
+{{< tab set1 tab2 >}}nxc{{< /tab >}}
+{{< tab set1 tab3 >}}certipy-ad{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
 # With password
-python3 bloodhound.py -d <DOMAIN> -u <USER> -p '<PASSWORD>' -dc <DC> -ns <DC_IP> -c all --zip
+bloodhound-python -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -dc <DC> -ns <DC_IP> -c all --zip
 ```
 
 ```console {class="sample-code"}
@@ -33,7 +35,7 @@ INFO: Compressing output into 20240923035110_bloodhound.zip
 
 ```console
 # With Kerberos
-sudo ntpdate -s <DC> && bloodhound-python -u <USER> -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip -no-pass --use-ldaps
+sudo ntpdate -s <DC> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip -no-pass --use-ldaps
 ```
 
 <small>*Note: passing '-no-pass' will still ask for password, press enter*</small>
@@ -41,15 +43,35 @@ sudo ntpdate -s <DC> && bloodhound-python -u <USER> -k -d <DOMAIN> -dc <DC> -ns 
 <small>*Ref: [BloodHound.py](https://github.com/dirkjanm/BloodHound.py)*</small>
 
 {{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+```console
+nxc ldap <DC> -u '<USER>' -p '<PASSWORD>' --bloodhound --collection All --dns-tcp --dns-server <DC_IP>
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
+
+```console
+certipy-ad find -u '<USER>' -p '<PASSWORD>' -target <TARGET>
+```
+
+{{< /tabcontent >}}
 
 ### Info Collection (From Windows)
 
-{{< tab set2 tab1 active >}}SharpHound.exe{{< /tab >}}
+{{< tab set2 tab1 >}}SharpHound.exe{{< /tab >}}
 {{< tab set2 tab2 >}}SharpHound.ps1{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
+# Without Cred
 .\SharpHound.exe -c all --outputdirectory C:\ProgramData
+```
+
+```console
+# With Cred
+.\SharpHound.exe -c all --outputdirectory C:\ProgramData --ldapusername '<USER>' --ldappassword '<PASSWORD>'
 ```
 
 {{< /tabcontent >}}
@@ -71,11 +93,11 @@ Invoke-BloodHound -CollectionMethods All -OutputDirectory C:\ProgramData
 
 ### Info Collection (From C2)
 
-{{< tab set3 tab1 active >}}Sliver{{< /tab >}}
+{{< tab set3 tab1 >}}Sliver{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console
-sharp-hound-4 --  '-c all --outputdirectory C:\ProgramData'
+sharp-hound-4 -- '-c all --outputdirectory C:\ProgramData'
 ```
 
 <small>*Note: passing '-no-pass' will still ask for password, press enter*</small>

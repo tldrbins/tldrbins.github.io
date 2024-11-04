@@ -4,7 +4,7 @@ date: 2024-6-26
 tags: ["scp", "Http File Transfer", "File Transfer", "nc"]
 ---
 
-{{< tab set1 tab1 active >}}HTTP{{< /tab >}}
+{{< tab set1 tab1 >}}HTTP{{< /tab >}}
 {{< tab set1 tab2 >}}nc{{< /tab >}}
 {{< tab set1 tab3 >}}scp{{< /tab >}}
 {{< tab set1 tab4 >}}PIPE{{< /tab >}}

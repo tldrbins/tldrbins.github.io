@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>evil-winrm | TLDRBins</title>
+<title>Winrm | TLDRBins</title>
 <meta name="robots" content='noindex, nofollow'>
 <meta name="description" content="">
 <meta name="generator" content="hugo-index">
@@ -24,8 +24,8 @@
       <span>TLDRBins</span>
     </a>
     <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/evil-winrm/">
-      <span>evil-winrm</span>
+    <a href="https://tldrbins.github.io/winrm/">
+      <span>Winrm</span>
     </a>
   </h1>
   <div class="js-toggle-wrapper">
@@ -182,6 +182,10 @@
   
   <li><a href="https://tldrbins.github.io/@pass-the-cert/">Pass-the-Cert</a></li>
   
+  <li><a href="https://tldrbins.github.io/@winrm/">Winrm</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@psexec/">Psexec</a></li>
+  
 </ul>
 <hr>
 <div class="content">
@@ -326,17 +330,34 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="connection-methods">Connection Methods</h3>
+  <h3 id="psexec">Psexec</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Password</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Password</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Hash</button>
 
-<button data-tabset="set1" data-tabcontent="tab3" >Kerberos</button>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Domain auth
+</span></span><span class="line"><span class="cl"><span class="go">impacket-psexec &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Local auth
+</span></span><span class="line"><span class="cl"><span class="go">impacket-psexec &#39;&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;
+</span></span></span></code></pre></div></div>
 
-<button data-tabset="set1" data-tabcontent="tab4" >crt & key</button>
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Domain auth
+</span></span><span class="line"><span class="cl"><span class="go">impacket-psexec &#39;&lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET&gt;&#39; -hashes :&lt;HASH&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Local auth
+</span></span><span class="line"><span class="cl"><span class="go">impacket-psexec &#39;&lt;USER&gt;@&lt;TARGET&gt;&#39; -hashes :&lt;HASH&gt;
+</span></span></span></code></pre></div></div></p>
+<h3 id="evil-winrm">Evil-Winrm</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" >Password</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+<button data-tabset="set2" data-tabcontent="tab2" >Hash</button>
+
+<button data-tabset="set2" data-tabcontent="tab3" >Kerberos</button>
+
+<button data-tabset="set2" data-tabcontent="tab4" >crt & key</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i 127.0.0.1 -u dr.zaiuss -p <span class="s1">&#39;qwe123QWE!@#&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="go">                                        
 </span></span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
@@ -349,10 +370,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Dr.Zaiuss\Documents&gt;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;HASH&gt; 
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;HASH&gt; 
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 1: Edit <span class="s1">&#39;/etc/krb5.conf&#39;</span> <span class="o">(</span>All in uppercase<span class="o">)</span>
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 1: Edit <span class="s1">&#39;/etc/krb5.conf&#39;</span> <span class="o">(</span>All in uppercase<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[libdefaults]
 </span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = &lt;DOMAIN&gt;
@@ -397,7 +418,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\winrm_user\Documents&gt; 
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -S -k auth.key -c auth.crt
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -S -k auth.key -c auth.crt
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

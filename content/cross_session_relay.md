@@ -6,7 +6,7 @@ tags: ["Ntlm", "Pass-The-Hash", "Authentication", "Cross Session Relay", "Active
 
 ### Display information about the session host
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -32,7 +32,7 @@ qwinsta *
 
 ### Abuse #1: Steal NTLM hash
 
-{{< tab set2 tab1 active >}}RemotePotato0{{< /tab >}}
+{{< tab set2 tab1 >}}RemotePotato0{{< /tab >}}
 {{< tab set2 tab2 >}}KrbRelay{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 

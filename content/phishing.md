@@ -4,7 +4,7 @@ date: 2024-6-26
 tags: ["Phishing", "Social Engineering", "Responder", "Phishing Campaigns", "Email", "Xll", "Excel", "Hta", "Shortcut", "Windows", "Odt", "Libre", "Vba", "Ntlm_Theft", "Pdf", "Ntlm"]
 ---
 
-{{< tab set1 tab1 active >}}lnk{{< /tab >}}
+{{< tab set1 tab1 >}}lnk{{< /tab >}}
 {{< tab set1 tab2 >}}xll{{< /tab >}}
 {{< tab set1 tab3 >}}hta{{< /tab >}}
 {{< tab set1 tab4 >}}scf{{< /tab >}}

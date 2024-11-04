@@ -6,7 +6,7 @@ tags: ["IRC", "Internet Relay Chat", "Software"]
 
 ### IRC Tools
 
-{{< tab set1 tab1 active >}}hexchat{{< /tab >}}
+{{< tab set1 tab1 >}}hexchat{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

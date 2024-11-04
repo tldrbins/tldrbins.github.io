@@ -322,9 +322,14 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="disable-defender">Disable defender</h3>
+  <h3 id="check-exclusion-path">Check Exclusion Path</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpExclusionFinder.exe &#39;&lt;PATH&gt;&#39;
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/Friends-Security/SharpExclusionFinder">SharpExclusionFinder</a></em></small></p>
+<h3 id="add-exclusion-path">Add Exclusion Path</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-MpPreference -ExclusionPath &#39;&lt;PATH&gt;&#39;
+</span></span></span></code></pre></div><h3 id="disable-defender">Disable Defender</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Powershell</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Powershell</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Disable realtime monitoring
 </span></span><span class="line"><span class="cl"><span class="go">Set-MpPreference -DisableRealtimeMonitoring $true

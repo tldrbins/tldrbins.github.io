@@ -325,7 +325,7 @@ body.dark-mode #dynamicFormContainer button:hover {
   <h3 id="general">General</h3>
 <h4 id="connect-to-mssql-db">Connect to MSSQL DB</h4>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Linux</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
@@ -340,6 +340,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 <h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check mssql version
 </span></span><span class="line"><span class="cl"><span class="go">SELECT @@version;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check current user
+</span></span><span class="line"><span class="cl"><span class="go">SELECT suser_name();
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check users
 </span></span><span class="line"><span class="cl"><span class="go">SELECT name FROM master..syslogins
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check users

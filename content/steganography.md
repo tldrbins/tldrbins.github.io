@@ -6,7 +6,7 @@ tags: ["Steganography", "Steghide", "Steg", "Exiftool", "Ctf"]
 
 ### Tools
 
-{{< tab set1 tab1 active >}}exiftool{{< /tab >}}
+{{< tab set1 tab1 >}}exiftool{{< /tab >}}
 {{< tab set1 tab2 >}}steghide{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

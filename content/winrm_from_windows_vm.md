@@ -54,7 +54,7 @@ systeminfo
 
 #### 5. Sync Time with DC
 
-{{< tab set1 tab1 active >}}powershell{{< /tab >}}
+{{< tab set1 tab1 >}}powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -67,7 +67,7 @@ W32tm /resync /force
 
 ### Authentication
 
-{{< tab set2 tab1 active >}}Kerberos{{< /tab >}}
+{{< tab set2 tab1 >}}Kerberos{{< /tab >}}
 {{< tab set2 tab2 >}}Credentials{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
@@ -139,6 +139,9 @@ $cred = New-Object System.Management.Automation.PSCredential($username, $passwor
 
 ```console
 $s1 = New-PSSession -ComputerName <DC_COMPUTER_NAME> -Credential $cred
+```
+
+```console
 Enter-PSSession $s1
 ```
 
@@ -146,9 +149,9 @@ Enter-PSSession $s1
 
 ---
 
-### Copy files from remote pssession to local
+### Copy Files Between Remote and Local
 
-{{< tab set3 tab1 active >}}powershell{{< /tab >}}
+{{< tab set3 tab1 >}}powershell{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console
@@ -156,7 +159,13 @@ Exit-PSSession
 ```
 
 ```console
-Copy-Item '<REMOTE_FILE_PATH>'  -Destination '<LOCAL_FILE_PATH>' -FromSession $s1
+# Local to Remote
+Copy-Item '<LOCAL_FILE_PATH>' -Destination '<REMOTE_FILE_PATH>' -ToSession $s1
+```
+
+```console
+# Remote to Local
+Copy-Item '<REMOTE_FILE_PATH>' -Destination '<LOCAL_FILE_PATH>' -FromSession $s1
 ```
 
 {{< /tabcontent >}}

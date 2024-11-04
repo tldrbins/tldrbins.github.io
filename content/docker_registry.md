@@ -65,7 +65,7 @@ $ curl -s -k --user "admin:admin" https://docker.registry.htb/v2/bolt-image/blob
 
 ### Docker Registry Dump
 
-{{< tab set1 tab1 active >}}DockerRegistryGrabber{{< /tab >}}
+{{< tab set1 tab1 >}}DockerRegistryGrabber{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

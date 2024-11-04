@@ -6,7 +6,7 @@ tags: ["SeDebugPrivilege", "Windows", "Metasploit", "Reverse Shell"]
 
 ### Tools
 
-{{< tab set1 tab1 active >}}Metasploit{{< /tab >}}
+{{< tab set1 tab1 >}}Metasploit{{< /tab >}}
 {{< tab set1 tab2 >}}psgetsys.ps1{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

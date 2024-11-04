@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Persistence on TLDRBins</title>
+    <link>https://tldrbins.github.io/@persistence/</link>
+    <description>Recent content in Persistence on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@persistence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Persistence</title>
+      <link>https://tldrbins.github.io/persistence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/persistence/</guid>
+      <description>Add local user # Create new user net user &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; /add PS C:\WINDOWS\system32&amp;gt; net user test Test1234!@ /add The command completed successfully. # Add user to admin group net localgroup Administrators &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; /add PS C:\WINDOWS\system32&amp;gt; net localgroup administrators test /add The command completed successfully. # Add user to remote desktop group net localgroup &amp;#34;Remote Desktop Users&amp;#34; &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; /add PS C:\WINDOWS\system32&amp;gt; net localgroup &amp;#34;remote desktop users&amp;#34; test /add The command completed successfully.</description>
+    </item>
+  </channel>
+</rss>

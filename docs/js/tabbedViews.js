@@ -1,18 +1,6 @@
 // tabbedViews.js
 
 export function addTabbedViews() {
-    // Utility function to clear the 'active' class from a NodeList
-    const clear = nodeList => nodeList.forEach(node => node.classList.remove('active'));
-
-    // Utility function to find and clear nested tab contents
-    const clearNested = nodeList => {
-        nodeList.forEach(node => {
-            if (node.querySelectorAll('.tabcontent').length > 0) {
-                clear(node.querySelectorAll('.tabcontent'));
-            }
-        });
-    };
-
     // Event handler for tab clicks
     const onTabClick = (event) => {
         const { tabset, tabcontent } = event.target.dataset;
@@ -58,6 +46,7 @@ export function addTabbedViews() {
     // Initialize tabs and contents
     const initializeTabs = () => {
         const tabs = document.querySelectorAll('button[data-tabset]');
+        const tabGroups = {};
         tabs.forEach(tab => {
             const { tabset, tabcontent } = tab.dataset;
 
@@ -66,16 +55,43 @@ export function addTabbedViews() {
                 tab.parentElement.classList.add('tabs');
             }
 
-            // Activate content for initially active tabs
-            if (tab.classList.contains('active')) {
-                const activeContent = document.querySelector(`.tabcontent[data-tabset="${tabset}"][data-tabcontent="${tabcontent}"]`);
-                if (activeContent) {
-                    activeContent.classList.add('active');
-                }
+            if (!tabGroups[tabset]) {
+                tabGroups[tabset] = [];
             }
+
+            tabGroups[tabset].push(tab);
 
             // Add click event listener to each tab
             tab.addEventListener('click', onTabClick);
+        });
+
+        Object.keys(tabGroups).forEach(tabset => {
+            const tabsInSet = tabGroups[tabset];
+            const activeTabExists = tabsInSet.some(tab => tab.classList.contains('active'));
+
+            if (!activeTabExists && tabsInSet.length > 0) {
+                const firstTab = tabsInSet[0];
+                firstTab.classList.add('active');
+
+                const { tabcontent } = firstTab.dataset;
+                const firstContent = document.querySelector(`.tabcontent[data-tabset="${tabset}"][data-tabcontent="${tabcontent}"]`);
+
+                if (firstContent) {
+                    firstContent.classList.add('active');
+
+                    const nestedTabs = firstContent.querySelectorAll('button[data-tabset]');
+                    nestedTabs.forEach(nestedTab => {
+                        if (nestedTab.classList.contains('active')) {
+                            const { tabset: nestedTabset, tabcontent: nestedTabcontent } = nestedTab.dataset;
+                            const activeNestedContent = document.querySelector(`.tabcontent[data-tabset="${nestedTabset}"][data-tabcontent="${nestedTabcontent}"]`);
+                            
+                            if (activeNestedContent) {
+                                activeNestedContent.classList.add('active');
+                            }
+                        }
+                    });
+                }
+            }
         });
     };
 

@@ -6,7 +6,7 @@ tags: ["Pass-The-Ticket", "Pass-The-Hash", "Silver Ticket", "Ticket Granting Tic
 
 ### RBCD Attack
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

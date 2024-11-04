@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description>Test connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; Test reverse connectivity Linux sudo tcpdump -ni tun0 icmp Sniff network traffic Linux # For example: on port 389 sudo tcpdump -i lo -nnXs 0 &amp;#39;port &amp;lt;TARGET_PORT&amp;gt;&amp;#39; # Sniff HTTPS traffic sudo ./mitmdump -p 443 --mode reverse:https://&amp;lt;DOMAIN&amp;gt; --ssl-insecure --set flow_detail=3 Ref: mitmproxy&#xA;Use ping to scan subnet Linux for i in $(seq 1 254); do (ping -c 1 10.</description>
+      <description>Test connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; Test reverse connectivity Linux sudo tcpdump -ni tun0 icmp Sniff network traffic Linux # Sniff on network adapter sudo tcpdump -i eth0 -w packets.pcap root@NIX01:/dev/shm# sudo tcpdump -i eth0 -w packets.pcap tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes ^C124 packets captured &amp;lt;----- Send Ctrl+C after some time 133 packets received by filter 0 packets dropped by kernel # For example: on port 389 sudo tcpdump -i lo -nnXs 0 &amp;#39;port &amp;lt;TARGET_PORT&amp;gt;&amp;#39; # Sniff HTTPS traffic sudo .</description>
     </item>
     <item>
       <title>Nmap</title>

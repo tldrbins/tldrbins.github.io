@@ -6,7 +6,7 @@ tags: ["Impacket", "Windows RPC", "Windows", "COM", "Enumeration"]
 
 ### Windows RPC
 
-{{< tab set1 tab1 active >}}impacket{{< /tab >}}
+{{< tab set1 tab1 >}}impacket{{< /tab >}}
 {{< tab set1 tab2 >}}IOXIDResolver{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

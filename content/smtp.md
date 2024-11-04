@@ -29,7 +29,7 @@ server.stop()
 
 ### Users Enum
 
-{{< tab set1 tab1 active >}}nmap script{{< /tab >}}
+{{< tab set1 tab1 >}}nmap script{{< /tab >}}
 {{< tab set1 tab2 >}}smtp-user-enum{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

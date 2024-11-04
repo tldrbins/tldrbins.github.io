@@ -6,7 +6,7 @@ tags: ["Port Scanning", "Arp", "Iptables", "Tcpdump", "Packet Sniffing", "Reconn
 
 ### Test connectivity
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -32,7 +32,7 @@ Test-NetConnection <TARGET> -Port <TARGET_PORT>
 
 ### Test reverse connectivity
 
-{{< tab set2 tab1 active >}}Linux{{< /tab >}}
+{{< tab set2 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
@@ -43,8 +43,21 @@ sudo tcpdump -ni tun0 icmp
 
 ### Sniff network traffic
 
-{{< tab set3 tab1 active >}}Linux{{< /tab >}}
+{{< tab set3 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
+
+```console
+# Sniff on network adapter
+sudo tcpdump -i eth0 -w packets.pcap
+```
+
+```console {class="sample-code"}
+root@NIX01:/dev/shm# sudo tcpdump -i eth0 -w packets.pcap
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
+^C124 packets captured          <----- Send Ctrl+C after some time
+133 packets received by filter
+0 packets dropped by kernel
+```
 
 ```console
 # For example: on port 389
@@ -62,29 +75,50 @@ sudo ./mitmdump -p 443 --mode reverse:https://<DOMAIN> --ssl-insecure --set flow
 
 ### Use ping to scan subnet
 
-{{< tab set4 tab1 active >}}Linux{{< /tab >}}
+{{< tab set4 tab1 >}}Linux{{< /tab >}}
+{{< tab set4 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
 ```console
-for i in $(seq 1 254); do (ping -c 1 10.100.10.${i} | grep "bytes from" &); done;
+for i in $(seq 1 254); do (ping -c 1 <SUBNET>.${i} | grep "bytes from" &); done;
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set4 tab2 >}}
+
+```console
+1..254 | % { $ip="<SUBNET>.$_"; if (Test-Connection $ip -Count 1 -Quiet) { "$ip is alive" } }
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\Administrator\Documents> 1..254 | % { $ip="172.16.1.$_"; if (Test-Connection $ip -Count 1 -Quiet) { "$ip is alive" } }
+172.16.2.5 is alive
 ```
 
 {{< /tabcontent >}}
 
-### Use nc to scan ports
+### Quick scan ports
 
-{{< tab set5 tab1 active >}}Linux{{< /tab >}}
+{{< tab set5 tab1 >}}Linux{{< /tab >}}
+{{< tab set5 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
 ```console
-for i in $(seq 1 65535); do (nc -zvn 127.0.0.1 ${i} 2>&1 | grep -v "Connection refused" &); done
+for i in $(seq 1 65535); do (nc -zvn <TARGET> ${i} 2>&1 | grep -v "Connection refused" &); done
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set5 tab2 >}}
+
+```console
+1..65535 | % {echo ((new-object Net.Sockets.TcpClient).Connect('<TARGET>',$_)) "Port $_ is open!"} 2>$null
 ```
 
 {{< /tabcontent >}}
 
 ### Check arp table
 
-{{< tab set6 tab1 active >}}Linux{{< /tab >}}
+{{< tab set6 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
 
 ```console
@@ -99,7 +133,7 @@ cat /proc/net/arp
 
 ### Check IP
 
-{{< tab set7 tab1 active >}}Linux{{< /tab >}}
+{{< tab set7 tab1 >}}Linux{{< /tab >}}
 {{< tab set7 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set7 tab1 >}}
 
@@ -120,14 +154,25 @@ cat /proc/net/fib_trie
 {{< tabcontent set7 tab2 >}}
 
 ```console
+# Get local IP
 ipconfig
+```
+
+```console
+# Get DC IP
+nltest /dsgetdc:<DOMAIN> /force
+```
+
+```console
+# Get AD-Computers IP
+Get-ADComputer -Filter * -Properties IPv4Address | select name,IPV4Address
 ```
 
 {{< /tabcontent >}}
 
 ### Check network connections
 
-{{< tab set8 tab1 active >}}Linux{{< /tab >}}
+{{< tab set8 tab1 >}}Linux{{< /tab >}}
 {{< tab set8 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set8 tab1 >}}
 

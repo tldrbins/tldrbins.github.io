@@ -6,7 +6,7 @@ tags: ["Enumeration", "Scheduled Tasks", "Windows", "Enum"]
 
 ### Check scheduled tasks
 
-{{< tab set1 tab1 active >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -31,7 +31,7 @@ User_Feed_Synchronization-{12517E1A-613E 9/24/2024 6:58:48 PM   Ready
 
 ```console
 # List details
-schtasks /TN \<FOLDER>\<TASKNAME> /FO LIST /V
+schtasks /TN '\<FOLDER>\<TASKNAME>' /FO LIST /V
 ```
 
 ```console {class="sample-code"}

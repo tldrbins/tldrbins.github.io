@@ -337,26 +337,33 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <h4 id="basic-commands">Basic Commands</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user and password
-</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user and password <span class="o">(</span>Active Directory<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; &lt;TARGET&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple users or passwords
-</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; -u &lt;USERNAMES&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; &lt;TARGET&gt; --continue-on-success
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user, single password
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user, single password, <span class="nb">local</span> auth
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --local-auth
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user, single password <span class="o">(</span>Active Directory<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Single user, multiple passwords
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &lt;PASSWORDS&gt; -d &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple users, single password
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &lt;USERNAMES&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; --continue-on-success
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Multiple users, multiple passwords
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &lt;USERNAMES&gt; -p &lt;PASSWORDS&gt; -d &lt;DOMAIN&gt; --continue-on-success
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Match username to corresponding password
 </span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &lt;USERNAMES&gt; -p &lt;PASSWORDS&gt; --no-bruteforce --continue-on-success
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;LM&gt;:&lt;NT&gt;
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -H &lt;HASH&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos, or STATUS_ACCOUNT_RESTRICTION <span class="o">(</span>NTLM disabled<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; -k &lt;TARGET&gt;
-</span></span></span></code></pre></div><h4 id="supported-protocols">Supported protocols</h4>
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; -k
+</span></span></span></code></pre></div><p><small><em>Hint: we can also run on multiple targets</em></small></p>
+<h4 id="supported-protocols">Supported protocols</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------------------------------------------+
 </span></span><span class="line"><span class="cl">| ftp | ldap | mssql | rdp | smb | ssh | vnc | winrm | wmi |
 </span></span><span class="line"><span class="cl">+----------------------------------------------------------+
 </span></span></code></pre></div><h4 id="rid-brute">RID Brute</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u guest -p &#39;&#39; --rid-brute 10000
 </span></span></span></code></pre></div><h4 id="user-enum-authenticated">User Enum (Authenticated)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; --users
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; --users
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/Pennyw0rth/NetExec">Download nxc</a></em></small></p>
 
 </div></div>

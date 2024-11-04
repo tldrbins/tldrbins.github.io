@@ -18,7 +18,7 @@ ike-scan -M --ikev2 <TARGET>
 
 ### Connect to VPN
 
-{{< tab set1 tab1 active >}}strongswan{{< /tab >}}
+{{< tab set1 tab1 >}}strongswan{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

@@ -6,7 +6,7 @@ tags: ["Database Dumping", "Access", "Database", "Windows", "Mdb"]
 
 ### Tools
 
-{{< tab set1 tab1 active >}}mdbtools{{< /tab >}}
+{{< tab set1 tab1 >}}mdbtools{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

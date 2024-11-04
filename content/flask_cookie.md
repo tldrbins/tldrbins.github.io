@@ -6,7 +6,7 @@ tags: ["Flask", "Python", "Cookie", "Sign", "Unsign", "Web Exploitation"]
 
 ### Cookie Tools
 
-{{< tab set1 tab1 active >}}flask-unsign{{< /tab >}}
+{{< tab set1 tab1 >}}flask-unsign{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

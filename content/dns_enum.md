@@ -4,6 +4,10 @@ date: 2024-6-26
 tags: ["Domain", "Reconnaissance", "Enumeration", "DNS", "Dig", "Zone Transfer"]
 ---
 
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
+{{< tab set1 tab2 >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
 ### Zone Transfer
 
 ```console
@@ -63,3 +67,30 @@ $ dig +noall +answer @10.10.11.212 -t NS snoopy.htb
 snoopy.htb.             86400   IN      NS      ns1.snoopy.htb.
 snoopy.htb.             86400   IN      NS      ns2.snoopy.htb.
 ```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+### Check DNS Configuration
+
+```console
+Get-WmiObject -Namespace "Root\MicrosoftDNS" -Class "MicrosoftDNS_Zone" | Where-Object { $_.ZoneType -eq <ZONE_TYPE> }
+```
+
+<br>
+
+```console
+0 - Cache Zone
+1 - Primary Zone
+2 - Secondary Zone
+3 - Stub Zone
+4 - Forwarder/Conditional Forwarder Zone
+```
+
+### Check A Records
+
+```console
+(Get-DnsServerZone).ZoneName | ForEach-Object { $zoneName = $_; $aRecords = Get-DnsServerResourceRecord -ZoneName $zoneName -RRType A; if ($aRecords) { $aRecords | Select-Object @{n="ZoneName";e={$zoneName}}, HostName, @{n="IPAddress";e={$_.RecordData.IPv4Address}} } else { [PSCustomObject]@{ZoneName=$zoneName; HostName="No A records found"; IPAddress=""} } }
+```
+
+{{< /tabcontent >}}

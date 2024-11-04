@@ -4,7 +4,7 @@ date: 2024-6-26
 tags: ["NFS", "Mount", "Smb", "File System Mounting", "Enumeration", "Share", "Cifs", "File System Permissions Vulnerabilities"]
 ---
 
-{{< tab set1 tab1 active >}}nfs{{< /tab >}}
+{{< tab set1 tab1 >}}nfs{{< /tab >}}
 {{< tab set1 tab2 >}}smb{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

@@ -8,7 +8,7 @@ tags: ["Impacket", "Domain Controller", "Nxc", "Active Directory", "Windows", "E
 
 #### Tools
 
-{{< tab set1 tab1 active >}}rpcclient{{< /tab >}}
+{{< tab set1 tab1 >}}rpcclient{{< /tab >}}
 {{< tab set1 tab2 >}}impacket{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 

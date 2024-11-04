@@ -324,7 +324,12 @@ body.dark-mode #dynamicFormContainer button:hover {
     background: #424242;
 }
 </style>
-  <h3 id="zone-transfer">Zone Transfer</h3>
+  <p>
+<button data-tabset="set1" data-tabcontent="tab1" >Linux</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h3 id="zone-transfer">Zone Transfer</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dig +noall +answer &lt;DOMAIN&gt; axfr @&lt;TARGET&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig +noall +answer snoopy.htb axfr @10.10.11.212
 </span></span><span class="line"><span class="cl"><span class="go">snoopy.htb.             86400   IN      SOA     ns1.snoopy.htb. ns2.snoopy.htb. 2022032612 3600 1800 604800 86400
@@ -352,7 +357,20 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> dig +noall +answer @10.10.11.212 -t NS snoopy.htb
 </span></span><span class="line"><span class="cl"><span class="go">snoopy.htb.             86400   IN      NS      ns1.snoopy.htb.
 </span></span></span><span class="line"><span class="cl"><span class="go">snoopy.htb.             86400   IN      NS      ns2.snoopy.htb.
-</span></span></span></code></pre></div>
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h3 id="check-dns-configuration">Check DNS Configuration</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-WmiObject -Namespace &#34;Root\MicrosoftDNS&#34; -Class &#34;MicrosoftDNS_Zone&#34; | Where-Object { $_.ZoneType -eq &lt;ZONE_TYPE&gt; }
+</span></span></span></code></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">0 - Cache Zone
+</span></span></span><span class="line"><span class="cl"><span class="go">1 - Primary Zone
+</span></span></span><span class="line"><span class="cl"><span class="go">2 - Secondary Zone
+</span></span></span><span class="line"><span class="cl"><span class="go">3 - Stub Zone
+</span></span></span><span class="line"><span class="cl"><span class="go">4 - Forwarder/Conditional Forwarder Zone
+</span></span></span></code></pre></div><h3 id="check-a-records">Check A Records</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">(Get-DnsServerZone).ZoneName | ForEach-Object { $zoneName = $_; $aRecords = Get-DnsServerResourceRecord -ZoneName $zoneName -RRType A; if ($aRecords) { $aRecords | Select-Object @{n=&#34;ZoneName&#34;;e={$zoneName}}, HostName, @{n=&#34;IPAddress&#34;;e={$_.RecordData.IPv4Address}} } else { [PSCustomObject]@{ZoneName=$zoneName; HostName=&#34;No A records found&#34;; IPAddress=&#34;&#34;} } }
+</span></span></span></code></pre></div></div></p>
+
 </div></div>
     
     <script type="module" src="/js/main.js"></script>

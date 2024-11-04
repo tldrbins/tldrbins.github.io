@@ -8,7 +8,7 @@ tags: ["Database Dumping", "Privilege Escalation In Databases", "Mssql", "Databa
 
 #### Connect to MSSQL DB
 
-{{< tab set1 tab1 active >}}Linux{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
@@ -36,6 +36,11 @@ sqlcmd -S <TARGET> -U <USER> -P '<PASSWORD>' -d <DB_NAME> -Q "SELECT @@version;"
 ```console
 # Check mssql version
 SELECT @@version;
+```
+
+```console
+# Check current user
+SELECT suser_name();
 ```
 
 ```console

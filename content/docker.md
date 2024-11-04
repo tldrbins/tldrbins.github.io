@@ -60,7 +60,7 @@ sudo docker cp <CONTAINER_ID>:<CONTAINER_FOLDER_PATH>/. <HOST_TARGET_PATH>
 
 ### Explore Docker image
 
-{{< tab set1 tab1 active >}}dive{{< /tab >}}
+{{< tab set1 tab1 >}}dive{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

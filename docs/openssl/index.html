@@ -340,9 +340,9 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">openssl req -in request.csr -noout -text
 </span></span></span></code></pre></div><h3 id="create-client-certificate">Create Client Certificate</h3>
 <h4 id="1-generate-a-user-key">1. Generate a user key</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">openssl genrsa -out username.key 2048                                                      
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">openssl genrsa -out user.key 2048                                                      
 </span></span></span></code></pre></div><h4 id="2-create-a-csr">2. Create a CSR</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">openssl req -new -key username.key -out username.csr
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">openssl req -new -key user.key -out user.csr
 </span></span></span></code></pre></div><br>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Settings
 </span></span><span class="line"><span class="cl"><span class="go">+-----------------------------------------------------------------------------+
@@ -358,8 +358,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">| Locality Name (eg, city) []:                                                |
 </span></span></span><span class="line"><span class="cl"><span class="go">| Organization Name (eg, company) [Internet Widgits Pty Ltd]:COMPANY_NAME     |
 </span></span></span><span class="line"><span class="cl"><span class="go">| Organizational Unit Name (eg, section) []:COMPANY_NAME                      |
-</span></span></span><span class="line"><span class="cl"><span class="go">| Common Name (e.g. server FQDN or YOUR name) []:username                     |
-</span></span></span><span class="line"><span class="cl"><span class="go">| Email Address []:                                                           |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Common Name (e.g. server FQDN or YOUR name) []:USER                         |
+</span></span></span><span class="line"><span class="cl"><span class="go">| Email Address []:EMAIL                                                      |
 </span></span></span><span class="line"><span class="cl"><span class="go">|                                                                             |
 </span></span></span><span class="line"><span class="cl"><span class="go">| Please enter the following &#39;extra&#39; attributes                               |
 </span></span></span><span class="line"><span class="cl"><span class="go">| to be sent with your certificate request                                    |
@@ -370,7 +370,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">openssl x509 -req -in username.csr -CA &lt;CERT_PEM_FILE&gt; -CAkey &lt;CERT_KEY_FILE&gt; -CAcreateserial -out username.pem -days 1024
 </span></span></span></code></pre></div><h4 id="4-use-the-pfx-file">4. Use the pfx file</h4>
 <p>
-<button data-tabset="set1" data-tabcontent="tab1" class="active">firefox</button>
+<button data-tabset="set1" data-tabcontent="tab1" >firefox</button>
 
 <button data-tabset="set1" data-tabcontent="tab2" >curl</button>
 
