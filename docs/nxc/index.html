@@ -355,6 +355,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -H &lt;HASH&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos, or STATUS_ACCOUNT_RESTRICTION <span class="o">(</span>NTLM disabled<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; -k
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos ccache, or STATUS_NOT_SUPPORTED <span class="o">(</span>NTLM disabled<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">nxc &lt;PROTOCOL&gt; &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -d &lt;DOMAIN&gt; -k --use-kcache
 </span></span></span></code></pre></div><p><small><em>Hint: we can also run on multiple targets</em></small></p>
 <h4 id="supported-protocols">Supported protocols</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+----------------------------------------------------------+

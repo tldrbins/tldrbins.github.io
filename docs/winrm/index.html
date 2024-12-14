@@ -357,7 +357,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set2" data-tabcontent="tab4" >crt & key</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39;
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i 127.0.0.1 -u dr.zaiuss -p <span class="s1">&#39;qwe123QWE!@#&#39;</span>
 </span></span><span class="line"><span class="cl"><span class="go">                                        
 </span></span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
@@ -370,7 +370,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Dr.Zaiuss\Documents&gt;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &lt;USER&gt; -H &lt;HASH&gt; 
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -H &lt;HASH&gt; 
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 1: Edit <span class="s1">&#39;/etc/krb5.conf&#39;</span> <span class="o">(</span>All in uppercase<span class="o">)</span>
@@ -420,7 +420,11 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set2" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -S -k auth.key -c auth.crt
 </span></span></span></code></pre></div></div></p>
-
+<h3 id="disable-winrm">Disable Winrm</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Disable-PSRemoting -Force
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Stop-Service WinRM -PassThru
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-Service WinRM -StartupType Disabled -PassThru
+</span></span></span></code></pre></div>
 </div></div>
     
     <script type="module" src="/js/main.js"></script>

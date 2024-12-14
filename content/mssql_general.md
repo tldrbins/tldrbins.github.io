@@ -25,8 +25,13 @@ impacket-mssqlclient -windows-auth '<USER>:<PASSWORD>@<TARGET>'
 {{< tabcontent set1 tab2 >}}
 
 ```console
-# With inline query
-sqlcmd -S <TARGET> -U <USER> -P '<PASSWORD>' -d <DB_NAME> -Q "SELECT @@version;"
+# With Current User
+sqlcmd -S '<TARGET>' -Q "<QUERY>"
+```
+
+```console
+# With Cred
+sqlcmd -S '<TARGET>' -U '<USER>' -P '<PASSWORD>' -d '<DB_NAME>' -Q "<QUERY>"
 ```
 
 {{< /tabcontent >}}

@@ -485,7 +485,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC_IP&gt;
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC_IP&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC.ABSOLUTE.HTB <span class="o">&amp;&amp;</span> impacket-getTGT <span class="s1">&#39;ABSOLUTE.HTB/m.lovegod&#39;</span> 
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">

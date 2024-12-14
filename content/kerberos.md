@@ -265,7 +265,7 @@ Valid starting     Expires            Service principal
 
 ```console
 # With password
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>' -dc-ip <DC_IP>
+sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}

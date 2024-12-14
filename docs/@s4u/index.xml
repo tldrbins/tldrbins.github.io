@@ -6,7 +6,15 @@
     <description>Recent content in S4U on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 23 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@s4u/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unconstrained Delegation</title>
+      <link>https://tldrbins.github.io/unconstrained_delegation/</link>
+      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/unconstrained_delegation/</guid>
+      <description>Abuse #1: Capture Ticket Windows 1. Check TRUSTED_FOR_DELEGATION . .\PowerView.ps1 Get-DomainComputer PS C:\programdata&amp;gt; Get-DomainComputer ...[SNIP]... logoncount : 131 badpasswordtime : 12/31/1600 4:00:00 PM distinguishedname : CN=SRV002,CN=Computers,DC=Example,DC=local objectclass : {top, person, organizationalPerson, user...} badpwdcount : 0 displayname : SRV002$ lastlogontimestamp : 11/23/2024 2:29:01 AM objectsid : S-1-5-21-422340810-923920092-1608110645-1103 samaccountname : SRV002$ localpolicyflags : 0 codepage : 0 samaccounttype : MACHINE_ACCOUNT countrycode : 0 cn : SRV002 accountexpires : NEVER whenchanged : 11/23/2024 2:26:27 PM instancetype : 4 usncreated : 16398 objectguid : e54dc358-b87f-49ad-8bcf-2029bf051006 operatingsystem : Windows Server 2019 Standard operatingsystemversion : 10.</description>
+    </item>
     <item>
       <title>RBCD Attack</title>
       <link>https://tldrbins.github.io/rbcd/</link>

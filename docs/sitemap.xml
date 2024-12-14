@@ -2,6 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tldrbins.github.io/@active-directory/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@adsync/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@azure-ad-connect/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/azure_ad/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@pass-the-ticket/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@password/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@psexec/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@s4u/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@secretsdump/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/tags/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@ticket-granting-ticket/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@unconstrained-delegation/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/unconstrained_delegation/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tldrbins.github.io/@windows/</loc>
+    <lastmod>2024-11-23T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://tldrbins.github.io/@.ds_store/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@.net/</loc>
@@ -26,8 +71,6 @@
   </url><url>
     <loc>https://tldrbins.github.io/@acls/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@active-directory/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@ad-recycle-bin/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/ad_recycle_bin/</loc>
@@ -46,6 +89,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/addmember/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@adds/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@addself/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/addself/</loc>
@@ -53,6 +98,10 @@
     <loc>https://tldrbins.github.io/@adfs/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/adfs/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@adidns/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/adidns/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@ads/</loc>
   </url><url>
@@ -178,6 +227,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/compressed_files/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@configuration-management/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/connection_from_public_internet/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@constrained-delegation/</loc>
@@ -279,6 +330,8 @@
     <loc>https://tldrbins.github.io/@dns/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/dns_enum/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@dns-posioning/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@dns-spoofing/</loc>
   </url><url>
@@ -822,11 +875,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@pass-the-hash/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@pass-the-ticket/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@passwd/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@password/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@password-cracking/</loc>
   </url><url>
@@ -896,6 +945,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@potato/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@powermad/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@powershell/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@powerview/</loc>
@@ -915,8 +966,6 @@
     <loc>https://tldrbins.github.io/@process/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@proxy/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@psexec/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@pssession/</loc>
   </url><url>
@@ -1012,11 +1061,13 @@
   </url><url>
     <loc>https://tldrbins.github.io/@s3/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@s4u/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@sam/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@saml/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@sccm/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/sccm/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/scheduled_tasks_windows/</loc>
   </url><url>
@@ -1035,8 +1086,6 @@
     <loc>https://tldrbins.github.io/sebackupprivilege/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/secretsdump/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@secretsdump/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/secure_string/</loc>
   </url><url>
@@ -1116,6 +1165,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@software/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@spoofing/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@sql/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@sql-injection/</loc>
@@ -1168,7 +1219,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@suid/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/tags/</loc>
+    <loc>https://tldrbins.github.io/@system-center-configuration-manager/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@tar/</loc>
   </url><url>
@@ -1184,11 +1235,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/tftp/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@ticket-granting-ticket/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@time/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@tls/</loc>
   </url><url>
@@ -1267,8 +1314,6 @@
     <loc>https://tldrbins.github.io/whois/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@whois/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@windows/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/windows_acls/</loc>
   </url><url>

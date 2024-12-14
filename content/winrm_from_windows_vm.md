@@ -34,7 +34,7 @@ systeminfo
 ```
 +--------------------------------------------------------+
 | 1. Run text editor as Administrator                    |
-| 2. Add '<TARGET> <DC_COMPUTER_NAME> <DC> <DOMAIN>'     |
+| 2. Add '<TARGET> <COMPUTER_NAME> <DC> <DOMAIN>'     |
 |    to 'C:\Windows\System32\drivers\etc\hosts'          |
 +--------------------------------------------------------+
 ```
@@ -87,7 +87,7 @@ klist
 
 ```console
 # Create new pssession
-New-PSSession -ComputerName <DC_COMPUTER_NAME>
+New-PSSession -ComputerName <COMPUTER_NAME>
 ```
 
 ```console
@@ -138,7 +138,7 @@ $cred = New-Object System.Management.Automation.PSCredential($username, $passwor
 #### 4. PSSession
 
 ```console
-$s1 = New-PSSession -ComputerName <DC_COMPUTER_NAME> -Credential $cred
+$s1 = New-PSSession -ComputerName <COMPUTER_NAME> -Credential $cred
 ```
 
 ```console

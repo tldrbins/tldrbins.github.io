@@ -51,6 +51,11 @@ nxc <PROTOCOL> <TARGET> -u '<USER>' -H <HASH>
 nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k
 ```
 
+```console
+# With Kerberos ccache, or STATUS_NOT_SUPPORTED (NTLM disabled)
+nxc <PROTOCOL> <TARGET> -u '<USER>' -d <DOMAIN> -k --use-kcache
+```
+
 <small>*Hint: we can also run on multiple targets*</small>
 
 #### Supported protocols

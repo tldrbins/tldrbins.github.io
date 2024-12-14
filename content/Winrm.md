@@ -44,7 +44,7 @@ impacket-psexec '<USER>@<TARGET>' -hashes :<HASH>
 {{< tabcontent set2 tab1 >}}
 
 ```console
-evil-winrm -i <TARGET> -u <USER> -p '<PASSWORD>'
+evil-winrm -i <TARGET> -u '<USER>' -p '<PASSWORD>'
 ```
 
 ```console {class=sample-code}
@@ -64,7 +64,7 @@ Info: Establishing connection to remote endpoint
 {{< tabcontent set2 tab2 >}}
 
 ```console
-evil-winrm -i <TARGET> -u <USER> -H <HASH> 
+evil-winrm -i <TARGET> -u '<USER>' -H <HASH> 
 ```
 
 {{< /tabcontent >}}
@@ -139,3 +139,17 @@ evil-winrm -i <TARGET> -S -k auth.key -c auth.crt
 ```
 
 {{< /tabcontent >}}
+
+### Disable Winrm
+
+```console
+Disable-PSRemoting -Force
+```
+
+```console
+Stop-Service WinRM -PassThru
+```
+
+```console
+Set-Service WinRM -StartupType Disabled -PassThru
+```

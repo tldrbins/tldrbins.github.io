@@ -375,7 +375,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set4" data-tabcontent="tab2" >Windows</button>
 
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">for i in $(seq 1 254); do (ping -c 1 &lt;SUBNET&gt;.${i} | grep &#34;bytes from&#34; &amp;); done;
+<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> 255.255.255.0 or /24
+</span></span><span class="line"><span class="cl"><span class="go">for i in $(seq 1 254); do (ping -c 1 &lt;SUBNET&gt;.${i} | grep &#34;bytes from&#34; &amp;); done;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> 255.255.0.0 or /16
+</span></span><span class="line"><span class="cl"><span class="go">for i in $(seq 1 254); do for j in $(seq 1 254); do (ping -c 1 &lt;SUBNET&gt;.${i}.${j} | grep &#34;bytes from&#34; &amp;); done; done;
 </span></span></span></code></pre></div></div>
 
 <div class="tabcontent" data-tabset="set4" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">1..254 | % { $ip=&#34;&lt;SUBNET&gt;.$_&#34;; if (Test-Connection $ip -Count 1 -Quiet) { &#34;$ip is alive&#34; } }
@@ -414,6 +417,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <div class="tabcontent" data-tabset="set7" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get <span class="nb">local</span> IP
 </span></span><span class="line"><span class="cl"><span class="go">ipconfig
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check DNS
+</span></span><span class="line"><span class="cl"><span class="go">ipconfig /displaydns
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get DC IP
 </span></span><span class="line"><span class="cl"><span class="go">nltest /dsgetdc:&lt;DOMAIN&gt; /force
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get AD-Computers IP

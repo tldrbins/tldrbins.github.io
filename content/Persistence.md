@@ -91,3 +91,7 @@ net user '<USER>' '<PASSWORD>' /add /domain
 ```console
 net group 'Domain Admins' '<USER>' /add /domain
 ```
+
+```console
+net group "Enterprise Admins" '<USER>' /add /domain
+```

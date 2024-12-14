@@ -80,7 +80,13 @@ sudo ./mitmdump -p 443 --mode reverse:https://<DOMAIN> --ssl-insecure --set flow
 {{< tabcontent set4 tab1 >}}
 
 ```console
+# 255.255.255.0 or /24
 for i in $(seq 1 254); do (ping -c 1 <SUBNET>.${i} | grep "bytes from" &); done;
+```
+
+```console
+# 255.255.0.0 or /16
+for i in $(seq 1 254); do for j in $(seq 1 254); do (ping -c 1 <SUBNET>.${i}.${j} | grep "bytes from" &); done; done;
 ```
 
 {{< /tabcontent >}}
@@ -156,6 +162,11 @@ cat /proc/net/fib_trie
 ```console
 # Get local IP
 ipconfig
+```
+
+```console
+# Check DNS
+ipconfig /displaydns
 ```
 
 ```console

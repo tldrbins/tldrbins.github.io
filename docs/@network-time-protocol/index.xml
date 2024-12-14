@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/ntp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ntp/</guid>
-      <description>Check Server Time sudo nmap -sU -sV --script &amp;#34;ntp* and (discovery or vuln) and not (dos or brute)&amp;#34; -p 123 &amp;lt;TARGET&amp;gt; Check Time Skew date; ntpdate -q &amp;lt;TARGET&amp;gt; Update Time ntpdate faketime Fix ntpdate from doing nothing sudo apt install chrony sudo timedatectl set-ntp true sudo ntpdate -s &amp;lt;TARGET&amp;gt; # After getting the time skew faketime -f &amp;lt;TIME_DIFF&amp;gt; &amp;lt;COMMAND&amp;gt; # Get from http server faketime &amp;#34;$(curl -sI &amp;lt;TARGET&amp;gt; | grep &amp;#39;Date:&amp;#39; | awk -F &amp;#39;Date:&amp;#39; &amp;#39;{print $2}&amp;#39;)&amp;#34; </description>
+      <description>Check Server Time sudo nmap -sU -sV --script &amp;#34;ntp* and (discovery or vuln) and not (dos or brute)&amp;#34; -p 123 &amp;lt;TARGET&amp;gt; Check Time Skew date; ntpdate -q &amp;lt;TARGET&amp;gt; Update Time ntpdate faketime manual Fix ntpdate from doing nothing sudo apt install chrony sudo timedatectl set-ntp true sudo ntpdate -s &amp;lt;TARGET&amp;gt; # After getting the time skew faketime -f &amp;lt;TIME_DIFF&amp;gt; &amp;lt;COMMAND&amp;gt; # Get from http server faketime &amp;#34;$(curl -sI &amp;lt;TARGET&amp;gt; | grep &amp;#39;Date:&amp;#39; | awk -F &amp;#39;Date:&amp;#39; &amp;#39;{print $2}&amp;#39;)&amp;#34; &amp;lt;COMMAND&amp;gt; 1.</description>
     </item>
   </channel>
 </rss>

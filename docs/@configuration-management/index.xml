@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Configuration Management on TLDRBins</title>
+    <link>https://tldrbins.github.io/@configuration-management/</link>
+    <description>Recent content in Configuration Management on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@configuration-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SCCM</title>
+      <link>https://tldrbins.github.io/sccm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sccm/</guid>
+      <description>Enum Windows 1. Import Module . .\PowerSCCM.ps1 PS C:\programdata&amp;gt; . .\PowerSCCM.ps1 Ref: PowerSCCM.ps1&#xA;2. Find SccmSiteCode Find-SccmSiteCode -ComputerName &amp;lt;TARGET_COMPUTER&amp;gt; PS C:\programdata&amp;gt; Find-SccmSiteCode -ComputerName sccm.example.local Find-SccmSiteCode -ComputerName sccm.example.local SiteCode -------- GH1 3. New SccmSession New-SccmSession -ComputerName &amp;lt;TARGET_COMPUTER&amp;gt; -SiteCode &amp;lt;SITE_CODE&amp;gt; -ConnectionType wmi PS C:\programdata&amp;gt; New-SccmSession -ComputerName SCCM -SiteCode GH1 -ConnectionType wmi New-SccmSession -ComputerName SCCM -SiteCode GH1 -ConnectionType wmi Id : 1 Name : GH11 ComputerName : SCCM Credential : SiteCode : GH1 ConnectionType : wmi SccmVersion : 5 Permissions : {ALL} Provider : \\SCCM\ROOT\sms:SMS_ProviderLocation.</description>
+    </item>
+  </channel>
+</rss>

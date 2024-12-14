@@ -334,8 +334,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">impacket-mssqlclient -windows-auth &#39;&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET&gt;&#39;
 </span></span></span></code></pre></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With inline query
-</span></span><span class="line"><span class="cl"><span class="go">sqlcmd -S &lt;TARGET&gt; -U &lt;USER&gt; -P &#39;&lt;PASSWORD&gt;&#39; -d &lt;DB_NAME&gt; -Q &#34;SELECT @@version;&#34;
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Current User
+</span></span><span class="line"><span class="cl"><span class="go">sqlcmd -S &#39;&lt;TARGET&gt;&#39; -Q &#34;&lt;QUERY&gt;&#34;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Cred
+</span></span><span class="line"><span class="cl"><span class="go">sqlcmd -S &#39;&lt;TARGET&gt;&#39; -U &#39;&lt;USER&gt;&#39; -P &#39;&lt;PASSWORD&gt;&#39; -d &#39;&lt;DB_NAME&gt;&#39; -Q &#34;&lt;QUERY&gt;&#34;
 </span></span></span></code></pre></div></div></p>
 <h4 id="basic-commands">Basic Commands</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check mssql version

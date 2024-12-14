@@ -353,7 +353,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span></code></pre></div><h4 id="3-add-domain-to-hosts">3. Add domain to hosts</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+--------------------------------------------------------+
 </span></span><span class="line"><span class="cl">| 1. Run text editor as Administrator                    |
-</span></span><span class="line"><span class="cl">| 2. Add &#39;&lt;TARGET&gt; &lt;DC_COMPUTER_NAME&gt; &lt;DC&gt; &lt;DOMAIN&gt;&#39;     |
+</span></span><span class="line"><span class="cl">| 2. Add &#39;&lt;TARGET&gt; &lt;COMPUTER_NAME&gt; &lt;DC&gt; &lt;DOMAIN&gt;&#39;     |
 </span></span><span class="line"><span class="cl">|    to &#39;C:\Windows\System32\drivers\etc\hosts&#39;          |
 </span></span><span class="line"><span class="cl">+--------------------------------------------------------+
 </span></span></code></pre></div><h4 id="4-add-computer-to-domain">4. Add computer to domain</h4>
@@ -385,7 +385,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">klist
 </span></span></span></code></pre></div><h4 id="2-pssession">2. PSSession</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create new pssession
-</span></span><span class="line"><span class="cl"><span class="go">New-PSSession -ComputerName &lt;DC_COMPUTER_NAME&gt;
+</span></span><span class="line"><span class="cl"><span class="go">New-PSSession -ComputerName &lt;COMPUTER_NAME&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Enter pssession
 </span></span><span class="line"><span class="cl"><span class="go">Enter-PSSession -Id 1
 </span></span></span></code></pre></div></div>
@@ -404,7 +404,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> New-Object System.Management.Automation.PSCredential<span class="o">(</span><span class="nv">$username</span>, <span class="nv">$password</span><span class="o">)</span>
 </span></span></code></pre></div><h4 id="4-pssession">4. PSSession</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">s1</span> <span class="o">=</span> New-PSSession -ComputerName &lt;DC_COMPUTER_NAME&gt; -Credential <span class="nv">$cred</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">s1</span> <span class="o">=</span> New-PSSession -ComputerName &lt;COMPUTER_NAME&gt; -Credential <span class="nv">$cred</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Enter-PSSession $s1
 </span></span></span></code></pre></div></div></p>
 <hr>

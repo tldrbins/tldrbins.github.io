@@ -332,6 +332,8 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set1" data-tabcontent="tab2" >faketime</button>
 
+<button data-tabset="set1" data-tabcontent="tab3" >manual</button>
+
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="fix-ntpdate-from-doing-nothing">Fix ntpdate from doing nothing</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo apt install chrony
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo timedatectl set-ntp true
@@ -341,7 +343,40 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After getting the <span class="nb">time</span> skew
 </span></span><span class="line"><span class="cl"><span class="go">faketime -f &lt;TIME_DIFF&gt; &lt;COMMAND&gt;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get from http server
-</span></span><span class="line"><span class="cl"><span class="go">faketime &#34;$(curl -sI &lt;TARGET&gt; | grep &#39;Date:&#39; | awk -F &#39;Date:&#39; &#39;{print $2}&#39;)&#34;
+</span></span><span class="line"><span class="cl"><span class="go">faketime &#34;$(curl -sI &lt;TARGET&gt; | grep &#39;Date:&#39; | awk -F &#39;Date:&#39; &#39;{print $2}&#39;)&#34; &lt;COMMAND&gt;
+</span></span></span></code></pre></div></div>
+
+<div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><h4 id="1-disable-ntp">1. Disable NTP</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo timedatectl set-ntp false
+</span></span></span></code></pre></div><h4 id="2-set-timezone">2. Set Timezone</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo timedatectl set-timezone GMT
+</span></span></span></code></pre></div><h4 id="3-get-time-from-dc">3. Get Time from DC</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">./nmap -p445 -sCV -Pn &lt;DC&gt;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sshuser@nix01:/dev/shm$ ./nmap -p445 -sCV -Pn 192.168.20.10
+</span></span></span><span class="line"><span class="cl"><span class="go">Host discovery disabled (-Pn). All addresses will be marked &#39;up&#39; and scan times will be slower.
+</span></span></span><span class="line"><span class="cl"><span class="go">Starting Nmap 7.91 ( https://nmap.org ) at 2024-11-07 16:21 UTC
+</span></span></span><span class="line"><span class="cl"><span class="go">Nmap scan report for 192.168.20.10
+</span></span></span><span class="line"><span class="cl"><span class="go">Host is up (0.00078s latency).
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PORT    STATE SERVICE       VERSION
+</span></span></span><span class="line"><span class="cl"><span class="go">445/tcp open  microsoft-ds?
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Host script results:
+</span></span></span><span class="line"><span class="cl"><span class="go">|_clock-skew: 6h59m07s
+</span></span></span><span class="line"><span class="cl"><span class="go">|_nbstat: NetBIOS name: DC, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 00:50:56:b0:a7:78 (VMware)
+</span></span></span><span class="line"><span class="cl"><span class="go">| smb2-security-mode: 
+</span></span></span><span class="line"><span class="cl"><span class="go">|   2.02: 
+</span></span></span><span class="line"><span class="cl"><span class="go">|_    Message signing enabled and required
+</span></span></span><span class="line"><span class="cl"><span class="go">| smb2-time: 
+</span></span></span><span class="line"><span class="cl"><span class="go">|   date: 2024-11-07T23:20:38
+</span></span></span><span class="line"><span class="cl"><span class="go">|_  start_date: N/A
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span></span></span><span class="line"><span class="cl"><span class="go">Nmap done: 1 IP address (1 host up) scanned in 46.80 seconds
+</span></span></span></code></pre></div><h4 id="4-set-time">4. Set Time</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo date -s &#39;&lt;DATE&gt;&#39;
+</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo date -s <span class="s1">&#39;2024-11-07T23:20:38&#39;</span>                                                                       
+</span></span><span class="line"><span class="cl"><span class="go">Thu Nov  7 23:20:38 GMT 2024
 </span></span></span></code></pre></div></div></p>
 
 </div></div>

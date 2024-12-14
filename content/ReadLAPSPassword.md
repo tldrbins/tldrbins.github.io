@@ -78,6 +78,11 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 #### 3. Read LAPS password
 
 ```console
+Get-DomainComputer <TARGET_COMPUTER> -Properties ms-Mcs-AdmPwd
+```
+
+```console
+# Or Active Directory Module
 Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred
 ```
 

