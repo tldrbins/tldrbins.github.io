@@ -60,7 +60,7 @@ hashcat hash
 
 ```console
 # Specify hash format
-hashcat -m 13400 -a 0 hash /usr/share/wordlists/rockyou.txt --force
+hashcat -m <MODE> -a 0 hash /usr/share/wordlists/rockyou.txt --force
 ```
 
 ```console

