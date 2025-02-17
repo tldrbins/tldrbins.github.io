@@ -3,28 +3,7 @@
 import { checkmarkIcon } from './icons.js';
 import { arraysEqual } from './utils.js';
 
-function reorderForm() {
-    const form = document.getElementById("dynamicForm");
-
-    const inputsArray = Array.from(form.getElementsByClassName("input-group"));
-
-    inputsArray.sort((a, b) => {
-        const labelA = a.querySelector("label").textContent.trim().toUpperCase();
-        const labelB = b.querySelector("label").textContent.trim().toUpperCase();
-        return labelA.localeCompare(labelB);
-    });
-
-    const fragment = document.createDocumentFragment();
-    
-    inputsArray.forEach(inputGroup => {
-        fragment.appendChild(inputGroup);
-    });
-
-    form.innerHTML = "";
-    form.appendChild(fragment);
-}
-
-export function addParamsForm() {
+export function addParamsFormListener() {
     let container = document.getElementById("dynamicFormContainer");
     let form = document.getElementById("dynamicForm");
 
@@ -36,48 +15,22 @@ export function addParamsForm() {
     };
 
     if (form != null) {
-        const regex = /&lt;([A-Z0-9_]+)&gt;/g;
-        const matches = [...new Set(document.documentElement.innerHTML.match(regex))];
-
-        if (matches.length === 0) {
-            container.style.display = "none";
-        } else {
-            matches.forEach(match => {
-                const div = document.createElement("div");
-                div.setAttribute("class", "input-group");
-                form.insertBefore(div, form.firstChild);
-
-                const param = match.slice(4, match.length - 4);
-
-                const label = document.createElement("label");
-                label.setAttribute("for", param);
-                label.innerText = param.replace(/_/g, " ") + ": ";
-                div.appendChild(label);
-
-                const input = document.createElement("input");
-                input.setAttribute("type", "text");
-                input.setAttribute("name", param);
-
-                if (localStorage.getItem(param)) {
-                    input.value = localStorage.getItem(param);
-                }
-                div.appendChild(input);
-            });
-        }
-
-        reorderForm();
-
         const formElements = [...form.elements];
         const orig_codeblocks = [];
 
         document.querySelectorAll('code[class^="language-"]').forEach(function (codeBlock) {
-            if (matches != null) {
-                matches.forEach(match => {
-                    const regex = new RegExp(match, "g");
-                    codeBlock.innerHTML = codeBlock.innerHTML.replace(regex, '<span class="o">' + match + '</span>');
-                });
-            }
             orig_codeblocks.push(codeBlock.innerHTML);
+        });
+
+        const inputs = form.querySelectorAll("input");
+
+        inputs.forEach(input => {
+            const cacheKey = input.name;
+            const cachedValue = localStorage.getItem(cacheKey);
+
+            if (cachedValue) {
+                input.value = cachedValue;
+            }
         });
 
         const onShowFormButtonClick = function() {

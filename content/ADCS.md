@@ -456,9 +456,9 @@ certipy-ad cert -pfx '<USER>.pfx' -nocert -out '<USER>.key'
 certipy-ad cert -pfx '<USER>.pfx' -nokey -out '<USER>.crt'
 ```
 
-{{< tab set9 tab1 >}}LDAP Shell{{< /tab >}}
-{{< tab set9 tab2 >}}RBCD{{< /tab >}}
-{{< tabcontent set9 tab1 >}}
+{{< tab set10 tab1 >}}LDAP Shell{{< /tab >}}
+{{< tab set10 tab2 >}}RBCD{{< /tab >}}
+{{< tabcontent set10 tab1 >}}
 
 #### 1. Get a LDAP Shell
 
@@ -481,7 +481,7 @@ evil-winrm -i <TARGET_DOMAIN> -u '<USER>' -p '<PASSWORD>'
 <small>*Ref: [PassTheCert](https://github.com/AlmondOffSec/PassTheCert)*</small>
 
 {{< /tabcontent >}}
-{{< tabcontent set9 tab2 >}}
+{{< tabcontent set10 tab2 >}}
 
 #### 1. RBCD Attack
 

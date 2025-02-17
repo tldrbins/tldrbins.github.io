@@ -1,191 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>JWT | TLDRBins</title>
-<meta name="robots" content='index, follow'>
+<meta name="robots" content="index, follow">
 <meta name="description" content="">
-<meta name="generator" content="hugo-index">
+<title>JWT | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
-<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
-<script>
-    window.addEventListener('load', () => {
-        quicklink.listen();
-    });
-</script>
-
-  </head>
-  <body><header>
+</head>
+<body>
+<header>
   <h1>
     <a href="https://tldrbins.github.io/">
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
-    </a>
-    <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/jwt/">
-      <span>JWT</span>
-    </a>
-  </h1>
-  <div class="js-toggle-wrapper">
-    <div class="js-toggle">
-        <div class="js-toggle-track">
-            <div class="js-toggle-track-check">
-                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
-            <div class="js-toggle-track-x">
-                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/jwt/"><span>JWT</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
         </div>
-        <div class="js-toggle-thumb"></div>
-        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
     </div>
-</div>
-    
-<style>
- 
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
 
- 
-.js-toggle-wrapper, .js-toggle {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
 
-.js-toggle-wrapper {
-    display: table;
-    float: right;
-    margin-left: auto;
-}
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
 
-.js-toggle {
-    touch-action: pan-x;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    user-select: none;
-}
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
 
-.js-toggle-screenreader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
 
-.js-toggle-track {
-    width: 50px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: hsl(223, 61%, 44%);
-    transition: background-color 0.2s ease;
-}
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
 
-.js-toggle-track-check,
-.js-toggle-track-x {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.25s ease;
-}
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
 
-.js-toggle-track-check {
-    left: 5px;
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
 
-.js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-}
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
 
-.js-toggle-track-x {
-    right: 5px;
-    opacity: 1;
-}
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
 
-.js-toggle--checked .js-toggle-track-x {
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
 
-.js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-}
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-.js-toggle-thumb {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fafafa;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
 
-.js-toggle--checked .js-toggle-thumb {
-    transform: translateX(26px);
-}
-</style>
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
 
-<script>
-    var body = document.body;
-    var switcher = document.getElementsByClassName('js-toggle')[0];
-
-    
-    switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            setTimeout(function() {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
-    })
-
-    
-    if (localStorage.getItem('darkMode')) {
-        
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-    }
-</script>
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
   <p class="desc"></p>
 </header>
-<div class="main">
-
+<main>
 <ul class="tagsList single">
-  
   <li><a href="https://tldrbins.github.io/@jwt/">Jwt</a></li>
-  
   <li><a href="https://tldrbins.github.io/@jwks/">Jwks</a></li>
-  
   <li><a href="https://tldrbins.github.io/@cookies/">Cookies</a></li>
-  
   <li><a href="https://tldrbins.github.io/@cryptography/">Cryptography</a></li>
-  
   <li><a href="https://tldrbins.github.io/@web-exploitation/">Web Exploitation</a></li>
-  
   <li><a href="https://tldrbins.github.io/@token-based-authentication/">Token-Based Authentication</a></li>
-  
 </ul>
 <hr>
 <div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;">
-	</form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="BASE64_N">BASE64 N: </label><input type="text" name="BASE64_N"></div><div class="input-group"><label for="JWT">JWT: </label><input type="text" name="JWT"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Params Form</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -193,7 +166,6 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-
 <style>
 #dynamicFormContainer {
 	width: 100%;
@@ -326,40 +298,48 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="abuse-1-algorithm-confusion">Abuse #1: Algorithm confusion</h3>
 <h4 id="0-sample-jwksjson">0. Sample jwks.json</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">{ 
-</span></span></span><span class="line"><span class="cl"><span class="go">    &#34;keys&#34;: [
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">{ 
+</span></span></span><span class="line"><span class="cl"><span class="go">    "keys": [
 </span></span></span><span class="line"><span class="cl"><span class="go">        {
-</span></span></span><span class="line"><span class="cl"><span class="go">        &#34;kty&#34;: &#34;RSA&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="go">        &#34;use&#34;: &#34;sig&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="go">        &#34;alg&#34;: &#34;RS256&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="go">        &#34;n&#34;: &#34;&lt;BASE64_n&gt;&#34;,
-</span></span></span><span class="line"><span class="cl"><span class="go">        &#34;e&#34;: &#34;AQAB&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">        "kty": "RSA",
+</span></span></span><span class="line"><span class="cl"><span class="go">        "use": "sig",
+</span></span></span><span class="line"><span class="cl"><span class="go">        "alg": "RS256",
+</span></span></span><span class="line"><span class="cl"><span class="go">        "n": "&lt;BASE64_n&gt;",
+</span></span></span><span class="line"><span class="cl"><span class="go">        "e": "AQAB"
 </span></span></span><span class="line"><span class="cl"><span class="go">        }
 </span></span></span><span class="line"><span class="cl"><span class="go">    ]
 </span></span></span><span class="line"><span class="cl"><span class="go">}
-</span></span></span></code></pre></div><h4 id="1-create-a-public-key">1. Create a public key</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Invoking python interpreter
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="1-create-a-public-key">1. Create a public key</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Invoking python interpreter
 </span></span><span class="line"><span class="cl"><span class="go">python3
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">from base64 import urlsafe_b64decode
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">from Crypto.PublicKey import RSA
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">e = int.from_bytes(urlsafe_b64decode(b&#39;AQAB&#39;))
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">n = int.from_bytes(urlsafe_b64decode(b&#39;&lt;BASE64_N&gt;&#39;))
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">key = RSA.construct((n, e))
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Save it to public.pem
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">from base64 import urlsafe_b64decode
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">from Crypto.PublicKey import RSA
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">e = int.from_bytes(urlsafe_b64decode(b'AQAB'))
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">n = int.from_bytes(urlsafe_b64decode(b'<span class="o">&lt;BASE64_N&gt;</span>'))
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">key = RSA.construct((n, e))
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Save it to public.pem
 </span></span><span class="line"><span class="cl"><span class="go">print(key.exportKey().decode())
-</span></span></span></code></pre></div><h4 id="2-forge-a-jwt">2. Forge a jwt</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example, modify role to admin
-</span></span><span class="line"><span class="cl"><span class="go">python3 jwt_tool.py -S hs256 -k public.pem -I -pc role -pv admin &lt;JWT&gt;
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/ticarpi/jwt_tool">jwt_tool</a></em></small></p>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-forge-a-jwt">2. Forge a jwt</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example, modify role to admin
+</span></span><span class="line"><span class="cl"><span class="go">python3 jwt_tool.py -S hs256 -k public.pem -I -pc role -pv admin <span class="o">&lt;JWT&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/ticarpi/jwt_tool">jwt_tool</a></em></small></p>
 
-</div></div>
-    
-    <script type="module" src="/js/main.js"></script>
-    <footer>
-    <hr>
-    <div class="footer-text">
-        <div>© 2025 TLDRBins</div>
-    </div>
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
 </footer>
-</body>
-</html>
+
+
+</body></html>

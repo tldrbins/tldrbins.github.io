@@ -1,201 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>SMB Enum | TLDRBins</title>
-<meta name="robots" content='index, follow'>
+<meta name="robots" content="index, follow">
 <meta name="description" content="">
-<meta name="generator" content="hugo-index">
+<title>SMB Enum | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
-<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
-<script>
-    window.addEventListener('load', () => {
-        quicklink.listen();
-    });
-</script>
-
-  </head>
-  <body><header>
+</head>
+<body>
+<header>
   <h1>
     <a href="https://tldrbins.github.io/">
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
-    </a>
-    <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/smb_enum/">
-      <span>SMB Enum</span>
-    </a>
-  </h1>
-  <div class="js-toggle-wrapper">
-    <div class="js-toggle">
-        <div class="js-toggle-track">
-            <div class="js-toggle-track-check">
-                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
-            <div class="js-toggle-track-x">
-                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/smb_enum/"><span>SMB Enum</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
         </div>
-        <div class="js-toggle-thumb"></div>
-        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
     </div>
-</div>
-    
-<style>
- 
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
 
- 
-.js-toggle-wrapper, .js-toggle {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
 
-.js-toggle-wrapper {
-    display: table;
-    float: right;
-    margin-left: auto;
-}
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
 
-.js-toggle {
-    touch-action: pan-x;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    user-select: none;
-}
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
 
-.js-toggle-screenreader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
 
-.js-toggle-track {
-    width: 50px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: hsl(223, 61%, 44%);
-    transition: background-color 0.2s ease;
-}
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
 
-.js-toggle-track-check,
-.js-toggle-track-x {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.25s ease;
-}
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
 
-.js-toggle-track-check {
-    left: 5px;
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
 
-.js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-}
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
 
-.js-toggle-track-x {
-    right: 5px;
-    opacity: 1;
-}
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
 
-.js-toggle--checked .js-toggle-track-x {
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
 
-.js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-}
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-.js-toggle-thumb {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fafafa;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
 
-.js-toggle--checked .js-toggle-thumb {
-    transform: translateX(26px);
-}
-</style>
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
 
-<script>
-    var body = document.body;
-    var switcher = document.getElementsByClassName('js-toggle')[0];
-
-    
-    switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            setTimeout(function() {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
-    })
-
-    
-    if (localStorage.getItem('darkMode')) {
-        
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-    }
-</script>
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
   <p class="desc"></p>
 </header>
-<div class="main">
-
+<main>
 <ul class="tagsList single">
-  
   <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
-  
   <li><a href="https://tldrbins.github.io/@nmap/">Nmap</a></li>
-  
   <li><a href="https://tldrbins.github.io/@sid/">SID</a></li>
-  
   <li><a href="https://tldrbins.github.io/@smbclient/">Smbclient</a></li>
-  
   <li><a href="https://tldrbins.github.io/@mount/">Mount</a></li>
-  
   <li><a href="https://tldrbins.github.io/@enumeration/">Enumeration</a></li>
-  
   <li><a href="https://tldrbins.github.io/@smb/">Smb</a></li>
-  
   <li><a href="https://tldrbins.github.io/@impacket/">Impacket</a></li>
-  
   <li><a href="https://tldrbins.github.io/@reconnaissance/">Reconnaissance</a></li>
-  
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
-  
   <li><a href="https://tldrbins.github.io/@ads/">ADS</a></li>
-  
 </ul>
 <hr>
 <div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;">
-	</form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="FILE_PATTERN">FILE PATTERN: </label><input type="text" name="FILE_PATTERN"></div><div class="input-group"><label for="FILE">FILE: </label><input type="text" name="FILE"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="PATH_TO_FILE">PATH TO FILE: </label><input type="text" name="PATH_TO_FILE"></div><div class="input-group"><label for="SHARE">SHARE: </label><input type="text" name="SHARE"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Params Form</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -203,7 +171,6 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-
 <style>
 #dynamicFormContainer {
 	width: 100%;
@@ -335,11 +302,12 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <h3 id="smb-share-enum">SMB Share Enum</h3>
-<p>
-<button data-tabset="set1" data-tabcontent="tab1" >nmap</button>
+<p class="tabs">
+<button data-tabset="set1" data-tabcontent="tab1" class="active">nmap</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo nmap --script=smb-enum-shares -p 445 &lt;TARGET&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo nmap --script<span class="o">=</span>smb-enum-shares -p <span class="m">445</span> 10.10.11.207
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo nmap --script=smb-enum-shares -p 445 <span class="o">&lt;TARGET&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> sudo nmap --script<span class="o">=</span>smb-enum-shares -p <span class="m">445</span> 10.10.11.207
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-09-25 04:53 GMT
 </span></span></span><span class="line"><span class="cl"><span class="go">Nmap scan report for 10.10.11.207
@@ -349,23 +317,25 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">445/tcp open  microsoft-ds
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Nmap done: 1 IP address (1 host up) scanned in 7.96 seconds
-</span></span></span></code></pre></div></div></p>
+</span></span></span></div></pre></div></div></div><p></p>
 <h4 id="anonymous-login">Anonymous Login</h4>
-<p>
-<button data-tabset="set2" data-tabcontent="tab1" >smbmap</button>
+<p class="tabs">
+<button data-tabset="set2" data-tabcontent="tab1" class="active">smbmap</button>
 
-<button data-tabset="set2" data-tabcontent="tab2" >smbclient</button>
+<button data-tabset="set2" data-tabcontent="tab2">smbclient</button>
 
-<button data-tabset="set2" data-tabcontent="tab3" >impacket</button>
+<button data-tabset="set2" data-tabcontent="tab3">impacket</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; --no-banner
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u null --no-banner
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -r &lt;SHARE&gt;
-</span></span></span></code></pre></div></div>
-
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\&lt;TARGET&gt;\\
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbclient -N -L <span class="se">\\\\</span>10.10.11.207<span class="se">\\</span>
+</p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> --no-banner
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u null --no-banner
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -r <span class="o">&lt;SHARE&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\<span class="o">&lt;TARGET&gt;</span>\\
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbclient -N -L <span class="se">\\\\</span>10.10.11.207<span class="se">\\</span>
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">        Sharename       Type      Comment
 </span></span></span><span class="line"><span class="cl"><span class="go">        ---------       ----      -------
@@ -379,18 +349,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">Reconnecting with SMB1 for workgroup listing.
 </span></span></span><span class="line"><span class="cl"><span class="go">do_connect: Connection to 10.10.11.207 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
 </span></span></span><span class="line"><span class="cl"><span class="go">Unable to connect with SMB1 -- no workgroup available
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
-</span></span><span class="line"><span class="cl"><span class="go">smbclient -N \\\\&lt;TARGET&gt;\\&lt;SHARE&gt;\\
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbclient -N <span class="se">\\\\</span>10.10.11.207<span class="se">\\</span>Development<span class="se">\\</span>
-</span></span><span class="line"><span class="cl"><span class="go">Try &#34;help&#34; to get a list of possible commands.
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
+</span></span><span class="line"><span class="cl"><span class="go">smbclient -N \\\\<span class="o">&lt;TARGET&gt;</span>\\<span class="o">&lt;SHARE&gt;</span>\\
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbclient -N <span class="se">\\\\</span>10.10.11.207<span class="se">\\</span>Development<span class="se">\\</span>
+</span></span><span class="line"><span class="cl"><span class="go">Try "help" to get a list of possible commands.
 </span></span></span><span class="line"><span class="cl"><span class="go">smb: \&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED
-</span></span><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\&lt;TARGET&gt;\\ --option=&#39;client min protocol=NT1&#39;
-</span></span></span></code></pre></div></div>
-
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SID brute, <span class="k">if</span> null auth allowed
-</span></span><span class="line"><span class="cl"><span class="go">impacket-lookupsid test@&lt;DOMAIN&gt; -no-pass
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-lookupsid test@coder.htb -no-pass
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED
+</span></span><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\<span class="o">&lt;TARGET&gt;</span>\\ --option='client min protocol=NT1'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SID brute, <span class="k">if</span> null auth allowed
+</span></span><span class="line"><span class="cl"><span class="go">impacket-lookupsid test@<span class="o">&lt;DOMAIN&gt;</span> -no-pass
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-lookupsid test@coder.htb -no-pass
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Brute forcing SIDs at coder.htb
@@ -409,15 +380,20 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">1110: CODER\s.blade (SidTypeUser)
 </span></span></span><span class="line"><span class="cl"><span class="go">2101: CODER\PKI Admins (SidTypeGroup)
 </span></span></span><span class="line"><span class="cl"><span class="go">3601: CODER\Software Developers (SidTypeGroup)
-</span></span></span></code></pre></div></div></p>
+</span></span></span></div></pre></div></div></div>
+
+
+
+<p></p>
 <h4 id="authenticated">Authenticated</h4>
-<p>
-<button data-tabset="set3" data-tabcontent="tab1" >smbmap</button>
+<p class="tabs">
+<button data-tabset="set3" data-tabcontent="tab1" class="active">smbmap</button>
 
-<button data-tabset="set3" data-tabcontent="tab2" >smbclient</button>
+<button data-tabset="set3" data-tabcontent="tab2">smbclient</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --no-banner
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">&#39;localadmin&#39;</span> -p <span class="s1">&#39;Secret123&#39;</span> --no-banner
+</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --no-banner
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> --no-banner
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Established 1 SMB connections(s) and 1 authenticated session(s)                                                          
 </span></span></span><span class="line"><span class="cl"><span class="go">                                                                                                                             
@@ -432,9 +408,10 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">        Shared                                                  READ, WRITE
 </span></span></span><span class="line"><span class="cl"><span class="go">        SYSVOL                                                  READ ONLY       Logon server share 
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -r &lt;SHARE&gt; --depth 2 --no-banner
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">&#39;localadmin&#39;</span> -p <span class="s1">&#39;Secret123&#39;</span> -r Shared --depth <span class="m">2</span> --no-banner
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -r <span class="o">&lt;SHARE&gt;</span> --depth 2 --no-banner
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> -r Shared --depth <span class="m">2</span> --no-banner
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Established 1 SMB connections(s) and 1 authenticated session(s)                                                          
 </span></span></span><span class="line"><span class="cl"><span class="go">                                                                                                                             
@@ -471,17 +448,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">        fr--r--r--         10559784 Tue Apr 27 05:10:08 2021    VNC-Viewer-6.20.529-Windows.exe
 </span></span></span><span class="line"><span class="cl"><span class="go">        SYSVOL                                                  READ ONLY       Logon server share 
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download file
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --download &#39;&lt;PATH_TO_FILE&gt;&#39; --no-banner
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">&#39;localadmin&#39;</span> -p <span class="s1">&#39;Secret123&#39;</span> --download <span class="s1">&#39;Shared\Documents\Analytics\Whatif.omv&#39;</span> --no-banner     
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download file
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --download '<span class="o">&lt;PATH_TO_FILE&gt;</span>' --no-banner
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> --download <span class="s1">'Shared\Documents\Analytics\Whatif.omv'</span> --no-banner     
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Established 1 SMB connections(s) and 1 authenticated session(s)                                                          
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Starting download: Shared\Documents\Analytics\Whatif.omv (2841 bytes)                                                
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] File output to: /home/kali/10.10.11.102-Shared_Documents_Analytics_Whatif.omv                           
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List files with regex pattern
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H &lt;TARGET&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -r &lt;SHARE&gt; --depth 2 -A &lt;FILE_PATTERN&gt; --no-banner
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">&#39;localadmin&#39;</span> -p <span class="s1">&#39;Secret123&#39;</span> -r Shared --depth <span class="m">2</span> -A <span class="s1">&#39;.omv&#39;</span> --no-banner 
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List files with regex pattern
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -r <span class="o">&lt;SHARE&gt;</span> --depth 2 -A <span class="o">&lt;FILE_PATTERN&gt;</span> --no-banner
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> -r Shared --depth <span class="m">2</span> -A <span class="s1">'.omv'</span> --no-banner 
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Established 1 SMB connections(s) and 1 authenticated session(s)                                                          
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Performing file name pattern match!                                                                                      
@@ -498,10 +477,9 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Starting download: Shared\Documents\Analytics\Whatif.omv (2841 bytes)                                                   
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] File output to: /home/kali/10.10.11.102-Shared_Documents_Analytics_Whatif.omv                              
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
-</span></span></span></code></pre></div></div>
-
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -L \\\\&lt;TARGET&gt;\\ -U &#39;&lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbclient -L <span class="se">\\\\</span>10.10.11.102<span class="se">\\</span> -U <span class="s1">&#39;windcorp.htb/localadmin%Secret123&#39;</span>
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -L \\\\<span class="o">&lt;TARGET&gt;</span>\\ -U '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>%<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbclient -L <span class="se">\\\\</span>10.10.11.102<span class="se">\\</span> -U <span class="s1">'windcorp.htb/localadmin%Secret123'</span>
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">        Sharename       Type      Comment
 </span></span></span><span class="line"><span class="cl"><span class="go">        ---------       ----      -------
@@ -515,65 +493,82 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">Reconnecting with SMB1 for workgroup listing.
 </span></span></span><span class="line"><span class="cl"><span class="go">do_connect: Connection to 10.10.11.102 failed (Error NT_STATUS_IO_TIMEOUT)
 </span></span></span><span class="line"><span class="cl"><span class="go">Unable to connect with SMB1 -- no workgroup available
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
-</span></span><span class="line"><span class="cl"><span class="go">smbclient  \\\\&lt;TARGET&gt;\\&lt;SHARE&gt;\\ -U &#39;&lt;DOMAIN&gt;/&lt;USER&gt;%&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> smbclient  <span class="se">\\\\</span>10.10.11.102<span class="se">\\</span>Shared<span class="se">\\</span> -U <span class="s1">&#39;windcorp.htb/localadmin%Secret123&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="go">Try &#34;help&#34; to get a list of possible commands.
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
+</span></span><span class="line"><span class="cl"><span class="go">smbclient  \\\\<span class="o">&lt;TARGET&gt;</span>\\<span class="o">&lt;SHARE&gt;</span>\\ -U '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>%<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> smbclient  <span class="se">\\\\</span>10.10.11.102<span class="se">\\</span>Shared<span class="se">\\</span> -U <span class="s1">'windcorp.htb/localadmin%Secret123'</span>
+</span></span><span class="line"><span class="cl"><span class="go">Try "help" to get a list of possible commands.
 </span></span></span><span class="line"><span class="cl"><span class="go">smb: \&gt;
-</span></span></span></code></pre></div></div></p>
+</span></span></span></div></pre></div></div></div>
+
+<p></p>
 <h4 id="authenticated-with-kerberos">Authenticated with Kerberos</h4>
-<p>
-<button data-tabset="set4" data-tabcontent="tab1" >impacket</button>
+<p class="tabs">
+<button data-tabset="set4" data-tabcontent="tab1" class="active">impacket</button>
 
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbclient &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
-</span></span></span></code></pre></div></div></p>
+</p><div class="tabset-wrapper" data-tabset-group="set4"><div class="tabcontent active" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbclient '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>' -k -no-pass
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div><p></p>
 <h4 id="basic-commands">Basic commands</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List all files in a share
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List all files in a share
 </span></span><span class="line"><span class="cl"><span class="go">recurse ON
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download all files
-</span></span><span class="line"><span class="cl"><span class="go">mask &#34;&#34;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">recurse ON
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">prompt OFF
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mget *
-</span></span></span></code></pre></div><h4 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">allinfo &lt;FILE&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Example Response
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download all files
+</span></span><span class="line"><span class="cl"><span class="go">mask ""
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">recurse ON
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">prompt OFF
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mget *
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">allinfo <span class="o">&lt;FILE&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Example Response
 </span></span><span class="line"><span class="cl"><span class="gp">&gt;</span>&gt;&gt;stream: <span class="o">[</span>:Password:<span class="nv">$DATA</span><span class="o">]</span>, <span class="m">15</span> bytes
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download specific data stream
-</span></span><span class="line"><span class="cl"><span class="go">get &#34;&lt;FILE&gt;:Password&#34;
-</span></span></span></code></pre></div><hr>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download specific data stream
+</span></span><span class="line"><span class="cl"><span class="go">get "<span class="o">&lt;FILE&gt;</span>:Password"
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><hr>
 <h3 id="mount-smb-share">Mount SMB Share</h3>
-<p>
-<button data-tabset="set5" data-tabcontent="tab1" >Anonymous</button>
+<p class="tabs">
+<button data-tabset="set5" data-tabcontent="tab1" class="active">Anonymous</button>
 
-<button data-tabset="set5" data-tabcontent="tab2" >Authenticated</button>
+<button data-tabset="set5" data-tabcontent="tab2">Authenticated</button>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
-</span></span></span></code></pre></div></div>
-
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o ro,user=&#39;&lt;USER&gt;&#39;,password=&#39;&lt;PASSWORD&gt;&#39; //&lt;TARGET&gt;/&lt;SHARE&gt; /mnt
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo mount -t cifs -o ro,user<span class="o">=</span><span class="s1">&#39;localadmin&#39;</span>,password<span class="o">=</span><span class="s1">&#39;Secret123&#39;</span> //10.10.11.102/Shared /mnt
+</p><div class="tabset-wrapper" data-tabset-group="set5"><div class="tabcontent active" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //<span class="o">&lt;TARGET&gt;</span>/<span class="o">&lt;SHARE&gt;</span> /mnt
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o ro,user='<span class="o">&lt;USER&gt;</span>',password='<span class="o">&lt;PASSWORD&gt;</span>' //<span class="o">&lt;TARGET&gt;</span>/<span class="o">&lt;SHARE&gt;</span> /mnt
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> sudo mount -t cifs -o ro,user<span class="o">=</span><span class="s1">'localadmin'</span>,password<span class="o">=</span><span class="s1">'Secret123'</span> //10.10.11.102/Shared /mnt
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> ls /mnt      
 </span></span><span class="line"><span class="cl"><span class="go">Documents  Software
-</span></span></span></code></pre></div></div></p>
+</span></span></span></div></pre></div></div></div>
+
+<p></p>
 <h4 id="check-write-permission">Check write permission</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo find . -type d | while read directory; do touch ${directory}/test 2&gt;/dev/null &amp;&amp; echo &#34;${directory} - write file&#34; &amp;&amp; rm ${directory}/test; mkdir ${directory}/test 2&gt;/dev/null &amp;&amp; echo &#34;${directory} - write directory&#34; &amp;&amp; rmdir ${directory}/test; done
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>Check file <span class="nb">type</span> you can write
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo find . -type d | while read directory; do touch ${directory}/test 2&gt;/dev/null &amp;&amp; echo "${directory} - write file" &amp;&amp; rm ${directory}/test; mkdir ${directory}/test 2&gt;/dev/null &amp;&amp; echo "${directory} - write directory" &amp;&amp; rmdir ${directory}/test; done
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span>Check file <span class="nb">type</span> you can write
 </span></span><span class="line"><span class="cl"><span class="go">sudo touch {/mnt/,./}test.{dll,exe,ini,lnk}
-</span></span></span></code></pre></div><hr>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><hr>
 <h3 id="change-smb-password-with-old-password">Change SMB password (With old password)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbpasswd -r &lt;TARGET&gt; -U &lt;USER&gt;
-</span></span></span></code></pre></div>
-</div></div>
-    
-    <script type="module" src="/js/main.js"></script>
-    <footer>
-    <hr>
-    <div class="footer-text">
-        <div>© 2025 TLDRBins</div>
-    </div>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbpasswd -r <span class="o">&lt;TARGET&gt;</span> -U <span class="o">&lt;USER&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div>
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
 </footer>
-</body>
-</html>
+
+
+</body></html>

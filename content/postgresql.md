@@ -33,12 +33,12 @@ psql 'postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>'
 
 ```console
 # Dump data from table
-select * from <TABLE_NAME>;
+select * from "<TABLE_NAME>";
 ```
 
 ```console
 # Insert data into table (e.g)
-insert into <TABLE_NAME> (username, password, role) values ('user', 'password', 'admin');
+insert into "<TABLE_NAME>" (username, password, role) values ('user', 'password', 'admin');
 ```
 
 ```console

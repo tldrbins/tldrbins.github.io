@@ -3,25 +3,10 @@
 import { copyIcon, checkmarkIcon, downArrowIcon, upArrowIcon } from './icons.js';
 import { debounce } from './utils.js';
 
-export function addCodeBlockButtons(clipboard) {
+export function addCodeBlockButtonsListener(clipboard) {
     document.querySelectorAll('code[class^="language-"]').forEach((codeBlock) => {
-        const buttonContainer = document.createElement('div');
-        buttonContainer.className = 'buttons-container';
-
-        const button = document.createElement('button');
-        button.className = 'copy-code-button';
-        button.type = 'button';
-        button.innerHTML = copyIcon;
-
-        const sampleButton = document.createElement('button');
-        sampleButton.className = 'sample-output-button';
-        sampleButton.type = 'button';
-        sampleButton.innerHTML = downArrowIcon;
-
-        buttonContainer.appendChild(button);
-        buttonContainer.appendChild(sampleButton);
-
-        codeBlock.parentNode.insertBefore(buttonContainer, codeBlock);
+        const button = codeBlock.parentNode.querySelector('.buttons-container .copy-code-button');
+        const sampleButton = codeBlock.parentNode.querySelector('.buttons-container .sample-output-button');
 
         const copyCode = () => {
             const lines = codeBlock.innerText.split("\n");
