@@ -8,7 +8,12 @@ export function addCodeBlockButtonsListener(clipboard) {
         const button = codeBlock.parentNode.querySelector('.buttons-container .copy-code-button');
         const sampleButton = codeBlock.parentNode.querySelector('.buttons-container .sample-output-button');
 
-        const copyCode = () => {
+        const copyCode = (e) => {
+            // Check if the clicked element or any of its ancestors have the class 'editable-keyword'
+            if (e.target.closest('.editable-keyword')) {
+                return;
+            }
+
             const lines = codeBlock.innerText.split("\n");
             const filteredLines = lines.filter(line => !line.trim().startsWith('# '));  // Exclude lines starting with '#'
             const result = filteredLines.join('\n').trim().replace(/\n\n/g, '\n');
@@ -23,11 +28,11 @@ export function addCodeBlockButtonsListener(clipboard) {
 
         button.addEventListener('click', (e) => {
             e.stopPropagation();
-            copyCode();
+            copyCode(e);
         });
 
-        codeBlock.parentNode.addEventListener('click', () => {
-            copyCode();
+        codeBlock.parentNode.addEventListener('click', (e) => {
+            copyCode(e);
         });
 
         let currentOutputBubble = null;

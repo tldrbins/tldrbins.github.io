@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cloud on TLDRBins</title>
-    <link>https://tldrbins.github.io/@cloud/</link>
-    <description>Recent content in Cloud on TLDRBins</description>
+    <title>Azure on TLDRBins</title>
+    <link>https://tldrbins.github.io/@azure/</link>
+    <description>Recent content in Azure on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://tldrbins.github.io/@cloud/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tldrbins.github.io/@azure/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Enum</title>
       <link>https://tldrbins.github.io/azure_enum/</link>
@@ -21,13 +21,6 @@
       <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/cloud_enum/</guid>
       <description>Cloud Enum cloud_enum python3 cloud_enum.py -k &amp;lt;KEYWORD&amp;gt; ┌──(venv)─(kali㉿kali)-[~/Desktop] └─$ python3 cloud_enum.py -k example.com ########################## cloud_enum github.com/initstring ########################## Keywords: example.com Mutations: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt Brute-list: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt [+] Mutations list imported: 306 items [+] Mutated results: 1837 items ++++++++++++++++++++++++++ amazon checks ++++++++++++++++++++++++++ [+] Checking for S3 buckets OPEN S3 BUCKET: http://example.com.s3.amazonaws.com/ FILES: -&amp;gt;http://example.com.s3.amazonaws.com/example.com ...[SNIP]... -&amp;gt;http://example.com.s3.amazonaws.com/tmp/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htaccess -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htpasswd ...[SNIP]... Ref: cloud_enum</description>
-    </item>
-    <item>
-      <title>AWS</title>
-      <link>https://tldrbins.github.io/aws/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/aws/</guid>
-      <description>Setup # Install awscli sudo apt install awscli # Set config aws configure AWS Access Key ID [None]: test AWS Secret Access Key [None]: test Default region name [None]: test Default output format [None]: Default AWS Credential Location ~/.aws/credentials AWS Services S3 dynamodb lambda # List buckets aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; ls # List bucket aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; ls s3://&amp;lt;BUCKET_NAME&amp;gt; # Upload to bucket aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; cp &amp;lt;FILE&amp;gt; s3://&amp;lt;BUCKET_NAME&amp;gt;/&amp;lt;FILE&amp;gt; # List tables aws --endpoint-url &amp;lt;TARGET&amp;gt; dynamodb list-tables # Dump table aws --endpoint-url &amp;lt;TARGET&amp;gt; dynamodb scan --table-name &amp;lt;TABLE_NAME&amp;gt; # Create table (e.</description>
     </item>
   </channel>
 </rss>
