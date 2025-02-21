@@ -11,7 +11,7 @@ export function addCodeBlockButtonsListener(clipboard) {
         const copyCode = () => {
             const lines = codeBlock.innerText.split("\n");
             const filteredLines = lines.filter(line => !line.trim().startsWith('# '));  // Exclude lines starting with '#'
-            const result = filteredLines.join('\n').trim().replace(/\n\n/g, '\n'); // Join filtered lines and clean up
+            const result = filteredLines.join('\n').trim().replace(/\n\n/g, '\n');
             
             clipboard.writeText(result).then(() => {
                 button.innerHTML = checkmarkIcon;
@@ -22,7 +22,7 @@ export function addCodeBlockButtonsListener(clipboard) {
         };
 
         button.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent click from propagating to the parent div
+            e.stopPropagation();
             copyCode();
         });
 
@@ -30,7 +30,7 @@ export function addCodeBlockButtonsListener(clipboard) {
             copyCode();
         });
 
-        let currentOutputBubble = null;  // Track the active bubble
+        let currentOutputBubble = null;
 
         const showExampleOutput = () => {
             let outputBubble = codeBlock.parentNode.querySelector('.output-bubble');
@@ -39,16 +39,14 @@ export function addCodeBlockButtonsListener(clipboard) {
             outputBubble.style.display = outputBubble.style.display === 'block' ? 'none' : 'block';
             outputButton.innerHTML = outputBubble.style.display === 'block' ? upArrowIcon : downArrowIcon;
 
-            // Track the currently active bubble
             currentOutputBubble = outputBubble.style.display === 'block' ? outputBubble : null;
         };
 
         sampleButton.addEventListener('click', (e) => {
-            e.stopPropagation();  // Prevent event from bubbling up
+            e.stopPropagation();
             showExampleOutput();
         });
 
-        // Event listener for clicks outside the code block to hide the output
         document.addEventListener('click', (e) => {
             const dynamicFormContainer = document.getElementById('dynamicFormContainer');
             
@@ -61,7 +59,7 @@ export function addCodeBlockButtonsListener(clipboard) {
             ) {
                 currentOutputBubble.style.display = 'none';
                 sampleButton.innerHTML = downArrowIcon;
-                currentOutputBubble = null;  // Clear the active bubble
+                currentOutputBubble = null;
             }
         });
 

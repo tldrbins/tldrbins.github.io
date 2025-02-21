@@ -157,155 +157,26 @@
   <div class="tips">
   <p><strong>Usage Tips:</strong></p>
   <ul>
+    <li>Click on a keyword to enable inline editing.</li>
     <li>Click inside a code block to copy (excludes comments).</li>
     <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
     <li>Click outside to collapse all examples.</li>
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="FILE_PATTERN">FILE PATTERN: </label><input type="text" name="FILE_PATTERN"></div><div class="input-group"><label for="FILE">FILE: </label><input type="text" name="FILE"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="PATH_TO_FILE">PATH TO FILE: </label><input type="text" name="PATH_TO_FILE"></div><div class="input-group"><label for="SHARE">SHARE: </label><input type="text" name="SHARE"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="FILE_PATTERN">FILE PATTERN: </label><input type="text" name="FILE_PATTERN"></div><div class="input-group"><label for="FILE">FILE: </label><input type="text" name="FILE"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="PATH_TO_FILE">PATH TO FILE: </label><input type="text" name="PATH_TO_FILE"></div><div class="input-group"><label for="SHARE">SHARE: </label><input type="text" name="SHARE"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
-		<button id="form_btn">Show Params Form</button>
+		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
 		<button id="reset_btn" style="display: none;">Reset</button>
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-<style>
-#dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #aaa;
-	font-family: system-ui;
-}
-
-#dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-#dynamicFormContainer input {
-  border-radius: 0.2em;
-  margin-bottom: 15px;
-}
-
-#dynamicFormContainer input:focus {
-  outline: 0.1em solid var(--secondary);
-}
-
-#dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid var(--secondary);
-  padding: 0.4rem;
-  font-size: 0.9rem;
-}
-
-#dynamicFormContainer label {
-	color: #333333;
-	font-size: 0.9rem;
-}
-
-#dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #f5f5f5;
-	font-weight: 700;
-	background: rgba(44, 82, 179);
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-#dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: rgba(44, 82, 179, 0.95);
-}
-
-#dynamicForm {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 0px;
-    margin: 0 auto;
-    padding: 30px 20px 0;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
- 
-body.dark-mode #dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: #23272a;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #23272a;
-	font-family: system-ui;
-}
-
-body.dark-mode #dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-body.dark-mode #dynamicFormContainer input {
-	border-radius: 0.2em;
-	border: 0.1em solid #eeeeee;
-}
-
-body.dark-mode #dynamicFormContainer input:focus {
-	outline: 0.1em solid #616161;
-}
-
-body.dark-mode #dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid #616161;
-  padding: 0.4rem;
-  font-size: 0.9rem;
-  background-color: #bdbdbd;
-}
-
-body.dark-mode #dynamicFormContainer label {
-	color: #fafafa;
-	font-size: 0.9rem;
-}
-
-body.dark-mode #dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #fafafa;
-	font-weight: 700;
-	background: #616161;
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-body.dark-mode #dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: #424242;
-}
-</style>
   <h3 id="smb-share-enum">SMB Share Enum</h3>
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">nmap</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo nmap --script=smb-enum-shares -p 445 <span class="o">&lt;TARGET&gt;</span>
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo nmap --script=smb-enum-shares -p 445 <span class="o editable-keyword">&lt;TARGET&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> sudo nmap --script<span class="o">=</span>smb-enum-shares -p <span class="m">445</span> 10.10.11.207
 </span></span><span class="line"><span class="cl"><span class="err">
@@ -326,14 +197,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 <button data-tabset="set2" data-tabcontent="tab3">impacket</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> --no-banner
+</p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o editable-keyword">&lt;TARGET&gt;</span> --no-banner
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u null --no-banner
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o editable-keyword">&lt;TARGET&gt;</span> -u null --no-banner
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -r <span class="o">&lt;SHARE&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o editable-keyword">&lt;TARGET&gt;</span> -r <span class="o editable-keyword">&lt;SHARE&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\<span class="o">&lt;TARGET&gt;</span>\\
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\<span class="o editable-keyword">&lt;TARGET&gt;</span>\\
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbclient -N -L <span class="se">\\\\</span>10.10.11.207<span class="se">\\</span>
 </span></span><span class="line"><span class="cl"><span class="err">
@@ -350,16 +221,16 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 </span></span></span><span class="line"><span class="cl"><span class="go">do_connect: Connection to 10.10.11.207 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
 </span></span></span><span class="line"><span class="cl"><span class="go">Unable to connect with SMB1 -- no workgroup available
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
-</span></span><span class="line"><span class="cl"><span class="go">smbclient -N \\\\<span class="o">&lt;TARGET&gt;</span>\\<span class="o">&lt;SHARE&gt;</span>\\
+</span></span><span class="line"><span class="cl"><span class="go">smbclient -N \\\\<span class="o editable-keyword">&lt;TARGET&gt;</span>\\<span class="o editable-keyword">&lt;SHARE&gt;</span>\\
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbclient -N <span class="se">\\\\</span>10.10.11.207<span class="se">\\</span>Development<span class="se">\\</span>
 </span></span><span class="line"><span class="cl"><span class="go">Try "help" to get a list of possible commands.
 </span></span></span><span class="line"><span class="cl"><span class="go">smb: \&gt;
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Fix: Unable to initialize messaging context. protocol negotiation failed: NT_STATUS_CONNECTION_DISCONNECTED
-</span></span><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\<span class="o">&lt;TARGET&gt;</span>\\ --option='client min protocol=NT1'
+</span></span><span class="line"><span class="cl"><span class="go">smbclient -N -L \\\\<span class="o editable-keyword">&lt;TARGET&gt;</span>\\ --option='client min protocol=NT1'
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SID brute, <span class="k">if</span> null auth allowed
-</span></span><span class="line"><span class="cl"><span class="go">impacket-lookupsid test@<span class="o">&lt;DOMAIN&gt;</span> -no-pass
+</span></span><span class="line"><span class="cl"><span class="go">impacket-lookupsid test@<span class="o editable-keyword">&lt;DOMAIN&gt;</span> -no-pass
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> impacket-lookupsid test@coder.htb -no-pass
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
@@ -391,7 +262,7 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 
 <button data-tabset="set3" data-tabcontent="tab2">smbclient</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --no-banner
+</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' --no-banner
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> --no-banner
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
@@ -409,7 +280,7 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 </span></span></span><span class="line"><span class="cl"><span class="go">        SYSVOL                                                  READ ONLY       Logon server share 
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List known share
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -r <span class="o">&lt;SHARE&gt;</span> --depth 2 --no-banner
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' -r <span class="o editable-keyword">&lt;SHARE&gt;</span> --depth 2 --no-banner
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> -r Shared --depth <span class="m">2</span> --no-banner
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
@@ -449,7 +320,7 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 </span></span></span><span class="line"><span class="cl"><span class="go">        SYSVOL                                                  READ ONLY       Logon server share 
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download file
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --download '<span class="o">&lt;PATH_TO_FILE&gt;</span>' --no-banner
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' --download '<span class="o editable-keyword">&lt;PATH_TO_FILE&gt;</span>' --no-banner
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> --download <span class="s1">'Shared\Documents\Analytics\Whatif.omv'</span> --no-banner     
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
@@ -458,7 +329,7 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] File output to: /home/kali/10.10.11.102-Shared_Documents_Analytics_Whatif.omv                           
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> List files with regex pattern
-</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o">&lt;TARGET&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -r <span class="o">&lt;SHARE&gt;</span> --depth 2 -A <span class="o">&lt;FILE_PATTERN&gt;</span> --no-banner
+</span></span><span class="line"><span class="cl"><span class="go">smbmap -H <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' -r <span class="o editable-keyword">&lt;SHARE&gt;</span> --depth 2 -A <span class="o editable-keyword">&lt;FILE_PATTERN&gt;</span> --no-banner
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbmap -H 10.10.11.102 -u <span class="s1">'localadmin'</span> -p <span class="s1">'Secret123'</span> -r Shared --depth <span class="m">2</span> -A <span class="s1">'.omv'</span> --no-banner 
 </span></span><span class="line"><span class="cl"><span class="go">[*] Detected 1 hosts serving SMB                                                                                                  
@@ -477,7 +348,7 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Starting download: Shared\Documents\Analytics\Whatif.omv (2841 bytes)                                                   
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] File output to: /home/kali/10.10.11.102-Shared_Documents_Analytics_Whatif.omv                              
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Closed 1 connections
-</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -L \\\\<span class="o">&lt;TARGET&gt;</span>\\ -U '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>%<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbclient -L \\\\<span class="o editable-keyword">&lt;TARGET&gt;</span>\\ -U '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>%<span class="o editable-keyword">&lt;PASSWORD&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbclient -L <span class="se">\\\\</span>10.10.11.102<span class="se">\\</span> -U <span class="s1">'windcorp.htb/localadmin%Secret123'</span>
 </span></span><span class="line"><span class="cl"><span class="err">
@@ -494,7 +365,7 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 </span></span></span><span class="line"><span class="cl"><span class="go">do_connect: Connection to 10.10.11.102 failed (Error NT_STATUS_IO_TIMEOUT)
 </span></span></span><span class="line"><span class="cl"><span class="go">Unable to connect with SMB1 -- no workgroup available
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> After found an accessible share
-</span></span><span class="line"><span class="cl"><span class="go">smbclient  \\\\<span class="o">&lt;TARGET&gt;</span>\\<span class="o">&lt;SHARE&gt;</span>\\ -U '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>%<span class="o">&lt;PASSWORD&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">smbclient  \\\\<span class="o editable-keyword">&lt;TARGET&gt;</span>\\<span class="o editable-keyword">&lt;SHARE&gt;</span>\\ -U '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>%<span class="o editable-keyword">&lt;PASSWORD&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> smbclient  <span class="se">\\\\</span>10.10.11.102<span class="se">\\</span>Shared<span class="se">\\</span> -U <span class="s1">'windcorp.htb/localadmin%Secret123'</span>
 </span></span><span class="line"><span class="cl"><span class="go">Try "help" to get a list of possible commands.
@@ -506,7 +377,7 @@ TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tab
 <p class="tabs">
 <button data-tabset="set4" data-tabcontent="tab1" class="active">impacket</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set4"><div class="tabcontent active" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbclient '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>' -k -no-pass
+</p><div class="tabset-wrapper" data-tabset-group="set4"><div class="tabcontent active" data-tabset="set4" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-smbclient '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>:<span class="o editable-keyword">&lt;PASSWORD&gt;</span>@<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span>' -k -no-pass
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div></div><p></p>
 <h4 id="basic-commands">Basic commands</h4>
@@ -525,13 +396,13 @@ TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class=
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">mget *
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><h4 id="list-alternate-data-streams-ads">List Alternate Data Streams (ADS)</h4>
-<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">allinfo <span class="o">&lt;FILE&gt;</span>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">allinfo <span class="o editable-keyword">&lt;FILE&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Example Response
 </span></span><span class="line"><span class="cl"><span class="gp">&gt;</span>&gt;&gt;stream: <span class="o">[</span>:Password:<span class="nv">$DATA</span><span class="o">]</span>, <span class="m">15</span> bytes
 </span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Download specific data stream
-</span></span><span class="line"><span class="cl"><span class="go">get "<span class="o">&lt;FILE&gt;</span>:Password"
+</span></span><span class="line"><span class="cl"><span class="go">get "<span class="o editable-keyword">&lt;FILE&gt;</span>:Password"
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><hr>
 <h3 id="mount-smb-share">Mount SMB Share</h3>
@@ -540,9 +411,9 @@ TO-DO</div></pre></div><hr>
 
 <button data-tabset="set5" data-tabcontent="tab2">Authenticated</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set5"><div class="tabcontent active" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //<span class="o">&lt;TARGET&gt;</span>/<span class="o">&lt;SHARE&gt;</span> /mnt
+</p><div class="tabset-wrapper" data-tabset-group="set5"><div class="tabcontent active" data-tabset="set5" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //<span class="o editable-keyword">&lt;TARGET&gt;</span>/<span class="o editable-keyword">&lt;SHARE&gt;</span> /mnt
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o ro,user='<span class="o">&lt;USER&gt;</span>',password='<span class="o">&lt;PASSWORD&gt;</span>' //<span class="o">&lt;TARGET&gt;</span>/<span class="o">&lt;SHARE&gt;</span> /mnt
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set5" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs -o ro,user='<span class="o editable-keyword">&lt;USER&gt;</span>',password='<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' //<span class="o editable-keyword">&lt;TARGET&gt;</span>/<span class="o editable-keyword">&lt;SHARE&gt;</span> /mnt
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> sudo mount -t cifs -o ro,user<span class="o">=</span><span class="s1">'localadmin'</span>,password<span class="o">=</span><span class="s1">'Secret123'</span> //10.10.11.102/Shared /mnt
 </span></span><span class="line"><span class="cl"><span class="err">
@@ -559,7 +430,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><hr>
 <h3 id="change-smb-password-with-old-password">Change SMB password (With old password)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbpasswd -r <span class="o">&lt;TARGET&gt;</span> -U <span class="o">&lt;USER&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbpasswd -r <span class="o editable-keyword">&lt;TARGET&gt;</span> -U <span class="o editable-keyword">&lt;USER&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div>
 </div>

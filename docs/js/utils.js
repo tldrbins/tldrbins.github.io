@@ -1,9 +1,11 @@
 // utils.js
 
-export function arraysEqual(a, b) {
-    if (a === b) return true;
-    if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
-    return a.every((value, index) => value === b[index]);
+export function updateAllKeywords(originalText, newValue) {
+  document.querySelectorAll('.editable-keyword').forEach(element => {
+    if (element.dataset.originalText === originalText) {
+      element.textContent = newValue;
+    }
+  });
 }
 
 export function debounce(func, wait, immediate = false) {

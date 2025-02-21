@@ -156,150 +156,21 @@
   <div class="tips">
   <p><strong>Usage Tips:</strong></p>
   <ul>
+    <li>Click on a keyword to enable inline editing.</li>
     <li>Click inside a code block to copy (excludes comments).</li>
     <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
     <li>Click outside to collapse all examples.</li>
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="HOP_1_IP">HOP 1 IP: </label><input type="text" name="HOP_1_IP"></div><div class="input-group"><label for="HOP_2_IP">HOP 2 IP: </label><input type="text" name="HOP_2_IP"></div><div class="input-group"><label for="LOCAL_IP">LOCAL IP: </label><input type="text" name="LOCAL_IP"></div><div class="input-group"><label for="MASK">MASK: </label><input type="text" name="MASK"></div><div class="input-group"><label for="SESSION_ID">SESSION ID: </label><input type="text" name="SESSION_ID"></div><div class="input-group"><label for="SOCKS_PORT">SOCKS PORT: </label><input type="text" name="SOCKS_PORT"></div><div class="input-group"><label for="SUBNET">SUBNET: </label><input type="text" name="SUBNET"></div><div class="input-group"><label for="TARGET_PORT">TARGET PORT: </label><input type="text" name="TARGET_PORT"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="HOP_1_IP">HOP 1 IP: </label><input type="text" name="HOP_1_IP"></div><div class="input-group"><label for="HOP_2_IP">HOP 2 IP: </label><input type="text" name="HOP_2_IP"></div><div class="input-group"><label for="LOCAL_IP">LOCAL IP: </label><input type="text" name="LOCAL_IP"></div><div class="input-group"><label for="MASK">MASK: </label><input type="text" name="MASK"></div><div class="input-group"><label for="SESSION_ID">SESSION ID: </label><input type="text" name="SESSION_ID"></div><div class="input-group"><label for="SOCKS_PORT">SOCKS PORT: </label><input type="text" name="SOCKS_PORT"></div><div class="input-group"><label for="SUBNET">SUBNET: </label><input type="text" name="SUBNET"></div><div class="input-group"><label for="TARGET_PORT">TARGET PORT: </label><input type="text" name="TARGET_PORT"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
-		<button id="form_btn">Show Params Form</button>
+		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
 		<button id="reset_btn" style="display: none;">Reset</button>
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-<style>
-#dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #aaa;
-	font-family: system-ui;
-}
-
-#dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-#dynamicFormContainer input {
-  border-radius: 0.2em;
-  margin-bottom: 15px;
-}
-
-#dynamicFormContainer input:focus {
-  outline: 0.1em solid var(--secondary);
-}
-
-#dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid var(--secondary);
-  padding: 0.4rem;
-  font-size: 0.9rem;
-}
-
-#dynamicFormContainer label {
-	color: #333333;
-	font-size: 0.9rem;
-}
-
-#dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #f5f5f5;
-	font-weight: 700;
-	background: rgba(44, 82, 179);
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-#dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: rgba(44, 82, 179, 0.95);
-}
-
-#dynamicForm {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 0px;
-    margin: 0 auto;
-    padding: 30px 20px 0;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
- 
-body.dark-mode #dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: #23272a;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #23272a;
-	font-family: system-ui;
-}
-
-body.dark-mode #dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-body.dark-mode #dynamicFormContainer input {
-	border-radius: 0.2em;
-	border: 0.1em solid #eeeeee;
-}
-
-body.dark-mode #dynamicFormContainer input:focus {
-	outline: 0.1em solid #616161;
-}
-
-body.dark-mode #dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid #616161;
-  padding: 0.4rem;
-  font-size: 0.9rem;
-  background-color: #bdbdbd;
-}
-
-body.dark-mode #dynamicFormContainer label {
-	color: #fafafa;
-	font-size: 0.9rem;
-}
-
-body.dark-mode #dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #fafafa;
-	font-weight: 700;
-	background: #616161;
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-body.dark-mode #dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: #424242;
-}
-</style>
   <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">chisel</button>
 
@@ -321,14 +192,14 @@ body.dark-mode #dynamicFormContainer button:hover {
 </span></span></span><span class="line"><span class="cl"><span class="go">2024/09/23 12:27:03 server: Listening on http://0.0.0.0:8000
 </span></span></span></div></pre></div><h4 id="ports-forwarding">Ports forwarding</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target machine
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o">&lt;LOCAL_IP&gt;</span>:8000 R:<span class="o">&lt;TARGET_PORT&gt;</span>:127.0.0.1:<span class="o">&lt;TARGET_PORT&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:8000 R:<span class="o editable-keyword">&lt;TARGET_PORT&gt;</span>:127.0.0.1:<span class="o editable-keyword">&lt;TARGET_PORT&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mutiple ports fowarding, can be different targets in the same subnet
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o">&lt;LOCAL_IP&gt;</span>:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:8000 R:8080:172.17.0.2:8080 R:5000:172.17.0.3:5000
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><h4 id="socks5">Socks5</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In target machine
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o">&lt;LOCAL_IP&gt;</span>:8000 R:1081:socks
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:8000 R:1081:socks
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> ./chisel client 10.10.14.31:8000 R:1081:socks
 </span></span><span class="line"><span class="cl"><span class="go">2024/09/23 04:16:44 client: Connecting to ws://10.10.14.31:8000
@@ -352,13 +223,13 @@ TO-DO</div></pre></div><h4 id="2-hop-1">2. Hop 1</h4>
 <p class="tabs"><button data-tabset="set1-1-1" data-tabcontent="tab1" class="active">Linux</button>
 <button data-tabset="set1-1-1" data-tabcontent="tab2">Windows</button></p>
 <div class="tabset-wrapper" data-tabset-group="set1-1-1"><div class="tabcontent active" data-tabset="set1-1-1" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o">&lt;LOCAL_IP&gt;</span>:8000 R:1081:socks &amp;
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:8000 R:1081:socks &amp;
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
 </span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8001 &amp;
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1-1-1" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
-</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client <span class="o">&lt;LOCAL_IP&gt;</span>:8000 R:1081:socks }
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client <span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:8000 R:1081:socks }
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
 </span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe server --reverse --socks5 --port 8001 }
@@ -376,13 +247,13 @@ TO-DO</div></pre></div><h4 id="3-hop-2">3. Hop 2</h4>
 <p class="tabs"><button data-tabset="set1-1-2" data-tabcontent="tab1" class="active">Linux</button>
 <button data-tabset="set1-1-2" data-tabcontent="tab2">Windows</button></p>
 <div class="tabset-wrapper" data-tabset-group="set1-1-2"><div class="tabcontent active" data-tabset="set1-1-2" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o">&lt;HOP_1_IP&gt;</span>:8001 R:1082:socks &amp;
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o editable-keyword">&lt;HOP_1_IP&gt;</span>:8001 R:1082:socks &amp;
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
 </span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8002 &amp;
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1-1-2" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
-</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client <span class="o">&lt;HOP_1_IP&gt;</span>:8001 R:1082:socks }
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client <span class="o editable-keyword">&lt;HOP_1_IP&gt;</span>:8001 R:1082:socks }
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
 </span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe server --reverse --socks5 --port 8002 }
@@ -400,13 +271,13 @@ TO-DO</div></pre></div><h4 id="4-hop-3">4. Hop 3</h4>
 <p class="tabs"><button data-tabset="set1-1-3" data-tabcontent="tab1" class="active">Linux</button>
 <button data-tabset="set1-1-3" data-tabcontent="tab2">Windows</button></p>
 <div class="tabset-wrapper" data-tabset-group="set1-1-3"><div class="tabcontent active" data-tabset="set1-1-3" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
-</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o">&lt;HOP_2_IP&gt;</span>:8002 R:1083:socks &amp;
+</span></span><span class="line"><span class="cl"><span class="go">./chisel client <span class="o editable-keyword">&lt;HOP_2_IP&gt;</span>:8002 R:1083:socks &amp;
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
 </span></span><span class="line"><span class="cl"><span class="go">./chisel server --reverse --socks5 --port 8003 &amp;
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1-1-3" data-tabcontent="tab2"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a client
-</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client <span class="o">&lt;HOP_2_IP&gt;</span>:8002 R:1083:socks }
+</span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe client <span class="o editable-keyword">&lt;HOP_2_IP&gt;</span>:8002 R:1083:socks }
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a server
 </span></span><span class="line"><span class="cl"><span class="go">Start-Job -ScriptBlock { C:\ProgramData\chisel.exe server --reverse --socks5 --port 8003 }
@@ -500,18 +371,18 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span></div></pre></div><p><small><em>Note: Edit /etc/proxychains4.conf accordingly, depends on which layer you are accessing</em></small></p>
 </div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="ports-forwarding">Ports forwarding</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add
-</span></span><span class="line"><span class="cl"><span class="go">portfwd add -l <span class="o">&lt;TARGET_PORT&gt;</span> -r <span class="o">&lt;TARGET&gt;</span> -p <span class="o">&lt;TARGET_PORT&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">portfwd add -l <span class="o editable-keyword">&lt;TARGET_PORT&gt;</span> -r <span class="o editable-keyword">&lt;TARGET&gt;</span> -p <span class="o editable-keyword">&lt;TARGET_PORT&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">meterpreter &gt; portfwd add -l 88 -r 172.16.2.5 -p 88
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Forward TCP relay created: (local) :88 -&gt; (remote) 172.16.2.5:88
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Delete
-</span></span><span class="line"><span class="cl"><span class="go">portfwd delete -l <span class="o">&lt;TARGET_PORT&gt;</span> -r <span class="o">&lt;TARGET&gt;</span> -p <span class="o">&lt;TARGET_PORT&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">portfwd delete -l <span class="o editable-keyword">&lt;TARGET_PORT&gt;</span> -r <span class="o editable-keyword">&lt;TARGET&gt;</span> -p <span class="o editable-keyword">&lt;TARGET_PORT&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><h4 id="add-routes">Add routes</h4>
 <p class="tabs"><button data-tabset="set1-2-1" data-tabcontent="tab1" class="active">autoroute</button>
 <button data-tabset="set1-2-1" data-tabcontent="tab2">route</button></p>
 <div class="tabset-wrapper" data-tabset-group="set1-2-1"><div class="tabcontent" data-tabset="set1-2-1" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Enter target session
-</span></span><span class="line"><span class="cl"><span class="go">sessions <span class="o">&lt;SESSION_ID&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">sessions <span class="o editable-keyword">&lt;SESSION_ID&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; sessions 1
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Starting interaction with 1...
@@ -524,7 +395,7 @@ TO-DO</div></pre></div><h4 id="add-routes">Add routes</h4>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">msf6 exploit(multi/handler) &gt; use post/multi/manage/autoroute
 </span></span></span><span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; 
-</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set session <span class="o">&lt;SESSION_ID&gt;</span>
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">set session <span class="o editable-keyword">&lt;SESSION_ID&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set session 1
 </span></span></span><span class="line"><span class="cl"><span class="go">session =&gt; 1
@@ -534,12 +405,12 @@ TO-DO</div></pre></div><h4 id="add-routes">Add routes</h4>
 <span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set cmd add
 </span></span></span><span class="line"><span class="cl"><span class="go">cmd =&gt; add
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Manual <span class="nb">set</span> subnet <span class="o">[</span>optional<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="go">set subnet <span class="o">&lt;SUBNET&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">set subnet <span class="o editable-keyword">&lt;SUBNET&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set subnet 172.16.1.0
 </span></span></span><span class="line"><span class="cl"><span class="go">subnet =&gt; 172.16.1.0
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Manual <span class="nb">set</span> mask <span class="o">[</span>optional<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="go">set netmask <span class="o">&lt;MASK&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">set netmask <span class="o editable-keyword">&lt;MASK&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; set netmask 255.255.255.0
 </span></span></span><span class="line"><span class="cl"><span class="go">netmask =&gt; 255.255.255.0
@@ -552,7 +423,7 @@ TO-DO</div></pre></div><h4 id="add-routes">Add routes</h4>
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Route added to subnet 172.16.1.0/255.255.255.0 from host's routing table.
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Post module execution completed
 </span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1-2-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Manual add route
-</span></span><span class="line"><span class="cl"><span class="go">route add <span class="o">&lt;SUBNET&gt;</span> <span class="o">&lt;MASK&gt;</span> <span class="o">&lt;SESSION_ID&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">route add <span class="o editable-keyword">&lt;SUBNET&gt;</span> <span class="o editable-keyword">&lt;MASK&gt;</span> <span class="o editable-keyword">&lt;SESSION_ID&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div></div>
 
@@ -570,12 +441,12 @@ TO-DO</div></pre></div></div></div>
 </span></span></span><span class="line"><span class="cl"><span class="go">   172.16.1.0         255.255.255.0      Session 2
 </span></span></span><span class="line"><span class="cl"><span class="go">   172.16.2.0         255.255.255.0      Session 1
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check route to target
-</span></span><span class="line"><span class="cl"><span class="go">route get <span class="o">&lt;TARGET&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">route get <span class="o editable-keyword">&lt;TARGET&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt; route get 172.16.2.1
 </span></span></span><span class="line"><span class="cl"><span class="go">172.16.2.1 routes through: Session 1
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remove route
-</span></span><span class="line"><span class="cl"><span class="go">route remove <span class="o">&lt;SUBNET&gt;</span>/<span class="o">&lt;MASK&gt;</span> <span class="o">&lt;SESSION_ID&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">route remove <span class="o editable-keyword">&lt;SUBNET&gt;</span>/<span class="o editable-keyword">&lt;MASK&gt;</span> <span class="o editable-keyword">&lt;SESSION_ID&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Remove all routes
 </span></span><span class="line"><span class="cl"><span class="go">route flush
@@ -586,7 +457,7 @@ TO-DO</div></pre></div><h4 id="socks5">Socks5</h4>
 <span class="line"><span class="cl"><span class="go">msf6 post(multi/manage/autoroute) &gt; use auxiliary/server/socks_proxy
 </span></span></span><span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt;
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Set socks port <span class="o">[</span>optional<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="go">set SRVPORT <span class="o">&lt;SOCKS_PORT&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">set SRVPORT <span class="o editable-keyword">&lt;SOCKS_PORT&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">msf6 auxiliary(server/socks_proxy) &gt; set SRVPORT 1081
 </span></span></span><span class="line"><span class="cl"><span class="go">SRVPORT =&gt; 1081
@@ -601,22 +472,22 @@ TO-DO</div></pre></div><h4 id="socks5">Socks5</h4>
 </span></span><span class="line"><span class="cl"><span class="go">sudo nano /etc/proxychains4.conf
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Add to the end of the file
-</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 <span class="o">&lt;SOCKS_PORT&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">socks5 127.0.0.1 <span class="o editable-keyword">&lt;SOCKS_PORT&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Example, in our <span class="nb">local</span> machine
 </span></span><span class="line"><span class="cl"><span class="go">proxychains4 curl http://172.16.1.100:1081
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SSH port forwarding without spawning a shell
-</span></span><span class="line"><span class="cl"><span class="go">ssh -N -L <span class="o">&lt;TARGET_PORT&gt;</span>:127.0.0.1:<span class="o">&lt;TARGET_PORT&gt;</span> <span class="o">&lt;USER&gt;</span>@<span class="o">&lt;TARGET&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">ssh -N -L <span class="o editable-keyword">&lt;TARGET_PORT&gt;</span>:127.0.0.1:<span class="o editable-keyword">&lt;TARGET_PORT&gt;</span> <span class="o editable-keyword">&lt;USER&gt;</span>@<span class="o editable-keyword">&lt;TARGET&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> ssh -N -L 5985:127.0.0.1:5985 3v4Si0N@10.10.10.240
 </span></span><span class="line"><span class="cl"><span class="go">3v4Si0N@10.10.10.240's password:  
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> SSH socks5 tunneling without spawning a shell
-</span></span><span class="line"><span class="cl"><span class="go">ssh -N -D 1081 <span class="o">&lt;USER&gt;</span>@<span class="o">&lt;TARGET&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">ssh -N -D 1081 <span class="o editable-keyword">&lt;USER&gt;</span>@<span class="o editable-keyword">&lt;TARGET&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> ssh -i id_rsa -N -D <span class="m">1081</span> root@10.10.11.179
-</span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Any traffic go to port <span class="o">&lt;TARGET_PORT&gt;</span> will be forwarded to <span class="o">&lt;LOCAL_IP&gt;</span>:<span class="o">&lt;TARGET_PORT&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="go">./socat tcp-listen:<span class="o">&lt;TARGET_PORT&gt;</span>,fork tcp:<span class="o">&lt;LOCAL_IP&gt;</span>:<span class="o">&lt;TARGET_PORT&gt;</span> &amp;
+</span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Any traffic go to port <span class="o editable-keyword">&lt;TARGET_PORT&gt;</span> will be forwarded to <span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:<span class="o editable-keyword">&lt;TARGET_PORT&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">./socat tcp-listen:<span class="o editable-keyword">&lt;TARGET_PORT&gt;</span>,fork tcp:<span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:<span class="o editable-keyword">&lt;TARGET_PORT&gt;</span> &amp;
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab5"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">socks5 start
 </span></span></span></code><div class="output-bubble">Sample Output:

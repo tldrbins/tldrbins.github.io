@@ -2,8 +2,10 @@
 
 import { addCodeBlockButtonsListener } from './codeBlockButtons.js';
 import { addTabbedViewsListener } from './tabbedViews.js';
-import { addParamsFormListener } from './paramsForm.js';
+import { addInspectorFormListener } from './inspectorForm.js';
+import { addInlineEditingListener } from './inlineEditing.js';
 
 addCodeBlockButtonsListener(navigator.clipboard);
 addTabbedViewsListener();
-addParamsFormListener();
+addInlineEditingListener();
+addInspectorFormListener();

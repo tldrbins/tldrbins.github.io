@@ -150,150 +150,21 @@
   <div class="tips">
   <p><strong>Usage Tips:</strong></p>
   <ul>
+    <li>Click on a keyword to enable inline editing.</li>
     <li>Click inside a code block to copy (excludes comments).</li>
     <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
     <li>Click outside to collapse all examples.</li>
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="CONTAINER_FILE_PATH">CONTAINER FILE PATH: </label><input type="text" name="CONTAINER_FILE_PATH"></div><div class="input-group"><label for="CONTAINER_FOLDER_PATH">CONTAINER FOLDER PATH: </label><input type="text" name="CONTAINER_FOLDER_PATH"></div><div class="input-group"><label for="CONTAINER_ID">CONTAINER ID: </label><input type="text" name="CONTAINER_ID"></div><div class="input-group"><label for="CONTAINER_NAME">CONTAINER NAME: </label><input type="text" name="CONTAINER_NAME"></div><div class="input-group"><label for="CONTAINER_TARGET_PATH">CONTAINER TARGET PATH: </label><input type="text" name="CONTAINER_TARGET_PATH"></div><div class="input-group"><label for="HOST_FILE_PATH">HOST FILE PATH: </label><input type="text" name="HOST_FILE_PATH"></div><div class="input-group"><label for="HOST_FOLDER_PATH">HOST FOLDER PATH: </label><input type="text" name="HOST_FOLDER_PATH"></div><div class="input-group"><label for="HOST_TARGET_PATH">HOST TARGET PATH: </label><input type="text" name="HOST_TARGET_PATH"></div><div class="input-group"><label for="IMAGE_ID">IMAGE ID: </label><input type="text" name="IMAGE_ID"></div><div class="input-group"><label for="IMAGE_NAME">IMAGE NAME: </label><input type="text" name="IMAGE_NAME"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="CONTAINER_FILE_PATH">CONTAINER FILE PATH: </label><input type="text" name="CONTAINER_FILE_PATH"></div><div class="input-group"><label for="CONTAINER_FOLDER_PATH">CONTAINER FOLDER PATH: </label><input type="text" name="CONTAINER_FOLDER_PATH"></div><div class="input-group"><label for="CONTAINER_ID">CONTAINER ID: </label><input type="text" name="CONTAINER_ID"></div><div class="input-group"><label for="CONTAINER_NAME">CONTAINER NAME: </label><input type="text" name="CONTAINER_NAME"></div><div class="input-group"><label for="CONTAINER_TARGET_PATH">CONTAINER TARGET PATH: </label><input type="text" name="CONTAINER_TARGET_PATH"></div><div class="input-group"><label for="HOST_FILE_PATH">HOST FILE PATH: </label><input type="text" name="HOST_FILE_PATH"></div><div class="input-group"><label for="HOST_FOLDER_PATH">HOST FOLDER PATH: </label><input type="text" name="HOST_FOLDER_PATH"></div><div class="input-group"><label for="HOST_TARGET_PATH">HOST TARGET PATH: </label><input type="text" name="HOST_TARGET_PATH"></div><div class="input-group"><label for="IMAGE_ID">IMAGE ID: </label><input type="text" name="IMAGE_ID"></div><div class="input-group"><label for="IMAGE_NAME">IMAGE NAME: </label><input type="text" name="IMAGE_NAME"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
-		<button id="form_btn">Show Params Form</button>
+		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
 		<button id="reset_btn" style="display: none;">Reset</button>
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-<style>
-#dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: white;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #aaa;
-	font-family: system-ui;
-}
-
-#dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-#dynamicFormContainer input {
-  border-radius: 0.2em;
-  margin-bottom: 15px;
-}
-
-#dynamicFormContainer input:focus {
-  outline: 0.1em solid var(--secondary);
-}
-
-#dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid var(--secondary);
-  padding: 0.4rem;
-  font-size: 0.9rem;
-}
-
-#dynamicFormContainer label {
-	color: #333333;
-	font-size: 0.9rem;
-}
-
-#dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #f5f5f5;
-	font-weight: 700;
-	background: rgba(44, 82, 179);
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-#dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: rgba(44, 82, 179, 0.95);
-}
-
-#dynamicForm {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 0px;
-    margin: 0 auto;
-    padding: 30px 20px 0;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
- 
-body.dark-mode #dynamicFormContainer {
-	width: 100%;
-	margin: 0 auto;
-	background-color: #23272a;
-	padding: 0;
-	box-shadow: 1px 4px 10px 1px #23272a;
-	font-family: system-ui;
-}
-
-body.dark-mode #dynamicFormContainer * {
-    box-sizing: border-box;
-}
-
-body.dark-mode #dynamicFormContainer input {
-	border-radius: 0.2em;
-	border: 0.1em solid #eeeeee;
-}
-
-body.dark-mode #dynamicFormContainer input:focus {
-	outline: 0.1em solid #616161;
-}
-
-body.dark-mode #dynamicFormContainer input[type=text] {
-  width: 100%;
-  border-radius: 0.2em;
-  border: 0.1em solid #616161;
-  padding: 0.4rem;
-  font-size: 0.9rem;
-  background-color: #bdbdbd;
-}
-
-body.dark-mode #dynamicFormContainer label {
-	color: #fafafa;
-	font-size: 0.9rem;
-}
-
-body.dark-mode #dynamicFormContainer button {
-	display: inline-block;
-	margin: 20px auto;
-	width: 150px;
-	height: 40px;
-	border-radius: 25px;
-	border: none;
-	color: #fafafa;
-	font-weight: 700;
-	background: #616161;
-	grid-column: 1 / span 2;
-    justify-self: center;
-}
-
-body.dark-mode #dynamicFormContainer button:hover {
-    cursor: pointer;
-    background: #424242;
-}
-</style>
   <h3 id="basic-commands">Basic Commands</h3>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show all running processes
 </span></span><span class="line"><span class="cl"><span class="go">sudo docker ps -a
@@ -311,19 +182,19 @@ TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class=
 </span></span><span class="line"><span class="cl"><span class="go">sudo docker rmi -f $(sudo docker images -aq)
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Shell in docker
-</span></span><span class="line"><span class="cl"><span class="go">sudo docker exec -it <span class="o">&lt;CONTAINER_NAME&gt;</span> sh
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker exec -it <span class="o editable-keyword">&lt;CONTAINER_NAME&gt;</span> sh
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy file from host to container
-</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o">&lt;HOST_FILE_PATH&gt;</span> <span class="o">&lt;CONTAINER_ID&gt;</span>:<span class="o">&lt;CONTAINER_FILE_PATH&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o editable-keyword">&lt;HOST_FILE_PATH&gt;</span> <span class="o editable-keyword">&lt;CONTAINER_ID&gt;</span>:<span class="o editable-keyword">&lt;CONTAINER_FILE_PATH&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy file from container to host
-</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o">&lt;CONTAINER_ID&gt;</span>:<span class="o">&lt;CONTAINER_FILE_PATH&gt;</span> <span class="o">&lt;HOST_FILE_PATH&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o editable-keyword">&lt;CONTAINER_ID&gt;</span>:<span class="o editable-keyword">&lt;CONTAINER_FILE_PATH&gt;</span> <span class="o editable-keyword">&lt;HOST_FILE_PATH&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy folder from host to container
-</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o">&lt;HOST_FOLDER_PATH&gt;</span>/. <span class="o">&lt;CONTAINER_ID&gt;</span>:<span class="o">&lt;CONTAINER_TARGET_PATH&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o editable-keyword">&lt;HOST_FOLDER_PATH&gt;</span>/. <span class="o editable-keyword">&lt;CONTAINER_ID&gt;</span>:<span class="o editable-keyword">&lt;CONTAINER_TARGET_PATH&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy folder from container to host
-</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o">&lt;CONTAINER_ID&gt;</span>:<span class="o">&lt;CONTAINER_FOLDER_PATH&gt;</span>/. <span class="o">&lt;HOST_TARGET_PATH&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="go">sudo docker cp <span class="o editable-keyword">&lt;CONTAINER_ID&gt;</span>:<span class="o editable-keyword">&lt;CONTAINER_FOLDER_PATH&gt;</span>/. <span class="o editable-keyword">&lt;HOST_TARGET_PATH&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><hr>
 <h3 id="explore-docker-image">Explore Docker image</h3>
@@ -342,7 +213,7 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/wagoodman/
 </span></span><span class="line"><span class="cl"><span class="go">REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 </span></span></span><span class="line"><span class="cl"><span class="go">alpine       latest    d7d3d98c851f   2 years ago   5.53MB
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Mount host root filesystem
-</span></span><span class="line"><span class="cl"><span class="go">docker run -v /:/mnt -it <span class="o">&lt;IMAGE_ID&gt;</span> sh
+</span></span><span class="line"><span class="cl"><span class="go">docker run -v /:/mnt -it <span class="o editable-keyword">&lt;IMAGE_ID&gt;</span> sh
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> docker run -v /:/mnt -it d7d3d98c851f sh  
 </span></span><span class="line"><span class="cl"><span class="go">/ # 
@@ -359,12 +230,12 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/wagoodman/
 <span class="line"><span class="cl"><span class="go">root@2d24bf61767c:/root# curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
 </span></span></span><span class="line"><span class="cl"><span class="go">[{"Containers":-1,"Created":1590787186,"Id":"sha256:a24bb4013296f61e89ba57005a7b3e52274d8edd3ae2077d04395f806b63d83e","Labels":null,"ParentId":"","RepoDigests":null,"RepoTags":["sandbox:latest"],"SharedSize":-1,"Size":5574537,"VirtualSize":5574537},{"Containers":-1,"Created":1588544489,"Id":"sha256:188a2704d8b01d4591334d8b5ed86892f56bfe1c68bee828edc2998fb015b9e9","Labels":null,"ParentId":"","RepoDigests":["&lt;none&gt;@&lt;none&gt;"],"RepoTags":["&lt;none&gt;:&lt;none&gt;"],"SharedSize":-1,"Size":1056679100,"VirtualSize":1056679100}]
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create container
-</span></span><span class="line"><span class="cl"><span class="go">curl -s -X POST -H 'Content-Type: application/json' --data-binary '{"Image": "<span class="o">&lt;IMAGE_NAME&gt;</span>:latest","HostConfig": {"Binds": ["/:/r"]}, "Cmd": ["/bin/sh", "-c", "ls -la /r/root/"], "Tty": true}' --unix-socket /var/run/docker.sock http://localhost/containers/create
+</span></span><span class="line"><span class="cl"><span class="go">curl -s -X POST -H 'Content-Type: application/json' --data-binary '{"Image": "<span class="o editable-keyword">&lt;IMAGE_NAME&gt;</span>:latest","HostConfig": {"Binds": ["/:/r"]}, "Cmd": ["/bin/sh", "-c", "ls -la /r/root/"], "Tty": true}' --unix-socket /var/run/docker.sock http://localhost/containers/create
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">(remote) root@2d24bf61767c:/root# curl -s -X POST -H 'Content-Type: application/json' --data-binary '{"Image": "sandbox:latest","HostConfig": {"Binds": ["/:/r"]}, "Cmd": ["/bin/sh", "-c", "ls -la /r/root/"], "Tty": true}' --unix-socket /var/run/docker.sock http://localhost/containers/create
 </span></span></span><span class="line"><span class="cl"><span class="go">{"Id":"ec28a9d1ae931fb81ac1c2640d1aac24bf1e7172bd6c42f02400659c299157cd","Warnings":[]}
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start container
-</span></span><span class="line"><span class="cl"><span class="go">curl -i -X POST -H 'Content-Type: application/json' --unix-socket /var/run/docker.sock http://localhost/containers/<span class="o">&lt;CONTAINER_ID&gt;</span>/start
+</span></span><span class="line"><span class="cl"><span class="go">curl -i -X POST -H 'Content-Type: application/json' --unix-socket /var/run/docker.sock http://localhost/containers/<span class="o editable-keyword">&lt;CONTAINER_ID&gt;</span>/start
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">(remote) root@2d24bf61767c:/root# curl -i -X POST -H 'Content-Type: application/json' --unix-socket /var/run/docker.sock http://localhost/containers/9115/start
 </span></span></span><span class="line"><span class="cl"><span class="go">HTTP/1.1 204 No Content
@@ -374,7 +245,7 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/wagoodman/
 </span></span></span><span class="line"><span class="cl"><span class="go">Server: Docker/19.03.8 (linux)
 </span></span></span><span class="line"><span class="cl"><span class="go">Date: Mon, 23 Sep 2024 04:29:11 GMT
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show results
-</span></span><span class="line"><span class="cl"><span class="go">curl -s --unix-socket /var/run/docker.sock "http://localhost/containers/<span class="o">&lt;CONTAINER_ID&gt;</span>/logs?stderr=1&amp;stdout=1"
+</span></span><span class="line"><span class="cl"><span class="go">curl -s --unix-socket /var/run/docker.sock "http://localhost/containers/<span class="o editable-keyword">&lt;CONTAINER_ID&gt;</span>/logs?stderr=1&amp;stdout=1"
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">(remote) root@2d24bf61767c:/root# curl -s --unix-socket /var/run/docker.sock "http://localhost/containers/9115/logs?stderr=1&amp;stdout=1"
 </span></span></span><span class="line"><span class="cl"><span class="go">total 56
