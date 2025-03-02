@@ -539,7 +539,7 @@ proxychains4 curl http://172.16.1.100:1081
 
 ```console
 # SSH port forwarding without spawning a shell
-ssh -N -L <TARGET_PORT>:127.0.0.1:<TARGET_PORT> <USER>@<TARGET>
+sshpass -p '<PASSWORD>' ssh -N -L <TARGET_PORT>:127.0.0.1:<TARGET_PORT> <USER>@<TARGET>
 ```
 
 ```console {class=sample-code}
@@ -549,7 +549,7 @@ $ ssh -N -L 5985:127.0.0.1:5985 3v4Si0N@10.10.10.240
 
 ```console
 # SSH socks5 tunneling without spawning a shell
-ssh -N -D 1081 <USER>@<TARGET>
+sshpass -p '<PASSWORD>' ssh -N -D 1081 <USER>@<TARGET>
 ```
 
 ```console {class=sample-code}

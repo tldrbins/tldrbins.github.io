@@ -33,7 +33,7 @@ sudo docker rmi -f $(sudo docker images -aq)
 
 ```console
 # Shell in docker
-sudo docker exec -it <CONTAINER_NAME> sh
+sudo docker exec -it <CONTAINER_ID> bash
 ```
 
 ```console

@@ -28,6 +28,11 @@ ping <TARGET>
 Test-NetConnection <TARGET> -Port <TARGET_PORT>
 ```
 
+```console
+# With Active Directory Module Installed
+Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name='IPAddress';Expression={(Test-Connection -ComputerName $_.Name -Count 1).IPV4Address}}}
+```
+
 {{< /tabcontent >}}
 
 ### Test reverse connectivity
