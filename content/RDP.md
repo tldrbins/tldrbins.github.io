@@ -21,7 +21,13 @@ netsh advfirewall firewall add rule name="Open Port 3389 IN" dir=in action=allow
 {{< tabcontent set1 tab1 >}}
 
 ```console
+# Password
 xfreerdp /u:'<USER>' /p:'<PASSWORD>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1400x1080
+```
+
+```console
+# NTLM
+xfreerdp /u:'<USER>' /pth:'<HASH>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1400x1080
 ```
 
 {{< /tabcontent >}}

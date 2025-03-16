@@ -124,6 +124,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 
 {{< tab set3 tab1 >}}smbmap{{< /tab >}}
 {{< tab set3 tab2 >}}smbclient{{< /tab >}}
+{{< tab set3 tab3 >}}nxc{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console
@@ -266,6 +267,24 @@ smbclient  \\\\<TARGET>\\<SHARE>\\ -U '<DOMAIN>/<USER>%<PASSWORD>'
 $ smbclient  \\\\10.10.11.102\\Shared\\ -U 'windcorp.htb/localadmin%Secret123'
 Try "help" to get a list of possible commands.
 smb: \>
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set3 tab3 >}}
+
+```console
+# Spidering Shares
+nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -M spider_plus
+```
+
+```console
+# Send a File to the Remote Target
+nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> --share <SHARE> --put-file <FILE> \\<FILE>
+```
+
+```console
+# Get a File From the Remote Target
+nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> --share <SHARE> --get-file \\<FILE> <FILE>
 ```
 
 {{< /tabcontent >}}

