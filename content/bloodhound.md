@@ -12,7 +12,7 @@ tags: ["Bloodhound", "Sharphound", "Sliver", "Enumeration", "Active Directory", 
 {{< tabcontent set1 tab1 >}}
 
 ```console
-# With password
+# Password
 bloodhound-python -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -dc <DC> -ns <DC_IP> -c all --zip
 ```
 
@@ -34,7 +34,7 @@ INFO: Compressing output into 20240923035110_bloodhound.zip
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 sudo ntpdate -s <DC> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip -no-pass --use-ldaps
 ```
 
@@ -46,7 +46,13 @@ sudo ntpdate -s <DC> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC> -n
 {{< tabcontent set1 tab2 >}}
 
 ```console
+# Password
 nxc ldap <DC> -u '<USER>' -p '<PASSWORD>' --bloodhound --collection All --dns-tcp --dns-server <DC_IP>
+```
+
+```console
+# NTLM
+nxc ldap <DC> -u '<USER>' -H '<HASH>' --bloodhound --collection All --dns-tcp --dns-server <DC_IP>
 ```
 
 {{< /tabcontent >}}

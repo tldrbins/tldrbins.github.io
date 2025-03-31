@@ -1,6 +1,6 @@
 ---
 title: "RPC"
-date: 2024-7-2
+date: 2025-3-31
 tags: ["Impacket", "Domain Controller", "Nxc", "Active Directory", "Windows", "Enumeration", "SID"]
 ---
 
@@ -13,7 +13,7 @@ tags: ["Impacket", "Domain Controller", "Nxc", "Active Directory", "Windows", "E
 {{< tabcontent set1 tab1 >}}
 
 ```console
-# Connect without creds
+# Anonymous
 rpcclient -U '' -N <TARGET>
 ```
 
@@ -23,12 +23,17 @@ rpcclient $>
 ```
 
 ```console
-# Connect with creds
+# Password
 rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET>
 ```
 
 ```console
-# Inline execute command
+# NTLM
+rpcclient -U '<DOMAIN>/<USER>%<HASH>' --pw-nt-hash <TARGET>
+```
+
+```console
+# Inline Execute Command
 rpcclient -U '<DOMAIN>/<USER>%<PASSWORD>' <TARGET> -c 'querydispinfo'
 ```
 

