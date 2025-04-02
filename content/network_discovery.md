@@ -1,10 +1,10 @@
 ---
 title: "Network Discovery"
-date: 2024-6-26
+date: 2025-4-2
 tags: ["Port Scanning", "Arp", "Iptables", "Tcpdump", "Packet Sniffing", "Reconnaissance", "Port", "Network", "Discovery", "Ping"]
 ---
 
-### Test connectivity
+#### Test Connectivity
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
@@ -35,7 +35,9 @@ Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name='IPA
 
 {{< /tabcontent >}}
 
-### Test reverse connectivity
+---
+
+#### Test Reverse Connectivity
 
 {{< tab set2 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
@@ -46,7 +48,9 @@ sudo tcpdump -ni tun0 icmp
 
 {{< /tabcontent >}}
 
-### Sniff network traffic
+---
+
+#### Sniff Network Traffic
 
 {{< tab set3 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
@@ -65,7 +69,7 @@ tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 byt
 ```
 
 ```console
-# For example: on port 389
+# Sniff on a port
 sudo tcpdump -i lo -nnXs 0 'port <TARGET_PORT>'
 ```
 
@@ -78,7 +82,9 @@ sudo ./mitmdump -p 443 --mode reverse:https://<DOMAIN> --ssl-insecure --set flow
 
 {{< /tabcontent >}}
 
-### Use ping to scan subnet
+---
+
+#### Quick Subnet Scan
 
 {{< tab set4 tab1 >}}Linux{{< /tab >}}
 {{< tab set4 tab2 >}}Windows{{< /tab >}}
@@ -108,10 +114,13 @@ for i in $(seq 1 254); do for j in $(seq 1 254); do (ping -c 1 <SUBNET>.${i}.${j
 
 {{< /tabcontent >}}
 
-### Quick scan ports
+---
+
+#### Quick Port Scan
 
 {{< tab set5 tab1 >}}Linux{{< /tab >}}
 {{< tab set5 tab2 >}}Windows{{< /tab >}}
+{{< tab set5 tab3 >}}Sliver{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
 ```console
@@ -122,12 +131,70 @@ for i in $(seq 1 65535); do (nc -zvn <TARGET> ${i} 2>&1 | grep -v "Connection re
 {{< tabcontent set5 tab2 >}}
 
 ```console
+# This is SLOW
 1..65535 | % {echo ((new-object Net.Sockets.TcpClient).Connect('<TARGET>',$_)) "Port $_ is open!"} 2>$null
 ```
 
 {{< /tabcontent >}}
+{{< tabcontent set5 tab3 >}}
 
-### Check arp table
+```console
+# This is QUICK
+ascan <SUBNET>.1-254
+```
+
+```console {class="sample-code"}
+sliver (session) > ascan 192.168.99.1-254
+
+[*] Successfully executed ascan
+[*] Got output:
+ _____     _   _____             
+|  _  |___| |_|   __|___ ___ ___                                                                                                                                                                                    
+|     |  _|  _|__   |  _| .'|   |                                                                                                                                                                                   
+|__|__|_| |_| |_____|___|__,|_|_|                                                                                                                                                                                   
+ArtScan by @art3x         ver 1.1                                                                                                                                                                                   
+[.] Scanning IP(s): 192.168.99.1-254
+[.] PORT(s): TOP 120                                                                                                                                                                                                
+[.] Threads: 20   Rechecks: 0   Timeout: 100                                                                                                                                                                        
+192.168.99.1:445 is open.                                                                                                                                                                                           
+192.168.99.1:139 is open.
+192.168.99.1:464 is open.
+192.168.99.1:88 is open.
+192.168.99.1:389 is open.
+192.168.99.1:80 is open. code:301 len:169 title:301 Moved Permanently
+192.168.99.1:135 is open.
+192.168.99.1:53 is open.
+192.168.99.1:593 is open. ncacn_http/1.0
+192.168.99.1:2179 is open.
+192.168.99.1:3268 is open.
+192.168.99.1:5985 is open. code:404 len:315 title:
+192.168.99.1:47001 is open. code:404 len:315 title:
+192.168.99.1:9389 is open.
+------------------
+192.168.99.2:445 is open.
+192.168.99.2:139 is open.
+192.168.99.2:135 is open.
+192.168.99.2:5985 is open. code:404 len:315 title:
+192.168.99.2:47001 is open. code:404 len:315 title:
+------------------
+192.168.99.12:22 is open. SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.7
+------------------
+
+Summary:
+192.168.99.1: 53,80,88,135,139,389,445,464,593,2179,3268,5985,9389,47001
+192.168.99.2: 135,139,445,5985,47001
+192.168.99.12: 22
+
+Scan Duration: 8.88 s
+```
+
+<small>*Ref: [ascan](https://github.com/art3x/ascan)*</small>
+
+{{< /tabcontent >}}
+
+---
+
+#### Check ARP Table
 
 {{< tab set6 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
@@ -142,14 +209,15 @@ cat /proc/net/arp
 
 {{< /tabcontent >}}
 
-### Check IP
+---
+
+#### Check IP
 
 {{< tab set7 tab1 >}}Linux{{< /tab >}}
 {{< tab set7 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set7 tab1 >}}
 
 ```console
-# Linux
 ifconfig
 ```
 
@@ -165,8 +233,7 @@ cat /proc/net/fib_trie
 {{< tabcontent set7 tab2 >}}
 
 ```console
-# Get local IP
-ipconfig
+ipconfig /all
 ```
 
 ```console
@@ -186,7 +253,9 @@ Get-ADComputer -Filter * -Properties IPv4Address | select name,IPV4Address
 
 {{< /tabcontent >}}
 
-### Check network connections
+---
+
+#### Check Network Connections
 
 {{< tab set8 tab1 >}}Linux{{< /tab >}}
 {{< tab set8 tab2 >}}Windows{{< /tab >}}
@@ -240,12 +309,12 @@ ss -tnl
 {{< tabcontent set8 tab2 >}}
 
 ```console
-# List only listening ports
+# List listening ports
 netstat -ano | findstr LISTENING
 ```
 
 ```console
-# List tcp listening ports and processes
+# List TCP listening ports and processes
 Get-NetTCPConnection -State Listen | Select-Object -Property *,@{'Name' = 'ProcessName';'Expression'={(Get-Process -Id $_.OwningProcess).Name}} | Format-Table -Property LocalAddress,LocalPort,OwningProcess,ProcessName
 ```
 

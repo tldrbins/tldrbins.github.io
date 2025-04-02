@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description>Test connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; # With Active Directory Module Installed Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name=&amp;#39;IPAddress&amp;#39;;Expression={(Test-Connection -ComputerName $_.Name -Count 1).IPV4Address}}} Test reverse connectivity Linux sudo tcpdump -ni tun0 icmp Sniff network traffic Linux # Sniff on network adapter sudo tcpdump -i eth0 -w packets.pcap root@NIX01:/dev/shm# sudo tcpdump -i eth0 -w packets.</description>
+      <description>Test Connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; # With Active Directory Module Installed Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name=&amp;#39;IPAddress&amp;#39;;Expression={(Test-Connection -ComputerName $_.Name -Count 1).IPV4Address}}} Test Reverse Connectivity Linux sudo tcpdump -ni tun0 icmp Sniff Network Traffic Linux # Sniff on network adapter sudo tcpdump -i eth0 -w packets.pcap root@NIX01:/dev/shm# sudo tcpdump -i eth0 -w packets.</description>
     </item>
     <item>
       <title>Nmap</title>
