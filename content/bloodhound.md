@@ -47,12 +47,22 @@ sudo ntpdate -s <DC> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC> -n
 
 ```console
 # Password
-nxc ldap <DC> -u '<USER>' -p '<PASSWORD>' --bloodhound --collection All --dns-tcp --dns-server <DC_IP>
+nxc ldap <DC> -u '<USER>' -p '<PASSWORD>' --bloodhound --collection All --dns-server <DC_IP>
 ```
 
 ```console
 # NTLM
-nxc ldap <DC> -u '<USER>' -H '<HASH>' --bloodhound --collection All --dns-tcp --dns-server <DC_IP>
+nxc ldap <DC> -u '<USER>' -H '<HASH>' --bloodhound --collection All --dns-server <DC_IP>
+```
+
+```console
+# Kerberos
+nxc ldap <DC> -u '<USER>' -k --use-kcache --bloodhound --collection All --dns-server <DC_IP>
+```
+
+```console
+# Socks5
+proxychains4 -q nxc ldap <DC> -u '<USER>' -p '<PASSWORD>' --bloodhound --collection All --dcn-tcp --dns-server <DC_IP>
 ```
 
 {{< /tabcontent >}}
