@@ -34,6 +34,11 @@ INFO: Compressing output into 20240923035110_bloodhound.zip
 ```
 
 ```console
+# NTLM
+bloodhound-python -d <DOMAIN> -u '<USER>' --hashes ':<HASH>' -dc <DC> -ns <DC_IP> -c all --zip
+```
+
+```console
 # Kerberos
 sudo ntpdate -s <DC> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip -no-pass --use-ldaps
 ```

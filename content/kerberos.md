@@ -11,7 +11,7 @@ tags: ["Kerberos", "Pass-The-Ticket", "Hash Cracking", "Rubeus", "Password Crack
 {{< tabcontent set1 tab1 >}}
 
 ```console
-kerbrute userenum --domain <DOMAIN> --dc <DC> <USERNAMES>
+kerbrute userenum --domain <DOMAIN> --dc <DC> <USERS_FILE>
 ```
 
 ```console {class="sample-code"}
@@ -47,7 +47,7 @@ use auxiliary/gather/kerberos_enumusers
 ```
 
 ```console
-set user_file <USERNAMES>
+set user_file <USERS_FILE>
 ```
 
 ```console
@@ -84,7 +84,7 @@ msf6 auxiliary(gather/kerberos_enumusers) > run
 {{< tabcontent set2 tab1 >}}
 
 ```console
-./username-anarchy -i <USERS> | tee <USERNAMES>
+./username-anarchy -i <USERS> | tee <USERS_FILE>
 ```
 
 ```console {class="sample-code"}

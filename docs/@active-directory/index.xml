@@ -48,7 +48,7 @@
       <link>https://tldrbins.github.io/adcs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/adcs/</guid>
-      <description>Enum (From Linux) certipy-ad nxc certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .\certify.exe find # Find vuln templates .\certify.exe find /vulnerable /currentuser # Import ADCSTemplate module import-module .</description>
+      <description>Enum (From Linux) certipy-ad nxc # Password certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable # NTLM certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -hashes &amp;#39;&amp;lt;HASH&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable # Password nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs # NTLM nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -H &amp;#39;&amp;lt;HASH&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .</description>
     </item>
     <item>
       <title>AddKeyCredentialLink</title>
@@ -160,7 +160,7 @@
       <link>https://tldrbins.github.io/kerberos/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/kerberos/</guid>
-      <description>Users Enum kerbrute metasploit kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERNAMES&amp;gt; $ kerbrute userenum --domain absolute.htb --dc dc.absolute.htb usernames.txt __ __ __ / /_____ _____/ /_ _______ __/ /____ / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \ / ,&amp;lt; / __/ / / /_/ / / / /_/ / /_/ __/ /_/|_|\___/_/ /_.___/_/ \__,_/\__/\___/ Version: v1.0.3 (9dad6e1) - 09/24/24 - Ronnie Flathers @ropnop 2024/09/24 14:54:41 &amp;gt; Using KDC(s): 2024/09/24 14:54:41 &amp;gt; dc.</description>
+      <description>Users Enum kerbrute metasploit kerbrute userenum --domain &amp;lt;DOMAIN&amp;gt; --dc &amp;lt;DC&amp;gt; &amp;lt;USERS_FILE&amp;gt; $ kerbrute userenum --domain absolute.htb --dc dc.absolute.htb usernames.txt __ __ __ / /_____ _____/ /_ _______ __/ /____ / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \ / ,&amp;lt; / __/ / / /_/ / / / /_/ / /_/ __/ /_/|_|\___/_/ /_.___/_/ \__,_/\__/\___/ Version: v1.0.3 (9dad6e1) - 09/24/24 - Ronnie Flathers @ropnop 2024/09/24 14:54:41 &amp;gt; Using KDC(s): 2024/09/24 14:54:41 &amp;gt; dc.</description>
     </item>
     <item>
       <title>Krbrelayx</title>
