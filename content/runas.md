@@ -1,7 +1,7 @@
 ---
 title: "Runas"
 date: 2024-7-10
-tags: ["Powershell", "Credential Object", "Windows", "Runas"]
+tags: ["Powershell", "Credential Object", "Windows", "Runas", "UAC"]
 ---
 
 ### RunasCS

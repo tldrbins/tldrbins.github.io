@@ -1,6 +1,6 @@
 ---
 title: "Cron Jobs"
-date: 2024-7-10
+date: 2025-7-9
 tags: ["Cron", "Scheduled Tasks", "Linux"]
 ---
 
@@ -21,12 +21,12 @@ cat /etc/crontab
 crontab -l
 ```
 
-### Check background processes
+### Check Background Processes
 
 ```console
-./pspy
+./pspy64
 ```
 
-<small>*Ref: [pspy](https://github.com/DominicBreuker/pspy)*</small>
+<small>*Ref: [pspy64](https://github.com/DominicBreuker/pspy)*</small>
 
 {{< /tabcontent >}}
