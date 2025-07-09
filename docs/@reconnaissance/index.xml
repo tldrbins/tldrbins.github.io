@@ -79,11 +79,11 @@
       <description>feroxbuster wfuzz gobuster bfac ds_walk HTTP feroxbuster -u &amp;lt;TARGET&amp;gt; --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links HTTPS feroxbuster -u &amp;lt;TARGET&amp;gt; -k --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt --dont-extract-links Specify Extension feroxbuster -u &amp;lt;TARGET&amp;gt; --methods=GET,POST --depth=1 -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.txt -x html, asp, aspx Add trailing slash &amp;apos;/&amp;apos; to each request feroxbuster -u &amp;lt;TARGET&amp;gt; -f --depth 1 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt API Fuzzing feroxbuster -u &amp;lt;TARGET&amp;gt; --force-recursion -C 404,405 --methods=GET,POST -w /usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt Fuzzing Number Range wfuzz -z range,1-99 &amp;lt;TARGET&amp;gt;/FUZZ gobuster dir -u &amp;lt;TARGET&amp;gt; -w /usr/share/seclists/Discovery/Web-Content/raft-medium-words.</description>
     </item>
     <item>
-      <title>whois</title>
+      <title>WHOIS</title>
       <link>https://tldrbins.github.io/whois/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/whois/</guid>
-      <description>WHOIS # General whois &amp;lt;DOMAIN&amp;gt; # With specific server whois -h &amp;lt;WHOIS_SERVER&amp;gt; -p 43 &amp;lt;DOMAIN&amp;gt; </description>
+      <description>WHOIS # General whois &amp;lt;DOMAIN&amp;gt; # With Specific Server whois -h &amp;lt;WHOIS_SERVER&amp;gt; -p 43 &amp;lt;DOMAIN&amp;gt; </description>
     </item>
     <item>
       <title>Wordpress</title>

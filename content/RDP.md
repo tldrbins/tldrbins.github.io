@@ -22,12 +22,27 @@ netsh advfirewall firewall add rule name="Open Port 3389 IN" dir=in action=allow
 
 ```console
 # Password
-xfreerdp /u:'<USER>' /p:'<PASSWORD>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1400x1080
+xfreerdp /u:'<USER>' /p:'<PASSWORD>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1920x1080
 ```
 
 ```console
 # NTLM
-xfreerdp /u:'<USER>' /pth:'<HASH>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1400x1080
+xfreerdp /u:'<USER>' /pth:'<HASH>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1920x1080
+```
+
+```console
+# xfreerdp3 (Anonymous)
+xfreerdp3 /v:<TARGET> /smart-sizing:1920x1080 /clipboard:direction-to:all /sec:nla:off
+```
+
+```console
+# xfreerdp3 (Password)
+xfreerdp3 /u:'<USER>' /p:'<PASSWORD>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1920x1080 /clipboard:direction-to:all /sec:nla:off
+```
+
+```console
+# xfreerdp3 (Socks5)
+xfreerdp3 /u:'<USER>' /p:'<PASSWORD>' /d:<DOMAIN> /v:<TARGET> /smart-sizing:1920x1080 /clipboard:direction-to:all /sec:nla:off /proxy:socks5://127.0.0.1:1080
 ```
 
 {{< /tabcontent >}}

