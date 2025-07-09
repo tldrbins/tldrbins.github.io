@@ -54,7 +54,7 @@ CanonicalName                   : example.com/Deleted Objects/Another User
                                   DEL:ebe15df5-e265-45ec-b7fc-359877217138
 CN                              : Another User
                                   DEL:ebe15df5-e265-45ec-b7fc-359877217138
-...[SNIP]...
+---[SNIP]---
 ```
 
 #### 4. Restore the deleted account

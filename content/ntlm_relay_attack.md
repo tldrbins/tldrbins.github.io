@@ -210,7 +210,7 @@ Trying pipe lsarpc
 [-] Sending EfsRpcEncryptFileSrv!
 [+] Got expected ERROR_BAD_NETPATH exception!!
 [+] Attack worked!
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [PetitPotam](https://github.com/topotam/PetitPotam)*</small>

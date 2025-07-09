@@ -39,7 +39,7 @@ LogBlocked                      : False
 LogIgnored                      : NotConfigured
 DisabledInterfaceAliases        : {NotConfigured}
 
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console
@@ -70,7 +70,7 @@ EnforcementStatus     : NotApplicable
 PolicyStoreSource     : PersistentStore
 PolicyStoreSourceType : Local
 
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console
@@ -101,7 +101,7 @@ EnforcementStatus     : NotApplicable
 PolicyStoreSource     : PersistentStore
 PolicyStoreSourceType : Local
 
-...[SNIP]...
+---[SNIP]---
 ```
 
 {{< /tabcontent >}}
@@ -116,7 +116,7 @@ cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
 Rule Name:                            World Wide Web Services (HTTPS Traffic-In)
 Rule Name:                            World Wide Web Services (HTTP Traffic-In)
 Rule Name:                            Shell Input Application
-...[SNIP]...
+---[SNIP]---
 Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv6-In)
 Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv4-In)
 Rule Name:                            Virtual Machine Monitoring (DCOM-In)

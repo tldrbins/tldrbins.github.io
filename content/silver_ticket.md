@@ -47,7 +47,7 @@ LogonTime:
     dwLowDateTime:                   4131845666 
     dwHighDateTime:                  31133135 
 
-...[SNIP]...
+---[SNIP]---
  
 Domain SID: S-1-5-21-4078382237-1492182817-2568127209
 
@@ -252,7 +252,7 @@ Filter: (objectclass=User)
 
 [*] base64(ticket.kirbi):
 
-      doIFUTCCBU ...[SNIP]... F1ZWwuaHRi
+      doIFUTCCBU ---[SNIP]--- F1ZWwuaHRi
 
 
 [+] Ticket successfully imported!

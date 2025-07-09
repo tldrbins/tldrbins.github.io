@@ -11,7 +11,7 @@ tags: ["Domain", "Reconnaissance", "Enumeration", "DNS", "Dig", "Zone Transfer"]
 ### Zone Transfer
 
 ```console
-dig +noall +answer <DOMAIN> axfr @<TARGET>
+dig +noall +answer @<NAME_SERVER> <DOMAIN> AXFR 
 ```
 
 ```console {class="sample-code"}
@@ -32,23 +32,49 @@ snoopy.htb.             86400   IN      SOA     ns1.snoopy.htb. ns2.snoopy.htb. 
 ### Domain Discovery
 
 ```console
-dig +noall +answer @<TARGET> <DOMAIN>
+nslookup -querytype=<TYPE> <DOMAIN>
 ```
 
 ```console {class="sample-code"}
-$ dig +noall +answer @10.10.11.212 snoopy.htb
+$ nslookup -querytype=ANY google.com
+Server:         192.168.1.1
+Address:        192.168.1.1#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 142.250.197.174
+Name:   google.com
+Address: 2404:6800:4005:823::200e
+google.com
+        origin = ns1.google.com
+        mail addr = dns-admin.google.com
+        serial = 780174493
+        refresh = 900
+        retry = 900
+        expire = 1800
+        minimum = 60
+google.com      nameserver = ns3.google.com.
+google.com      nameserver = ns1.google.com.
+google.com      nameserver = ns2.google.com.
+google.com      nameserver = ns4.google.com.
+
+Authoritative answers can be found from:
 ```
 
 ```console
-dig +noall +answer @<TARGET> -x <TARGET>
+dig +noall +answer @<NAME_SERVER> <DOMAIN> <TYPE>
 ```
 
 ```console {class="sample-code"}
-$ dig +noall +answer @10.10.11.212 -x 10.10.11.212
+$ dig +noall +answer @8.8.8.8 google.com ANY
+google.com.             300     IN      A       142.250.196.238
+google.com.             300     IN      AAAA    2404:6800:4005:80b::200e
+---[SNIP]---
 ```
 
 ```console
-dig +noall +answer @<TARGET> +short <DOMAIN> any
+# Concise Output
+dig +noall +answer +short @<NAME_SERVER> <DOMAIN> <TYPE>
 ```
 
 ```console {class="sample-code"}
@@ -58,14 +84,28 @@ ns2.snoopy.htb.
 ns1.snoopy.htb.
 ```
 
+<br>
+
+```
+A     - Address record
+AAAA  - IPv6 address record
+MX    - Mail exchange record
+NS    - Name server record
+TXT   - Text record
+CNAME - Canonical name record
+SOA   - Start of Authority record
+ANY   - Retrieves all available record types (not always supported)
+```
+
+<br>
+
 ```console
-dig +noall +answer @<TARGET> -t NS <DOMAIN>
+# Reverse Lookup
+dig +noall +answer @<NAME_SERVER> -x <IP>
 ```
 
 ```console {class="sample-code"}
-$ dig +noall +answer @10.10.11.212 -t NS snoopy.htb
-snoopy.htb.             86400   IN      NS      ns1.snoopy.htb.
-snoopy.htb.             86400   IN      NS      ns2.snoopy.htb.
+$ dig +noall +answer @10.10.11.212 -x 10.10.11.212
 ```
 
 {{< /tabcontent >}}

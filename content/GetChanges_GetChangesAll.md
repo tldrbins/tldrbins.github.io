@@ -24,7 +24,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8:::
-...[SNIP]...
+---[SNIP]---
 [*] Cleaning up...
 ```
 
@@ -42,7 +42,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8:::
-...[SNIP]...
+---[SNIP]---
 [*] Cleaning up...
 ```
 
@@ -88,7 +88,7 @@ Credentials:
     ntlm- 1: c718f548c75062ada93250db208d3178
     lm  - 0: 336d863559a3f7e69371a85ad959a675
 
-...[SNIP]...
+---[SNIP]---
 
 mimikatz(commandline) # exit
 Bye!

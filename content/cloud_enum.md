@@ -38,12 +38,12 @@ Brute-list:  /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt
   OPEN S3 BUCKET: http://example.com.s3.amazonaws.com/
       FILES:
       ->http://example.com.s3.amazonaws.com/example.com
-...[SNIP]...
+---[SNIP]---
       ->http://example.com.s3.amazonaws.com/tmp/
       ->http://example.com.s3.amazonaws.com/tmp/abcd1234/
       ->http://example.com.s3.amazonaws.com/tmp/abcd1234/.htaccess
       ->http://example.com.s3.amazonaws.com/tmp/abcd1234/.htpasswd
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [cloud_enum](https://github.com/initstring/cloud_enum)*</small>

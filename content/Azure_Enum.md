@@ -114,7 +114,7 @@ roadtx gettokens --refresh-token '<SECRET>' -c '<CLIENT_ID>'
 
 ```console {class="sample-code"}
 ┌──(venv)─(kali㉿kali)-[~]
-└─$ roadtx gettokens --refresh-token '1.Aa8AA...[SNIP]...zt4WQ' -c '04b07...[SNIP]...f7b46'
+└─$ roadtx gettokens --refresh-token '1.Aa8AA---[SNIP]---zt4WQ' -c '04b07---[SNIP]---f7b46'
 Requesting token for resource https://graph.windows.net
 Tokens were written to .roadtools_auth
 ```

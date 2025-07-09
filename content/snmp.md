@@ -43,7 +43,7 @@ SNMP Bruteforce & Enumeration Script v2.0
 http://www.secforce.com / nikos.vassakis <at> secforce.com
 ###############################################################
 
-...[SNIP]...                                                                                                                                                                       
+---[SNIP]---                                                                                                                                                                       
 Identified Community strings                                                                                                                                                                                        
         0) 10.10.11.248    public (v1)(RO)
         1) 10.10.11.248    public (v2c)(RO)
@@ -95,7 +95,7 @@ SNMPv2-MIB::sysObjectID.0 = OID: NET-SNMP-MIB::netSnmpAgentOIDs.10
 DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (33245) 0:05:32.45
 SNMPv2-MIB::sysContact.0 = STRING: Me <root@monitored.htb>
 SNMPv2-MIB::sysName.0 = STRING: monitored
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console
@@ -109,7 +109,7 @@ SNMPv2-MIB::sysObjectID.0 = OID: NET-SNMP-MIB::netSnmpAgentOIDs.10
 DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (61445) 0:10:14.45
 SNMPv2-MIB::sysContact.0 = STRING: Me <root@monitored.htb>
 SNMPv2-MIB::sysName.0 = STRING: monitored
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console
@@ -138,7 +138,7 @@ SNMPv2-MIB::sysObjectID.0 = OID: NET-SNMP-MIB::netSnmpAgentOIDs.10
 DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (99347) 0:16:33.47
 SNMPv2-MIB::sysContact.0 = STRING: Me <root@monitored.htb>
 SNMPv2-MIB::sysName.0 = STRING: monitored
-...[SNIP]...
+---[SNIP]---
 ```
 
 {{< /tabcontent >}}

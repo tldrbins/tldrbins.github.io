@@ -104,7 +104,7 @@ mount
 ```console {class="sample-code"}
 $ mount     
 
-...[SNIP]...
+---[SNIP]---
 10.10.11.191:/home/ross on /mnt/share type nfs4 (rw,relatime,vers=4.2,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.10.14.31,local_lock=none,addr=10.10.11.191)
 ```
 

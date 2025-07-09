@@ -14,7 +14,7 @@ $s = cat pass.xml
 ```
 
 ```console {class="sample-code"}
-PS C:\programdata> $s = "01000000d0 ...[SNIP]... e63b3f24ec"
+PS C:\programdata> $s = "01000000d0 ---[SNIP]--- e63b3f24ec"
 ```
 
 ```console
@@ -34,7 +34,7 @@ $ss = Convertto-securestring -string $s
 ```console {class="sample-code"}
 PS C:\programdata> (New-Object System.Management.Automation.PSCredential 'N/A', $ss).GetNetworkCredential().Password
 (New-Object System.Management.Automation.PSCredential 'N/A', $ss).GetNetworkCredential().Password
-AhXpFsOusi ...[SNIP]... 0LxlUqc0Y=
+AhXpFsOusi ---[SNIP]--- 0LxlUqc0Y=
 ```
 
 ```console

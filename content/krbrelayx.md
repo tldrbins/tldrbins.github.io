@@ -17,7 +17,7 @@ sudo responder -I tun0
 ```console {class="sample-code"}
 $ sudo responder -I tun0
 
-...[SNIP]...
+---[SNIP]---
 
 [+] Listening for events...                                                                             
 

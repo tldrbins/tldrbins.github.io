@@ -276,7 +276,7 @@ tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      
 tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                       
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                       
 tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -
-...[SNIP]... 
+---[SNIP]--- 
 ```
 
 ```console
@@ -290,10 +290,10 @@ $ netstat -plunt
  will not be shown, you would have to be root to see it all.)
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-...[SNIP]...                  
+---[SNIP]---                  
 udp        0      0 127.0.0.53:53           0.0.0.0:*                           -                   
 udp        0      0 0.0.0.0:68              0.0.0.0:*                           - 
-...[SNIP]... 
+---[SNIP]--- 
 ```
 
 ```console

@@ -83,7 +83,7 @@ counters
 departments
 groups
 messages
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console
@@ -113,7 +113,7 @@ trudesk> db.accounts.find().pretty()
     __v: 0,
     lastOnline: ISODate('2022-04-07T20:30:32.198Z')
   },
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console

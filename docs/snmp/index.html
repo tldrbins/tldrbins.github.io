@@ -193,7 +193,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">http://www.secforce.com / nikos.vassakis &lt;at&gt; secforce.com
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">#</span><span class="c1">##############################################################</span>
 </span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...                                                                                                                                                                       
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">---[SNIP]---                                                                                                                                                                       
 </span></span></span><span class="line"><span class="cl"><span class="go">Identified Community strings                                                                                                                                                                                        
 </span></span></span><span class="line"><span class="cl"><span class="go">        0) 10.10.11.248    public (v1)(RO)
 </span></span></span><span class="line"><span class="cl"><span class="go">        1) 10.10.11.248    public (v2c)(RO)
@@ -231,7 +231,7 @@ TO-DO</div></pre></div><h4 id="basic-commands">Basic Commands</h4>
 </span></span></span><span class="line"><span class="cl"><span class="go">DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (33245) 0:05:32.45
 </span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysContact.0 = STRING: Me &lt;root@monitored.htb&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysName.0 = STRING: monitored
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">snmpwalk -v2c -c public <span class="o editable-keyword">&lt;TARGET&gt;</span> | tee snmpwalk_result
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> snmpwalk -v2c -c public 10.10.11.248 <span class="p">|</span> tee snmpwalk_result
@@ -240,7 +240,7 @@ TO-DO</div></pre></div><h4 id="basic-commands">Basic Commands</h4>
 </span></span></span><span class="line"><span class="cl"><span class="go">DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (61445) 0:10:14.45
 </span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysContact.0 = STRING: Me &lt;root@monitored.htb&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysName.0 = STRING: monitored
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Query specific OID, e.g, ipAddressIfIndex.ipv6
 </span></span><span class="line"><span class="cl"><span class="go">snmpwalk -v2c -c public <span class="o editable-keyword">&lt;TARGET&gt;</span> ipAddressIfIndex.ipv6
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -256,7 +256,7 @@ TO-DO</div></pre></div><h4 id="basic-commands">Basic Commands</h4>
 </span></span></span><span class="line"><span class="cl"><span class="go">DISMAN-EVENT-MIB::sysUpTimeInstance = Timeticks: (99347) 0:16:33.47
 </span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysContact.0 = STRING: Me &lt;root@monitored.htb&gt;
 </span></span></span><span class="line"><span class="cl"><span class="go">SNMPv2-MIB::sysName.0 = STRING: monitored
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span></div></pre></div></div></div>
 
 <p></p>

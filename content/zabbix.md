@@ -70,7 +70,7 @@ curl -s <TARGET>/zabbix/api_jsonrpc.php -H 'Content-Type: application/json-rpc' 
       "userdirectoryid": "0",
       "ts_provisioned": "0"
     },
-...[SNIP]...
+---[SNIP]---
 }
 ```
 

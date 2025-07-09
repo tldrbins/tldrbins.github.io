@@ -43,7 +43,7 @@ Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 -a----        10/27/2017   4:02 PM             24 flag.txt
 
-...[SNIP]...
+---[SNIP]---
 ```
 
 ### Find a file, with rules

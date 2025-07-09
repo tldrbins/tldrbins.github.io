@@ -195,7 +195,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">      {
 </span></span></span><span class="line"><span class="cl"><span class="go">         "blobSum": "sha256:02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c"
 </span></span></span><span class="line"><span class="cl"><span class="go">      },
-</span></span></span><span class="line"><span class="cl"><span class="go">      ...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">      ---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go">}
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get a commit of the image
 </span></span><span class="line"><span class="cl"><span class="go">curl -s -k --user "<span class="o editable-keyword">&lt;USER&gt;</span>:<span class="o editable-keyword">&lt;PASSWORD&gt;</span>" <span class="o editable-keyword">&lt;TARGET&gt;</span>/v2/<span class="o editable-keyword">&lt;REPO_NAME&gt;</span>/blobs/sha256:<span class="o editable-keyword">&lt;BLOB_HASH&gt;</span> &gt; <span class="o editable-keyword">&lt;BLOB_HASH&gt;</span>.tar.gz
@@ -221,7 +221,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">    [+] Downloading : 3f12770883a63c833eab7652242d55a95aea6e2ecd09e21c29d7d7b354f3d4ee
 </span></span></span><span class="line"><span class="cl"><span class="go">    [+] Downloading : 02666a14e1b55276ecb9812747cb1a95b78056f1d202b087d71096ca0b58c98c
 </span></span></span><span class="line"><span class="cl"><span class="go">    [+] Downloading : c71b0b975ab8204bb66f2b659fa3d568f2d164a620159fc9f9f185d958c352a7
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/Syzik/DockerRegistryGrabber">DockerRegistryGrabber</a></em></small></p></div></div><p></p>
 
 </div>

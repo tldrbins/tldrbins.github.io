@@ -19,7 +19,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 HOME=/var/www
 LOGNAME=www-data
 USER=www-data
-...[SNIP]...
+---[SNIP]---
 
 $ cat /proc/self/environ | grep -aE ('USER'|'LOGNAME')
 LOGNAME=www-data
@@ -38,7 +38,7 @@ USER=www-data
 Traceback (most recent call last)
     File "/app/venv/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
     response = self.handle_exception(e)
-...[SNIP]...
+---[SNIP]---
 ```
 
 #### 3. Get MAC address

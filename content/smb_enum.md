@@ -105,7 +105,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Domain SID is: S-1-5-21-2608251805-3526430372-1546376444
 498: CODER\Enterprise Read-only Domain Controllers (SidTypeGroup)
 500: CODER\Administrator (SidTypeUser)
-...[SNIP]...
+---[SNIP]---
 1000: CODER\DC01$ (SidTypeUser)
 1101: CODER\DnsAdmins (SidTypeAlias)
 1102: CODER\DnsUpdateProxy (SidTypeGroup)

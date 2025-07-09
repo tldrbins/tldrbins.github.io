@@ -133,7 +133,7 @@ ReplicateToSubSites            : True
 ServiceWindowsCount            : 0
 UseCluster                     : 
 PSComputerName                 : SCCM
-...[SNIP]...
+---[SNIP]---
 ```
 
 {{< /tabcontent >}}

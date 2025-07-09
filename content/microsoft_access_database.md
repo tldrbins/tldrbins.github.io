@@ -22,7 +22,7 @@ mdb-tables <MDB_FILE>
 
 ```console {class="sample-code"}
 $ mdb-tables backup.mdb                                                    
-acc_antiback acc_door acc_firstopen acc_firstopen_emp acc_holidays acc_interlock ...[SNIP]...
+acc_antiback acc_door acc_firstopen acc_firstopen_emp acc_holidays acc_interlock ---[SNIP]---
 ```
 
 ```console
@@ -38,7 +38,7 @@ ACGroup: 6
 action_log: 25
 areaadmin: 4
 auth_user: 4
-...[SNIP]...
+---[SNIP]---
 ```
 
 ```console

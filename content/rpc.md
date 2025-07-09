@@ -51,7 +51,7 @@ index: 0xfd0 RID: 0xa35 acb: 0x00000210 Account: dgalanos       Name: Dimitris G
 index: 0xedb RID: 0x1f5 acb: 0x00000215 Account: Guest  Name: (null)    Desc: Built-in account for guest access to the computer/domain
 index: 0xfc3 RID: 0x641 acb: 0x00000210 Account: mhope  Name: Mike Hope Desc: (null)
 index: 0xfd1 RID: 0xa36 acb: 0x00000210 Account: roleary        Name: Ray O'Leary       Desc: (null)
-...[SNIP]....
+---[SNIP]---.
 ```
 
 ```console
@@ -66,7 +66,7 @@ user:[AAD_987d7f2f57d2] rid:[0x450]
 user:[mhope] rid:[0x641]
 user:[SABatchJobs] rid:[0xa2a]
 user:[svc-ata] rid:[0xa2b]
-...[SNIP]....
+---[SNIP]---.
 ```
 
 ```console
@@ -81,7 +81,7 @@ group:[Domain Users] rid:[0x201]
 group:[Domain Guests] rid:[0x202]
 group:[Domain Computers] rid:[0x203]
 group:[Group Policy Creator Owners] rid:[0x208]
-...[SNIP]....
+---[SNIP]---.
 ```
 
 ```console
@@ -109,7 +109,7 @@ rpcclient $> querygroupmem 0x201
         rid:[0x450] attr:[0x7]
         rid:[0x641] attr:[0x7]
         rid:[0xa2a] attr:[0x7]
-...[SNIP]....
+---[SNIP]---.
 ```
 
 ```console
@@ -124,7 +124,7 @@ rpcclient $> queryuser 0x641
         Home Drive  :   \\monteverde\users$\mhope
         Dir Drive   :   H:
         Profile Path:
-...[SNIP]....
+---[SNIP]---.
 ```
 
 ```console

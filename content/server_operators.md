@@ -28,7 +28,7 @@ WC Assistant    WCAssistantService    C:\Program Files (x86)\Lavasoft\Web Compan
 ```console {class="sample-code"}
 PS > "SomeService" | Get-ServiceAcl | select -ExpandProperty Access
 
-...[SNIP]...
+---[SNIP]---
 
 ServiceRights     : QueryConfig, ChangeConfig, QueryStatus, EnumerateDependents, Start, Stop, Interrogate, ReadControl
 AccessControlType : AccessAllowed
@@ -37,7 +37,7 @@ IsInherited       : False
 InheritanceFlags  : None
 PropagationFlags  : None
 
-...[SNIP]...
+---[SNIP]---
 ```
 
 <small>*Ref: [Get-ServiceAcl.ps1](https://raw.githubusercontent.com/Sambal0x/tools/refs/heads/master/Get-ServiceAcl.ps1)*</small>

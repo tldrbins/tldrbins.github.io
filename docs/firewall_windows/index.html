@@ -196,7 +196,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">LogIgnored                      : NotConfigured
 </span></span></span><span class="line"><span class="cl"><span class="go">DisabledInterfaceAliases        : {NotConfigured}
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">---[SNIP]---
 </span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check inbound rules
 </span></span><span class="line"><span class="cl"><span class="go">Get-NetFirewallRule -Direction InBound -Enabled True
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -222,7 +222,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSource     : PersistentStore
 </span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSourceType : Local
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">---[SNIP]---
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check outbound rules
 </span></span><span class="line"><span class="cl"><span class="go">Get-NetFirewallRule -Direction Outbound -Enabled True
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -248,14 +248,14 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSource     : PersistentStore
 </span></span></span><span class="line"><span class="cl"><span class="go">PolicyStoreSourceType : Local
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">---[SNIP]---
 </span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1-1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\maria&gt; cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
 </span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            World Wide Web Services (HTTPS Traffic-In)
 </span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            World Wide Web Services (HTTP Traffic-In)
 </span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Shell Input Application
-</span></span></span><span class="line"><span class="cl"><span class="go">...[SNIP]...
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
 </span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv6-In)
 </span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Virtual Machine Monitoring (Echo Request - ICMPv4-In)
 </span></span></span><span class="line"><span class="cl"><span class="go">Rule Name:                            Virtual Machine Monitoring (DCOM-In)

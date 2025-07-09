@@ -69,7 +69,7 @@ John
 
 
 --alt---boundary-LibPST-iamunique-41717394_-_-
-...[SNIP]...
+---[SNIP]---
 ```
 
 #### Read many emails

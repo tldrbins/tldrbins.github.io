@@ -24,7 +24,7 @@ INFO: Connecting to LDAP server: dc01.rebound.htb
 WARNING: LDAP Authentication is refused because LDAP signing is enabled. Trying to connect over LDAPS instead...
 INFO: Found 1 domains
 
-...[SNIP]...
+---[SNIP]---
 
 INFO: Found 0 trusts
 INFO: Starting computer enumeration with 10 workers

