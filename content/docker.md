@@ -121,6 +121,7 @@ mount
 ```
 
 ```console
+# Spawn root Shell
 sudo docker exec -it --privileged --user root <CONTAINER_ID> bash
 ```
 
