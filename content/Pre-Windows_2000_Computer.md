@@ -88,6 +88,8 @@ $ pre2k auth -u trainee -p trainee -d example.com -dc-ip 192.168.1.10 -verbose
 [23:54:07] DEBUG    Invalid credentials: example.com\DC$:dc
 ```
 
+<small>*Ref: [pre2k](https://github.com/garrettfoster13/pre2k)*</small>
+
 {{< /tabcontent >}}
 
 ### Abuse #1: Connect via Kerberos
