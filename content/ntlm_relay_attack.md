@@ -1,6 +1,6 @@
 ---
 title: "NTLM Relay Attack"
-date: 2025-4-1
+date: 2025-7-11
 tags: ["Shadow Credentials", "Attack Chain", "Ntlm", "Ldap", "Pass-The-Hash", "Impacket", "Ntlmreplay", "Petitpotam", "Active Directory", "Windows", "ADCS", "Webdav", "Pkinit", "Ticket Granting Ticket"]
 ---
 

