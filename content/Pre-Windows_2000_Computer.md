@@ -100,7 +100,7 @@ $ pre2k auth -u trainee -p trainee -d example.com -dc-ip 192.168.1.10 -verbose
 #### 1. Request a Ticket
 
 ```console
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}

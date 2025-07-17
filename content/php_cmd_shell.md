@@ -1,7 +1,7 @@
 ---
 title: "PHP Command Shell"
-date: 2024-7-8
-tags: ["Reverse Shell", "Php", "Shell", "Template", "Web Exploitation", "File Upload Vulnerability"]
+date: 2025-7-16
+tags: ["Reverse Shell", "Php", "Shell", "Template", "Web Exploitation", "File Upload Vulnerability", "Log Poisoning"]
 ---
 
 ### PHP Command Shell

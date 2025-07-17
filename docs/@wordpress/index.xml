@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/wordpress/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/wordpress/</guid>
-      <description>Default config location /var/www/html/wp-config.php Tools wpscan # HTTP wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u # HTTPS wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u --disable-tls-checks # You will need an api token to scan vulns wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u --api-token &amp;lt;API_KEY&amp;gt; # Brute force wp-admin wpscan --url &amp;lt;TARGET&amp;gt; --passwords passwords.txt --usernames admin Ref: Get Free API key</description>
+      <description>Default Config Location /var/www/html/wp-config.php wpscan # HTTP wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u # HTTPS wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u --disable-tls-checks # Scan vulns wpscan --url &amp;lt;TARGET&amp;gt; -e ap,t,tt,u --api-token &amp;lt;API_KEY&amp;gt; # Brute-force wp-admin wpscan --url &amp;lt;TARGET&amp;gt; --passwords &amp;lt;WORDLIST&amp;gt; --usernames admin Ref: Wpscan API key</description>
     </item>
   </channel>
 </rss>

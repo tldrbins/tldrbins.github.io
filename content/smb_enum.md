@@ -238,6 +238,7 @@ $ smbmap -H 10.10.11.102 -u 'localadmin' -p 'Secret123' -r Shared --depth 2 -A '
 
 
 ```console
+# Password
 smbclient -L \\\\<TARGET>\\ -U '<DOMAIN>/<USER>%<PASSWORD>'
 ```
 
@@ -256,6 +257,11 @@ $ smbclient -L \\\\10.10.11.102\\ -U 'windcorp.htb/localadmin%Secret123'
 Reconnecting with SMB1 for workgroup listing.
 do_connect: Connection to 10.10.11.102 failed (Error NT_STATUS_IO_TIMEOUT)
 Unable to connect with SMB1 -- no workgroup available
+```
+
+```console
+# NTLM
+smbclient -L \\\\<TARGET>\\ -U '<DOMAIN>/<USER>%<HASH>' --pw-nt-hash
 ```
 
 ```console

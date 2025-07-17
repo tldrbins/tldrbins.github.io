@@ -143,6 +143,7 @@
   <li><a href="https://tldrbins.github.io/@password-cracking/">Password Cracking</a></li>
   <li><a href="https://tldrbins.github.io/@wordlist/">Wordlist</a></li>
   <li><a href="https://tldrbins.github.io/@cewl/">Cewl</a></li>
+  <li><a href="https://tldrbins.github.io/@username/">Username</a></li>
 </ul>
 <hr>
 <div class="content">
@@ -156,7 +157,7 @@
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USERS_FILE">USERS FILE: </label><input type="text" name="USERS_FILE"></div><div class="input-group"><label for="USERS">USERS: </label><input type="text" name="USERS"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -167,10 +168,24 @@
   <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">CeWL</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Creating custom wordlist by spidering target website
+<button data-tabset="set1" data-tabcontent="tab2">username-anarchy</button>
+
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create Custom Wordlist by Spidering Target
 </span></span><span class="line"><span class="cl"><span class="go">cewl <span class="o editable-keyword">&lt;TARGET&gt;</span> -w wordlist.txt --with-numbers
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/digininja/CeWL">CeWL</a></em></small></p></div></div><p></p>
+TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/digininja/CeWL">CeWL</a></em></small></p></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create Username Wordlist
+</span></span><span class="line"><span class="cl"><span class="go">./username-anarchy -i <span class="o editable-keyword">&lt;USERS&gt;</span> | tee <span class="o editable-keyword">&lt;USERS_FILE&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> username-anarchy -i users.txt <span class="p">|</span> tee usernames.txt
+</span></span><span class="line"><span class="cl"><span class="go">james
+</span></span></span><span class="line"><span class="cl"><span class="go">jamesroberts
+</span></span></span><span class="line"><span class="cl"><span class="go">james.roberts
+</span></span></span><span class="line"><span class="cl"><span class="go">jamesrob
+</span></span></span><span class="line"><span class="cl"><span class="go">jamerobe
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/urbanadventurer/username-anarchy">username-anarchy</a></em></small></p></div></div>
+
+<p></p>
 
 </div>
 </main>

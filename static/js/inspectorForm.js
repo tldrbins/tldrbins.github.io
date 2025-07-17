@@ -40,22 +40,21 @@ export function addInspectorFormListener() {
         });
 
         const isAutoReplaceEnabled = localStorage.getItem('autoReplace') === 'true';
-        if (autoReplaceCheckbox) {
-            autoReplaceCheckbox.checked = isAutoReplaceEnabled;
-            autoReplaceCheckbox.addEventListener('change', (e) => {
-              const isChecked = e.target.checked;
-              localStorage.setItem('autoReplace', isChecked);
+        autoReplaceCheckbox.checked = isAutoReplaceEnabled;
+        autoReplaceCheckbox.addEventListener('change', (e) => {
+          const isChecked = e.target.checked;
+          localStorage.setItem('autoReplace', isChecked);
 
-              if (isChecked) {
-                replaceKeywordsFromCache();
-              } else {
-                document.querySelectorAll('.editable-keyword').forEach(keyword => {
-                  const originalText = keyword.dataset.originalText;
-                  keyword.textContent = `<${originalText}>`;
-                });
-              }
+          if (isChecked) {
+            replaceKeywordsFromCache();
+            replaceKeywords();
+          } else {
+            document.querySelectorAll('.editable-keyword').forEach(keyword => {
+              const originalText = keyword.dataset.originalText;
+              keyword.textContent = `<${originalText}>`;
             });
-        }
+          }
+        });
 
         if (isAutoReplaceEnabled) {
           replaceKeywordsFromCache();
@@ -72,6 +71,9 @@ export function addInspectorFormListener() {
 
         const replaceKeywords = () => {
             formElements.forEach(element => {
+
+                if (element === autoReplaceCheckbox) return;
+
                 const originalText = element.name;
                 const newValue = element.value.trim();
 
@@ -112,8 +114,20 @@ export function addInspectorFormListener() {
             if (tempDarkMode) {
                 localStorage.setItem('darkMode', tempDarkMode);
             }
+
+            if (autoReplaceCheckbox) {
+                autoReplaceCheckbox.checked = false;
+                localStorage.setItem('autoReplace', false);
+            }
+
+            document.querySelectorAll('.editable-keyword').forEach(keyword => {
+                const originalText = keyword.dataset.originalText;
+                keyword.textContent = `<${originalText}>`;
+            });
+
             provideFeedback(buttons.clear);
         };
+
 
         const provideFeedback = (button) => {
             const originalText = button.innerHTML;

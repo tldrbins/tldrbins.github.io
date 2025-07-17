@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Username on TLDRBins</title>
+    <link>https://tldrbins.github.io/@username/</link>
+    <description>Recent content in Username on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@username/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Custom Word List Generator</title>
+      <link>https://tldrbins.github.io/custom_wordlist_generator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
+      <description>CeWL username-anarchy # Create Custom Wordlist by Spidering Target cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL&#xA;# Create Username Wordlist ./username-anarchy -i &amp;lt;USERS&amp;gt; | tee &amp;lt;USERS_FILE&amp;gt; $ username-anarchy -i users.txt | tee usernames.txt james jamesroberts james.roberts jamesrob jamerobe ---[SNIP]--- Ref: username-anarchy</description>
+    </item>
+  </channel>
+</rss>

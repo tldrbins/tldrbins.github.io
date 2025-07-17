@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@path-traversal/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Advance curl</title>
-      <link>https://tldrbins.github.io/advance_curl/</link>
+      <title>curl</title>
+      <link>https://tldrbins.github.io/curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/advance_curl/</guid>
-      <description>Advance curl # POST url-encoded data curl --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Put the POST data to url and use GET curl -G --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # PUT a file curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a file (with creds) curl -X PUT -u &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # Put a file as raw binary format (preserve newlines and control characters) curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; --data-binary @&amp;lt;FILE&amp;gt; # POST a file with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=@&amp;lt;FILE&amp;gt;;type=&amp;lt;APPLICATION_TYPE&amp;gt;;filename=&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST a file in raw-text format (not as attachment) with form param &amp;#39;file&amp;#39; curl -X POST -F &amp;#39;file=&amp;lt;&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Not to handle sequences of &amp;#39;/.</description>
+      <guid>https://tldrbins.github.io/curl/</guid>
+      <description>curl # Show Header Only curl -I &amp;lt;TARGET&amp;gt; # Save as the Same Name as the File on the Server curl &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O # GET Url-encoded Query curl -G --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST Url-encoded Data curl --data-urlencode &amp;#39;&amp;lt;DATA&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # PUT a File curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a File (Authenticate) curl -X PUT -u &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a File as Raw Binary (Preserve Newlines and Control Characters) curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; --data-binary @&amp;lt;FILE&amp;gt; # POST a File with Form Param curl -X POST -F &amp;#39;&amp;lt;PARAM&amp;gt;=@&amp;lt;FILE&amp;gt;;type=&amp;lt;APPLICATION_TYPE&amp;gt;;filename=&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST a File in Raw-text Format (Not as Attachment) curl -X POST -F &amp;#39;&amp;lt;PARAM&amp;gt;=&amp;lt;&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Not to Handle Sequences of &amp;#39;/.</description>
     </item>
   </channel>
 </rss>

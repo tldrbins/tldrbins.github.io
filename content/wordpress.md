@@ -4,13 +4,11 @@ date: 2024-6-28
 tags: ["Wpscan", "Wordpress", "Reconnaissance", "Enumeration"]
 ---
 
-### Default config location
+#### Default Config Location
 
 ```console
 /var/www/html/wp-config.php
 ```
-
-### Tools
 
 {{< tab set1 tab1 >}}wpscan{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
@@ -26,15 +24,15 @@ wpscan --url <TARGET> -e ap,t,tt,u --disable-tls-checks
 ```
 
 ```console
-# You will need an api token to scan vulns
+# Scan vulns
 wpscan --url <TARGET> -e ap,t,tt,u --api-token <API_KEY>
 ```
 
 ```console
-# Brute force wp-admin
-wpscan --url <TARGET> --passwords passwords.txt --usernames admin
+# Brute-force wp-admin
+wpscan --url <TARGET> --passwords <WORDLIST> --usernames admin
 ```
 
-<small>*Ref: [Get Free API key](https://wpscan.com/)*</small>
+<small>*Ref: [Wpscan API key](https://wpscan.com/)*</small>
 
 {{< /tabcontent >}}

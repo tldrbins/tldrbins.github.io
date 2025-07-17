@@ -108,7 +108,7 @@ PolicyStoreSourceType : Local
 {{< tabcontent set1-1 tab2 >}}
 
 ```console
-cmd /c "netsh advfirewall firewall show rule name=all|findstr Name:"
+cmd /c "netsh advfirewall firewall show rule name=all"
 ```
 
 ```console {class="sample-code"}

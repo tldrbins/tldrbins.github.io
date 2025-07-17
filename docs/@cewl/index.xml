@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/custom_wordlist_generator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
-      <description>CeWL # Creating custom wordlist by spidering target website cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL</description>
+      <description>CeWL username-anarchy # Create Custom Wordlist by Spidering Target cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL&#xA;# Create Username Wordlist ./username-anarchy -i &amp;lt;USERS&amp;gt; | tee &amp;lt;USERS_FILE&amp;gt; $ username-anarchy -i users.txt | tee usernames.txt james jamesroberts james.roberts jamesrob jamerobe ---[SNIP]--- Ref: username-anarchy</description>
     </item>
   </channel>
 </rss>

@@ -115,7 +115,7 @@ $ export KRB5CCNAME=winrm_user.ccache
 
 ```console
 # Step 3: Connect
-sudo ntpdate -s <DC> && evil-winrm -i <TARGET> -r <DOMAIN>
+sudo ntpdate -s <DC_IP> && evil-winrm -i <TARGET> -r <DOMAIN>
 ```
 
 ```console {class="sample-code"}

