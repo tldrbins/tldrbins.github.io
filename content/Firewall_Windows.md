@@ -1,7 +1,7 @@
 ---
 title: "Firewall (Windows)"
 date: 2024-7-10
-tags: ["Firewall", "Inbound", "Outbound", "Network", "Windows"]
+tags: ["Firewall", "Inbound", "Outbound", "Network", "Windows", "Access Control"]
 ---
 
 {{< tab set1 tab1 >}}Windows{{< /tab >}}

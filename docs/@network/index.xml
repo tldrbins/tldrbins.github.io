@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@network/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Firewall (Linux)</title>
+      <link>https://tldrbins.github.io/firewall_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firewall_linux/</guid>
+      <description>Linux Check Firewall Rules # Show all rules sudo iptables -L -v -n --line-numbers # Show target chain sudo iptables -L &amp;lt;CHAIN&amp;gt; -v -n --line-numbers sudo iptables -L INPUT -v -n --line-numbers Set Firewall Rules # Default Policy sudo iptables -P &amp;lt;CHAIN&amp;gt; &amp;lt;RULE&amp;gt; sudo iptables -P INPUT DROP sudo iptables -A &amp;lt;CHAIN&amp;gt; -p &amp;lt;PROTOCOL&amp;gt; -s &amp;lt;SOURCE&amp;gt; --dport &amp;lt;PORT&amp;gt; -j &amp;lt;RULE&amp;gt; # Allow SSH from a specific subnet sudo iptables -A INPUT -p tcp -s 192.</description>
+    </item>
+    <item>
       <title>Firewall (Windows)</title>
       <link>https://tldrbins.github.io/firewall_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -19,7 +26,7 @@
       <link>https://tldrbins.github.io/network_discovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/network_discovery/</guid>
-      <description>Test Connectivity Linux Windows # Default infinite pings ping -c3 &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; # With Active Directory Module Installed Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name=&amp;#39;IPAddress&amp;#39;;Expression={(Test-Connection -ComputerName $_.Name -Count 1).IPV4Address}}} Test Reverse Connectivity Linux sudo tcpdump -ni tun0 icmp Sniff Network Traffic Linux # Sniff on network adapter sudo tcpdump -i eth0 -w packets.pcap root@NIX01:/dev/shm# sudo tcpdump -i eth0 -w packets.</description>
+      <description>Test Connectivity Linux Windows # Default ping indefinitely ping -c3 &amp;lt;TARGET&amp;gt; # Default traceroute &amp;lt;TARGET&amp;gt; # ICMP echo request traceroute -I &amp;lt;TARGET&amp;gt; # TCP traceroute -T &amp;lt;TARGET&amp;gt; # UDP (filter evasion) traceroute -U &amp;lt;TARGET&amp;gt; # Set src port (filter evasion) traceroute --sport=&amp;lt;SRC_PORT&amp;gt; &amp;lt;TARGET&amp;gt; # Set dest port (filter evasion) traceroute -p &amp;lt;DEST_PORT&amp;gt; &amp;lt;TARGET&amp;gt; # Default 5 pings ping &amp;lt;TARGET&amp;gt; # Default tracert &amp;lt;TARGET&amp;gt; # Check specific port Test-NetConnection &amp;lt;TARGET&amp;gt; -Port &amp;lt;TARGET_PORT&amp;gt; # With Active Directory Module Installed Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name=&amp;#39;IPAddress&amp;#39;;Expression={(Test-Connection -ComputerName $_.</description>
     </item>
     <item>
       <title>Network Traffic Pivoting</title>
@@ -33,7 +40,7 @@
       <link>https://tldrbins.github.io/nmap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/nmap/</guid>
-      <description>Nmap Scan TCP UDP Script target=&amp;lt;TARGET&amp;gt; nmap -p- --min-rate 10000 -oA ./nmap-alltcp $target ports=$(cat nmap-alltcp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sCV -oA ./nmap-tcpscripts $target target=&amp;lt;TARGET&amp;gt; nmap -sU --min-rate 10000 -oA ./nmap-udp $target ports=$(cat nmap-udp.nmap| grep -Eo &amp;#34;^[0-9]+&amp;#34; | tr &amp;#39;\n&amp;#39; &amp;#39;,&amp;#39; | sed -r &amp;#39;s/,$//&amp;#39;) nmap -p $ports -sU -sCV -oA ./nmap-udpscripts $target Update scripts DB nmap --script-updatedb Search scripts # e.</description>
+      <description>Host Discovery Ping Scan nmap -sn &amp;lt;TARGET&amp;gt; $ nmap -sn 192.168.100.1 Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-17 11:25 UTC Nmap scan report for 192.168.100.1 Host is up (0.41s latency). Nmap done: 1 IP address (1 host up) scanned in 1.35 seconds Scan Techniques (Bypass Network Filtering) TCP SYN to Listed Ports nmap -sn -PS&amp;lt;PORT_LIST&amp;gt; &amp;lt;TARGET&amp;gt; $ nmap -sn -PS53,80,443 192.168.100.1 Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-17 11:25 UTC Nmap scan report for 192.</description>
     </item>
     <item>
       <title>openvpn</title>

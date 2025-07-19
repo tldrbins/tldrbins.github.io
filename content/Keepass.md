@@ -1,10 +1,10 @@
 ---
 title: "Keepass"
-date: 2024-7-3
+date: 2025-7-17
 tags: ["Password Cracking", "Hash Cracking", "Keepass", "Kpcli", "Password", "Kdbx"]
 ---
 
-### Master password cracking
+### Crack Master Password
 
 ```console
 keepass2john <KDBX_FILE> > hash
@@ -15,7 +15,10 @@ keepass2john <KDBX_FILE> > hash
 keepass2john -k <KEY_FILE> <KDBX_FILE> > hash
 ```
 
-### kpcli
+### Basic
+
+{{< tab set1 tab1 >}}Windows{{< /tab >}}
+{{< tabcontent set1 tab1 >}}
 
 ```console
 # Open kdbx
@@ -43,3 +46,5 @@ attach 0
 ```
 
 <small>*Ref: [Download kpcli](https://github.com/rebkwok/kpcli)*</small>
+
+{{< /tabcontent >}}

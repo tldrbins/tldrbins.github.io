@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@firewall/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Firewall (Linux)</title>
+      <link>https://tldrbins.github.io/firewall_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firewall_linux/</guid>
+      <description>Linux Check Firewall Rules # Show all rules sudo iptables -L -v -n --line-numbers # Show target chain sudo iptables -L &amp;lt;CHAIN&amp;gt; -v -n --line-numbers sudo iptables -L INPUT -v -n --line-numbers Set Firewall Rules # Default Policy sudo iptables -P &amp;lt;CHAIN&amp;gt; &amp;lt;RULE&amp;gt; sudo iptables -P INPUT DROP sudo iptables -A &amp;lt;CHAIN&amp;gt; -p &amp;lt;PROTOCOL&amp;gt; -s &amp;lt;SOURCE&amp;gt; --dport &amp;lt;PORT&amp;gt; -j &amp;lt;RULE&amp;gt; # Allow SSH from a specific subnet sudo iptables -A INPUT -p tcp -s 192.</description>
+    </item>
+    <item>
       <title>Firewall (Windows)</title>
       <link>https://tldrbins.github.io/firewall_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Access Control on TLDRBins</title>
+    <link>https://tldrbins.github.io/@access-control/</link>
+    <description>Recent content in Access Control on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@access-control/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Firewall (Linux)</title>
+      <link>https://tldrbins.github.io/firewall_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firewall_linux/</guid>
+      <description>Linux Check Firewall Rules # Show all rules sudo iptables -L -v -n --line-numbers # Show target chain sudo iptables -L &amp;lt;CHAIN&amp;gt; -v -n --line-numbers sudo iptables -L INPUT -v -n --line-numbers Set Firewall Rules # Default Policy sudo iptables -P &amp;lt;CHAIN&amp;gt; &amp;lt;RULE&amp;gt; sudo iptables -P INPUT DROP sudo iptables -A &amp;lt;CHAIN&amp;gt; -p &amp;lt;PROTOCOL&amp;gt; -s &amp;lt;SOURCE&amp;gt; --dport &amp;lt;PORT&amp;gt; -j &amp;lt;RULE&amp;gt; # Allow SSH from a specific subnet sudo iptables -A INPUT -p tcp -s 192.</description>
+    </item>
+    <item>
+      <title>Firewall (Windows)</title>
+      <link>https://tldrbins.github.io/firewall_windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firewall_windows/</guid>
+      <description>Windows Check Firewall Rules powershell cmd&#xA;# Check profiles Get-NetFirewallProfile *Evil-WinRM* PS C:\Users\maria&amp;gt; Get-NetFirewallProfile Name : Domain Enabled : False DefaultInboundAction : NotConfigured DefaultOutboundAction : NotConfigured AllowInboundRules : NotConfigured AllowLocalFirewallRules : NotConfigured AllowLocalIPsecRules : NotConfigured AllowUserApps : NotConfigured AllowUserPorts : NotConfigured AllowUnicastResponseToMulticast : NotConfigured NotifyOnListen : False EnableStealthModeForIPsec : NotConfigured LogFileName : %systemroot%\system32\LogFiles\Firewall\pfirewall.log LogMaxSizeKilobytes : 4096 LogAllowed : False LogBlocked : False LogIgnored : NotConfigured DisabledInterfaceAliases : {NotConfigured} ---[SNIP]--- # Check inbound rules Get-NetFirewallRule -Direction InBound -Enabled True PS C:\programdata&amp;gt; Get-NetFirewallRule -Direction Inbound -Enabled True Name : DeliveryOptimization-TCP-In DisplayName : Delivery Optimization (TCP-In) Description : Inbound rule to allow Delivery Optimization to connect to remote endpoints DisplayGroup : Delivery Optimization Group : @%systemroot%\system32\dosvc.</description>
+    </item>
+  </channel>
+</rss>

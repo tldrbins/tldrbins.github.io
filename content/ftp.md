@@ -1,6 +1,6 @@
 ---
 title: "FTP"
-date: 2024-7-4
+date: 2025-7-17
 tags: ["Lftp", "Ftp", "File Transfer"]
 ---
 
@@ -13,19 +13,13 @@ tags: ["Lftp", "Ftp", "File Transfer"]
 ### Basic
 
 ```console
-+---------------------+
-| Anonymous login     |
-+---------------------+
-| Username: anonymous |
-| Password: (empty)   |
-+---------------------+
+# Anonymous Login
+ftp ftp://anonymous:@<TARGET>
 ```
-
-<br>
 
 ```console
 # Connect
-ftp <TARGET>
+ftp ftp://<USER>:<PASSWORD>@<TARGET>
 ```
 
 ```console

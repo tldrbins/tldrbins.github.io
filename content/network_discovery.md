@@ -11,8 +11,38 @@ tags: ["Port Scanning", "Arp", "Iptables", "Tcpdump", "Packet Sniffing", "Reconn
 {{< tabcontent set1 tab1 >}}
 
 ```console
-# Default infinite pings
+# Default ping indefinitely
 ping -c3 <TARGET>
+```
+
+```console
+# Default
+traceroute <TARGET> 
+```
+
+```console
+# ICMP echo request
+traceroute -I <TARGET> 
+```
+
+```console
+# TCP
+traceroute -T <TARGET> 
+```
+
+```console
+# UDP (filter evasion)
+traceroute -U <TARGET> 
+```
+
+```console
+# Set src port (filter evasion)
+traceroute --sport=<SRC_PORT> <TARGET> 
+```
+
+```console
+# Set dest port (filter evasion)
+traceroute -p <DEST_PORT> <TARGET> 
 ```
 
 {{< /tabcontent >}}
@@ -21,6 +51,11 @@ ping -c3 <TARGET>
 ```console
 # Default 5 pings
 ping <TARGET>
+```
+
+```console
+# Default
+tracert <TARGET>
 ```
 
 ```console
@@ -43,6 +78,10 @@ Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name='IPA
 {{< tabcontent set2 tab1 >}}
 
 ```console
+sudo tcpdump -ni <INTERFACE> icmp
+```
+
+```console {class="sample-code"}
 sudo tcpdump -ni tun0 icmp
 ```
 
@@ -57,7 +96,7 @@ sudo tcpdump -ni tun0 icmp
 
 ```console
 # Sniff on network adapter
-sudo tcpdump -i eth0 -w packets.pcap
+sudo tcpdump -i <INTERFACE> -w packets.pcap
 ```
 
 ```console {class="sample-code"}
@@ -70,7 +109,7 @@ tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 byt
 
 ```console
 # Sniff on a port
-sudo tcpdump -i lo -nnXs 0 'port <TARGET_PORT>'
+sudo tcpdump -i lo -nnXs 0 'port <PORT>'
 ```
 
 ```console

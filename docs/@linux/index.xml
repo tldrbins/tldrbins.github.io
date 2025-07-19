@@ -21,5 +21,12 @@
       <guid>https://tldrbins.github.io/find/</guid>
       <description>Linux Locate a file locate &amp;lt;FILE&amp;gt; Find files of type file find . -type f Find and Open find / -name &amp;lt;FILE&amp;gt; -exec cat {} \; Find SUID bit set files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Find files owned by user find / -user &amp;lt;USER&amp;gt; -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Find files owned by group find / -group &amp;lt;GROUP&amp;gt; 2&amp;gt;/dev/null | grep -v -e ^/proc Find files created between 1/1/2024 and 31/12/2024 find / -type f -newermt 2024-01-01 !</description>
     </item>
+    <item>
+      <title>Firewall (Linux)</title>
+      <link>https://tldrbins.github.io/firewall_linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/firewall_linux/</guid>
+      <description>Linux Check Firewall Rules # Show all rules sudo iptables -L -v -n --line-numbers # Show target chain sudo iptables -L &amp;lt;CHAIN&amp;gt; -v -n --line-numbers sudo iptables -L INPUT -v -n --line-numbers Set Firewall Rules # Default Policy sudo iptables -P &amp;lt;CHAIN&amp;gt; &amp;lt;RULE&amp;gt; sudo iptables -P INPUT DROP sudo iptables -A &amp;lt;CHAIN&amp;gt; -p &amp;lt;PROTOCOL&amp;gt; -s &amp;lt;SOURCE&amp;gt; --dport &amp;lt;PORT&amp;gt; -j &amp;lt;RULE&amp;gt; # Allow SSH from a specific subnet sudo iptables -A INPUT -p tcp -s 192.</description>
+    </item>
   </channel>
 </rss>

