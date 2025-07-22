@@ -1,15 +1,12 @@
 ---
 title: "Mysql General"
-date: 2024-6-27
+date: 2025-7-19
 tags: ["Database Dumping", "Privilege Escalation In Databases", "Mysql", "Database"]
 ---
 
-### General
-
-#### Connect to mysql Database
+### Connect to mysql Database
 
 ```console
-# Database unknown
 mysql -u <USER> -h <TARGET> -p'<PASSWORD>'
 ```
 
@@ -19,11 +16,22 @@ mysql -u <USER> -D <DB_NAME> -h <TARGET> -p'<PASSWORD>'
 ```
 
 ```console
+# Skip SSL
+mysql -u <USER> -h <TARGET> -p'<PASSWORD>' --skip-ssl
+```
+
+```console
 # Execute query inline
+mysql -u <USER> -D <DB_NAME> -h <TARGET> -p'<PASSWORD>' -e '<QUERY>'
+```
+
+```console {class="sample-code"}
 mysql -u <USER> -D <DB_NAME> -h <TARGET> -p'<PASSWORD>' -e 'show tables;'
 ```
 
-#### Basic Commands
+---
+
+### Basic Commands
 
 ```console
 # Show all databases
@@ -45,15 +53,31 @@ show tables;
 select * from <TABLE_NAME>;
 ```
 
-#### Update Entry
+---
+
+### Insert Entry
+
+```console
+INSERT INTO <TABLE_NAME> (<COLUMN_1>,<COLUMN_2>,...) VALUES (<VALUE_1>,<VALUE_2>,...);
+```
+
+---
+
+### Update Entry
 
 ```console
 # Update Entry Example
 UPDATE users set user_type='Administrator' where email='test@example.com';
 ```
 
-#### Arbitrary File Read
+---
+
+### Arbitrary File Read
 
 ```console
+select load_file("<FILE>");
+```
+
+```console {class="sample-code"}
 select load_file("/etc/passwd");
 ```

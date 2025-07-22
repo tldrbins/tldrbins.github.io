@@ -58,12 +58,12 @@ nxc <PROTOCOL> <TARGET> -u '<USER>' -H <HASH>
 
 ```console
 # With Kerberos, or STATUS_ACCOUNT_RESTRICTION (NTLM disabled)
-nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k
+sudo ntpdate -s <DC_IP> && nxc <PROTOCOL> <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -k
 ```
 
 ```console
 # With Kerberos ccache, or STATUS_NOT_SUPPORTED (NTLM disabled)
-nxc <PROTOCOL> <TARGET> -u '<USER>' -d <DOMAIN> -k --use-kcache
+sudo ntpdate -s <DC_IP> && nxc <PROTOCOL> <TARGET> -u '<USER>' -d <DOMAIN> -k --use-kcache
 ```
 
 {{< /tabcontent >}}

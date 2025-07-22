@@ -105,7 +105,12 @@ evil-winrm -i <TARGET> -u '<USER>' -H <HASH>
 ```
 
 ```console
-# Step 2: export .ccache
+# Step 2: Request a TGT
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+```
+
+```console
+# Step 3: export .ccache
 export KRB5CCNAME=<CCACHE>
 ```
 
@@ -114,7 +119,7 @@ $ export KRB5CCNAME=winrm_user.ccache
 ```
 
 ```console
-# Step 3: Connect
+# Step 4: Connect
 sudo ntpdate -s <DC_IP> && evil-winrm -i <TARGET> -r <DOMAIN>
 ```
 

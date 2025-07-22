@@ -4,9 +4,7 @@ date: 2024-6-27
 tags: ["Database Dumping", "Privilege Escalation In Databases", "Mssql", "Database", "Windows"]
 ---
 
-### General
-
-#### Connect to MSSQL DB
+### Connect to MSSQL DB
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
@@ -36,7 +34,9 @@ sqlcmd -S '<TARGET>' -U '<USER>' -P '<PASSWORD>' -d '<DB_NAME>' -Q "<QUERY>"
 
 {{< /tabcontent >}}
 
-#### Basic Commands
+---
+
+### Basic Commands
 
 ```console
 # Check mssql version
@@ -118,7 +118,9 @@ SELECT master.dbo.fn_varbintohexstr(SUSER_SID('<DOMAIN>\Domain Admins'))
 SELECT * FROM OPENROWSET(BULK N'<FILE>', SINGLE_CLOB) AS Contents
 ```
 
-#### Create sa user
+---
+
+### Create sa user
 
 ```console
 CREATE LOGIN '<USER>' WITH PASSWORD = '<PASSWORD>';

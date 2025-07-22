@@ -4,6 +4,23 @@ date: 2025-7-14
 tags: ["Windows", "Registry", "reg.exe", "Windows Internals", "Persistence", "COM Hijacking", "DLL Injection"]
 ---
 
+### Basic
+
+```console
+# Queries all CLSID entries recursively
+reg query HKCR\CLSID /s
+```
+
+```console
+# Queries CLSID entries containing KEYWORD recursively
+reg query HKCR\CLSID /s /f "<KEYWORD>"
+```
+
+```console
+# Queries HKLM entries containing KEYWORD recursively
+reg query HKLM /s /f "<KEYWORD>"
+```
+
 ### Privesc #1: COM Hijacking
 
 {{< tab set1 tab1 >}}Windows{{< /tab >}}

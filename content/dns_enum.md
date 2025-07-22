@@ -1,7 +1,7 @@
 ---
 title: "DNS Enum"
-date: 2024-6-26
-tags: ["Domain", "Reconnaissance", "Enumeration", "DNS", "Dig", "Zone Transfer"]
+date: 2025-7-21
+tags: ["Domain", "Reconnaissance", "Enumeration", "DNS", "Dig", "Zone Transfer", "BIND", "nsupdate", "nslookup"]
 ---
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
@@ -106,6 +106,34 @@ dig +noall +answer @<NAME_SERVER> -x <IP>
 
 ```console {class="sample-code"}
 $ dig +noall +answer @10.10.11.212 -x 10.10.11.212
+```
+
+---
+
+### Update DNS Record
+
+#### 1. Interactive
+
+```console
+nsupdate
+```
+
+#### 2. Update DNS Record
+
+```console
+server <NAME_SERVER>
+```
+
+```console
+update add <DOMAIN> <TTL> <TYPE> <IP>
+```
+
+```console {class="sample-code"}
+udpate add example.com 3600 A 192.168.1.1
+```
+
+```console
+send
 ```
 
 {{< /tabcontent >}}

