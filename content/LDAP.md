@@ -1,7 +1,7 @@
 ---
 title: "LDAP"
-date: 2024-7-9
-tags: ["Kerberos", "Ldap", "Nmap", "Ldap Search", "Enumeration", "Active Directory", "Windows", "Nxc"]
+date: 2025-7-23
+tags: ["Kerberos", "Ldap", "Nmap", "Ldap Search", "Enumeration", "Active Directory", "Windows", "Nxc", "ldapmodify", "ldif", "Permissions"]
 ---
 
 ### Enum
@@ -73,3 +73,65 @@ nxc ldap <TARGET> -u <USER> -p '<PASSWORD>' -k --users
 ```
 
 {{< /tabcontent >}}
+
+### Enum ACLs
+
+{{< tab set3 tab1 >}}bloodyAD{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
+
+#### 1. Request a TGT
+
+```console
+# Password
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+```
+
+```console
+# NTLM
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>' -hashes :<HASH> -dc-ip <DC_IP>
+```
+
+```console
+export KRB5CCNAME='<USER>.ccache'
+```
+
+#### 2. Enum ACLs
+
+```console
+bloodyAD -d <DOMAIN> -k --host <DC> get writable --detail
+```
+
+{{< /tabcontent >}}
+
+### Modify Entries
+
+#### 1. Create a LDIF File
+
+```console
+dn: <DN>
+changetype: modify
+replace: <KEY>
+<KEY>: <VALUE>
+-
+add: <KEY_1>
+<KEY_1>: <VALUE_1>
+```
+
+```console {class="sample-code"}
+dn: cn=John Doe,ou=People,dc=example,dc=com
+changetype: modify
+replace: logonHours
+logonHours:: ////////////////////////////
+-
+```
+
+#### 2. Modify Entries
+
+```console
+ldapmodify -x -D '<USER>@<DOMAIN>' -w '<PASSWORD>' -H ldap://<TARGET> -f <LDIF_FILE>
+```
+
+```console {class="sample-code"}
+$ ldapmodify -x -D 'john.doe@example.com' -w 'password1' -H ldap://DC01.EXAMPLE.COM -f set_logonhours.ldif
+modifying entry "CN=John Doe,OU=People,DC=example,DC=com"
+```

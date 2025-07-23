@@ -1,22 +1,23 @@
 ---
 title: "Microsoft Access Database"
-date: 2024-7-8
+date: 2025-7-23
 tags: ["Database Dumping", "Access", "Database", "Windows", "Mdb"]
 ---
 
-### Tools
+### General
 
 {{< tab set1 tab1 >}}mdbtools{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
+
+#### 0. Installation \[Optional\]
 
 ```console
 sudo apt install mdbtools
 ```
 
-#### Basic
+#### Show All Tables
 
 ```console
-# Show all tables
 mdb-tables <MDB_FILE> 
 ```
 
@@ -25,8 +26,9 @@ $ mdb-tables backup.mdb
 acc_antiback acc_door acc_firstopen acc_firstopen_emp acc_holidays acc_interlock ---[SNIP]---
 ```
 
+#### Show Tables with Data
+
 ```console
-# Show tables with data
 mdb-tables <MDB_FILE> | tr ' ' '\n' | grep . | while read table; do lines=$(mdb-export <MDB_FILE> $table | wc -l); if [ $lines -gt 1 ]; then echo "$table: $lines"; fi; done
 ```
 
@@ -41,8 +43,9 @@ auth_user: 4
 ---[SNIP]---
 ```
 
+#### Dump Data from Table
+
 ```console
-# Dump data from table
 mdb-export <MDB_FILE> <TABLE_NAME>
 ```
 

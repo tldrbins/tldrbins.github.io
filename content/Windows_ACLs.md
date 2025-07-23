@@ -1,7 +1,7 @@
 ---
 title: "Windows ACLs"
-date: 2024-6-28
-tags: ["Acls", "Icacls", "Windows", "Access Control Lists", "Files"]
+date: 2025-7-23
+tags: ["Acls", "Icacls", "Windows", "Access Control Lists", "Files", "Permissions"]
 ---
 
 ### Window ACLs (Access Control Lists)
@@ -78,14 +78,13 @@ Successfully processed 5 files; Failed processing 0 files
 
 {{< /tabcontent >}}
 
-#### Grant user full control
+#### Grant User Full Control
 
 {{< tab set2 tab1 >}}cmd{{< /tab >}}
 {{< tab set2 tab2 >}}powershell{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
-# cmd
 cmd.exe /c cacls <FILE> /E /G <USER>:F
 ```
 
@@ -93,19 +92,17 @@ cmd.exe /c cacls <FILE> /E /G <USER>:F
 {{< tabcontent set2 tab2 >}}
 
 ```console
-# powershell
 icacls <FILE> /grant <USER>:F
 ```
 
 {{< /tabcontent >}}
 
-#### Change owner (WO)
+#### Change Owner (WO)
 
 {{< tab set3 tab1 >}}cmd{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
 ```console
-# cmd
 cmd.exe /c takeown /F <FILE>
 ```
 

