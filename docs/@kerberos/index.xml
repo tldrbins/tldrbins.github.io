@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@kerberos/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Abuse Parent Child Domain Trusts</title>
+      <title>Abuse Parent-Child Domain Trusts</title>
       <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
-      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * PS C:\Windows\system32&amp;gt; Get-ADTrust -Filter * Direction : BiDirectional DisallowTransivity : False DistinguishedName : CN=example.com,CN=System,DC=corp,DC=example,DC=com ForestTransitive : False IntraForest : True IsTreeParent : False IsTreeRoot : False Name : example.com ObjectClass : trustedDomain ObjectGUID : b0c64079-6f51-4516-9a62-90f94666bfc1 SelectiveAuthentication : False SIDFilteringForestAware : False SIDFilteringQuarantined : False Source : DC=corp,DC=example,DC=com Target : example.</description>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check Trust Relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * PS C:\Windows\system32&amp;gt; Get-ADTrust -Filter * Direction : BiDirectional DisallowTransivity : False DistinguishedName : CN=example.com,CN=System,DC=corp,DC=example,DC=com ForestTransitive : False IntraForest : True IsTreeParent : False IsTreeRoot : False Name : example.com ObjectClass : trustedDomain ObjectGUID : b0c64079-6f51-4516-9a62-90f94666bfc1 SelectiveAuthentication : False SIDFilteringForestAware : False SIDFilteringQuarantined : False Source : DC=corp,DC=example,DC=com Target : example.</description>
     </item>
     <item>
       <title>ADCS</title>

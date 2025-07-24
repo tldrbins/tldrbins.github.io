@@ -23,11 +23,11 @@
       <description>Abuse #1: Capture Ticket Windows 1. Check TRUSTED_FOR_DELEGATION . .\PowerView.ps1 Get-DomainComputer PS C:\programdata&amp;gt; Get-DomainComputer ---[SNIP]--- logoncount : 131 badpasswordtime : 12/31/1600 4:00:00 PM distinguishedname : CN=SRV002,CN=Computers,DC=Example,DC=local objectclass : {top, person, organizationalPerson, user...} badpwdcount : 0 displayname : SRV002$ lastlogontimestamp : 11/23/2024 2:29:01 AM objectsid : S-1-5-21-422340810-923920092-1608110645-1103 samaccountname : SRV002$ localpolicyflags : 0 codepage : 0 samaccounttype : MACHINE_ACCOUNT countrycode : 0 cn : SRV002 accountexpires : NEVER whenchanged : 11/23/2024 2:26:27 PM instancetype : 4 usncreated : 16398 objectguid : e54dc358-b87f-49ad-8bcf-2029bf051006 operatingsystem : Windows Server 2019 Standard operatingsystemversion : 10.</description>
     </item>
     <item>
-      <title>Abuse Parent Child Domain Trusts</title>
+      <title>Abuse Parent-Child Domain Trusts</title>
       <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
-      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * PS C:\Windows\system32&amp;gt; Get-ADTrust -Filter * Direction : BiDirectional DisallowTransivity : False DistinguishedName : CN=example.com,CN=System,DC=corp,DC=example,DC=com ForestTransitive : False IntraForest : True IsTreeParent : False IsTreeRoot : False Name : example.com ObjectClass : trustedDomain ObjectGUID : b0c64079-6f51-4516-9a62-90f94666bfc1 SelectiveAuthentication : False SIDFilteringForestAware : False SIDFilteringQuarantined : False Source : DC=corp,DC=example,DC=com Target : example.</description>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check Trust Relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * PS C:\Windows\system32&amp;gt; Get-ADTrust -Filter * Direction : BiDirectional DisallowTransivity : False DistinguishedName : CN=example.com,CN=System,DC=corp,DC=example,DC=com ForestTransitive : False IntraForest : True IsTreeParent : False IsTreeRoot : False Name : example.com ObjectClass : trustedDomain ObjectGUID : b0c64079-6f51-4516-9a62-90f94666bfc1 SelectiveAuthentication : False SIDFilteringForestAware : False SIDFilteringQuarantined : False Source : DC=corp,DC=example,DC=com Target : example.</description>
     </item>
     <item>
       <title>Account Operators</title>

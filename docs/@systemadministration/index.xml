@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SystemAdministration on TLDRBins</title>
+    <link>https://tldrbins.github.io/@systemadministration/</link>
+    <description>Recent content in SystemAdministration on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@systemadministration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IP Routing</title>
+      <link>https://tldrbins.github.io/ip_routing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ip_routing/</guid>
+      <description>Linux Windows Check Routes ip route show Add Route sudo ip route add &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route add 172.16.0.0/16 via 192.168.1.10 dev eth0 Modify Route sudo ip route replace &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route replace 172.16.0.0/16 via 192.168.1.20 dev eth0 Delete Route sudo ip route del &amp;lt;SUBNET&amp;gt; sudo ip route del 172.16.0.0/16 # Exact match sudo ip route del &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route del 172.</description>
+    </item>
+  </channel>
+</rss>

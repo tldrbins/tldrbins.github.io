@@ -304,6 +304,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/cross_session_relay/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@cross-domain-attack/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@crt/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@crud/</loc>
@@ -398,7 +400,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@domain-controller/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@domain-trust/</loc>
+    <loc>https://tldrbins.github.io/@domain-trusts/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@domain-users/</loc>
   </url><url>
@@ -586,6 +588,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/grep/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@group-membership-abuse/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@group-policy/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@group-policy-objects/</loc>
@@ -643,6 +647,12 @@
     <loc>https://tldrbins.github.io/@internet-key-exchange/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@internet-relay-chat/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/ip_routing/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@iproute2/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@iprouting/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@iptables/</loc>
   </url><url>
@@ -852,6 +862,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/nxc/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@netsh/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@network/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/network_discovery/</loc>
@@ -861,6 +873,10 @@
     <loc>https://tldrbins.github.io/@network-time-protocol/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/network_traffic_privoting/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@networkadministration/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@networking/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@nfs/</loc>
   </url><url>
@@ -904,6 +920,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@nxc/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@object-recovery/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@odat/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@odt/</loc>
@@ -943,6 +961,8 @@
     <loc>https://tldrbins.github.io/@padding-oracle/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/padding_oracle/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@parent-child-trust/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@pass-the-cert/</loc>
   </url><url>
@@ -1148,6 +1168,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@rlogin/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@routing/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/rpc/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@rsa/</loc>
@@ -1336,6 +1358,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@system-center-configuration-manager/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@systemadministration/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@tar/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@targeted-kerberoast/</loc>
@@ -1363,8 +1387,6 @@
     <loc>https://tldrbins.github.io/@token-based-authentication/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@tomcat/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/@trust-relationship/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@tty/</loc>
   </url><url>

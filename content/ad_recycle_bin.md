@@ -1,7 +1,7 @@
 ---
 title: "AD Recycle Bin"
-date: 2024-7-13
-tags: ["Domain Controller", "AD Recycle Bin", "Active Directory", "Windows", "Deleted Objects", "Restore"]
+date: 2025-7-24
+tags: ["Active Directory",  "AD Recycle Bin",  "Privilege Escalation",  "Object Recovery",  "Deleted Objects",  "Restore",  "Domain Controller",  "Windows",  "PowerShell"]
 ---
 
 ### Privesc #1: Restore Deleted AD Object

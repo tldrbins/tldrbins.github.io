@@ -30,11 +30,11 @@
       <description>Abuse #1: Capture Ticket Windows 1. Check TRUSTED_FOR_DELEGATION . .\PowerView.ps1 Get-DomainComputer PS C:\programdata&amp;gt; Get-DomainComputer ---[SNIP]--- logoncount : 131 badpasswordtime : 12/31/1600 4:00:00 PM distinguishedname : CN=SRV002,CN=Computers,DC=Example,DC=local objectclass : {top, person, organizationalPerson, user...} badpwdcount : 0 displayname : SRV002$ lastlogontimestamp : 11/23/2024 2:29:01 AM objectsid : S-1-5-21-422340810-923920092-1608110645-1103 samaccountname : SRV002$ localpolicyflags : 0 codepage : 0 samaccounttype : MACHINE_ACCOUNT countrycode : 0 cn : SRV002 accountexpires : NEVER whenchanged : 11/23/2024 2:26:27 PM instancetype : 4 usncreated : 16398 objectguid : e54dc358-b87f-49ad-8bcf-2029bf051006 operatingsystem : Windows Server 2019 Standard operatingsystemversion : 10.</description>
     </item>
     <item>
-      <title>Abuse Parent Child Domain Trusts</title>
+      <title>Abuse Parent-Child Domain Trusts</title>
       <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</guid>
-      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check trust relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * PS C:\Windows\system32&amp;gt; Get-ADTrust -Filter * Direction : BiDirectional DisallowTransivity : False DistinguishedName : CN=example.com,CN=System,DC=corp,DC=example,DC=com ForestTransitive : False IntraForest : True IsTreeParent : False IsTreeRoot : False Name : example.com ObjectClass : trustedDomain ObjectGUID : b0c64079-6f51-4516-9a62-90f94666bfc1 SelectiveAuthentication : False SIDFilteringForestAware : False SIDFilteringQuarantined : False Source : DC=corp,DC=example,DC=com Target : example.</description>
+      <description>Privesc from DA (Domain Admin) to EA (Enterprise Admin) Windows 1. Check Trust Relationships # Get all trusted domain objects in a forest Get-ADTrust -Filter * PS C:\Windows\system32&amp;gt; Get-ADTrust -Filter * Direction : BiDirectional DisallowTransivity : False DistinguishedName : CN=example.com,CN=System,DC=corp,DC=example,DC=com ForestTransitive : False IntraForest : True IsTreeParent : False IsTreeRoot : False Name : example.com ObjectClass : trustedDomain ObjectGUID : b0c64079-6f51-4516-9a62-90f94666bfc1 SelectiveAuthentication : False SIDFilteringForestAware : False SIDFilteringQuarantined : False Source : DC=corp,DC=example,DC=com Target : example.</description>
     </item>
     <item>
       <title>Account Operators</title>
@@ -240,6 +240,13 @@
       <description>IIS Version +---------------------------------------------------------------------------------+ | Version Start Date End Date | +---------------------------------------------------------------------------------+ | IIS 10 on Windows Server 2019 Nov 13, 2018 Jan 9, 2029 | | IIS 10 on Windows Server (Semi-Annual Channel) Oct 17, 2017 | | IIS 10 on Windows Server 2016 Oct 15, 2016 Jan 12, 2027 | | IIS 10 on Windows 10 Pro Jul 29, 2015 | | IIS 10 on Windows 10, Enterprise and Education Jul 29, 2015 | | IIS 8.</description>
     </item>
     <item>
+      <title>IP Routing</title>
+      <link>https://tldrbins.github.io/ip_routing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ip_routing/</guid>
+      <description>Linux Windows Check Routes ip route show Add Route sudo ip route add &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route add 172.16.0.0/16 via 192.168.1.10 dev eth0 Modify Route sudo ip route replace &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route replace 172.16.0.0/16 via 192.168.1.20 dev eth0 Delete Route sudo ip route del &amp;lt;SUBNET&amp;gt; sudo ip route del 172.16.0.0/16 # Exact match sudo ip route del &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route del 172.</description>
+    </item>
+    <item>
       <title>Kerberoasting</title>
       <link>https://tldrbins.github.io/roasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -398,7 +405,7 @@
       <link>https://tldrbins.github.io/registry/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/registry/</guid>
-      <description>Basic # Queries all CLSID entries recursively reg query HKCR\CLSID /s # Queries CLSID entries containing KEYWORD recursively reg query HKCR\CLSID /s /f &amp;#34;&amp;lt;KEYWORD&amp;gt;&amp;#34; # Queries HKLM entries containing KEYWORD recursively reg query HKLM /s /f &amp;#34;&amp;lt;KEYWORD&amp;gt;&amp;#34; Privesc #1: COM Hijacking Windows 1. Query Registry # Queries all CLSID entries recursively reg query HKCR\CLSID /s # Queries CLSID entries containing KEYWORD recursively reg query HKCR\CLSID /s /f &amp;#34;&amp;lt;KEYWORD&amp;gt;&amp;#34; PS C:\Windows\system32&amp;gt; reg query HKCR\CLSID /s /f &amp;#34;zip&amp;#34; reg query HKCR\CLSID /s /f &amp;#34;zip&amp;#34; HKEY_CLASSES_ROOT\CLSID\{2317---[SNIP]---20000} (Default) REG_SZ 7-Zip Shell Extension HKEY_CLASSES_ROOT\CLSID\{2317---[SNIP]---20000}\InprocServer32 (Default) REG_SZ C:\Program Files\7-Zip\7-zip.</description>
+      <description>General Key Hives HKEY_LOCAL_MACHINE (HKLM) System-wide settings (SAM, SYSTEM, SOFTWARE, SECURITY) HKEY_CURRENT_USER (HKCU) Current user settings HKEY_USERS (HKU) All loaded user profiles HKEY_CLASSES_ROOT (HKCR) File associations, COM objects HKEY_CURRENT_CONFIG (HKCC) Current hardware config Query Key # Displays all keys, subkeys, and values recursively reg query &amp;lt;PATH&amp;gt; /s # Display all keys, subkeys, and values under CLSID recursively reg query HKCR\CLSID /s # Display all keys, subkeys, and values containing KEYWORD recursively reg query &amp;lt;PATH&amp;gt; /s /f &amp;#34;&amp;lt;KEYWORD&amp;gt;&amp;#34; # Display all keys, subkeys, and values containing KEYWORD under HKLM recursively reg query HKLM /s /f &amp;#34;&amp;lt;KEYWORD&amp;gt;&amp;#34; Add Key reg add &amp;lt;PATH&amp;gt; Add Value reg add &amp;lt;PATH&amp;gt; /v &amp;lt;VALUE_NAME&amp;gt; /t &amp;lt;TYPE&amp;gt; /d &amp;lt;DATA&amp;gt; /f reg add HKLM\SOFTWARE\MyNewKey /v MySetting /t REG_SZ /d &amp;#34;TestValue&amp;#34; /f REG_SZ Text string REG_EXPAND_SZ String with environment variables REG_DWORD 32-bit integer REG_QWORD 64-bit integer REG_BINARY Binary data REG_MULTI_SZ Multiple strings REG_NONE Undefined data Delete Key reg delete &amp;lt;PATH&amp;gt; /f Export Hive reg save &amp;lt;HIVE&amp;gt; &amp;lt;DEST_PATH&amp;gt; Privesc #1: COM Hijacking Windows 1.</description>
     </item>
     <item>
       <title>RPC</title>

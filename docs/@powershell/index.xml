@@ -8,6 +8,20 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@powershell/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AD Recycle Bin</title>
+      <link>https://tldrbins.github.io/ad_recycle_bin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ad_recycle_bin/</guid>
+      <description>Privesc #1: Restore Deleted AD Object Windows 1. Import AD Module Import-Module activedirectory *Evil-WinRM* PS C:\Users\test.user\Documents&amp;gt; import-module activedirectory 2. Query All Deleted Objects within Domain Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects *Evil-WinRM* PS C:\Users\test.user\Documents&amp;gt; Get-ADObject -filter &amp;#39;isDeleted -eq $true -and name -ne &amp;#34;Deleted Objects&amp;#34;&amp;#39; -includeDeletedObjects Deleted : True DistinguishedName : CN=Another User\0ADEL:ebe15df5-e265-45ec-b7fc-359877217138,CN=Deleted Objects,DC=example,DC=com Name : Another User DEL:ebe15df5-e265-45ec-b7fc-359877217138 ObjectClass : user ObjectGUID : ebe15df5-e265-45ec-b7fc-359877217138 3. Get All Details for the Deleted Object Get-ADObject -filter { SAMAccountName -eq &amp;#39;&amp;lt;DELETED_USER&amp;gt;&amp;#39; } -includeDeletedObjects -property * *Evil-WinRM* PS C:\Users\test.</description>
+    </item>
+    <item>
+      <title>IP Routing</title>
+      <link>https://tldrbins.github.io/ip_routing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ip_routing/</guid>
+      <description>Linux Windows Check Routes ip route show Add Route sudo ip route add &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route add 172.16.0.0/16 via 192.168.1.10 dev eth0 Modify Route sudo ip route replace &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route replace 172.16.0.0/16 via 192.168.1.20 dev eth0 Delete Route sudo ip route del &amp;lt;SUBNET&amp;gt; sudo ip route del 172.16.0.0/16 # Exact match sudo ip route del &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route del 172.</description>
+    </item>
+    <item>
       <title>Runas</title>
       <link>https://tldrbins.github.io/runas/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

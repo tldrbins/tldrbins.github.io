@@ -26,7 +26,14 @@
       <link>https://tldrbins.github.io/firewall_linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firewall_linux/</guid>
-      <description>Linux Check Firewall Rules # Show all rules sudo iptables -L -v -n --line-numbers # Show target chain sudo iptables -L &amp;lt;CHAIN&amp;gt; -v -n --line-numbers sudo iptables -L INPUT -v -n --line-numbers Set Firewall Rules # Default Policy sudo iptables -P &amp;lt;CHAIN&amp;gt; &amp;lt;RULE&amp;gt; sudo iptables -P INPUT DROP sudo iptables -A &amp;lt;CHAIN&amp;gt; -p &amp;lt;PROTOCOL&amp;gt; -s &amp;lt;SOURCE&amp;gt; --dport &amp;lt;PORT&amp;gt; -j &amp;lt;RULE&amp;gt; # Allow SSH from a specific subnet sudo iptables -A INPUT -p tcp -s 192.</description>
+      <description>Linux Check Firewall Rules # Show all rules sudo iptables -L -v -n --line-numbers # Show target chain sudo iptables -L &amp;lt;CHAIN&amp;gt; -v -n --line-numbers sudo iptables -L INPUT -v -n --line-numbers Set Firewall Rules # Default policy sudo iptables -P &amp;lt;CHAIN&amp;gt; &amp;lt;RULE&amp;gt; sudo iptables -P INPUT DROP sudo iptables -A &amp;lt;CHAIN&amp;gt; -p &amp;lt;PROTOCOL&amp;gt; -s &amp;lt;SOURCE&amp;gt; --dport &amp;lt;PORT&amp;gt; -j &amp;lt;RULE&amp;gt; # Allow SSH from a specific subnet sudo iptables -A INPUT -p tcp -s 192.</description>
+    </item>
+    <item>
+      <title>IP Routing</title>
+      <link>https://tldrbins.github.io/ip_routing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/ip_routing/</guid>
+      <description>Linux Windows Check Routes ip route show Add Route sudo ip route add &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route add 172.16.0.0/16 via 192.168.1.10 dev eth0 Modify Route sudo ip route replace &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route replace 172.16.0.0/16 via 192.168.1.20 dev eth0 Delete Route sudo ip route del &amp;lt;SUBNET&amp;gt; sudo ip route del 172.16.0.0/16 # Exact match sudo ip route del &amp;lt;SUBNET&amp;gt; via &amp;lt;GATEWAY&amp;gt; dev &amp;lt;INTERFACE&amp;gt; sudo ip route del 172.</description>
     </item>
   </channel>
 </rss>

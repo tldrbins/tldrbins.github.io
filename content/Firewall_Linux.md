@@ -28,7 +28,7 @@ sudo iptables -L INPUT -v -n --line-numbers
 ### Set Firewall Rules
 
 ```console
-# Default Policy
+# Default policy
 sudo iptables -P <CHAIN> <RULE>
 ```
 

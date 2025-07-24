@@ -12,4 +12,4 @@ We encourage you to give us a [star on GitHub](https://github.com/tldrbins/tldrb
 
 TLDRBins is a project created by [jojo9846](https://github.com/jojo9846).
 
-**I am not responsible for using the knowledge provided on this website in an unethical way**
+**TLDRBins provides penetration testing resources for educational and authorized use only. All activities must comply with applicable laws and require explicit permission. Unauthorized or unethical use is strictly prohibited, and we are not liable for misuse of this information.**
