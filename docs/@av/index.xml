@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/windows_defender/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_defender/</guid>
-      <description>Check Exclusion Path .\SharpExclusionFinder.exe &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; Ref: SharpExclusionFinder&#xA;Add Exclusion Path Add-MpPreference -ExclusionPath &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; Disable Defender Powershell # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
+      <description>Check Exclusion Path .\SharpExclusionFinder.exe &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; Ref: SharpExclusionFinder&#xA;Add Exclusion Path Add-MpPreference -ExclusionPath &amp;#39;&amp;lt;PATH&amp;gt;&amp;#39; Disable Defender powershell # Disable realtime monitoring Set-MpPreference -DisableRealtimeMonitoring $true # Completely disable defender New-ItemProperty -Path &amp;#34;HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender&amp;#34; -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force </description>
     </item>
   </channel>
 </rss>

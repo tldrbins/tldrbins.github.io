@@ -1,7 +1,7 @@
 ---
 title: "Network Discovery"
-date: 2025-4-2
-tags: ["Port Scanning", "Arp", "Iptables", "Tcpdump", "Packet Sniffing", "Reconnaissance", "Port", "Network", "Discovery", "Ping"]
+date: 2025-7-24
+tags: ["Port Scanning", "Arp", "Iptables", "Tcpdump", "Packet Sniffing", "Reconnaissance", "Port", "Network", "Discovery", "Ping", "Traceroute"]
 ---
 
 #### Test Connectivity
@@ -64,7 +64,7 @@ Test-NetConnection <TARGET> -Port <TARGET_PORT>
 ```
 
 ```console
-# With Active Directory Module Installed
+# With Active Directory module installed
 Get-ADComputer -Filter * | ForEach-Object { $_ | Select-Object Name, @{Name='IPAddress';Expression={(Test-Connection -ComputerName $_.Name -Count 1).IPV4Address}}}
 ```
 
@@ -320,11 +320,11 @@ tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      
 
 ```console
 # UDP
-netstat -plunt
+netstat -planu
 ```
 
 ```console {class="sample-code"}
-$ netstat -plunt
+$ netstat -planu
 (Not all processes could be identified, non-owned process info
  will not be shown, you would have to be root to see it all.)
 Active Internet connections (only servers)
@@ -353,7 +353,7 @@ netstat -ano | findstr LISTENING
 ```
 
 ```console
-# List TCP listening ports and processes
+# List TCP listening ports and processes (Formatted)
 Get-NetTCPConnection -State Listen | Select-Object -Property *,@{'Name' = 'ProcessName';'Expression'={(Get-Process -Id $_.OwningProcess).Name}} | Format-Table -Property LocalAddress,LocalPort,OwningProcess,ProcessName
 ```
 

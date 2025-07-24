@@ -1,11 +1,50 @@
 ---
-title: "Monitor Process (Windows)"
-date: 2024-10-5
-tags: ["Monitor", "Process", "Background Tasks", "Windows"]
+title: "Windows Processes"
+date: 2025-7-24
+tags: ["Processes", "Tasklist", "Dll", "Services", "Monitor", "Background Tasks", "Windows"]
 ---
+
+### General
 
 {{< tab set1 tab1 >}}powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
+
+```console
+# Verbose
+tasklist /v
+```
+
+```console
+# Dlls used per process
+tasklist /m
+```
+
+```console
+# Service within process
+tasklist /svc
+```
+
+```console
+# Filter
+tasklist /FI "<KEY> eq <VALUE>"
+```
+
+```console {class="sample-code"}
+tasklist /FI "USERNAME eq NT AUTHORITY\SYSTEM"
+```
+
+```console
+# Help
+tasklist /?
+```
+
+{{< /tabcontent >}}
+
+
+### Monitoring Process
+
+{{< tab set2 tab1 >}}powershell{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
 
 #### Template
 
@@ -40,7 +79,7 @@ while ($true) {
 
 #### Execution
 
-```bash
+```console
 # Bypass script execution policy
 powerShell.exe -ExecutionPolicy UnRestricted -File monitor.ps1
 ```

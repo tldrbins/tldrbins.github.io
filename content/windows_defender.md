@@ -1,6 +1,6 @@
 ---
 title: "Windows Defender"
-date: 2024-7-16
+date: 2025-7-24
 tags: ["Bypass", "Defender", "AV", "Anti-Virus", "Windows"]
 ---
 
@@ -20,7 +20,7 @@ Add-MpPreference -ExclusionPath '<PATH>'
 
 ### Disable Defender
 
-{{< tab set1 tab1 >}}Powershell{{< /tab >}}
+{{< tab set1 tab1 >}}powershell{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console

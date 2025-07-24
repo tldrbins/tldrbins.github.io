@@ -8,6 +8,13 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@services/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Windows Processes</title>
+      <link>https://tldrbins.github.io/windows_processes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/windows_processes/</guid>
+      <description>General powershell # Verbose tasklist /v # Dlls used per process tasklist /m # Service within process tasklist /svc # Filter tasklist /FI &amp;#34;&amp;lt;KEY&amp;gt; eq &amp;lt;VALUE&amp;gt;&amp;#34; tasklist /FI &amp;#34;USERNAME eq NT AUTHORITY\SYSTEM&amp;#34; # Help tasklist /? Monitoring Process powershell Template # Define the process name $processName = &amp;#34;&amp;lt;PROCESS&amp;gt;&amp;#34; # Define the interval in seconds between checks (e.g., 5 seconds) $interval = 5 # Start an infinite loop while ($true) { # Check if the process is running $process = Get-Process -Name $processName -ErrorAction SilentlyContinue if ($process) { # If the process is found, perform your action Write-Host &amp;#34;&amp;lt;PROCESS&amp;gt; process is running.</description>
+    </item>
+    <item>
       <title>Windows Services</title>
       <link>https://tldrbins.github.io/server_operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
