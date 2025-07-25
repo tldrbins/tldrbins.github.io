@@ -1,53 +1,53 @@
 ---
 title: "GPG"
-date: 2024-8-1
+date: 2025-7-25
 tags: ["Cryptography", "Encryption", "File Encryption", "Gpg", "Pretty Good Privacy", "Public Key", "Private Key"]
 ---
 
-### Basic
+### General
 
 ```console
-# Check Version
+# Check version
 gpg --version
 ```
 
 ```console
-# Generate New Key
+# Generate new key
 gpg --gen-key
 ```
 
 ```console
-# Export Private Key
+# Export private key
 gpg --homedir <GNUPG_DIR> --export-secret-keys --armor > key.asc
 ```
 
 ```console
-# Export Public Key
+# Export public key
 gpg --export -a <USER>@<DOMAIN>
 ```
 
 ```console
-# Check Keys
+# Check keys
 gpg --list-keys
 ```
 
 ```console
-# Import Public Key
+# Import public key
 gpg --import <PUB_KEY>
 ```
 
 ```console
-# Encrypt a Message with Public Key (Email from PubKey)
+# Encrypt a message with public key (Email from pubKey)
 gpg --encrypt --armor -r <USER>@<DOMAIN> <FILE>
 ```
 
 ```console
-# Decrypt a Message with Our Private Key
+# Decrypt a message with our private key
 gpg --homedir <GNUPG_DIR> -d <ENC_FILE>
 ```
 
 ```console
-# Sign Our Own Message
+# Sign our own message
 gpg --clearsign --output - <FILE>
 ```
 

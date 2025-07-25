@@ -8,18 +8,18 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@pem/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Openssl</title>
+      <title>OpenSSL</title>
       <link>https://tldrbins.github.io/openssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/openssl/</guid>
-      <description>Basics Show TLS Certificate of a HTTPS Web Server echo | openssl s_client -showcerts -servername &amp;lt;TARGET&amp;gt; -connect &amp;lt;TARGET&amp;gt;:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Decrypt a Password Protected Private Key openssl rsa -in &amp;lt;KEY_FILE&amp;gt; -out decrypted_&amp;lt;KEY_FILE&amp;gt; Create a Personal Information Exchange File (.pfx) openssl pkcs12 -export -out &amp;lt;PFX_FILE&amp;gt; -inkey &amp;lt;KEY_FILE&amp;gt; -in &amp;lt;CRT_FILE&amp;gt; View RSA Private Key (.key) openssl rsa -in &amp;lt;KEY_FILE&amp;gt; -noout -text View Certificate (.crt) openssl x509 -in &amp;lt;CRT_FILE&amp;gt; -noout -text View Personal Information Exchang (.</description>
+      <description>General Show TLS Certificate of a HTTPS Web Server echo | openssl s_client -showcerts -servername &amp;lt;TARGET&amp;gt; -connect &amp;lt;TARGET&amp;gt;:443 2&amp;gt;/dev/null | openssl x509 -inform pem -noout -text Decrypt a Password Protected Private Key openssl rsa -in &amp;lt;KEY_FILE&amp;gt; -out decrypted_&amp;lt;KEY_FILE&amp;gt; Create a Personal Information Exchange File (.pfx) openssl pkcs12 -export -out &amp;lt;PFX_FILE&amp;gt; -inkey &amp;lt;KEY_FILE&amp;gt; -in &amp;lt;CRT_FILE&amp;gt; View RSA Private Key (.key) openssl rsa -in &amp;lt;KEY_FILE&amp;gt; -noout -text View Certificate (.crt) openssl x509 -in &amp;lt;CRT_FILE&amp;gt; -noout -text View Personal Information Exchang (.</description>
     </item>
     <item>
       <title>SSH</title>
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH version openssh-server (ubuntu)&#xA;openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate no passphrase SSH key from encrypted key openssl rsa -in id_rsa_encrypted -out ./id_rsa Convert .ppk to .pem format # Install sudo apt install putty-tools # Convert to private key in pem format puttygen key.</description>
+      <description>Check SSH Version openssh-server (ubuntu)&#xA;openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate No Passphrase SSH Key from Encrypted Key openssl rsa -in id_rsa_encrypted -out ./id_rsa Convert .ppk to .pem Format # Install sudo apt install putty-tools # Convert to private key in pem format puttygen key.</description>
     </item>
   </channel>
 </rss>

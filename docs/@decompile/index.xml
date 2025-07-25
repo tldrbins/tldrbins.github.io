@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/android/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/android/</guid>
-      <description>Unpack .apk file # Get .smali files java -jar apktool_2.9.3.jar d &amp;lt;FILE&amp;gt; # Get .java files jadx &amp;lt;FILE&amp;gt; Ref: apktool Ref: jadx&#xA;Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 &amp;lt;APP&amp;gt; -o &amp;lt;APP&amp;gt;_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --out &amp;lt;APP&amp;gt;_final.apk &amp;lt;APP&amp;gt;_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
+      <description>Unpack .apk File # Get .smali files java -jar apktool_2.9.3.jar d &amp;lt;FILE&amp;gt; # Get .java files jadx &amp;lt;FILE&amp;gt; Ref: apktool Ref: jadx&#xA;Re-pack .apk File 1. Initial Pack java -jar apktool_2.9.3.jar b --use-aapt2 &amp;lt;APP&amp;gt; -o &amp;lt;APP&amp;gt;_repacked.apk 2. Zip Align zipalign&#xA;3. Sign the Apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --out &amp;lt;APP&amp;gt;_final.apk &amp;lt;APP&amp;gt;_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
     </item>
     <item>
       <title>Python Decompile</title>

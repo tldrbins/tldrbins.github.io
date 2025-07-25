@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@debugfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>disk group</title>
+      <title>Disk Group</title>
       <link>https://tldrbins.github.io/disk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/disk/</guid>
-      <description>Basic # Show devices lsblk $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 12G 0 disk ├─sda1 8:1 0 120M 0 part /boot ├─sda2 8:2 0 1K 0 part └─sda5 8:5 0 11.9G 0 part ├─Kotarak--vg-root 252:0 0 7G 0 lvm / └─Kotarak--vg-swap_1 252:1 0 1G 0 lvm [SWAP] sr0 11:0 1 1024M 0 rom # Device attributes blkid $ blkid /dev/sda1: UUID=&amp;#34;67e178a9-1b2a-407e-8d3f-7b1772bab2be&amp;#34; TYPE=&amp;#34;ext2&amp;#34; PARTUUID=&amp;#34;1b9f3540-01&amp;#34; /dev/sda5: UUID=&amp;#34;LnUYcF-uZX0-c91G-XfUl-6BqJ-gk8W-QtnncD&amp;#34; TYPE=&amp;#34;LVM2_member&amp;#34; PARTUUID=&amp;#34;1b9f3540-05&amp;#34; /dev/mapper/Kotarak--vg-root: UUID=&amp;#34;efb44a28-8edc-4d40-aca3-81e57d58d759&amp;#34; TYPE=&amp;#34;ext4&amp;#34; /dev/mapper/Kotarak--vg-swap_1: UUID=&amp;#34;162b2913-7dcf-4ba7-bddc-238a22f16e52&amp;#34; TYPE=&amp;#34;swap&amp;#34; # Show device mapping ls -l /dev/mapper/ $ ls -l /dev/mapper/ total 0 crw------- 1 root root 10, 236 Sep 22 23:22 control lrwxrwxrwx 1 root root 7 Sep 22 23:22 Kotarak--vg-root -&amp;gt; .</description>
+      <description>General # Show devices lsblk $ lsblk NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT sda 8:0 0 12G 0 disk ├─sda1 8:1 0 120M 0 part /boot ├─sda2 8:2 0 1K 0 part └─sda5 8:5 0 11.9G 0 part ├─Kotarak--vg-root 252:0 0 7G 0 lvm / └─Kotarak--vg-swap_1 252:1 0 1G 0 lvm [SWAP] sr0 11:0 1 1024M 0 rom # Device attributes blkid $ blkid /dev/sda1: UUID=&amp;#34;67e178a9-1b2a-407e-8d3f-7b1772bab2be&amp;#34; TYPE=&amp;#34;ext2&amp;#34; PARTUUID=&amp;#34;1b9f3540-01&amp;#34; /dev/sda5: UUID=&amp;#34;LnUYcF-uZX0-c91G-XfUl-6BqJ-gk8W-QtnncD&amp;#34; TYPE=&amp;#34;LVM2_member&amp;#34; PARTUUID=&amp;#34;1b9f3540-05&amp;#34; /dev/mapper/Kotarak--vg-root: UUID=&amp;#34;efb44a28-8edc-4d40-aca3-81e57d58d759&amp;#34; TYPE=&amp;#34;ext4&amp;#34; /dev/mapper/Kotarak--vg-swap_1: UUID=&amp;#34;162b2913-7dcf-4ba7-bddc-238a22f16e52&amp;#34; TYPE=&amp;#34;swap&amp;#34; # Show device mapping ls -l /dev/mapper/ $ ls -l /dev/mapper/ total 0 crw------- 1 root root 10, 236 Sep 22 23:22 control lrwxrwxrwx 1 root root 7 Sep 22 23:22 Kotarak--vg-root -&amp;gt; .</description>
     </item>
   </channel>
 </rss>

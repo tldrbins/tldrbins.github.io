@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <meta name="description" content="">
-<title>Mount Share | TLDRBins</title>
+<title>Share Mount | TLDRBins</title>
 <link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
 </head>
 <body>
@@ -14,7 +14,7 @@
       <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
       <span>TLDRBins</span>
     </a><span class="hl"> / </span>
-    <a href="https://tldrbins.github.io/share_mount/"><span>Mount Share</span></a></h1>
+    <a href="https://tldrbins.github.io/share_mount/"><span>Share Mount</span></a></h1>
   <div class="theme-toggle-wrapper">
     <div class="theme-toggle">
       <div class="theme-toggle-track">
@@ -174,14 +174,14 @@
 
 <button data-tabset="set1" data-tabcontent="tab2">smb</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="list-share">List share</h4>
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="list-shares">List Shares</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">showmount -e <span class="o editable-keyword">&lt;TARGET&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> showmount -e 10.10.11.191
 </span></span><span class="line"><span class="cl"><span class="go">Export list for 10.10.11.191:
 </span></span></span><span class="line"><span class="cl"><span class="go">/home/ross    *
 </span></span></span><span class="line"><span class="cl"><span class="go">/var/www/html *
-</span></span></span></div></pre></div><h4 id="mount-share">Mount share</h4>
+</span></span></span></div></pre></div><h4 id="mount-share">Mount Share</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mkdir /mnt/share
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> sudo mkdir /mnt/share
@@ -191,11 +191,11 @@
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">$</span> ls /mnt/share 
 </span></span><span class="line"><span class="cl"><span class="go">Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
-</span></span></span></div></pre></div><h4 id="unmount-share">Unmount share</h4>
+</span></span></span></div></pre></div><h4 id="unmount-share">Unmount Share</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo umount /mnt/share/
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> sudo umount /mnt/share/
-</span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="mount-share">Mount share</h4>
+</span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab2"><h4 id="mount-share">Mount Share</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">sudo mount -t cifs //<span class="o editable-keyword">&lt;TARGET&gt;</span>/<span class="o editable-keyword">&lt;SHARE&gt;</span> /mnt
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Without creds

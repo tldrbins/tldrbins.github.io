@@ -16,10 +16,10 @@
       <description>Recon ROADTools TeamFiltration 1. Authenticate roadrecon auth -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon auth -u &amp;#39;apple.seed@example.com&amp;#39; -p &amp;#39;Test1234&amp;#39; Tokens were written to .roadtools_auth 2. Info Gathering roadrecon gather ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gather Starting data gathering phase 1 of 2 (collecting objects) Starting data gathering phase 2 of 2 (collecting properties and relationships) ROADrecon gather executed in 12.27 seconds and issued 1152 HTTP requests. 3. Explore the Data roadrecon gui ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gui * Serving Flask app &amp;#39;roadtools.</description>
     </item>
     <item>
-      <title>DNS Enum</title>
-      <link>https://tldrbins.github.io/dns_enum/</link>
+      <title>DNS</title>
+      <link>https://tldrbins.github.io/dns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/dns_enum/</guid>
+      <guid>https://tldrbins.github.io/dns/</guid>
       <description>Linux Windows Zone Transfer dig +noall +answer @&amp;lt;NAME_SERVER&amp;gt; &amp;lt;DOMAIN&amp;gt; AXFR $ dig +noall +answer snoopy.htb axfr @10.10.11.212 snoopy.htb. 86400 IN SOA ns1.snoopy.htb. ns2.snoopy.htb. 2022032612 3600 1800 604800 86400 snoopy.htb. 86400 IN NS ns1.snoopy.htb. snoopy.htb. 86400 IN NS ns2.snoopy.htb. mattermost.snoopy.htb. 86400 IN A 172.18.0.3 mm.snoopy.htb. 86400 IN A 127.0.0.1 ns1.snoopy.htb. 86400 IN A 10.0.50.10 ns2.snoopy.htb. 86400 IN A 10.0.51.10 postgres.snoopy.htb. 86400 IN A 172.18.0.2 provisions.snoopy.htb. 86400 IN A 172.18.0.4 www.snoopy.htb. 86400 IN A 127.</description>
     </item>
     <item>
@@ -55,21 +55,21 @@
       <link>https://tldrbins.github.io/snmp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/snmp/</guid>
-      <description>Bruteforce commmuity string onesixtyone snmpbrute # Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt $ onesixtyone 10.10.11.248 -c /usr/share/doc/onesixtyone/dict.txt Scanning 1 hosts, 50 communities 10.10.11.248 [public] Linux monitored 5.10.0-28-amd64 #1 SMP Debian 5.10.209-2 (2024-01-31) x86_64 Ref: onesixtyone&#xA;# Brute force community string (Check also SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; $ python3 snmpbrute.py -t 10.10.11.248 _____ _ ____ _______ ____ __ / ___// | / / |/ / __ \ / __ )_______ __/ /____ \__ \/ |/ / /|_/ / /_/ / / __ / ___/ / / / __/ _ \ ___/ / /| / / / / ____/ / /_/ / / / /_/ / /_/ __/ /____/_/ |_/_/ /_/_/ /_____/_/ \__,_/\__/\___/ SNMP Bruteforce &amp;amp; Enumeration Script v2.</description>
+      <description>Bruteforce Commmuity String onesixtyone snmpbrute # Brute force community string for snmpwalk use onesixtyone &amp;lt;TARGET&amp;gt; -c /usr/share/doc/onesixtyone/dict.txt $ onesixtyone 10.10.11.248 -c /usr/share/doc/onesixtyone/dict.txt Scanning 1 hosts, 50 communities 10.10.11.248 [public] Linux monitored 5.10.0-28-amd64 #1 SMP Debian 5.10.209-2 (2024-01-31) x86_64 Ref: onesixtyone&#xA;# Brute force community string (Also check SNMPv2) python3 snmpbrute.py -t &amp;lt;TARGET&amp;gt; $ python3 snmpbrute.py -t 10.10.11.248 _____ _ ____ _______ ____ __ / ___// | / / |/ / __ \ / __ )_______ __/ /____ \__ \/ |/ / /|_/ / /_/ / / __ / ___/ / / / __/ _ \ ___/ / /| / / / / ____/ / /_/ / / / /_/ / /_/ __/ /____/_/ |_/_/ /_/_/ /_____/_/ \__,_/\__/\___/ SNMP Bruteforce &amp;amp; Enumeration Script v2.</description>
     </item>
     <item>
       <title>SSL</title>
       <link>https://tldrbins.github.io/ssl/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssl/</guid>
-      <description>Tools sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix old ssl protocol connection problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
+      <description>Tools sslscan # Scan target SSL version sslscan &amp;lt;TARGET&amp;gt; Fix Old SSL Protocol Connection Problem # Edit /etc/ssl/openssl.cnf [system_default_sect] #MinProtocol = DEFAULT@SECLEVEL=2 MinProtocol = None #CipherString = DEFAULT@SECLEVEL=2 CipherString = None Note: Remember to revert the changes after job done</description>
     </item>
     <item>
       <title>Subdomain Enum</title>
       <link>https://tldrbins.github.io/subdomain_enum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/subdomain_enum/</guid>
-      <description>Add domain/subdomain to /etc/hosts echo &amp;#34;&amp;lt;TARGET_IP&amp;gt; &amp;lt;DOMAIN&amp;gt;&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u &amp;#39;http://&amp;lt;DOMAIN&amp;gt;&amp;#39; Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u &amp;#39;http://&amp;lt;DOMAIN&amp;gt;&amp;#39; --hw &amp;lt;WORD&amp;gt; Filter out response with header # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;Access-Control-Allow-Origin&amp;#39;&amp;#34; -u &amp;#39;http://&amp;lt;DOMAIN&amp;gt;&amp;#39; gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
+      <description>Add Domain/Subdomain to &amp;apos;/etc/hosts&amp;apos; echo &amp;#34;&amp;lt;TARGET_IP&amp;gt; &amp;lt;DOMAIN&amp;gt;&amp;#34; | sudo tee -a /etc/hosts wfuzz gobuster Subdomain Enum wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u &amp;#39;http://&amp;lt;DOMAIN&amp;gt;&amp;#39; # Take note of the word size, Ctrl+C to interrupt the process, then run again wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Host: FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; -u &amp;#39;http://&amp;lt;DOMAIN&amp;gt;&amp;#39; --hw &amp;lt;WORD&amp;gt; Filter Out Response with Header wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H &amp;#34;Origin: http://FUZZ.&amp;lt;DOMAIN&amp;gt;&amp;#34; --filter &amp;#34;r.headers.response ~ &amp;#39;&amp;lt;HEADER&amp;gt;&amp;#39;&amp;#34; -u &amp;#39;http://&amp;lt;DOMAIN&amp;gt;&amp;#39; # For example: Access-Control-Allow-Origin wfuzz -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.</description>
     </item>
     <item>
       <title>Web Directory Enum</title>
@@ -83,7 +83,7 @@
       <link>https://tldrbins.github.io/whois/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/whois/</guid>
-      <description>WHOIS # General whois &amp;lt;DOMAIN&amp;gt; # With Specific Server whois -h &amp;lt;WHOIS_SERVER&amp;gt; -p 43 &amp;lt;DOMAIN&amp;gt; </description>
+      <description> Linux # General whois &amp;lt;DOMAIN&amp;gt; # Specify server whois -h &amp;lt;WHOIS_SERVER&amp;gt; -p 43 &amp;lt;DOMAIN&amp;gt; </description>
     </item>
     <item>
       <title>Wordpress</title>

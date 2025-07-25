@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/custom_wordlist_generator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
-      <description>CeWL username-anarchy spraygen # Create Custom Wordlist by Spidering Target cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL&#xA;# Create Username Wordlist ./username-anarchy -i &amp;lt;USERS&amp;gt; | tee &amp;lt;USERS_FILE&amp;gt; $ username-anarchy -i users.txt | tee usernames.txt james jamesroberts james.roberts jamesrob jamerobe ---[SNIP]--- Ref: username-anarchy&#xA;python3 spraygen.py --year_start &amp;lt;YEAR_START&amp;gt; --year_end &amp;lt;YEAR_END&amp;gt; --type &amp;lt;TYPE&amp;gt; -o wordlist.txt $ python3 spraygen.py --year_start 2020 --year_end 2025 --type seasons -o wordlist.txt ( \_ _ ( \_ ( \_ ( \_ ( \_ ___ ( Password \ | | ( Spray |คคคคคคคค|___| ( _ / | ( _ / /~~~~~~~~~\ ( _ / ( Spray ) (_/ | This | | | | Get | | Creds | |_________| Original Art by Alex Chudnovsky (Unaffiliated) Spraygen tool by 3ndG4me Version 1.</description>
+      <description>CeWL username-anarchy spraygen # Create custom wordlist by spidering target cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL&#xA;# Create username wordlist ./username-anarchy -i &amp;lt;USERS&amp;gt; | tee &amp;lt;USERS_FILE&amp;gt; $ username-anarchy -i users.txt | tee usernames.txt james jamesroberts james.roberts jamesrob jamerobe ---[SNIP]--- Ref: username-anarchy&#xA;python3 spraygen.py --year_start &amp;lt;YEAR_START&amp;gt; --year_end &amp;lt;YEAR_END&amp;gt; --type &amp;lt;TYPE&amp;gt; -o wordlist.txt $ python3 spraygen.py --year_start 2020 --year_end 2025 --type seasons -o wordlist.txt ( \_ _ ( \_ ( \_ ( \_ ( \_ ___ ( Password \ | | ( Spray |คคคคคคคค|___| ( _ / | ( _ / /~~~~~~~~~\ ( _ / ( Spray ) (_/ | This | | | | Get | | Creds | |_________| Original Art by Alex Chudnovsky (Unaffiliated) Spraygen tool by 3ndG4me Version 1.</description>
     </item>
     <item>
       <title>Firefox</title>
       <link>https://tldrbins.github.io/firefox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firefox/</guid>
-      <description>Browse History Windows # Locate sqlite $firefoxProfile = Get-ChildItem -Path &amp;#34;$env:APPDATA\Mozilla\Firefox\Profiles\&amp;#34; -Directory | Where-Object { $_.Name -like &amp;#34;*.default-release*&amp;#34; }; $historyDb = Join-Path $firefoxProfile.FullName &amp;#34;places.sqlite&amp;#34;; $historyDb Extract saved passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
+      <description>Browse History Windows # Locate sqlite $firefoxProfile = Get-ChildItem -Path &amp;#34;$env:APPDATA\Mozilla\Firefox\Profiles\&amp;#34; -Directory | Where-Object { $_.Name -like &amp;#34;*.default-release*&amp;#34; }; $historyDb = Join-Path $firefoxProfile.FullName &amp;#34;places.sqlite&amp;#34;; $historyDb Extract Saved Passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
     </item>
     <item>
       <title>Hydra</title>
       <link>https://tldrbins.github.io/hydra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/hydra/</guid>
-      <description>HTTP basic auth hydra -L &amp;lt;USERS_FILE&amp;gt; -P &amp;lt;PASSWORD_FILE&amp;gt; -s &amp;lt;TARGET_PORT&amp;gt; -f &amp;lt;TARGET&amp;gt; http-get / +-------------------------------------------+ | -s : port | | -L : usernames file | | -P : passwords file | | -f : exit when a login/pass pair is found | +-------------------------------------------+ Web Page Login Form hydra &amp;lt;TARGET&amp;gt; -l &amp;lt;USER&amp;gt; -P /usr/share/seclists/Passwords/500-worst-passwords.txt http-post-form &amp;#39;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#39; +-------------------------------------------+ | -l : username | | -P : wordlist | | http-post-form : service | | /login.</description>
+      <description>HTTP Basic Auth hydra -L &amp;lt;USERS&amp;gt; -P &amp;lt;PASSWORDS&amp;gt; -s &amp;lt;PORT&amp;gt; -f &amp;lt;TARGET&amp;gt; http-get / +-------------------------------------------+ | -s : port | | -L : usernames file | | -P : passwords file | | -f : exit when a login/pass pair is found | +-------------------------------------------+ Web Page Login Form hydra &amp;lt;TARGET&amp;gt; -l &amp;lt;USER&amp;gt; -P &amp;lt;PASSWORDS&amp;gt; http-post-form &amp;#39;/login.php:username=admin&amp;amp;password=^PASS^&amp;amp;remember=yes:Incorrect password&amp;#39; +-------------------------------------------+ | -l : username | | -P : wordlist | | http-post-form : service | | /login.</description>
     </item>
     <item>
       <title>Keepass</title>
@@ -47,21 +47,21 @@
       <link>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</guid>
-      <description>Brute force LUKS password bruteforce-luks -t 10 -f &amp;lt;WORDLIST&amp;gt; -w state.txt -v 30 &amp;lt;BACKUP_IMG&amp;gt; Note: This is slow, create a small wordlist&#xA;Basic # Open cryptsetup open --type luks &amp;lt;BACKUP_IMG&amp;gt; backup # Check ls -l /dev/mapper/ # Create mount folder sudo mkdir /mnt/backup # Mount sudo mount /dev/mapper/backup /mnt/backup/ </description>
+      <description>Brute force LUKS password bruteforce-luks -t 10 -f &amp;lt;WORDLIST&amp;gt; -w state.txt -v 30 &amp;lt;BACKUP_IMG&amp;gt; Note: This is slow, create a small wordlist&#xA;General # Open cryptsetup open --type luks &amp;lt;BACKUP_IMG&amp;gt; backup # Check ls -l /dev/mapper/ # Create mount folder sudo mkdir /mnt/backup # Mount sudo mount /dev/mapper/backup /mnt/backup/ </description>
     </item>
     <item>
       <title>Password Cracking</title>
       <link>https://tldrbins.github.io/password_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/password_cracking/</guid>
-      <description>Convert file to hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m &amp;lt;MODE&amp;gt; -a 0 hash /usr/share/wordlists/rockyou.</description>
+      <description>Convert File to Hash Format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m &amp;lt;MODE&amp;gt; -a 0 hash /usr/share/wordlists/rockyou.</description>
     </item>
     <item>
       <title>rsync</title>
       <link>https://tldrbins.github.io/rsync/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rsync/</guid>
-      <description>Basic Commands # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List a file rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd # List files (wildcard) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* # Get a file rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd . # Get files (wildcard) rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;; rsync -aR .ssh/ rsync://&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;/home_user/ Bruteforce rsync password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
+      <description>General # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List a file rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd # List files (wildcard) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* # Get a file rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd . # Get files (wildcard) rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;; rsync -aR .ssh/ rsync://&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;/home_user/ Bruteforce rsync Password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
     </item>
     <item>
       <title>Shadow Hash Cracking</title>

@@ -13,12 +13,12 @@ tags: ["Pass-The-Ticket", "Silver Ticket", "Ticket Granting Ticket", "AllowedToD
 #### 1. Pre-Check
 
 ```console
-# With password
+# Password
 impacket-findDelegation '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
 
 ```console
-# With hash
+# NTLM
 impacket-findDelegation '<DOMAIN>/<USER>' -dc-ip <DC_IP> -hashes :<HASH> -no-pass
 ```
 
@@ -115,7 +115,7 @@ C:\>
 #### 1. Add Delegate \[Optional\]
 
 ```console
-# Import powerview
+# Import PowerView
 . .\PowerView.ps1
 ```
 

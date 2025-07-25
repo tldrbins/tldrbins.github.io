@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/firefox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/firefox/</guid>
-      <description>Browse History Windows # Locate sqlite $firefoxProfile = Get-ChildItem -Path &amp;#34;$env:APPDATA\Mozilla\Firefox\Profiles\&amp;#34; -Directory | Where-Object { $_.Name -like &amp;#34;*.default-release*&amp;#34; }; $historyDb = Join-Path $firefoxProfile.FullName &amp;#34;places.sqlite&amp;#34;; $historyDb Extract saved passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
+      <description>Browse History Windows # Locate sqlite $firefoxProfile = Get-ChildItem -Path &amp;#34;$env:APPDATA\Mozilla\Firefox\Profiles\&amp;#34; -Directory | Where-Object { $_.Name -like &amp;#34;*.default-release*&amp;#34; }; $historyDb = Join-Path $firefoxProfile.FullName &amp;#34;places.sqlite&amp;#34;; $historyDb Extract Saved Passwords firefox_decrypt firepwd # Auto detect path python3 firefox_decrypt.py # Specify path python3 firefox_decrypt.py /&amp;lt;PATH&amp;gt;/profiles.ini/ Ref: firefox_decrypt&#xA;# With key4.db, logins.json in the same directory python3 firepwd.py Ref: firepwd</description>
     </item>
   </channel>
 </rss>

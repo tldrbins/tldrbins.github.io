@@ -1,10 +1,10 @@
 ---
 title: "Persistence"
-date: 2024-9-30
+date: 2025-7-25
 tags: ["AddMember", "Account", "Windows", "Persistence"]
 ---
 
-### Add local user
+### Add Local User
 
 ```console
 # Create new user
@@ -82,7 +82,7 @@ Global Group memberships     *None
 The command completed successfully.
 ```
 
-### Add domain user
+### Add Domain User
 
 ```console
 net user '<USER>' '<PASSWORD>' /add /domain

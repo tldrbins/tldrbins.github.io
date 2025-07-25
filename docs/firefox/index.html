@@ -174,7 +174,7 @@
 </span></span><span class="line"><span class="cl"><span class="gp">$</span><span class="nv">firefoxProfile</span> <span class="o">=</span> Get-ChildItem -Path <span class="s2">"</span><span class="nv">$env</span><span class="s2">:APPDATA\Mozilla\Firefox\Profiles\" -Directory | Where-Object { </span><span class="nv">$_</span><span class="s2">.Name -like "</span>*.default-release*<span class="s2">" }; </span><span class="nv">$historyDb</span><span class="s2"> = Join-Path </span><span class="nv">$firefoxProfile</span><span class="s2">.FullName "</span>places.sqlite<span class="s2">"; </span><span class="nv">$historyDb</span><span class="s2">
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div></div><p></p>
-<h3 id="extract-saved-passwords">Extract saved passwords</h3>
+<h3 id="extract-saved-passwords">Extract Saved Passwords</h3>
 <p class="tabs">
 <button data-tabset="set2" data-tabcontent="tab1" class="active">firefox_decrypt</button>
 

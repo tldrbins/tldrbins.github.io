@@ -214,6 +214,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@bloodyad/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@breakout/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@brute-force/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@bucket/</loc>
@@ -273,6 +275,8 @@
     <loc>https://tldrbins.github.io/@constrained-delegation/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/constrained_delegation/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@contact/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@container/</loc>
   </url><url>
@@ -336,6 +340,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@dcsync/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@debian/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@debug/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@debugfs/</loc>
@@ -380,7 +386,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@dns/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/dns_enum/</loc>
+    <loc>https://tldrbins.github.io/dns/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@dns-posioning/</loc>
   </url><url>
@@ -406,9 +412,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@donpapi/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/dotnet/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@dotnet/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/dotnet/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@dpapi/</loc>
   </url><url>
@@ -424,9 +430,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@dynamodb/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/elasticsearch/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@elasticsearch/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/elasticsearch/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@electron/</loc>
   </url><url>
@@ -560,9 +566,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@getuserspns/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/git/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@git/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/git/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@git-dumper/</loc>
   </url><url>
@@ -650,11 +656,15 @@
   </url><url>
     <loc>https://tldrbins.github.io/@internet-relay-chat/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@ip-address-block/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/ip_routing/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@iproute2/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@iprouting/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@ipsec/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@iptables/</loc>
   </url><url>
@@ -696,7 +706,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@kerberoasting/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/roasting/</loc>
+    <loc>https://tldrbins.github.io/kerberoasting/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@kerberos/</loc>
   </url><url>
@@ -770,9 +780,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@lxc/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/lxd/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@lxd/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/lxd/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@machine-account/</loc>
   </url><url>
@@ -788,9 +798,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@mdb/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/memcache/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@memcache/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/memcache/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@memory-dump/</loc>
   </url><url>
@@ -820,6 +830,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@mitmproxy/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@mobile-app/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@mongodb/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/mongodb_general/</loc>
@@ -831,8 +843,6 @@
     <loc>https://tldrbins.github.io/@mount/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@mount-file-system/</loc>
-  </url><url>
-    <loc>https://tldrbins.github.io/share_mount/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@mozilla/</loc>
   </url><url>
@@ -896,9 +906,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@nosql/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/npm/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@npm/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/npm/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@nslookup/</loc>
   </url><url>
@@ -932,17 +942,19 @@
   </url><url>
     <loc>https://tldrbins.github.io/@openssh/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/openssl/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@openssl/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/openvpn/</loc>
+    <loc>https://tldrbins.github.io/openssl/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@openvpn/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/oracle/</loc>
+    <loc>https://tldrbins.github.io/openvpn/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/@oracle-db/</loc>
+    <loc>https://tldrbins.github.io/oracledb_general/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@oracledb/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@organisational/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@ost/</loc>
   </url><url>
@@ -955,6 +967,8 @@
     <loc>https://tldrbins.github.io/@p12/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@package/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@package-management/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@packet-sniffing/</loc>
   </url><url>
@@ -1008,9 +1022,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@ping/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/pip/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@pip/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/pip/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@pip3/</loc>
   </url><url>
@@ -1040,7 +1054,7 @@
   </url><url>
     <loc>https://tldrbins.github.io/@postgresql/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/postgresql/</loc>
+    <loc>https://tldrbins.github.io/postgresql_general/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@potato/</loc>
   </url><url>
@@ -1071,6 +1085,8 @@
     <loc>https://tldrbins.github.io/@privilege-read/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@processes/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@programming/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@proxy/</loc>
   </url><url>
@@ -1138,6 +1154,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@regex/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@registrar/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@registry/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/registry/</loc>
@@ -1155,6 +1173,8 @@
     <loc>https://tldrbins.github.io/@responder/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@restore/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@restricted-shell/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/retrieve_flask_debug_pin/</loc>
   </url><url>
@@ -1260,6 +1280,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@share/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/share_mount/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@sharphound/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@shell/</loc>
@@ -1352,9 +1374,9 @@
   </url><url>
     <loc>https://tldrbins.github.io/@sudo/</loc>
   </url><url>
-    <loc>https://tldrbins.github.io/sudoers/</loc>
-  </url><url>
     <loc>https://tldrbins.github.io/@sudoers/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/sudoers/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@suid/</loc>
   </url><url>
@@ -1402,6 +1424,8 @@
   </url><url>
     <loc>https://tldrbins.github.io/@uac/</loc>
   </url><url>
+    <loc>https://tldrbins.github.io/@ubuntu/</loc>
+  </url><url>
     <loc>https://tldrbins.github.io/@udf/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@uncompyle6/</loc>
@@ -1421,6 +1445,10 @@
     <loc>https://tldrbins.github.io/@username/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@vba/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@vhosts/</loc>
+  </url><url>
+    <loc>https://tldrbins.github.io/@virtualization/</loc>
   </url><url>
     <loc>https://tldrbins.github.io/@vnc/</loc>
   </url><url>

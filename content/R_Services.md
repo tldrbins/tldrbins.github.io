@@ -24,12 +24,12 @@ cat /etc/hosts.equiv
 #### 2. Create the Target User Locally
 
 ```console
-# Create a Fake User
+# Create a fake user
 sudo useradd <USER>
 ```
 
 ```console
-# Set Password
+# Set password
 sudo passwd <USER> 
 ```
 
@@ -46,7 +46,7 @@ sadm:x:1001:1001::/home/sadm:/bin/sh
 ```
 
 ```console
-# Switch User
+# Switch user
 su <USER>
 ```
 

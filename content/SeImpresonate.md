@@ -1,6 +1,6 @@
 ---
 title: "SeImpresonate"
-date: 2024-8-2
+date: 2025-7-25
 tags: ["SeImpresonate", "Windows", "Potato", "Privilege Escalation", "Fullpower", "Scheduled Tasks"]
 ---
 
@@ -17,7 +17,7 @@ tags: ["SeImpresonate", "Windows", "Potato", "Privilege Escalation", "Fullpower"
 
 <small>*Ref: [FullPower](https://github.com/itm4n/FullPowers/releases/tag/v0.1)*</small>
 
-### Abuse #2: Recover tokens via schedule task
+### Abuse #2: Recover Tokens via Schedule Tasks
 
 ```console
 # Create a list of privileges 

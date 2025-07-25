@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on TLDRBins</title>
+    <link>https://tldrbins.github.io/@programming/</link>
+    <description>Recent content in Programming on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dotnet</title>
+      <link>https://tldrbins.github.io/dotnet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/dotnet/</guid>
+      <description>Compile C# Project Linux # Check dotnet --info # Prepare mkdir &amp;lt;PROJECT_NAME&amp;gt; cd &amp;lt;PROJECT_NAME&amp;gt; # Init dotnet new console # Create .sln file dotnet new sln # Link .sln to .csproj dotnet sln &amp;lt;PROJECT_NAME&amp;gt;.sln add &amp;lt;PROJECT_NAME&amp;gt;.csproj # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Build solution dotnet build -c Release # Run dotnet run Ref: dotnet</description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://tldrbins.github.io/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/java/</guid>
+      <description>Decompile JAR jd-gui Ref: Download jd-gui&#xA;Compile # Compile javac src/program.java # Pack into jar jar -cvf program.jar -C src/ . </description>
+    </item>
+  </channel>
+</rss>

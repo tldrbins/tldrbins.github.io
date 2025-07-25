@@ -12,21 +12,21 @@
       <link>https://tldrbins.github.io/gpg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/gpg/</guid>
-      <description>Basic # Check Version gpg --version # Generate New Key gpg --gen-key # Export Private Key gpg --homedir &amp;lt;GNUPG_DIR&amp;gt; --export-secret-keys --armor &amp;gt; key.asc # Export Public Key gpg --export -a &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; # Check Keys gpg --list-keys # Import Public Key gpg --import &amp;lt;PUB_KEY&amp;gt; # Encrypt a Message with Public Key (Email from PubKey) gpg --encrypt --armor -r &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; &amp;lt;FILE&amp;gt; # Decrypt a Message with Our Private Key gpg --homedir &amp;lt;GNUPG_DIR&amp;gt; -d &amp;lt;ENC_FILE&amp;gt; # Sign Our Own Message gpg --clearsign --output - &amp;lt;FILE&amp;gt; </description>
+      <description>General # Check version gpg --version # Generate new key gpg --gen-key # Export private key gpg --homedir &amp;lt;GNUPG_DIR&amp;gt; --export-secret-keys --armor &amp;gt; key.asc # Export public key gpg --export -a &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; # Check keys gpg --list-keys # Import public key gpg --import &amp;lt;PUB_KEY&amp;gt; # Encrypt a message with public key (Email from pubKey) gpg --encrypt --armor -r &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; &amp;lt;FILE&amp;gt; # Decrypt a message with our private key gpg --homedir &amp;lt;GNUPG_DIR&amp;gt; -d &amp;lt;ENC_FILE&amp;gt; # Sign our own message gpg --clearsign --output - &amp;lt;FILE&amp;gt; </description>
     </item>
     <item>
       <title>Linux hard disk encryption</title>
       <link>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/linux_hard_disk_encryption_luks/</guid>
-      <description>Brute force LUKS password bruteforce-luks -t 10 -f &amp;lt;WORDLIST&amp;gt; -w state.txt -v 30 &amp;lt;BACKUP_IMG&amp;gt; Note: This is slow, create a small wordlist&#xA;Basic # Open cryptsetup open --type luks &amp;lt;BACKUP_IMG&amp;gt; backup # Check ls -l /dev/mapper/ # Create mount folder sudo mkdir /mnt/backup # Mount sudo mount /dev/mapper/backup /mnt/backup/ </description>
+      <description>Brute force LUKS password bruteforce-luks -t 10 -f &amp;lt;WORDLIST&amp;gt; -w state.txt -v 30 &amp;lt;BACKUP_IMG&amp;gt; Note: This is slow, create a small wordlist&#xA;General # Open cryptsetup open --type luks &amp;lt;BACKUP_IMG&amp;gt; backup # Check ls -l /dev/mapper/ # Create mount folder sudo mkdir /mnt/backup # Mount sudo mount /dev/mapper/backup /mnt/backup/ </description>
     </item>
     <item>
       <title>Password Cracking</title>
       <link>https://tldrbins.github.io/password_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/password_cracking/</guid>
-      <description>Convert file to hash format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m &amp;lt;MODE&amp;gt; -a 0 hash /usr/share/wordlists/rockyou.</description>
+      <description>Convert File to Hash Format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m &amp;lt;MODE&amp;gt; -a 0 hash /usr/share/wordlists/rockyou.</description>
     </item>
   </channel>
 </rss>

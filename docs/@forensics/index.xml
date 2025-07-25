@@ -12,14 +12,14 @@
       <link>https://tldrbins.github.io/memory_dump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/memory_dump/</guid>
-      <description>Tools binwalk pypykatz # Extract files from memory dump binwalk -M -e &amp;lt;MEMORY_DUMP&amp;gt; Ref: binwalk&#xA;# Mini Dump pypykatz lsa minidump &amp;lt;MEMORY_DUMP&amp;gt; </description>
+      <description>Tools binwalk pypykatz MemProcFS # Extract files from memory dump binwalk -M -e &amp;lt;MEMORY_DUMP&amp;gt; Ref: binwalk&#xA;# Mini dump pypykatz lsa minidump &amp;lt;MEMORY_DUMP&amp;gt; ./memprocfs -mount &amp;lt;PATH&amp;gt; -device &amp;lt;MEMORY_DUMP&amp;gt; Ref: MemProcFS</description>
     </item>
     <item>
       <title>Windows Event Logs</title>
       <link>https://tldrbins.github.io/windows_event_logs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/windows_event_logs/</guid>
-      <description>Convert evtx to json evtx_dump ./evtx_dump -o jsonl -t 1 -f Security.json Security.evtx Ref: evtx_dump&#xA;Check number of logs wc -l Security.json Security Check computer name cat Security.json | jq &amp;#39;.Event.System.Computer&amp;#39; -r | sort | uniq -c | sort -nr Overview of event logs cat Security.json | jq &amp;#39;.Event.System.EventID&amp;#39; | sort | uniq -c | sort -nr Check specific event cat Security.json | jq &amp;#39;select(.Event.System.EventID==4624)&amp;#39; </description>
+      <description>Convert evtx to json evtx_dump ./evtx_dump -o jsonl -t 1 -f Security.json Security.evtx Ref: evtx_dump&#xA;Check Number of Logs wc -l Security.json Security Check Computer Name cat Security.json | jq &amp;#39;.Event.System.Computer&amp;#39; -r | sort | uniq -c | sort -nr Overview of Event Logs cat Security.json | jq &amp;#39;.Event.System.EventID&amp;#39; | sort | uniq -c | sort -nr Check Specific Event cat Security.json | jq &amp;#39;select(.Event.System.EventID==4624)&amp;#39; </description>
     </item>
   </channel>
 </rss>

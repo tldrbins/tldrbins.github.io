@@ -1,10 +1,10 @@
 ---
 title: "Android"
-date: 2024-7-27
-tags: ["Android", "Apk", "Decompile", "Java", "Reversing", "Apktool", "Adb"]
+date: 2025-7-25
+tags: ["Android", "Apk", "Decompile", "Java", "Reversing", "Apktool", "Adb", "Mobile App"]
 ---
 
-### Unpack .apk file
+### Unpack .apk File
 
 ```console
 # Get .smali files
@@ -22,19 +22,19 @@ jadx <FILE>
 
 ---
 
-### Re-pack .apk file
+### Re-pack .apk File
 
-#### 1. Initial pack
+#### 1. Initial Pack
 
 ```console
 java -jar apktool_2.9.3.jar b --use-aapt2 <APP> -o <APP>_repacked.apk
 ```
 
-#### 2. zip align
+#### 2. Zip Align
 
 [zipalign](https://www.sisik.eu/zipalign)
 
-#### 3. Sign the apk
+#### 3. Sign the Apk
 
 ```console
 keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias
@@ -74,7 +74,7 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:'<PASSWORD>' --out <APP>_f
 ./adb -s 127.0.0.1:6555 install <FILE>
 ```
 
-#### 3. Run the app
+#### 3. Run the App
 
 ```console
 +-------------------------+
@@ -82,7 +82,7 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:'<PASSWORD>' --out <APP>_f
 +-------------------------+
 ```
 
-#### 4. Get PID and forward to Debugger
+#### 4. Get PID and Forward to Debugger
 
 ```console
 ./adb -s 127.0.0.1:6555 shell ps -A | grep <REVERSE_DOMAIN_NAME_NOTATION>
@@ -92,7 +92,7 @@ apksigner sign --ks my-release-key.jks --ks-pass pass:'<PASSWORD>' --out <APP>_f
 ./adb -s 127.0.0.1:6555 forward tcp:5005 jdwp:<PID>
 ```
 
-#### 5. StartDebugging
+#### 5. Start Debugging
 
 ```console
 +-------------------------------------------+

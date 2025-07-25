@@ -26,7 +26,7 @@
       <link>https://tldrbins.github.io/squid_proxy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/squid_proxy/</guid>
-      <description>Config location /etc/squid/squid.conf Connect via FoxyProxy Firefox plugin +--------------------------+ | Settings | +--------------------------+ | Title : squid proxy | | Proxy Type : HTTP | | Proxy IP : &amp;lt;TARGET&amp;gt; | | Port : 3128 | | Username : (If any) | | Password : (If any) | +--------------------------+ # Connect http://&amp;lt;TARGET&amp;gt; # Or http://127.0.0.1 Internal ports scan via proxy # 1. Take note of word size, then Ctrl+C wfuzz -z range,1-1000 -p &amp;lt;TARGET&amp;gt;:3128:HTTP -u http://127.</description>
+      <description>Config Location /etc/squid/squid.conf Connect via FoxyProxy Firefox Plugin +--------------------------+ | Settings | +--------------------------+ | Title : squid proxy | | Proxy Type : HTTP | | Proxy IP : &amp;lt;TARGET&amp;gt; | | Port : 3128 | | Username : (If any) | | Password : (If any) | +--------------------------+ # Connect http://&amp;lt;TARGET&amp;gt; # Or http://127.0.0.1 Internal Ports Scan via Proxy # 1. Take note of word size, then Ctrl+C wfuzz -z range,1-1000 -p &amp;lt;TARGET&amp;gt;:3128:HTTP -u http://127.</description>
     </item>
   </channel>
 </rss>

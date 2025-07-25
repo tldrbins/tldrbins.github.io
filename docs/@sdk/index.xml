@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@sdk/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>dotnet</title>
+      <title>Dotnet</title>
       <link>https://tldrbins.github.io/dotnet/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dotnet/</guid>
-      <description>Compile C# project Linux # Check dotnet --info # Prepare mkdir &amp;lt;PROJECT_NAME&amp;gt; cd &amp;lt;PROJECT_NAME&amp;gt; # Init dotnet new console # Create .sln file dotnet new sln # Link .sln to .csproj dotnet sln &amp;lt;PROJECT_NAME&amp;gt;.sln add &amp;lt;PROJECT_NAME&amp;gt;.csproj # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Build solution dotnet build -c Release # Run dotnet run Ref: dotnet</description>
+      <description>Compile C# Project Linux # Check dotnet --info # Prepare mkdir &amp;lt;PROJECT_NAME&amp;gt; cd &amp;lt;PROJECT_NAME&amp;gt; # Init dotnet new console # Create .sln file dotnet new sln # Link .sln to .csproj dotnet sln &amp;lt;PROJECT_NAME&amp;gt;.sln add &amp;lt;PROJECT_NAME&amp;gt;.csproj # Add dependencies (optional) dotnet add package System.XXXX.XXXX.XXXX --version 1.0.0 +----------------------+ |Add Code to Program.cs| +----------------------+ # Build solution dotnet build -c Release # Run dotnet run Ref: dotnet</description>
     </item>
   </channel>
 </rss>

@@ -148,7 +148,7 @@ Certipy v5.0.2 - by Oliver Lyak (ly4k)
 {{< tab set2 tab1 >}}whisker{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
-#### 0. Pre-Check \[optional\]
+#### 0. Pre-Check \[Optional\]
 
 ```console
 .\whisker.exe list /domain:<DOMAIN> /target:'<TARGET_USER>' /dc:<DC>

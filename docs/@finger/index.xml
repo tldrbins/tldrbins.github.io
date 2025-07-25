@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/finger/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/finger/</guid>
-      <description>Basic # Check logged in users finger @&amp;lt;TARGET&amp;gt; # Check valid user finger &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; Brute force usernames perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t &amp;lt;TARGET&amp;gt; Ref: finger-user-enum</description>
+      <description>General # Check logged in users finger @&amp;lt;TARGET&amp;gt; # Check valid user finger &amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt; Brute Force Usernames perl finger-user-enum.pl -U /usr/share/seclists/Usernames/Names/names.txt -t &amp;lt;TARGET&amp;gt; Ref: finger-user-enum</description>
     </item>
   </channel>
 </rss>

