@@ -13,7 +13,7 @@ tags: ["Outlook", "Email", "Windows", "Pst", "Ost", "Mbox"]
 #### Tools
 
 ```console
-sudo apt install readpst
+sudo apt install pst-utils
 ```
 
 #### General

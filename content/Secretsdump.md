@@ -1,5 +1,5 @@
 ---
-title: "secretsdump"
+title: "Secrets Dump"
 date: 2025-7-18
 tags: ["SAM", "SYSTEM", "SECURITY", "Dcsync", "Impacket", "secretsdump", "Domain Controller", "Credential Dumping", "Active Directory", "Windows", "Ntds.Dit", "Hive"]
 ---

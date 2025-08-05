@@ -55,7 +55,7 @@ wfuzz -z range,<RANGE> '<TARGET>/FUZZ'
 ```
 
 ```console {class="sample-code"}
-wfuzz -z range,1-99 'http://127.0.0.1/FUZZ'
+wfuzz -z range,0-99 'http://127.0.0.1/FUZZ'
 ```
 
 {{< /tabcontent >}}

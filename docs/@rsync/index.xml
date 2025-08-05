@@ -8,11 +8,11 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@rsync/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>rsync</title>
+      <title>Rsync</title>
       <link>https://tldrbins.github.io/rsync/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rsync/</guid>
-      <description>General # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List a file rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd # List files (wildcard) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* # Get a file rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd . # Get files (wildcard) rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;; rsync -aR .ssh/ rsync://&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;/home_user/ Bruteforce rsync Password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
+      <description>General # List root directories (&amp;#39;/&amp;#39;) rsync --list-only -av rsync://&amp;lt;TARGET&amp;gt;/ $ rsync --list-only -av rsync://10.10.64.45/ httpd web backup # List root directories (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -av rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List sub-directories rsync --list-only -av rsync://&amp;lt;TARGET&amp;gt;/&amp;lt;DIR&amp;gt;/ $ rsync --list-only -av rsync://10.10.64.45/httpd/ receiving incremental file list drwxr-xr-x 4,096 2023/04/20 19:50:04 . drwxr-xr-x 4,096 2023/04/20 20:13:22 db -rw-r--r-- 12,288 2023/04/20 19:50:42 db/site.db drwxr-xr-x 4,096 2023/04/20 19:50:50 migrate drwxr-xr-x 4,096 2023/04/20 20:13:15 www -rw-r--r-- 1,722 2023/04/20 20:02:54 www/dashboard.</description>
     </item>
   </channel>
 </rss>

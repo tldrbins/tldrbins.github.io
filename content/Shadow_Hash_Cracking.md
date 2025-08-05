@@ -8,7 +8,7 @@ tags: ["Password Cracking", "Hash Cracking", "John The Ripper", "Hashcat", "shad
 
 ```console
 # Prepare an unshadowed hashes file
-unshadow passwd.txt shadow.txt > unshadowed.txt
+unshadow passwd shadow > unshadowed
 ```
 
 {{< tab set1 tab1 >}}john{{< /tab >}}
@@ -16,14 +16,19 @@ unshadow passwd.txt shadow.txt > unshadowed.txt
 {{< tabcontent set1 tab1 >}}
 
 ```console
-john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
+john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed
+```
+
+```console
+# yescrypt
+john --format=crypt --wordlist=/usr/share/wordlists/rockyou.txt unshadowed
 ```
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
 
 ```console
-hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user
+hashcat -m 7400 unshadowed /usr/share/wordlists/rockyou.txt --force --user
 ```
 
 {{< /tabcontent >}}

@@ -1,7 +1,7 @@
 ---
 title: "SSH"
 date: 2025-7-25
-tags: ["SSH", "Private Key", "Public Key", "id_Rsa", "Ppk", "Pem", "Openssh", "Remote Access"]
+tags: ["SSH", "Private Key", "Public Key", "id_Rsa", "Ppk", "Pem", "Openssh", "Remote Access", "SFTP"]
 ---
 
 ### Check SSH Version
@@ -30,12 +30,12 @@ ssh-keygen
 ```
 
 ```console
-#Set filename, leave passphase blank
+# Set filename, leave passphase blank
 ./id_rsa
 ```
 
 ```console
-#After Creation
+# After creation
 chmod 600 id_rsa
 ```
 
@@ -77,9 +77,11 @@ cat id_rsa.pub
 ```
 
 ```console
-#Copy and Paste to Target
+# Copy and paste to target
 echo <BASE64_PUB_KEY> >> /home/<USER>/.ssh/authorized_keys
 ```
+
+---
 
 ### SSH Connect
 
@@ -95,6 +97,11 @@ ssh <USER>@<TARGET>
 ```console
 # After first connection (i.e., after 'yes' to fingerprint prompt)
 sshpass -p '<PASSWORD>' ssh <USER>@<TARGET>
+```
+
+```console
+# Connect to a domain-joined machine
+ssh -l <USER>@<DOMAIN> <TARGET_DOMAIN>
 ```
 
 {{< /tabcontent >}}
@@ -122,6 +129,24 @@ ssh <USER>@<TARGET> -i id_rsa -o PubkeyAcceptedKeyTypes=ssh-rsa
 ```console
 # Spawn target shell to escape restricted shell
 ssh <USER>@<TARGET> -t bash
+```
+
+{{< /tabcontent >}}
+
+---
+
+### SFTP Connect
+
+{{< tab set2 tab1 >}}Password{{< /tab >}}
+{{< tabcontent set2 tab1 >}}
+
+```console
+sftp <USER>@<TARGET>
+```
+
+```console
+# After first connection (i.e., after 'yes' to fingerprint prompt)
+sshpass -p '<PASSWORD>' sftp <USER>@<TARGET>
 ```
 
 {{< /tabcontent >}}

@@ -157,7 +157,7 @@
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="TYPE">TYPE: </label><input type="text" name="TYPE"></div><div class="input-group"><label for="USERS_FILE">USERS FILE: </label><input type="text" name="USERS_FILE"></div><div class="input-group"><label for="USERS">USERS: </label><input type="text" name="USERS"></div><div class="input-group"><label for="YEAR_END">YEAR END: </label><input type="text" name="YEAR_END"></div><div class="input-group"><label for="YEAR_START">YEAR START: </label><input type="text" name="YEAR_START"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="RANGE">RANGE: </label><input type="text" name="RANGE"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="TYPE">TYPE: </label><input type="text" name="TYPE"></div><div class="input-group"><label for="USERS_FILE">USERS FILE: </label><input type="text" name="USERS_FILE"></div><div class="input-group"><label for="USERS">USERS: </label><input type="text" name="USERS"></div><div class="input-group"><label for="WORDS">WORDS: </label><input type="text" name="WORDS"></div><div class="input-group"><label for="YEAR_END">YEAR END: </label><input type="text" name="YEAR_END"></div><div class="input-group"><label for="YEAR_START">YEAR START: </label><input type="text" name="YEAR_START"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -171,6 +171,8 @@
 <button data-tabset="set1" data-tabcontent="tab2">username-anarchy</button>
 
 <button data-tabset="set1" data-tabcontent="tab3">spraygen</button>
+
+<button data-tabset="set1" data-tabcontent="tab4">cook</button>
 
 </p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Create custom wordlist by spidering target
 </span></span><span class="line"><span class="cl"><span class="go">cewl <span class="o editable-keyword">&lt;TARGET&gt;</span> -w wordlist.txt --with-numbers
@@ -233,7 +235,18 @@ TO-DO</div></pre></div><p><small><em>Ref: <a href="https://github.com/digininja/
 </span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Success: --- finished in 46.8829460144043 seconds ---
 </span></span></span><span class="line"><span class="cl"><span class="go">[+] Success: Done!
-</span></span></span></div></pre></div></div></div>
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/3ndG4me/spraygen">spraygen</a></em></small></p></div><div class="tabcontent" data-tabset="set1" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">./cook <span class="o editable-keyword">&lt;WORDS&gt;</span> <span class="o editable-keyword">&lt;RANGE&gt;</span> &gt; wordlist.txt
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> ./cook Abbie,Spencer,abbie,theabbs 1990-2000 <span class="p">|</span> tee  wordlist.txt
+</span></span><span class="line"><span class="cl"><span class="go">Abbie1990
+</span></span></span><span class="line"><span class="cl"><span class="go">Abbie1991
+</span></span></span><span class="line"><span class="cl"><span class="go">Abbie1992
+</span></span></span><span class="line"><span class="cl"><span class="go">Abbie1993
+</span></span></span><span class="line"><span class="cl"><span class="go">Abbie1994
+</span></span></span><span class="line"><span class="cl"><span class="go">---[SNIP]---
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/glitchedgitz/cook">cook</a></em></small></p></div></div>
+
+
 
 
 

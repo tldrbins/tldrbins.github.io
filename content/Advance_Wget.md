@@ -1,6 +1,6 @@
 ---
 title: "Advance wget"
-date: 2024-7-5
+date: 2025-8-1
 tags: ["Wget", "Http File Transfer", "File Transfer", "Http"]
 ---
 
@@ -19,4 +19,9 @@ wget --post-file <FILE_PATH> <TARGET>
 ```console
 # Overwrite a file
 wget <TARGET>/<FILE> -O <FILE_PATH>
+```
+
+```console
+# Get all files from index (Bypass slash restriction)
+wget -r <TARGET> -nd
 ```

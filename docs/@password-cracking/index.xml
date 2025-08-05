@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/custom_wordlist_generator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/custom_wordlist_generator/</guid>
-      <description>CeWL username-anarchy spraygen # Create custom wordlist by spidering target cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL&#xA;# Create username wordlist ./username-anarchy -i &amp;lt;USERS&amp;gt; | tee &amp;lt;USERS_FILE&amp;gt; $ username-anarchy -i users.txt | tee usernames.txt james jamesroberts james.roberts jamesrob jamerobe ---[SNIP]--- Ref: username-anarchy&#xA;python3 spraygen.py --year_start &amp;lt;YEAR_START&amp;gt; --year_end &amp;lt;YEAR_END&amp;gt; --type &amp;lt;TYPE&amp;gt; -o wordlist.txt $ python3 spraygen.py --year_start 2020 --year_end 2025 --type seasons -o wordlist.txt ( \_ _ ( \_ ( \_ ( \_ ( \_ ___ ( Password \ | | ( Spray |คคคคคคคค|___| ( _ / | ( _ / /~~~~~~~~~\ ( _ / ( Spray ) (_/ | This | | | | Get | | Creds | |_________| Original Art by Alex Chudnovsky (Unaffiliated) Spraygen tool by 3ndG4me Version 1.</description>
+      <description>CeWL username-anarchy spraygen cook # Create custom wordlist by spidering target cewl &amp;lt;TARGET&amp;gt; -w wordlist.txt --with-numbers Ref: CeWL&#xA;# Create username wordlist ./username-anarchy -i &amp;lt;USERS&amp;gt; | tee &amp;lt;USERS_FILE&amp;gt; $ username-anarchy -i users.txt | tee usernames.txt james jamesroberts james.roberts jamesrob jamerobe ---[SNIP]--- Ref: username-anarchy&#xA;python3 spraygen.py --year_start &amp;lt;YEAR_START&amp;gt; --year_end &amp;lt;YEAR_END&amp;gt; --type &amp;lt;TYPE&amp;gt; -o wordlist.txt $ python3 spraygen.py --year_start 2020 --year_end 2025 --type seasons -o wordlist.txt ( \_ _ ( \_ ( \_ ( \_ ( \_ ___ ( Password \ | | ( Spray |คคคคคคคค|___| ( _ / | ( _ / /~~~~~~~~~\ ( _ / ( Spray ) (_/ | This | | | | Get | | Creds | |_________| Original Art by Alex Chudnovsky (Unaffiliated) Spraygen tool by 3ndG4me Version 1.</description>
     </item>
     <item>
       <title>Firefox</title>
@@ -57,18 +57,18 @@
       <description>Convert File to Hash Format # For example ssh2john id_rsa_encrypted &amp;gt; hash keepass2john test.kdbx &amp;gt; hash zip2john test.zip &amp;gt; hash # Get a full list of *2john find / -name *2john 2&amp;gt;/dev/null john hashcat # General use john --wordlist=/usr/share/wordlists/rockyou.txt hash # Specify hash format john --wordlist=/usr/share/wordlists/rockyou.txt hash --format=Raw-SHA512 # Show cracked hash john --show hash # Show cracked hash with specific format john --show hash --format=Raw-SHA512 # Auto detect hash format hashcat hash # Specify hash format hashcat -m &amp;lt;MODE&amp;gt; -a 0 hash /usr/share/wordlists/rockyou.</description>
     </item>
     <item>
-      <title>rsync</title>
+      <title>Rsync</title>
       <link>https://tldrbins.github.io/rsync/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rsync/</guid>
-      <description>General # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List a file rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd # List files (wildcard) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* # Get a file rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd . # Get files (wildcard) rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;; rsync -aR .ssh/ rsync://&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;/home_user/ Bruteforce rsync Password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
+      <description>General # List root directories (&amp;#39;/&amp;#39;) rsync --list-only -av rsync://&amp;lt;TARGET&amp;gt;/ $ rsync --list-only -av rsync://10.10.64.45/ httpd web backup # List root directories (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -av rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List sub-directories rsync --list-only -av rsync://&amp;lt;TARGET&amp;gt;/&amp;lt;DIR&amp;gt;/ $ rsync --list-only -av rsync://10.10.64.45/httpd/ receiving incremental file list drwxr-xr-x 4,096 2023/04/20 19:50:04 . drwxr-xr-x 4,096 2023/04/20 20:13:22 db -rw-r--r-- 12,288 2023/04/20 19:50:42 db/site.db drwxr-xr-x 4,096 2023/04/20 19:50:50 migrate drwxr-xr-x 4,096 2023/04/20 20:13:15 www -rw-r--r-- 1,722 2023/04/20 20:02:54 www/dashboard.</description>
     </item>
     <item>
       <title>Shadow Hash Cracking</title>
       <link>https://tldrbins.github.io/shadow_hash_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/shadow_hash_cracking/</guid>
-      <description>Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
+      <description>Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd shadow &amp;gt; unshadowed john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed # yescrypt john --format=crypt --wordlist=/usr/share/wordlists/rockyou.txt unshadowed hashcat -m 7400 unshadowed /usr/share/wordlists/rockyou.txt --force --user </description>
     </item>
   </channel>
 </rss>

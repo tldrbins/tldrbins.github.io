@@ -68,4 +68,9 @@ Repeat: Until: Duration:              N/A
 Repeat: Stop If Still Running:        N/A
 ```
 
+```console
+# Start a task immediately
+Start-ScheduledTask -TaskName "<TASKNAME>"
+```
+
 {{< /tabcontent >}}

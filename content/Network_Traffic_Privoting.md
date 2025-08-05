@@ -546,7 +546,7 @@ proxychains4 curl http://172.16.1.100:1081
 {{< tabcontent set1 tab3 >}}
 
 ```console
-# SSH port forwarding without spawning a shell
+# Port forwarding without spawning a shell
 sshpass -p '<PASSWORD>' ssh -N -L <TARGET_PORT>:<TARGET_IP>:<TARGET_PORT> <USER>@<TARGET>
 ```
 
@@ -556,12 +556,21 @@ $ ssh -N -L 5985:127.0.0.1:5985 3v4Si0N@10.10.10.240
 ```
 
 ```console
-# SSH socks5 tunneling without spawning a shell
+# SOCKS tunneling without spawning a shell
 sshpass -p '<PASSWORD>' ssh -N -D 1081 <USER>@<TARGET>
 ```
 
 ```console {class=sample-code}
 $ ssh -i id_rsa -N -D 1081 root@10.10.11.179
+```
+
+```console
+# Socket forwarding without spawning a shell
+sshpass -p '<PASSWORD>' ssh -N -L /tmp/<SOCKET_NAME>:<SOCKET> <USER>@<TARGET>
+```
+
+```console {class=sample-code}
+$ ssh -N -L /tmp/.s.PGSQL.5432:/var/run/postgresql/.s.PGSQL.5432 service@10.10.127.97
 ```
 
 {{< /tabcontent >}}
@@ -576,6 +585,12 @@ $ ssh -i id_rsa -N -D 1081 root@10.10.11.179
 {{< tabcontent set1 tab5 >}}
 
 ```console
+# Port forwarding
+portfwd add -b 127.0.0.1:<TARGET_PORT> -r <TARGET_IP>:<TARGET_PORT>
+```
+
+```console
+# Socks
 socks5 start
 ```
 

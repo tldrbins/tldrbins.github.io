@@ -1,7 +1,7 @@
 ---
 title: "Git"
 date: 2025-7-25
-tags: ["Git", "Git-Dumper", "Sudo", "Enumeration", "Web Exploitation"]
+tags: ["Git", "Git-Dumper", "Sudo", "Enumeration", "Web Exploitation", "Gitea", "Repo", "Clone"]
 ---
 
 ### General
@@ -40,6 +40,26 @@ git diff <A_COMMIT_HASH> <B_COMMIT_HASH>
 ```console
 # Show commit
 git show <COMMIT_HASH>
+```
+
+```console
+# Clone private repo
+git clone http://<USER>:<TOKEN>@<DOMAIN>/<OWNER>/<REPO>.git
+```
+
+```console
+# Add file
+git add <FILE>
+```
+
+```console
+# Commit changes
+git commit -am '<MESSAGE>'
+```
+
+```console
+# Push changes
+git push
 ```
 
 ---

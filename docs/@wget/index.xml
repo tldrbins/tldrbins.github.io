@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/advance_wget/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/advance_wget/</guid>
-      <description>Advance wget # Provide a file with urls wget --input-file &amp;lt;FILE_PATH&amp;gt; # POST a file wget --post-file &amp;lt;FILE_PATH&amp;gt; &amp;lt;TARGET&amp;gt; # Overwrite a file wget &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O &amp;lt;FILE_PATH&amp;gt; </description>
+      <description>Advance wget # Provide a file with urls wget --input-file &amp;lt;FILE_PATH&amp;gt; # POST a file wget --post-file &amp;lt;FILE_PATH&amp;gt; &amp;lt;TARGET&amp;gt; # Overwrite a file wget &amp;lt;TARGET&amp;gt;/&amp;lt;FILE&amp;gt; -O &amp;lt;FILE_PATH&amp;gt; # Get all files from index (Bypass slash restriction) wget -r &amp;lt;TARGET&amp;gt; -nd </description>
     </item>
   </channel>
 </rss>

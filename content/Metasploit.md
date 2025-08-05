@@ -142,6 +142,11 @@ db_status
 #### General
 
 ```console
+# Select session
+sessions <SESSION_ID>
+```
+
+```console
 # Return from meterpreter
 background
 ```

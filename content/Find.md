@@ -40,7 +40,7 @@ find / -user <USER> -ls 2>/dev/null | grep -v -e " \/proc" -e " \/sys"
 #### Files Owned by Group
 
 ```console
-find / -group <GROUP> 2>/dev/null | grep -v -e ^/proc
+find / -group <GROUP> 2>/dev/null | grep -v -e ^/proc -e ^/sys
 ```
 
 #### World Writable Files and Directories (Exclude Sticky Bit)

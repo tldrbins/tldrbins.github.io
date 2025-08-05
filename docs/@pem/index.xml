@@ -19,7 +19,7 @@
       <link>https://tldrbins.github.io/ssh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ssh/</guid>
-      <description>Check SSH Version openssh-server (ubuntu)&#xA;openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen #Set filename, leave passphase blank ./id_rsa #After Creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate No Passphrase SSH Key from Encrypted Key openssl rsa -in id_rsa_encrypted -out ./id_rsa Convert .ppk to .pem Format # Install sudo apt install putty-tools # Convert to private key in pem format puttygen key.</description>
+      <description>Check SSH Version openssh-server (ubuntu)&#xA;openssh-server (debian)&#xA;Config Location /etc/ssh/sshd_config # Grep contents grep -Ev &amp;#34;^#&amp;#34; /etc/ssh/sshd_config | grep . Generate SSH Key ssh-keygen # Set filename, leave passphase blank ./id_rsa # After creation chmod 600 id_rsa Check Public Key ssh-keygen -l -f id_rsa Generate No Passphrase SSH Key from Encrypted Key openssl rsa -in id_rsa_encrypted -out ./id_rsa Convert .ppk to .pem Format # Install sudo apt install putty-tools # Convert to private key in pem format puttygen key.</description>
     </item>
   </channel>
 </rss>

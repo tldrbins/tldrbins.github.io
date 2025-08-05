@@ -1,12 +1,18 @@
 ---
 title: "DNS"
-date: 2025-7-21
+date: 2025-7-30
 tags: ["Domain", "Reconnaissance", "Enumeration", "DNS", "Dig", "Zone Transfer", "BIND", "nsupdate", "nslookup"]
 ---
 
 {{< tab set1 tab1 >}}Linux{{< /tab >}}
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
+
+### Enum
+
+```console
+dnsenum --dnsserver <NAME_SERVER> -p 0 -s 0 --threads=10 -f /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt <DOMAIN>
+```
 
 ### Zone Transfer
 

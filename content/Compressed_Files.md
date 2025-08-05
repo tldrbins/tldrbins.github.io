@@ -155,4 +155,9 @@ sudo apt install p7zip-full
 bunzip2 -k <FILE>
 ```
 
+```console
+# Extract .tar.bz2
+tar xjf <FILE>
+```
+
 {{< /tabcontent >}}

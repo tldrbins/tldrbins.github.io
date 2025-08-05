@@ -11,12 +11,18 @@ tags: ["Database Dumping", "Privilege Escalation In Databases", "Mssql", "Databa
 {{< tabcontent set1 tab1 >}}
 
 ```console
+# Password
 impacket-mssqlclient '<USER>:<PASSWORD>@<TARGET>'
 ```
 
 ```console
 # Without TLS
 impacket-mssqlclient -windows-auth '<USER>:<PASSWORD>@<TARGET>'
+```
+
+```console
+# Kerberos
+impacket-mssqlclient -k <TARGET>
 ```
 
 {{< /tabcontent >}}

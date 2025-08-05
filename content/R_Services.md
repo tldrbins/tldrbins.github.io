@@ -1,7 +1,7 @@
 ---
 title: "R Services"
 date: 2025-7-16
-tags: ["R Services", "rlogin", "rexec", "rsh", "r-commands", "Shell", "Berkeley"]
+tags: ["R Services", "rlogin", "rexec", "rsh", "r-commands", "Shell", "Berkeley", "uid", "gid"]
 ---
 
 ### Abuse #1: Fake a User
@@ -25,24 +25,7 @@ cat /etc/hosts.equiv
 
 ```console
 # Create a fake user
-sudo useradd <USER>
-```
-
-```console
-# Set password
-sudo passwd <USER> 
-```
-
-```console {class="sample-code"}
-$ sudo useradd sadm
-                                                                                                                                                                                                                                                                                                                            
-$ sudo passwd sadm 
-New password: 
-Retype new password: 
-passwd: password updated successfully
-                                                                                                                                                                                                                                                                                                                            
-$ cat /etc/passwd | grep sadm
-sadm:x:1001:1001::/home/sadm:/bin/sh
+sudo adduser --uid <UID> <USER>
 ```
 
 ```console

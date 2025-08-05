@@ -1,7 +1,7 @@
 ---
 title: "Windows ACLs"
 date: 2025-7-23
-tags: ["Acls", "Icacls", "Windows", "Access Control Lists", "Files", "Permissions"]
+tags: ["Acls", "Icacls", "Windows", "Access Control Lists", "Files", "Permissions", "Encrypted File", "RunasCs"]
 ---
 
 ### Window ACLs (Access Control Lists)
@@ -145,6 +145,42 @@ cmd.exe /c takeown /F <FILE>
 | NP   (do not propagate inherit)                   |
 | I    (permission inherited from parent container) |
 +---------------------------------------------------+
+```
+
+{{< /tabcontent >}}
+
+### Check Encrypted File(s)
+
+{{< tab set5 tab1 >}}powershell{{< /tab >}}
+{{< tabcontent set5 tab1 >}}
+
+#### 1. Check
+
+```console
+[System.IO.File]::GetAttributes("<FILE>").ToString().Contains("Encrypted")
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> [System.IO.File]::GetAttributes("C:\Users\Administrator\Desktop\root.txt").ToString().Contains("Encrypted")
+True
+```
+
+```console
+cipher.exe /u /n
+```
+
+```console {class="sample-code"}
+*Evil-WinRM* PS C:\Users\Administrator\Desktop> cipher.exe /u /n
+
+Encrypted File(s) on your system:
+
+C:\Documents and Settings\Administrator\Desktop\root.txt
+```
+
+#### 2. Create an Interactive Logon Session
+
+```console
+.\RunasCs.exe <USER> '<PASSWORD>' "cmd.exe /c type <FILE>"
 ```
 
 {{< /tabcontent >}}

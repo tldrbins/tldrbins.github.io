@@ -654,6 +654,8 @@ sharpdpapi -- 'credentials /password:<PASSWORD>'
 sharpdpapi -- 'credentials /rpc'
 ```
 
+<small>*Ref: [SharpDPAPI](https://github.com/GhostPack/SharpDPAPI)*</small>
+
 {{< /tabcontent >}}
 
 ---

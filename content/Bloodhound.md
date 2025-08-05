@@ -1,14 +1,15 @@
 ---
 title: "Bloodhound"
-date: 2024-7-9
-tags: ["Bloodhound", "Sharphound", "Sliver", "Enumeration", "Active Directory", "Windows", "Neo4J"]
+date: 2025-8-2
+tags: ["Bloodhound", "Sharphound", "Sliver", "Enumeration", "Active Directory", "Windows", "Neo4J", "DNS", "dnschef", "LDAP", "ldapsearch"]
 ---
 
 ### Info Collection (From Linux)
 
 {{< tab set1 tab1 >}}bloodhound-python{{< /tab >}}
 {{< tab set1 tab2 >}}nxc{{< /tab >}}
-{{< tab set1 tab3 >}}certipy-ad{{< /tab >}}
+{{< tab set1 tab3 >}}ldapsearch{{< /tab >}}
+{{< tab set1 tab4 >}}certipy-ad{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -45,7 +46,20 @@ sudo ntpdate -s <DC_IP> && bloodhound-python -u '<USER>' -k -d <DOMAIN> -dc <DC>
 
 <small>*Note: passing '-no-pass' will still ask for password, press enter*</small>
 
-<small>*Ref: [BloodHound.py](https://github.com/dirkjanm/BloodHound.py)*</small>
+#### Fix Name Resolving Issue
+
+```console
+# Build a DNS server to proxy name resolving request
+python3 dnschef.py --fakeip <DC_IP>
+``` 
+
+```console
+# Password
+bloodhound-python -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -dc <DC> -ns 127.0.0.1 -c all --zip
+```
+
+<small>*Ref: [bloodhound-python](https://github.com/dirkjanm/BloodHound.py)*</small>
+<small>*Ref: [dnschef](https://github.com/iphelix/dnschef)*</small>
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab2 >}}
@@ -67,11 +81,132 @@ nxc ldap <DC> -u '<USER>' -k --use-kcache --bloodhound --collection All --dns-se
 
 ```console
 # Socks5
-proxychains4 -q nxc ldap <DC> -u '<USER>' -p '<PASSWORD>' --bloodhound --collection All --dcn-tcp --dns-server <DC_IP>
+proxychains4 -q nxc ldap <DC> -u '<USER>' -p '<PASSWORD>' --bloodhound --collection All --dns-tcp --dns-server <DC_IP>
 ```
 
 {{< /tabcontent >}}
 {{< tabcontent set1 tab3 >}}
+
+#### 1. Installation
+
+```console
+sudo apt install libsasl2-modules-gssapi-mit
+```
+
+#### 2. Config '/etc/krb5.conf'
+
+```console
+# In UPPER case
+
+[libdefaults]
+    default_realm = <DOMAIN>
+
+[realms]
+    <DOMAIN> = {
+        kdc = <DC>:88
+        admin_server = <DC>
+        default_domain = <DOMAIN>
+    }
+    
+[domain_realm]
+    .domain.internal = <DOMAIN>
+    domain.internal = <DOMAIN>
+```
+
+```console {class="sample-code"}
+[libdefaults]
+    default_realm = LUSTROUS2.VL
+
+[realms]
+    LUSTROUS2.VL = {
+        kdc = LUS2DC.LUSTROUS2.VL:88
+        admin_server = LUS2DC.LUSTROUS2.VL
+        default_domain = LUSTROUS2.VL
+    }
+    
+[domain_realm]
+    .domain.internal = LUSTROUS2.VL
+    domain.internal = LUSTROUS2.VL
+```
+
+#### 3. Request a TGT
+
+```console
+sudo ntpdate -s <DC_IP> && impacket-getTGT '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP>
+```
+
+```console {class="sample-code"}
+$ sudo ntpdate -s 10.10.84.194 && impacket-getTGT 'lustrous2.vl/Thomas.Myers:Lustrous2024' -dc-ip 10.10.84.194
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Saving ticket in Thomas.Myers.ccache
+```
+
+#### 4. Check
+
+```console
+# Import ticket
+export KRB5CCNAME='<USER>.ccache'
+```
+
+```console {class="sample-code"}
+$ export KRB5CCNAME='Thomas.Myers.ccache'
+```
+
+```console
+# Check ticket
+klist
+```
+
+```console {class="sample-code"}
+$ klist
+Ticket cache: FILE:Thomas.Myers.ccache
+Default principal: Thomas.Myers@LUSTROUS2.VL
+
+Valid starting       Expires              Service principal
+2025-08-05T05:32:51  2025-08-05T15:32:51  krbtgt/LUSTROUS2.VL@LUSTROUS2.VL
+        renew until 2025-08-06T05:32:50
+```
+
+#### 5. LDAP Search
+
+```console
+ldapsearch -LLL -H ldap://<DC> -Y GSSAPI -b "DC=<EXAMPLE>,DC=<COM>" -N -o ldif-wrap=no -E '!1.2.840.113556.1.4.801=::MAMCAQc=' "(&(objectClass=*))" | tee ldap.txt
+```
+
+```console {class="sample-code"}
+$ ldapsearch -LLL -H ldap://LUS2DC.lustrous2.vl -Y GSSAPI -b "DC=LUSTROUS2,DC=VL" -N -o ldif-wrap=no -E '!1.2.840.113556.1.4.801=::MAMCAQc=' "(&(objectClass=*))" | tee ldap.txt
+SASL/GSSAPI authentication started
+SASL username: Thomas.Myers@LUSTROUS2.VL
+SASL SSF: 256
+SASL data security layer installed.
+dn: DC=Lustrous2,DC=vl
+objectClass: top
+objectClass: domain
+objectClass: domainDNS
+distinguishedName: DC=Lustrous2,DC=vl
+instanceType: 5
+---[SNIP]---
+```
+
+#### 6. Convert to BofHound Format
+
+```console
+python3 ldapsearch_parser.py ldap.txt ldap2.txt
+```
+
+#### 7. Convert to Bloodhound Format
+
+```console
+bofhound --input ldap2.txt --output <DC>_bloodhound --zip
+```
+
+<small>*Ref: [ldapsearch_parser](https://gist.github.com/kozmer/725cde788e4b3c8bdd870468c243916b)*</small>
+<br>
+<small>*Ref [bofhound](https://github.com/fortalice/bofhound)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
 
 ```console
 certipy-ad find -u '<USER>' -p '<PASSWORD>' -target <TARGET>

@@ -53,7 +53,7 @@ sudo iptables -A INPUT -p tcp -s 192.168.1.0/24 --dport 22 -j ACCEPT
 sudo iptables -D <CHAIN> <LINE_NUMBER>
 ```
 
-```console
+```console {class="sample-code"}
 sudo iptables -D INPUT 1
 ```
 

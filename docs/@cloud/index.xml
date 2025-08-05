@@ -6,28 +6,27 @@
     <description>Recent content in Cloud on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@cloud/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Azure Enum</title>
-      <link>https://tldrbins.github.io/azure_enum/</link>
-      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/azure_enum/</guid>
-      <description>Recon ROADTools TeamFiltration 1. Authenticate roadrecon auth -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon auth -u &amp;#39;apple.seed@example.com&amp;#39; -p &amp;#39;Test1234&amp;#39; Tokens were written to .roadtools_auth 2. Info Gathering roadrecon gather ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gather Starting data gathering phase 1 of 2 (collecting objects) Starting data gathering phase 2 of 2 (collecting properties and relationships) ROADrecon gather executed in 12.27 seconds and issued 1152 HTTP requests. 3. Explore the Data roadrecon gui ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gui * Serving Flask app &amp;#39;roadtools.</description>
-    </item>
-    <item>
-      <title>Cloud Enum</title>
-      <link>https://tldrbins.github.io/cloud_enum/</link>
-      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/cloud_enum/</guid>
-      <description>Cloud Enum cloud_enum python3 cloud_enum.py -k &amp;lt;KEYWORD&amp;gt; ┌──(venv)─(kali㉿kali)-[~/Desktop] └─$ python3 cloud_enum.py -k example.com ########################## cloud_enum github.com/initstring ########################## Keywords: example.com Mutations: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt Brute-list: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt [+] Mutations list imported: 306 items [+] Mutated results: 1837 items ++++++++++++++++++++++++++ amazon checks ++++++++++++++++++++++++++ [+] Checking for S3 buckets OPEN S3 BUCKET: http://example.com.s3.amazonaws.com/ FILES: -&amp;gt;http://example.com.s3.amazonaws.com/example.com ---[SNIP]--- -&amp;gt;http://example.com.s3.amazonaws.com/tmp/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htaccess -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htpasswd ---[SNIP]--- Ref: cloud_enum</description>
-    </item>
     <item>
       <title>AWS</title>
       <link>https://tldrbins.github.io/aws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/aws/</guid>
       <description>Setup # Install awscli sudo apt install awscli # Set config aws configure AWS Access Key ID [None]: test AWS Secret Access Key [None]: test Default region name [None]: test Default output format [None]: Default AWS Credential Location ~/.aws/credentials AWS Services S3 dynamodb lambda # List buckets aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; ls # List bucket aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; ls s3://&amp;lt;BUCKET_NAME&amp;gt; # Upload to bucket aws s3 --endpoint-url &amp;lt;TARGET&amp;gt; cp &amp;lt;FILE&amp;gt; s3://&amp;lt;BUCKET_NAME&amp;gt;/&amp;lt;FILE&amp;gt; # List tables aws --endpoint-url &amp;lt;TARGET&amp;gt; dynamodb list-tables # Dump table aws --endpoint-url &amp;lt;TARGET&amp;gt; dynamodb scan --table-name &amp;lt;TABLE_NAME&amp;gt; # Create table (e.</description>
+    </item>
+    <item>
+      <title>Azure Enum</title>
+      <link>https://tldrbins.github.io/azure_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/azure_enum/</guid>
+      <description>Recon ROADTools TeamFiltration 1. Authenticate roadrecon auth -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon auth -u &amp;#39;apple.seed@example.com&amp;#39; -p &amp;#39;Test1234&amp;#39; Tokens were written to .roadtools_auth 2. Info Gathering roadrecon gather ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gather Starting data gathering phase 1 of 2 (collecting objects) Starting data gathering phase 2 of 2 (collecting properties and relationships) ROADrecon gather executed in 12.27 seconds and issued 1152 HTTP requests. 3. Explore the Data roadrecon gui ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gui * Serving Flask app &amp;#39;roadtools.</description>
+    </item>
+    <item>
+      <title>Cloud Enum</title>
+      <link>https://tldrbins.github.io/cloud_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/cloud_enum/</guid>
+      <description>Cloud Enum cloud_enum python3 cloud_enum.py -k &amp;lt;KEYWORD&amp;gt; ┌──(venv)─(kali㉿kali)-[~/Desktop] └─$ python3 cloud_enum.py -k example.com ########################## cloud_enum github.com/initstring ########################## Keywords: example.com Mutations: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt Brute-list: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt [+] Mutations list imported: 306 items [+] Mutated results: 1837 items ++++++++++++++++++++++++++ amazon checks ++++++++++++++++++++++++++ [+] Checking for S3 buckets OPEN S3 BUCKET: http://example.com.s3.amazonaws.com/ FILES: -&amp;gt;http://example.com.s3.amazonaws.com/example.com ---[SNIP]--- -&amp;gt;http://example.com.s3.amazonaws.com/tmp/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htaccess -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htpasswd ---[SNIP]--- Ref: cloud_enum</description>
     </item>
   </channel>
 </rss>

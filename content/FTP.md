@@ -23,6 +23,11 @@ ftp ftp://<USER>:<PASSWORD>@<TARGET>
 ```
 
 ```console
+# Interactive
+ftp <TARGET>
+```
+
+```console
 # Over SSL
 lftp <TARGET>
 ```

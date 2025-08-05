@@ -163,7 +163,11 @@ for i in $(seq 1 254); do for j in $(seq 1 254); do (ping -c 1 <SUBNET>.${i}.${j
 {{< tabcontent set5 tab1 >}}
 
 ```console
-for i in $(seq 1 65535); do (nc -zvn <TARGET> ${i} 2>&1 | grep -v "Connection refused" &); done
+for port in {1..65535}; do (nc -zvn <TARGET> $port 2>&1 | grep -v "Connection refused" &); done
+```
+
+```console
+for port in {1..65535}; do echo > /dev/tcp/<TARGET>/$port && echo "$port open"; done 2>/dev/null
 ```
 
 {{< /tabcontent >}}

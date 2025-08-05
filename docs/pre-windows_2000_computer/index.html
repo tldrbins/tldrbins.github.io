@@ -146,6 +146,7 @@
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   <li><a href="https://tldrbins.github.io/@pre2k/">Pre2k</a></li>
   <li><a href="https://tldrbins.github.io/@pre-created-computer/">Pre-Created Computer</a></li>
+  <li><a href="https://tldrbins.github.io/@status_password_must_change/">STATUS_PASSWORD_MUST_CHANGE</a></li>
 </ul>
 <hr>
 <div class="content">
@@ -247,7 +248,7 @@ TO-DO</div></pre></div></div></div><p></p>
 <p class="tabs">
 <button data-tabset="set3" data-tabcontent="tab1" class="active">impacket</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-changepasswd -newpass <span class="o editable-keyword">&lt;NEW_PASSWORD&gt;</span> '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>:<span class="o editable-keyword">&lt;PASSWORD&gt;</span>@<span class="o editable-keyword">&lt;TARGET&gt;</span>' -protocol rpc-samr
+</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-changepasswd -newpass '<span class="o editable-keyword">&lt;NEW_PASSWORD&gt;</span>' '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>:<span class="o editable-keyword">&lt;PASSWORD&gt;</span>@<span class="o editable-keyword">&lt;TARGET&gt;</span>' -protocol rpc-samr
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> impacket-changepasswd -newpass banking <span class="s1">'example.com/BANKING$:banking@dc.example.com'</span> -protocol rpc-samr 
 </span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
@@ -256,6 +257,7 @@ TO-DO</div></pre></div></div></div><p></p>
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Connecting to DCE/RPC as example.com\BANKING$
 </span></span></span><span class="line"><span class="cl"><span class="go">[*] Password was changed successfully.
 </span></span></span></div></pre></div></div></div><p></p>
+<br>
 
 </div>
 </main>

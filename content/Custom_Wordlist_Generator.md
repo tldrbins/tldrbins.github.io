@@ -7,6 +7,7 @@ tags: ["Password Cracking", "Wordlist", "Cewl", "Username"]
 {{< tab set1 tab1 >}}CeWL{{< /tab >}}
 {{< tab set1 tab2 >}}username-anarchy{{< /tab >}}
 {{< tab set1 tab3 >}}spraygen{{< /tab >}}
+{{< tab set1 tab4 >}}cook{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -91,5 +92,26 @@ $ python3 spraygen.py --year_start 2020 --year_end 2025 --type seasons -o wordli
 [+] Success: --- finished in 46.8829460144043 seconds ---
 [+] Success: Done!
 ```
+
+<small>*Ref: [spraygen](https://github.com/3ndG4me/spraygen)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
+
+```console
+./cook <WORDS> <RANGE> > wordlist.txt
+```
+
+```console {class="sample-code"}
+$ ./cook Abbie,Spencer,abbie,theabbs 1990-2000 | tee  wordlist.txt
+Abbie1990
+Abbie1991
+Abbie1992
+Abbie1993
+Abbie1994
+---[SNIP]---
+```
+
+<small>*Ref: [cook](https://github.com/glitchedgitz/cook)*</small>
 
 {{< /tabcontent >}}

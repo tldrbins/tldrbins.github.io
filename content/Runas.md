@@ -1,7 +1,7 @@
 ---
 title: "Runas"
 date: 2024-7-10
-tags: ["Powershell", "Credential Object", "Windows", "Runas", "UAC"]
+tags: ["Powershell", "Credential Object", "Windows", "Runas", "UAC", "SavedCred", "Cmdkey"]
 ---
 
 ### RunasCS
@@ -37,7 +37,7 @@ LOGON TYPE
 
 <small>*Ref: [RunasCS](https://github.com/antonioCoco/RunasCs)*</small>
 
-### Runas (With Password)
+### Runas (With Password and GUI)
 
 ```console
 runas /user:'<USER>' "<CMD>"
@@ -45,6 +45,11 @@ runas /user:'<USER>' "<CMD>"
 
 ```console {class="sample-code"}
 runas /user:'admin' "powershell"
+```
+
+```console
+# Bypass UAC
+start-process powershell.exe -verb runas
 ```
 
 ### Runas (With Cred Object)

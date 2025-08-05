@@ -43,6 +43,11 @@ curl -X PUT <TARGET>/<FILE> --data-binary @<FILE>
 ```
 
 ```console
+# POST data as raw binary (Preserve newlines and control characters)
+curl -X PUT <TARGET>/<FILE> --data-binary $'<DATA>'
+```
+
+```console
 # POST a file with form param
 curl -X POST -F '<PARAM>=@<FILE>;type=<APPLICATION_TYPE>;filename=<FILE>' <TARGET>
 ```
@@ -55,6 +60,11 @@ curl -X POST -F '<PARAM>=<<FILE>' <TARGET>
 ```console
 # Not to handle sequences of '/../' or '/./'
 curl --path-as-is --ignore-content-length '<TARGET>/../../../..<FILE_PATH>'
+```
+
+```console
+# Kerberos Authentication (Check)
+curl -I --negotiate -u : <TARGET>
 ```
 
 {{< /tabcontent >}}

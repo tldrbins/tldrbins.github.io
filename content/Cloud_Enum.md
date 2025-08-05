@@ -1,6 +1,6 @@
 ---
 title: "Cloud Enum"
-date: 2025-02-21
+date: 2025-2-21
 tags: ["OSINT", "Cloud", "Azure", "AWS", "Google", "Enumeration"]
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect"
-date: 2025-02-21
+date: 2025-2-21
 tags: ["Azure AD Connect", "Secretsdump", "ADSync", "Password", "Active Directory", "Windows"]
 ---
 

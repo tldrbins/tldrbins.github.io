@@ -12,7 +12,7 @@
       <link>https://tldrbins.github.io/shadow_hash_cracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/shadow_hash_cracking/</guid>
-      <description>Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd.txt shadow.txt &amp;gt; unshadowed.txt john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt hashcat -m 7400 unshadowed.txt /usr/share/wordlists/rockyou.txt --force --user </description>
+      <description>Shadow Hash Cracking # Prepare an unshadowed hashes file unshadow passwd shadow &amp;gt; unshadowed john hashcat john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed # yescrypt john --format=crypt --wordlist=/usr/share/wordlists/rockyou.txt unshadowed hashcat -m 7400 unshadowed /usr/share/wordlists/rockyou.txt --force --user </description>
     </item>
     <item>
       <title>Writable /etc/passwd</title>

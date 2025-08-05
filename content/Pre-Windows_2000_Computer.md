@@ -1,7 +1,7 @@
 ---
 title: "Pre-Windows 2000 Computer"
 date: 2025-7-10
-tags: ["Domain Controller", "Pre-Windows 2000 Computer", "Active Directory", "Windows", "pre2k", "Pre-Created Computer"]
+tags: ["Domain Controller", "Pre-Windows 2000 Computer", "Active Directory", "Windows", "pre2k", "Pre-Created Computer", "STATUS_PASSWORD_MUST_CHANGE"]
 ---
 
 ### Enum
@@ -122,7 +122,7 @@ export KRB5CCNAME='<USER>.ccache'
 {{< tabcontent set3 tab1 >}}
 
 ```console
-impacket-changepasswd -newpass <NEW_PASSWORD> '<DOMAIN>/<USER>:<PASSWORD>@<TARGET>' -protocol rpc-samr
+impacket-changepasswd -newpass '<NEW_PASSWORD>' '<DOMAIN>/<USER>:<PASSWORD>@<TARGET>' -protocol rpc-samr
 ```
 
 ```console {class="sample-code"}
@@ -135,3 +135,5 @@ Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies
 ```
 
 {{< /tabcontent >}}
+
+<br>

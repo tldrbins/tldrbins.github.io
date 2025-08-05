@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gitea on TLDRBins</title>
+    <link>https://tldrbins.github.io/@gitea/</link>
+    <description>Recent content in Gitea on TLDRBins</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://tldrbins.github.io/@gitea/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>https://tldrbins.github.io/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/git/</guid>
+      <description>General # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff &amp;lt;A_COMMIT_HASH&amp;gt; &amp;lt;B_COMMIT_HASH&amp;gt; # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; # Clone private repo git clone http://&amp;lt;USER&amp;gt;:&amp;lt;TOKEN&amp;gt;@&amp;lt;DOMAIN&amp;gt;/&amp;lt;OWNER&amp;gt;/&amp;lt;REPO&amp;gt;.</description>
+    </item>
+  </channel>
+</rss>

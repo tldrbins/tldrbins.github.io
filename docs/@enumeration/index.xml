@@ -6,35 +6,34 @@
     <description>Recent content in Enumeration on TLDRBins</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tldrbins.github.io/@enumeration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Enum</title>
       <link>https://tldrbins.github.io/azure_enum/</link>
-      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/azure_enum/</guid>
       <description>Recon ROADTools TeamFiltration 1. Authenticate roadrecon auth -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon auth -u &amp;#39;apple.seed@example.com&amp;#39; -p &amp;#39;Test1234&amp;#39; Tokens were written to .roadtools_auth 2. Info Gathering roadrecon gather ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gather Starting data gathering phase 1 of 2 (collecting objects) Starting data gathering phase 2 of 2 (collecting properties and relationships) ROADrecon gather executed in 12.27 seconds and issued 1152 HTTP requests. 3. Explore the Data roadrecon gui ┌──(venv)─(kali㉿kali)-[~] └─$ roadrecon gui * Serving Flask app &amp;#39;roadtools.</description>
-    </item>
-    <item>
-      <title>Cloud Enum</title>
-      <link>https://tldrbins.github.io/cloud_enum/</link>
-      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://tldrbins.github.io/cloud_enum/</guid>
-      <description>Cloud Enum cloud_enum python3 cloud_enum.py -k &amp;lt;KEYWORD&amp;gt; ┌──(venv)─(kali㉿kali)-[~/Desktop] └─$ python3 cloud_enum.py -k example.com ########################## cloud_enum github.com/initstring ########################## Keywords: example.com Mutations: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt Brute-list: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt [+] Mutations list imported: 306 items [+] Mutated results: 1837 items ++++++++++++++++++++++++++ amazon checks ++++++++++++++++++++++++++ [+] Checking for S3 buckets OPEN S3 BUCKET: http://example.com.s3.amazonaws.com/ FILES: -&amp;gt;http://example.com.s3.amazonaws.com/example.com ---[SNIP]--- -&amp;gt;http://example.com.s3.amazonaws.com/tmp/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htaccess -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htpasswd ---[SNIP]--- Ref: cloud_enum</description>
     </item>
     <item>
       <title>Bloodhound</title>
       <link>https://tldrbins.github.io/bloodhound/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/bloodhound/</guid>
-      <description>Info Collection (From Linux) bloodhound-python nxc certipy-ad # Password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip $ python3 bloodhound.py -d rebound.htb -u oorend -p &amp;#39;1GR8t@$$4u&amp;#39; -dc dc01.rebound.htb -ns 10.10.11.231 -c all --zip INFO: Found AD domain: rebound.htb INFO: Getting TGT for user INFO: Connecting to LDAP server: dc01.rebound.htb WARNING: LDAP Authentication is refused because LDAP signing is enabled. Trying to connect over LDAPS instead.</description>
+      <description>Info Collection (From Linux) bloodhound-python nxc ldapsearch certipy-ad # Password bloodhound-python -d &amp;lt;DOMAIN&amp;gt; -u &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -dc &amp;lt;DC&amp;gt; -ns &amp;lt;DC_IP&amp;gt; -c all --zip $ python3 bloodhound.py -d rebound.htb -u oorend -p &amp;#39;1GR8t@$$4u&amp;#39; -dc dc01.rebound.htb -ns 10.10.11.231 -c all --zip INFO: Found AD domain: rebound.htb INFO: Getting TGT for user INFO: Connecting to LDAP server: dc01.rebound.htb WARNING: LDAP Authentication is refused because LDAP signing is enabled. Trying to connect over LDAPS instead.</description>
+    </item>
+    <item>
+      <title>Cloud Enum</title>
+      <link>https://tldrbins.github.io/cloud_enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/cloud_enum/</guid>
+      <description>Cloud Enum cloud_enum python3 cloud_enum.py -k &amp;lt;KEYWORD&amp;gt; ┌──(venv)─(kali㉿kali)-[~/Desktop] └─$ python3 cloud_enum.py -k example.com ########################## cloud_enum github.com/initstring ########################## Keywords: example.com Mutations: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt Brute-list: /home/kali/Desktop/cloud_enum/enum_tools/fuzz.txt [+] Mutations list imported: 306 items [+] Mutated results: 1837 items ++++++++++++++++++++++++++ amazon checks ++++++++++++++++++++++++++ [+] Checking for S3 buckets OPEN S3 BUCKET: http://example.com.s3.amazonaws.com/ FILES: -&amp;gt;http://example.com.s3.amazonaws.com/example.com ---[SNIP]--- -&amp;gt;http://example.com.s3.amazonaws.com/tmp/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/ -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htaccess -&amp;gt;http://example.com.s3.amazonaws.com/tmp/abcd1234/.htpasswd ---[SNIP]--- Ref: cloud_enum</description>
     </item>
     <item>
       <title>DNS</title>
       <link>https://tldrbins.github.io/dns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/dns/</guid>
-      <description>Linux Windows Zone Transfer dig +noall +answer @&amp;lt;NAME_SERVER&amp;gt; &amp;lt;DOMAIN&amp;gt; AXFR $ dig +noall +answer snoopy.htb axfr @10.10.11.212 snoopy.htb. 86400 IN SOA ns1.snoopy.htb. ns2.snoopy.htb. 2022032612 3600 1800 604800 86400 snoopy.htb. 86400 IN NS ns1.snoopy.htb. snoopy.htb. 86400 IN NS ns2.snoopy.htb. mattermost.snoopy.htb. 86400 IN A 172.18.0.3 mm.snoopy.htb. 86400 IN A 127.0.0.1 ns1.snoopy.htb. 86400 IN A 10.0.50.10 ns2.snoopy.htb. 86400 IN A 10.0.51.10 postgres.snoopy.htb. 86400 IN A 172.18.0.2 provisions.snoopy.htb. 86400 IN A 172.18.0.4 www.snoopy.htb. 86400 IN A 127.</description>
+      <description>Linux Windows Enum dnsenum --dnsserver &amp;lt;NAME_SERVER&amp;gt; -p 0 -s 0 --threads=10 -f /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt &amp;lt;DOMAIN&amp;gt; Zone Transfer dig +noall +answer @&amp;lt;NAME_SERVER&amp;gt; &amp;lt;DOMAIN&amp;gt; AXFR $ dig +noall +answer snoopy.htb axfr @10.10.11.212 snoopy.htb. 86400 IN SOA ns1.snoopy.htb. ns2.snoopy.htb. 2022032612 3600 1800 604800 86400 snoopy.htb. 86400 IN NS ns1.snoopy.htb. snoopy.htb. 86400 IN NS ns2.snoopy.htb. mattermost.snoopy.htb. 86400 IN A 172.18.0.3 mm.snoopy.htb. 86400 IN A 127.0.0.1 ns1.snoopy.htb. 86400 IN A 10.0.50.10 ns2.snoopy.htb. 86400 IN A 10.</description>
     </item>
     <item>
       <title>Drupal</title>
@@ -48,7 +47,7 @@
       <link>https://tldrbins.github.io/find/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/find/</guid>
-      <description>Linux Locate a File locate &amp;lt;FILE&amp;gt; Files of Type &amp;apos;File&amp;apos; find . -type f Find and Open find / -name &amp;lt;FILE&amp;gt; -exec cat {} \; SetUID and SetGID Files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Files Owned by User find / -user &amp;lt;USER&amp;gt; -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Files Owned by Group find / -group &amp;lt;GROUP&amp;gt; 2&amp;gt;/dev/null | grep -v -e ^/proc World Writable Files and Directories (Exclude Sticky Bit) find / -type f,d \( -perm -0002 -a !</description>
+      <description>Linux Locate a File locate &amp;lt;FILE&amp;gt; Files of Type &amp;apos;File&amp;apos; find . -type f Find and Open find / -name &amp;lt;FILE&amp;gt; -exec cat {} \; SetUID and SetGID Files find / -type f -user root \( -perm -4000 -o -perm -2000 \) 2&amp;gt;/dev/null -ls Files Owned by User find / -user &amp;lt;USER&amp;gt; -ls 2&amp;gt;/dev/null | grep -v -e &amp;#34; \/proc&amp;#34; -e &amp;#34; \/sys&amp;#34; Files Owned by Group find / -group &amp;lt;GROUP&amp;gt; 2&amp;gt;/dev/null | grep -v -e ^/proc -e ^/sys World Writable Files and Directories (Exclude Sticky Bit) find / -type f,d \( -perm -0002 -a !</description>
     </item>
     <item>
       <title>Finger Protocol</title>
@@ -62,7 +61,7 @@
       <link>https://tldrbins.github.io/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/git/</guid>
-      <description>General # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff &amp;lt;A_COMMIT_HASH&amp;gt; &amp;lt;B_COMMIT_HASH&amp;gt; # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; Git Tools git-dumper git-bundle git-dumper &amp;lt;TARGET&amp;gt; result/ Ref: git-dumper</description>
+      <description>General # Show status git status # Reset the current branch to a previous commit git reset --hard # Show information about files git ls-files --stage # Show current branch git branch # Show commits git log &amp;lt;BRANCH_NAME&amp;gt; --oneline # Show diff, a and b are commit hash # a is the older commit git diff &amp;lt;A_COMMIT_HASH&amp;gt; &amp;lt;B_COMMIT_HASH&amp;gt; # Show commit git show &amp;lt;COMMIT_HASH&amp;gt; # Clone private repo git clone http://&amp;lt;USER&amp;gt;:&amp;lt;TOKEN&amp;gt;@&amp;lt;DOMAIN&amp;gt;/&amp;lt;OWNER&amp;gt;/&amp;lt;REPO&amp;gt;.</description>
     </item>
     <item>
       <title>Grep</title>
@@ -90,7 +89,7 @@
       <link>https://tldrbins.github.io/ldap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/ldap/</guid>
-      <description>Enum ldapsearch ldapdomaindump nmap # Get domain base ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -D &amp;#34;CN=&amp;lt;USER&amp;gt;,CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With creds ldapdomaindump -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -o ./ldap # Using nmap script sudo nmap -p 389 --script ldap-search &amp;lt;TARGET&amp;gt; Enum with Kerberos ldapsearch nxc # Add GSSAPI sudo apt install libsasl2-modules-gssapi-mit ldapsearch -H ldap://&amp;lt;TARGET&amp;gt; -Y GSSAPI -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With kerberos nxc ldap &amp;lt;TARGET&amp;gt; -u &amp;lt;USER&amp;gt; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -k --users Enum ACLs bloodyAD 1.</description>
+      <description>Enum ldapsearch ldapdomaindump nmap # Get domain base ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -s base namingcontexts # Get all from domain ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Just get a class (e.g. person) ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; &amp;#39;(objectClass=person)&amp;#39; # With creds ldapsearch -x -H ldap://&amp;lt;TARGET&amp;gt; -D &amp;#34;CN=&amp;lt;USER&amp;gt;,CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # Fix &amp;#39;BindSimple: Transport encryption required.&amp;#39; LDAPTLS_REQCERT=never ldapsearch -x -H ldaps://&amp;lt;TARGET&amp;gt; -D &amp;#34;CN=&amp;lt;USER&amp;gt;,CN=Users,DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#34; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; # With creds ldapdomaindump -u &amp;#39;&amp;lt;DOMAIN&amp;gt;\&amp;lt;USER&amp;gt;&amp;#39; -p &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -o .</description>
     </item>
     <item>
       <title>MongoDB General</title>
@@ -118,7 +117,7 @@
       <link>https://tldrbins.github.io/oracledb_general/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/oracledb_general/</guid>
-      <description>Tools sqlplus ODAT # Install sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Install sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; # User/Password brute force odat passwordguesser -s &amp;lt;TARGET&amp;gt; -d &amp;lt;SID&amp;gt; --accounts-file accounts.txt # Run all checks with creds as sysdba odat all -s &amp;lt;TARGET&amp;gt; -U &amp;#39;&amp;lt;USER&amp;gt;&amp;#39; -P &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; -d &amp;lt;SID&amp;gt; --sysdba General # Export everytime or add to ~/.</description>
+      <description>Tools sqlplus ODAT # Installation sudo apt install oracle-instantclient-sqlplus # export LD_LIBRARY_PATH export LD_LIBRARY_PATH=/usr/lib/oracle/19.6/client64/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH} # Check sqlplus -V # Installation sudo apt install odat # Check odat --version Ref: Download ODAT&#xA;Enum # SID enum (You only need one) odat sidguesser -s &amp;lt;TARGET&amp;gt; $ ./odat-libc2.17-x86_64 sidguesser -s 10.129.95.188 [1] (10.129.95.188:1521): Searching valid SIDs [1.1] Searching valid SIDs thanks to a well known SID list on the 10.129.95.188:1521 server [+] &amp;#39;XE&amp;#39; is a valid SID.</description>
     </item>
     <item>
       <title>POP3</title>
@@ -135,11 +134,11 @@
       <description>Remote Procedure Call Tools rpcclient impacket # Anonymous rpcclient -U &amp;#39;&amp;#39; -N &amp;lt;TARGET&amp;gt; $ rpcclient -U &amp;#39;&amp;#39; -N 10.10.10.172 rpcclient $&amp;gt; # Password rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; # NTLM rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;HASH&amp;gt;&amp;#39; --pw-nt-hash &amp;lt;TARGET&amp;gt; # Inline Execute Command rpcclient -U &amp;#39;&amp;lt;DOMAIN&amp;gt;/&amp;lt;USER&amp;gt;%&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;lt;TARGET&amp;gt; -c &amp;#39;querydispinfo&amp;#39; Basic Commands # General info querydispinfo rpcclient $&amp;gt; querydispinfo index: 0xfb6 RID: 0x450 acb: 0x00000210 Account: AAD_987d7f2f57d2 Name: AAD_987d7f2f57d2 Desc: Service account for the Synchronization Service with installation identifier 05c97990-7587-4a3d-b312-309adfc172d9 running on computer MONTEVERDE.</description>
     </item>
     <item>
-      <title>rsync</title>
+      <title>Rsync</title>
       <link>https://tldrbins.github.io/rsync/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/rsync/</guid>
-      <description>General # List directory (&amp;#39;/&amp;#39;) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/ # List directory (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -a rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List a file rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd # List files (wildcard) rsync --list-only -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* # Get a file rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/passwd . # Get files (wildcard) rsync -a rsync://&amp;lt;TARGET&amp;gt;/etc/rsync* . # Copy files recusively to remote (With Creds) export RSYNC_PASSWORD=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39;; rsync -aR .ssh/ rsync://&amp;lt;USER&amp;gt;@&amp;lt;TARGET&amp;gt;/home_user/ Bruteforce rsync Password # Get user from /etc/passwd, Get module from /etc/rsyncrsyncd.</description>
+      <description>General # List root directories (&amp;#39;/&amp;#39;) rsync --list-only -av rsync://&amp;lt;TARGET&amp;gt;/ $ rsync --list-only -av rsync://10.10.64.45/ httpd web backup # List root directories (&amp;#39;/&amp;#39;) with ipv6 rsync --list-only -av rsync://[&amp;lt;TARGET_IPV6&amp;gt;]:8730/ # List sub-directories rsync --list-only -av rsync://&amp;lt;TARGET&amp;gt;/&amp;lt;DIR&amp;gt;/ $ rsync --list-only -av rsync://10.10.64.45/httpd/ receiving incremental file list drwxr-xr-x 4,096 2023/04/20 19:50:04 . drwxr-xr-x 4,096 2023/04/20 20:13:22 db -rw-r--r-- 12,288 2023/04/20 19:50:42 db/site.db drwxr-xr-x 4,096 2023/04/20 19:50:50 migrate drwxr-xr-x 4,096 2023/04/20 20:13:15 www -rw-r--r-- 1,722 2023/04/20 20:02:54 www/dashboard.</description>
     </item>
     <item>
       <title>Scheduled tasks</title>
@@ -153,7 +152,7 @@
       <link>https://tldrbins.github.io/share_mount/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://tldrbins.github.io/share_mount/</guid>
-      <description>nfs smb List Shares showmount -e &amp;lt;TARGET&amp;gt; $ showmount -e 10.10.11.191 Export list for 10.10.11.191: /home/ross * /var/www/html * Mount Share sudo mkdir /mnt/share $ sudo mkdir /mnt/share sudo mount -t nfs &amp;lt;TARGET&amp;gt;:&amp;lt;SHARE&amp;gt; /mnt/share/ $ sudo mount -t nfs 10.10.11.191:/home/ross /mnt/share/ $ ls /mnt/share Desktop Documents Downloads Music Pictures Public Templates Videos Unmount Share sudo umount /mnt/share/ $ sudo umount /mnt/share/ Mount Share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # Without creds sudo mount -t cifs -o user=,password= //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # With creds sudo mount -t cifs -o user=&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;,pass=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt $ sudo mount -t cifs -o ro,user=&amp;#39;localadmin&amp;#39;,password=&amp;#39;Secret123&amp;#39; //10.</description>
+      <description>NFS SMB List Shares showmount -e &amp;lt;TARGET&amp;gt; $ showmount -e 10.10.11.191 Export list for 10.10.11.191: /home/ross * /var/www/html * Mount Share sudo mkdir /mnt/share $ sudo mkdir /mnt/share sudo mount -t nfs &amp;lt;TARGET&amp;gt;:&amp;lt;SHARE&amp;gt; /mnt/share/ $ sudo mount -t nfs 10.10.11.191:/home/ross /mnt/share/ $ ls /mnt/share Desktop Documents Downloads Music Pictures Public Templates Videos Unmount Share sudo umount /mnt/share/ $ sudo umount /mnt/share/ Mount Share sudo mount -t cifs //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # Without creds sudo mount -t cifs -o user=,password= //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt # With creds sudo mount -t cifs -o user=&amp;#39;&amp;lt;USER&amp;gt;&amp;#39;,pass=&amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; //&amp;lt;TARGET&amp;gt;/&amp;lt;SHARE&amp;gt; /mnt $ sudo mount -t cifs -o ro,user=&amp;#39;localadmin&amp;#39;,password=&amp;#39;Secret123&amp;#39; //10.</description>
     </item>
     <item>
       <title>SMB Enum</title>
