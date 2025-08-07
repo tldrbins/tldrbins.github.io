@@ -82,7 +82,7 @@ Get-DomainComputer <TARGET_COMPUTER> -Properties ms-Mcs-AdmPwd
 ```
 
 ```console
-# Or Active Directory Module
+# Or activedirectory module
 Get-AdComputer -Filter * -Properties ms-Mcs-AdmPwd -Credential $cred
 ```
 
@@ -101,6 +101,27 @@ SamAccountName    : PIVOTAPI$
 SID               : S-1-5-21-842165252-2479896602-2762773115-1004
 UserPrincipalName :
 
+```
+
+```console
+# Or LAPS module
+Get-LapsADPassword -Identity <TARGET_COMPUTER> -AsPlainText
+```
+
+```console {class="sample-code"}
+PS C:\> Get-LapsADPassword -Identity SRV -AsPlainText
+Get-LapsADPassword -Identity SRV -AsPlainText
+
+
+ComputerName        : SRV
+DistinguishedName   : CN=SRV,OU=Servers,DC=example,DC=com
+Account             : Administrator
+Password            : O5E@-)v$dXU67V
+PasswordUpdateTime  : 8/6/2025 2:49:38 AM
+ExpirationTimestamp : 9/5/2025 2:49:38 AM
+Source              : EncryptedPassword
+DecryptionStatus    : Success
+AuthorizedDecryptor : TEA\Server Administration
 ```
 
 {{< /tabcontent >}}

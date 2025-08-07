@@ -680,7 +680,7 @@ echo '<USER>@<DOMAIN>' > /home/<TARGET_USER>/.k5login
 
 ```console
 # Check
-cat /etc/ktb5.keytab | base64 -w0
+cat /etc/krb5.keytab | base64 -w0
 ```
 
 ```console

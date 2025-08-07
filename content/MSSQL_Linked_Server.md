@@ -1,7 +1,7 @@
 ---
 title: "MSSQL Linked Servers"
 date: 2025-7-25
-tags: ["Database Dumping", "Privilege Escalation In Databases", "Mssql", "Database", "Windows", "Linked Server"]
+tags: ["Database Dumping", "Privilege Escalation In Databases", "MSSQL", "Database", "Windows", "Linked Server"]
 ---
 
 ### Enum

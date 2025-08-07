@@ -1,7 +1,7 @@
 ---
 title: "MSSQL General"
 date: 2024-6-27
-tags: ["Database Dumping", "Privilege Escalation In Databases", "Mssql", "Database", "Windows"]
+tags: ["Database Dumping", "Privilege Escalation In Databases", "MSSQL", "Database", "Windows"]
 ---
 
 ### Connect to MSSQL DB

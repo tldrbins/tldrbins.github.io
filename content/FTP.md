@@ -18,6 +18,11 @@ ftp ftp://anonymous:@<TARGET>
 ```
 
 ```console
+# Anonymous
+ftp ftp://ftp:ftp@<TARGET>
+```
+
+```console
 # Password
 ftp ftp://<USER>:<PASSWORD>@<TARGET>
 ```

